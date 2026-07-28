@@ -6,6 +6,11 @@
   "type": "module",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "conformance": "node --loader ts-node/esm cli/evaluates-conformance.ts"
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
   }
 }
