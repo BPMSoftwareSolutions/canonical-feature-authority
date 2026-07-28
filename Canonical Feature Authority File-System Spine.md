@@ -760,7 +760,528 @@ Example:
 }
 ```
 
-The walkthrough explicitly distinguishes this expectation from code. It is the authoritative constraint that one body must exist for one responsibility, at one declared location, returning one signal.
+The scenario expectation is not code.
+
+It is the operational contract between:
+
+```text
+Canonical scenario
+    ↓
+Required implementation topology
+    ↓
+Observable execution result
+```
+
+It says:
+
+```text
+When the admitted condition exists,
+
+exactly one responsibility must evaluate it,
+
+exactly one scenario body must execute,
+
+and exactly one authoritative signal must report:
+
+SCENARIO_NOT_ATOMIC
+```
+
+## What the Scenario Expectation Actually Becomes
+
+The expectation projects into several downstream constraints.
+
+```text
+Scenario expectation
+    ├── determines the expected condition
+    ├── determines the expected result
+    ├── determines the expected signal
+    ├── determines implementation cardinality
+    ├── constrains the responsibility body expectation
+    ├── constrains the return contract
+    ├── drives executable test projection
+    └── becomes input to operational conformance
+```
+
+It does not directly become one block of TypeScript.
+
+It shapes everything that TypeScript is permitted to become.
+
+### 1. It becomes an admitted execution case
+
+This portion:
+
+```json
+{
+  "condition": {
+    "obligationCardinality": "greater-than-one"
+  }
+}
+```
+
+does not become:
+
+```typescript
+if (scenario.obligations.length > 1) {
+  // reject
+}
+```
+
+Instead, it becomes an executable input condition supplied to the semantic path.
+
+Conceptually:
+
+```json
+{
+  "executionCaseId": "scenario-contains-multiple-obligations",
+  "scenarioId": "reject-a-scenario-with-multiple-obligations",
+  "inputFacts": {
+    "classifiedObligations": [
+      {
+        "obligationId": "first-obligation",
+        "independentlyEvaluable": true
+      },
+      {
+        "obligationId": "second-obligation",
+        "independentlyEvaluable": true
+      }
+    ]
+  }
+}
+```
+
+The condition describes the facts under which the scenario expectation must be evaluated.
+
+The responsibility body does not manufacture those facts.
+
+The execution harness or scenario runner supplies them through the canonical execution context.
+
+### 2. It becomes an expected semantic result
+
+This portion:
+
+```json
+{
+  "expectedResult": {
+    "resultId": "scenario-is-rejected"
+  }
+}
+```
+
+establishes the semantic outcome.
+
+It says that the evaluation must resolve to:
+
+```text
+Scenario admission:
+rejected
+```
+
+That result may later appear as a structured semantic value:
+
+```json
+{
+  "resultId": "scenario-is-rejected",
+  "admission": "REJECTED"
+}
+```
+
+But that result should be projected by semantic authority.
+
+It should not be manually assembled inside TypeScript:
+
+```typescript
+return {
+  resultId: "scenario-is-rejected",
+  admission: "REJECTED"
+};
+```
+
+That would move semantic result construction into the language body.
+
+### 3. It becomes an expected signal contract
+
+This portion:
+
+```json
+{
+  "expectedSignal": {
+    "signalId": "scenario-atomicity",
+    "disposition": "SCENARIO_NOT_ATOMIC"
+  }
+}
+```
+
+constrains the body's return subject.
+
+It determines:
+
+```text
+Signal family:
+scenario-atomicity
+
+Expected disposition:
+SCENARIO_NOT_ATOMIC
+```
+
+This influences the projected return contract:
+
+```typescript
+Promise<ScenarioAtomicitySignal>
+```
+
+It also constrains the semantic result:
+
+```json
+{
+  "signalId": "scenario-atomicity",
+  "disposition": "SCENARIO_NOT_ATOMIC",
+  "color": "RED",
+  "blocking": true
+}
+```
+
+The literal disposition remains owned by semantic decision authority.
+
+The TypeScript body returns the resolved signal.
+
+It does not choose the disposition.
+
+### 4. It becomes implementation cardinality
+
+This portion:
+
+```json
+{
+  "expectedCardinality": {
+    "primaryResponsibilities": 1,
+    "signals": 1,
+    "scenarioBodies": 1
+  }
+}
+```
+
+has a major architectural effect.
+
+It establishes:
+
+```text
+One scenario
+    ↓
+One primary responsibility
+    ↓
+One implementation body
+    ↓
+One authoritative signal
+```
+
+This is where the scenario expectation prevents implementation sprawl.
+
+It rejects structures such as:
+
+```text
+Scenario
+├── validates-obligation-count
+├── repairs-scenario-structure
+├── rewrites-feature
+└── generates-review-report
+```
+
+That would be four responsibilities hidden below one scenario.
+
+The expectation instead admits:
+
+```text
+Scenario
+└── evaluates-scenario-atomicity
+```
+
+Any additional work must either:
+
+```text
+be a semantic dependency below the responsibility,
+
+or
+
+be admitted as another scenario and responsibility.
+```
+
+### 5. It becomes a responsibility body expectation
+
+The scenario expectation projects into a more implementation-specific body expectation:
+
+```json
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "evaluates-scenario-atomicity-body",
+  "featureId": "reject-non-atomic-feature-scenarios",
+  "scenarioId": "reject-a-scenario-with-multiple-obligations",
+  "obligationId": "scenario-carries-one-independent-obligation",
+  "responsibilityId": "evaluates-scenario-atomicity",
+  "expectedResultId": "scenario-is-rejected",
+  "expectedSignal": {
+    "signalId": "scenario-atomicity",
+    "disposition": "SCENARIO_NOT_ATOMIC"
+  },
+  "expectedCardinality": {
+    "bodyCount": 1,
+    "primarySemanticEdges": 1,
+    "returnedSignals": 1
+  }
+}
+```
+
+The scenario expectation says:
+
+```text
+What must happen.
+```
+
+The responsibility body expectation says:
+
+```text
+What executable body must exist to make it happen.
+```
+
+### 6. It becomes a file-body constraint
+
+The scenario expectation does not necessarily author the file path itself.
+
+But it constrains the file-body authority that may be projected.
+
+```json
+{
+  "bodyId": "evaluates-scenario-atomicity-body",
+  "scenarioId": "reject-a-scenario-with-multiple-obligations",
+  "responsibilityId": "evaluates-scenario-atomicity",
+  "signalId": "scenario-atomicity",
+  "target": {
+    "language": "typescript",
+    "path": "evaluates-scenario-atomicity.ts"
+  },
+  "constraints": {
+    "maximumPrimaryResponsibilities": 1,
+    "maximumSignals": 1,
+    "maximumBodyLineages": 1
+  }
+}
+```
+
+The scenario expectation therefore constrains:
+
+```text
+How many bodies may exist
+Which responsibility the body must embody
+Which signal family the body must return
+Which scenario owns the body
+```
+
+### 7. It becomes an executable test projection
+
+The expectation also drives the operational scenario test.
+
+Conceptually:
+
+```typescript
+it("rejects a scenario with multiple obligations", async () => {
+  const context = createsScenarioAtomicityContext({
+    classifiedObligations: [
+      createsIndependentObligation("first-obligation"),
+      createsIndependentObligation("second-obligation")
+    ]
+  });
+
+  const signal = await evaluatesScenarioAtomicity(context);
+
+  expect(signal.signalId).toBe("scenario-atomicity");
+  expect(signal.disposition).toBe("SCENARIO_NOT_ATOMIC");
+});
+```
+
+The test is not a new authority.
+
+It is a language projection of the admitted scenario expectation.
+
+The expectation owns:
+
+```text
+Condition
+Expected result
+Expected signal
+Expected disposition
+```
+
+The test merely executes that contract.
+
+### 8. It becomes operational conformance input
+
+The conformance evaluator loads the expectation and compares it with observed implementation and execution.
+
+```text
+Expected:
+1 primary responsibility
+
+Observed:
+1 primary responsibility
+
+Expected:
+1 scenario body
+
+Observed:
+1 scenario body
+
+Expected:
+scenario-atomicity
+
+Observed:
+scenario-atomicity
+
+Expected disposition:
+SCENARIO_NOT_ATOMIC
+
+Observed disposition:
+SCENARIO_NOT_ATOMIC
+```
+
+Potential findings include:
+
+```text
+EXPECTED_RESPONSIBILITY_NOT_PROJECTED
+
+MULTIPLE_PRIMARY_RESPONSIBILITIES_PROJECTED
+
+EXPECTED_SCENARIO_BODY_NOT_FOUND
+
+MULTIPLE_SCENARIO_BODIES_PROJECTED
+
+EXPECTED_SIGNAL_NOT_RETURNED
+
+UNAUTHORIZED_SIGNAL_RETURNED
+
+EXPECTED_DISPOSITION_NOT_OBSERVED
+```
+
+The expectation is therefore operationally consumed by:
+
+```text
+Body expectation projection
+File-body projection
+Test projection
+Execution evaluation
+Conformance evaluation
+```
+
+It remains in the execution chain.
+
+## What the Projected TypeScript Becomes
+
+The scenario expectation contributes lineage and return constraints, but not domain branching.
+
+```typescript
+// @generated
+// feature-id: reject-non-atomic-feature-scenarios
+// scenario-id: reject-a-scenario-with-multiple-obligations
+// obligation-id: scenario-carries-one-independent-obligation
+// responsibility-id: evaluates-scenario-atomicity
+// expected-result-id: scenario-is-rejected
+// signal-id: scenario-atomicity
+
+import type {
+  EvaluateScenarioAtomicityContext,
+  ScenarioAtomicitySignal
+} from "./scenario-atomicity.type.js";
+
+export async function evaluatesScenarioAtomicity(
+  context: EvaluateScenarioAtomicityContext
+): Promise<ScenarioAtomicitySignal> {
+  return await context.edges.invokes(
+    "evaluate-scenario-atomicity",
+    context
+  );
+}
+```
+
+Notice what does not appear:
+
+```typescript
+if (context.scenario.obligations.length > 1) {
+  return {
+    signalId: "scenario-atomicity",
+    disposition: "SCENARIO_NOT_ATOMIC"
+  };
+}
+```
+
+That logic belongs to semantic authority.
+
+The projected body remains execution-only.
+
+## Exact Projection Influence
+
+| Expectation field                    | Projected influence                                   |
+| ------------------------------------ | ----------------------------------------------------- |
+| `featureId`                          | Preserves feature lineage                             |
+| `scenarioId`                         | Establishes scenario ownership                        |
+| `obligationId`                       | Constrains the semantic boundary                      |
+| `condition`                          | Defines executable input facts                        |
+| `expectedResult.resultId`            | Defines the admitted semantic outcome                 |
+| `expectedSignal.signalId`            | Constrains the return subject                         |
+| `expectedSignal.disposition`         | Defines the expected execution verdict                |
+| `primaryResponsibilities: 1`         | Permits one owning responsibility                     |
+| `signals: 1`                         | Permits one authoritative signal                      |
+| `scenarioBodies: 1`                  | Permits one implementation lineage                    |
+| `blocking` inherited from obligation | Determines whether failed expectation stops admission |
+
+## The Deeper Insight
+
+The scenario expectation has four projections:
+
+```text
+1. Behavioral projection
+   What condition and result must be observed?
+
+2. Topological projection
+   How many responsibilities, signals, and bodies may exist?
+
+3. Execution projection
+   What input case must be run and what signal must return?
+
+4. Conformance projection
+   What expected facts must be compared with observed facts?
+```
+
+The final transformation is:
+
+```text
+Scenario expectation
+"Multiple obligations must produce scenario rejection."
+
+        ↓
+
+Execution case
+"Supply more than one independently classified obligation."
+
+        ↓
+
+Responsibility body expectation
+"Exactly one body must evaluate scenario atomicity."
+
+        ↓
+
+Projected return contract
+Promise<ScenarioAtomicitySignal>
+
+        ↓
+
+Observed signal
+SCENARIO_NOT_ATOMIC
+
+        ↓
+
+Conformance
+Expected and observed behavior and topology match.
+```
+
+> **The scenario expectation does not implement behavior. It establishes the exact behavior and topology that the implementation must operationally satisfy.**
 
 ---
 
@@ -789,9 +1310,652 @@ Example:
 }
 ```
 
-The responsibility ID becomes the stable execution identity.
+The responsibility authority does not yet define TypeScript syntax.
 
-The language-specific operation name is a later projection.
+It establishes a stable semantic worker identity.
+
+```text
+Obligation:
+scenario-carries-one-independent-obligation
+
+Owned by:
+evaluates-scenario-atomicity
+```
+
+The responsibility is the bridge between:
+
+```text
+What must be true
+    ↓
+Who owns determining whether it is true
+    ↓
+What semantic execution must occur
+    ↓
+What body must be projected
+```
+
+## What the Responsibility Authority Actually Becomes
+
+```text
+Responsibility authority
+    ├── becomes a semantic execution identity
+    ├── binds to one primary semantic edge
+    ├── determines the responsibility body identity
+    ├── influences the projected operation name
+    ├── constrains the body kind
+    ├── preserves ownership lineage
+    ├── determines conformance ownership
+    └── prevents unrelated behavior from entering the body
+```
+
+### 1. It becomes the stable worker identity
+
+This value:
+
+```json
+{
+  "responsibilityId": "evaluates-scenario-atomicity"
+}
+```
+
+is the canonical identity.
+
+It remains stable across language projections:
+
+```text
+Canonical responsibility ID:
+evaluates-scenario-atomicity
+
+TypeScript operation:
+evaluatesScenarioAtomicity
+
+C# operation:
+EvaluateScenarioAtomicity
+
+Python operation:
+evaluates_scenario_atomicity
+
+Java operation:
+evaluateScenarioAtomicity
+```
+
+The programming-language operation names are projections.
+
+They are not new semantic identities.
+
+The body lineage remains attached to:
+
+```text
+evaluates-scenario-atomicity
+```
+
+### 2. It becomes a semantic-edge binding
+
+The responsibility must bind explicitly to semantic execution authority.
+
+```json
+{
+  "bindingType": "responsibility-to-semantic-edge.v1",
+  "responsibilityId": "evaluates-scenario-atomicity",
+  "primarySemanticEdge": "evaluate-scenario-atomicity"
+}
+```
+
+The two names are related but distinct:
+
+```text
+Responsibility:
+evaluates-scenario-atomicity
+
+Semantic edge:
+evaluate-scenario-atomicity
+```
+
+The responsibility identifies the worker.
+
+The semantic edge identifies the executable semantic boundary that performs the work.
+
+The binding must be declared rather than inferred through naming coincidence.
+
+### 3. It becomes a semantic execution path
+
+The responsibility statement:
+
+```text
+Evaluate whether one canonical scenario carries exactly one
+independently evaluable obligation.
+```
+
+decomposes into semantic operations:
+
+```text
+Observe scenario obligation candidates
+    ↓
+Classify independently evaluable obligations
+    ↓
+Evaluate obligation cardinality
+    ↓
+Resolve atomicity disposition
+    ↓
+Project scenario atomicity signal
+```
+
+These may be represented as SEJ authority:
+
+```json
+{
+  "semanticEdgeId": "evaluate-scenario-atomicity",
+  "responsibilityId": "evaluates-scenario-atomicity",
+  "operations": [
+    {
+      "invokes": "observe-scenario-obligations"
+    },
+    {
+      "invokes": "classify-independent-obligations"
+    },
+    {
+      "invokes": "evaluate-obligation-cardinality"
+    },
+    {
+      "invokes": "resolve-scenario-atomicity-disposition"
+    },
+    {
+      "invokes": "project-scenario-atomicity-signal"
+    }
+  ]
+}
+```
+
+The responsibility authorizes the semantic path.
+
+The TypeScript body does not individually author or orchestrate these domain decisions.
+
+### 4. It becomes a body identity
+
+The responsibility projects into one responsibility body:
+
+```json
+{
+  "bodyId": "evaluates-scenario-atomicity-body",
+  "responsibilityId": "evaluates-scenario-atomicity",
+  "kind": "validation"
+}
+```
+
+The derivation is:
+
+```text
+Responsibility:
+evaluates-scenario-atomicity
+
+        ↓
+
+Body identity:
+evaluates-scenario-atomicity-body
+```
+
+This body ID becomes the stable physical lineage identity for the projected implementation.
+
+### 5. It becomes a body kind
+
+This field:
+
+```json
+{
+  "kind": "validation"
+}
+```
+
+constrains what the body may do.
+
+A validation responsibility may:
+
+```text
+Observe admitted input
+Invoke validation authority
+Return a validation signal
+```
+
+It may not silently become:
+
+```text
+A remediation body
+A mutation body
+A rewriting body
+A reporting body
+A persistence body
+A source generator
+```
+
+That means the generated body may evaluate and report.
+
+It may not repair the scenario.
+
+For example, this would violate the responsibility boundary:
+
+```typescript
+export async function evaluatesScenarioAtomicity(
+  context: EvaluateScenarioAtomicityContext
+): Promise<ScenarioAtomicitySignal> {
+  if (context.scenario.obligations.length > 1) {
+    context.scenario = rewritesScenarioIntoMultipleScenarios(
+      context.scenario
+    );
+  }
+
+  return createsAtomicitySignal(context.scenario);
+}
+```
+
+That body performs:
+
+```text
+Evaluation
+Mutation
+Remediation
+DTO construction
+```
+
+It is no longer one validation responsibility.
+
+### 6. It becomes the public operation boundary
+
+The responsibility identity influences the file-body contract:
+
+```json
+{
+  "publicOperation": {
+    "name": "evaluatesScenarioAtomicity",
+    "async": true,
+    "parameter": {
+      "name": "context",
+      "type": "EvaluateScenarioAtomicityContext"
+    },
+    "returnType": "Promise<ScenarioAtomicitySignal>"
+  }
+}
+```
+
+The naming transformation is declared:
+
+```text
+evaluates-scenario-atomicity
+        ↓ TypeScript naming projection
+evaluatesScenarioAtomicity
+```
+
+The platform agent does not independently invent:
+
+```typescript
+validateScenario()
+checkAtomicity()
+processFeatureScenario()
+handleInvalidScenario()
+```
+
+Those names would introduce new identities not authorized by the responsibility authority.
+
+### 7. It becomes the file identity
+
+The responsibility also influences the projected filename:
+
+```text
+evaluates-scenario-atomicity.ts
+```
+
+The relationship is:
+
+```text
+Responsibility ID:
+evaluates-scenario-atomicity
+
+Body ID:
+evaluates-scenario-atomicity-body
+
+TypeScript operation:
+evaluatesScenarioAtomicity
+
+TypeScript file:
+evaluates-scenario-atomicity.ts
+```
+
+All are projections of one semantic worker identity.
+
+### 8. It becomes the input boundary
+
+The responsibility statement determines what context the body needs.
+
+```typescript
+export interface EvaluateScenarioAtomicityContext {
+  readonly scenario: CanonicalScenario;
+  readonly edges: SemanticEdgeRuntime;
+}
+```
+
+But the body should not be handed unrelated authority such as:
+
+```typescript
+interface EvaluateScenarioAtomicityContext {
+  scenario: CanonicalScenario;
+  repositoryWriter: RepositoryWriter;
+  featureRewriter: FeatureRewriter;
+  reportGenerator: ReportGenerator;
+  remediationQueue: RemediationQueue;
+}
+```
+
+Those dependencies would imply responsibilities beyond evaluation.
+
+The responsibility authority therefore constrains dependency admission.
+
+### 9. It becomes the return boundary
+
+The responsibility owns one authoritative output:
+
+```typescript
+Promise<ScenarioAtomicitySignal>
+```
+
+It should not return:
+
+```typescript
+Promise<{
+  atomicity: ScenarioAtomicitySignal;
+  rewrittenFeature: Feature;
+  documentation: MarkdownDocument;
+  remediationPlan: RemediationPlan;
+  auditReport: AuditReport;
+}>
+```
+
+That result shape would reveal multiple responsibilities.
+
+The return boundary should reflect one worker and one signal.
+
+### 10. It becomes the projected implementation body
+
+The final TypeScript projection is:
+
+```typescript
+// @generated
+// feature-id: reject-non-atomic-feature-scenarios
+// scenario-id: reject-a-scenario-with-multiple-obligations
+// obligation-id: scenario-carries-one-independent-obligation
+// responsibility-id: evaluates-scenario-atomicity
+// signal-id: scenario-atomicity
+
+import type {
+  EvaluateScenarioAtomicityContext,
+  ScenarioAtomicitySignal
+} from "./scenario-atomicity.type.js";
+
+export async function evaluatesScenarioAtomicity(
+  context: EvaluateScenarioAtomicityContext
+): Promise<ScenarioAtomicitySignal> {
+  return await context.edges.invokes(
+    "evaluate-scenario-atomicity",
+    context
+  );
+}
+```
+
+The responsibility authority projects into:
+
+```text
+Function identity
+File identity
+Body identity
+Context boundary
+Return boundary
+Primary semantic edge
+Lineage metadata
+```
+
+It does not project into authored domain logic.
+
+### 11. It becomes structural constraints on the AST
+
+Because the responsibility is singular and its kind is validation, the AST authority may permit:
+
+```text
+One exported function
+One context parameter
+One semantic invocation
+One returned semantic result
+```
+
+It may forbid:
+
+```text
+Multiple exported operations
+Branching
+Loops
+Direct source mutation
+Direct filesystem effects
+DTO construction
+Multiple returned signal families
+Unrelated semantic edge invocations
+```
+
+Expected AST:
+
+```text
+FunctionDeclaration
+├── name: evaluatesScenarioAtomicity
+├── async: true
+├── parameter: context
+└── body
+    └── ReturnStatement
+        └── SemanticEdgeInvocation
+            ├── edge: evaluate-scenario-atomicity
+            └── input: context
+```
+
+### 12. It becomes conformance ownership
+
+The conformance evaluator asks:
+
+```text
+Was the obligation implemented by the admitted responsibility?
+
+Was exactly one body projected for the responsibility?
+
+Does the body invoke the responsibility's declared semantic edge?
+
+Does the body return the responsibility's admitted signal?
+
+Does the body contain work outside the responsibility boundary?
+```
+
+Potential findings include:
+
+```text
+RESPONSIBILITY_NOT_PROJECTED
+
+MULTIPLE_BODIES_FOR_RESPONSIBILITY
+
+RESPONSIBILITY_EDGE_BINDING_MISSING
+
+RESPONSIBILITY_EDGE_MISMATCH
+
+RESPONSIBILITY_SIGNAL_MISMATCH
+
+RESPONSIBILITY_KIND_VIOLATION
+
+RESPONSIBILITY_CONTAINS_UNAUTHORIZED_EFFECT
+
+RESPONSIBILITY_CONTAINS_MULTIPLE_WORKERS
+```
+
+## Exact Projection Influence
+
+| Responsibility field  | Projected influence                      |
+| --------------------- | ----------------------------------------- |
+| `responsibilityId`    | Stable semantic worker identity          |
+| `kind`                | Constrains permitted body behavior       |
+| `featureId`           | Preserves feature lineage                |
+| `scenarioId`          | Preserves scenario ownership             |
+| `obligationId`        | Declares the truth the worker owns       |
+| `statement`           | Drives semantic operation design         |
+| Responsibility ID     | Projects into body ID                    |
+| Responsibility ID     | Projects into operation name             |
+| Responsibility ID     | Projects into filename                   |
+| Responsibility kind   | Constrains AST and dependencies          |
+| Semantic-edge binding | Determines the body's primary invocation |
+| Owned signal          | Determines the return boundary           |
+
+## The Deeper Insight
+
+The responsibility has four projections:
+
+```text
+1. Identity projection
+   What stable worker is being created?
+
+2. Semantic projection
+   What execution path embodies its meaning?
+
+3. Physical projection
+   What file and public operation represent the worker?
+
+4. Conformance projection
+   How do we verify that the worker remained within its boundary?
+```
+
+The complete transformation is:
+
+```text
+Obligation
+"A scenario must carry one independent obligation."
+
+        ↓
+
+Responsibility
+"evaluates-scenario-atomicity"
+
+        ↓
+
+Semantic edge
+"evaluate-scenario-atomicity"
+
+        ↓
+
+Body identity
+"evaluates-scenario-atomicity-body"
+
+        ↓
+
+TypeScript operation
+evaluatesScenarioAtomicity(...)
+
+        ↓
+
+Generated implementation
+return context.edges.invokes(
+  "evaluate-scenario-atomicity",
+  context
+);
+
+        ↓
+
+Conformance
+Verify one worker,
+one body,
+one edge,
+one signal,
+and no unauthorized behavior.
+```
+
+> **The responsibility authority does not contain the implementation. It establishes the stable worker identity from which semantic execution, physical embodiment, language naming, and conformance ownership are projected.**
+
+## How Layers 6 and 7 Work Together
+
+These two layers must remain distinct.
+
+```text
+Scenario expectation:
+What must be observed?
+
+Responsibility authority:
+Who owns producing that observation?
+```
+
+For this scenario:
+
+```text
+Expectation
+────────────────────────────────────────
+Condition:
+more than one independent obligation
+
+Expected result:
+scenario is rejected
+
+Expected signal:
+SCENARIO_NOT_ATOMIC
+
+Expected topology:
+one responsibility
+one body
+one signal
+```
+
+```text
+Responsibility
+────────────────────────────────────────
+Worker:
+evaluates-scenario-atomicity
+
+Kind:
+validation
+
+Owned obligation:
+scenario-carries-one-independent-obligation
+
+Semantic boundary:
+evaluate-scenario-atomicity
+```
+
+Together they produce:
+
+```text
+When a scenario contains multiple independent obligations,
+
+the one admitted worker
+evaluates-scenario-atomicity
+
+must invoke the semantic edge
+evaluate-scenario-atomicity
+
+through one projected body
+
+and return one scenario-atomicity signal
+
+whose admitted disposition is
+SCENARIO_NOT_ATOMIC.
+```
+
+That becomes the implementation spine:
+
+```text
+Scenario expectation
+    ↓
+Responsibility authority
+    ↓
+Semantic-edge binding
+    ↓
+Responsibility body expectation
+    ↓
+File-body authority
+    ↓
+TypeScript projection authority
+    ↓
+Generated body
+    ↓
+Observed signal
+    ↓
+Conformance evaluation
+```
 
 ---
 
