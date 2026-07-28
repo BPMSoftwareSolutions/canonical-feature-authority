@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "bounded-model-submission-body-reproduction-body",
+  "scenarioId": "reproduce-one-bounded-model-submission-body",
+  "obligationId": "establish-one-byte-identical-bounded-model-submission-body",
+  "responsibilityId": "reproduces-bounded-model-submission-body",
+  "signalId": "bounded-model-submission-body-reproduction",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/reproduce-one-bounded-model-submission-body/reproduces-bounded-model-submission-body/bounded-model-submission-reproduction.ts"
+  },
+  "semanticExecutableAuthority": "projects-bounded-model-submission-reproduction.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:d0fe6f24b074e5cd47933e016e175b552987552cfa8329fbd402a7a1c18fcfbe",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/bounded-model-submission-body-reproduction.schema.json",
+  "allOf": [
+    {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "artifactType": {
+              "const": "bounded-model-submission-body-reproduction"
+            },
+            "parent": {
+              "type": "object",
+              "required": [
+                "artifactType",
+                "artifactSha256"
+              ],
+              "properties": {
+                "artifactType": {
+                  "const": "typescript-ast-authority"
+                }
+              }
+            }
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/payload"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "featureId",
+        "scenarioId",
+        "obligationId",
+        "expectationId",
+        "responsibilityId",
+        "signalId",
+        "subjectSemanticAuthoritySha256",
+        "subjectAstAuthoritySha256",
+        "expectedBodySha256",
+        "observedBodySha256",
+        "projectorExecutableSha256",
+        "transformerDependencyGraphSha256",
+        "projectorKeyId",
+        "byteIdentical"
+      ],
+      "properties": {
+        "featureId": {
+          "const": "prove-bounded-model-submission-provenance-under-independent-trust"
+        },
+        "scenarioId": {
+          "const": "reproduce-one-bounded-model-submission-body"
+        },
+        "obligationId": {
+          "const": "establish-one-byte-identical-bounded-model-submission-body"
+        },
+        "expectationId": {
+          "const": "expect-one-byte-identical-bounded-model-submission-body"
+        },
+        "responsibilityId": {
+          "const": "reproduces-bounded-model-submission-body"
+        },
+        "signalId": {
+          "const": "bounded-model-submission-body-reproduction"
+        },
+        "subjectSemanticAuthoritySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "subjectAstAuthoritySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "expectedBodySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "observedBodySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "projectorExecutableSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "transformerDependencyGraphSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "projectorKeyId": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "byteIdentical": {
+          "const": true
+        }
+      }
+    }
+  }
+}

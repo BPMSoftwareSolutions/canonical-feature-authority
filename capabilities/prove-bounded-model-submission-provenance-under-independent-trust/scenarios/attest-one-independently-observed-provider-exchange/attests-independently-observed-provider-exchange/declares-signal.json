@@ -1,0 +1,14 @@
+{
+  "authorityType": "signal.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "attest-one-independently-observed-provider-exchange",
+  "obligationId": "establish-one-independent-provider-exchange-attestation",
+  "responsibilityId": "attests-independently-observed-provider-exchange",
+  "signalId": "independent-provider-exchange-attestation",
+  "outcome": "one signed independent-provider-exchange attestation is emitted",
+  "dispositions": [
+    "GREEN",
+    "RED",
+    "UNRESOLVED"
+  ]
+}

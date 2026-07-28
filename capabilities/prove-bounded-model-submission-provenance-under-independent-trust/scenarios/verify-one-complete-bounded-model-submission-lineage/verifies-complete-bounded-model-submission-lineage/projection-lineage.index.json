@@ -1,0 +1,57 @@
+{
+  "indexType": "scenario-projection-lineage.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "verify-one-complete-bounded-model-submission-lineage",
+  "obligationId": "establish-one-complete-bounded-model-submission-lineage",
+  "expectationId": "expect-one-complete-bounded-model-submission-lineage",
+  "responsibilityId": "verifies-complete-bounded-model-submission-lineage",
+  "signalId": "bounded-model-submission-acceptance-disposition",
+  "semanticOperationId": "evaluate-complete-bounded-model-submission-lineage",
+  "projectedBodyCount": 4,
+  "entries": [
+    {
+      "role": "primary",
+      "bodyId": "complete-bounded-model-submission-lineage-body",
+      "semanticAuthority": "projects-complete-bounded-model-submission-lineage.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:cd8ac7407976dc951e333d60f5dffbfa6ae953db828fc7e284eeacf16d6a9c29",
+      "bodyExpectationAuthority": "expects-complete-bounded-model-submission-lineage-body.json",
+      "fileBodyAuthority": "declares-complete-bounded-model-submission-lineage-body.json",
+      "typescriptProjectionAuthority": "projects-complete-bounded-model-submission-lineage-body.json",
+      "astAuthority": "complete-bounded-model-submission-lineage.ts.ast.authority.json",
+      "projectedBody": "complete-bounded-model-submission-lineage.ts"
+    },
+    {
+      "role": "type",
+      "bodyId": "bounded-model-submission-acceptance-disposition-type-body",
+      "semanticAuthority": "projects-bounded-model-submission-acceptance-disposition-type.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:26cace8314b0165f455a96b0e9b80d24f6fe169ed95530cbfcba8673eed1609d",
+      "bodyExpectationAuthority": "expects-bounded-model-submission-acceptance-disposition-type-body.json",
+      "fileBodyAuthority": "declares-bounded-model-submission-acceptance-disposition-type-body.json",
+      "typescriptProjectionAuthority": "projects-bounded-model-submission-acceptance-disposition-type-body.json",
+      "astAuthority": "bounded-model-submission-acceptance-disposition.type.ts.ast.authority.json",
+      "projectedBody": "bounded-model-submission-acceptance-disposition.type.ts"
+    },
+    {
+      "role": "expectation",
+      "bodyId": "complete-bounded-model-submission-lineage-expectation-body",
+      "semanticAuthority": "projects-complete-bounded-model-submission-lineage-expectation.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:b85462483e16910a5706fb36bbc9d572c207fcd5a65249119dbfe8201bf8684d",
+      "bodyExpectationAuthority": "expects-complete-bounded-model-submission-lineage-expectation-body.json",
+      "fileBodyAuthority": "declares-complete-bounded-model-submission-lineage-expectation-body.json",
+      "typescriptProjectionAuthority": "projects-complete-bounded-model-submission-lineage-expectation-body.json",
+      "astAuthority": "complete-bounded-model-submission-lineage.expectation.ts.ast.authority.json",
+      "projectedBody": "complete-bounded-model-submission-lineage.expectation.ts"
+    },
+    {
+      "role": "conformance",
+      "bodyId": "runs-complete-bounded-model-submission-lineage-conformance-body",
+      "semanticAuthority": "projects-runs-complete-bounded-model-submission-lineage-conformance.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:6aebe92c33dac184f038458d1c8688d4fe779e8b5b6cb67b678dc332edea8231",
+      "bodyExpectationAuthority": "expects-runs-complete-bounded-model-submission-lineage-conformance-body.json",
+      "fileBodyAuthority": "declares-runs-complete-bounded-model-submission-lineage-conformance-body.json",
+      "typescriptProjectionAuthority": "projects-runs-complete-bounded-model-submission-lineage-conformance-body.json",
+      "astAuthority": "runs-complete-bounded-model-submission-lineage-conformance.ts.ast.authority.json",
+      "projectedBody": "runs-complete-bounded-model-submission-lineage-conformance.ts"
+    }
+  ]
+}

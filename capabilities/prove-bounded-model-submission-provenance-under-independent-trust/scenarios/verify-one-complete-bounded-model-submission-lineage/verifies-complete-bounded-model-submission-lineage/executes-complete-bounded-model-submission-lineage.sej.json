@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "complete-bounded-model-submission-lineage-body",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/verify-one-complete-bounded-model-submission-lineage/verifies-complete-bounded-model-submission-lineage/complete-bounded-model-submission-lineage.ts"
+  },
+  "lineage": {
+    "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+    "scenarioId": "verify-one-complete-bounded-model-submission-lineage",
+    "obligationId": "establish-one-complete-bounded-model-submission-lineage",
+    "expectationId": "expect-one-complete-bounded-model-submission-lineage",
+    "responsibilityId": "verifies-complete-bounded-model-submission-lineage",
+    "signalId": "bounded-model-submission-acceptance-disposition",
+    "semanticOperationId": "evaluate-complete-bounded-model-submission-lineage"
+  },
+  "projection": {
+    "functionName": "verifiesCompleteBoundedModelSubmissionLineage",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "VerifiesCompleteBoundedModelSubmissionLineageContext"
+    },
+    "resultTypeReference": "BoundedModelSubmissionAcceptanceDisposition",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "lineage"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

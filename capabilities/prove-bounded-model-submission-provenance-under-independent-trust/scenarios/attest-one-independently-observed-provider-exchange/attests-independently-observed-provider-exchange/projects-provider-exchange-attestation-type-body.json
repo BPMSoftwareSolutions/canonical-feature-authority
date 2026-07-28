@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-provider-exchange-attestation-type-from-894a84e5e7be7ef39155d0cf600f6a49bbd42c729864211cab0e7ee9898275d0",
+  "bodyId": "provider-exchange-attestation-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-provider-exchange-attestation-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:894a84e5e7be7ef39155d0cf600f6a49bbd42c729864211cab0e7ee9898275d0",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/attest-one-independently-observed-provider-exchange/attests-independently-observed-provider-exchange/provider-exchange-attestation.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "AttestsIndependentlyObservedProviderExchangeContext",
+      "ProvesProviderExchangeAttestationExpectationContext",
+      "RunsProviderExchangeAttestationConformanceContext",
+      "IndependentProviderExchangeAttestation",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

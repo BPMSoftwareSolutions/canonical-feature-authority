@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "attest-one-independently-observed-provider-exchange",
+  "given": "one fresh instructor challenge and one admitted provider-neutral model request",
+  "when": "its provider exchange is observed by instructor-controlled infrastructure",
+  "then": "one signed independent-provider-exchange attestation is emitted",
+  "independentObligationCount": 1
+}

@@ -1,0 +1,9 @@
+{
+  "authorityType": "responsibility.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "verify-one-complete-bounded-model-submission-lineage",
+  "obligationId": "establish-one-complete-bounded-model-submission-lineage",
+  "responsibilityId": "verifies-complete-bounded-model-submission-lineage",
+  "statement": "their complete authority lineage is independently evaluated",
+  "semanticOperationId": "evaluate-complete-bounded-model-submission-lineage"
+}

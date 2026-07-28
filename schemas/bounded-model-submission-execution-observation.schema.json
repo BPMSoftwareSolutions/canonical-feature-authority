@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/bounded-model-submission-execution-observation.schema.json",
+  "allOf": [
+    {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "artifactType": {
+              "const": "bounded-model-submission-execution-observation"
+            },
+            "parent": {
+              "type": "object",
+              "required": [
+                "artifactType",
+                "artifactSha256"
+              ],
+              "properties": {
+                "artifactType": {
+                  "const": "runtime-composition-authority"
+                }
+              }
+            }
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/payload"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "featureId",
+        "scenarioId",
+        "obligationId",
+        "expectationId",
+        "responsibilityId",
+        "signalId",
+        "subjectBodySha256",
+        "runtimeCompositionAuthoritySha256",
+        "observedSemanticOperationId",
+        "observedInvocationCount",
+        "modelRequestAuthoritySha256",
+        "boundedModelSubmissionSha256",
+        "providerExchangeAttestationSha256",
+        "observerExecutableSha256"
+      ],
+      "properties": {
+        "featureId": {
+          "const": "prove-bounded-model-submission-provenance-under-independent-trust"
+        },
+        "scenarioId": {
+          "const": "observe-one-bounded-model-submission-execution"
+        },
+        "obligationId": {
+          "const": "establish-one-raw-bounded-model-submission-observation"
+        },
+        "expectationId": {
+          "const": "expect-one-raw-bounded-model-submission-observation"
+        },
+        "responsibilityId": {
+          "const": "observes-bounded-model-submission-execution"
+        },
+        "signalId": {
+          "const": "bounded-model-submission-execution-observation"
+        },
+        "subjectBodySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "runtimeCompositionAuthoritySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "observedSemanticOperationId": {
+          "const": "obtain-bounded-model-submission"
+        },
+        "observedInvocationCount": {
+          "const": 1
+        },
+        "modelRequestAuthoritySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "boundedModelSubmissionSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "providerExchangeAttestationSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "observerExecutableSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        }
+      }
+    }
+  }
+}

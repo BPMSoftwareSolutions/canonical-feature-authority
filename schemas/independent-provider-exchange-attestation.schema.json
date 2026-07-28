@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/independent-provider-exchange-attestation.schema.json",
+  "allOf": [
+    {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "artifactType": {
+              "const": "independent-provider-exchange-attestation"
+            },
+            "parent": {
+              "type": "object",
+              "required": [
+                "artifactType",
+                "artifactSha256"
+              ],
+              "properties": {
+                "artifactType": {
+                  "const": "model-request-authority"
+                }
+              }
+            }
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/payload"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "featureId",
+        "scenarioId",
+        "obligationId",
+        "expectationId",
+        "responsibilityId",
+        "signalId",
+        "subjectFeatureId",
+        "subjectScenarioId",
+        "challengeNonce",
+        "challengeIssuedAt",
+        "challengeExpiresAt",
+        "modelRequestAuthoritySha256",
+        "providerAuthoritySha256",
+        "providerRequestBodySha256",
+        "providerResponseBodySha256",
+        "providerRequestMetadataSha256",
+        "providerResponseMetadataSha256",
+        "resolvedProvider",
+        "resolvedModel",
+        "connectorInvocationId",
+        "observerId",
+        "observerExecutableSha256",
+        "observedAt"
+      ],
+      "properties": {
+        "featureId": {
+          "const": "prove-bounded-model-submission-provenance-under-independent-trust"
+        },
+        "scenarioId": {
+          "const": "attest-one-independently-observed-provider-exchange"
+        },
+        "obligationId": {
+          "const": "establish-one-independent-provider-exchange-attestation"
+        },
+        "expectationId": {
+          "const": "expect-one-independent-provider-exchange-attestation"
+        },
+        "responsibilityId": {
+          "const": "attests-independently-observed-provider-exchange"
+        },
+        "signalId": {
+          "const": "independent-provider-exchange-attestation"
+        },
+        "subjectFeatureId": {
+          "const": "project-course-authority-through-a-governed-conveyor"
+        },
+        "subjectScenarioId": {
+          "const": "obtain-one-bounded-model-submission"
+        },
+        "challengeNonce": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$"
+        },
+        "challengeIssuedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "challengeExpiresAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modelRequestAuthoritySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "providerAuthoritySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "providerRequestBodySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "providerResponseBodySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "providerRequestMetadataSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "providerResponseMetadataSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "resolvedProvider": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolvedModel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "connectorInvocationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "providerRequestId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observerId": {
+          "const": "instructor-provider-http-observer"
+        },
+        "observerExecutableSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

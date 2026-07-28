@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-bounded-model-submission-execution-observation-from-217a8361339d3a4690dbe894b43f48d0369869bdf5fb0e4d1d99d18d9bdf3a2e",
+  "bodyId": "bounded-model-submission-execution-observation-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-bounded-model-submission-observation.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:217a8361339d3a4690dbe894b43f48d0369869bdf5fb0e4d1d99d18d9bdf3a2e",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/observe-one-bounded-model-submission-execution/observes-bounded-model-submission-execution/bounded-model-submission-observation.ts"
+  },
+  "projection": {
+    "functionName": "observesBoundedModelSubmissionExecution",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ObservesBoundedModelSubmissionExecutionContext"
+    },
+    "resultTypeReference": "BoundedModelSubmissionExecutionObservation",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "observe",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

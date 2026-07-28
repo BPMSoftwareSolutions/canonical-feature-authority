@@ -15,7 +15,12 @@
     "runtime-composition-authority.schema.json",
     "conformance-terminal-signal.schema.json",
     "final-lineage-projection.schema.json",
-    "embedded-typescript-provenance-header.schema.json"
+    "embedded-typescript-provenance-header.schema.json",
+    "independent-provider-exchange-attestation.schema.json",
+    "bounded-model-submission-body-reproduction.schema.json",
+    "bounded-model-submission-execution-observation.schema.json",
+    "complete-bounded-model-submission-lineage.schema.json",
+    "bounded-model-submission-acceptance-disposition.schema.json"
   ],
   "externalSchemaDependencies": [
     {

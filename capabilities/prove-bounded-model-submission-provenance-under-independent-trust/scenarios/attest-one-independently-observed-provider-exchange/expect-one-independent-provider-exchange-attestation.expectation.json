@@ -1,0 +1,10 @@
+{
+  "authorityType": "scenario-expectation.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "attest-one-independently-observed-provider-exchange",
+  "obligationId": "establish-one-independent-provider-exchange-attestation",
+  "expectationId": "expect-one-independent-provider-exchange-attestation",
+  "outcome": "one signed independent-provider-exchange attestation is emitted",
+  "expectedResponsibilityId": "attests-independently-observed-provider-exchange",
+  "expectedSignalId": "independent-provider-exchange-attestation"
+}

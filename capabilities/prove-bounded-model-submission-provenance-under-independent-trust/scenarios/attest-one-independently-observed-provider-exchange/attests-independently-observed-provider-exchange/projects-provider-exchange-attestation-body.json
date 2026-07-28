@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-provider-exchange-attestation-from-fb3c6c4022c0c53d3f0b0cb888e80f7265b73828633b5075d4f4cf43f725a273",
+  "bodyId": "provider-exchange-attestation-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-provider-exchange-attestation.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:fb3c6c4022c0c53d3f0b0cb888e80f7265b73828633b5075d4f4cf43f725a273",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/attest-one-independently-observed-provider-exchange/attests-independently-observed-provider-exchange/provider-exchange-attestation.ts"
+  },
+  "projection": {
+    "functionName": "attestsIndependentlyObservedProviderExchange",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "AttestsIndependentlyObservedProviderExchangeContext"
+    },
+    "resultTypeReference": "IndependentProviderExchangeAttestation",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "attest",
+      "argument": {
+        "receiver": "context",
+        "member": "exchange"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

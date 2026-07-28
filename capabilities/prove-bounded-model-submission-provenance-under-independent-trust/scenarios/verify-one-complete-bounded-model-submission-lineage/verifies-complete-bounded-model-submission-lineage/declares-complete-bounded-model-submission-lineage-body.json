@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "complete-bounded-model-submission-lineage-body",
+  "scenarioId": "verify-one-complete-bounded-model-submission-lineage",
+  "obligationId": "establish-one-complete-bounded-model-submission-lineage",
+  "responsibilityId": "verifies-complete-bounded-model-submission-lineage",
+  "signalId": "bounded-model-submission-acceptance-disposition",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/verify-one-complete-bounded-model-submission-lineage/verifies-complete-bounded-model-submission-lineage/complete-bounded-model-submission-lineage.ts"
+  },
+  "semanticExecutableAuthority": "projects-complete-bounded-model-submission-lineage.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:cd8ac7407976dc951e333d60f5dffbfa6ae953db828fc7e284eeacf16d6a9c29",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

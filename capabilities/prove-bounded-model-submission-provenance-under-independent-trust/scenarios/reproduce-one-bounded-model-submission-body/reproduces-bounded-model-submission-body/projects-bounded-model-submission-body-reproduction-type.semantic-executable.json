@@ -1,0 +1,36 @@
+{
+  "semanticExecutableType": "declaration-only-context.v1",
+  "bodyRole": "type",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "bodyId": "bounded-model-submission-body-reproduction-type-body",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/reproduce-one-bounded-model-submission-body/reproduces-bounded-model-submission-body/bounded-model-submission-body-reproduction.type.ts"
+  },
+  "lineage": {
+    "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+    "scenarioId": "reproduce-one-bounded-model-submission-body",
+    "obligationId": "establish-one-byte-identical-bounded-model-submission-body",
+    "expectationId": "expect-one-byte-identical-bounded-model-submission-body",
+    "responsibilityId": "reproduces-bounded-model-submission-body",
+    "signalId": "bounded-model-submission-body-reproduction",
+    "semanticOperationId": "reproduce-bounded-model-submission-body"
+  },
+  "projection": {
+    "declarations": [
+      "ReproducesBoundedModelSubmissionBodyContext",
+      "ProvesBoundedModelSubmissionBodyReproductionExpectationContext",
+      "RunsBoundedModelSubmissionBodyReproductionConformanceContext",
+      "BoundedModelSubmissionBodyReproduction",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

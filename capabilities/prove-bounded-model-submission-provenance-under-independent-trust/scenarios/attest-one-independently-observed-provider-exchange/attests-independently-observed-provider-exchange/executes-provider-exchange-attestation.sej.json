@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "provider-exchange-attestation-body",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/attest-one-independently-observed-provider-exchange/attests-independently-observed-provider-exchange/provider-exchange-attestation.ts"
+  },
+  "lineage": {
+    "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+    "scenarioId": "attest-one-independently-observed-provider-exchange",
+    "obligationId": "establish-one-independent-provider-exchange-attestation",
+    "expectationId": "expect-one-independent-provider-exchange-attestation",
+    "responsibilityId": "attests-independently-observed-provider-exchange",
+    "signalId": "independent-provider-exchange-attestation",
+    "semanticOperationId": "attest-independent-provider-exchange"
+  },
+  "projection": {
+    "functionName": "attestsIndependentlyObservedProviderExchange",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "AttestsIndependentlyObservedProviderExchangeContext"
+    },
+    "resultTypeReference": "IndependentProviderExchangeAttestation",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "attest",
+      "argument": {
+        "receiver": "context",
+        "member": "exchange"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

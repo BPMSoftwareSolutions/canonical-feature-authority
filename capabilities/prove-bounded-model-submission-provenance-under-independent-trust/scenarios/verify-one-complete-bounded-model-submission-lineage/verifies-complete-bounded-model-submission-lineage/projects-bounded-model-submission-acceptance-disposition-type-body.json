@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-bounded-model-submission-acceptance-disposition-type-from-26cace8314b0165f455a96b0e9b80d24f6fe169ed95530cbfcba8673eed1609d",
+  "bodyId": "bounded-model-submission-acceptance-disposition-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-bounded-model-submission-acceptance-disposition-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:26cace8314b0165f455a96b0e9b80d24f6fe169ed95530cbfcba8673eed1609d",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/verify-one-complete-bounded-model-submission-lineage/verifies-complete-bounded-model-submission-lineage/bounded-model-submission-acceptance-disposition.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "VerifiesCompleteBoundedModelSubmissionLineageContext",
+      "ProvesCompleteBoundedModelSubmissionLineageExpectationContext",
+      "RunsCompleteBoundedModelSubmissionLineageConformanceContext",
+      "BoundedModelSubmissionAcceptanceDisposition",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

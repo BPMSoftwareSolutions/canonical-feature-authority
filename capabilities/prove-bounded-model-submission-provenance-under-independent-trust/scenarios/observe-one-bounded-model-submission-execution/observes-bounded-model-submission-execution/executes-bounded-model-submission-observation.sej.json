@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "bounded-model-submission-execution-observation-body",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/observe-one-bounded-model-submission-execution/observes-bounded-model-submission-execution/bounded-model-submission-observation.ts"
+  },
+  "lineage": {
+    "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+    "scenarioId": "observe-one-bounded-model-submission-execution",
+    "obligationId": "establish-one-raw-bounded-model-submission-observation",
+    "expectationId": "expect-one-raw-bounded-model-submission-observation",
+    "responsibilityId": "observes-bounded-model-submission-execution",
+    "signalId": "bounded-model-submission-execution-observation",
+    "semanticOperationId": "observe-bounded-model-submission-execution"
+  },
+  "projection": {
+    "functionName": "observesBoundedModelSubmissionExecution",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ObservesBoundedModelSubmissionExecutionContext"
+    },
+    "resultTypeReference": "BoundedModelSubmissionExecutionObservation",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "observe",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

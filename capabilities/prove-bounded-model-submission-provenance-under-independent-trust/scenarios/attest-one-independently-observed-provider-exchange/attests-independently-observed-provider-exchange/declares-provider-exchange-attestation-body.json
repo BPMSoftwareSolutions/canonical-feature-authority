@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "provider-exchange-attestation-body",
+  "scenarioId": "attest-one-independently-observed-provider-exchange",
+  "obligationId": "establish-one-independent-provider-exchange-attestation",
+  "responsibilityId": "attests-independently-observed-provider-exchange",
+  "signalId": "independent-provider-exchange-attestation",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/attest-one-independently-observed-provider-exchange/attests-independently-observed-provider-exchange/provider-exchange-attestation.ts"
+  },
+  "semanticExecutableAuthority": "projects-provider-exchange-attestation.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:fb3c6c4022c0c53d3f0b0cb888e80f7265b73828633b5075d4f4cf43f725a273",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

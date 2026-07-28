@@ -1,0 +1,11 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "bounded-model-submission-body-reproduction-type-body",
+  "scenarioId": "reproduce-one-bounded-model-submission-body",
+  "obligationId": "establish-one-byte-identical-bounded-model-submission-body",
+  "expectationId": "expect-one-byte-identical-bounded-model-submission-body",
+  "responsibilityId": "reproduces-bounded-model-submission-body",
+  "signalId": "bounded-model-submission-body-reproduction",
+  "bodyCount": 1,
+  "structuralProfile": "conveyor-context-declaration.v1"
+}

@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "observes-bounded-model-submission-execution",
+  "semanticOperationId": "observe-bounded-model-submission-execution",
+  "contextOperationMember": "observe",
+  "contextInputMember": "subject",
+  "signalId": "bounded-model-submission-execution-observation"
+}

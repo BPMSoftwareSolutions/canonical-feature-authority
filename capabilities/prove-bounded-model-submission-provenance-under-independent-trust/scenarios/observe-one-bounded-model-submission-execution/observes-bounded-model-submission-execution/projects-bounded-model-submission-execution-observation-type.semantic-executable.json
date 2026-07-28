@@ -1,0 +1,36 @@
+{
+  "semanticExecutableType": "declaration-only-context.v1",
+  "bodyRole": "type",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "bodyId": "bounded-model-submission-execution-observation-type-body",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/observe-one-bounded-model-submission-execution/observes-bounded-model-submission-execution/bounded-model-submission-execution-observation.type.ts"
+  },
+  "lineage": {
+    "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+    "scenarioId": "observe-one-bounded-model-submission-execution",
+    "obligationId": "establish-one-raw-bounded-model-submission-observation",
+    "expectationId": "expect-one-raw-bounded-model-submission-observation",
+    "responsibilityId": "observes-bounded-model-submission-execution",
+    "signalId": "bounded-model-submission-execution-observation",
+    "semanticOperationId": "observe-bounded-model-submission-execution"
+  },
+  "projection": {
+    "declarations": [
+      "ObservesBoundedModelSubmissionExecutionContext",
+      "ProvesBoundedModelSubmissionExecutionObservationExpectationContext",
+      "RunsBoundedModelSubmissionExecutionObservationConformanceContext",
+      "BoundedModelSubmissionExecutionObservation",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

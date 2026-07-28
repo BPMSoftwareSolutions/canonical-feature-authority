@@ -1,0 +1,9 @@
+{
+  "authorityType": "responsibility.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "attest-one-independently-observed-provider-exchange",
+  "obligationId": "establish-one-independent-provider-exchange-attestation",
+  "responsibilityId": "attests-independently-observed-provider-exchange",
+  "statement": "its provider exchange is observed by instructor-controlled infrastructure",
+  "semanticOperationId": "attest-independent-provider-exchange"
+}

@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "reproduce-one-bounded-model-submission-body",
+  "given": "one admitted bounded-model-submission SEJ, AST, and transformer graph",
+  "when": "its recorded transformer build is independently replayed",
+  "then": "one byte-identical projector-signed bounded-model-submission body is emitted",
+  "independentObligationCount": 1
+}

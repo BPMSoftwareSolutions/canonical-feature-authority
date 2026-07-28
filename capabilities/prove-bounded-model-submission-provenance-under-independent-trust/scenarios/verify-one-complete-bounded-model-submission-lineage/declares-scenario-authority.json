@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "verify-one-complete-bounded-model-submission-lineage",
+  "given": "one provider attestation, reproducible body, and raw execution observation",
+  "when": "their complete authority lineage is independently evaluated",
+  "then": "one signed bounded-model-submission acceptance disposition is emitted",
+  "independentObligationCount": 1
+}

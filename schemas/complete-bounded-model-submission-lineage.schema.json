@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/complete-bounded-model-submission-lineage.schema.json",
+  "allOf": [
+    {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "artifactType": {
+              "const": "complete-bounded-model-submission-lineage"
+            },
+            "parent": {
+              "type": "object",
+              "required": [
+                "artifactType",
+                "artifactSha256"
+              ],
+              "properties": {
+                "artifactType": {
+                  "const": "bounded-model-submission-execution-observation"
+                }
+              }
+            }
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/payload"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "featureId",
+        "scenarioId",
+        "obligationId",
+        "expectationId",
+        "responsibilityId",
+        "signalId",
+        "subjectFeatureId",
+        "subjectScenarioId",
+        "subjectObligationId",
+        "subjectResponsibilityId",
+        "subjectSemanticAuthoritySha256",
+        "subjectAstAuthoritySha256",
+        "subjectProjectedBodySha256",
+        "subjectProjectionProvenanceSha256",
+        "providerExchangeAttestationSha256",
+        "bodyReproductionSha256",
+        "executionObservationSha256"
+      ],
+      "properties": {
+        "featureId": {
+          "const": "prove-bounded-model-submission-provenance-under-independent-trust"
+        },
+        "scenarioId": {
+          "const": "verify-one-complete-bounded-model-submission-lineage"
+        },
+        "obligationId": {
+          "const": "establish-one-complete-bounded-model-submission-lineage"
+        },
+        "expectationId": {
+          "const": "expect-one-complete-bounded-model-submission-lineage"
+        },
+        "responsibilityId": {
+          "const": "verifies-complete-bounded-model-submission-lineage"
+        },
+        "signalId": {
+          "const": "bounded-model-submission-acceptance-disposition"
+        },
+        "subjectFeatureId": {
+          "const": "project-course-authority-through-a-governed-conveyor"
+        },
+        "subjectScenarioId": {
+          "const": "obtain-one-bounded-model-submission"
+        },
+        "subjectObligationId": {
+          "const": "obtain-one-normalized-model-testimony"
+        },
+        "subjectResponsibilityId": {
+          "const": "obtains-bounded-model-submission"
+        },
+        "subjectSemanticAuthoritySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "subjectAstAuthoritySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "subjectProjectedBodySha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "subjectProjectionProvenanceSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "providerExchangeAttestationSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "bodyReproductionSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "executionObservationSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        }
+      }
+    }
+  }
+}

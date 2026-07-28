@@ -1,0 +1,57 @@
+{
+  "indexType": "scenario-projection-lineage.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "attest-one-independently-observed-provider-exchange",
+  "obligationId": "establish-one-independent-provider-exchange-attestation",
+  "expectationId": "expect-one-independent-provider-exchange-attestation",
+  "responsibilityId": "attests-independently-observed-provider-exchange",
+  "signalId": "independent-provider-exchange-attestation",
+  "semanticOperationId": "attest-independent-provider-exchange",
+  "projectedBodyCount": 4,
+  "entries": [
+    {
+      "role": "primary",
+      "bodyId": "provider-exchange-attestation-body",
+      "semanticAuthority": "projects-provider-exchange-attestation.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:fb3c6c4022c0c53d3f0b0cb888e80f7265b73828633b5075d4f4cf43f725a273",
+      "bodyExpectationAuthority": "expects-provider-exchange-attestation-body.json",
+      "fileBodyAuthority": "declares-provider-exchange-attestation-body.json",
+      "typescriptProjectionAuthority": "projects-provider-exchange-attestation-body.json",
+      "astAuthority": "provider-exchange-attestation.ts.ast.authority.json",
+      "projectedBody": "provider-exchange-attestation.ts"
+    },
+    {
+      "role": "type",
+      "bodyId": "provider-exchange-attestation-type-body",
+      "semanticAuthority": "projects-provider-exchange-attestation-type.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:894a84e5e7be7ef39155d0cf600f6a49bbd42c729864211cab0e7ee9898275d0",
+      "bodyExpectationAuthority": "expects-provider-exchange-attestation-type-body.json",
+      "fileBodyAuthority": "declares-provider-exchange-attestation-type-body.json",
+      "typescriptProjectionAuthority": "projects-provider-exchange-attestation-type-body.json",
+      "astAuthority": "provider-exchange-attestation.type.ts.ast.authority.json",
+      "projectedBody": "provider-exchange-attestation.type.ts"
+    },
+    {
+      "role": "expectation",
+      "bodyId": "provider-exchange-attestation-expectation-body",
+      "semanticAuthority": "projects-provider-exchange-attestation-expectation.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:3f1a26b8a6841d23f352b5e2e0318c78f4802f12e152244bc2b8a7a283dcd445",
+      "bodyExpectationAuthority": "expects-provider-exchange-attestation-expectation-body.json",
+      "fileBodyAuthority": "declares-provider-exchange-attestation-expectation-body.json",
+      "typescriptProjectionAuthority": "projects-provider-exchange-attestation-expectation-body.json",
+      "astAuthority": "provider-exchange-attestation.expectation.ts.ast.authority.json",
+      "projectedBody": "provider-exchange-attestation.expectation.ts"
+    },
+    {
+      "role": "conformance",
+      "bodyId": "runs-provider-exchange-attestation-conformance-body",
+      "semanticAuthority": "projects-runs-provider-exchange-attestation-conformance.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:9e29c91528c66755f30387372b50a87a9dbe7232b3bc6cdeb23424122bbd0382",
+      "bodyExpectationAuthority": "expects-runs-provider-exchange-attestation-conformance-body.json",
+      "fileBodyAuthority": "declares-runs-provider-exchange-attestation-conformance-body.json",
+      "typescriptProjectionAuthority": "projects-runs-provider-exchange-attestation-conformance-body.json",
+      "astAuthority": "runs-provider-exchange-attestation-conformance.ts.ast.authority.json",
+      "projectedBody": "runs-provider-exchange-attestation-conformance.ts"
+    }
+  ]
+}

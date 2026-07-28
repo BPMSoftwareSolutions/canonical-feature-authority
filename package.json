@@ -8,6 +8,10 @@
     "init:projection": "npm --prefix ../declarative-typescript-body-projector run init-signing-key -- --private-key ../declarative-typescript-body-projector/.projector-keys/classroom-ed25519-private.pem --trust-file ../canonical-feature-authority/projection-authority/trusted-projector-keys.json --authority-root ../canonical-feature-authority --projector-id declarative-typescript-body-projector",
     "project:bodies": "npm --prefix ../declarative-typescript-body-projector run project-authority-tree -- --authority-root ../canonical-feature-authority --output-root ../canonical-feature-authority --signing-key ../declarative-typescript-body-projector/.projector-keys/classroom-ed25519-private.pem --trusted-keys ../canonical-feature-authority/projection-authority/trusted-projector-keys.json",
     "check:bodies": "npm --prefix ../declarative-typescript-body-projector run project-authority-tree -- --authority-root ../canonical-feature-authority --output-root ../canonical-feature-authority --trusted-keys ../canonical-feature-authority/projection-authority/trusted-projector-keys.json --check",
+    "materialize:provenance-contract": "node tools/materializes-bounded-model-submission-provenance-contract.mjs",
+    "verify:provenance-contract": "node tools/verifies-bounded-model-submission-provenance-contract.mjs",
+    "regenerate:provenance-contract": "node tools/regenerates-bounded-model-submission-provenance-contract.mjs",
+    "inspect:provenance-contract": "node tools/inspects-provenance-contract-path.mjs",
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
     "prove:projection": "npm run check:bodies && npm run build",
@@ -15,6 +19,8 @@
   },
   "devDependencies": {
     "@types/node": "^26.1.2",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10"
   }

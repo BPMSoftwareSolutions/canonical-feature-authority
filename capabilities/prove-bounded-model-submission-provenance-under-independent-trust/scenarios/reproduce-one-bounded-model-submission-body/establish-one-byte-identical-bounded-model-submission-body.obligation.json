@@ -1,0 +1,8 @@
+{
+  "authorityType": "obligation.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "reproduce-one-bounded-model-submission-body",
+  "obligationId": "establish-one-byte-identical-bounded-model-submission-body",
+  "statement": "one byte-identical projector-signed bounded-model-submission body is emitted",
+  "independentlyEvaluable": true
+}

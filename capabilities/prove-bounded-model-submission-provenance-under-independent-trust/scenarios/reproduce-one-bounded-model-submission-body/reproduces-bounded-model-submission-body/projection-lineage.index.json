@@ -1,0 +1,57 @@
+{
+  "indexType": "scenario-projection-lineage.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "reproduce-one-bounded-model-submission-body",
+  "obligationId": "establish-one-byte-identical-bounded-model-submission-body",
+  "expectationId": "expect-one-byte-identical-bounded-model-submission-body",
+  "responsibilityId": "reproduces-bounded-model-submission-body",
+  "signalId": "bounded-model-submission-body-reproduction",
+  "semanticOperationId": "reproduce-bounded-model-submission-body",
+  "projectedBodyCount": 4,
+  "entries": [
+    {
+      "role": "primary",
+      "bodyId": "bounded-model-submission-body-reproduction-body",
+      "semanticAuthority": "projects-bounded-model-submission-reproduction.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:d0fe6f24b074e5cd47933e016e175b552987552cfa8329fbd402a7a1c18fcfbe",
+      "bodyExpectationAuthority": "expects-bounded-model-submission-body-reproduction-body.json",
+      "fileBodyAuthority": "declares-bounded-model-submission-body-reproduction-body.json",
+      "typescriptProjectionAuthority": "projects-bounded-model-submission-body-reproduction-body.json",
+      "astAuthority": "bounded-model-submission-reproduction.ts.ast.authority.json",
+      "projectedBody": "bounded-model-submission-reproduction.ts"
+    },
+    {
+      "role": "type",
+      "bodyId": "bounded-model-submission-body-reproduction-type-body",
+      "semanticAuthority": "projects-bounded-model-submission-body-reproduction-type.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:a0c127366663d74c3f68ed15fe49740408d251e037cdf69937bf905f10741395",
+      "bodyExpectationAuthority": "expects-bounded-model-submission-body-reproduction-type-body.json",
+      "fileBodyAuthority": "declares-bounded-model-submission-body-reproduction-type-body.json",
+      "typescriptProjectionAuthority": "projects-bounded-model-submission-body-reproduction-type-body.json",
+      "astAuthority": "bounded-model-submission-body-reproduction.type.ts.ast.authority.json",
+      "projectedBody": "bounded-model-submission-body-reproduction.type.ts"
+    },
+    {
+      "role": "expectation",
+      "bodyId": "bounded-model-submission-reproduction-expectation-body",
+      "semanticAuthority": "projects-bounded-model-submission-reproduction-expectation.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:293a2a7abf3df21e7f8c13570042f631f09b8147ca1f07201aa899cbcff3b179",
+      "bodyExpectationAuthority": "expects-bounded-model-submission-reproduction-expectation-body.json",
+      "fileBodyAuthority": "declares-bounded-model-submission-reproduction-expectation-body.json",
+      "typescriptProjectionAuthority": "projects-bounded-model-submission-reproduction-expectation-body.json",
+      "astAuthority": "bounded-model-submission-reproduction.expectation.ts.ast.authority.json",
+      "projectedBody": "bounded-model-submission-reproduction.expectation.ts"
+    },
+    {
+      "role": "conformance",
+      "bodyId": "runs-bounded-model-submission-body-reproduction-conformance-body",
+      "semanticAuthority": "projects-runs-bounded-model-submission-body-reproduction-conformance.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:03cc39ba3f39c0f2eea1e549f9a5b04e10c7ff5ceb39df90b85e22e3ef09b782",
+      "bodyExpectationAuthority": "expects-runs-bounded-model-submission-body-reproduction-conformance-body.json",
+      "fileBodyAuthority": "declares-runs-bounded-model-submission-body-reproduction-conformance-body.json",
+      "typescriptProjectionAuthority": "projects-runs-bounded-model-submission-body-reproduction-conformance-body.json",
+      "astAuthority": "runs-bounded-model-submission-body-reproduction-conformance.ts.ast.authority.json",
+      "projectedBody": "runs-bounded-model-submission-body-reproduction-conformance.ts"
+    }
+  ]
+}

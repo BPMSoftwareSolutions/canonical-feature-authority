@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-runs-provider-exchange-attestation-conformance-from-9e29c91528c66755f30387372b50a87a9dbe7232b3bc6cdeb23424122bbd0382",
+  "bodyId": "runs-provider-exchange-attestation-conformance-body",
+  "structuralProfile": "conformance-delegation.v1",
+  "sourceSemanticAuthority": "projects-runs-provider-exchange-attestation-conformance.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:9e29c91528c66755f30387372b50a87a9dbe7232b3bc6cdeb23424122bbd0382",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/attest-one-independently-observed-provider-exchange/attests-independently-observed-provider-exchange/runs-provider-exchange-attestation-conformance.ts"
+  },
+  "projection": {
+    "functionName": "runsProviderExchangeAttestationConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsProviderExchangeAttestationConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

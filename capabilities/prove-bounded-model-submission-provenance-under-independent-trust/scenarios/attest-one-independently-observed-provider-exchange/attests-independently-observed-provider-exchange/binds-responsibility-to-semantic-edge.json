@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "attests-independently-observed-provider-exchange",
+  "semanticOperationId": "attest-independent-provider-exchange",
+  "contextOperationMember": "attest",
+  "contextInputMember": "exchange",
+  "signalId": "independent-provider-exchange-attestation"
+}

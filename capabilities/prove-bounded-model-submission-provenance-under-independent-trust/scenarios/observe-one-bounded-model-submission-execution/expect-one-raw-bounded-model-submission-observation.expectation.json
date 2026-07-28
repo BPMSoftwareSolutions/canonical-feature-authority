@@ -1,0 +1,10 @@
+{
+  "authorityType": "scenario-expectation.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "observe-one-bounded-model-submission-execution",
+  "obligationId": "establish-one-raw-bounded-model-submission-observation",
+  "expectationId": "expect-one-raw-bounded-model-submission-observation",
+  "outcome": "one signed raw bounded-model-submission execution observation is emitted",
+  "expectedResponsibilityId": "observes-bounded-model-submission-execution",
+  "expectedSignalId": "bounded-model-submission-execution-observation"
+}

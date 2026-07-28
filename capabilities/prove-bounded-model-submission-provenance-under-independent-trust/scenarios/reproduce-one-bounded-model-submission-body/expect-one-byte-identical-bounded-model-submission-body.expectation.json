@@ -1,0 +1,10 @@
+{
+  "authorityType": "scenario-expectation.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "reproduce-one-bounded-model-submission-body",
+  "obligationId": "establish-one-byte-identical-bounded-model-submission-body",
+  "expectationId": "expect-one-byte-identical-bounded-model-submission-body",
+  "outcome": "one byte-identical projector-signed bounded-model-submission body is emitted",
+  "expectedResponsibilityId": "reproduces-bounded-model-submission-body",
+  "expectedSignalId": "bounded-model-submission-body-reproduction"
+}

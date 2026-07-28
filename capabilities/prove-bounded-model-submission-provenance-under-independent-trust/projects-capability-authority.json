@@ -1,0 +1,17 @@
+{
+  "authorityType": "canonical-feature-authority.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "title": "Prove bounded-model-submission provenance under independent trust",
+  "userStory": {
+    "asA": "independent conveyor verifier",
+    "iWant": "provider exchange, projection, and execution evidence verified outside the submitted trust domain",
+    "soThat": "only one reproducible bounded-model-submission lineage receives GREEN"
+  },
+  "scenarioIds": [
+    "attest-one-independently-observed-provider-exchange",
+    "reproduce-one-bounded-model-submission-body",
+    "observe-one-bounded-model-submission-execution",
+    "verify-one-complete-bounded-model-submission-lineage"
+  ],
+  "governingObligation": "Every accepted bounded-model submission has independently observed, reproduced, executed, and completely linked provenance."
+}

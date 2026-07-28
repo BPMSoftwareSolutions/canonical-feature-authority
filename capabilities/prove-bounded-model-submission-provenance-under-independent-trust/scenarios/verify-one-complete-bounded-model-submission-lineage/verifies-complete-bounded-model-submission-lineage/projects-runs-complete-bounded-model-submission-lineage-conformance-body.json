@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-runs-complete-bounded-model-submission-lineage-conformance-from-6aebe92c33dac184f038458d1c8688d4fe779e8b5b6cb67b678dc332edea8231",
+  "bodyId": "runs-complete-bounded-model-submission-lineage-conformance-body",
+  "structuralProfile": "conformance-delegation.v1",
+  "sourceSemanticAuthority": "projects-runs-complete-bounded-model-submission-lineage-conformance.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:6aebe92c33dac184f038458d1c8688d4fe779e8b5b6cb67b678dc332edea8231",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/verify-one-complete-bounded-model-submission-lineage/verifies-complete-bounded-model-submission-lineage/runs-complete-bounded-model-submission-lineage-conformance.ts"
+  },
+  "projection": {
+    "functionName": "runsCompleteBoundedModelSubmissionLineageConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsCompleteBoundedModelSubmissionLineageConformanceContext"
+    },
+    "resultTypeReference": "BoundedModelSubmissionAcceptanceDisposition",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

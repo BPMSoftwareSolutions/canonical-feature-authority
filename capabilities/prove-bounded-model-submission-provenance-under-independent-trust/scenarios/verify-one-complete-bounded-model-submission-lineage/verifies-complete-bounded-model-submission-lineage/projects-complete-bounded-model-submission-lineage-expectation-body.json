@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-complete-bounded-model-submission-lineage-expectation-from-b85462483e16910a5706fb36bbc9d572c207fcd5a65249119dbfe8201bf8684d",
+  "bodyId": "complete-bounded-model-submission-lineage-expectation-body",
+  "structuralProfile": "expectation-execution.v1",
+  "sourceSemanticAuthority": "projects-complete-bounded-model-submission-lineage-expectation.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:b85462483e16910a5706fb36bbc9d572c207fcd5a65249119dbfe8201bf8684d",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/verify-one-complete-bounded-model-submission-lineage/verifies-complete-bounded-model-submission-lineage/complete-bounded-model-submission-lineage.expectation.ts"
+  },
+  "projection": {
+    "functionName": "provesCompleteBoundedModelSubmissionLineageExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesCompleteBoundedModelSubmissionLineageExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

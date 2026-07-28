@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "verifies-complete-bounded-model-submission-lineage",
+  "semanticOperationId": "evaluate-complete-bounded-model-submission-lineage",
+  "contextOperationMember": "evaluate",
+  "contextInputMember": "lineage",
+  "signalId": "bounded-model-submission-acceptance-disposition"
+}

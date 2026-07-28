@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+  "scenarioId": "observe-one-bounded-model-submission-execution",
+  "given": "one projector-signed bounded-model-submission body and its admitted connector binding",
+  "when": "the body is executed through an instructor-controlled observation port",
+  "then": "one signed raw bounded-model-submission execution observation is emitted",
+  "independentObligationCount": 1
+}

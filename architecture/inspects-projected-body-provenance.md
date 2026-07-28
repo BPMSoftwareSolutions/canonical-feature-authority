@@ -3,10 +3,16 @@
 ## Status
 
 ```text
-PROPOSED MISSING ACCEPTANCE AUTHORITY
-NOT YET IMPLEMENTED
+SUBMITTED-SIDE ACCEPTANCE AUTHORITY IMPLEMENTED
+LIVE INSTRUCTOR EVIDENCE NOT YET ISSUED
 CURRENT DISPOSITION: RED
 ```
+
+The four-scenario authority spine, evidence schemas, signed projected bodies,
+connector observation dependency contract, clean regeneration pipeline, and
+negative-control verifier are implemented. The disposition remains RED until
+an instructor-owned harness issues and consumes a fresh challenge, observes a
+live provider exchange, and signs the terminal evidence artifacts.
 
 This document is a deterministic implementation contract for independently
 accepting one live execution of:

@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "bounded-model-submission-body-reproduction-body",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/reproduce-one-bounded-model-submission-body/reproduces-bounded-model-submission-body/bounded-model-submission-reproduction.ts"
+  },
+  "lineage": {
+    "featureId": "prove-bounded-model-submission-provenance-under-independent-trust",
+    "scenarioId": "reproduce-one-bounded-model-submission-body",
+    "obligationId": "establish-one-byte-identical-bounded-model-submission-body",
+    "expectationId": "expect-one-byte-identical-bounded-model-submission-body",
+    "responsibilityId": "reproduces-bounded-model-submission-body",
+    "signalId": "bounded-model-submission-body-reproduction",
+    "semanticOperationId": "reproduce-bounded-model-submission-body"
+  },
+  "projection": {
+    "functionName": "reproducesBoundedModelSubmissionBody",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ReproducesBoundedModelSubmissionBodyContext"
+    },
+    "resultTypeReference": "BoundedModelSubmissionBodyReproduction",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "reproduce",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

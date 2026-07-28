@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-bounded-model-submission-body-reproduction-from-d0fe6f24b074e5cd47933e016e175b552987552cfa8329fbd402a7a1c18fcfbe",
+  "bodyId": "bounded-model-submission-body-reproduction-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-bounded-model-submission-reproduction.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:d0fe6f24b074e5cd47933e016e175b552987552cfa8329fbd402a7a1c18fcfbe",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/reproduce-one-bounded-model-submission-body/reproduces-bounded-model-submission-body/bounded-model-submission-reproduction.ts"
+  },
+  "projection": {
+    "functionName": "reproducesBoundedModelSubmissionBody",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ReproducesBoundedModelSubmissionBodyContext"
+    },
+    "resultTypeReference": "BoundedModelSubmissionBodyReproduction",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "reproduce",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

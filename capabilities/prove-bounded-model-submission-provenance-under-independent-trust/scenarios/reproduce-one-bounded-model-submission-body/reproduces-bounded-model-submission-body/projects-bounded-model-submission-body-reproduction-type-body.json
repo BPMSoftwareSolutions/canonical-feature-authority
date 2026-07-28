@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-bounded-model-submission-body-reproduction-type-from-a0c127366663d74c3f68ed15fe49740408d251e037cdf69937bf905f10741395",
+  "bodyId": "bounded-model-submission-body-reproduction-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-bounded-model-submission-body-reproduction-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:a0c127366663d74c3f68ed15fe49740408d251e037cdf69937bf905f10741395",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/reproduce-one-bounded-model-submission-body/reproduces-bounded-model-submission-body/bounded-model-submission-body-reproduction.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "ReproducesBoundedModelSubmissionBodyContext",
+      "ProvesBoundedModelSubmissionBodyReproductionExpectationContext",
+      "RunsBoundedModelSubmissionBodyReproductionConformanceContext",
+      "BoundedModelSubmissionBodyReproduction",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

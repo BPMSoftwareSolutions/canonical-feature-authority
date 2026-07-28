@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-provider-exchange-attestation-expectation-from-3f1a26b8a6841d23f352b5e2e0318c78f4802f12e152244bc2b8a7a283dcd445",
+  "bodyId": "provider-exchange-attestation-expectation-body",
+  "structuralProfile": "expectation-execution.v1",
+  "sourceSemanticAuthority": "projects-provider-exchange-attestation-expectation.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:3f1a26b8a6841d23f352b5e2e0318c78f4802f12e152244bc2b8a7a283dcd445",
+  "artifact": {
+    "relativePath": "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/attest-one-independently-observed-provider-exchange/attests-independently-observed-provider-exchange/provider-exchange-attestation.expectation.ts"
+  },
+  "projection": {
+    "functionName": "provesProviderExchangeAttestationExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesProviderExchangeAttestationExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

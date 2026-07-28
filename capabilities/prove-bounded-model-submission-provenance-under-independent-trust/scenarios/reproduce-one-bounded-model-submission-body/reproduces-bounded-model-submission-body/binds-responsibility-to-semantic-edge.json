@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "reproduces-bounded-model-submission-body",
+  "semanticOperationId": "reproduce-bounded-model-submission-body",
+  "contextOperationMember": "reproduce",
+  "contextInputMember": "subject",
+  "signalId": "bounded-model-submission-body-reproduction"
+}
