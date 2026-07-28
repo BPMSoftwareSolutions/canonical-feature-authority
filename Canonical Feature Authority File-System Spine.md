@@ -3874,20 +3874,1026 @@ export async function evaluatesScenarioAtomicity(
 }
 ```
 
-This matches the documented complete projected Node body.
+The generated body is the physical execution projection of the admitted authority chain.
 
-The generated body contains:
+It does not originate meaning.
+
+It does not interpret the feature.
+
+It does not discover the obligation.
+
+It does not choose the responsibility.
+
+It does not determine whether the scenario is atomic.
+
+It executes the semantic authority that already owns those decisions.
 
 ```text
-No domain decision
-No branching
-No loops
-No DTO construction
-No direct external effect
-No independent signal selection
+Feature authority
+    establishes behavior
+
+Obligation authority
+    establishes the truth
+
+Responsibility authority
+    establishes ownership
+
+Semantic authority
+    establishes meaning
+
+Projection authority
+    establishes syntax
+
+Generated body
+    performs the admitted execution
 ```
 
-It is a collapsed execution projection.
+The course doctrine describes a collapsed capability body as one immutable context, one or more declared semantic edge invocations, an optional semantic projection, and a return. Domain decisions, DTO construction, iteration policy, provider selection, retry, and failure classification remain outside the body.
+
+## What the Generated Body Actually Becomes
+
+```text
+Generated code body
+    ├── becomes the runtime entrypoint
+    ├── becomes the native language embodiment
+    ├── becomes the semantic-edge doorway
+    ├── becomes an executable lineage carrier
+    ├── becomes the subject of AST inspection
+    ├── becomes the target of scenario execution
+    ├── becomes an observed projection
+    ├── becomes an adversarial mutation target
+    └── becomes replaceable through reprojection
+```
+
+The body is operationally important, but architecturally subordinate.
+
+```text
+Authority is durable.
+
+Generated code is reproducible.
+
+Execution is observable.
+```
+
+### 1. It becomes the runtime entry point
+
+This declaration:
+
+```typescript
+export async function evaluatesScenarioAtomicity(
+  context: EvaluateScenarioAtomicityContext
+): Promise<ScenarioAtomicitySignal>
+```
+
+creates the native operation that another operational component may invoke.
+
+For example:
+
+```typescript
+const signal = await evaluatesScenarioAtomicity(context);
+```
+
+The operation is not merely a generated text artifact.
+
+It is the actual executable doorway through which the responsibility enters the runtime.
+
+```text
+Responsibility:
+evaluates-scenario-atomicity
+
+        ↓
+
+Runtime entrypoint:
+evaluatesScenarioAtomicity(...)
+```
+
+The function name is language-specific.
+
+The responsibility identity remains language-neutral.
+
+### 2. It becomes the embodiment of one responsibility
+
+The generated body exists for exactly one responsibility:
+
+```text
+evaluates-scenario-atomicity
+```
+
+That means every executable statement must support this one responsibility.
+
+The body may not quietly accumulate additional workers such as:
+
+```text
+rewrite-scenario
+persist-analysis-result
+publish-documentation
+repair-feature
+generate-remediation-plan
+notify-reviewer
+```
+
+A body that performs those operations is no longer the embodiment of one responsibility.
+
+It has become a circuit hidden inside one function.
+
+The preferred relationship remains:
+
+```text
+One scenario
+    ↓
+One obligation
+    ↓
+One responsibility
+    ↓
+One collapsed body
+    ↓
+One authoritative signal
+```
+
+The source discipline explicitly states that each scenario should retain one responsibility and one collapsed body, with decisionality remaining in semantic authority.
+
+### 3. It becomes the semantic-edge doorway
+
+The operational center of the body is:
+
+```typescript
+return await context.edges.invokes(
+  "evaluate-scenario-atomicity",
+  context
+);
+```
+
+This establishes four exact execution facts:
+
+```text
+Invocation mechanism:
+context.edges.invokes
+
+Semantic edge:
+evaluate-scenario-atomicity
+
+Input:
+context
+
+Returned value:
+semantic-edge result
+```
+
+The generated body does not call a concrete implementation directly.
+
+It does not say:
+
+```typescript
+return scenarioAtomicityService.evaluate(context.scenario);
+```
+
+It invokes a declared semantic identity.
+
+The runtime resolves the actual implementation behind that identity.
+
+This protects the semantic boundary:
+
+```text
+Generated body knows:
+which admitted semantic edge to invoke
+
+Generated body does not know:
+which concrete implementation fulfills the edge
+```
+
+### 4. It becomes an execution transcript
+
+A collapsed body should read almost like a transcript of already-resolved execution.
+
+In this case:
+
+```text
+Accept context
+
+Invoke evaluate-scenario-atomicity
+
+Return its result
+```
+
+That is the entire body.
+
+A more involved responsibility might contain:
+
+```text
+Resolve
+Execute
+Project
+Return
+```
+
+For example:
+
+```typescript
+export async function performsCapability(
+  context: CapabilityContext
+): Promise<CapabilitySignal> {
+  const authority = await context.edges.invokes(
+    "resolve-capability-authority",
+    context
+  );
+
+  const execution = await context.edges.invokes(
+    "execute-resolved-capability",
+    authority
+  );
+
+  return context.edges.projects(
+    "project-capability-signal",
+    execution
+  );
+}
+```
+
+Even then, the code remains linear.
+
+It does not independently interpret domain meaning.
+
+The source architecture describes this exact shape: semantic authority authorizes execution while the body resolves, executes, projects, and returns without hidden domain branching.
+
+### 5. It becomes a lineage carrier
+
+The generated header preserves the canonical identity chain:
+
+```typescript
+// feature-id: reject-non-atomic-feature-scenarios
+// scenario-id: reject-a-scenario-with-multiple-obligations
+// obligation-id: scenario-carries-one-independent-obligation
+// responsibility-id: evaluates-scenario-atomicity
+// signal-id: scenario-atomicity
+```
+
+These markers answer:
+
+```text
+Which feature authorized this body?
+
+Which scenario owns it?
+
+Which obligation does it fulfill?
+
+Which responsibility does it embody?
+
+Which signal does it return?
+```
+
+The body therefore carries a projected lineage coordinate:
+
+```text
+Feature
+    ↓
+Scenario
+    ↓
+Obligation
+    ↓
+Responsibility
+    ↓
+Signal
+```
+
+The governing invariant is:
+
+```text
+The identity may be projected.
+
+The identity may not drift.
+```
+
+The broader Canonical Feature Authority design defines generated code as the disposable physical output of a preserved semantic identity chain.
+
+### 6. It becomes a reproducible artifact
+
+The body is generated from:
+
+```text
+Responsibility body expectation
+    +
+File-body authority
+    +
+TypeScript projection authority
+    +
+Pinned projection runtime
+```
+
+Conceptually:
+
+```text
+projects-typescript-body.json
+    ↓
+TypeScript AST projector
+    ↓
+Native AST
+    ↓
+TypeScript emitter
+    ↓
+evaluates-scenario-atomicity.ts
+```
+
+The same admitted authority should reproduce canonically equivalent output.
+
+That means the body may be deleted and regenerated.
+
+```text
+Delete:
+evaluates-scenario-atomicity.ts
+
+Run:
+project body
+
+Expected:
+the same authorized body is reproduced
+```
+
+The source teaching material states this directly:
+
+```text
+JSON is authority.
+
+TypeScript is projection.
+
+Generated code is disposable.
+```
+
+### 7. It becomes a freshness subject
+
+Because the generated body is reproducible, the repository can determine whether it remains current.
+
+Conceptually:
+
+```text
+Current projection-authority hash
+    ↓
+Reproject expected body
+    ↓
+Hash expected generated bytes
+    ↓
+Hash observed generated bytes
+    ↓
+Compare
+```
+
+Possible dispositions:
+
+```text
+PROJECTED_BODY_CURRENT
+
+PROJECTED_BODY_MISSING
+
+PROJECTED_BODY_STALE
+
+PROJECTED_BODY_MANUALLY_EDITED
+
+PROJECTED_BODY_PATH_MISMATCH
+```
+
+This is stronger than a comment saying:
+
+```typescript
+// DO NOT EDIT.
+```
+
+The comment communicates policy to a human.
+
+Freshness evaluation enforces the policy operationally.
+
+### 8. It becomes the subject of AST inspection
+
+The generated body can be parsed back into a native AST.
+
+Expected observed shape:
+
+```text
+SourceFile
+├── ImportDeclaration
+└── FunctionDeclaration
+    ├── export
+    ├── async
+    ├── name: evaluatesScenarioAtomicity
+    ├── parameter: context
+    ├── return type: Promise<ScenarioAtomicitySignal>
+    └── ReturnStatement
+        └── AwaitExpression
+            └── CallExpression
+                ├── callee: context.edges.invokes
+                ├── edge: evaluate-scenario-atomicity
+                └── input: context
+```
+
+The parsed AST allows the repository to determine what actually exists in the body.
+
+It can verify:
+
+```text
+One exported function exists.
+
+The operation name is exact.
+
+The parameter boundary is exact.
+
+The return type is exact.
+
+The required semantic edge is invoked.
+
+The invocation count is exact.
+
+The body contains no forbidden syntax.
+```
+
+This is where the generated body becomes an operational structural proof subject.
+
+### 9. It becomes the target of executable scenario expectations
+
+The canonical scenario expectation runs through the generated doorway.
+
+Conceptually:
+
+```typescript
+const context = createsScenarioAtomicityContext({
+  classifiedObligations: [
+    createsIndependentObligation("first"),
+    createsIndependentObligation("second")
+  ]
+});
+
+const signal = await evaluatesScenarioAtomicity(context);
+```
+
+Expected observation:
+
+```text
+signalId:
+scenario-atomicity
+
+disposition:
+SCENARIO_NOT_ATOMIC
+```
+
+This matters because direct testing of the semantic resolver alone is insufficient.
+
+The projected body itself must be executed.
+
+The operational planning documentation explicitly notes that conformance vectors must pass through generated code, because direct resolver verification does not prove the generated doorway.
+
+### 10. It becomes the observed projection
+
+The TypeScript projection authority declares what should exist.
+
+The generated body is what actually exists.
+
+```text
+Expected projection
+    =
+projects-typescript-body.json
+
+Observed projection
+    =
+evaluates-scenario-atomicity.ts
+```
+
+Conformance compares them.
+
+```text
+Expected file:
+evaluates-scenario-atomicity.ts
+
+Observed file:
+evaluates-scenario-atomicity.ts
+
+Expected operation:
+evaluatesScenarioAtomicity
+
+Observed operation:
+evaluatesScenarioAtomicity
+
+Expected edge:
+evaluate-scenario-atomicity
+
+Observed edge:
+evaluate-scenario-atomicity
+
+Expected invocation count:
+1
+
+Observed invocation count:
+1
+```
+
+The body therefore serves as the physical observation surface for projection conformance.
+
+### 11. It becomes an adversarial mutation target
+
+The generated body is also where the repository proves that contamination controls work.
+
+Start with:
+
+```typescript
+export async function evaluatesScenarioAtomicity(
+  context: EvaluateScenarioAtomicityContext
+): Promise<ScenarioAtomicitySignal> {
+  return await context.edges.invokes(
+    "evaluate-scenario-atomicity",
+    context
+  );
+}
+```
+
+Then introduce unauthorized mutations.
+
+**Mutation 1 — Add branching**
+
+```typescript
+if (context.scenario.obligations.length > 1) {
+  return {
+    signalId: "scenario-atomicity",
+    disposition: "SCENARIO_NOT_ATOMIC"
+  };
+}
+```
+
+Expected findings:
+
+```text
+PROJECTED_BODY_MANUALLY_EDITED
+
+BODY_PROFILE_FORBIDDEN_STRUCTURE
+nodeKind: IfStatement
+
+BODY_PROFILE_FORBIDDEN_CONSTRUCTION
+constructionKind: domain-object-literal
+```
+
+**Mutation 2 — Change the semantic edge**
+
+```typescript
+return await context.edges.invokes(
+  "rewrite-scenario",
+  context
+);
+```
+
+Expected finding:
+
+```text
+BODY_PROFILE_UNDECLARED_EDGE
+expected: evaluate-scenario-atomicity
+observed: rewrite-scenario
+```
+
+**Mutation 3 — Add a second invocation**
+
+```typescript
+await context.edges.invokes(
+  "evaluate-scenario-atomicity",
+  context
+);
+
+return await context.edges.invokes(
+  "evaluate-scenario-atomicity",
+  context
+);
+```
+
+Expected finding:
+
+```text
+BODY_PROFILE_EDGE_CARDINALITY_INVALID
+expected: 1
+observed: 2
+```
+
+**Mutation 4 — Construct the signal locally**
+
+```typescript
+return {
+  signalId: "scenario-atomicity",
+  disposition: "SCENARIO_NOT_ATOMIC",
+  blocking: true
+};
+```
+
+Expected finding:
+
+```text
+BODY_PROFILE_FORBIDDEN_CONSTRUCTION
+```
+
+The capstone design specifically requires students to manually edit generated bodies and add forbidden constructs so the repository can prove that those violations turn RED.
+
+## What the Generated Body Must Contain
+
+The body should contain only the minimum native mechanics required to execute admitted authority.
+
+For this responsibility:
+
+```text
+Generated marker
+
+Canonical lineage markers
+
+Required type import
+
+One exported async function
+
+One immutable context parameter
+
+One declared semantic invocation
+
+One returned semantic result
+```
+
+That is enough.
+
+## What the Generated Body Must Not Contain
+
+For a collapsed scenario-responsibility body, prohibit:
+
+```text
+if
+else
+switch
+case
+for
+forEach
+for...of
+for...in
+while
+do
+ternary expressions
+logical fallback with ||
+null fallback with ??
+object literals used for DTO construction
+array mutation
+push
+provider-specific imports
+direct SDK calls
+direct filesystem calls
+direct JSON-path field mapping
+business exception classification
+retry selection
+fallback selection
+authority mutation
+```
+
+The source discipline lists these exact classes of contamination and defines the expected capability body as an immutable context, declared semantic invocation, optional semantic projection, and return.
+
+## The Architectural Litmus Test
+
+For every line in the generated body, ask:
+
+```text
+Does this line express domain meaning?
+
+If yes:
+    It does not belong in the generated body.
+
+Does this line choose between outcomes?
+
+If yes:
+    It belongs in semantic decision authority.
+
+Does this line construct a domain result?
+
+If yes:
+    It belongs in semantic projection authority.
+
+Does this line control repetition?
+
+If yes:
+    It belongs in semantic iteration authority.
+
+Does this line classify failure?
+
+If yes:
+    It belongs in semantic failure authority.
+
+Does this line directly perform platform mechanics?
+
+If yes:
+    It belongs behind an admitted port adapter.
+
+Does this line invoke already-resolved authority?
+
+If yes:
+    It may belong in the generated body.
+```
+
+The source doctrine summarizes the governing principle:
+
+> **The semantic layer should be rich enough that the code body has nothing left to decide.**
+
+## The Type Boundary
+
+The import:
+
+```typescript
+import type {
+  EvaluateScenarioAtomicityContext,
+  ScenarioAtomicitySignal
+} from "./scenario-atomicity.type.js";
+```
+
+provides the body's native contract.
+
+**Input**
+
+```typescript
+EvaluateScenarioAtomicityContext
+```
+
+The context should provide only the authority required for the responsibility.
+
+Conceptually:
+
+```typescript
+export interface EvaluateScenarioAtomicityContext {
+  readonly scenario: CanonicalScenario;
+  readonly edges: SemanticEdgeRuntime;
+}
+```
+
+**Output**
+
+```typescript
+ScenarioAtomicitySignal
+```
+
+Conceptually:
+
+```typescript
+export type ScenarioAtomicitySignal =
+  | {
+      readonly signalId: "scenario-atomicity";
+      readonly disposition: "SCENARIO_ATOMIC";
+      readonly color: "GREEN";
+    }
+  | {
+      readonly signalId: "scenario-atomicity";
+      readonly disposition: "SCENARIO_NOT_ATOMIC";
+      readonly color: "RED";
+    }
+  | {
+      readonly signalId: "scenario-atomicity";
+      readonly disposition: "SCENARIO_ATOMICITY_UNRESOLVED";
+      readonly color: "RED";
+    };
+```
+
+These types constrain the native boundary.
+
+But the body still does not choose which union member applies.
+
+Semantic authority resolves that outcome.
+
+## Why `await` Appears Here
+
+The generated body uses:
+
+```typescript
+return await context.edges.invokes(...)
+```
+
+This preserves the declared asynchronous execution boundary.
+
+It also allows the runtime invocation to complete before the operation returns the canonical signal.
+
+However, the exact use of `return await` versus direct promise return should be pinned by the TypeScript projection profile.
+
+For example:
+
+```text
+Profile A:
+return await invocation
+
+Profile B:
+return invocation
+```
+
+Either may be valid under a declared policy.
+
+The projector must not alternate between them nondeterministically.
+
+The key requirement is that the emitted body matches the admitted projection authority and remains byte-stable under unchanged inputs.
+
+## Why the Generated Header Matters
+
+The header:
+
+```typescript
+// @generated
+// DO NOT EDIT.
+```
+
+communicates that the body is a projection.
+
+The lineage fields communicate which authority chain produced it.
+
+But comments alone do not establish conformance.
+
+Operational enforcement still requires:
+
+```text
+Current authority identity
+
+Current projection identity
+
+Expected generated bytes or structure
+
+Observed generated bytes or structure
+
+Deterministic comparison
+```
+
+The comments improve human readability.
+
+The projection and conformance machinery establish trust.
+
+## Exact Authority-to-Code Influence
+
+| Upstream authority              | Generated-code influence                  |
+| -------------------------------- | ------------------------------------------ |
+| Feature authority               | `feature-id` lineage marker               |
+| Scenario authority              | `scenario-id` lineage marker              |
+| Obligation authority            | `obligation-id` lineage marker            |
+| Responsibility authority        | Function identity and `responsibility-id` |
+| Signal authority                | Return type and `signal-id`               |
+| Semantic-edge binding           | Exact invocation string                   |
+| File-body authority             | File path and public operation boundary   |
+| TypeScript projection authority | Imports, modifiers, names, statements     |
+| AST authority                   | Permitted and forbidden syntax            |
+| Target profile                  | Module syntax and emission conventions    |
+
+## What the Body Proves by Existing
+
+The generated body alone can establish bounded structural facts:
+
+```text
+The expected file exists.
+
+The expected operation exists.
+
+The expected language boundary exists.
+
+The expected semantic edge is invoked.
+
+The expected lineage markers are present.
+
+The body contains the projected native structure.
+```
+
+It cannot, by existence alone, prove:
+
+```text
+The semantic authority is correct.
+
+The runtime resolved the intended edge.
+
+The scenario produced the expected signal.
+
+The current body matches current authority.
+
+The body executes correctly in the declared environment.
+```
+
+Those require operational projection freshness, execution, and conformance evaluation.
+
+So the body is part of proof, not the whole proof.
+
+## The Operational Proof Equation
+
+```text
+Generated body proof
+    =
+Current projection authority
+    +
+Observed generated source
+    +
+Observed AST
+    +
+Executed semantic edge
+    +
+Observed scenario signal
+    +
+Deterministic conformance evaluation
+```
+
+Or more simply:
+
+```text
+Authority declares.
+
+Projection constructs.
+
+Generated code executes.
+
+AST inspection observes structure.
+
+Scenario execution observes behavior.
+
+Conformance compares expected and observed truth.
+```
+
+## The Deeper Insight
+
+The generated body has five simultaneous roles.
+
+```text
+1. Execution role
+   It is the native doorway through which the responsibility runs.
+
+2. Embodiment role
+   It physically represents admitted responsibility authority.
+
+3. Lineage role
+   It carries feature-to-signal identity into source code.
+
+4. Observation role
+   It is parsed and inspected as the actual projected structure.
+
+5. Regeneration role
+   It can be discarded and reproduced from durable authority.
+```
+
+The complete transformation is:
+
+```text
+Canonical feature
+"Reject non-atomic scenarios."
+
+        ↓
+
+Scenario expectation
+"Multiple obligations must produce SCENARIO_NOT_ATOMIC."
+
+        ↓
+
+Responsibility
+"evaluates-scenario-atomicity"
+
+        ↓
+
+Semantic edge
+"evaluate-scenario-atomicity"
+
+        ↓
+
+TypeScript projection authority
+"Emit one exported async function
+that invokes the semantic edge."
+
+        ↓
+
+Generated body
+export async function evaluatesScenarioAtomicity(...) {
+  return await context.edges.invokes(
+    "evaluate-scenario-atomicity",
+    context
+  );
+}
+
+        ↓
+
+Runtime execution
+The semantic edge evaluates the scenario.
+
+        ↓
+
+Observed signal
+SCENARIO_NOT_ATOMIC
+
+        ↓
+
+Conformance
+The generated body preserved identity,
+structure, execution, and expected outcome.
+```
+
+> **The generated code body is not where the capability becomes intelligent. It is where already-authorized intelligence becomes executable.**
+
+## Final Governing Rule
+
+```text
+The generated body may contain execution mechanics.
+
+It may not contain independently authored semantic meaning.
+```
+
+Or in the course's north-star language:
+
+```text
+Meaning expands in authority.
+
+Execution collapses in code.
+```
+
+The body should be so mechanically faithful that it is almost boring.
+
+That is not a weakness.
+
+That is the evidence that the architecture has done its work.
 
 ---
 
