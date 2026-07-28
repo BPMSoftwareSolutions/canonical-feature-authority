@@ -1,0 +1,29 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+  },
+  "projectionId": "project-greets-student-body",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "course/01-experience-projection/lesson-01/greets-student.ts"
+  },
+  "lineage": {
+    "featureId": "experience-deterministic-projection",
+    "scenarioId": "project-a-student-greeting",
+    "obligationId": "admitted-greeting-authority-projects-one-body",
+    "responsibilityId": "greets-student",
+    "signalId": "student-greeting"
+  },
+  "function": {
+    "identity": "greets-student",
+    "name": "greetsStudent",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "GreetsStudentContext"
+    },
+    "resultTypeReference": "StudentGreetingSignal",
+    "semanticEdgeId": "resolve-student-greeting"
+  }
+}

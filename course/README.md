@@ -1,24 +1,81 @@
 # course/
 
-The ten labs students work through, in order. Each phase builds one piece of the repository's own governance, using a single running example — teaching the code-body-admission governor described in [The Student Experience.md](../The%20Student%20Experience.md).
+Twelve lessons, taken in order, that walk a student through the entire canonical path — from "why should this capability exist?" to "prove the repository rejects contamination." Each lesson is written as a student simulation: what the student is shown, what they predict, what they get wrong, what turns RED or GREEN, and what they can prove by the end.
 
-This is a different worked example than the one traced in the root-level [01 - Human Intent.md](../01%20-%20Human%20Intent.md) through [10 - The Complete Canonical Path.md](../10%20-%20The%20Complete%20Canonical%20Path.md) lessons (which follow `evaluates-scenario-atomicity`). Read the root-level lessons first for the concepts; use this course to build them yourself against a second example, `resolves-code-body-canonical-lineage` — the governor that rejects any code body without an admitted canonical lineage.
+This uses its own running example, distinct from the `evaluates-scenario-atomicity` example in the root-level [01 - Human Intent.md](../01%20-%20Human%20Intent.md) through [10 - The Complete Canonical Path.md](../10%20-%20The%20Complete%20Canonical%20Path.md) lessons, and distinct from the `validate-feature-scenario-atomicity` capability under [capabilities/](../capabilities/). Read the root-level lessons and `Canonical Feature Authority File-System Spine.md` first for the concepts — this course exists to make a student *experience* them, deliberately out of the "natural" build order, starting with a projection instead of a human need.
 
-## The phases
+## Student mental model across the course
 
-| # | Folder | Lab |
-|---|--------|-----|
-| 01 | [01-experience-projection/](01-experience-projection/) | Run a projector against an already-authored authority record and get back one generated file, before authoring anything yourself. |
-| 02 | [02-establish-feature-authority/](02-establish-feature-authority/) | Manually author the feature, scenario, obligation, and responsibility identities for the code-body-admission governor. |
-| 03 | [03-analyze-scenario-intent/](03-analyze-scenario-intent/) | Check the authored scenario for atomicity before writing any semantic authority for it. |
-| 04 | [04-design-semantic-transistors/](04-design-semantic-transistors/) | Design the one-obligation, one-responsibility, one-signal "transistor" this governor will be. |
-| 05 | [05-author-semantic-authority/](05-author-semantic-authority/) | Write the semantic authority record: observation, evaluation, GREEN/RED dispositions, evidence requirements. |
-| 06 | [06-project-code-bodies/](06-project-code-bodies/) | Turn the semantic authority into a code-body projection authority record and project a TypeScript body from it. |
-| 07 | [07-inspect-generated-ast/](07-inspect-generated-ast/) | Inspect the generated body's AST as a governance surface, not just as output. |
-| 08 | [08-establish-body-lineage/](08-establish-body-lineage/) | Register the generated body's lineage so the repository knows which authority chain owns it. |
-| 09 | [09-enforce-conformance/](09-enforce-conformance/) | Run the first body against a second, unregistered file and watch the repository reject it — the first self-governing moment. |
-| 10 | [10-complete-the-fractal/](10-complete-the-fractal/) | Add the remaining governance bodies (AST conformance, projection freshness, topology conformance) and produce a full conformance receipt. |
+```text
+Beginning:
+"I am learning to generate code."
+
+Middle:
+"I am learning to establish authority."
+
+End:
+"I am building a repository that rejects unauthorized meaning."
+```
+
+## The lessons
+
+| # | Lesson | Layers | What the student learns |
+|---|--------|--------|--------------------------|
+| 01 | [01-experience-projection/](01-experience-projection/) — Project Your First Deterministic Body | 16–18 | JSON is authority. TypeScript is projection. |
+| 02 | 02-discover-human-need/ — Discover the Human Need | 1–2 | A problem statement explains the capability, but it does not authorize implementation. |
+| 03 | 03-establish-canonical-behavior/ — Establish Canonical Behavior | 3 | The feature owns the behavioral promise. |
+| 04 | 04-analyze-scenario-atomicity/ — Analyze Scenario Atomicity | 4 | An innocent-looking `And` may hide another obligation. |
+| 05 | 05-establish-obligation-and-expectation/ — Establish Obligation and Expectation | 5–6 | Truth and expected behavior are related, but they are not the same authority. |
+| 06 | 06-assign-worker-and-signal/ — Assign the Worker and Signal | 7–9 | The responsibility identifies who owns the truth. The signal communicates the result. |
+| 07 | 07-author-semantic-authority/ — Put Meaning in Semantic Authority | 10–13 | The semantic layer must become rich enough that the code body has nothing left to decide. |
+| 08 | 08-establish-legal-body/ — Establish the Legal Body | 14–15 | The expectation says what body must exist. The file-body authority says exactly where and how it may exist. |
+| 09 | 09-project-and-inspect-code/ — Project and Inspect Code | 16–18 | Generated code is not independently authored implementation. It is native embodiment of admitted authority. |
+| 10 | 10-execute-canonical-expectation/ — Execute the Canonical Expectation | 19 | Testing the semantic resolver alone does not prove the generated body. |
+| 11 | 11-evaluate-operational-conformance/ — Evaluate Operational Conformance | 20–21 | Proof remains in the operational path, not in a passive documentation forest. |
+| 12 | 12-adversarial-capstone/ — Adversarial Capstone | all | A governance system is not proven because the happy path works. It is proven because contamination reliably turns RED. |
+
+## Lesson format
+
+Every lesson follows the same classroom rhythm:
+
+```text
+1. What I am shown
+2. What I think it means
+3. What I am asked to do
+4. What I submit
+5. What the system evaluates
+6. What turns RED or GREEN
+7. What mistake I am likely to make
+8. What the instructor reveals
+9. What artifact survives
+10. What I can now prove
+```
 
 ## Governing constraint
 
-Every phase produces artifacts that live in the top-level pillar folders (`canonical-authority/`, `semantic-authority/`, `projection-authority/`, `generated/`, `governance/`, `proof/`) — a phase folder itself holds only the lab's instructions and worked notes, never the authority records themselves. This keeps the "what phase am I in" structure separate from "what does the repository actually contain," which is the same separation the finished repository maintains between teaching material and governed content.
+Lessons deliberately run out of the "natural" build order — Lesson 1 starts at projection (Layers 16–18), not human need (Layers 1–2) — because experiencing a deterministic projection first makes every later lesson about *authority* land harder. Each lesson's artifacts live inside that lesson's own folder (e.g. `01-experience-projection/lesson-01/`), separate from the real worked capability under `capabilities/`, so a student's in-progress or intentionally-contaminated exercise files never get mistaken for governed repository content.
+
+## Project every course body
+
+Keep this repository and `declarative-typescript-body-projector` as sibling
+directories under the same parent, install each repository once with
+`npm install`, and run this from the course repository:
+
+```text
+npm run project:bodies
+```
+
+The command discovers every `*.projector.json` request in this repository,
+passes each request through the projector's normal seven-step circuit, writes
+only artifacts marked as generated, and records exact expected/observed hashes
+in `course/projected-body-receipt.json`.
+
+Before accepting student work, verify that no projected body was hand-edited:
+
+```text
+npm run check:bodies
+```
+
+The check runs the same projections in an isolated output directory and
+compares the resulting bytes with the checked-in course artifacts. Missing,
+stale, mutated, invalid, and duplicate-target projections fail the command.

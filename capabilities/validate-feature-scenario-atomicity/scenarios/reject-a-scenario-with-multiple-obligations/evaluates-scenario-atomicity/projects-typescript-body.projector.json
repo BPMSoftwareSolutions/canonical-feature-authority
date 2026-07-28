@@ -1,0 +1,40 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+  },
+  "projectionId": "project-evaluates-scenario-atomicity-body",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "capabilities/validate-feature-scenario-atomicity/scenarios/reject-a-scenario-with-multiple-obligations/evaluates-scenario-atomicity/evaluates-scenario-atomicity.ts"
+  },
+  "lineage": {
+    "featureId": "reject-non-atomic-feature-scenarios",
+    "scenarioId": "reject-a-scenario-with-multiple-obligations",
+    "obligationId": "scenario-carries-one-independent-obligation",
+    "responsibilityId": "evaluates-scenario-atomicity",
+    "signalId": "scenario-atomicity"
+  },
+  "imports": [
+    {
+      "kind": "type-only",
+      "moduleSpecifier": "./scenario-atomicity.type.js",
+      "namedBindings": [
+        "EvaluateScenarioAtomicityContext",
+        "ScenarioAtomicitySignal"
+      ],
+      "expanded": true
+    }
+  ],
+  "function": {
+    "identity": "evaluates-scenario-atomicity",
+    "name": "evaluatesScenarioAtomicity",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "EvaluateScenarioAtomicityContext"
+    },
+    "resultTypeReference": "ScenarioAtomicitySignal",
+    "semanticEdgeId": "evaluate-scenario-atomicity"
+  }
+}

@@ -5,8 +5,11 @@
   "description": "Reference file-system spine for the Canonical Feature Authority course — a worked example of intent-driven, deterministic projection from human need to generated code.",
   "type": "module",
   "scripts": {
+    "project:bodies": "npm --prefix ../declarative-typescript-body-projector run project-authority-tree -- --authority-root ../canonical-feature-authority --output-root ../canonical-feature-authority --receipt ../canonical-feature-authority/course/projected-body-receipt.json",
+    "check:bodies": "npm --prefix ../declarative-typescript-body-projector run project-authority-tree -- --authority-root ../canonical-feature-authority --output-root ../canonical-feature-authority --check",
     "build": "tsc -p tsconfig.json",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prove:projection": "npm run check:bodies && npm run build"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",

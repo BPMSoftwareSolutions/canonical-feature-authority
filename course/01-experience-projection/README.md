@@ -16,6 +16,19 @@ Generated file
 Projection receipt
 ```
 
+From the repository root:
+
+```text
+npm run project:bodies
+```
+
+For this lesson, the executable projector request is
+`lesson-01/projects-greets-student-body.projector.json`. The adjacent
+`projects-greets-student-body.json` shows the Spine's language-projection
+authority shape; the `.projector.json` file is its admitted operational request
+to the projector built in class. Students change authority, never
+`greets-student.ts`.
+
 ## What you should take away
 
 - **Authority is durable.** The projection record doesn't change just because you ran the compiler.
@@ -25,7 +38,7 @@ Projection receipt
 
 ## What this lab does not ask you to do yet
 
-You are not writing a feature, scenario, obligation, or responsibility in this lab. That begins in [02-establish-feature-authority/](../02-establish-feature-authority/). This lab exists only so that "projection" stops being an abstract word before you're asked to design what gets projected.
+You are not writing a feature, scenario, obligation, or responsibility in this lab. That begins when the course returns to Layers 1–2. This lab exists only so that "projection" stops being an abstract word before you're asked to design what gets projected.
 
 ## Reference
 

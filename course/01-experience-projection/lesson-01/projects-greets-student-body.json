@@ -1,0 +1,33 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-greets-student-body",
+  "targetId": "typescript-esm",
+  "expectedShape": {
+    "statementCount": 1,
+    "primarySemanticEdge": "resolve-student-greeting",
+    "invocationCount": 1
+  },
+  "artifact": {
+    "path": "greets-student.ts",
+    "declaration": {
+      "kind": "function",
+      "name": "greetsStudent",
+      "export": true,
+      "async": true,
+      "parameters": [
+        {
+          "name": "context",
+          "type": "GreetsStudentContext"
+        }
+      ],
+      "returnType": "Promise<StudentGreetingSignal>",
+      "body": [
+        {
+          "kind": "return-semantic-invocation",
+          "edge": "resolve-student-greeting",
+          "input": "context"
+        }
+      ]
+    }
+  }
+}

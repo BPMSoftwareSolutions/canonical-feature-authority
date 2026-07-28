@@ -1,0 +1,26 @@
+{
+  "semanticAuthorityType": "evaluation.v1",
+  "semanticOperationId": "resolve-student-greeting",
+  "input": {
+    "from": "context.timeOfDay"
+  },
+  "rules": [
+    {
+      "when": {
+        "timeOfDay": "morning"
+      },
+      "then": "good-morning"
+    },
+    {
+      "when": {
+        "timeOfDay": {
+          "notEquals": "morning"
+        }
+      },
+      "then": "hello"
+    }
+  ],
+  "output": {
+    "as": "StudentGreetingSignal"
+  }
+}

@@ -5,7 +5,6 @@
 // responsibility-id: evaluates-scenario-atomicity
 // signal-id: scenario-atomicity
 // DO NOT EDIT.
-
 import type {
   EvaluateScenarioAtomicityContext,
   ScenarioAtomicitySignal

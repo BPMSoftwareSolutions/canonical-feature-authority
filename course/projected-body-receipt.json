@@ -1,0 +1,47 @@
+{
+  "receiptType": "projected-authority-tree.v1",
+  "projectedArtifacts": [
+    {
+      "authority": "capabilities/validate-feature-scenario-atomicity/scenarios/accept-a-scenario-with-one-obligation/evaluates-scenario-atomicity/projects-typescript-body.projector.json",
+      "artifact": "capabilities/validate-feature-scenario-atomicity/scenarios/accept-a-scenario-with-one-obligation/evaluates-scenario-atomicity/evaluates-scenario-atomicity.ts",
+      "expectedHash": "sha256:72c7d333cfb0e7922872f8617b3ee5b25d849bbf30a4ecc61e5b966759f544a0",
+      "observedHash": "sha256:72c7d333cfb0e7922872f8617b3ee5b25d849bbf30a4ecc61e5b966759f544a0",
+      "disposition": "PROJECTED_ARTIFACT_CONFORMS"
+    },
+    {
+      "authority": "capabilities/validate-feature-scenario-atomicity/scenarios/reject-a-scenario-with-multiple-obligations/evaluates-scenario-atomicity/projects-typescript-body.projector.json",
+      "artifact": "capabilities/validate-feature-scenario-atomicity/scenarios/reject-a-scenario-with-multiple-obligations/evaluates-scenario-atomicity/evaluates-scenario-atomicity.ts",
+      "expectedHash": "sha256:980c75f69294a26e06d8580abe62199f2df62bd2814e163e75826d0e2bf12d31",
+      "observedHash": "sha256:980c75f69294a26e06d8580abe62199f2df62bd2814e163e75826d0e2bf12d31",
+      "disposition": "PROJECTED_ARTIFACT_CONFORMS"
+    },
+    {
+      "authority": "capabilities/validate-feature-scenario-atomicity/scenarios/reject-a-scenario-with-no-obligation/evaluates-scenario-atomicity/projects-typescript-body.projector.json",
+      "artifact": "capabilities/validate-feature-scenario-atomicity/scenarios/reject-a-scenario-with-no-obligation/evaluates-scenario-atomicity/evaluates-scenario-atomicity.ts",
+      "expectedHash": "sha256:f3dce6ee410009471e55203fbc8ad9aba79474266ee0f01a091317d1028ab6d2",
+      "observedHash": "sha256:f3dce6ee410009471e55203fbc8ad9aba79474266ee0f01a091317d1028ab6d2",
+      "disposition": "PROJECTED_ARTIFACT_CONFORMS"
+    },
+    {
+      "authority": "capabilities/validate-feature-scenario-atomicity/scenarios/reject-an-ambiguously-classified-scenario/evaluates-scenario-atomicity/projects-typescript-body.projector.json",
+      "artifact": "capabilities/validate-feature-scenario-atomicity/scenarios/reject-an-ambiguously-classified-scenario/evaluates-scenario-atomicity/evaluates-scenario-atomicity.ts",
+      "expectedHash": "sha256:a98c46838af2862147942a455257496c20cc91b4709ec9ce2d6a164f7c9f0a78",
+      "observedHash": "sha256:a98c46838af2862147942a455257496c20cc91b4709ec9ce2d6a164f7c9f0a78",
+      "disposition": "PROJECTED_ARTIFACT_CONFORMS"
+    },
+    {
+      "authority": "course/01-experience-projection/lesson-01/projects-greets-student-body.projector.json",
+      "artifact": "course/01-experience-projection/lesson-01/greets-student.ts",
+      "expectedHash": "sha256:f480d37f6bc9df726d7c6798382276ef0f73e97df202f5cbaa37fb47b0be06a0",
+      "observedHash": "sha256:f480d37f6bc9df726d7c6798382276ef0f73e97df202f5cbaa37fb47b0be06a0",
+      "disposition": "PROJECTED_ARTIFACT_CONFORMS"
+    },
+    {
+      "authority": "course/09-project-and-inspect-code/assignment/projects-resolves-code-body-canonical-lineage.projector.json",
+      "artifact": "course/09-project-and-inspect-code/assignment/resolves-code-body-canonical-lineage.ts",
+      "expectedHash": "sha256:eb3a3bee2c2a2a9433aa0b440ee14b9f15ce2dccabab85141ec975eae68a6dae",
+      "observedHash": "sha256:eb3a3bee2c2a2a9433aa0b440ee14b9f15ce2dccabab85141ec975eae68a6dae",
+      "disposition": "PROJECTED_ARTIFACT_CONFORMS"
+    }
+  ]
+}

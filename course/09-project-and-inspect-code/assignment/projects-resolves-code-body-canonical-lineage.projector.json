@@ -1,0 +1,65 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+  },
+  "projectionId": "project-resolves-code-body-canonical-lineage",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "course/09-project-and-inspect-code/assignment/resolves-code-body-canonical-lineage.ts"
+  },
+  "lineage": {
+    "featureId": "govern-code-body-admission",
+    "scenarioId": "admit-a-body-with-one-current-canonical-lineage",
+    "obligationId": "every-body-has-one-canonical-lineage",
+    "responsibilityId": "resolves-code-body-canonical-lineage",
+    "signalId": "code-body-has-canonical-lineage"
+  },
+  "function": {
+    "identity": "resolves-code-body-canonical-lineage",
+    "name": "resolvesCodeBodyCanonicalLineage",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ResolveCodeBodyCanonicalLineageContext"
+    },
+    "resultTypeReference": "CodeBodyCanonicalLineageSignal",
+    "statements": [
+      {
+        "kind": "const-edge",
+        "name": "authority",
+        "receiverPath": [
+          "context",
+          "edges"
+        ],
+        "operation": "invokes",
+        "edgeId": "resolve-code-body-lineage-authority",
+        "input": "context"
+      },
+      {
+        "kind": "const-edge",
+        "name": "execution",
+        "receiverPath": [
+          "context",
+          "edges"
+        ],
+        "operation": "invokes",
+        "edgeId": "execute-resolved-code-body-lineage",
+        "input": "authority",
+        "separatedBefore": true
+      },
+      {
+        "kind": "return-edge",
+        "receiverPath": [
+          "context",
+          "edges"
+        ],
+        "operation": "projects",
+        "edgeId": "project-code-body-lineage-result",
+        "input": "execution",
+        "awaited": false,
+        "separatedBefore": true
+      }
+    ]
+  }
+}
