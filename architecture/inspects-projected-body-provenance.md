@@ -904,7 +904,131 @@ Payload contract:
         }
       }
     }
-  }
+  },
+  "$defs": {
+    "redCode": {
+      "enum": [
+        "SCHEMA_AUTHORITY_NOT_INSTRUCTOR_CONTROLLED",
+        "TRUST_AUTHORITY_NOT_INSTRUCTOR_CONTROLLED",
+        "ARTIFACT_SCHEMA_INVALID",
+        "ARTIFACT_TYPE_NOT_REGISTERED",
+        "ARTIFACT_PAYLOAD_HASH_MISMATCH",
+        "ARTIFACT_SIGNATURE_INVALID",
+        "ARTIFACT_PARENT_MISMATCH",
+        "LINEAGE_ROOT_MISMATCH",
+        "SIGNING_KEY_NOT_TRUSTED",
+        "SIGNING_KEY_ROLE_NOT_PERMITTED",
+        "CHALLENGE_NONCE_INVALID",
+        "CHALLENGE_NONCE_EXPIRED",
+        "CHALLENGE_NONCE_ALREADY_USED",
+        "CHALLENGE_NONCE_NOT_IN_REQUEST_AUTHORITY",
+        "CHALLENGE_NONCE_NOT_IN_CONNECTOR_REQUEST",
+        "CHALLENGE_NONCE_NOT_IN_PROVIDER_REQUEST_BODY",
+        "PROVIDER_AUTHORITY_HASH_MISMATCH",
+        "PROVIDER_REQUEST_BODY_HASH_MISMATCH",
+        "PROVIDER_RESPONSE_BODY_HASH_MISMATCH",
+        "PROVIDER_REQUEST_METADATA_HASH_MISMATCH",
+        "PROVIDER_RESPONSE_METADATA_HASH_MISMATCH",
+        "CONNECTOR_INVOCATION_ID_MISMATCH",
+        "SUBJECT_AUTHORITY_IDENTITY_MISMATCH",
+        "SEMANTIC_AUTHORITY_HASH_MISMATCH",
+        "AST_PARENT_MISMATCH",
+        "AST_AUTHORITY_HASH_MISMATCH",
+        "PROJECTOR_EXECUTABLE_MISMATCH",
+        "PROJECTOR_KEY_NOT_TRUSTED",
+        "TRANSFORMER_DEPENDENCY_MISMATCH",
+        "REPOSITORY_COMMIT_MISMATCH",
+        "RUNTIME_IDENTITY_MISMATCH",
+        "SEMANTIC_TO_AST_REPLAY_MISMATCH",
+        "AST_TO_BODY_REPLAY_MISMATCH",
+        "BODY_NOT_BYTE_IDENTICAL",
+        "BODY_PROJECTION_SIGNATURE_INVALID",
+        "RUNTIME_COMPOSITION_MISMATCH",
+        "CONNECTOR_FUNCTION_MISMATCH",
+        "CONNECTOR_DEPENDENCY_BINDING_MISMATCH",
+        "SEMANTIC_OPERATION_NOT_OBSERVED",
+        "INVOCATION_COUNT_MISMATCH",
+        "MODEL_REQUEST_AUTHORITY_LINK_MISMATCH",
+        "NORMALIZED_SUBMISSION_HASH_MISMATCH",
+        "PROVIDER_ATTESTATION_LINK_MISMATCH",
+        "COMPLETE_LINEAGE_LINK_MISMATCH"
+      ]
+    },
+    "unresolvedCode": {
+      "enum": [
+        "PROVIDER_JOB_NOT_REQUESTED",
+        "PROVIDER_NETWORK_UNAVAILABLE",
+        "INSTRUCTOR_SECRET_STORE_UNAVAILABLE",
+        "INSTRUCTOR_OBSERVER_UNAVAILABLE"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "disposition": {
+            "const": "GREEN"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "findings": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "disposition": {
+            "const": "RED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "findings": {
+            "minItems": 1,
+            "items": {
+              "properties": {
+                "code": {
+                  "$ref":
+                    "#/$defs/payload/$defs/redCode"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "disposition": {
+            "const": "UNRESOLVED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "findings": {
+            "minItems": 1,
+            "items": {
+              "properties": {
+                "code": {
+                  "$ref":
+                    "#/$defs/payload/$defs/unresolvedCode"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }
 ```
 
@@ -1895,6 +2019,10 @@ function evaluatesCompleteLineage(input): Disposition {
   verifyPermittedKeyRole(
     input.executionObservation,
     "runtime-observer"
+  );
+  verifyPermittedKeyRole(
+    input.completeLineage,
+    "acceptance-evaluator"
   );
 
   verifyNonceIssuedFreshAndConsumedOnceByAttestation(
