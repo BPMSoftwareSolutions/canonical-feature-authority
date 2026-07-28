@@ -19,14 +19,16 @@ const schemaNames = [
   "bounded-model-submission-body-reproduction.schema.json",
   "bounded-model-submission-execution-observation.schema.json",
   "complete-bounded-model-submission-lineage.schema.json",
-  "bounded-model-submission-acceptance-disposition.schema.json"
+  "bounded-model-submission-acceptance-disposition.schema.json",
+  "bounded-model-submission-nonce-consumption-receipt.schema.json"
 ];
 const artifactTypes = [
   "independent-provider-exchange-attestation",
   "bounded-model-submission-body-reproduction",
   "bounded-model-submission-execution-observation",
   "complete-bounded-model-submission-lineage",
-  "bounded-model-submission-acceptance-disposition"
+  "bounded-model-submission-acceptance-disposition",
+  "bounded-model-submission-nonce-consumption-receipt"
 ];
 const sha = `sha256:${"1".repeat(64)}`;
 
@@ -222,6 +224,16 @@ const samples = [
     completeLineageSha256: sha,
     disposition: "GREEN",
     findings: []
+  }),
+  envelope("bounded-model-submission-nonce-consumption-receipt", "independent-provider-exchange-attestation", {
+    authorityType:
+      "bounded-model-submission-nonce-consumption-receipt.v1",
+    nonceSha256: sha,
+    consumedAttestationSha256: sha,
+    issuedAt: "2026-07-28T12:00:00Z",
+    expiresAt: "2026-07-28T12:05:00Z",
+    consumedAt: "2026-07-28T12:00:01Z",
+    transition: "issued-to-consumed"
   })
 ];
 
@@ -229,17 +241,17 @@ for (let index = 0; index < schemas.length; index++) {
   const validate = ajv.getSchema(schemas[index].$id);
   assert(validate(samples[index]), `Valid sample rejected: ${schemaNames[index]}`);
   const missing = structuredClone(samples[index]);
-  delete missing.payload.featureId;
+  delete missing.payload[schemas[index].$defs.payload.required[0]];
   assert(!validate(missing), `Missing required payload accepted: ${schemaNames[index]}`);
   const wrongParent = structuredClone(samples[index]);
   wrongParent.provenance.parent.artifactType = "reviewed-intent-authority";
   assert(!validate(wrongParent), `Wrong parent accepted: ${schemaNames[index]}`);
 }
-const terminalValidate = ajv.getSchema(schemas.at(-1).$id);
-const invalidGreen = structuredClone(samples.at(-1));
+const terminalValidate = ajv.getSchema(schemas[4].$id);
+const invalidGreen = structuredClone(samples[4]);
 invalidGreen.payload.findings = [{ code: "ARTIFACT_SCHEMA_INVALID", pointer: "/" }];
 assert(!terminalValidate(invalidGreen), "GREEN disposition accepted findings");
-const invalidRed = structuredClone(samples.at(-1));
+const invalidRed = structuredClone(samples[4]);
 invalidRed.payload.disposition = "RED";
 invalidRed.payload.findings = [{ code: "NOT_A_CODE", pointer: "/" }];
 assert(!terminalValidate(invalidRed), "RED disposition accepted an unknown code");
@@ -283,6 +295,6 @@ for (const scenarioName of scenarioNames) {
 }
 assert(lineageEntries === 16, "Expected sixteen complete lineage entries");
 
-console.log("5/5 evidence schemas are meta-valid and reject invalid controls");
-console.log("5/5 artifact types and schemas are registered");
+console.log("6/6 evidence schemas are meta-valid and reject invalid controls");
+console.log("6/6 artifact types and schemas are registered");
 console.log("16/16 four-body lineage entries are complete and hash-consistent");

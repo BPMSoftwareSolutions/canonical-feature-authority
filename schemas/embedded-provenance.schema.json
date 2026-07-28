@@ -41,7 +41,8 @@
         "bounded-model-submission-body-reproduction",
         "bounded-model-submission-execution-observation",
         "complete-bounded-model-submission-lineage",
-        "bounded-model-submission-acceptance-disposition"
+        "bounded-model-submission-acceptance-disposition",
+        "bounded-model-submission-nonce-consumption-receipt"
       ]
     },
     "parent": {

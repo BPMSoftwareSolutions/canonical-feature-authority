@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/bounded-model-submission-nonce-consumption-receipt.schema.json",
+  "allOf": [
+    {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "artifactType": {
+              "const": "bounded-model-submission-nonce-consumption-receipt"
+            },
+            "parent": {
+              "type": "object",
+              "required": [
+                "artifactType",
+                "artifactSha256"
+              ],
+              "properties": {
+                "artifactType": {
+                  "const": "independent-provider-exchange-attestation"
+                }
+              }
+            }
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/payload"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorityType",
+        "nonceSha256",
+        "consumedAttestationSha256",
+        "issuedAt",
+        "expiresAt",
+        "consumedAt",
+        "transition"
+      ],
+      "properties": {
+        "authorityType": {
+          "const": "bounded-model-submission-nonce-consumption-receipt.v1"
+        },
+        "nonceSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "consumedAttestationSha256": {
+          "$ref": "embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "issuedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "consumedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transition": {
+          "const": "issued-to-consumed"
+        }
+      }
+    }
+  }
+}

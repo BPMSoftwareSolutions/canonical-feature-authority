@@ -121,7 +121,8 @@ try {
       "bounded-model-submission-body-reproduction.schema.json",
       "bounded-model-submission-execution-observation.schema.json",
       "complete-bounded-model-submission-lineage.schema.json",
-      "bounded-model-submission-acceptance-disposition.schema.json"
+      "bounded-model-submission-acceptance-disposition.schema.json",
+      "bounded-model-submission-nonce-consumption-receipt.schema.json"
     ].map(name => `schemas/${name}`)
   ];
   for (const generatedRoot of generatedRoots) {
