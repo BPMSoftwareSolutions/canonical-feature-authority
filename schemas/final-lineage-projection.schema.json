@@ -19,7 +19,12 @@
     "payload": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["lineageId", "terminalDisposition", "artifacts"],
+      "required": [
+        "lineageId",
+        "terminalDisposition",
+        "completeProjectionProvenanceSha256",
+        "artifacts"
+      ],
       "properties": {
         "lineageId": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id" },
         "terminalDisposition": {
@@ -27,6 +32,9 @@
             "GREEN_COMPLETE_EMBEDDED_PROVENANCE",
             "RED_EMBEDDED_CHAIN_INCOMPLETE"
           ]
+        },
+        "completeProjectionProvenanceSha256": {
+          "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
         },
         "artifacts": {
           "type": "array",

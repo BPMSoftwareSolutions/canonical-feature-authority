@@ -95,23 +95,28 @@ Conceptually:
 
 ```text
 provenance-sha256 =
-  SHA-256(canonicalize(complete-projection-lineage-graph))
+  SHA-256(canonicalize(complete-pre-projection-provenance-manifest))
 ```
 
-The lineage graph uses the executable payload's `body-sha256`, not the bytes of
-the generated header that will later contain `provenance-sha256`. This avoids a
-self-referential hash:
+The signed body and the later execution lineage cannot hash each other. That
+would create an unsatisfiable cycle. The immutable manifest therefore closes
+over every authority available before projection; later terminal and lineage
+artifacts point back to the manifest and body:
 
 ```text
+provenance-sha256  = hash(complete pre-projection manifest)
 body-sha256        = hash(executable TypeScript payload)
-provenance-sha256  = hash(complete lineage graph, including body-sha256)
-signature          = sign(provenance-sha256 + body-sha256 + projector identity)
+signature          = sign(all header fields + provenance-sha256 + body-sha256)
+terminal signal    = sign(body-sha256 + provenance-sha256 + observation)
+final lineage      = sign(body-sha256 + provenance-sha256 + terminal hash)
 ```
 
-The body header contains the lineage graph's relative path and
-`provenance-sha256`. The scenario's single lineage projection contains the
-actual nodes and edges. It is a navigational authority projection, not a
-detached receipt and not a duplicate of the underlying artifacts.
+The body header contains the manifest's relative path and digest. The manifest
+binds reviewed intent, Gherkin source and semantics, model request, provider
+authority/request/response, semantic artifact and executable, AST, runtime
+composition, expectation, the transformer's transitive dependency graph, and
+the execution/terminal/final plans. The scenario's later lineage projection is
+only the navigational index over actual artifacts.
 
 ## Canonical hashing rule
 
@@ -253,14 +258,23 @@ The generated body header is its embedded receipt:
 // signal-id: bounded-model-submission
 // semantic-operation-id: obtain-bounded-model-submission
 // lineage-root-sha256: sha256:REVIEWED_INTENT
-// provenance-path: capabilities/.../projection-lineage.index.json
-// provenance-sha256: sha256:COMPLETE_CANONICAL_LINEAGE_GRAPH
+// provenance-path: capabilities/.../complete-projection-provenance.json
+// provenance-sha256: sha256:COMPLETE_PRE_PROJECTION_MANIFEST
+// gherkin-source-sha256: sha256:GHERKIN_BYTES
+// gherkin-semantic-sha256: sha256:GHERKIN_SEMANTICS
 // model-request-authority-sha256: sha256:MODEL_REQUEST
 // provider-authority-sha256: sha256:PROVIDER_AUTHORITY
-// model-response-sha256: sha256:MODEL_RESPONSE
-// sej-authority-sha256: sha256:SEMANTIC_EXECUTION_JUNCTION
+// provider-request-sha256: sha256:PROVIDER_REQUEST
+// provider-response-sha256: sha256:PROVIDER_RESPONSE
 // semantic-authority-sha256: sha256:SEMANTIC_PAYLOAD
+// semantic-executable-sha256: sha256:SEMANTIC_EXECUTABLE
 // ast-authority-sha256: sha256:IMMEDIATE_AST_PARENT
+// runtime-composition-authority-sha256: sha256:RUNTIME_COMPOSITION
+// expectation-authority-sha256: sha256:EXPECTATION
+// transformer-dependency-graph-sha256: sha256:TRANSITIVE_IMPLEMENTATION_GRAPH
+// execution-plan-sha256: sha256:EXECUTION_PLAN
+// terminal-conformance-plan-sha256: sha256:TERMINAL_PLAN
+// final-lineage-plan-sha256: sha256:FINAL_LINEAGE_PLAN
 // projector-id: declarative-typescript-body-projector
 // projector-version: pinned-version
 // projector-executable-sha256: sha256:LOADED_PROJECTOR
@@ -277,10 +291,8 @@ provenance schema
 + feature/scenario/obligation/expectation/responsibility/signal identities
 + semantic operation identity
 + lineage root digest
-+ complete lineage graph path and digest
-+ model request, provider authority, model response, and SEJ digests
-+ semantic authority digest
-+ AST authority digest
++ complete manifest path and digest
++ every authority and plan digest printed in the header
 + projector identity/version/executable digest
 + projector key ID
 + body payload digest
@@ -288,10 +300,9 @@ provenance schema
 
 The immediate authoritative parent is the AST. The semantic and root digests
 are repeated in the header as transitive navigation safeguards and must equal
-the values inside the AST envelope. The `provenance-sha256` is the stronger
-whole-chain commitment: it covers every authority layer, the model testimony,
-both projection mechanisms, their executable digests, and the executable body
-payload.
+the values inside the AST envelope. The `provenance-sha256` is the complete
+pre-projection commitment. The adjacent signed `body-sha256` binds the
+executable payload without introducing a hash cycle.
 
 ### Required identity and artifact nodes
 
@@ -540,41 +551,48 @@ demonstration gap without changing the course-wide disposition.
 ### Live embedded-provenance pilot — GREEN
 
 On 2026-07-28, an external instructor harness completed one real greeting
-scenario through the new boundaries at
-`C:/lab/runs/embedded-green-pilot-20260728-1430`.
+scenario from clean, commit-pinned worktrees at
+`C:/lab/runs/complete-body-provenance-pilot-20260728-live`.
 
 The admitted run contains:
 
-1. [`01-reviewed-intent.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/01-reviewed-intent.json);
-2. [`02-model-request.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/02-model-request.json);
-3. [`03-model-semantic.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/03-model-semantic.json);
-4. [`04-typescript-ast.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/04-typescript-ast.json);
-5. [`generated/greets-student.ts`](C:/lab/runs/embedded-green-pilot-20260728-1430/generated/greets-student.ts);
-6. [`05-runtime-composition.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/05-runtime-composition.json);
-7. [`06-expectation.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/06-expectation.json);
-8. [`07-terminal-signal.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/07-terminal-signal.json); and
-9. [`08-final-lineage.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/08-final-lineage.json).
+1. [`01-reviewed-intent.json`](C:/lab/runs/complete-body-provenance-pilot-20260728-live/01-reviewed-intent.json);
+2. [`02-model-request.json`](C:/lab/runs/complete-body-provenance-pilot-20260728-live/02-model-request.json);
+3. [`03-model-semantic.json`](C:/lab/runs/complete-body-provenance-pilot-20260728-live/03-model-semantic.json);
+4. [`04-typescript-ast.json`](C:/lab/runs/complete-body-provenance-pilot-20260728-live/04-typescript-ast.json);
+5. [`05-runtime-composition.json`](C:/lab/runs/complete-body-provenance-pilot-20260728-live/05-runtime-composition.json);
+6. [`06-expectation.json`](C:/lab/runs/complete-body-provenance-pilot-20260728-live/06-expectation.json);
+7. [`07-complete-projection-provenance.json`](C:/lab/runs/complete-body-provenance-pilot-20260728-live/07-complete-projection-provenance.json);
+8. [`08-transformer-dependency-graph.json`](C:/lab/runs/complete-body-provenance-pilot-20260728-live/08-transformer-dependency-graph.json);
+9. [`generated/greets-student.ts`](C:/lab/runs/complete-body-provenance-pilot-20260728-live/generated/greets-student.ts);
+10. [`09-terminal-signal.json`](C:/lab/runs/complete-body-provenance-pilot-20260728-live/09-terminal-signal.json); and
+11. [`10-final-lineage.json`](C:/lab/runs/complete-body-provenance-pilot-20260728-live/10-final-lineage.json).
 
 Gemini Flash invocation
-`invocation-42395750-991a-4dfa-ba42-76c457a39fac` produced the semantic
-authority with 322 input tokens, 242 output tokens, and 1,748 provider-reported
+`invocation-420fc19d-3020-4561-b917-73938fa77bd1` produced the semantic
+authority with 322 input tokens, 242 output tokens, and 1,572 provider-reported
 total tokens. The provider did not return a distinct request ID, so the
 connector invocation ID is explicitly retained as the correlation ID; the
 artifact does not claim provider-signed testimony.
 
 The generated body hash is
 `sha256:ccb5132fac95ab567d556cc075721e220b11df8ac62e91c769528044603475a0`.
-Independent checks established:
+Its complete pre-projection provenance hash is
+`sha256:307ea1ba7c1d91999db89584aa9e24519c3b7ae8b6ede70f5571a353f6f7259d`.
+Checks established:
 
-- all eight JSON envelopes validate against their declared schemas;
-- all eight JSON signatures verify under the declared trust identities;
+- the manifest, terminal signal, and final lineage validate against their
+  declared schemas;
+- the body signature verifies against the manifest and AST;
+- substitution of only the provider-response hash is rejected;
+- omission of one required manifest hash is rejected by the projector proof;
+- all transitive trusted source files match their recorded commits;
 - semantic-to-AST and AST-to-TypeScript replay conform;
-- the TypeScript body compiles standalone;
-- independent execution invokes `resolve-student-greeting` exactly once; and
+- execution invokes `resolve-student-greeting` exactly once; and
 - the observed signal is `GREEN` with value `Hello, Ada!`.
 
 The final lineage payload hash is
-`sha256:b89001868e75149b48ee38fa155d871abb63bd7a986ccd6250c00244a3e16215`
+`sha256:5e1fc841feebae5eb2f212f582e1bca30f795205026706324dfee5d77ebc2a77`
 and declares `GREEN_COMPLETE_EMBEDDED_PROVENANCE`.
 
 Earlier live attempts remain evidence rather than being overwritten:

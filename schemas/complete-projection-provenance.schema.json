@@ -1,14 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://canonical-feature-authority/schemas/embedded-typescript-provenance-header.schema.json",
-  "title": "Parsed embedded TypeScript provenance header",
+  "$id": "https://canonical-feature-authority/schemas/complete-projection-provenance.schema.json",
+  "title": "Complete non-circular provenance committed into a projected body",
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "provenanceSchema",
+    "schema",
     "canonicalizationAlgorithm",
     "provenancePath",
-    "provenanceSha256",
     "lineageRootSha256",
     "reviewedIntentAuthoritySha256",
     "gherkinSourceSha256",
@@ -25,22 +24,15 @@
     "transformerDependencyGraphSha256",
     "executionPlanSha256",
     "terminalConformancePlanSha256",
-    "finalLineagePlanSha256",
-    "projectorId",
-    "projectorVersion",
-    "projectorExecutableSha256",
-    "projectorKeyId",
-    "bodySha256",
-    "projectionSignature"
+    "finalLineagePlanSha256"
   ],
   "properties": {
-    "provenanceSchema": { "const": "embedded-provenance.v1" },
-    "canonicalizationAlgorithm": { "const": "UTF8-LF-AFTER-HEADER" },
+    "schema": { "const": "complete-projection-provenance.v1" },
+    "canonicalizationAlgorithm": { "const": "RFC8785-JCS" },
     "provenancePath": {
       "type": "string",
       "pattern": "^(?![A-Za-z]:)(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
     },
-    "provenanceSha256": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" },
     "lineageRootSha256": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" },
     "reviewedIntentAuthoritySha256": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" },
     "gherkinSourceSha256": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" },
@@ -57,12 +49,6 @@
     "transformerDependencyGraphSha256": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" },
     "executionPlanSha256": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" },
     "terminalConformancePlanSha256": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" },
-    "finalLineagePlanSha256": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" },
-    "projectorId": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id" },
-    "projectorVersion": { "type": "string", "minLength": 1 },
-    "projectorExecutableSha256": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" },
-    "projectorKeyId": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" },
-    "bodySha256": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" },
-    "projectionSignature": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/ed25519Signature" }
+    "finalLineagePlanSha256": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" }
   }
 }

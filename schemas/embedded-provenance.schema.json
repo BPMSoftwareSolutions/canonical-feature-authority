@@ -30,6 +30,7 @@
         "model-request-authority",
         "model-produced-semantic-authority",
         "typescript-ast-authority",
+        "projection-provenance-manifest",
         "typescript-body",
         "expectation-body",
         "conformance-body",

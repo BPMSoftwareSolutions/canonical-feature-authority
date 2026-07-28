@@ -24,6 +24,7 @@
         "scenarioId",
         "disposition",
         "subjectBodySha256",
+        "completeProjectionProvenanceSha256",
         "inputSha256",
         "observedSignalSha256",
         "expectationAuthoritySha256",
@@ -34,6 +35,9 @@
         "scenarioId": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id" },
         "disposition": { "enum": ["GREEN", "RED", "UNRESOLVED"] },
         "subjectBodySha256": {
+          "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "completeProjectionProvenanceSha256": {
           "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
         },
         "inputSha256": {

@@ -1,12 +1,13 @@
 {
   "catalogType": "embedded-provenance-schema-catalog.v1",
-  "disposition": "RED_IMPLEMENTATION_NOT_YET_BOUND",
+  "disposition": "RED_COURSE_MIGRATION_INCOMPLETE",
   "canonicalization": {
     "json": "RFC8785-JCS",
     "typescript": "UTF8-LF-AFTER-HEADER"
   },
   "schemas": [
     "embedded-provenance.schema.json",
+    "complete-projection-provenance.schema.json",
     "reviewed-intent-authority.schema.json",
     "model-request-authority.schema.json",
     "model-produced-semantic-authority.schema.json",
@@ -20,23 +21,21 @@
     {
       "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
       "repository": "declarative-typescript-body-projector",
-      "repositoryCommit": "06ccfd8bc42f3fabae44fc381af519231336a1d1",
+      "repositoryCommit": "b67efd86f027ee1ae8d2111da1cd594b41f7ef0e",
       "path": "contracts/semantic-invocation-function-request.schema.json"
     },
     {
       "schemaId": "https://schemas.deterministic.solutions/projection/lossless-typescript-ast/1.0.0/schema.json",
       "repository": "declarative-typescript-body-projector",
-      "repositoryCommit": "06ccfd8bc42f3fabae44fc381af519231336a1d1",
+      "repositoryCommit": "b67efd86f027ee1ae8d2111da1cd594b41f7ef0e",
       "path": "contracts/lossless-typescript-ast-projection.schema.json"
     }
   ],
   "remainingRedGaps": [
-    "no instructor-signed reviewed intent instance",
-    "one external live connector-produced embedded semantic pilot exists, but no course-owned pinned semantic artifact tree exists",
-    "semantic-to-AST replay implementation and one live pilot exist only in an uncommitted, unpinned projector working tree",
-    "v1 embedded TypeScript header implementation exists only in an uncommitted, unpinned projector working tree",
-    "no signed runtime composition authority",
+    "one external clean-worktree live pilot has complete body provenance, but no course-owned pinned semantic artifact tree exists",
+    "the complete provenance body implementation is pinned in the projector, but the course's declared bodies have not all migrated to it",
+    "no course-owned signed runtime composition authority tree",
     "no real thirteen-scenario terminal signals",
-    "one external pilot lineage projection exists, but no complete course lineage projection exists"
+    "one external complete-provenance pilot lineage exists, but no complete course lineage projection exists"
   ]
 }
