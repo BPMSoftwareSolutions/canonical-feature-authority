@@ -218,7 +218,8 @@ Every new runtime evidence artifact uses the existing embedded envelope:
       "artifactType": "<registered-parent-type>",
       "artifactSha256": "sha256:<parent-payload-hash>"
     },
-    "lineageRootSha256": "sha256:<acceptance-feature-root>",
+    "lineageRootSha256":
+      "sha256:<acceptance-capability-authority-jcs-hash>",
     "transformer": {
       "id": "<instructor-controlled-transformer>",
       "version": "<version>",
@@ -286,13 +287,53 @@ not signed directly; its JCS SHA-256 is signed as
 Pretty-printed file bytes are not the artifact hash. Raw transport bodies and
 projected TypeScript bodies use explicitly defined byte hashes below.
 
+### Lineage-root derivation
+
+The root artifact is exactly:
+
+```text
+capabilities/
+  prove-bounded-model-submission-provenance-under-independent-trust/
+    projects-capability-authority.json
+```
+
+The root hash is:
+
+```typescript
+const acceptanceCapabilityAuthority =
+  JSON.parse(
+    utf8Decode(
+      readExactFileBytes(
+        acceptanceCapabilityAuthorityPath
+      )
+    )
+  );
+
+const lineageRootSha256 =
+  sha256(
+    utf8(
+      rfc8785Jcs(
+        acceptanceCapabilityAuthority
+      )
+    )
+  );
+```
+
+The preimage is the RFC 8785/JCS encoding of the complete parsed capability
+authority object. It is not the pretty-printed file hash and is not an embedded
+envelope hash.
+
+The instructor workflow admits that exact capability authority from the
+reviewed repository commit before issuing a challenge. Every new embedded
+evidence artifact must carry this same `lineageRootSha256`.
+
 ## Normative evidence schemas
 
 The following five schema files must be added and registered in
 `schemas/embedded-provenance-schema-catalog.json`.
 
 Each schema file uses this exact wrapper, replacing `<schema-name>`,
-`<artifact-type>`, and `<payload-contract>`:
+`<artifact-type>`, `<parent-artifact-type>`, and `<payload-contract>`:
 
 ```json
 {
@@ -313,6 +354,19 @@ Each schema file uses this exact wrapper, replacing `<schema-name>`,
           "properties": {
             "artifactType": {
               "const": "<artifact-type>"
+            },
+            "parent": {
+              "type": "object",
+              "required": [
+                "artifactType",
+                "artifactSha256"
+              ],
+              "properties": {
+                "artifactType": {
+                  "const":
+                    "<parent-artifact-type>"
+                }
+              }
             }
           }
         },
@@ -330,7 +384,8 @@ Each schema file uses this exact wrapper, replacing `<schema-name>`,
 
 The string placeholder shown for `<payload-contract>` is replaced by the
 complete payload schema object in the following sections. It is not retained
-in the implemented schema.
+in the implemented schema. The parent constraint forces a non-null parent and
+encodes the required parent artifact type in the schema itself.
 
 Parent relationships are fixed:
 
@@ -963,37 +1018,43 @@ instructor secret store:
 
 ### Provider transport protocol
 
-The existing `HttpPort` receives only URL and HTTP initialization. It does not
-receive the connector invocation ID. Therefore a plain `HttpPort` wrapper is
-insufficient.
+The existing `HttpPort` is not used for the independent live acceptance path.
+It returns decoded `bodyText` and therefore cannot retain exact response bytes.
 
-The Gemini adapter dependency contract must add this required acceptance port:
+The instructor observer owns the acceptance transport. The adapter supplies one
+credential reference and one complete credential-free request. The observer
+attaches credentials, performs `fetch`, retains response bytes with
+`response.arrayBuffer()`, signs the observation, and only then decodes text.
 
 ```typescript
-export interface ProviderExchangeObservationPort {
+export type HeaderEntry = Readonly<{
+  name: string;
+  value: string;
+}>;
+
+export interface InstructorObservedGeminiTransportPort {
   invokesAndObserves(input: {
     readonly challengeNonce: string;
     readonly modelRequestAuthoritySha256: Sha256;
     readonly providerAuthoritySha256: Sha256;
     readonly connectorInvocationId: string;
-    readonly method: string;
-    readonly urlWithoutCredentials: string;
-    readonly requestHeadersWithoutCredentials:
-      Readonly<Record<string, string>>;
-    readonly requestBodyUtf8: Uint8Array;
-    readonly invoke: () => Promise<{
-      readonly status: number;
-      readonly responseHeaders:
-        Readonly<Record<string, string>>;
-      readonly responseBodyUtf8: Uint8Array;
+    readonly resolvedModel: string;
+    readonly credentialReferenceName: string;
+    readonly request: Readonly<{
+      method: "POST";
+      urlWithoutCredentials: string;
+      headersWithoutCredentials:
+        readonly HeaderEntry[];
+      bodyUtf8: Uint8Array;
+      timeoutMilliseconds: number;
     }>;
   }): Promise<{
-    readonly response: {
-      readonly status: number;
-      readonly headers:
-        Readonly<Record<string, string>>;
-      readonly bodyText: string;
-    };
+    readonly response: Readonly<{
+      status: number;
+      headers: readonly HeaderEntry[];
+      bodyUtf8: Uint8Array;
+      bodyText: string;
+    }>;
     readonly attestation:
       IndependentProviderExchangeAttestation;
   }>;
@@ -1001,53 +1062,238 @@ export interface ProviderExchangeObservationPort {
 
 export type GeminiAcceptanceAdapterDependencies =
   Readonly<{
-    http: HttpPort;
-    credentials: CredentialPort;
     clock: Clock;
     observationAuthority: Readonly<{
       challengeNonce: string;
       modelRequestAuthoritySha256: Sha256;
       providerAuthoritySha256: Sha256;
     }>;
-    providerExchangeObserver:
-      ProviderExchangeObservationPort;
+    transport:
+      InstructorObservedGeminiTransportPort;
   }>;
 ```
 
-Inside `createsGeminiAdapter(...).invokesProviderModel(context)`, the adapter
-calls `providerExchangeObserver.invokesAndObserves(...)` instead of calling
-`http(...)` directly. The adapter supplies:
+There is no independently supplied request byte array plus opaque invocation
+closure. `InstructorObservedGeminiTransportPort` transports the same
+`request.bodyUtf8` that it hashes.
 
-```text
-context.invocationId
-context.model.resolvedName
-the admitted challenge
-the exact mapped request body
-the sanitized request metadata
-the transport invocation closure
+Inside `invokesProviderModel(context)`, the adapter creates the request bytes
+once:
+
+```typescript
+const requestBodyUtf8 =
+  new TextEncoder().encode(
+    JSON.stringify(
+      mapsContextToGeminiRequest(context)
+    )
+  );
+
+const observed =
+  await dependencies.transport
+    .invokesAndObserves({
+      ...dependencies.observationAuthority,
+      connectorInvocationId:
+        context.invocationId,
+      resolvedModel:
+        context.model.resolvedName,
+      credentialReferenceName:
+        context.provider
+          .credentialReference.name,
+      request: {
+        method: "POST",
+        urlWithoutCredentials:
+          buildsGeminiEndpointUrl(context),
+        headersWithoutCredentials: [
+          {
+            name: "content-type",
+            value: "application/json"
+          }
+        ],
+        bodyUtf8: requestBodyUtf8,
+        timeoutMilliseconds:
+          context.executionPolicy
+            .timeoutMilliseconds
+      }
+    });
 ```
 
-The returned HTTP response continues through the existing Gemini testimony
-mapping. The returned signed attestation is delivered to the instructor
-acceptance harness through an instructor-owned evidence sink; it is not added
-to the normalized `ModelResponse`.
+The transport performs:
+
+```typescript
+const credential =
+  instructorCredentialPort.readsCredential(
+    input.credentialReferenceName
+  );
+
+const requestHeaders =
+  attachesGeminiCredential(
+    input.request.headersWithoutCredentials,
+    credential
+  );
+
+const response =
+  await fetch(
+    input.request.urlWithoutCredentials,
+    {
+      method: input.request.method,
+      headers: requestHeaders,
+      body: input.request.bodyUtf8,
+      signal: timeoutSignal(
+        input.request.timeoutMilliseconds
+      )
+    }
+  );
+
+const responseBodyUtf8 =
+  new Uint8Array(
+    await response.arrayBuffer()
+  );
+
+const responseHeaders =
+  readsHeaderEntries(response.headers);
+
+const attestation =
+  signsExactProviderExchange({
+    ...input,
+    responseStatus: response.status,
+    responseHeaders,
+    responseBodyUtf8
+  });
+
+return {
+  response: {
+    status: response.status,
+    headers: responseHeaders,
+    bodyUtf8: responseBodyUtf8,
+    bodyText:
+      new TextDecoder(
+        "utf-8",
+        { fatal: false }
+      ).decode(responseBodyUtf8)
+  },
+  attestation
+};
+```
+
+`bodyUtf8` means the exact application-body bytes supplied to `fetch` and the
+exact response-body bytes returned by `Response.arrayBuffer()`. It does not
+mean TLS records, HTTP framing, or transfer-encoding bytes.
+
+The returned decoded text continues through the existing Gemini testimony
+mapping. The signed attestation is delivered to the instructor acceptance
+harness through an instructor-owned evidence sink; it is not added to the
+normalized `ModelResponse`.
+
+### Header normalization
+
+Metadata headers are normalized before JCS hashing:
+
+```typescript
+const CREDENTIAL_HEADER_NAMES =
+  new Set([
+    "authorization",
+    "cookie",
+    "proxy-authorization",
+    "set-cookie",
+    "x-api-key",
+    "x-goog-api-key"
+  ]);
+
+function normalizesHeaders(
+  entries: readonly HeaderEntry[]
+): readonly Readonly<{
+  name: string;
+  values: readonly string[];
+}>[] {
+  return groupsByLowercaseName(
+    entries
+      .map(({ name, value }, index) => ({
+        name:
+          name.toLowerCase(),
+        value:
+          trimsOptionalWhitespace(value),
+        index
+      }))
+      .filter(
+        entry =>
+          !CREDENTIAL_HEADER_NAMES.has(
+            entry.name
+          )
+      )
+  )
+    .map(group => ({
+      name: group.name,
+      values:
+        group.entries
+          .sort(
+            (left, right) =>
+              left.index - right.index
+          )
+          .map(entry => entry.value)
+    }))
+    .sort(
+      (left, right) =>
+        left.name.localeCompare(
+          right.name,
+          "en"
+        )
+    );
+}
+```
+
+`trimsOptionalWhitespace` removes only leading and trailing ASCII space
+(`0x20`) and horizontal tab (`0x09`). It does not collapse internal
+whitespace. Duplicate values retain their original occurrence order within
+each lowercased name. Header-name groups are sorted by ascending Unicode code
+point; implementations must not use locale-dependent ordering.
+
+The pseudocode's `"en"` argument is illustrative only. The implementation must
+compare code points directly:
+
+```typescript
+left.name < right.name
+  ? -1
+  : left.name > right.name
+    ? 1
+    : 0
+```
+
+Credential query parameters are also excluded:
+
+```json
+[
+  "access_token",
+  "api_key",
+  "key"
+]
+```
+
+The observer rejects a credential found in any other URL component or
+non-excluded metadata field.
 
 The hashes have exact meanings:
 
 ```typescript
 providerRequestBodySha256 =
-  sha256(requestBodyUtf8);
+  sha256(input.request.bodyUtf8);
 
 providerResponseBodySha256 =
-  sha256(responseBodyUtf8);
+  sha256(response.bodyUtf8);
 
 providerRequestMetadataSha256 =
   sha256(
     utf8(
       rfc8785Jcs({
-        method,
-        urlWithoutCredentials,
-        headers: requestHeadersWithoutCredentials
+        method:
+          input.request.method,
+        urlWithoutCredentials:
+          input.request
+            .urlWithoutCredentials,
+        headers:
+          normalizesHeaders(
+            input.request
+              .headersWithoutCredentials
+          )
       })
     )
   );
@@ -1056,8 +1302,12 @@ providerResponseMetadataSha256 =
   sha256(
     utf8(
       rfc8785Jcs({
-        status,
-        headers: responseHeaders
+        status:
+          response.status,
+        headers:
+          normalizesHeaders(
+            response.headers
+          )
       })
     )
   );
@@ -1084,16 +1334,14 @@ The instructor bootstrap binds that port to the real connector:
 ```typescript
 const geminiAdapter =
   createsGeminiAdapter({
-    http: fetchHttpPort,
-    credentials: instructorCredentialPort,
     clock: instructorClock,
     observationAuthority: {
       challengeNonce,
       modelRequestAuthoritySha256,
       providerAuthoritySha256
     },
-    providerExchangeObserver:
-      providerExchangeObservationPort
+    transport:
+      instructorObservedGeminiTransportPort
   });
 
 const connectorDependencies:
@@ -1155,7 +1403,10 @@ ISSUED_UNUSED
   -> CONSUMED_BY_PROVIDER_ATTESTATION
 
 atomic consumption key:
-sha256 of the signed provider-attestation payload
+sha256(utf8(challengeNonce))
+
+registry value:
+sha256 of the consumed signed provider-attestation payload
 ```
 
 The nonce must be included in:
@@ -1194,10 +1445,34 @@ from `ISSUED_UNUSED` to `CONSUMED_BY_PROVIDER_ATTESTATION`. The terminal
 evaluator verifies that the nonce was consumed exactly once by the attestation
 being evaluated.
 
+The atomic compare-and-set is:
+
+```typescript
+const nonceKey =
+  sha256(utf8(challengeNonce));
+
+nonceRegistry.compareAndSet(
+  nonceKey,
+  {
+    state: "ISSUED_UNUSED"
+  },
+  {
+    state:
+      "CONSUMED_BY_PROVIDER_ATTESTATION",
+    consumedAttestationSha256:
+      providerAttestationArtifactSha256
+  }
+);
+```
+
+Two attestations for the same nonce address the same registry key. Only one can
+complete the transition.
+
 ## Complete SEJ inputs
 
-All four SEJs use the current projector's complete
-`prebound-member-delegation.v1` shape.
+All four primary responsibility SEJs use the current projector's complete
+`prebound-member-delegation.v1` shape. The terminal responsibility also has a
+separate conformance SEJ.
 
 ### Provider-exchange attestation SEJ
 
@@ -1388,7 +1663,80 @@ All four SEJs use the current projector's complete
 }
 ```
 
-### Complete-lineage SEJ
+### Complete-lineage primary SEJ
+
+```json
+{
+  "semanticExecutableType":
+    "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile":
+    "conveyor-stage-delegation.v1",
+  "bodyId":
+    "complete-bounded-model-submission-lineage-body",
+  "artifact": {
+    "relativePath":
+      "capabilities/prove-bounded-model-submission-provenance-under-independent-trust/scenarios/verify-one-complete-bounded-model-submission-lineage/verifies-complete-bounded-model-submission-lineage/complete-bounded-model-submission-lineage.ts"
+  },
+  "lineage": {
+    "featureId":
+      "prove-bounded-model-submission-provenance-under-independent-trust",
+    "scenarioId":
+      "verify-one-complete-bounded-model-submission-lineage",
+    "obligationId":
+      "establish-one-complete-bounded-model-submission-lineage",
+    "expectationId":
+      "expect-one-complete-bounded-model-submission-lineage",
+    "responsibilityId":
+      "verifies-complete-bounded-model-submission-lineage",
+    "signalId":
+      "bounded-model-submission-acceptance-disposition",
+    "semanticOperationId":
+      "evaluate-complete-bounded-model-submission-lineage"
+  },
+  "projection": {
+    "functionName":
+      "verifiesCompleteBoundedModelSubmissionLineage",
+    "contextParameter": {
+      "name": "context",
+      "typeReference":
+        "VerifiesCompleteBoundedModelSubmissionLineageContext"
+    },
+    "resultTypeReference":
+      "BoundedModelSubmissionAcceptanceDisposition",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "lineage"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+This SEJ projects:
+
+```typescript
+export async function verifiesCompleteBoundedModelSubmissionLineage(
+  context: VerifiesCompleteBoundedModelSubmissionLineageContext
+): Promise<BoundedModelSubmissionAcceptanceDisposition> {
+  return await context.evaluate(context.lineage);
+}
+```
+
+### Complete-lineage conformance SEJ
 
 ```json
 {
