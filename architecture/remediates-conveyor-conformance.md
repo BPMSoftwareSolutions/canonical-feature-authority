@@ -278,6 +278,14 @@ course pins the admitted commit and executable digest, a real signed
 connector-produced semantic artifact drives a course pilot, and the supported
 semantic vocabulary covers every required course body.
 
+**Live pilot result:** the external run at
+`C:/lab/runs/embedded-green-pilot-20260728-1430` now drives a real
+Gemini-produced semantic artifact through signed semantic-to-AST and
+AST-to-TypeScript transitions, standalone compilation, one-edge execution, a
+GREEN terminal signal, and a signed final lineage projection. R-03 remains open
+for pinning and full vocabulary/course coverage; the pilot does not erase those
+exit conditions.
+
 Enhance `declarative-typescript-body-projector` only where the capability is
 generic. It may understand structural concepts such as:
 

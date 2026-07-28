@@ -40,6 +40,7 @@ The child contains:
 
 - the canonical digest of its immediate parent;
 - the transitive lineage-root digest;
+- one `provenance-sha256` committing to the complete canonical lineage graph;
 - the identity, version, and executable digest of the transformer;
 - the child's canonical payload digest;
 - the signing key ID; and
@@ -63,6 +64,54 @@ These mechanisms have different jobs:
 A hash alone is not enough. Anyone who changes a parent can calculate a new
 hash. Every admitted transition therefore requires a signature verifiable
 under an instructor-controlled trust authority.
+
+## The projected body's provenance hash
+
+The projected body's `provenance-sha256` is not another name for its AST hash.
+It is the digest of the complete canonical lineage graph that produced the
+body.
+
+That graph contains the actual content digest and relative path of:
+
+- reviewed feature authority;
+- scenario authority;
+- obligation authority;
+- expectation authority;
+- responsibility authority;
+- signal authority;
+- semantic-edge binding;
+- model request authority;
+- provider authority;
+- model request and response testimony;
+- semantic executable authority;
+- semantic-to-AST transformer identity and loaded executable digest;
+- AST authority;
+- AST-to-TypeScript projector identity and loaded executable digest;
+- projector trust-key authority;
+- executable body payload; and
+- every signed parent-child edge between those nodes.
+
+Conceptually:
+
+```text
+provenance-sha256 =
+  SHA-256(canonicalize(complete-projection-lineage-graph))
+```
+
+The lineage graph uses the executable payload's `body-sha256`, not the bytes of
+the generated header that will later contain `provenance-sha256`. This avoids a
+self-referential hash:
+
+```text
+body-sha256        = hash(executable TypeScript payload)
+provenance-sha256  = hash(complete lineage graph, including body-sha256)
+signature          = sign(provenance-sha256 + body-sha256 + projector identity)
+```
+
+The body header contains the lineage graph's relative path and
+`provenance-sha256`. The scenario's single lineage projection contains the
+actual nodes and edges. It is a navigational authority projection, not a
+detached receipt and not a duplicate of the underlying artifacts.
 
 ## Canonical hashing rule
 
@@ -196,7 +245,20 @@ The generated body header is its embedded receipt:
 ```text
 // @generated
 // provenance-schema: embedded-provenance.v1
+// feature-id: project-course-authority-through-a-governed-conveyor
+// scenario-id: obtain-one-bounded-model-submission
+// obligation-id: obtain-one-normalized-model-testimony
+// expectation-id: expect-one-model-submission-testimony
+// responsibility-id: obtains-bounded-model-submission
+// signal-id: bounded-model-submission
+// semantic-operation-id: obtain-bounded-model-submission
 // lineage-root-sha256: sha256:REVIEWED_INTENT
+// provenance-path: capabilities/.../projection-lineage.index.json
+// provenance-sha256: sha256:COMPLETE_CANONICAL_LINEAGE_GRAPH
+// model-request-authority-sha256: sha256:MODEL_REQUEST
+// provider-authority-sha256: sha256:PROVIDER_AUTHORITY
+// model-response-sha256: sha256:MODEL_RESPONSE
+// sej-authority-sha256: sha256:SEMANTIC_EXECUTION_JUNCTION
 // semantic-authority-sha256: sha256:SEMANTIC_PAYLOAD
 // ast-authority-sha256: sha256:IMMEDIATE_AST_PARENT
 // projector-id: declarative-typescript-body-projector
@@ -212,7 +274,11 @@ The signature covers:
 
 ```text
 provenance schema
++ feature/scenario/obligation/expectation/responsibility/signal identities
++ semantic operation identity
 + lineage root digest
++ complete lineage graph path and digest
++ model request, provider authority, model response, and SEJ digests
 + semantic authority digest
 + AST authority digest
 + projector identity/version/executable digest
@@ -222,7 +288,34 @@ provenance schema
 
 The immediate authoritative parent is the AST. The semantic and root digests
 are repeated in the header as transitive navigation safeguards and must equal
-the values inside the AST envelope.
+the values inside the AST envelope. The `provenance-sha256` is the stronger
+whole-chain commitment: it covers every authority layer, the model testimony,
+both projection mechanisms, their executable digests, and the executable body
+payload.
+
+### Required identity and artifact nodes
+
+The canonical lineage graph must contain these nodes for each projected body:
+
+| Layer | Required identity | Required artifact evidence |
+|---|---|---|
+| Feature | `featureId` | schema ID, path, canonical content hash, reviewer signature |
+| Scenario | `scenarioId` | schema ID, path, canonical content hash, parent feature hash |
+| Obligation | `obligationId` | schema ID, path, canonical content hash, parent scenario hash |
+| Expectation | `expectationId` | schema ID, path, canonical content hash, obligation hash |
+| Responsibility | `responsibilityId` | schema ID, path, canonical content hash, obligation hash |
+| Signal | `signalId` | schema ID, path, canonical content hash, responsibility hash |
+| Semantic edge | `semanticOperationId` | binding path, canonical content hash, responsibility and signal hashes |
+| SEJ | SEJ authority type | path, canonical content hash, semantic-edge hash |
+| Model request | request ID | path, canonical content hash, provider-authority hash |
+| Model testimony | provider request ID | request hash, response hash, provider/model identity, connector signature |
+| Semantic executable | body ID and role | path, canonical content hash, SEJ and model-testimony hashes |
+| AST authority | projection ID | path, canonical payload hash, semantic-authority hash, projector signature |
+| TypeScript body | projection ID | path, executable payload hash, AST hash, projector signature |
+
+The same IDs are repeated in the human-readable header so a student can orient
+without opening another file. The `provenance-sha256` prevents those displayed
+IDs from drifting away from the complete hashed graph.
 
 Current examples:
 
@@ -283,6 +376,9 @@ The index:
 - has its own parent digest, payload digest, projector identity, and signature;
 - is regenerated solely from the embedded artifact envelopes; and
 - becomes RED if any link is missing, duplicated, untrusted, or inconsistent.
+
+Its canonical payload digest is the `provenance-sha256` embedded in each body
+that it governs.
 
 The course already has a projected lineage responsibility:
 
@@ -435,11 +531,63 @@ projector path, parent/root linkage, semantic-parent substitution rejection, and
 AST-payload substitution rejection. The projector's complete `npm run prove`
 gate passes, including governance registration for both new bodies.
 
-This does **not** turn the course chain GREEN. The implementation is still an
-uncommitted projector working tree, its commit and executable digest are not yet
-pinned into this repository, and no real connector-produced signed semantic
-artifact exists to drive the first course pilot. Creating a fixture parent and
-calling it live would repeat the provenance error this contract forbids.
+At that stage this did **not** turn the course chain GREEN: the implementation
+was still an uncommitted projector working tree, its commit and executable
+digest were not pinned into this repository, and no real connector-produced
+signed semantic artifact existed. The following live pilot closes that one
+demonstration gap without changing the course-wide disposition.
+
+### Live embedded-provenance pilot — GREEN
+
+On 2026-07-28, an external instructor harness completed one real greeting
+scenario through the new boundaries at
+`C:/lab/runs/embedded-green-pilot-20260728-1430`.
+
+The admitted run contains:
+
+1. [`01-reviewed-intent.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/01-reviewed-intent.json);
+2. [`02-model-request.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/02-model-request.json);
+3. [`03-model-semantic.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/03-model-semantic.json);
+4. [`04-typescript-ast.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/04-typescript-ast.json);
+5. [`generated/greets-student.ts`](C:/lab/runs/embedded-green-pilot-20260728-1430/generated/greets-student.ts);
+6. [`05-runtime-composition.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/05-runtime-composition.json);
+7. [`06-expectation.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/06-expectation.json);
+8. [`07-terminal-signal.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/07-terminal-signal.json); and
+9. [`08-final-lineage.json`](C:/lab/runs/embedded-green-pilot-20260728-1430/08-final-lineage.json).
+
+Gemini Flash invocation
+`invocation-42395750-991a-4dfa-ba42-76c457a39fac` produced the semantic
+authority with 322 input tokens, 242 output tokens, and 1,748 provider-reported
+total tokens. The provider did not return a distinct request ID, so the
+connector invocation ID is explicitly retained as the correlation ID; the
+artifact does not claim provider-signed testimony.
+
+The generated body hash is
+`sha256:ccb5132fac95ab567d556cc075721e220b11df8ac62e91c769528044603475a0`.
+Independent checks established:
+
+- all eight JSON envelopes validate against their declared schemas;
+- all eight JSON signatures verify under the declared trust identities;
+- semantic-to-AST and AST-to-TypeScript replay conform;
+- the TypeScript body compiles standalone;
+- independent execution invokes `resolve-student-greeting` exactly once; and
+- the observed signal is `GREEN` with value `Hello, Ada!`.
+
+The final lineage payload hash is
+`sha256:b89001868e75149b48ee38fa155d871abb63bd7a986ccd6250c00244a3e16215`
+and declares `GREEN_COMPLETE_EMBEDDED_PROVENANCE`.
+
+Earlier live attempts remain evidence rather than being overwritten:
+one altered `signalId` and omitted the semantic declaration; the next emitted
+an empty declaration object. Exact canonical admission rejected both before AST
+projection. A later GREEN mechanics run preceded repository pinning and is not
+the durable pilot named above.
+
+This is a **pilot GREEN**, not course-wide GREEN. The pilot uses `any` at its
+injected context and result boundary to stay within Gemini's currently admitted
+single-function structured-output profile. Concrete projected course contracts,
+reviewed implementation commits, course-owned composition, and migration of all
+declared bodies remain required.
 
 ### What is demonstrated
 

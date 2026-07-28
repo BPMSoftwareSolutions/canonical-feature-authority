@@ -32,11 +32,11 @@
   ],
   "remainingRedGaps": [
     "no instructor-signed reviewed intent instance",
-    "no connector-produced embedded semantic artifact",
-    "semantic-to-AST replay implementation exists only in an uncommitted, unpinned projector working tree and has not consumed a real connector-produced semantic artifact",
-    "no v1 embedded TypeScript header implementation",
+    "one external live connector-produced embedded semantic pilot exists, but no course-owned pinned semantic artifact tree exists",
+    "semantic-to-AST replay implementation and one live pilot exist only in an uncommitted, unpinned projector working tree",
+    "v1 embedded TypeScript header implementation exists only in an uncommitted, unpinned projector working tree",
     "no signed runtime composition authority",
     "no real thirteen-scenario terminal signals",
-    "no final signed lineage projection"
+    "one external pilot lineage projection exists, but no complete course lineage projection exists"
   ]
 }
