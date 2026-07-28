@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "projects-ast-authority-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/projects-ast-authority.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "project-one-admitted-ast-authority",
+    "obligationId": "derive-one-lossless-conformant-ast-authority",
+    "expectationId": "expect-one-signed-ast-authority",
+    "responsibilityId": "projects-ast-authority",
+    "signalId": "ast-authority-projection",
+    "semanticOperationId": "project-ast-authority"
+  },
+  "projection": {
+    "functionName": "projectsAstAuthority",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProjectsAstAuthorityContext"
+    },
+    "resultTypeReference": "AstAuthorityProjectionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "project",
+      "argument": {
+        "receiver": "context",
+        "member": "semanticAuthority"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

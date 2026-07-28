@@ -1,0 +1,9 @@
+{
+  "authorityType": "responsibility.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "obtain-one-bounded-model-submission",
+  "obligationId": "obtain-one-normalized-model-testimony",
+  "responsibilityId": "obtains-bounded-model-submission",
+  "statement": "the request is executed by the generic LLM connector",
+  "semanticOperationId": "obtain-bounded-model-submission"
+}

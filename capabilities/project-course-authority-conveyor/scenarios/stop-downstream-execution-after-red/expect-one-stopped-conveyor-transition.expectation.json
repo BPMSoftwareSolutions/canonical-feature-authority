@@ -1,0 +1,10 @@
+{
+  "authorityType": "scenario-expectation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "stop-downstream-execution-after-red",
+  "obligationId": "authorize-no-downstream-stage-after-red",
+  "expectationId": "expect-one-stopped-conveyor-transition",
+  "outcome": "no downstream stage is authorized",
+  "expectedResponsibilityId": "resolves-red-conveyor-transition",
+  "expectedSignalId": "red-conveyor-stop"
+}

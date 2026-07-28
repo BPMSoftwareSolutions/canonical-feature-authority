@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-runs-evaluates-model-submission-conformance-from-1569eca83c726e4be2ebcc6dddded761adaeedd1989697be005166305735d79e",
+  "bodyId": "runs-evaluates-model-submission-conformance-body",
+  "structuralProfile": "conformance-delegation.v1",
+  "sourceSemanticAuthority": "projects-runs-evaluates-model-submission-conformance.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:1569eca83c726e4be2ebcc6dddded761adaeedd1989697be005166305735d79e",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/runs-evaluates-model-submission-conformance.ts"
+  },
+  "projection": {
+    "functionName": "runsEvaluatesModelSubmissionConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsEvaluatesModelSubmissionConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

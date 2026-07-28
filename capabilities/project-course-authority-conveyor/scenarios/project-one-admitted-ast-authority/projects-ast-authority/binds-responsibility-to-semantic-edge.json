@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "projects-ast-authority",
+  "semanticOperationId": "project-ast-authority",
+  "contextOperationMember": "project",
+  "contextInputMember": "semanticAuthority",
+  "signalId": "ast-authority-projection"
+}

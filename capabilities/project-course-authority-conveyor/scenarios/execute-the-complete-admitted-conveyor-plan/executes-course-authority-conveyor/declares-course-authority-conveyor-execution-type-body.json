@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "course-authority-conveyor-execution-type-body",
+  "scenarioId": "execute-the-complete-admitted-conveyor-plan",
+  "obligationId": "execute-one-complete-admitted-conveyor-plan",
+  "responsibilityId": "executes-course-authority-conveyor",
+  "signalId": "course-authority-conveyor-execution",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/course-authority-conveyor-execution.type.ts"
+  },
+  "semanticExecutableAuthority": "projects-course-authority-conveyor-execution-type.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:312653fd5128fbf86fa972d6dba04c4c93f47905a5f4bb0140d7dc46b48f2379",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

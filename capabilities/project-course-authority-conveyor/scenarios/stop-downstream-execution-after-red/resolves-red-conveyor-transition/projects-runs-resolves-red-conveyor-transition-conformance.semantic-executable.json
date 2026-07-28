@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "conformance",
+  "structuralProfile": "conformance-delegation.v1",
+  "bodyId": "runs-resolves-red-conveyor-transition-conformance-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/runs-resolves-red-conveyor-transition-conformance.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "stop-downstream-execution-after-red",
+    "obligationId": "authorize-no-downstream-stage-after-red",
+    "expectationId": "expect-one-stopped-conveyor-transition",
+    "responsibilityId": "resolves-red-conveyor-transition",
+    "signalId": "red-conveyor-stop",
+    "semanticOperationId": "resolve-red-conveyor-transition"
+  },
+  "projection": {
+    "functionName": "runsResolvesRedConveyorTransitionConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsResolvesRedConveyorTransitionConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

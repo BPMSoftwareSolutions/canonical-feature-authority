@@ -1,0 +1,412 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/lossless-typescript-ast/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:9e8eec601b0b66a31d7c5fac7fd7d478985404dea84c8d34f981b9b41cf31a9e"
+  },
+  "projectionId": "project-evaluates-resumable-authority-from-d87b298a22135ebfe1375cb52026e24b935f654da2a1d8fbb17144be6fd26f6a",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/evaluates-resumable-authority.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "resume-only-revalidated-admitted-authority",
+    "obligationId": "classify-one-prior-artifact-for-resumption",
+    "responsibilityId": "evaluates-resumable-authority",
+    "signalId": "authority-resumability"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "tokens": [
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "TypeKeyword",
+        "text": "type"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "Identifier",
+        "text": "EvaluatesResumableAuthorityContext"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "Identifier",
+        "text": "AuthorityResumabilitySignal"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FromKeyword",
+        "text": "from"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"./authority-resumability.type.js\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ExportKeyword",
+        "text": "export"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "AsyncKeyword",
+        "text": "async"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FunctionKeyword",
+        "text": "function"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "evaluatesResumableAuthority"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "Identifier",
+        "text": "context"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "EvaluatesResumableAuthorityContext"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "Promise"
+      },
+      {
+        "kind": "FirstBinaryOperator",
+        "text": "<"
+      },
+      {
+        "kind": "Identifier",
+        "text": "AuthorityResumabilitySignal"
+      },
+      {
+        "kind": "GreaterThanToken",
+        "text": ">"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReturnKeyword",
+        "text": "return"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "AwaitKeyword",
+        "text": "await"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "context"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "evaluate"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "context"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "candidate"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      }
+    ],
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-projection-subject-discovery-type-from-76279e1c1167a332c99286fd06428cdfa2fe40a9593ad4d63805b44d1af1896d",
+  "bodyId": "projection-subject-discovery-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-projection-subject-discovery-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:76279e1c1167a332c99286fd06428cdfa2fe40a9593ad4d63805b44d1af1896d",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/projection-subject-discovery.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "DiscoversProjectionSubjectsContext",
+      "ProvesDiscoversProjectionSubjectsExpectationContext",
+      "RunsDiscoversProjectionSubjectsConformanceContext",
+      "ProjectionSubjectDiscoverySignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

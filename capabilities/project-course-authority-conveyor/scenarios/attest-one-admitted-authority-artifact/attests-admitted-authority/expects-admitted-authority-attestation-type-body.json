@@ -1,0 +1,11 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "admitted-authority-attestation-type-body",
+  "scenarioId": "attest-one-admitted-authority-artifact",
+  "obligationId": "cryptographically-bind-one-admitted-artifact",
+  "expectationId": "expect-one-signed-authority-artifact",
+  "responsibilityId": "attests-admitted-authority",
+  "signalId": "admitted-authority-attestation",
+  "bodyCount": 1,
+  "structuralProfile": "conveyor-context-declaration.v1"
+}

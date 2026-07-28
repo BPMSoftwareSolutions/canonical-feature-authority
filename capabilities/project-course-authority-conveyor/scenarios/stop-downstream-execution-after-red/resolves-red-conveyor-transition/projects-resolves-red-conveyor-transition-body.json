@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-resolves-red-conveyor-transition-from-c2a38bf906964fe0666179ff28581e246ce8e9c64f3c5c37b281f155b6f80763",
+  "bodyId": "resolves-red-conveyor-transition-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-resolves-red-conveyor-transition.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:c2a38bf906964fe0666179ff28581e246ce8e9c64f3c5c37b281f155b6f80763",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/resolves-red-conveyor-transition.ts"
+  },
+  "projection": {
+    "functionName": "resolvesRedConveyorTransition",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ResolvesRedConveyorTransitionContext"
+    },
+    "resultTypeReference": "RedConveyorStopSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "resolve",
+      "argument": {
+        "receiver": "context",
+        "member": "disposition"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "evaluates-projected-body",
+  "semanticOperationId": "evaluate-projected-body",
+  "contextOperationMember": "evaluate",
+  "contextInputMember": "projectedBody",
+  "signalId": "projected-body-conformance"
+}

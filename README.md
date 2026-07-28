@@ -10,6 +10,10 @@ attestation: projector identity, trusted-key identity, authority hash, body
 hash, and signature. There is no detached projection receipt to lose or
 misassociate. `npm run check:bodies` verifies the authority, exact body,
 signature, and trusted projector connection for all code bodies.
+`npm run prove:lifecycle` goes further: it executes the runtime-bearing
+conveyor bodies, deletes every authority-resolved projected file, regenerates
+all of them, requires byte-for-byte equality, rebuilds, re-executes, and runs
+the course tests.
 
 ## Who this is for
 
@@ -110,4 +114,4 @@ This is an authority-first course and executable reference:
 - New numbered lessons should trace a concrete example through the full canonical path, with explicit artifact tags and clearly stated ownership boundaries at each layer.
 - New scenarios or capabilities under `capabilities/` should follow the exact 17-file-per-responsibility pattern established by `validate-feature-scenario-atomicity/reject-a-scenario-with-multiple-obligations/` — every file real and self-consistent, not a placeholder.
 - Never edit a projected `.ts` file as the durable change. Change its authority,
-  project it, and require `npm run prove:projection` plus `npm test` to pass.
+  project it, and require `npm run prove:lifecycle` to pass.

@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "obtains-bounded-model-submission",
+  "semanticOperationId": "obtain-bounded-model-submission",
+  "contextOperationMember": "obtain",
+  "contextInputMember": "request",
+  "signalId": "bounded-model-submission"
+}

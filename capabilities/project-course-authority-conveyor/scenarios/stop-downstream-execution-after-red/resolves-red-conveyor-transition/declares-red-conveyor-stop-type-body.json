@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "red-conveyor-stop-type-body",
+  "scenarioId": "stop-downstream-execution-after-red",
+  "obligationId": "authorize-no-downstream-stage-after-red",
+  "responsibilityId": "resolves-red-conveyor-transition",
+  "signalId": "red-conveyor-stop",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/red-conveyor-stop.type.ts"
+  },
+  "semanticExecutableAuthority": "projects-red-conveyor-stop-type.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:cd27c890d5fd4b75b75be08efcaf0e884f65efe14505cc19e717d5798bcff4cd",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

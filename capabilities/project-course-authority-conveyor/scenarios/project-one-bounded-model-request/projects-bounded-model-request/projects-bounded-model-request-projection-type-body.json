@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-bounded-model-request-projection-type-from-1f7d7e7b5f831d754997f81d734d98b1e10e7e80dcf6c893997e00245d47f4c4",
+  "bodyId": "bounded-model-request-projection-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-bounded-model-request-projection-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:1f7d7e7b5f831d754997f81d734d98b1e10e7e80dcf6c893997e00245d47f4c4",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/bounded-model-request-projection.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "ProjectsBoundedModelRequestContext",
+      "ProvesProjectsBoundedModelRequestExpectationContext",
+      "RunsProjectsBoundedModelRequestConformanceContext",
+      "BoundedModelRequestProjectionSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

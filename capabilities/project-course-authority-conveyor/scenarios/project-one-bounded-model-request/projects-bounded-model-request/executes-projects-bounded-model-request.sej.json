@@ -1,0 +1,25 @@
+{
+  "semanticAuthorityType": "prebound-member-delegation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "project-one-bounded-model-request",
+  "obligationId": "produce-one-complete-model-request",
+  "expectationId": "expect-one-bounded-model-request",
+  "responsibilityId": "projects-bounded-model-request",
+  "signalId": "bounded-model-request-projection",
+  "semanticOperationId": "project-bounded-model-request",
+  "execution": {
+    "contextParameter": "context",
+    "operationMember": "project",
+    "inputMember": "stage",
+    "awaited": true,
+    "returnOperationResult": true
+  },
+  "forbidden": [
+    "branching",
+    "iteration",
+    "dto-construction",
+    "semantic-literals",
+    "direct-mechanism-access",
+    "local-error-policy"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "stop-downstream-execution-after-red",
+  "given": "one conveyor stage has emitted a RED disposition",
+  "when": "the conveyor transition is resolved",
+  "then": "no downstream stage is authorized",
+  "independentObligationCount": 1
+}

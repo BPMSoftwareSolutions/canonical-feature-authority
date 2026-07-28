@@ -1,0 +1,57 @@
+{
+  "indexType": "scenario-projection-lineage.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "execute-the-complete-admitted-conveyor-plan",
+  "obligationId": "execute-one-complete-admitted-conveyor-plan",
+  "expectationId": "expect-one-terminal-course-conveyor-signal",
+  "responsibilityId": "executes-course-authority-conveyor",
+  "signalId": "course-authority-conveyor-execution",
+  "semanticOperationId": "execute-course-authority-conveyor",
+  "projectedBodyCount": 4,
+  "entries": [
+    {
+      "role": "primary",
+      "bodyId": "executes-course-authority-conveyor-body",
+      "semanticAuthority": "projects-executes-course-authority-conveyor.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:0ce67f6cd9bf94156891d2c861d57e6ed342804e612881497ba0ebbfcbf0c507",
+      "bodyExpectationAuthority": "expects-executes-course-authority-conveyor-body.json",
+      "fileBodyAuthority": "declares-executes-course-authority-conveyor-body.json",
+      "typescriptProjectionAuthority": "projects-executes-course-authority-conveyor-body.json",
+      "astAuthority": "executes-course-authority-conveyor.ts.ast.authority.json",
+      "projectedBody": "executes-course-authority-conveyor.ts"
+    },
+    {
+      "role": "type",
+      "bodyId": "course-authority-conveyor-execution-type-body",
+      "semanticAuthority": "projects-course-authority-conveyor-execution-type.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:312653fd5128fbf86fa972d6dba04c4c93f47905a5f4bb0140d7dc46b48f2379",
+      "bodyExpectationAuthority": "expects-course-authority-conveyor-execution-type-body.json",
+      "fileBodyAuthority": "declares-course-authority-conveyor-execution-type-body.json",
+      "typescriptProjectionAuthority": "projects-course-authority-conveyor-execution-type-body.json",
+      "astAuthority": "course-authority-conveyor-execution.type.ts.ast.authority.json",
+      "projectedBody": "course-authority-conveyor-execution.type.ts"
+    },
+    {
+      "role": "expectation",
+      "bodyId": "executes-course-authority-conveyor-expectation-body",
+      "semanticAuthority": "projects-executes-course-authority-conveyor-expectation.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:8655a3c8cabcf87a7e9e85997234458d5163c68368bf20103adcd8557921e485",
+      "bodyExpectationAuthority": "expects-executes-course-authority-conveyor-expectation-body.json",
+      "fileBodyAuthority": "declares-executes-course-authority-conveyor-expectation-body.json",
+      "typescriptProjectionAuthority": "projects-executes-course-authority-conveyor-expectation-body.json",
+      "astAuthority": "executes-course-authority-conveyor.expectation.ts.ast.authority.json",
+      "projectedBody": "executes-course-authority-conveyor.expectation.ts"
+    },
+    {
+      "role": "conformance",
+      "bodyId": "runs-executes-course-authority-conveyor-conformance-body",
+      "semanticAuthority": "projects-runs-executes-course-authority-conveyor-conformance.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:242ca2d30944c7ce17b7923255a7389a3c69286c07f4a43ad22bf0b85e79720b",
+      "bodyExpectationAuthority": "expects-runs-executes-course-authority-conveyor-conformance-body.json",
+      "fileBodyAuthority": "declares-runs-executes-course-authority-conveyor-conformance-body.json",
+      "typescriptProjectionAuthority": "projects-runs-executes-course-authority-conveyor-conformance-body.json",
+      "astAuthority": "runs-executes-course-authority-conveyor-conformance.ts.ast.authority.json",
+      "projectedBody": "runs-executes-course-authority-conveyor-conformance.ts"
+    }
+  ]
+}

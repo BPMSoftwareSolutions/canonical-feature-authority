@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "invoke-the-trusted-typescript-projector",
+  "given": "one signed AST authority names an authorized TypeScript target",
+  "when": "the deterministic projector is invoked",
+  "then": "one projector-signed TypeScript body is emitted",
+  "independentObligationCount": 1
+}

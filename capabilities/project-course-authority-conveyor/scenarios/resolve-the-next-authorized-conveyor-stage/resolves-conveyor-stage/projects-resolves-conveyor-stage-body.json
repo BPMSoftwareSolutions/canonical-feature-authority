@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-resolves-conveyor-stage-from-7360d9863f789c8889459a519f496ffda115c061d102684a8473001a96145e77",
+  "bodyId": "resolves-conveyor-stage-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-resolves-conveyor-stage.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:7360d9863f789c8889459a519f496ffda115c061d102684a8473001a96145e77",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/resolves-conveyor-stage.ts"
+  },
+  "projection": {
+    "functionName": "resolvesConveyorStage",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ResolvesConveyorStageContext"
+    },
+    "resultTypeReference": "ConveyorStageTransitionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "resolve",
+      "argument": {
+        "receiver": "context",
+        "member": "plan"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

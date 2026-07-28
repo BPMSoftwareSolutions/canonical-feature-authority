@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "projects-bounded-model-request",
+  "semanticOperationId": "project-bounded-model-request",
+  "contextOperationMember": "project",
+  "contextInputMember": "stage",
+  "signalId": "bounded-model-request-projection"
+}

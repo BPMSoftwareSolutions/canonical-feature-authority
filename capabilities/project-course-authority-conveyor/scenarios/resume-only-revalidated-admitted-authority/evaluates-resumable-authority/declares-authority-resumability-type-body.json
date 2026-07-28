@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "authority-resumability-type-body",
+  "scenarioId": "resume-only-revalidated-admitted-authority",
+  "obligationId": "classify-one-prior-artifact-for-resumption",
+  "responsibilityId": "evaluates-resumable-authority",
+  "signalId": "authority-resumability",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/authority-resumability.type.ts"
+  },
+  "semanticExecutableAuthority": "projects-authority-resumability-type.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:917f1bd6d52f58e2be0698a08d1a77330b85e98cfc437f63d535c7b95010f8f4",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

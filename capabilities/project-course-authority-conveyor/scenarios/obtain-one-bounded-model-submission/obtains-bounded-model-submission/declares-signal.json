@@ -1,0 +1,14 @@
+{
+  "authorityType": "signal.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "obtain-one-bounded-model-submission",
+  "obligationId": "obtain-one-normalized-model-testimony",
+  "responsibilityId": "obtains-bounded-model-submission",
+  "signalId": "bounded-model-submission",
+  "outcome": "one normalized model-submission testimony is emitted",
+  "dispositions": [
+    "GREEN",
+    "RED",
+    "UNRESOLVED"
+  ]
+}

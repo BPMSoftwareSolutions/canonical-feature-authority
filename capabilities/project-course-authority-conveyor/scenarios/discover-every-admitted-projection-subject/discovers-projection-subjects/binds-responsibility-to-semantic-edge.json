@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "discovers-projection-subjects",
+  "semanticOperationId": "discover-projection-subjects",
+  "contextOperationMember": "discover",
+  "contextInputMember": "authority",
+  "signalId": "projection-subject-discovery"
+}

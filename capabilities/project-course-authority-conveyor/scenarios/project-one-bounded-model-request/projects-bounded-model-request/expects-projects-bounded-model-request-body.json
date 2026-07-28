@@ -1,0 +1,11 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "projects-bounded-model-request-body",
+  "scenarioId": "project-one-bounded-model-request",
+  "obligationId": "produce-one-complete-model-request",
+  "expectationId": "expect-one-bounded-model-request",
+  "responsibilityId": "projects-bounded-model-request",
+  "signalId": "bounded-model-request-projection",
+  "bodyCount": 1,
+  "structuralProfile": "conveyor-stage-delegation.v1"
+}

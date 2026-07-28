@@ -1,0 +1,25 @@
+{
+  "semanticAuthorityType": "prebound-member-delegation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "evaluate-a-model-submission-for-admission",
+  "obligationId": "resolve-one-submission-admission",
+  "expectationId": "expect-one-admission-disposition",
+  "responsibilityId": "evaluates-model-submission",
+  "signalId": "model-submission-admission",
+  "semanticOperationId": "evaluate-model-submission",
+  "execution": {
+    "contextParameter": "context",
+    "operationMember": "evaluate",
+    "inputMember": "submission",
+    "awaited": true,
+    "returnOperationResult": true
+  },
+  "forbidden": [
+    "branching",
+    "iteration",
+    "dto-construction",
+    "semantic-literals",
+    "direct-mechanism-access",
+    "local-error-policy"
+  ]
+}

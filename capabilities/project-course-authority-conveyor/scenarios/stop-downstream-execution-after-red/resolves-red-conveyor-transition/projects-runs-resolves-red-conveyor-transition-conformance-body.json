@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-runs-resolves-red-conveyor-transition-conformance-from-0e0c8a196b0a40f7171ee1e53d99f5359980726fdf167c67f2beef03123b9051",
+  "bodyId": "runs-resolves-red-conveyor-transition-conformance-body",
+  "structuralProfile": "conformance-delegation.v1",
+  "sourceSemanticAuthority": "projects-runs-resolves-red-conveyor-transition-conformance.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:0e0c8a196b0a40f7171ee1e53d99f5359980726fdf167c67f2beef03123b9051",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/runs-resolves-red-conveyor-transition-conformance.ts"
+  },
+  "projection": {
+    "functionName": "runsResolvesRedConveyorTransitionConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsResolvesRedConveyorTransitionConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

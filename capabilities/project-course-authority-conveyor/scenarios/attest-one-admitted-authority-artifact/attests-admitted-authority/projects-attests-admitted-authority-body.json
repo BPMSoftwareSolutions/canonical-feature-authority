@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-attests-admitted-authority-from-685e217fe9464d4f75b1ce9659b729dc42b2c4a9fc62a66fd8a7d3fda4fae876",
+  "bodyId": "attests-admitted-authority-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-attests-admitted-authority.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:685e217fe9464d4f75b1ce9659b729dc42b2c4a9fc62a66fd8a7d3fda4fae876",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/attests-admitted-authority.ts"
+  },
+  "projection": {
+    "functionName": "attestsAdmittedAuthority",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "AttestsAdmittedAuthorityContext"
+    },
+    "resultTypeReference": "AdmittedAuthorityAttestationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "attest",
+      "argument": {
+        "receiver": "context",
+        "member": "admitted"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

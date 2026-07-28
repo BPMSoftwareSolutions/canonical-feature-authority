@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "evaluates-resumable-authority",
+  "semanticOperationId": "evaluate-resumable-authority",
+  "contextOperationMember": "evaluate",
+  "contextInputMember": "candidate",
+  "signalId": "authority-resumability"
+}

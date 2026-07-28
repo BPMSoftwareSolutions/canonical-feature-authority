@@ -1,0 +1,10 @@
+{
+  "authorityType": "scenario-expectation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "resolve-the-next-authorized-conveyor-stage",
+  "obligationId": "identify-one-authorized-next-stage",
+  "expectationId": "expect-one-stage-transition",
+  "outcome": "one authorized stage-transition signal is emitted",
+  "expectedResponsibilityId": "resolves-conveyor-stage",
+  "expectedSignalId": "conveyor-stage-transition"
+}

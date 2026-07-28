@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-projects-bounded-model-request-expectation-from-905c9dc2c4fae91e33f3cf82878cbace952e079e9a9b8263478b11b1c6543287",
+  "bodyId": "projects-bounded-model-request-expectation-body",
+  "structuralProfile": "expectation-execution.v1",
+  "sourceSemanticAuthority": "projects-projects-bounded-model-request-expectation.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:905c9dc2c4fae91e33f3cf82878cbace952e079e9a9b8263478b11b1c6543287",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/projects-bounded-model-request.expectation.ts"
+  },
+  "projection": {
+    "functionName": "provesProjectsBoundedModelRequestExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesProjectsBoundedModelRequestExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

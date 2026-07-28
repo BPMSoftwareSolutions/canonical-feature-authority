@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "obtain-one-bounded-model-submission",
+  "given": "one complete provider-neutral model request",
+  "when": "the request is executed by the generic LLM connector",
+  "then": "one normalized model-submission testimony is emitted",
+  "independentObligationCount": 1
+}

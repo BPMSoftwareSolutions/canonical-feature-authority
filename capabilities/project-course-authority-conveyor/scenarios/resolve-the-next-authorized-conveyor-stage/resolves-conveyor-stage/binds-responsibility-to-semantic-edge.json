@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "resolves-conveyor-stage",
+  "semanticOperationId": "resolve-conveyor-stage",
+  "contextOperationMember": "resolve",
+  "contextInputMember": "plan",
+  "signalId": "conveyor-stage-transition"
+}

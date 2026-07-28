@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "expectation",
+  "structuralProfile": "expectation-execution.v1",
+  "bodyId": "projects-course-lineage-index-expectation-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/projects-course-lineage-index.expectation.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "publish-the-complete-course-lineage-index",
+    "obligationId": "publish-one-complete-signed-lineage-index",
+    "expectationId": "expect-one-signed-course-lineage-index",
+    "responsibilityId": "projects-course-lineage-index",
+    "signalId": "course-lineage-index-projection",
+    "semanticOperationId": "project-course-lineage-index"
+  },
+  "projection": {
+    "functionName": "provesProjectsCourseLineageIndexExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesProjectsCourseLineageIndexExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

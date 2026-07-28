@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "evaluates-projected-body-expectation-body",
+  "scenarioId": "evaluate-projected-body-conformance",
+  "obligationId": "resolve-one-body-projection-conformance",
+  "responsibilityId": "evaluates-projected-body",
+  "signalId": "projected-body-conformance",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/evaluates-projected-body.expectation.ts"
+  },
+  "semanticExecutableAuthority": "projects-evaluates-projected-body-expectation.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:e3fe9ca87d334642d7123933ab30f91d6e71e9318de708d9a96177558b8c9f43",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

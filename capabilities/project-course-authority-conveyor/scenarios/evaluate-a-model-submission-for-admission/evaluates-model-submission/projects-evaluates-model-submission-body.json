@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-evaluates-model-submission-from-e6a43b24d2fc7029716d4b0a26123c0978bd67290cca5b0797e255c457d73f7c",
+  "bodyId": "evaluates-model-submission-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-evaluates-model-submission.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:e6a43b24d2fc7029716d4b0a26123c0978bd67290cca5b0797e255c457d73f7c",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/evaluates-model-submission.ts"
+  },
+  "projection": {
+    "functionName": "evaluatesModelSubmission",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "EvaluatesModelSubmissionContext"
+    },
+    "resultTypeReference": "ModelSubmissionAdmissionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "submission"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

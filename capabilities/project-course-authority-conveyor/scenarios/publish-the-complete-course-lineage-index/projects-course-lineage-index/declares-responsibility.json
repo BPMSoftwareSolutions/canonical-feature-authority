@@ -1,0 +1,9 @@
+{
+  "authorityType": "responsibility.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "publish-the-complete-course-lineage-index",
+  "obligationId": "publish-one-complete-signed-lineage-index",
+  "responsibilityId": "projects-course-lineage-index",
+  "statement": "course lineage is projected",
+  "semanticOperationId": "project-course-lineage-index"
+}

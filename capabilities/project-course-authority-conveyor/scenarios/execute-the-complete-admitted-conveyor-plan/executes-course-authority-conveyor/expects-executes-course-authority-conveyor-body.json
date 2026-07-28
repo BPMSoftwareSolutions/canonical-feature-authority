@@ -1,0 +1,11 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "executes-course-authority-conveyor-body",
+  "scenarioId": "execute-the-complete-admitted-conveyor-plan",
+  "obligationId": "execute-one-complete-admitted-conveyor-plan",
+  "expectationId": "expect-one-terminal-course-conveyor-signal",
+  "responsibilityId": "executes-course-authority-conveyor",
+  "signalId": "course-authority-conveyor-execution",
+  "bodyCount": 1,
+  "structuralProfile": "conveyor-entry-delegation.v1"
+}

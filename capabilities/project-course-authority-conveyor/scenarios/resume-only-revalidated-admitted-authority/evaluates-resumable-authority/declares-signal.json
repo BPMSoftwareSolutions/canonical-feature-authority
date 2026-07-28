@@ -1,0 +1,14 @@
+{
+  "authorityType": "signal.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "resume-only-revalidated-admitted-authority",
+  "obligationId": "classify-one-prior-artifact-for-resumption",
+  "responsibilityId": "evaluates-resumable-authority",
+  "signalId": "authority-resumability",
+  "outcome": "one resumability disposition is emitted",
+  "dispositions": [
+    "GREEN",
+    "RED",
+    "UNRESOLVED"
+  ]
+}

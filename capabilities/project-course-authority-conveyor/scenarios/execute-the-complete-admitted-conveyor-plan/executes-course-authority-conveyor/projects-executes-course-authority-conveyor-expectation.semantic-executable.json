@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "expectation",
+  "structuralProfile": "expectation-execution.v1",
+  "bodyId": "executes-course-authority-conveyor-expectation-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/executes-course-authority-conveyor.expectation.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "execute-the-complete-admitted-conveyor-plan",
+    "obligationId": "execute-one-complete-admitted-conveyor-plan",
+    "expectationId": "expect-one-terminal-course-conveyor-signal",
+    "responsibilityId": "executes-course-authority-conveyor",
+    "signalId": "course-authority-conveyor-execution",
+    "semanticOperationId": "execute-course-authority-conveyor"
+  },
+  "projection": {
+    "functionName": "provesExecutesCourseAuthorityConveyorExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesExecutesCourseAuthorityConveyorExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

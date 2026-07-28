@@ -1,0 +1,10 @@
+{
+  "authorityType": "scenario-expectation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "execute-the-complete-admitted-conveyor-plan",
+  "obligationId": "execute-one-complete-admitted-conveyor-plan",
+  "expectationId": "expect-one-terminal-course-conveyor-signal",
+  "outcome": "one terminal course-conveyor signal is emitted",
+  "expectedResponsibilityId": "executes-course-authority-conveyor",
+  "expectedSignalId": "course-authority-conveyor-execution"
+}

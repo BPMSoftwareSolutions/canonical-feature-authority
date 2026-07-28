@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "evaluate-a-model-submission-for-admission",
+  "given": "one normalized model submission and its declared admission authority",
+  "when": "the submission is evaluated",
+  "then": "one admission disposition is emitted without altering the submission",
+  "independentObligationCount": 1
+}

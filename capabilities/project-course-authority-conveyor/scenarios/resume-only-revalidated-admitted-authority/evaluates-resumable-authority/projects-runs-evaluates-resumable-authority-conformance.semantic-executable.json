@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "conformance",
+  "structuralProfile": "conformance-delegation.v1",
+  "bodyId": "runs-evaluates-resumable-authority-conformance-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/runs-evaluates-resumable-authority-conformance.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "resume-only-revalidated-admitted-authority",
+    "obligationId": "classify-one-prior-artifact-for-resumption",
+    "expectationId": "expect-one-resumability-disposition",
+    "responsibilityId": "evaluates-resumable-authority",
+    "signalId": "authority-resumability",
+    "semanticOperationId": "evaluate-resumable-authority"
+  },
+  "projection": {
+    "functionName": "runsEvaluatesResumableAuthorityConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsEvaluatesResumableAuthorityConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

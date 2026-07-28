@@ -1,0 +1,14 @@
+{
+  "authorityType": "signal.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "discover-every-admitted-projection-subject",
+  "obligationId": "identify-the-complete-projection-subject-set",
+  "responsibilityId": "discovers-projection-subjects",
+  "signalId": "projection-subject-discovery",
+  "outcome": "one complete deterministically ordered projection-subject set is emitted",
+  "dispositions": [
+    "GREEN",
+    "RED",
+    "UNRESOLVED"
+  ]
+}

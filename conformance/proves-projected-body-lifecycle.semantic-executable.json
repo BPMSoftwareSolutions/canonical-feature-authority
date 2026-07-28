@@ -1,0 +1,64 @@
+{
+  "semanticExecutableType": "projected-body-lifecycle-proof.v1",
+  "bodyRole": "conformance",
+  "bodyId": "proves-projected-body-lifecycle",
+  "artifact": {
+    "relativePath": "conformance/proves-projected-body-lifecycle.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "prove-executable-disposable-and-reprojectable-bodies",
+    "obligationId": "prove-every-projected-body-from-authority",
+    "responsibilityId": "proves-projected-body-lifecycle",
+    "signalId": "projected-body-lifecycle-proof"
+  },
+  "discovery": {
+    "astAuthoritySuffix": ".ts.ast.authority.json",
+    "scenarioLineageIndexName": "projection-lineage.index.json",
+    "scenarioSemanticAuthorityField": "semanticAuthority",
+    "scenarioProjectedBodyField": "projectedBody"
+  },
+  "execution": {
+    "runtimeBearingRoles": [
+      "primary",
+      "expectation",
+      "conformance"
+    ],
+    "declarationOnlyRoles": [
+      "type"
+    ],
+    "assertions": [
+      "the projected export exists",
+      "the authority-declared operation is invoked exactly once",
+      "the authority-declared input is passed by identity",
+      "the operation result is returned by identity"
+    ]
+  },
+  "lifecycle": [
+    "verify every projected body signature before deletion",
+    "execute every runtime-bearing scenario body before deletion",
+    "snapshot every projected body byte sequence",
+    "resolve every deletion target from AST authority",
+    "reject targets outside the repository",
+    "reject targets without generated projector proof",
+    "delete only the resolved projected bodies",
+    "reproject every body from AST authority",
+    "verify every regenerated signature",
+    "require every regenerated body to equal its snapshot byte-for-byte",
+    "compile the regenerated repository",
+    "execute every runtime-bearing scenario body again",
+    "run the course test suite"
+  ],
+  "evidence": {
+    "form": "live-process-output",
+    "detachedReceipt": false,
+    "projectorProvenanceLocation": "projected body header",
+    "executionSuccessCondition": "the process exits zero only after both execution cycles and the byte-for-byte reprojection comparison pass"
+  },
+  "constraints": {
+    "forbidScenarioIdAllowlist": true,
+    "forbidProjectedBodySourceTemplates": true,
+    "forbidDetachedProjectionReceipts": true,
+    "requireRestorationAttemptAfterDeletionFailure": true
+  }
+}

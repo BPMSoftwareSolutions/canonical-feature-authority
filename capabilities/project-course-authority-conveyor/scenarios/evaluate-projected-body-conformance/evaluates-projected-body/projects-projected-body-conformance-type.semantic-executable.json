@@ -1,0 +1,36 @@
+{
+  "semanticExecutableType": "declaration-only-context.v1",
+  "bodyRole": "type",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "bodyId": "projected-body-conformance-type-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/projected-body-conformance.type.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "evaluate-projected-body-conformance",
+    "obligationId": "resolve-one-body-projection-conformance",
+    "expectationId": "expect-one-projection-conformance-disposition",
+    "responsibilityId": "evaluates-projected-body",
+    "signalId": "projected-body-conformance",
+    "semanticOperationId": "evaluate-projected-body"
+  },
+  "projection": {
+    "declarations": [
+      "EvaluatesProjectedBodyContext",
+      "ProvesEvaluatesProjectedBodyExpectationContext",
+      "RunsEvaluatesProjectedBodyConformanceContext",
+      "ProjectedBodyConformanceSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

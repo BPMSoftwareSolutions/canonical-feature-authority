@@ -1,0 +1,9 @@
+{
+  "authorityType": "responsibility.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "evaluate-a-model-submission-for-admission",
+  "obligationId": "resolve-one-submission-admission",
+  "responsibilityId": "evaluates-model-submission",
+  "statement": "the submission is evaluated",
+  "semanticOperationId": "evaluate-model-submission"
+}

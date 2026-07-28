@@ -1,0 +1,11 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "evaluates-resumable-authority-expectation-body",
+  "scenarioId": "resume-only-revalidated-admitted-authority",
+  "obligationId": "classify-one-prior-artifact-for-resumption",
+  "expectationId": "expect-one-resumability-disposition",
+  "responsibilityId": "evaluates-resumable-authority",
+  "signalId": "authority-resumability",
+  "bodyCount": 1,
+  "structuralProfile": "expectation-execution.v1"
+}

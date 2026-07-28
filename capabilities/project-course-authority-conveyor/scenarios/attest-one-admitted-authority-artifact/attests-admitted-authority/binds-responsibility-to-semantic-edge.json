@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "attests-admitted-authority",
+  "semanticOperationId": "attest-admitted-authority",
+  "contextOperationMember": "attest",
+  "contextInputMember": "admitted",
+  "signalId": "admitted-authority-attestation"
+}

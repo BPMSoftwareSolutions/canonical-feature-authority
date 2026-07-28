@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "discovers-projection-subjects-expectation-body",
+  "scenarioId": "discover-every-admitted-projection-subject",
+  "obligationId": "identify-the-complete-projection-subject-set",
+  "responsibilityId": "discovers-projection-subjects",
+  "signalId": "projection-subject-discovery",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/discovers-projection-subjects.expectation.ts"
+  },
+  "semanticExecutableAuthority": "projects-discovers-projection-subjects-expectation.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:77821d9804ba8070d223198ef0ef1ac5c7a4729594e476ce5d451ece7c8a2add",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

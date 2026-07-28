@@ -1,0 +1,8 @@
+{
+  "authorityType": "obligation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "project-one-admitted-ast-authority",
+  "obligationId": "derive-one-lossless-conformant-ast-authority",
+  "statement": "one signed structurally conformant AST authority is emitted",
+  "independentlyEvaluable": true
+}

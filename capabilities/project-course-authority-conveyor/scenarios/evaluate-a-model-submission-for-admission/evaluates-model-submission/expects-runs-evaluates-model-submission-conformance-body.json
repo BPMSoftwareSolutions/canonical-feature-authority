@@ -1,0 +1,11 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "runs-evaluates-model-submission-conformance-body",
+  "scenarioId": "evaluate-a-model-submission-for-admission",
+  "obligationId": "resolve-one-submission-admission",
+  "expectationId": "expect-one-admission-disposition",
+  "responsibilityId": "evaluates-model-submission",
+  "signalId": "model-submission-admission",
+  "bodyCount": 1,
+  "structuralProfile": "conformance-delegation.v1"
+}

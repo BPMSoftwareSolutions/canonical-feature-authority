@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "resolve-the-next-authorized-conveyor-stage",
+  "given": "the conveyor plan and current admitted stage state",
+  "when": "the next stage is resolved",
+  "then": "one authorized stage-transition signal is emitted",
+  "independentObligationCount": 1
+}

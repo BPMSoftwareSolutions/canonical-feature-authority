@@ -1,0 +1,14 @@
+{
+  "authorityType": "signal.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "execute-the-complete-admitted-conveyor-plan",
+  "obligationId": "execute-one-complete-admitted-conveyor-plan",
+  "responsibilityId": "executes-course-authority-conveyor",
+  "signalId": "course-authority-conveyor-execution",
+  "outcome": "one terminal course-conveyor signal is emitted",
+  "dispositions": [
+    "GREEN",
+    "RED",
+    "UNRESOLVED"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "runs-projects-ast-authority-conformance-body",
+  "scenarioId": "project-one-admitted-ast-authority",
+  "obligationId": "derive-one-lossless-conformant-ast-authority",
+  "responsibilityId": "projects-ast-authority",
+  "signalId": "ast-authority-projection",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/runs-projects-ast-authority-conformance.ts"
+  },
+  "semanticExecutableAuthority": "projects-runs-projects-ast-authority-conformance.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:1da8d6f37ee5fdc7c48da0c886faaee10896e1450984d9289722e164a737337d",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

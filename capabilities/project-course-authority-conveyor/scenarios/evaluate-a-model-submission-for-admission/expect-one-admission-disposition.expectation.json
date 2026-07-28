@@ -1,0 +1,10 @@
+{
+  "authorityType": "scenario-expectation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "evaluate-a-model-submission-for-admission",
+  "obligationId": "resolve-one-submission-admission",
+  "expectationId": "expect-one-admission-disposition",
+  "outcome": "one admission disposition is emitted without altering the submission",
+  "expectedResponsibilityId": "evaluates-model-submission",
+  "expectedSignalId": "model-submission-admission"
+}

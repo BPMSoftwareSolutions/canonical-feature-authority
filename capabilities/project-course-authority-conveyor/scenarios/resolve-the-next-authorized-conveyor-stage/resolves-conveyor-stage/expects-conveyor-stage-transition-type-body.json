@@ -1,0 +1,11 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "conveyor-stage-transition-type-body",
+  "scenarioId": "resolve-the-next-authorized-conveyor-stage",
+  "obligationId": "identify-one-authorized-next-stage",
+  "expectationId": "expect-one-stage-transition",
+  "responsibilityId": "resolves-conveyor-stage",
+  "signalId": "conveyor-stage-transition",
+  "bodyCount": 1,
+  "structuralProfile": "conveyor-context-declaration.v1"
+}

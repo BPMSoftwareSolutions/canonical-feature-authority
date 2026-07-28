@@ -1,0 +1,25 @@
+{
+  "semanticAuthorityType": "prebound-member-delegation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "stop-downstream-execution-after-red",
+  "obligationId": "authorize-no-downstream-stage-after-red",
+  "expectationId": "expect-one-stopped-conveyor-transition",
+  "responsibilityId": "resolves-red-conveyor-transition",
+  "signalId": "red-conveyor-stop",
+  "semanticOperationId": "resolve-red-conveyor-transition",
+  "execution": {
+    "contextParameter": "context",
+    "operationMember": "resolve",
+    "inputMember": "disposition",
+    "awaited": true,
+    "returnOperationResult": true
+  },
+  "forbidden": [
+    "branching",
+    "iteration",
+    "dto-construction",
+    "semantic-literals",
+    "direct-mechanism-access",
+    "local-error-policy"
+  ]
+}

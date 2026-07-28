@@ -1,0 +1,36 @@
+{
+  "semanticExecutableType": "declaration-only-context.v1",
+  "bodyRole": "type",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "bodyId": "course-lineage-index-projection-type-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/course-lineage-index-projection.type.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "publish-the-complete-course-lineage-index",
+    "obligationId": "publish-one-complete-signed-lineage-index",
+    "expectationId": "expect-one-signed-course-lineage-index",
+    "responsibilityId": "projects-course-lineage-index",
+    "signalId": "course-lineage-index-projection",
+    "semanticOperationId": "project-course-lineage-index"
+  },
+  "projection": {
+    "declarations": [
+      "ProjectsCourseLineageIndexContext",
+      "ProvesProjectsCourseLineageIndexExpectationContext",
+      "RunsProjectsCourseLineageIndexConformanceContext",
+      "CourseLineageIndexProjectionSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

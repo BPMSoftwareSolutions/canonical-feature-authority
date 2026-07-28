@@ -1,0 +1,11 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "projects-ast-authority-body",
+  "scenarioId": "project-one-admitted-ast-authority",
+  "obligationId": "derive-one-lossless-conformant-ast-authority",
+  "expectationId": "expect-one-signed-ast-authority",
+  "responsibilityId": "projects-ast-authority",
+  "signalId": "ast-authority-projection",
+  "bodyCount": 1,
+  "structuralProfile": "conveyor-stage-delegation.v1"
+}

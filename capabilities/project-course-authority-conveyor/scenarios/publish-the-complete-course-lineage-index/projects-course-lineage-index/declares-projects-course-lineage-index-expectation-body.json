@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "projects-course-lineage-index-expectation-body",
+  "scenarioId": "publish-the-complete-course-lineage-index",
+  "obligationId": "publish-one-complete-signed-lineage-index",
+  "responsibilityId": "projects-course-lineage-index",
+  "signalId": "course-lineage-index-projection",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/projects-course-lineage-index.expectation.ts"
+  },
+  "semanticExecutableAuthority": "projects-projects-course-lineage-index-expectation.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:a5fa4435acf838c0bfb6128c600396099e1ae17b1eb8202d3febfb2d38cc0479",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

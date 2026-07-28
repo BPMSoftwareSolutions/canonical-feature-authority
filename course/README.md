@@ -72,10 +72,12 @@ new local key, updates the trusted public-key authority, and rotates the
 `keyId` admitted by every AST authority before projection.
 
 The command discovers every adjacent `*.ts.ast.authority.json` contract and
-projects all 40 TypeScript bodies. Each contract contains the lossless compiler
-token stream and AST topology. Each emitted body is its own receipt: its header
-contains the projector ID, trusted key ID, authority hash, body hash, and
-Ed25519 signature. No separate receipt file is created.
+projects every TypeScript body in the repository. The current course tree has
+93 projected bodies, including 52 bodies for the 13-scenario conveyor
+capability. Each contract contains the lossless compiler token stream and AST
+topology. Each emitted body is its own receipt: its header contains the
+projector ID, trusted key ID, authority hash, body hash, and Ed25519 signature.
+No separate receipt file is created.
 
 Before accepting student work, verify that no projected body was hand-edited:
 
@@ -87,3 +89,61 @@ The check reconstructs each body from AST authority and verifies its embedded
 signature with `projection-authority/trusted-projector-keys.json`. Missing,
 stale, hand-altered, incorrectly signed, invalid, and duplicate-target
 projections fail the command.
+
+## Prove execution, disposal, and reprojection
+
+Signature verification alone does not prove that a projected body can run.
+Use the destructive lifecycle proof before accepting the completed course:
+
+```text
+npm run prove:lifecycle
+```
+
+The command discovers targets from AST authority rather than from a maintained
+filename list. It then:
+
+1. verifies every projected signature;
+2. builds the repository;
+3. executes every runtime-bearing conveyor body through the operation and input
+   declared by its semantic executable authority;
+4. deletes only authority-resolved, projector-tagged body targets;
+5. regenerates every deleted body from AST authority;
+6. requires each regenerated body to match its prior bytes exactly;
+7. verifies every regenerated signature and rebuilds;
+8. re-executes the conveyor bodies; and
+9. runs the course test suite.
+
+The current proof deletes and reproduces all 93 projected artifacts and
+executes 39 conveyor bodies both before and after reprojection. The 13
+declaration-only conveyor type bodies are compile-time contracts and therefore
+are compiled rather than falsely counted as runtime executions.
+
+The lifecycle proof validates the projected body boundary: the declared
+operation is called once with the declared input, and its result is returned
+unchanged. A live Gemini invocation, file write, signature operation, or other
+external effect belongs to the supplied runtime collaborator and needs its own
+adapter acceptance proof. Passing this command must never be represented as
+evidence that an unbound external adapter ran.
+
+## Classroom and grading trust are different
+
+The locally initialized classroom key is appropriate for learning and
+self-checking. It is not an anti-cheating root of trust when the student
+controls the repository, private key, trusted-key file, and package scripts.
+A student who controls all four can replace authority and proof machinery
+together while preserving internal consistency.
+
+For graded acceptance:
+
+- keep the grading private key outside the student workspace;
+- supply the grading public-key authority from instructor-controlled
+  infrastructure rather than trusting the submitted copy;
+- run the official projector and lifecycle prover from an
+  instructor-controlled workflow;
+- review authority changes separately from disposable projected bodies; and
+- treat live-provider testimony as valid only when the instructor-controlled
+  execution environment observed the invocation.
+
+The student submission can prove reproducibility. The independent instructor
+trust anchor proves whose authorized projector produced the submitted result.
+Both are required for an adversarial grading claim.

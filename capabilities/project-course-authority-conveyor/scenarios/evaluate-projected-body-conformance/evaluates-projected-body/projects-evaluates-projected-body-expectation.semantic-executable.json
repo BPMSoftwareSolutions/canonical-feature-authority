@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "expectation",
+  "structuralProfile": "expectation-execution.v1",
+  "bodyId": "evaluates-projected-body-expectation-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/evaluates-projected-body.expectation.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "evaluate-projected-body-conformance",
+    "obligationId": "resolve-one-body-projection-conformance",
+    "expectationId": "expect-one-projection-conformance-disposition",
+    "responsibilityId": "evaluates-projected-body",
+    "signalId": "projected-body-conformance",
+    "semanticOperationId": "evaluate-projected-body"
+  },
+  "projection": {
+    "functionName": "provesEvaluatesProjectedBodyExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesEvaluatesProjectedBodyExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

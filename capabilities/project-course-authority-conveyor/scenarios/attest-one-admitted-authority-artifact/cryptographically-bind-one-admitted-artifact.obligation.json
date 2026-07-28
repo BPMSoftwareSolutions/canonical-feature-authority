@@ -1,0 +1,8 @@
+{
+  "authorityType": "obligation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "attest-one-admitted-authority-artifact",
+  "obligationId": "cryptographically-bind-one-admitted-artifact",
+  "statement": "one signed authority artifact is emitted",
+  "independentlyEvaluable": true
+}

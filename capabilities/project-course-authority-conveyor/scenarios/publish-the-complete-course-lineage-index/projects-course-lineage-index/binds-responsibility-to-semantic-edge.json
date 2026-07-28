@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "projects-course-lineage-index",
+  "semanticOperationId": "project-course-lineage-index",
+  "contextOperationMember": "project",
+  "contextInputMember": "lineage",
+  "signalId": "course-lineage-index-projection"
+}

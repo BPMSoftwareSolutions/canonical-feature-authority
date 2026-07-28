@@ -1,0 +1,9416 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/lossless-typescript-ast/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:9e8eec601b0b66a31d7c5fac7fd7d478985404dea84c8d34f981b9b41cf31a9e"
+  },
+  "projectionId": "project-proves-projected-body-lifecycle-from-f4429a83a10525e3535d72056d724010fcb34e6e17d0f6d8e11a2a68ad5d57e4",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "conformance/proves-projected-body-lifecycle.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "prove-executable-disposable-and-reprojectable-bodies",
+    "obligationId": "prove-every-projected-body-from-authority",
+    "responsibilityId": "proves-projected-body-lifecycle",
+    "signalId": "projected-body-lifecycle-proof"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "tokens": [
+      {
+        "kind": "FirstTriviaToken",
+        "text": "// feature-id: project-course-authority-through-a-governed-conveyor"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "FirstTriviaToken",
+        "text": "// scenario-id: prove-executable-disposable-and-reprojectable-bodies"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "FirstTriviaToken",
+        "text": "// obligation-id: prove-every-projected-body-from-authority"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "FirstTriviaToken",
+        "text": "// responsibility-id: proves-projected-body-lifecycle"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "FirstTriviaToken",
+        "text": "// signal-id: projected-body-lifecycle-proof"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "AssertKeyword",
+        "text": "assert"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FromKeyword",
+        "text": "from"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"node:assert/strict\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "spawnSync"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FromKeyword",
+        "text": "from"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"node:child_process\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "access"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "readFile"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "readdir"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "rm"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FromKeyword",
+        "text": "from"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"node:fs/promises\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "dirname"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "isAbsolute"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "relative"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "resolve"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FromKeyword",
+        "text": "from"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"node:path\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "fileURLToPath"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "pathToFileURL"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FromKeyword",
+        "text": "from"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"node:url\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "InterfaceKeyword",
+        "text": "interface"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "AstAuthority"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "artifact"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "relativePath"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "InterfaceKeyword",
+        "text": "interface"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "LineageEntry"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "role"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"primary\""
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "BarToken",
+        "text": "|"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"type\""
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "BarToken",
+        "text": "|"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"expectation\""
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "BarToken",
+        "text": "|"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"conformance\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "semanticAuthority"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "projectedBody"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "InterfaceKeyword",
+        "text": "interface"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "LineageIndex"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "scenarioId"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "projectedBodyCount"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "NumberKeyword",
+        "text": "number"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "entries"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "LineageEntry"
+      },
+      {
+        "kind": "OpenBracketToken",
+        "text": "["
+      },
+      {
+        "kind": "CloseBracketToken",
+        "text": "]"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "InterfaceKeyword",
+        "text": "interface"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "SemanticExecutable"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "bodyRole"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "LineageEntry"
+      },
+      {
+        "kind": "OpenBracketToken",
+        "text": "["
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"role\""
+      },
+      {
+        "kind": "CloseBracketToken",
+        "text": "]"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "artifact"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "relativePath"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "lineage"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "scenarioId"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "signalId"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "projection"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "functionName"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "contextParameter"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "      "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "name"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "invocation"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "      "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "receiver"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "      "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "operationMember"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "      "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "argument"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "        "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "receiver"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "        "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "member"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "      "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "InterfaceKeyword",
+        "text": "interface"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "ProjectedTarget"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "authorityPath"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "bodyPath"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "relativePath"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "text": "readonly"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "originalBytes"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "Buffer"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ConstKeyword",
+        "text": "const"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "repositoryRoot"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstAssignment",
+        "text": "="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "resolve"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "Identifier",
+        "text": "dirname"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "fileURLToPath"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "meta"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "url"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"../..\""
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ConstKeyword",
+        "text": "const"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "npmCommand"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstAssignment",
+        "text": "="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "process"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "platform"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "text": "==="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"win32\""
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "QuestionToken",
+        "text": "?"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"npm.cmd\""
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"npm\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "AsyncKeyword",
+        "text": "async"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FunctionKeyword",
+        "text": "function"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "discoversFiles"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "Identifier",
+        "text": "directory"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "Identifier",
+        "text": "predicate"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "name"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "EqualsGreaterThanToken",
+        "text": "=>"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "BooleanKeyword",
+        "text": "boolean"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "Promise"
+      },
+      {
+        "kind": "FirstBinaryOperator",
+        "text": "<"
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "OpenBracketToken",
+        "text": "["
+      },
+      {
+        "kind": "CloseBracketToken",
+        "text": "]"
+      },
+      {
+        "kind": "GreaterThanToken",
+        "text": ">"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ConstKeyword",
+        "text": "const"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "discovered"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "OpenBracketToken",
+        "text": "["
+      },
+      {
+        "kind": "CloseBracketToken",
+        "text": "]"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstAssignment",
+        "text": "="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "OpenBracketToken",
+        "text": "["
+      },
+      {
+        "kind": "CloseBracketToken",
+        "text": "]"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ForKeyword",
+        "text": "for"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "ConstKeyword",
+        "text": "const"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "entry"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "OfKeyword",
+        "text": "of"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "AwaitKeyword",
+        "text": "await"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "readdir"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "directory"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "withFileTypes"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "TrueKeyword",
+        "text": "true"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "IfKeyword",
+        "text": "if"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "entry"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "name"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "text": "==="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\".git\""
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "BarBarToken",
+        "text": "||"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "entry"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "name"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "text": "==="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"dist\""
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "BarBarToken",
+        "text": "||"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "entry"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "name"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "text": "==="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"node_modules\""
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "      "
+      },
+      {
+        "kind": "ContinueKeyword",
+        "text": "continue"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "ConstKeyword",
+        "text": "const"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "candidate"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstAssignment",
+        "text": "="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "resolve"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "directory"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "entry"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "name"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "IfKeyword",
+        "text": "if"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "entry"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "isDirectory"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "      "
+      },
+      {
+        "kind": "Identifier",
+        "text": "discovered"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "push"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "DotDotDotToken",
+        "text": "..."
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "AwaitKeyword",
+        "text": "await"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "discoversFiles"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "candidate"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "predicate"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "ElseKeyword",
+        "text": "else"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "IfKeyword",
+        "text": "if"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "entry"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "isFile"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "AmpersandAmpersandToken",
+        "text": "&&"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "predicate"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "entry"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "name"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "      "
+      },
+      {
+        "kind": "Identifier",
+        "text": "discovered"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "push"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "candidate"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReturnKeyword",
+        "text": "return"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "discovered"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "sort"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "FunctionKeyword",
+        "text": "function"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "resolvesInsideRepository"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "relativePath"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "AssertKeyword",
+        "text": "assert"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "equal"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "isAbsolute"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "relativePath"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FalseKeyword",
+        "text": "false"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "TemplateHead",
+        "text": "`absolute target rejected: ${"
+      },
+      {
+        "kind": "Identifier",
+        "text": "relativePath"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "FirstTemplateToken",
+        "text": "`);\n  const resolved = resolve(repositoryRoot, relativePath);\n  const fromRoot = relative(repositoryRoot, resolved);\n  assert.equal(\n    fromRoot === \"..\" || fromRoot.startsWith(`"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "$"
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "Identifier",
+        "text": "process"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "platform"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "text": "==="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"win32\""
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "QuestionToken",
+        "text": "?"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"\\\\\""
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"/\""
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "FirstTemplateToken",
+        "text": "`),\n    false,\n    `"
+      },
+      {
+        "kind": "OutKeyword",
+        "text": "out"
+      },
+      {
+        "kind": "MinusToken",
+        "text": "-"
+      },
+      {
+        "kind": "OfKeyword",
+        "text": "of"
+      },
+      {
+        "kind": "MinusToken",
+        "text": "-"
+      },
+      {
+        "kind": "Identifier",
+        "text": "repository"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "target"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "rejected"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "$"
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "Identifier",
+        "text": "relativePath"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "FirstTemplateToken",
+        "text": "`\n  );\n  return resolved;\n}\n\nfunction runsNpm(script: string): void {\n  const outcome = spawnSync(npmCommand, [\"run\", script], {\n    cwd: repositoryRoot,\n    encoding: \"utf8\",\n    shell: process.platform === \"win32\"\n  });\n  process.stdout.write(outcome.stdout ?? \"\");\n  process.stderr.write(outcome.stderr ?? \"\");\n  assert.equal(outcome.status, 0, `"
+      },
+      {
+        "kind": "Identifier",
+        "text": "npm"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "run"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "$"
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "Identifier",
+        "text": "script"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "failed"
+      },
+      {
+        "kind": "FirstTemplateToken",
+        "text": "`);\n}\n\nasync function readsProjectedTargets(): Promise<ProjectedTarget[]> {\n  const authorities = await discoversFiles(\n    repositoryRoot,\n    (name) => name.endsWith(\".ts.ast.authority.json\")\n  );\n  const targets: ProjectedTarget[] = [];\n  const uniqueTargets = new Set<string>();\n  for (const authorityPath of authorities) {\n    const authority = JSON.parse(\n      await readFile(authorityPath, \"utf8\")\n    ) as AstAuthority;\n    const bodyPath = resolvesInsideRepository(authority.artifact.relativePath);\n    assert.equal(\n      uniqueTargets.has(bodyPath),\n      false,\n      `"
+      },
+      {
+        "kind": "Identifier",
+        "text": "duplicate"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "projected"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "target"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "$"
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "Identifier",
+        "text": "authority"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "artifact"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "relativePath"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "FirstTemplateToken",
+        "text": "`\n    );\n    uniqueTargets.add(bodyPath);\n    const originalBytes = await readFile(bodyPath);\n    const source = originalBytes.toString(\"utf8\");\n    assert.match(source, /^\\/\\/ @generated$/m);\n    assert.match(source, /^\\/\\/ projector-id: declarative-typescript-body-projector$/m);\n    assert.match(source, /^\\/\\/ projection-signature: ed25519:.+$/m);\n    assert.match(source, /^\\/\\/ DO NOT EDIT\\.$/m);\n    targets.push({\n      authorityPath,\n      bodyPath,\n      relativePath: authority.artifact.relativePath,\n      originalBytes\n    });\n  }\n  assert.ok(targets.length > 0, \"no projected targets discovered\");\n  return targets;\n}\n\nasync function readsScenarioLineages(): Promise<\n  readonly { readonly indexPath: string; readonly index: LineageIndex }[]\n> {\n  const paths = await discoversFiles(\n    repositoryRoot,\n    (name) => name === \"projection-lineage.index.json\"\n  );\n  return Promise.all(\n    paths.map(async (indexPath) => ({\n      indexPath,\n      index: JSON.parse(await readFile(indexPath, \"utf8\")) as LineageIndex\n    }))\n  );\n}\n\nasync function executesRuntimeBodies(cycle: string): Promise<number> {\n  const lineages = await readsScenarioLineages();\n  let executed = 0;\n  for (const { indexPath, index } of lineages) {\n    assert.equal(index.projectedBodyCount, index.entries.length);\n    for (const entry of index.entries) {\n      if (entry.role === \"type\") {\n        continue;\n      }\n      const semanticPath = resolve(dirname(indexPath), entry.semanticAuthority);\n      const semantic = JSON.parse(\n        await readFile(semanticPath, \"utf8\")\n      ) as SemanticExecutable;\n      assert.equal(semantic.bodyRole, entry.role);\n      assert.equal(semantic.lineage.scenarioId, index.scenarioId);\n      assert.equal(semantic.projection.contextParameter.name, \"context\");\n      assert.equal(semantic.projection.invocation.receiver, \"context\");\n      assert.equal(semantic.projection.invocation.argument.receiver, \"context\");\n\n      const compiledRelativePath = semantic.artifact.relativePath.replace(\n        /\\.ts$/,\n        \".js\"\n      );\n      const compiledPath = resolve(repositoryRoot, \"dist\", compiledRelativePath);\n      const projectedModule = (await import(\n        `"
+      },
+      {
+        "kind": "Identifier",
+        "text": "$"
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "Identifier",
+        "text": "pathToFileURL"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "compiledPath"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "href"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "QuestionToken",
+        "text": "?"
+      },
+      {
+        "kind": "Identifier",
+        "text": "cycle"
+      },
+      {
+        "kind": "FirstAssignment",
+        "text": "="
+      },
+      {
+        "kind": "Identifier",
+        "text": "$"
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "Identifier",
+        "text": "encodeURIComponent"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "cycle"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "FirstTemplateToken",
+        "text": "`\n      )) as Record<string, unknown>;\n      const projectedFunction = projectedModule[\n        semantic.projection.functionName\n      ];\n      assert.equal(\n        typeof projectedFunction,\n        \"function\",\n        `"
+      },
+      {
+        "kind": "Identifier",
+        "text": "$"
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "Identifier",
+        "text": "semantic"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "projection"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "functionName"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "IsKeyword",
+        "text": "is"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "not"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "executable"
+      },
+      {
+        "kind": "FirstTemplateToken",
+        "text": "`\n      );\n\n      const input = Object.freeze({\n        scenarioId: semantic.lineage.scenarioId,\n        bodyRole: semantic.bodyRole,\n        cycle\n      });\n      const signal = Object.freeze({\n        signalId: semantic.lineage.signalId,\n        disposition: \"GREEN\",\n        bodyRole: semantic.bodyRole,\n        cycle\n      });\n      let invocationCount = 0;\n      const context: Record<string, unknown> = {\n        [semantic.projection.invocation.argument.member]: input,\n        [semantic.projection.invocation.operationMember]: async (\n          observedInput: unknown\n        ) => {\n          invocationCount += 1;\n          assert.equal(observedInput, input);\n          return signal;\n        }\n      };\n      const result = await (\n        projectedFunction as (\n          context: Readonly<Record<string, unknown>>\n        ) => Promise<unknown>\n      )(context);\n      assert.equal(invocationCount, 1);\n      assert.equal(result, signal);\n      executed += 1;\n    }\n  }\n  return executed;\n}\n\nasync function deletesProjectedTargets(\n  targets: readonly ProjectedTarget[]\n): Promise<void> {\n  for (const target of targets) {\n    const current = await readFile(target.bodyPath, \"utf8\");\n    assert.match(current, /^\\/\\/ @generated$/m);\n    assert.match(current, /^\\/\\/ projection-signature: ed25519:.+$/m);\n  }\n  for (const target of targets) {\n    await rm(target.bodyPath);\n  }\n  for (const target of targets) {\n    await assert.rejects(access(target.bodyPath));\n  }\n}\n\nasync function assertsByteIdenticalReprojection(\n  targets: readonly ProjectedTarget[]\n): Promise<void> {\n  for (const target of targets) {\n    const regenerated = await readFile(target.bodyPath);\n    assert.equal(\n      Buffer.compare(regenerated, target.originalBytes),\n      0,\n      `"
+      },
+      {
+        "kind": "Identifier",
+        "text": "non"
+      },
+      {
+        "kind": "MinusToken",
+        "text": "-"
+      },
+      {
+        "kind": "Identifier",
+        "text": "deterministic"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "reprojection"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "$"
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "Identifier",
+        "text": "target"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "relativePath"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "FirstTemplateToken",
+        "text": "`\n    );\n  }\n}\n\nasync function restoresMissingTargets(\n  targets: readonly ProjectedTarget[]\n): Promise<void> {\n  const missing: string[] = [];\n  for (const target of targets) {\n    try {\n      await access(target.bodyPath);\n    } catch {\n      missing.push(target.relativePath);\n    }\n  }\n  if (missing.length > 0) {\n    process.stderr.write(\n      `"
+      },
+      {
+        "kind": "Identifier",
+        "text": "Restoring"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "$"
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "Identifier",
+        "text": "missing"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "length"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "projected"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "bodies"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "after"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "interrupted"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "proof"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "FirstToken",
+        "text": "\\"
+      },
+      {
+        "kind": "Identifier",
+        "text": "n"
+      },
+      {
+        "kind": "FirstTemplateToken",
+        "text": "`\n    );\n    runsNpm(\"project:bodies\");\n  }\n}\n\nasync function provesProjectedBodyLifecycle(): Promise<void> {\n  runsNpm(\"check:bodies\");\n  const targets = await readsProjectedTargets();\n  const beforeExecutionCount = await executesRuntimeBodies(\"before-reprojection\");\n  let deletionStarted = false;\n  try {\n    deletionStarted = true;\n    await deletesProjectedTargets(targets);\n    runsNpm(\"project:bodies\");\n    await assertsByteIdenticalReprojection(targets);\n    runsNpm(\"check:bodies\");\n    runsNpm(\"build\");\n    const afterExecutionCount = await executesRuntimeBodies(\"after-reprojection\");\n    assert.equal(afterExecutionCount, beforeExecutionCount);\n    runsNpm(\"test\");\n    process.stdout.write(\n      [\n        \"\",\n        \"PROJECTED BODY LIFECYCLE: GREEN\",\n        `"
+      },
+      {
+        "kind": "Identifier",
+        "text": "projected"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "bodies"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "deleted"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "and"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "reproduced"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "byte"
+      },
+      {
+        "kind": "MinusToken",
+        "text": "-"
+      },
+      {
+        "kind": "ForKeyword",
+        "text": "for"
+      },
+      {
+        "kind": "MinusToken",
+        "text": "-"
+      },
+      {
+        "kind": "Identifier",
+        "text": "byte"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "$"
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "Identifier",
+        "text": "targets"
+      },
+      {
+        "kind": "DotToken",
+        "text": "."
+      },
+      {
+        "kind": "Identifier",
+        "text": "length"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "FirstTemplateToken",
+        "text": "`,\n        `"
+      },
+      {
+        "kind": "Identifier",
+        "text": "runtime"
+      },
+      {
+        "kind": "MinusToken",
+        "text": "-"
+      },
+      {
+        "kind": "Identifier",
+        "text": "bearing"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "conveyor"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "bodies"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "executed"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "before"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "and"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "after"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "$"
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "Identifier",
+        "text": "beforeExecutionCount"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "FirstTemplateToken",
+        "text": "`,\n        \"declaration-only bodies: compiled by the repository build\",\n        \"detached receipts created: 0\",\n        \"\"\n      ].join(\"\\n\")\n    );\n  } finally {\n    if (deletionStarted) {\n      await restoresMissingTargets(targets);\n    }\n  }\n}\n\nawait provesProjectedBodyLifecycle();\n"
+      }
+    ],
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "InterfaceDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeLiteral",
+        "depth": 3
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 4
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "InterfaceDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "UnionType",
+        "depth": 3
+      },
+      {
+        "kind": "LiteralType",
+        "depth": 4
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "LiteralType",
+        "depth": 4
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "LiteralType",
+        "depth": 4
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "LiteralType",
+        "depth": 4
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "InterfaceDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "NumberKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeOperator",
+        "depth": 3
+      },
+      {
+        "kind": "ArrayType",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "InterfaceDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "IndexedAccessType",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "LiteralType",
+        "depth": 4
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeLiteral",
+        "depth": 3
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 4
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeLiteral",
+        "depth": 3
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 4
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 4
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeLiteral",
+        "depth": 3
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 4
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 4
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "TypeLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 6
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 4
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "TypeLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 6
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 6
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 6
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "TypeLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 8
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 9
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 8
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 9
+      },
+      {
+        "kind": "InterfaceDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 2
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 1
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 2
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "MetaProperty",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 1
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 2
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "ConditionalExpression",
+        "depth": 4
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "depth": 6
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 6
+      },
+      {
+        "kind": "QuestionToken",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "ColonToken",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "FunctionType",
+        "depth": 3
+      },
+      {
+        "kind": "Parameter",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "BooleanKeyword",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "ArrayType",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "ArrayType",
+        "depth": 6
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "ArrayLiteralExpression",
+        "depth": 6
+      },
+      {
+        "kind": "ForOfStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "ObjectLiteralExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "TrueKeyword",
+        "depth": 8
+      },
+      {
+        "kind": "Block",
+        "depth": 4
+      },
+      {
+        "kind": "IfStatement",
+        "depth": 5
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 6
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 7
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "depth": 9
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 9
+      },
+      {
+        "kind": "BarBarToken",
+        "depth": 8
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "depth": 9
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 9
+      },
+      {
+        "kind": "BarBarToken",
+        "depth": 7
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "depth": 8
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 8
+      },
+      {
+        "kind": "Block",
+        "depth": 6
+      },
+      {
+        "kind": "ContinueStatement",
+        "depth": 7
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 5
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 6
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "IfStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Block",
+        "depth": 6
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 7
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "SpreadElement",
+        "depth": 9
+      },
+      {
+        "kind": "ParenthesizedExpression",
+        "depth": 10
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 11
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "IfStatement",
+        "depth": 6
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 7
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "AmpersandAmpersandToken",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Block",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 4
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 3
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 4
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "FalseKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "TemplateExpression",
+        "depth": 5
+      },
+      {
+        "kind": "TemplateHead",
+        "depth": 6
+      },
+      {
+        "kind": "TemplateSpan",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "LastTemplateToken",
+        "depth": 7
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 3
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 4
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 5
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "depth": 7
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "BarBarToken",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "TemplateExpression",
+        "depth": 7
+      },
+      {
+        "kind": "TemplateHead",
+        "depth": 8
+      },
+      {
+        "kind": "TemplateSpan",
+        "depth": 8
+      },
+      {
+        "kind": "ConditionalExpression",
+        "depth": 9
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "depth": 11
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 11
+      },
+      {
+        "kind": "QuestionToken",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "ColonToken",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "LastTemplateToken",
+        "depth": 9
+      },
+      {
+        "kind": "FalseKeyword",
+        "depth": 5
+      },
+      {
+        "kind": "TemplateExpression",
+        "depth": 5
+      },
+      {
+        "kind": "TemplateHead",
+        "depth": 6
+      },
+      {
+        "kind": "TemplateSpan",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "LastTemplateToken",
+        "depth": 7
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "VoidKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "ArrayLiteralExpression",
+        "depth": 7
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "ObjectLiteralExpression",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 3
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 4
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "QuestionQuestionToken",
+        "depth": 6
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 6
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 3
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 4
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "QuestionQuestionToken",
+        "depth": 6
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 6
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 3
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 4
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "FirstLiteralToken",
+        "depth": 5
+      },
+      {
+        "kind": "TemplateExpression",
+        "depth": 5
+      },
+      {
+        "kind": "TemplateHead",
+        "depth": 6
+      },
+      {
+        "kind": "TemplateSpan",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "LastTemplateToken",
+        "depth": 7
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "ArrayType",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "ArrowFunction",
+        "depth": 8
+      },
+      {
+        "kind": "Parameter",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "EqualsGreaterThanToken",
+        "depth": 9
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "ArrayType",
+        "depth": 6
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "ArrayLiteralExpression",
+        "depth": 6
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "NewExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "ForOfStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 4
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 5
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 6
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "AsExpression",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 10
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 12
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 5
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 6
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "FalseKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "TemplateExpression",
+        "depth": 7
+      },
+      {
+        "kind": "TemplateHead",
+        "depth": 8
+      },
+      {
+        "kind": "TemplateSpan",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "LastTemplateToken",
+        "depth": 9
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 5
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 6
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 5
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 6
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 9
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "RegularExpressionLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "RegularExpressionLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "RegularExpressionLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "RegularExpressionLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "ObjectLiteralExpression",
+        "depth": 7
+      },
+      {
+        "kind": "ShorthandPropertyAssignment",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "ShorthandPropertyAssignment",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "ShorthandPropertyAssignment",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 3
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 4
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "GreaterThanToken",
+        "depth": 6
+      },
+      {
+        "kind": "FirstLiteralToken",
+        "depth": 6
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeOperator",
+        "depth": 3
+      },
+      {
+        "kind": "ArrayType",
+        "depth": 4
+      },
+      {
+        "kind": "TypeLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 6
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "PropertySignature",
+        "depth": 6
+      },
+      {
+        "kind": "ReadonlyKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "ArrowFunction",
+        "depth": 8
+      },
+      {
+        "kind": "Parameter",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "EqualsGreaterThanToken",
+        "depth": 9
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 4
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "ArrowFunction",
+        "depth": 6
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "Parameter",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "EqualsGreaterThanToken",
+        "depth": 7
+      },
+      {
+        "kind": "ParenthesizedExpression",
+        "depth": 7
+      },
+      {
+        "kind": "ObjectLiteralExpression",
+        "depth": 8
+      },
+      {
+        "kind": "ShorthandPropertyAssignment",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "AsExpression",
+        "depth": 10
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 11
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 12
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 14
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "NumberKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "FirstLiteralToken",
+        "depth": 6
+      },
+      {
+        "kind": "ForOfStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "ObjectBindingPattern",
+        "depth": 6
+      },
+      {
+        "kind": "BindingElement",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "BindingElement",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 4
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "ForOfStatement",
+        "depth": 5
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 6
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Block",
+        "depth": 6
+      },
+      {
+        "kind": "IfStatement",
+        "depth": 7
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "depth": 9
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 9
+      },
+      {
+        "kind": "Block",
+        "depth": 8
+      },
+      {
+        "kind": "ContinueStatement",
+        "depth": 9
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 7
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 8
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 7
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 8
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "AsExpression",
+        "depth": 10
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 11
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 12
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 14
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 7
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 7
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 7
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 9
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 7
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 9
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 7
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 11
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 9
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 7
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 8
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 11
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 12
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "RegularExpressionLiteral",
+        "depth": 11
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 11
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 7
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 8
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 7
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 8
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "AsExpression",
+        "depth": 10
+      },
+      {
+        "kind": "ParenthesizedExpression",
+        "depth": 11
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 12
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 13
+      },
+      {
+        "kind": "ImportKeyword",
+        "depth": 14
+      },
+      {
+        "kind": "TemplateExpression",
+        "depth": 14
+      },
+      {
+        "kind": "TemplateHead",
+        "depth": 15
+      },
+      {
+        "kind": "TemplateSpan",
+        "depth": 15
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 16
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 17
+      },
+      {
+        "kind": "Identifier",
+        "depth": 18
+      },
+      {
+        "kind": "Identifier",
+        "depth": 18
+      },
+      {
+        "kind": "Identifier",
+        "depth": 17
+      },
+      {
+        "kind": "TemplateMiddle",
+        "depth": 16
+      },
+      {
+        "kind": "TemplateSpan",
+        "depth": 15
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 16
+      },
+      {
+        "kind": "Identifier",
+        "depth": 17
+      },
+      {
+        "kind": "Identifier",
+        "depth": 17
+      },
+      {
+        "kind": "LastTemplateToken",
+        "depth": 16
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 12
+      },
+      {
+        "kind": "UnknownKeyword",
+        "depth": 12
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 7
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 8
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "ElementAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 11
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 7
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "TypeOfExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 9
+      },
+      {
+        "kind": "TemplateExpression",
+        "depth": 9
+      },
+      {
+        "kind": "TemplateHead",
+        "depth": 10
+      },
+      {
+        "kind": "TemplateSpan",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 11
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "LastTemplateToken",
+        "depth": 11
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 7
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 8
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "ObjectLiteralExpression",
+        "depth": 11
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 13
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 14
+      },
+      {
+        "kind": "Identifier",
+        "depth": 15
+      },
+      {
+        "kind": "Identifier",
+        "depth": 15
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "ShorthandPropertyAssignment",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 7
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 8
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "ObjectLiteralExpression",
+        "depth": 11
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 13
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 14
+      },
+      {
+        "kind": "Identifier",
+        "depth": 15
+      },
+      {
+        "kind": "Identifier",
+        "depth": 15
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 13
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "ShorthandPropertyAssignment",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 7
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 8
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "FirstLiteralToken",
+        "depth": 10
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 7
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 8
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 11
+      },
+      {
+        "kind": "UnknownKeyword",
+        "depth": 11
+      },
+      {
+        "kind": "ObjectLiteralExpression",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 11
+      },
+      {
+        "kind": "ComputedPropertyName",
+        "depth": 12
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 13
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 14
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 15
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 16
+      },
+      {
+        "kind": "Identifier",
+        "depth": 17
+      },
+      {
+        "kind": "Identifier",
+        "depth": 17
+      },
+      {
+        "kind": "Identifier",
+        "depth": 16
+      },
+      {
+        "kind": "Identifier",
+        "depth": 15
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 11
+      },
+      {
+        "kind": "ComputedPropertyName",
+        "depth": 12
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 13
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 14
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 15
+      },
+      {
+        "kind": "Identifier",
+        "depth": 16
+      },
+      {
+        "kind": "Identifier",
+        "depth": 16
+      },
+      {
+        "kind": "Identifier",
+        "depth": 15
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "ArrowFunction",
+        "depth": 12
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 13
+      },
+      {
+        "kind": "Parameter",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "UnknownKeyword",
+        "depth": 14
+      },
+      {
+        "kind": "EqualsGreaterThanToken",
+        "depth": 13
+      },
+      {
+        "kind": "Block",
+        "depth": 13
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 14
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 15
+      },
+      {
+        "kind": "Identifier",
+        "depth": 16
+      },
+      {
+        "kind": "FirstCompoundAssignment",
+        "depth": 16
+      },
+      {
+        "kind": "FirstLiteralToken",
+        "depth": 16
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 14
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 15
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 16
+      },
+      {
+        "kind": "Identifier",
+        "depth": 17
+      },
+      {
+        "kind": "Identifier",
+        "depth": 17
+      },
+      {
+        "kind": "Identifier",
+        "depth": 16
+      },
+      {
+        "kind": "Identifier",
+        "depth": 16
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 14
+      },
+      {
+        "kind": "Identifier",
+        "depth": 15
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 7
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 8
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 10
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 11
+      },
+      {
+        "kind": "ParenthesizedExpression",
+        "depth": 12
+      },
+      {
+        "kind": "AsExpression",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 14
+      },
+      {
+        "kind": "FunctionType",
+        "depth": 14
+      },
+      {
+        "kind": "Parameter",
+        "depth": 15
+      },
+      {
+        "kind": "Identifier",
+        "depth": 16
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 16
+      },
+      {
+        "kind": "Identifier",
+        "depth": 17
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 17
+      },
+      {
+        "kind": "Identifier",
+        "depth": 18
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 18
+      },
+      {
+        "kind": "UnknownKeyword",
+        "depth": 18
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 15
+      },
+      {
+        "kind": "Identifier",
+        "depth": 16
+      },
+      {
+        "kind": "UnknownKeyword",
+        "depth": 16
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 7
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "FirstLiteralToken",
+        "depth": 9
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 7
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 7
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "FirstCompoundAssignment",
+        "depth": 9
+      },
+      {
+        "kind": "FirstLiteralToken",
+        "depth": 9
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeOperator",
+        "depth": 3
+      },
+      {
+        "kind": "ArrayType",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "VoidKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ForOfStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 4
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 5
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 6
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "RegularExpressionLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "RegularExpressionLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "ForOfStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 4
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "ForOfStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 4
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeOperator",
+        "depth": 3
+      },
+      {
+        "kind": "ArrayType",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "VoidKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ForOfStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 4
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 5
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 6
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "FirstLiteralToken",
+        "depth": 7
+      },
+      {
+        "kind": "TemplateExpression",
+        "depth": 7
+      },
+      {
+        "kind": "TemplateHead",
+        "depth": 8
+      },
+      {
+        "kind": "TemplateSpan",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "LastTemplateToken",
+        "depth": 9
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeOperator",
+        "depth": 3
+      },
+      {
+        "kind": "ArrayType",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "VoidKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "ArrayType",
+        "depth": 6
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "ArrayLiteralExpression",
+        "depth": 6
+      },
+      {
+        "kind": "ForOfStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 4
+      },
+      {
+        "kind": "TryStatement",
+        "depth": 5
+      },
+      {
+        "kind": "Block",
+        "depth": 6
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 7
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "CatchClause",
+        "depth": 6
+      },
+      {
+        "kind": "Block",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 9
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 11
+      },
+      {
+        "kind": "IfStatement",
+        "depth": 3
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 4
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "GreaterThanToken",
+        "depth": 5
+      },
+      {
+        "kind": "FirstLiteralToken",
+        "depth": 5
+      },
+      {
+        "kind": "Block",
+        "depth": 4
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "TemplateExpression",
+        "depth": 7
+      },
+      {
+        "kind": "TemplateHead",
+        "depth": 8
+      },
+      {
+        "kind": "TemplateSpan",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "LastTemplateToken",
+        "depth": 9
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "VoidKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 3
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 5
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 8
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "FalseKeyword",
+        "depth": 6
+      },
+      {
+        "kind": "TryStatement",
+        "depth": 3
+      },
+      {
+        "kind": "Block",
+        "depth": 4
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "FirstAssignment",
+        "depth": 7
+      },
+      {
+        "kind": "TrueKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 5
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 6
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 5
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 8
+      },
+      {
+        "kind": "ArrayLiteralExpression",
+        "depth": 9
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "TemplateExpression",
+        "depth": 10
+      },
+      {
+        "kind": "TemplateHead",
+        "depth": 11
+      },
+      {
+        "kind": "TemplateSpan",
+        "depth": 11
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 12
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "Identifier",
+        "depth": 13
+      },
+      {
+        "kind": "LastTemplateToken",
+        "depth": 12
+      },
+      {
+        "kind": "TemplateExpression",
+        "depth": 10
+      },
+      {
+        "kind": "TemplateHead",
+        "depth": 11
+      },
+      {
+        "kind": "TemplateSpan",
+        "depth": 11
+      },
+      {
+        "kind": "Identifier",
+        "depth": 12
+      },
+      {
+        "kind": "LastTemplateToken",
+        "depth": 12
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 9
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 8
+      },
+      {
+        "kind": "Block",
+        "depth": 4
+      },
+      {
+        "kind": "IfStatement",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Block",
+        "depth": 6
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 7
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 8
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 1
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 2
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}

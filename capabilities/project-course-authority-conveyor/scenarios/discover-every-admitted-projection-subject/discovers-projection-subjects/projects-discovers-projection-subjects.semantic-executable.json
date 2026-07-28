@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "discovers-projection-subjects-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/discovers-projection-subjects.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "discover-every-admitted-projection-subject",
+    "obligationId": "identify-the-complete-projection-subject-set",
+    "expectationId": "expect-one-complete-projection-subject-set",
+    "responsibilityId": "discovers-projection-subjects",
+    "signalId": "projection-subject-discovery",
+    "semanticOperationId": "discover-projection-subjects"
+  },
+  "projection": {
+    "functionName": "discoversProjectionSubjects",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "DiscoversProjectionSubjectsContext"
+    },
+    "resultTypeReference": "ProjectionSubjectDiscoverySignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "discover",
+      "argument": {
+        "receiver": "context",
+        "member": "authority"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

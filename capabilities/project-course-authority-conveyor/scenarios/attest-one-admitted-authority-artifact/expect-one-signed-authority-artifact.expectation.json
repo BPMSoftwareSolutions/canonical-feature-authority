@@ -1,0 +1,10 @@
+{
+  "authorityType": "scenario-expectation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "attest-one-admitted-authority-artifact",
+  "obligationId": "cryptographically-bind-one-admitted-artifact",
+  "expectationId": "expect-one-signed-authority-artifact",
+  "outcome": "one signed authority artifact is emitted",
+  "expectedResponsibilityId": "attests-admitted-authority",
+  "expectedSignalId": "admitted-authority-attestation"
+}

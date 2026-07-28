@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-evaluates-resumable-authority-expectation-from-6ed5b8b66bcb4e64e53f7cf7610d73451c2964151750cc387116b869313492b9",
+  "bodyId": "evaluates-resumable-authority-expectation-body",
+  "structuralProfile": "expectation-execution.v1",
+  "sourceSemanticAuthority": "projects-evaluates-resumable-authority-expectation.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:6ed5b8b66bcb4e64e53f7cf7610d73451c2964151750cc387116b869313492b9",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/evaluates-resumable-authority.expectation.ts"
+  },
+  "projection": {
+    "functionName": "provesEvaluatesResumableAuthorityExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesEvaluatesResumableAuthorityExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

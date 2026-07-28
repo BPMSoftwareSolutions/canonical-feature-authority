@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "projects-bounded-model-request-body",
+  "scenarioId": "project-one-bounded-model-request",
+  "obligationId": "produce-one-complete-model-request",
+  "responsibilityId": "projects-bounded-model-request",
+  "signalId": "bounded-model-request-projection",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/projects-bounded-model-request.ts"
+  },
+  "semanticExecutableAuthority": "projects-projects-bounded-model-request.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:3788ad6db1a9ae1b55b6be6d86d1a8c41dcdf09f3627937b8500e93b7c17865e",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

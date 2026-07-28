@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-authority-resumability-type-from-917f1bd6d52f58e2be0698a08d1a77330b85e98cfc437f63d535c7b95010f8f4",
+  "bodyId": "authority-resumability-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-authority-resumability-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:917f1bd6d52f58e2be0698a08d1a77330b85e98cfc437f63d535c7b95010f8f4",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/authority-resumability.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "EvaluatesResumableAuthorityContext",
+      "ProvesEvaluatesResumableAuthorityExpectationContext",
+      "RunsEvaluatesResumableAuthorityConformanceContext",
+      "AuthorityResumabilitySignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

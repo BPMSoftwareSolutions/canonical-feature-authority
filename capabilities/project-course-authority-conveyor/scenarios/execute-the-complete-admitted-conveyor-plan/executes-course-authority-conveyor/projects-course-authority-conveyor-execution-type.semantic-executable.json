@@ -1,0 +1,36 @@
+{
+  "semanticExecutableType": "declaration-only-context.v1",
+  "bodyRole": "type",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "bodyId": "course-authority-conveyor-execution-type-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/course-authority-conveyor-execution.type.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "execute-the-complete-admitted-conveyor-plan",
+    "obligationId": "execute-one-complete-admitted-conveyor-plan",
+    "expectationId": "expect-one-terminal-course-conveyor-signal",
+    "responsibilityId": "executes-course-authority-conveyor",
+    "signalId": "course-authority-conveyor-execution",
+    "semanticOperationId": "execute-course-authority-conveyor"
+  },
+  "projection": {
+    "declarations": [
+      "CourseConveyorContext",
+      "ProvesExecutesCourseAuthorityConveyorExpectationContext",
+      "RunsExecutesCourseAuthorityConveyorConformanceContext",
+      "CourseConveyorSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

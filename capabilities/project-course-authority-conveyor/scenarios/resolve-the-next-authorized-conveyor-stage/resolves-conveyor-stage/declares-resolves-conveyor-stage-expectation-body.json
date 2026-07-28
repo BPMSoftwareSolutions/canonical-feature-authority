@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "resolves-conveyor-stage-expectation-body",
+  "scenarioId": "resolve-the-next-authorized-conveyor-stage",
+  "obligationId": "identify-one-authorized-next-stage",
+  "responsibilityId": "resolves-conveyor-stage",
+  "signalId": "conveyor-stage-transition",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/resolves-conveyor-stage.expectation.ts"
+  },
+  "semanticExecutableAuthority": "projects-resolves-conveyor-stage-expectation.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:c4a1756134938eb8e92329fb10443289afd5b49aa15b9c4ef15779ca9f4a6358",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

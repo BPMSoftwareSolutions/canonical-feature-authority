@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "expectation",
+  "structuralProfile": "expectation-execution.v1",
+  "bodyId": "evaluates-resumable-authority-expectation-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/evaluates-resumable-authority.expectation.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "resume-only-revalidated-admitted-authority",
+    "obligationId": "classify-one-prior-artifact-for-resumption",
+    "expectationId": "expect-one-resumability-disposition",
+    "responsibilityId": "evaluates-resumable-authority",
+    "signalId": "authority-resumability",
+    "semanticOperationId": "evaluate-resumable-authority"
+  },
+  "projection": {
+    "functionName": "provesEvaluatesResumableAuthorityExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesEvaluatesResumableAuthorityExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

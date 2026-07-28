@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "resolves-red-conveyor-transition-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/resolves-red-conveyor-transition.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "stop-downstream-execution-after-red",
+    "obligationId": "authorize-no-downstream-stage-after-red",
+    "expectationId": "expect-one-stopped-conveyor-transition",
+    "responsibilityId": "resolves-red-conveyor-transition",
+    "signalId": "red-conveyor-stop",
+    "semanticOperationId": "resolve-red-conveyor-transition"
+  },
+  "projection": {
+    "functionName": "resolvesRedConveyorTransition",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ResolvesRedConveyorTransitionContext"
+    },
+    "resultTypeReference": "RedConveyorStopSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "resolve",
+      "argument": {
+        "receiver": "context",
+        "member": "disposition"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

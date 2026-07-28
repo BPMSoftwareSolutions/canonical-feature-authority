@@ -1,0 +1,36 @@
+{
+  "semanticExecutableType": "declaration-only-context.v1",
+  "bodyRole": "type",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "bodyId": "typescript-body-projection-type-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/typescript-body-projection.type.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "invoke-the-trusted-typescript-projector",
+    "obligationId": "emit-one-projector-signed-typescript-body",
+    "expectationId": "expect-one-projector-signed-body",
+    "responsibilityId": "invokes-typescript-projector",
+    "signalId": "typescript-body-projection",
+    "semanticOperationId": "invoke-typescript-projector"
+  },
+  "projection": {
+    "declarations": [
+      "InvokesTypescriptProjectorContext",
+      "ProvesInvokesTypescriptProjectorExpectationContext",
+      "RunsInvokesTypescriptProjectorConformanceContext",
+      "TypescriptBodyProjectionSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

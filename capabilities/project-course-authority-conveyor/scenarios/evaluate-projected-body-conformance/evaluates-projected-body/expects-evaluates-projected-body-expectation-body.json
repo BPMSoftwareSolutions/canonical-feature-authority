@@ -1,0 +1,11 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "evaluates-projected-body-expectation-body",
+  "scenarioId": "evaluate-projected-body-conformance",
+  "obligationId": "resolve-one-body-projection-conformance",
+  "expectationId": "expect-one-projection-conformance-disposition",
+  "responsibilityId": "evaluates-projected-body",
+  "signalId": "projected-body-conformance",
+  "bodyCount": 1,
+  "structuralProfile": "expectation-execution.v1"
+}

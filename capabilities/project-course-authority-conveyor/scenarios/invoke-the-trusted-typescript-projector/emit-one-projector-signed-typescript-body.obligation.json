@@ -1,0 +1,8 @@
+{
+  "authorityType": "obligation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "invoke-the-trusted-typescript-projector",
+  "obligationId": "emit-one-projector-signed-typescript-body",
+  "statement": "one projector-signed TypeScript body is emitted",
+  "independentlyEvaluable": true
+}

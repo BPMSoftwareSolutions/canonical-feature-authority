@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "conformance",
+  "structuralProfile": "conformance-delegation.v1",
+  "bodyId": "runs-obtains-bounded-model-submission-conformance-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/runs-obtains-bounded-model-submission-conformance.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "obtain-one-bounded-model-submission",
+    "obligationId": "obtain-one-normalized-model-testimony",
+    "expectationId": "expect-one-model-submission-testimony",
+    "responsibilityId": "obtains-bounded-model-submission",
+    "signalId": "bounded-model-submission",
+    "semanticOperationId": "obtain-bounded-model-submission"
+  },
+  "projection": {
+    "functionName": "runsObtainsBoundedModelSubmissionConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsObtainsBoundedModelSubmissionConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

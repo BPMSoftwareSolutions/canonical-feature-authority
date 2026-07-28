@@ -1,0 +1,14 @@
+{
+  "authorityType": "signal.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "attest-one-admitted-authority-artifact",
+  "obligationId": "cryptographically-bind-one-admitted-artifact",
+  "responsibilityId": "attests-admitted-authority",
+  "signalId": "admitted-authority-attestation",
+  "outcome": "one signed authority artifact is emitted",
+  "dispositions": [
+    "GREEN",
+    "RED",
+    "UNRESOLVED"
+  ]
+}

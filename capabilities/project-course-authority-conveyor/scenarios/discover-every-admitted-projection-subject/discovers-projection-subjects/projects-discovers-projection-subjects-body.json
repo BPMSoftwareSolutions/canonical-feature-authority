@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-discovers-projection-subjects-from-bea9362bf12fea7b8a064f0fa351c7613d7074344cb3d5698467a9dba99680c0",
+  "bodyId": "discovers-projection-subjects-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-discovers-projection-subjects.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:bea9362bf12fea7b8a064f0fa351c7613d7074344cb3d5698467a9dba99680c0",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/discovers-projection-subjects.ts"
+  },
+  "projection": {
+    "functionName": "discoversProjectionSubjects",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "DiscoversProjectionSubjectsContext"
+    },
+    "resultTypeReference": "ProjectionSubjectDiscoverySignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "discover",
+      "argument": {
+        "receiver": "context",
+        "member": "authority"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

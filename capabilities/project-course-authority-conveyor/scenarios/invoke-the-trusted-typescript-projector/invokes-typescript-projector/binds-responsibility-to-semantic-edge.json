@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "invokes-typescript-projector",
+  "semanticOperationId": "invoke-typescript-projector",
+  "contextOperationMember": "project",
+  "contextInputMember": "astAuthority",
+  "signalId": "typescript-body-projection"
+}

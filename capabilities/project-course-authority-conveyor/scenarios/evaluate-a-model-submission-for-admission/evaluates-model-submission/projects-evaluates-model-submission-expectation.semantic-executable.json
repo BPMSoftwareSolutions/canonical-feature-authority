@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "expectation",
+  "structuralProfile": "expectation-execution.v1",
+  "bodyId": "evaluates-model-submission-expectation-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/evaluates-model-submission.expectation.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "evaluate-a-model-submission-for-admission",
+    "obligationId": "resolve-one-submission-admission",
+    "expectationId": "expect-one-admission-disposition",
+    "responsibilityId": "evaluates-model-submission",
+    "signalId": "model-submission-admission",
+    "semanticOperationId": "evaluate-model-submission"
+  },
+  "projection": {
+    "functionName": "provesEvaluatesModelSubmissionExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesEvaluatesModelSubmissionExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

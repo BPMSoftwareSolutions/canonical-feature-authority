@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "expectation",
+  "structuralProfile": "expectation-execution.v1",
+  "bodyId": "resolves-red-conveyor-transition-expectation-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/resolves-red-conveyor-transition.expectation.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "stop-downstream-execution-after-red",
+    "obligationId": "authorize-no-downstream-stage-after-red",
+    "expectationId": "expect-one-stopped-conveyor-transition",
+    "responsibilityId": "resolves-red-conveyor-transition",
+    "signalId": "red-conveyor-stop",
+    "semanticOperationId": "resolve-red-conveyor-transition"
+  },
+  "projection": {
+    "functionName": "provesResolvesRedConveyorTransitionExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesResolvesRedConveyorTransitionExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

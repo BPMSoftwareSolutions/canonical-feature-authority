@@ -1,0 +1,26 @@
+{
+  "authorityType": "canonical-feature-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "title": "Project course authority through a governed conveyor",
+  "userStory": {
+    "asA": "student projecting an authority-first system",
+    "iWant": "every admitted course authority to move through a governed LLM and deterministic projection conveyor",
+    "soThat": "every executable body has complete canonical lineage and provable projector-only code origin"
+  },
+  "scenarioIds": [
+    "discover-every-admitted-projection-subject",
+    "resolve-the-next-authorized-conveyor-stage",
+    "project-one-bounded-model-request",
+    "obtain-one-bounded-model-submission",
+    "evaluate-a-model-submission-for-admission",
+    "attest-one-admitted-authority-artifact",
+    "project-one-admitted-ast-authority",
+    "invoke-the-trusted-typescript-projector",
+    "evaluate-projected-body-conformance",
+    "publish-the-complete-course-lineage-index",
+    "stop-downstream-execution-after-red",
+    "resume-only-revalidated-admitted-authority",
+    "execute-the-complete-admitted-conveyor-plan"
+  ],
+  "governingObligation": "Every conveyor scenario owns one obligation, responsibility, signal, and projected code-body lineage."
+}

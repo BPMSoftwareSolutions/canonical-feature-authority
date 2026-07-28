@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-invokes-typescript-projector-from-f477dc262bdf691ce00b2162a06ed3f8573c6f66c3c38f8f112f53904d03a95e",
+  "bodyId": "invokes-typescript-projector-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-invokes-typescript-projector.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:f477dc262bdf691ce00b2162a06ed3f8573c6f66c3c38f8f112f53904d03a95e",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/invokes-typescript-projector.ts"
+  },
+  "projection": {
+    "functionName": "invokesTypescriptProjector",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "InvokesTypescriptProjectorContext"
+    },
+    "resultTypeReference": "TypescriptBodyProjectionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "project",
+      "argument": {
+        "receiver": "context",
+        "member": "astAuthority"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

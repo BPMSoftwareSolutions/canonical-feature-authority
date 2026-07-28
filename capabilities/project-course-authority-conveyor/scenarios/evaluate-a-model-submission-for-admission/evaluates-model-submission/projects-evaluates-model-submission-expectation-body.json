@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-evaluates-model-submission-expectation-from-33fa535cb967a36bed8e2453e0c0c90e6dfa67bcd9491900e1d915e3814ac7ce",
+  "bodyId": "evaluates-model-submission-expectation-body",
+  "structuralProfile": "expectation-execution.v1",
+  "sourceSemanticAuthority": "projects-evaluates-model-submission-expectation.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:33fa535cb967a36bed8e2453e0c0c90e6dfa67bcd9491900e1d915e3814ac7ce",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/evaluates-model-submission.expectation.ts"
+  },
+  "projection": {
+    "functionName": "provesEvaluatesModelSubmissionExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesEvaluatesModelSubmissionExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "evaluates-model-submission-expectation-body",
+  "scenarioId": "evaluate-a-model-submission-for-admission",
+  "obligationId": "resolve-one-submission-admission",
+  "responsibilityId": "evaluates-model-submission",
+  "signalId": "model-submission-admission",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/evaluates-model-submission.expectation.ts"
+  },
+  "semanticExecutableAuthority": "projects-evaluates-model-submission-expectation.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:33fa535cb967a36bed8e2453e0c0c90e6dfa67bcd9491900e1d915e3814ac7ce",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

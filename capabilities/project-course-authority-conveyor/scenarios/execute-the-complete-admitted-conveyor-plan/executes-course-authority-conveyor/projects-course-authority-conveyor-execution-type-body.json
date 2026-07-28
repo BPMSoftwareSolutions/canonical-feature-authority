@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-course-authority-conveyor-execution-type-from-312653fd5128fbf86fa972d6dba04c4c93f47905a5f4bb0140d7dc46b48f2379",
+  "bodyId": "course-authority-conveyor-execution-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-course-authority-conveyor-execution-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:312653fd5128fbf86fa972d6dba04c4c93f47905a5f4bb0140d7dc46b48f2379",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/course-authority-conveyor-execution.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "CourseConveyorContext",
+      "ProvesExecutesCourseAuthorityConveyorExpectationContext",
+      "RunsExecutesCourseAuthorityConveyorConformanceContext",
+      "CourseConveyorSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

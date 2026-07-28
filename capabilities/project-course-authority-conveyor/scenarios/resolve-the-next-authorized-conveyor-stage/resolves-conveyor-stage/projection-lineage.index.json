@@ -1,0 +1,57 @@
+{
+  "indexType": "scenario-projection-lineage.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "resolve-the-next-authorized-conveyor-stage",
+  "obligationId": "identify-one-authorized-next-stage",
+  "expectationId": "expect-one-stage-transition",
+  "responsibilityId": "resolves-conveyor-stage",
+  "signalId": "conveyor-stage-transition",
+  "semanticOperationId": "resolve-conveyor-stage",
+  "projectedBodyCount": 4,
+  "entries": [
+    {
+      "role": "primary",
+      "bodyId": "resolves-conveyor-stage-body",
+      "semanticAuthority": "projects-resolves-conveyor-stage.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:7360d9863f789c8889459a519f496ffda115c061d102684a8473001a96145e77",
+      "bodyExpectationAuthority": "expects-resolves-conveyor-stage-body.json",
+      "fileBodyAuthority": "declares-resolves-conveyor-stage-body.json",
+      "typescriptProjectionAuthority": "projects-resolves-conveyor-stage-body.json",
+      "astAuthority": "resolves-conveyor-stage.ts.ast.authority.json",
+      "projectedBody": "resolves-conveyor-stage.ts"
+    },
+    {
+      "role": "type",
+      "bodyId": "conveyor-stage-transition-type-body",
+      "semanticAuthority": "projects-conveyor-stage-transition-type.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:c400f5f6d41da803ab886391621f73e5f04a68ee88bab980fb31870e6d142697",
+      "bodyExpectationAuthority": "expects-conveyor-stage-transition-type-body.json",
+      "fileBodyAuthority": "declares-conveyor-stage-transition-type-body.json",
+      "typescriptProjectionAuthority": "projects-conveyor-stage-transition-type-body.json",
+      "astAuthority": "conveyor-stage-transition.type.ts.ast.authority.json",
+      "projectedBody": "conveyor-stage-transition.type.ts"
+    },
+    {
+      "role": "expectation",
+      "bodyId": "resolves-conveyor-stage-expectation-body",
+      "semanticAuthority": "projects-resolves-conveyor-stage-expectation.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:c4a1756134938eb8e92329fb10443289afd5b49aa15b9c4ef15779ca9f4a6358",
+      "bodyExpectationAuthority": "expects-resolves-conveyor-stage-expectation-body.json",
+      "fileBodyAuthority": "declares-resolves-conveyor-stage-expectation-body.json",
+      "typescriptProjectionAuthority": "projects-resolves-conveyor-stage-expectation-body.json",
+      "astAuthority": "resolves-conveyor-stage.expectation.ts.ast.authority.json",
+      "projectedBody": "resolves-conveyor-stage.expectation.ts"
+    },
+    {
+      "role": "conformance",
+      "bodyId": "runs-resolves-conveyor-stage-conformance-body",
+      "semanticAuthority": "projects-runs-resolves-conveyor-stage-conformance.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:d56c4a69fc9635659ad126c73c4974b970935ec830e77442caba3f42e1b0c5ae",
+      "bodyExpectationAuthority": "expects-runs-resolves-conveyor-stage-conformance-body.json",
+      "fileBodyAuthority": "declares-runs-resolves-conveyor-stage-conformance-body.json",
+      "typescriptProjectionAuthority": "projects-runs-resolves-conveyor-stage-conformance-body.json",
+      "astAuthority": "runs-resolves-conveyor-stage-conformance.ts.ast.authority.json",
+      "projectedBody": "runs-resolves-conveyor-stage-conformance.ts"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "obtains-bounded-model-submission-expectation-body",
+  "scenarioId": "obtain-one-bounded-model-submission",
+  "obligationId": "obtain-one-normalized-model-testimony",
+  "expectationId": "expect-one-model-submission-testimony",
+  "responsibilityId": "obtains-bounded-model-submission",
+  "signalId": "bounded-model-submission",
+  "bodyCount": 1,
+  "structuralProfile": "expectation-execution.v1"
+}

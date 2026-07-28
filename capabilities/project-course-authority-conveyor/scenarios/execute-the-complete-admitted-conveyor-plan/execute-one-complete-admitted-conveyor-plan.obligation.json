@@ -1,0 +1,8 @@
+{
+  "authorityType": "obligation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "execute-the-complete-admitted-conveyor-plan",
+  "obligationId": "execute-one-complete-admitted-conveyor-plan",
+  "statement": "one terminal course-conveyor signal is emitted",
+  "independentlyEvaluable": true
+}

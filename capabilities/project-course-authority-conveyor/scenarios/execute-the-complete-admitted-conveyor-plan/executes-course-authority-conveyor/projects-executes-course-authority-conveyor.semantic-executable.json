@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-entry-delegation.v1",
+  "bodyId": "executes-course-authority-conveyor-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/executes-course-authority-conveyor.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "execute-the-complete-admitted-conveyor-plan",
+    "obligationId": "execute-one-complete-admitted-conveyor-plan",
+    "expectationId": "expect-one-terminal-course-conveyor-signal",
+    "responsibilityId": "executes-course-authority-conveyor",
+    "signalId": "course-authority-conveyor-execution",
+    "semanticOperationId": "execute-course-authority-conveyor"
+  },
+  "projection": {
+    "functionName": "executesCourseAuthorityConveyor",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "CourseConveyorContext"
+    },
+    "resultTypeReference": "CourseConveyorSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "execute",
+      "argument": {
+        "receiver": "context",
+        "member": "plan"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

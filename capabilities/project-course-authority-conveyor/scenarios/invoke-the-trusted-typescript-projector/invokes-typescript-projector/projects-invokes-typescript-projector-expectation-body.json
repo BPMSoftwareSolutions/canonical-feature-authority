@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-invokes-typescript-projector-expectation-from-b3da44ae55f0611a21cb57536074cea2bdf2a3304d63ba9d64e9f686f63bb052",
+  "bodyId": "invokes-typescript-projector-expectation-body",
+  "structuralProfile": "expectation-execution.v1",
+  "sourceSemanticAuthority": "projects-invokes-typescript-projector-expectation.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:b3da44ae55f0611a21cb57536074cea2bdf2a3304d63ba9d64e9f686f63bb052",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/invokes-typescript-projector.expectation.ts"
+  },
+  "projection": {
+    "functionName": "provesInvokesTypescriptProjectorExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesInvokesTypescriptProjectorExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

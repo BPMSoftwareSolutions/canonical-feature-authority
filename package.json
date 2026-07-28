@@ -10,7 +10,8 @@
     "check:bodies": "npm --prefix ../declarative-typescript-body-projector run project-authority-tree -- --authority-root ../canonical-feature-authority --output-root ../canonical-feature-authority --trusted-keys ../canonical-feature-authority/projection-authority/trusted-projector-keys.json --check",
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
-    "prove:projection": "npm run check:bodies && npm run build"
+    "prove:projection": "npm run check:bodies && npm run build",
+    "prove:lifecycle": "npm run check:bodies && npm run build && node dist/conformance/proves-projected-body-lifecycle.js"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",

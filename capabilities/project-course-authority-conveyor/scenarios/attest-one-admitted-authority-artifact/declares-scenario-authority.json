@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "attest-one-admitted-authority-artifact",
+  "given": "one model submission has an admitted disposition",
+  "when": "the admitted authority is attested",
+  "then": "one signed authority artifact is emitted",
+  "independentObligationCount": 1
+}

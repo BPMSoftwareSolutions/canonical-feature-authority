@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-conveyor-stage-transition-type-from-c400f5f6d41da803ab886391621f73e5f04a68ee88bab980fb31870e6d142697",
+  "bodyId": "conveyor-stage-transition-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-conveyor-stage-transition-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:c400f5f6d41da803ab886391621f73e5f04a68ee88bab980fb31870e6d142697",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/conveyor-stage-transition.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "ResolvesConveyorStageContext",
+      "ProvesResolvesConveyorStageExpectationContext",
+      "RunsResolvesConveyorStageConformanceContext",
+      "ConveyorStageTransitionSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

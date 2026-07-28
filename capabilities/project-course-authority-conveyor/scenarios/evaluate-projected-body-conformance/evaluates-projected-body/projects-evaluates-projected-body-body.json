@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-evaluates-projected-body-from-ed24b03968a85d78a8d99475243393ca3f939cec42e9185593cba6dd3d2d7b61",
+  "bodyId": "evaluates-projected-body-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-evaluates-projected-body.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:ed24b03968a85d78a8d99475243393ca3f939cec42e9185593cba6dd3d2d7b61",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/evaluates-projected-body.ts"
+  },
+  "projection": {
+    "functionName": "evaluatesProjectedBody",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "EvaluatesProjectedBodyContext"
+    },
+    "resultTypeReference": "ProjectedBodyConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "projectedBody"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

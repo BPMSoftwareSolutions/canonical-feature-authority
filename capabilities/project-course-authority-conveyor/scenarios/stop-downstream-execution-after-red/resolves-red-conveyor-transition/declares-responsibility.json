@@ -1,0 +1,9 @@
+{
+  "authorityType": "responsibility.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "stop-downstream-execution-after-red",
+  "obligationId": "authorize-no-downstream-stage-after-red",
+  "responsibilityId": "resolves-red-conveyor-transition",
+  "statement": "the conveyor transition is resolved",
+  "semanticOperationId": "resolve-red-conveyor-transition"
+}

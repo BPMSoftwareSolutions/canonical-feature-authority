@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "conformance",
+  "structuralProfile": "conformance-delegation.v1",
+  "bodyId": "runs-discovers-projection-subjects-conformance-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/runs-discovers-projection-subjects-conformance.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "discover-every-admitted-projection-subject",
+    "obligationId": "identify-the-complete-projection-subject-set",
+    "expectationId": "expect-one-complete-projection-subject-set",
+    "responsibilityId": "discovers-projection-subjects",
+    "signalId": "projection-subject-discovery",
+    "semanticOperationId": "discover-projection-subjects"
+  },
+  "projection": {
+    "functionName": "runsDiscoversProjectionSubjectsConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsDiscoversProjectionSubjectsConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

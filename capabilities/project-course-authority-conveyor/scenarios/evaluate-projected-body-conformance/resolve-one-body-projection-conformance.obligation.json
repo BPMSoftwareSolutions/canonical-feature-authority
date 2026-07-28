@@ -1,0 +1,8 @@
+{
+  "authorityType": "obligation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "evaluate-projected-body-conformance",
+  "obligationId": "resolve-one-body-projection-conformance",
+  "statement": "one projection-conformance disposition is emitted",
+  "independentlyEvaluable": true
+}

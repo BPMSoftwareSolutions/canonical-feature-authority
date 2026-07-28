@@ -1,0 +1,25 @@
+{
+  "semanticAuthorityType": "prebound-member-delegation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "publish-the-complete-course-lineage-index",
+  "obligationId": "publish-one-complete-signed-lineage-index",
+  "expectationId": "expect-one-signed-course-lineage-index",
+  "responsibilityId": "projects-course-lineage-index",
+  "signalId": "course-lineage-index-projection",
+  "semanticOperationId": "project-course-lineage-index",
+  "execution": {
+    "contextParameter": "context",
+    "operationMember": "project",
+    "inputMember": "lineage",
+    "awaited": true,
+    "returnOperationResult": true
+  },
+  "forbidden": [
+    "branching",
+    "iteration",
+    "dto-construction",
+    "semantic-literals",
+    "direct-mechanism-access",
+    "local-error-policy"
+  ]
+}

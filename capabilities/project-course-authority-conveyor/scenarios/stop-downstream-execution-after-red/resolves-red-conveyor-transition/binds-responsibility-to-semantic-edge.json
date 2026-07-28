@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "resolves-red-conveyor-transition",
+  "semanticOperationId": "resolve-red-conveyor-transition",
+  "contextOperationMember": "resolve",
+  "contextInputMember": "disposition",
+  "signalId": "red-conveyor-stop"
+}

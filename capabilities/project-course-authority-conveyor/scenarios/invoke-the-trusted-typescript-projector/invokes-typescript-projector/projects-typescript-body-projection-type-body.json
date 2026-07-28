@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-typescript-body-projection-type-from-e664c5978418f1d1b5f0fd17071dbc5e8ce9fa2b97b722bfd9e7c4059b2c5fbb",
+  "bodyId": "typescript-body-projection-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-typescript-body-projection-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:e664c5978418f1d1b5f0fd17071dbc5e8ce9fa2b97b722bfd9e7c4059b2c5fbb",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/typescript-body-projection.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "InvokesTypescriptProjectorContext",
+      "ProvesInvokesTypescriptProjectorExpectationContext",
+      "RunsInvokesTypescriptProjectorConformanceContext",
+      "TypescriptBodyProjectionSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

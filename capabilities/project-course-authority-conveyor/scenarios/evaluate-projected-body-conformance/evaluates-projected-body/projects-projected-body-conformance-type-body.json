@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-projected-body-conformance-type-from-5be7ee3575a2be57dccbea12f368edb504e6be7c053189902ea72ec743a42bb8",
+  "bodyId": "projected-body-conformance-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-projected-body-conformance-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:5be7ee3575a2be57dccbea12f368edb504e6be7c053189902ea72ec743a42bb8",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/projected-body-conformance.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "EvaluatesProjectedBodyContext",
+      "ProvesEvaluatesProjectedBodyExpectationContext",
+      "RunsEvaluatesProjectedBodyConformanceContext",
+      "ProjectedBodyConformanceSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

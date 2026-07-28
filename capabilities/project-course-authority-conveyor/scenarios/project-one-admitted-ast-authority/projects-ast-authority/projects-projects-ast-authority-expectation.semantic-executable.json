@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "expectation",
+  "structuralProfile": "expectation-execution.v1",
+  "bodyId": "projects-ast-authority-expectation-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/projects-ast-authority.expectation.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "project-one-admitted-ast-authority",
+    "obligationId": "derive-one-lossless-conformant-ast-authority",
+    "expectationId": "expect-one-signed-ast-authority",
+    "responsibilityId": "projects-ast-authority",
+    "signalId": "ast-authority-projection",
+    "semanticOperationId": "project-ast-authority"
+  },
+  "projection": {
+    "functionName": "provesProjectsAstAuthorityExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesProjectsAstAuthorityExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

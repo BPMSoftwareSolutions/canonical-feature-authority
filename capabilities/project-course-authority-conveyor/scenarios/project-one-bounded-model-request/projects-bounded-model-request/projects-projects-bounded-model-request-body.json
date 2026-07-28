@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-projects-bounded-model-request-from-3788ad6db1a9ae1b55b6be6d86d1a8c41dcdf09f3627937b8500e93b7c17865e",
+  "bodyId": "projects-bounded-model-request-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-projects-bounded-model-request.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:3788ad6db1a9ae1b55b6be6d86d1a8c41dcdf09f3627937b8500e93b7c17865e",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/projects-bounded-model-request.ts"
+  },
+  "projection": {
+    "functionName": "projectsBoundedModelRequest",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProjectsBoundedModelRequestContext"
+    },
+    "resultTypeReference": "BoundedModelRequestProjectionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "project",
+      "argument": {
+        "receiver": "context",
+        "member": "stage"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

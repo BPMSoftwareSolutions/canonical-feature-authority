@@ -1,0 +1,25 @@
+{
+  "semanticAuthorityType": "prebound-member-delegation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "invoke-the-trusted-typescript-projector",
+  "obligationId": "emit-one-projector-signed-typescript-body",
+  "expectationId": "expect-one-projector-signed-body",
+  "responsibilityId": "invokes-typescript-projector",
+  "signalId": "typescript-body-projection",
+  "semanticOperationId": "invoke-typescript-projector",
+  "execution": {
+    "contextParameter": "context",
+    "operationMember": "project",
+    "inputMember": "astAuthority",
+    "awaited": true,
+    "returnOperationResult": true
+  },
+  "forbidden": [
+    "branching",
+    "iteration",
+    "dto-construction",
+    "semantic-literals",
+    "direct-mechanism-access",
+    "local-error-policy"
+  ]
+}

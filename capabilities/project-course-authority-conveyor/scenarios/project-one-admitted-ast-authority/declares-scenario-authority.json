@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "project-one-admitted-ast-authority",
+  "given": "one signed semantic authority satisfies its body expectation",
+  "when": "lossless AST authority is projected",
+  "then": "one signed structurally conformant AST authority is emitted",
+  "independentObligationCount": 1
+}

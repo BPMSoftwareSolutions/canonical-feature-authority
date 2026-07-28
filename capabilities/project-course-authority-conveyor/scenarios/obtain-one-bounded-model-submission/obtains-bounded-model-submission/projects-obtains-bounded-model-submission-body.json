@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-obtains-bounded-model-submission-from-b43cd4661a4b533acd05c0123077f34a85f87233bc3daad7b5e7c0552ec05aee",
+  "bodyId": "obtains-bounded-model-submission-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-obtains-bounded-model-submission.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:b43cd4661a4b533acd05c0123077f34a85f87233bc3daad7b5e7c0552ec05aee",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/obtains-bounded-model-submission.ts"
+  },
+  "projection": {
+    "functionName": "obtainsBoundedModelSubmission",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ObtainsBoundedModelSubmissionContext"
+    },
+    "resultTypeReference": "BoundedModelSubmissionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "obtain",
+      "argument": {
+        "receiver": "context",
+        "member": "request"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

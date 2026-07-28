@@ -1,0 +1,57 @@
+{
+  "indexType": "scenario-projection-lineage.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "evaluate-a-model-submission-for-admission",
+  "obligationId": "resolve-one-submission-admission",
+  "expectationId": "expect-one-admission-disposition",
+  "responsibilityId": "evaluates-model-submission",
+  "signalId": "model-submission-admission",
+  "semanticOperationId": "evaluate-model-submission",
+  "projectedBodyCount": 4,
+  "entries": [
+    {
+      "role": "primary",
+      "bodyId": "evaluates-model-submission-body",
+      "semanticAuthority": "projects-evaluates-model-submission.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:e6a43b24d2fc7029716d4b0a26123c0978bd67290cca5b0797e255c457d73f7c",
+      "bodyExpectationAuthority": "expects-evaluates-model-submission-body.json",
+      "fileBodyAuthority": "declares-evaluates-model-submission-body.json",
+      "typescriptProjectionAuthority": "projects-evaluates-model-submission-body.json",
+      "astAuthority": "evaluates-model-submission.ts.ast.authority.json",
+      "projectedBody": "evaluates-model-submission.ts"
+    },
+    {
+      "role": "type",
+      "bodyId": "model-submission-admission-type-body",
+      "semanticAuthority": "projects-model-submission-admission-type.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:c9cdf291ea986f51a2cc4d8ef23a36d06ffa7de56e155d9d0ad61d81bd0b6728",
+      "bodyExpectationAuthority": "expects-model-submission-admission-type-body.json",
+      "fileBodyAuthority": "declares-model-submission-admission-type-body.json",
+      "typescriptProjectionAuthority": "projects-model-submission-admission-type-body.json",
+      "astAuthority": "model-submission-admission.type.ts.ast.authority.json",
+      "projectedBody": "model-submission-admission.type.ts"
+    },
+    {
+      "role": "expectation",
+      "bodyId": "evaluates-model-submission-expectation-body",
+      "semanticAuthority": "projects-evaluates-model-submission-expectation.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:33fa535cb967a36bed8e2453e0c0c90e6dfa67bcd9491900e1d915e3814ac7ce",
+      "bodyExpectationAuthority": "expects-evaluates-model-submission-expectation-body.json",
+      "fileBodyAuthority": "declares-evaluates-model-submission-expectation-body.json",
+      "typescriptProjectionAuthority": "projects-evaluates-model-submission-expectation-body.json",
+      "astAuthority": "evaluates-model-submission.expectation.ts.ast.authority.json",
+      "projectedBody": "evaluates-model-submission.expectation.ts"
+    },
+    {
+      "role": "conformance",
+      "bodyId": "runs-evaluates-model-submission-conformance-body",
+      "semanticAuthority": "projects-runs-evaluates-model-submission-conformance.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:1569eca83c726e4be2ebcc6dddded761adaeedd1989697be005166305735d79e",
+      "bodyExpectationAuthority": "expects-runs-evaluates-model-submission-conformance-body.json",
+      "fileBodyAuthority": "declares-runs-evaluates-model-submission-conformance-body.json",
+      "typescriptProjectionAuthority": "projects-runs-evaluates-model-submission-conformance-body.json",
+      "astAuthority": "runs-evaluates-model-submission-conformance.ts.ast.authority.json",
+      "projectedBody": "runs-evaluates-model-submission-conformance.ts"
+    }
+  ]
+}

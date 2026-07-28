@@ -1,12 +1,71 @@
 # Projected Conveyor Implementation Specification
 
-This document defines the implementation target for the authority conveyor that
-will traverse this course, obtain bounded LLM submissions, admit semantic and
-AST authority, invoke the deterministic TypeScript projector, and publish
-verifiable lineage.
+This document defines and indexes the materialized authority and projection
+target for the course conveyor. It specifies how the conveyor traverses this
+course, obtains bounded LLM submissions, admits semantic and AST authority,
+invokes the deterministic TypeScript projector, and publishes verifiable
+lineage.
 
-It deliberately contains no conveyor implementation. The implementation must be
-projected later from the authorities described here.
+Every documented body now links to its physical semantic executable authority,
+lossless AST authority, body authorities, and projector-signed TypeScript
+projection. The projected bodies are the implementation skeleton; concrete
+runtime collaborators remain supplied through their declared contexts.
+
+## Executable, disposable, and reprojectable proof
+
+The repository-level proof command is:
+
+```text
+npm run prove:lifecycle
+```
+
+Its projected implementation is
+[proves-projected-body-lifecycle.ts](../conformance/proves-projected-body-lifecycle.ts),
+which is governed by
+[semantic executable authority](../conformance/proves-projected-body-lifecycle.semantic-executable.json)
+and
+[lossless AST authority](../conformance/proves-projected-body-lifecycle.ts.ast.authority.json).
+
+The proof does not use a scenario-ID allowlist. It discovers conveyor
+executables from each `projection-lineage.index.json` and deletion targets from
+each `*.ts.ast.authority.json`. Before deleting anything, it rejects absolute
+paths, paths escaping the repository, duplicate targets, and bodies missing
+embedded projector proof.
+
+For every runtime-bearing conveyor body, both before and after reprojection, it
+proves that:
+
+- the authority-declared exported function exists and executes;
+- the authority-declared operation is invoked exactly once;
+- the authority-declared input is passed by identity; and
+- the operation result becomes the projected body's result without alteration.
+
+It then deletes all authority-resolved projected bodies, recreates them through
+the trusted projector, requires byte-for-byte equality with the pre-deletion
+bodies, verifies every embedded signature, rebuilds, re-executes, and runs the
+course tests. A `finally` restoration guard reprojects missing targets if the
+proof is interrupted after deletion.
+
+Declaration-only type bodies are compile-time contracts. They are validated by
+projection proof and compilation and are not misleadingly reported as runtime
+executions.
+
+This is deliberately not a claim that an external runtime collaborator has
+performed its effect. A Gemini adapter, signer, file-system adapter, or
+projector process must pass its own acceptance proof. This lifecycle proves
+that the projected conveyor body faithfully executes its declared boundary; it
+does not counterfeit provider testimony.
+
+### Grading trust boundary
+
+Local self-verification is tamper-evident only relative to its trust anchor. A
+student who can modify the repository trust file, private signing key,
+authority, and proof command controls the complete local claim. Therefore an
+anti-cheating grading run must supply its projector trust anchor and proof
+workflow from outside the submission, with the grading private key unavailable
+to students. The submitted projected bodies remain disposable; the instructor
+may delete them and reproduce them from the submitted authority under the
+instructor-controlled projector identity.
 
 The general code-body rules in
 [Projected Code-Body Shape Specification](specifies-projected-code-body-shapes.md)
@@ -35,6 +94,40 @@ The conveyor coordinates authority. It does not author implementation.
 The user story establishes the need. It does not authorize a workflow,
 provider, prompt, AST, file, or code body by itself. Those decisions are split
 across the atomic scenarios and downstream authorities below.
+
+## Physical canonical feature authority
+
+The documentary user story is now materialized as
+[projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json):
+
+```json
+{
+  "authorityType": "canonical-feature-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "title": "Project course authority through a governed conveyor",
+  "userStory": {
+    "asA": "student projecting an authority-first system",
+    "iWant": "every admitted course authority to move through a governed LLM and deterministic projection conveyor",
+    "soThat": "every executable body has complete canonical lineage and provable projector-only code origin"
+  },
+  "scenarioIds": [
+    "discover-every-admitted-projection-subject",
+    "resolve-the-next-authorized-conveyor-stage",
+    "project-one-bounded-model-request",
+    "obtain-one-bounded-model-submission",
+    "evaluate-a-model-submission-for-admission",
+    "attest-one-admitted-authority-artifact",
+    "project-one-admitted-ast-authority",
+    "invoke-the-trusted-typescript-projector",
+    "evaluate-projected-body-conformance",
+    "publish-the-complete-course-lineage-index",
+    "stop-downstream-execution-after-red",
+    "resume-only-revalidated-admitted-authority",
+    "execute-the-complete-admitted-conveyor-plan"
+  ],
+  "governingObligation": "Every conveyor scenario owns one obligation, responsibility, signal, and projected code-body lineage."
+}
+```
 
 ## Feature background
 
@@ -270,19 +363,19 @@ assertion decisions, or conformance rules in TypeScript.
 
 | # | Primary execution body | Type body | Expectation body | Conformance body |
 |---:|---|---|---|---|
-| 1 | `discovers-projection-subjects.ts` | `projection-subject-discovery.type.ts` | `discovers-projection-subjects.test.ts` | `runs-discovers-projection-subjects-conformance.ts` |
-| 2 | `resolves-conveyor-stage.ts` | `conveyor-stage-transition.type.ts` | `resolves-conveyor-stage.test.ts` | `runs-resolves-conveyor-stage-conformance.ts` |
-| 3 | `projects-bounded-model-request.ts` | `bounded-model-request-projection.type.ts` | `projects-bounded-model-request.test.ts` | `runs-projects-bounded-model-request-conformance.ts` |
-| 4 | `obtains-bounded-model-submission.ts` | `bounded-model-submission.type.ts` | `obtains-bounded-model-submission.test.ts` | `runs-obtains-bounded-model-submission-conformance.ts` |
-| 5 | `evaluates-model-submission.ts` | `model-submission-admission.type.ts` | `evaluates-model-submission.test.ts` | `runs-evaluates-model-submission-conformance.ts` |
-| 6 | `attests-admitted-authority.ts` | `admitted-authority-attestation.type.ts` | `attests-admitted-authority.test.ts` | `runs-attests-admitted-authority-conformance.ts` |
-| 7 | `projects-ast-authority.ts` | `ast-authority-projection.type.ts` | `projects-ast-authority.test.ts` | `runs-projects-ast-authority-conformance.ts` |
-| 8 | `invokes-typescript-projector.ts` | `typescript-body-projection.type.ts` | `invokes-typescript-projector.test.ts` | `runs-invokes-typescript-projector-conformance.ts` |
-| 9 | `evaluates-projected-body.ts` | `projected-body-conformance.type.ts` | `evaluates-projected-body.test.ts` | `runs-evaluates-projected-body-conformance.ts` |
-| 10 | `projects-course-lineage-index.ts` | `course-lineage-index-projection.type.ts` | `projects-course-lineage-index.test.ts` | `runs-projects-course-lineage-index-conformance.ts` |
-| 11 | `resolves-red-conveyor-transition.ts` | `red-conveyor-stop.type.ts` | `resolves-red-conveyor-transition.test.ts` | `runs-resolves-red-conveyor-transition-conformance.ts` |
-| 12 | `evaluates-resumable-authority.ts` | `authority-resumability.type.ts` | `evaluates-resumable-authority.test.ts` | `runs-evaluates-resumable-authority-conformance.ts` |
-| 13 | `executes-course-authority-conveyor.ts` | `course-authority-conveyor-execution.type.ts` | `executes-course-authority-conveyor.test.ts` | `runs-executes-course-authority-conveyor-conformance.ts` |
+| 1 | `discovers-projection-subjects.ts` | `projection-subject-discovery.type.ts` | `discovers-projection-subjects.expectation.ts` | `runs-discovers-projection-subjects-conformance.ts` |
+| 2 | `resolves-conveyor-stage.ts` | `conveyor-stage-transition.type.ts` | `resolves-conveyor-stage.expectation.ts` | `runs-resolves-conveyor-stage-conformance.ts` |
+| 3 | `projects-bounded-model-request.ts` | `bounded-model-request-projection.type.ts` | `projects-bounded-model-request.expectation.ts` | `runs-projects-bounded-model-request-conformance.ts` |
+| 4 | `obtains-bounded-model-submission.ts` | `bounded-model-submission.type.ts` | `obtains-bounded-model-submission.expectation.ts` | `runs-obtains-bounded-model-submission-conformance.ts` |
+| 5 | `evaluates-model-submission.ts` | `model-submission-admission.type.ts` | `evaluates-model-submission.expectation.ts` | `runs-evaluates-model-submission-conformance.ts` |
+| 6 | `attests-admitted-authority.ts` | `admitted-authority-attestation.type.ts` | `attests-admitted-authority.expectation.ts` | `runs-attests-admitted-authority-conformance.ts` |
+| 7 | `projects-ast-authority.ts` | `ast-authority-projection.type.ts` | `projects-ast-authority.expectation.ts` | `runs-projects-ast-authority-conformance.ts` |
+| 8 | `invokes-typescript-projector.ts` | `typescript-body-projection.type.ts` | `invokes-typescript-projector.expectation.ts` | `runs-invokes-typescript-projector-conformance.ts` |
+| 9 | `evaluates-projected-body.ts` | `projected-body-conformance.type.ts` | `evaluates-projected-body.expectation.ts` | `runs-evaluates-projected-body-conformance.ts` |
+| 10 | `projects-course-lineage-index.ts` | `course-lineage-index-projection.type.ts` | `projects-course-lineage-index.expectation.ts` | `runs-projects-course-lineage-index-conformance.ts` |
+| 11 | `resolves-red-conveyor-transition.ts` | `red-conveyor-stop.type.ts` | `resolves-red-conveyor-transition.expectation.ts` | `runs-resolves-red-conveyor-transition-conformance.ts` |
+| 12 | `evaluates-resumable-authority.ts` | `authority-resumability.type.ts` | `evaluates-resumable-authority.expectation.ts` | `runs-evaluates-resumable-authority-conformance.ts` |
+| 13 | `executes-course-authority-conveyor.ts` | `course-authority-conveyor-execution.type.ts` | `executes-course-authority-conveyor.expectation.ts` | `runs-executes-course-authority-conveyor-conformance.ts` |
 
 These names are documentary file-body identities. Later body authority must
 assign their exact vertical scenario-relative paths.
@@ -311,8 +404,8 @@ capabilities/project-course-authority-conveyor/
             ├── evaluates-resumable-authority.ts.ast.authority.json
             ├── authority-resumability.type.ts
             ├── authority-resumability.type.ts.ast.authority.json
-            ├── evaluates-resumable-authority.test.ts
-            ├── evaluates-resumable-authority.test.ts.ast.authority.json
+            ├── evaluates-resumable-authority.expectation.ts
+            ├── evaluates-resumable-authority.expectation.ts.ast.authority.json
             ├── runs-evaluates-resumable-authority-conformance.ts
             └── runs-evaluates-resumable-authority-conformance.ts.ast.authority.json
 ```
@@ -414,8 +507,8 @@ Type body
     → typescript-body-projection.type.ts.ast.authority.json
 
 Expected-body projection
-  invokes-typescript-projector.test.ts
-    → invokes-typescript-projector.test.ts.ast.authority.json
+  invokes-typescript-projector.expectation.ts
+    → invokes-typescript-projector.expectation.ts.ast.authority.json
 
 Projection-conformance body
   runs-invokes-typescript-projector-conformance.ts
@@ -538,43 +631,35 @@ Those values belong in JSON and SEJ authority. They do not appear as constants,
 arrays, lookup tables, prompt strings, path lists, or conditionals in a
 TypeScript conveyor body.
 
-## Proposed capability-first authority shape
+## Materialized capability-first authority shape
 
-The eventual conveyor authority should live vertically with the capability it
-governs. A representative shape is:
+The conveyor authority now lives vertically with the capability it governs:
 
 ```text
 capabilities/
 └── project-course-authority-conveyor/
-    ├── describes-human-need.md
+    ├── projects-conveyor-authority.manifest.json
     ├── projects-capability-authority.json
     ├── projects-course-authority.feature
-    └── scenarios/
-        └── project-every-admitted-course-body/
-            ├── analyzes-scenario-intent.md
-            ├── requires-projector-only-code-origin.obligation.json
-            ├── expects-complete-course-projection.expectation.json
-            └── executes-course-authority-conveyor/
+    └── scenarios/                              # 13 scenario folders
+        └── <scenarioId>/
+            ├── declares-scenario-authority.json
+            ├── <obligationId>.obligation.json
+            ├── <expectationId>.expectation.json
+            └── <responsibilityId>/
                 ├── declares-responsibility.json
-                ├── declares-course-conveyor-signal.json
+                ├── declares-signal.json
                 ├── binds-responsibility-to-semantic-edge.json
-                ├── discovers-projection-authorities.sej.json
-                ├── obtains-bounded-model-submissions.sej.json
-                ├── admits-signed-authority.sej.json
-                ├── resolves-conveyor-disposition.sej.json
-                ├── invokes-typescript-projector.sej.json
-                ├── evaluates-projected-body-conformance.sej.json
-                ├── projects-course-lineage-index.sej.json
-                ├── expects-course-conveyor-body.json
-                ├── declares-course-conveyor-body.json
-                ├── projects-course-conveyor-body.json
-                ├── projects-course-conveyor-ast.json
-                ├── executes-course-authority-conveyor.ts
-                └── executes-course-authority-conveyor.ts.ast.authority.json
+                ├── executes-<responsibilityId>.sej.json
+                ├── projection-lineage.index.json
+                └── <four projected body lineages>/
+                    ├── projects-*.semantic-executable.json
+                    ├── expects-*-body.json
+                    ├── declares-*-body.json
+                    ├── projects-*-body.json
+                    ├── *.ts.ast.authority.json
+                    └── *.ts
 ```
-
-This is a proposed authority topology, not a request to create these artifacts
-yet. Their exact names should be admitted during the authority-design phase.
 
 The topology remains vertical. It does not create repository-wide
 `receipts/`, `generated/`, `proof/`, or `llm-output/` forests.
@@ -597,17 +682,241 @@ similar filename.
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`discover-every-admitted-projection-subject`](#scenario-1-discover-every-admitted-projection-subject) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/declares-scenario-authority.json) |
 | Obligation | `identify-the-complete-projection-subject-set` |
 | Expectation | `expect-one-complete-projection-subject-set` |
 | Responsibility | `discovers-projection-subjects` |
 | Signal | `projection-subject-discovery` |
 | Semantic operation | `discover-projection-subjects` |
-| Body authority chain | `expects-discovers-projection-subjects-body.json` → `declares-discovers-projection-subjects-body.json` → `projects-discovers-projection-subjects-body.json` |
-| Primary body | `discovers-projection-subjects.ts` |
-| Type body | `projection-subject-discovery.type.ts` |
-| Expected-body projection | `discovers-projection-subjects.test.ts` |
-| Projection-conformance body | `runs-discovers-projection-subjects-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-discovers-projection-subjects.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/projects-discovers-projection-subjects.semantic-executable.json) |
+| Primary AST authority | [discovers-projection-subjects.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/discovers-projection-subjects.ts.ast.authority.json) |
+| Body authority chain | [expects-discovers-projection-subjects-body.json](../capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/expects-discovers-projection-subjects-body.json) → [declares-discovers-projection-subjects-body.json](../capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/declares-discovers-projection-subjects-body.json) → [projects-discovers-projection-subjects-body.json](../capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/projects-discovers-projection-subjects-body.json) |
+| Primary body | [discovers-projection-subjects.ts](../capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/discovers-projection-subjects.ts) |
+| Type body | [projection-subject-discovery.type.ts](../capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/projection-subject-discovery.type.ts) |
+| Expected-body projection | [discovers-projection-subjects.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/discovers-projection-subjects.expectation.ts) |
+| Projection-conformance body | [runs-discovers-projection-subjects-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/runs-discovers-projection-subjects-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/projection-lineage.index.json) |
+
+<!-- physical-authority:discover-every-admitted-projection-subject:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "discovers-projection-subjects-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/discovers-projection-subjects.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "discover-every-admitted-projection-subject",
+    "obligationId": "identify-the-complete-projection-subject-set",
+    "expectationId": "expect-one-complete-projection-subject-set",
+    "responsibilityId": "discovers-projection-subjects",
+    "signalId": "projection-subject-discovery",
+    "semanticOperationId": "discover-projection-subjects"
+  },
+  "projection": {
+    "functionName": "discoversProjectionSubjects",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "DiscoversProjectionSubjectsContext"
+    },
+    "resultTypeReference": "ProjectionSubjectDiscoverySignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "discover",
+      "argument": {
+        "receiver": "context",
+        "member": "authority"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-discovers-projection-subjects-from-bea9362bf12fea7b8a064f0fa351c7613d7074344cb3d5698467a9dba99680c0",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/discovers-projection-subjects.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "discover-every-admitted-projection-subject",
+    "obligationId": "identify-the-complete-projection-subject-set",
+    "responsibilityId": "discovers-projection-subjects",
+    "signalId": "projection-subject-discovery"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:discover-every-admitted-projection-subject:end -->
 
 Semantic authority owns:
 
@@ -623,7 +932,7 @@ The projected body shape is:
 ```typescript
 export async function discoversProjectionSubjects(
   context: DiscoversProjectionSubjectsContext
-): Promise<ProjectionSubjectSet> {
+): Promise<ProjectionSubjectDiscoverySignal> {
   return await context.discover(context.authority);
 }
 ```
@@ -638,17 +947,241 @@ sorting, or duplicate check in this body.
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`resolve-the-next-authorized-conveyor-stage`](#scenario-2-resolve-the-next-authorized-conveyor-stage) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/declares-scenario-authority.json) |
 | Obligation | `identify-one-authorized-next-stage` |
 | Expectation | `expect-one-stage-transition` |
 | Responsibility | `resolves-conveyor-stage` |
 | Signal | `conveyor-stage-transition` |
 | Semantic operation | `resolve-conveyor-stage` |
-| Body authority chain | `expects-resolves-conveyor-stage-body.json` → `declares-resolves-conveyor-stage-body.json` → `projects-resolves-conveyor-stage-body.json` |
-| Primary body | `resolves-conveyor-stage.ts` |
-| Type body | `conveyor-stage-transition.type.ts` |
-| Expected-body projection | `resolves-conveyor-stage.test.ts` |
-| Projection-conformance body | `runs-resolves-conveyor-stage-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-resolves-conveyor-stage.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/projects-resolves-conveyor-stage.semantic-executable.json) |
+| Primary AST authority | [resolves-conveyor-stage.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/resolves-conveyor-stage.ts.ast.authority.json) |
+| Body authority chain | [expects-resolves-conveyor-stage-body.json](../capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/expects-resolves-conveyor-stage-body.json) → [declares-resolves-conveyor-stage-body.json](../capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/declares-resolves-conveyor-stage-body.json) → [projects-resolves-conveyor-stage-body.json](../capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/projects-resolves-conveyor-stage-body.json) |
+| Primary body | [resolves-conveyor-stage.ts](../capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/resolves-conveyor-stage.ts) |
+| Type body | [conveyor-stage-transition.type.ts](../capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/conveyor-stage-transition.type.ts) |
+| Expected-body projection | [resolves-conveyor-stage.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/resolves-conveyor-stage.expectation.ts) |
+| Projection-conformance body | [runs-resolves-conveyor-stage-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/runs-resolves-conveyor-stage-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/projection-lineage.index.json) |
+
+<!-- physical-authority:resolve-the-next-authorized-conveyor-stage:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "resolves-conveyor-stage-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/resolves-conveyor-stage.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "resolve-the-next-authorized-conveyor-stage",
+    "obligationId": "identify-one-authorized-next-stage",
+    "expectationId": "expect-one-stage-transition",
+    "responsibilityId": "resolves-conveyor-stage",
+    "signalId": "conveyor-stage-transition",
+    "semanticOperationId": "resolve-conveyor-stage"
+  },
+  "projection": {
+    "functionName": "resolvesConveyorStage",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ResolvesConveyorStageContext"
+    },
+    "resultTypeReference": "ConveyorStageTransitionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "resolve",
+      "argument": {
+        "receiver": "context",
+        "member": "plan"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-resolves-conveyor-stage-from-7360d9863f789c8889459a519f496ffda115c061d102684a8473001a96145e77",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/resolves-conveyor-stage.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "resolve-the-next-authorized-conveyor-stage",
+    "obligationId": "identify-one-authorized-next-stage",
+    "responsibilityId": "resolves-conveyor-stage",
+    "signalId": "conveyor-stage-transition"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:resolve-the-next-authorized-conveyor-stage:end -->
 
 Semantic authority owns:
 
@@ -664,7 +1197,7 @@ The projected body shape is:
 ```typescript
 export async function resolvesConveyorStage(
   context: ResolvesConveyorStageContext
-): Promise<ConveyorStageSignal> {
+): Promise<ConveyorStageTransitionSignal> {
   return await context.resolve(context.plan);
 }
 ```
@@ -679,17 +1212,241 @@ table in TypeScript.
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`project-one-bounded-model-request`](#scenario-3-project-one-bounded-model-request) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/declares-scenario-authority.json) |
 | Obligation | `produce-one-complete-model-request` |
 | Expectation | `expect-one-bounded-model-request` |
 | Responsibility | `projects-bounded-model-request` |
 | Signal | `bounded-model-request-projection` |
 | Semantic operation | `project-bounded-model-request` |
-| Body authority chain | `expects-projects-bounded-model-request-body.json` → `declares-projects-bounded-model-request-body.json` → `projects-projects-bounded-model-request-body.json` |
-| Primary body | `projects-bounded-model-request.ts` |
-| Type body | `bounded-model-request-projection.type.ts` |
-| Expected-body projection | `projects-bounded-model-request.test.ts` |
-| Projection-conformance body | `runs-projects-bounded-model-request-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-projects-bounded-model-request.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/projects-projects-bounded-model-request.semantic-executable.json) |
+| Primary AST authority | [projects-bounded-model-request.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/projects-bounded-model-request.ts.ast.authority.json) |
+| Body authority chain | [expects-projects-bounded-model-request-body.json](../capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/expects-projects-bounded-model-request-body.json) → [declares-projects-bounded-model-request-body.json](../capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/declares-projects-bounded-model-request-body.json) → [projects-projects-bounded-model-request-body.json](../capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/projects-projects-bounded-model-request-body.json) |
+| Primary body | [projects-bounded-model-request.ts](../capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/projects-bounded-model-request.ts) |
+| Type body | [bounded-model-request-projection.type.ts](../capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/bounded-model-request-projection.type.ts) |
+| Expected-body projection | [projects-bounded-model-request.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/projects-bounded-model-request.expectation.ts) |
+| Projection-conformance body | [runs-projects-bounded-model-request-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/runs-projects-bounded-model-request-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/projection-lineage.index.json) |
+
+<!-- physical-authority:project-one-bounded-model-request:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "projects-bounded-model-request-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/projects-bounded-model-request.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "project-one-bounded-model-request",
+    "obligationId": "produce-one-complete-model-request",
+    "expectationId": "expect-one-bounded-model-request",
+    "responsibilityId": "projects-bounded-model-request",
+    "signalId": "bounded-model-request-projection",
+    "semanticOperationId": "project-bounded-model-request"
+  },
+  "projection": {
+    "functionName": "projectsBoundedModelRequest",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProjectsBoundedModelRequestContext"
+    },
+    "resultTypeReference": "BoundedModelRequestProjectionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "project",
+      "argument": {
+        "receiver": "context",
+        "member": "stage"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-projects-bounded-model-request-from-3788ad6db1a9ae1b55b6be6d86d1a8c41dcdf09f3627937b8500e93b7c17865e",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/projects-bounded-model-request.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "project-one-bounded-model-request",
+    "obligationId": "produce-one-complete-model-request",
+    "responsibilityId": "projects-bounded-model-request",
+    "signalId": "bounded-model-request-projection"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:project-one-bounded-model-request:end -->
 
 Request authority owns:
 
@@ -707,7 +1464,7 @@ The projected body shape is:
 ```typescript
 export async function projectsBoundedModelRequest(
   context: ProjectsBoundedModelRequestContext
-): Promise<ModelRequestAuthority> {
+): Promise<BoundedModelRequestProjectionSignal> {
   return await context.project(context.stage);
 }
 ```
@@ -722,17 +1479,241 @@ string, model name, timeout, or retry configuration.
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`obtain-one-bounded-model-submission`](#scenario-4-obtain-one-bounded-model-submission) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/declares-scenario-authority.json) |
 | Obligation | `obtain-one-normalized-model-testimony` |
 | Expectation | `expect-one-model-submission-testimony` |
 | Responsibility | `obtains-bounded-model-submission` |
 | Signal | `bounded-model-submission` |
 | Semantic operation | `obtain-bounded-model-submission` |
-| Body authority chain | `expects-obtains-bounded-model-submission-body.json` → `declares-obtains-bounded-model-submission-body.json` → `projects-obtains-bounded-model-submission-body.json` |
-| Primary body | `obtains-bounded-model-submission.ts` |
-| Type body | `bounded-model-submission.type.ts` |
-| Expected-body projection | `obtains-bounded-model-submission.test.ts` |
-| Projection-conformance body | `runs-obtains-bounded-model-submission-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-obtains-bounded-model-submission.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/projects-obtains-bounded-model-submission.semantic-executable.json) |
+| Primary AST authority | [obtains-bounded-model-submission.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/obtains-bounded-model-submission.ts.ast.authority.json) |
+| Body authority chain | [expects-obtains-bounded-model-submission-body.json](../capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/expects-obtains-bounded-model-submission-body.json) → [declares-obtains-bounded-model-submission-body.json](../capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/declares-obtains-bounded-model-submission-body.json) → [projects-obtains-bounded-model-submission-body.json](../capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/projects-obtains-bounded-model-submission-body.json) |
+| Primary body | [obtains-bounded-model-submission.ts](../capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/obtains-bounded-model-submission.ts) |
+| Type body | [bounded-model-submission.type.ts](../capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/bounded-model-submission.type.ts) |
+| Expected-body projection | [obtains-bounded-model-submission.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/obtains-bounded-model-submission.expectation.ts) |
+| Projection-conformance body | [runs-obtains-bounded-model-submission-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/runs-obtains-bounded-model-submission-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/projection-lineage.index.json) |
+
+<!-- physical-authority:obtain-one-bounded-model-submission:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "obtains-bounded-model-submission-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/obtains-bounded-model-submission.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "obtain-one-bounded-model-submission",
+    "obligationId": "obtain-one-normalized-model-testimony",
+    "expectationId": "expect-one-model-submission-testimony",
+    "responsibilityId": "obtains-bounded-model-submission",
+    "signalId": "bounded-model-submission",
+    "semanticOperationId": "obtain-bounded-model-submission"
+  },
+  "projection": {
+    "functionName": "obtainsBoundedModelSubmission",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ObtainsBoundedModelSubmissionContext"
+    },
+    "resultTypeReference": "BoundedModelSubmissionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "obtain",
+      "argument": {
+        "receiver": "context",
+        "member": "request"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-obtains-bounded-model-submission-from-b43cd4661a4b533acd05c0123077f34a85f87233bc3daad7b5e7c0552ec05aee",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/obtains-bounded-model-submission.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "obtain-one-bounded-model-submission",
+    "obligationId": "obtain-one-normalized-model-testimony",
+    "responsibilityId": "obtains-bounded-model-submission",
+    "signalId": "bounded-model-submission"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:obtain-one-bounded-model-submission:end -->
 
 The generic connector receives a complete request authority. The conveyor body
 does not know Gemini, OpenAI, HTTP, credentials, endpoints, or SDK shapes.
@@ -740,7 +1721,7 @@ does not know Gemini, OpenAI, HTTP, credentials, endpoints, or SDK shapes.
 ```typescript
 export async function obtainsBoundedModelSubmission(
   context: ObtainsBoundedModelSubmissionContext
-): Promise<ModelSubmissionTestimony> {
+): Promise<BoundedModelSubmissionSignal> {
   return await context.obtain(context.request);
 }
 ```
@@ -755,17 +1736,241 @@ response normalization remain behind `context.obtain`.
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`evaluate-a-model-submission-for-admission`](#scenario-5-evaluate-a-model-submission-for-admission) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/declares-scenario-authority.json) |
 | Obligation | `resolve-one-submission-admission` |
 | Expectation | `expect-one-admission-disposition` |
 | Responsibility | `evaluates-model-submission` |
 | Signal | `model-submission-admission` |
 | Semantic operation | `evaluate-model-submission` |
-| Body authority chain | `expects-evaluates-model-submission-body.json` → `declares-evaluates-model-submission-body.json` → `projects-evaluates-model-submission-body.json` |
-| Primary body | `evaluates-model-submission.ts` |
-| Type body | `model-submission-admission.type.ts` |
-| Expected-body projection | `evaluates-model-submission.test.ts` |
-| Projection-conformance body | `runs-evaluates-model-submission-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-evaluates-model-submission.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/projects-evaluates-model-submission.semantic-executable.json) |
+| Primary AST authority | [evaluates-model-submission.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/evaluates-model-submission.ts.ast.authority.json) |
+| Body authority chain | [expects-evaluates-model-submission-body.json](../capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/expects-evaluates-model-submission-body.json) → [declares-evaluates-model-submission-body.json](../capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/declares-evaluates-model-submission-body.json) → [projects-evaluates-model-submission-body.json](../capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/projects-evaluates-model-submission-body.json) |
+| Primary body | [evaluates-model-submission.ts](../capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/evaluates-model-submission.ts) |
+| Type body | [model-submission-admission.type.ts](../capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/model-submission-admission.type.ts) |
+| Expected-body projection | [evaluates-model-submission.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/evaluates-model-submission.expectation.ts) |
+| Projection-conformance body | [runs-evaluates-model-submission-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/runs-evaluates-model-submission-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/projection-lineage.index.json) |
+
+<!-- physical-authority:evaluate-a-model-submission-for-admission:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "evaluates-model-submission-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/evaluates-model-submission.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "evaluate-a-model-submission-for-admission",
+    "obligationId": "resolve-one-submission-admission",
+    "expectationId": "expect-one-admission-disposition",
+    "responsibilityId": "evaluates-model-submission",
+    "signalId": "model-submission-admission",
+    "semanticOperationId": "evaluate-model-submission"
+  },
+  "projection": {
+    "functionName": "evaluatesModelSubmission",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "EvaluatesModelSubmissionContext"
+    },
+    "resultTypeReference": "ModelSubmissionAdmissionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "submission"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-evaluates-model-submission-from-e6a43b24d2fc7029716d4b0a26123c0978bd67290cca5b0797e255c457d73f7c",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/evaluates-model-submission.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "evaluate-a-model-submission-for-admission",
+    "obligationId": "resolve-one-submission-admission",
+    "responsibilityId": "evaluates-model-submission",
+    "signalId": "model-submission-admission"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:evaluate-a-model-submission-for-admission:end -->
 
 Admission semantic authority owns:
 
@@ -779,7 +1984,7 @@ Admission semantic authority owns:
 ```typescript
 export async function evaluatesModelSubmission(
   context: EvaluatesModelSubmissionContext
-): Promise<AdmissionSignal> {
+): Promise<ModelSubmissionAdmissionSignal> {
   return await context.evaluate(context.submission);
 }
 ```
@@ -794,17 +1999,241 @@ schema traversal, or RED/GREEN literal.
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`attest-one-admitted-authority-artifact`](#scenario-6-attest-one-admitted-authority-artifact) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/declares-scenario-authority.json) |
 | Obligation | `cryptographically-bind-one-admitted-artifact` |
 | Expectation | `expect-one-signed-authority-artifact` |
 | Responsibility | `attests-admitted-authority` |
 | Signal | `admitted-authority-attestation` |
 | Semantic operation | `attest-admitted-authority` |
-| Body authority chain | `expects-attests-admitted-authority-body.json` → `declares-attests-admitted-authority-body.json` → `projects-attests-admitted-authority-body.json` |
-| Primary body | `attests-admitted-authority.ts` |
-| Type body | `admitted-authority-attestation.type.ts` |
-| Expected-body projection | `attests-admitted-authority.test.ts` |
-| Projection-conformance body | `runs-attests-admitted-authority-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-attests-admitted-authority.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/projects-attests-admitted-authority.semantic-executable.json) |
+| Primary AST authority | [attests-admitted-authority.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/attests-admitted-authority.ts.ast.authority.json) |
+| Body authority chain | [expects-attests-admitted-authority-body.json](../capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/expects-attests-admitted-authority-body.json) → [declares-attests-admitted-authority-body.json](../capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/declares-attests-admitted-authority-body.json) → [projects-attests-admitted-authority-body.json](../capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/projects-attests-admitted-authority-body.json) |
+| Primary body | [attests-admitted-authority.ts](../capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/attests-admitted-authority.ts) |
+| Type body | [admitted-authority-attestation.type.ts](../capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/admitted-authority-attestation.type.ts) |
+| Expected-body projection | [attests-admitted-authority.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/attests-admitted-authority.expectation.ts) |
+| Projection-conformance body | [runs-attests-admitted-authority-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/runs-attests-admitted-authority-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/projection-lineage.index.json) |
+
+<!-- physical-authority:attest-one-admitted-authority-artifact:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "attests-admitted-authority-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/attests-admitted-authority.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "attest-one-admitted-authority-artifact",
+    "obligationId": "cryptographically-bind-one-admitted-artifact",
+    "expectationId": "expect-one-signed-authority-artifact",
+    "responsibilityId": "attests-admitted-authority",
+    "signalId": "admitted-authority-attestation",
+    "semanticOperationId": "attest-admitted-authority"
+  },
+  "projection": {
+    "functionName": "attestsAdmittedAuthority",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "AttestsAdmittedAuthorityContext"
+    },
+    "resultTypeReference": "AdmittedAuthorityAttestationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "attest",
+      "argument": {
+        "receiver": "context",
+        "member": "admitted"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-attests-admitted-authority-from-685e217fe9464d4f75b1ce9659b729dc42b2c4a9fc62a66fd8a7d3fda4fae876",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/attests-admitted-authority.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "attest-one-admitted-authority-artifact",
+    "obligationId": "cryptographically-bind-one-admitted-artifact",
+    "responsibilityId": "attests-admitted-authority",
+    "signalId": "admitted-authority-attestation"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:attest-one-admitted-authority-artifact:end -->
 
 Signing authority owns:
 
@@ -819,7 +2248,7 @@ Signing authority owns:
 ```typescript
 export async function attestsAdmittedAuthority(
   context: AttestsAdmittedAuthorityContext
-): Promise<SignedAuthorityArtifact> {
+): Promise<AdmittedAuthorityAttestationSignal> {
   return await context.attest(context.admitted);
 }
 ```
@@ -834,17 +2263,241 @@ object, or key path.
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`project-one-admitted-ast-authority`](#scenario-7-project-one-admitted-ast-authority) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/declares-scenario-authority.json) |
 | Obligation | `derive-one-lossless-conformant-ast-authority` |
 | Expectation | `expect-one-signed-ast-authority` |
 | Responsibility | `projects-ast-authority` |
 | Signal | `ast-authority-projection` |
 | Semantic operation | `project-ast-authority` |
-| Body authority chain | `expects-projects-ast-authority-body.json` → `declares-projects-ast-authority-body.json` → `projects-projects-ast-authority-body.json` |
-| Primary body | `projects-ast-authority.ts` |
-| Type body | `ast-authority-projection.type.ts` |
-| Expected-body projection | `projects-ast-authority.test.ts` |
-| Projection-conformance body | `runs-projects-ast-authority-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-projects-ast-authority.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/projects-projects-ast-authority.semantic-executable.json) |
+| Primary AST authority | [projects-ast-authority.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/projects-ast-authority.ts.ast.authority.json) |
+| Body authority chain | [expects-projects-ast-authority-body.json](../capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/expects-projects-ast-authority-body.json) → [declares-projects-ast-authority-body.json](../capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/declares-projects-ast-authority-body.json) → [projects-projects-ast-authority-body.json](../capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/projects-projects-ast-authority-body.json) |
+| Primary body | [projects-ast-authority.ts](../capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/projects-ast-authority.ts) |
+| Type body | [ast-authority-projection.type.ts](../capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/ast-authority-projection.type.ts) |
+| Expected-body projection | [projects-ast-authority.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/projects-ast-authority.expectation.ts) |
+| Projection-conformance body | [runs-projects-ast-authority-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/runs-projects-ast-authority-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/projection-lineage.index.json) |
+
+<!-- physical-authority:project-one-admitted-ast-authority:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "projects-ast-authority-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/projects-ast-authority.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "project-one-admitted-ast-authority",
+    "obligationId": "derive-one-lossless-conformant-ast-authority",
+    "expectationId": "expect-one-signed-ast-authority",
+    "responsibilityId": "projects-ast-authority",
+    "signalId": "ast-authority-projection",
+    "semanticOperationId": "project-ast-authority"
+  },
+  "projection": {
+    "functionName": "projectsAstAuthority",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProjectsAstAuthorityContext"
+    },
+    "resultTypeReference": "AstAuthorityProjectionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "project",
+      "argument": {
+        "receiver": "context",
+        "member": "semanticAuthority"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-projects-ast-authority-from-a873a4793c310c7b58aea1d7e9fcc699ab7343c911f918757c8bfd1ae8f626f9",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/projects-ast-authority.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "project-one-admitted-ast-authority",
+    "obligationId": "derive-one-lossless-conformant-ast-authority",
+    "responsibilityId": "projects-ast-authority",
+    "signalId": "ast-authority-projection"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:project-one-admitted-ast-authority:end -->
 
 Semantic and AST projection authority own:
 
@@ -861,7 +2514,7 @@ Semantic and AST projection authority own:
 ```typescript
 export async function projectsAstAuthority(
   context: ProjectsAstAuthorityContext
-): Promise<SignedAstAuthority> {
+): Promise<AstAuthorityProjectionSignal> {
   return await context.project(context.semanticAuthority);
 }
 ```
@@ -880,24 +2533,248 @@ projector identity merely because it proposed the AST.
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`invoke-the-trusted-typescript-projector`](#scenario-8-invoke-the-trusted-typescript-projector) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/declares-scenario-authority.json) |
 | Obligation | `emit-one-projector-signed-typescript-body` |
 | Expectation | `expect-one-projector-signed-body` |
 | Responsibility | `invokes-typescript-projector` |
 | Signal | `typescript-body-projection` |
 | Semantic operation | `invoke-typescript-projector` |
-| Body authority chain | `expects-invokes-typescript-projector-body.json` → `declares-invokes-typescript-projector-body.json` → `projects-invokes-typescript-projector-body.json` |
-| Primary body | `invokes-typescript-projector.ts` |
-| Type body | `typescript-body-projection.type.ts` |
-| Expected-body projection | `invokes-typescript-projector.test.ts` |
-| Projection-conformance body | `runs-invokes-typescript-projector-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-invokes-typescript-projector.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/projects-invokes-typescript-projector.semantic-executable.json) |
+| Primary AST authority | [invokes-typescript-projector.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/invokes-typescript-projector.ts.ast.authority.json) |
+| Body authority chain | [expects-invokes-typescript-projector-body.json](../capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/expects-invokes-typescript-projector-body.json) → [declares-invokes-typescript-projector-body.json](../capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/declares-invokes-typescript-projector-body.json) → [projects-invokes-typescript-projector-body.json](../capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/projects-invokes-typescript-projector-body.json) |
+| Primary body | [invokes-typescript-projector.ts](../capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/invokes-typescript-projector.ts) |
+| Type body | [typescript-body-projection.type.ts](../capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/typescript-body-projection.type.ts) |
+| Expected-body projection | [invokes-typescript-projector.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/invokes-typescript-projector.expectation.ts) |
+| Projection-conformance body | [runs-invokes-typescript-projector-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/runs-invokes-typescript-projector-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/projection-lineage.index.json) |
+
+<!-- physical-authority:invoke-the-trusted-typescript-projector:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "invokes-typescript-projector-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/invokes-typescript-projector.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "invoke-the-trusted-typescript-projector",
+    "obligationId": "emit-one-projector-signed-typescript-body",
+    "expectationId": "expect-one-projector-signed-body",
+    "responsibilityId": "invokes-typescript-projector",
+    "signalId": "typescript-body-projection",
+    "semanticOperationId": "invoke-typescript-projector"
+  },
+  "projection": {
+    "functionName": "invokesTypescriptProjector",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "InvokesTypescriptProjectorContext"
+    },
+    "resultTypeReference": "TypescriptBodyProjectionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "project",
+      "argument": {
+        "receiver": "context",
+        "member": "astAuthority"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-invokes-typescript-projector-from-f477dc262bdf691ce00b2162a06ed3f8573c6f66c3c38f8f112f53904d03a95e",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/invokes-typescript-projector.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "invoke-the-trusted-typescript-projector",
+    "obligationId": "emit-one-projector-signed-typescript-body",
+    "responsibilityId": "invokes-typescript-projector",
+    "signalId": "typescript-body-projection"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:invoke-the-trusted-typescript-projector:end -->
 
 The projector receives admitted AST authority and emits the exact body.
 
 ```typescript
 export async function invokesTypescriptProjector(
   context: InvokesTypescriptProjectorContext
-): Promise<ProjectedBodySignal> {
+): Promise<TypescriptBodyProjectionSignal> {
   return await context.project(context.astAuthority);
 }
 ```
@@ -913,17 +2790,241 @@ compiler import, source string, file extension rule, header builder, or
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`evaluate-projected-body-conformance`](#scenario-9-evaluate-projected-body-conformance) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/declares-scenario-authority.json) |
 | Obligation | `resolve-one-body-projection-conformance` |
 | Expectation | `expect-one-projection-conformance-disposition` |
 | Responsibility | `evaluates-projected-body` |
 | Signal | `projected-body-conformance` |
 | Semantic operation | `evaluate-projected-body` |
-| Body authority chain | `expects-evaluates-projected-body-body.json` → `declares-evaluates-projected-body-body.json` → `projects-evaluates-projected-body-body.json` |
-| Primary body | `evaluates-projected-body.ts` |
-| Type body | `projected-body-conformance.type.ts` |
-| Expected-body projection | `evaluates-projected-body.test.ts` |
-| Projection-conformance body | `runs-evaluates-projected-body-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-evaluates-projected-body.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/projects-evaluates-projected-body.semantic-executable.json) |
+| Primary AST authority | [evaluates-projected-body.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/evaluates-projected-body.ts.ast.authority.json) |
+| Body authority chain | [expects-evaluates-projected-body-body.json](../capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/expects-evaluates-projected-body-body.json) → [declares-evaluates-projected-body-body.json](../capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/declares-evaluates-projected-body-body.json) → [projects-evaluates-projected-body-body.json](../capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/projects-evaluates-projected-body-body.json) |
+| Primary body | [evaluates-projected-body.ts](../capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/evaluates-projected-body.ts) |
+| Type body | [projected-body-conformance.type.ts](../capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/projected-body-conformance.type.ts) |
+| Expected-body projection | [evaluates-projected-body.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/evaluates-projected-body.expectation.ts) |
+| Projection-conformance body | [runs-evaluates-projected-body-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/runs-evaluates-projected-body-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/projection-lineage.index.json) |
+
+<!-- physical-authority:evaluate-projected-body-conformance:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "evaluates-projected-body-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/evaluates-projected-body.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "evaluate-projected-body-conformance",
+    "obligationId": "resolve-one-body-projection-conformance",
+    "expectationId": "expect-one-projection-conformance-disposition",
+    "responsibilityId": "evaluates-projected-body",
+    "signalId": "projected-body-conformance",
+    "semanticOperationId": "evaluate-projected-body"
+  },
+  "projection": {
+    "functionName": "evaluatesProjectedBody",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "EvaluatesProjectedBodyContext"
+    },
+    "resultTypeReference": "ProjectedBodyConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "projectedBody"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-evaluates-projected-body-from-ed24b03968a85d78a8d99475243393ca3f939cec42e9185593cba6dd3d2d7b61",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-projected-body-conformance/evaluates-projected-body/evaluates-projected-body.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "evaluate-projected-body-conformance",
+    "obligationId": "resolve-one-body-projection-conformance",
+    "responsibilityId": "evaluates-projected-body",
+    "signalId": "projected-body-conformance"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:evaluate-projected-body-conformance:end -->
 
 Conformance authority owns:
 
@@ -939,7 +3040,7 @@ Conformance authority owns:
 ```typescript
 export async function evaluatesProjectedBody(
   context: EvaluatesProjectedBodyContext
-): Promise<ProjectionConformanceSignal> {
+): Promise<ProjectedBodyConformanceSignal> {
   return await context.evaluate(context.projectedBody);
 }
 ```
@@ -954,17 +3055,241 @@ conformance disposition.
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`publish-the-complete-course-lineage-index`](#scenario-10-publish-the-complete-course-lineage-index) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/declares-scenario-authority.json) |
 | Obligation | `publish-one-complete-signed-lineage-index` |
 | Expectation | `expect-one-signed-course-lineage-index` |
 | Responsibility | `projects-course-lineage-index` |
 | Signal | `course-lineage-index-projection` |
 | Semantic operation | `project-course-lineage-index` |
-| Body authority chain | `expects-projects-course-lineage-index-body.json` → `declares-projects-course-lineage-index-body.json` → `projects-projects-course-lineage-index-body.json` |
-| Primary body | `projects-course-lineage-index.ts` |
-| Type body | `course-lineage-index-projection.type.ts` |
-| Expected-body projection | `projects-course-lineage-index.test.ts` |
-| Projection-conformance body | `runs-projects-course-lineage-index-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-projects-course-lineage-index.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/projects-projects-course-lineage-index.semantic-executable.json) |
+| Primary AST authority | [projects-course-lineage-index.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/projects-course-lineage-index.ts.ast.authority.json) |
+| Body authority chain | [expects-projects-course-lineage-index-body.json](../capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/expects-projects-course-lineage-index-body.json) → [declares-projects-course-lineage-index-body.json](../capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/declares-projects-course-lineage-index-body.json) → [projects-projects-course-lineage-index-body.json](../capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/projects-projects-course-lineage-index-body.json) |
+| Primary body | [projects-course-lineage-index.ts](../capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/projects-course-lineage-index.ts) |
+| Type body | [course-lineage-index-projection.type.ts](../capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/course-lineage-index-projection.type.ts) |
+| Expected-body projection | [projects-course-lineage-index.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/projects-course-lineage-index.expectation.ts) |
+| Projection-conformance body | [runs-projects-course-lineage-index-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/runs-projects-course-lineage-index-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/projection-lineage.index.json) |
+
+<!-- physical-authority:publish-the-complete-course-lineage-index:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "projects-course-lineage-index-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/projects-course-lineage-index.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "publish-the-complete-course-lineage-index",
+    "obligationId": "publish-one-complete-signed-lineage-index",
+    "expectationId": "expect-one-signed-course-lineage-index",
+    "responsibilityId": "projects-course-lineage-index",
+    "signalId": "course-lineage-index-projection",
+    "semanticOperationId": "project-course-lineage-index"
+  },
+  "projection": {
+    "functionName": "projectsCourseLineageIndex",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProjectsCourseLineageIndexContext"
+    },
+    "resultTypeReference": "CourseLineageIndexProjectionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "project",
+      "argument": {
+        "receiver": "context",
+        "member": "lineage"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-projects-course-lineage-index-from-ece36b939356325fd945fa18502af6e70f3fd5dadbdf9e212be073eae036451d",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/projects-course-lineage-index.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "publish-the-complete-course-lineage-index",
+    "obligationId": "publish-one-complete-signed-lineage-index",
+    "responsibilityId": "projects-course-lineage-index",
+    "signalId": "course-lineage-index-projection"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:publish-the-complete-course-lineage-index:end -->
 
 Index authority owns:
 
@@ -979,7 +3304,7 @@ Index authority owns:
 ```typescript
 export async function projectsCourseLineageIndex(
   context: ProjectsCourseLineageIndexContext
-): Promise<SignedDocumentSignal> {
+): Promise<CourseLineageIndexProjectionSignal> {
   return await context.project(context.lineage);
 }
 ```
@@ -997,17 +3322,241 @@ semantic execution port:
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`execute-the-complete-admitted-conveyor-plan`](#scenario-13-execute-the-complete-admitted-conveyor-plan) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/declares-scenario-authority.json) |
 | Obligation | `execute-one-complete-admitted-conveyor-plan` |
 | Expectation | `expect-one-terminal-course-conveyor-signal` |
 | Responsibility | `executes-course-authority-conveyor` |
 | Signal | `course-authority-conveyor-execution` |
 | Semantic operation | `execute-course-authority-conveyor` |
-| Body authority chain | `expects-executes-course-authority-conveyor-body.json` → `declares-executes-course-authority-conveyor-body.json` → `projects-executes-course-authority-conveyor-body.json` |
-| Primary body | `executes-course-authority-conveyor.ts` |
-| Type body | `course-authority-conveyor-execution.type.ts` |
-| Expected-body projection | `executes-course-authority-conveyor.test.ts` |
-| Projection-conformance body | `runs-executes-course-authority-conveyor-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-executes-course-authority-conveyor.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/projects-executes-course-authority-conveyor.semantic-executable.json) |
+| Primary AST authority | [executes-course-authority-conveyor.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/executes-course-authority-conveyor.ts.ast.authority.json) |
+| Body authority chain | [expects-executes-course-authority-conveyor-body.json](../capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/expects-executes-course-authority-conveyor-body.json) → [declares-executes-course-authority-conveyor-body.json](../capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/declares-executes-course-authority-conveyor-body.json) → [projects-executes-course-authority-conveyor-body.json](../capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/projects-executes-course-authority-conveyor-body.json) |
+| Primary body | [executes-course-authority-conveyor.ts](../capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/executes-course-authority-conveyor.ts) |
+| Type body | [course-authority-conveyor-execution.type.ts](../capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/course-authority-conveyor-execution.type.ts) |
+| Expected-body projection | [executes-course-authority-conveyor.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/executes-course-authority-conveyor.expectation.ts) |
+| Projection-conformance body | [runs-executes-course-authority-conveyor-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/runs-executes-course-authority-conveyor-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/projection-lineage.index.json) |
+
+<!-- physical-authority:execute-the-complete-admitted-conveyor-plan:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-entry-delegation.v1",
+  "bodyId": "executes-course-authority-conveyor-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/executes-course-authority-conveyor.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "execute-the-complete-admitted-conveyor-plan",
+    "obligationId": "execute-one-complete-admitted-conveyor-plan",
+    "expectationId": "expect-one-terminal-course-conveyor-signal",
+    "responsibilityId": "executes-course-authority-conveyor",
+    "signalId": "course-authority-conveyor-execution",
+    "semanticOperationId": "execute-course-authority-conveyor"
+  },
+  "projection": {
+    "functionName": "executesCourseAuthorityConveyor",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "CourseConveyorContext"
+    },
+    "resultTypeReference": "CourseConveyorSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "execute",
+      "argument": {
+        "receiver": "context",
+        "member": "plan"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-executes-course-authority-conveyor-from-0ce67f6cd9bf94156891d2c861d57e6ed342804e612881497ba0ebbfcbf0c507",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/executes-course-authority-conveyor.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "execute-the-complete-admitted-conveyor-plan",
+    "obligationId": "execute-one-complete-admitted-conveyor-plan",
+    "responsibilityId": "executes-course-authority-conveyor",
+    "signalId": "course-authority-conveyor-execution"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:execute-the-complete-admitted-conveyor-plan:end -->
 
 ```typescript
 // @generated
@@ -1409,17 +3958,241 @@ RED behavior is declarative and fail-closed:
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`stop-downstream-execution-after-red`](#scenario-11-stop-downstream-execution-after-red) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/declares-scenario-authority.json) |
 | Obligation | `authorize-no-downstream-stage-after-red` |
 | Expectation | `expect-one-stopped-conveyor-transition` |
 | Responsibility | `resolves-red-conveyor-transition` |
 | Signal | `red-conveyor-stop` |
 | Semantic operation | `resolve-red-conveyor-transition` |
-| Body authority chain | `expects-resolves-red-conveyor-transition-body.json` → `declares-resolves-red-conveyor-transition-body.json` → `projects-resolves-red-conveyor-transition-body.json` |
-| Primary body | `resolves-red-conveyor-transition.ts` |
-| Type body | `red-conveyor-stop.type.ts` |
-| Expected-body projection | `resolves-red-conveyor-transition.test.ts` |
-| Projection-conformance body | `runs-resolves-red-conveyor-transition-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-resolves-red-conveyor-transition.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/projects-resolves-red-conveyor-transition.semantic-executable.json) |
+| Primary AST authority | [resolves-red-conveyor-transition.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/resolves-red-conveyor-transition.ts.ast.authority.json) |
+| Body authority chain | [expects-resolves-red-conveyor-transition-body.json](../capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/expects-resolves-red-conveyor-transition-body.json) → [declares-resolves-red-conveyor-transition-body.json](../capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/declares-resolves-red-conveyor-transition-body.json) → [projects-resolves-red-conveyor-transition-body.json](../capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/projects-resolves-red-conveyor-transition-body.json) |
+| Primary body | [resolves-red-conveyor-transition.ts](../capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/resolves-red-conveyor-transition.ts) |
+| Type body | [red-conveyor-stop.type.ts](../capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/red-conveyor-stop.type.ts) |
+| Expected-body projection | [resolves-red-conveyor-transition.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/resolves-red-conveyor-transition.expectation.ts) |
+| Projection-conformance body | [runs-resolves-red-conveyor-transition-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/runs-resolves-red-conveyor-transition-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/projection-lineage.index.json) |
+
+<!-- physical-authority:stop-downstream-execution-after-red:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "resolves-red-conveyor-transition-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/resolves-red-conveyor-transition.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "stop-downstream-execution-after-red",
+    "obligationId": "authorize-no-downstream-stage-after-red",
+    "expectationId": "expect-one-stopped-conveyor-transition",
+    "responsibilityId": "resolves-red-conveyor-transition",
+    "signalId": "red-conveyor-stop",
+    "semanticOperationId": "resolve-red-conveyor-transition"
+  },
+  "projection": {
+    "functionName": "resolvesRedConveyorTransition",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ResolvesRedConveyorTransitionContext"
+    },
+    "resultTypeReference": "RedConveyorStopSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "resolve",
+      "argument": {
+        "receiver": "context",
+        "member": "disposition"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-resolves-red-conveyor-transition-from-c2a38bf906964fe0666179ff28581e246ce8e9c64f3c5c37b281f155b6f80763",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/resolves-red-conveyor-transition.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "stop-downstream-execution-after-red",
+    "obligationId": "authorize-no-downstream-stage-after-red",
+    "responsibilityId": "resolves-red-conveyor-transition",
+    "signalId": "red-conveyor-stop"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:stop-downstream-execution-after-red:end -->
 
 - a rejected model submission is not persisted as admitted authority;
 - no downstream stage executes;
@@ -1455,17 +4228,241 @@ Resume authority must require deterministic revalidation:
 | Authority/body role | Bound identity |
 |---|---|
 | Scenario | [`resume-only-revalidated-admitted-authority`](#scenario-12-resume-only-revalidated-admitted-authority) |
+| Feature authority | [projects-capability-authority.json](../capabilities/project-course-authority-conveyor/projects-capability-authority.json) |
+| Scenario authority | [declares-scenario-authority.json](../capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/declares-scenario-authority.json) |
 | Obligation | `classify-one-prior-artifact-for-resumption` |
 | Expectation | `expect-one-resumability-disposition` |
 | Responsibility | `evaluates-resumable-authority` |
 | Signal | `authority-resumability` |
 | Semantic operation | `evaluate-resumable-authority` |
-| Body authority chain | `expects-evaluates-resumable-authority-body.json` → `declares-evaluates-resumable-authority-body.json` → `projects-evaluates-resumable-authority-body.json` |
-| Primary body | `evaluates-resumable-authority.ts` |
-| Type body | `authority-resumability.type.ts` |
-| Expected-body projection | `evaluates-resumable-authority.test.ts` |
-| Projection-conformance body | `runs-evaluates-resumable-authority-conformance.ts` |
-| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+| Primary semantic executable | [projects-evaluates-resumable-authority.semantic-executable.json](../capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/projects-evaluates-resumable-authority.semantic-executable.json) |
+| Primary AST authority | [evaluates-resumable-authority.ts.ast.authority.json](../capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/evaluates-resumable-authority.ts.ast.authority.json) |
+| Body authority chain | [expects-evaluates-resumable-authority-body.json](../capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/expects-evaluates-resumable-authority-body.json) → [declares-evaluates-resumable-authority-body.json](../capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/declares-evaluates-resumable-authority-body.json) → [projects-evaluates-resumable-authority-body.json](../capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/projects-evaluates-resumable-authority-body.json) |
+| Primary body | [evaluates-resumable-authority.ts](../capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/evaluates-resumable-authority.ts) |
+| Type body | [authority-resumability.type.ts](../capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/authority-resumability.type.ts) |
+| Expected-body projection | [evaluates-resumable-authority.expectation.ts](../capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/evaluates-resumable-authority.expectation.ts) |
+| Projection-conformance body | [runs-evaluates-resumable-authority-conformance.ts](../capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/runs-evaluates-resumable-authority-conformance.ts) |
+| AST coverage | [complete four-body semantic/AST lineage](../capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/projection-lineage.index.json) |
+
+<!-- physical-authority:resume-only-revalidated-admitted-authority:start -->
+
+<details>
+<summary>Exact semantic executable JSON for the primary body</summary>
+
+```json
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "evaluates-resumable-authority-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/evaluates-resumable-authority.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "resume-only-revalidated-admitted-authority",
+    "obligationId": "classify-one-prior-artifact-for-resumption",
+    "expectationId": "expect-one-resumability-disposition",
+    "responsibilityId": "evaluates-resumable-authority",
+    "signalId": "authority-resumability",
+    "semanticOperationId": "evaluate-resumable-authority"
+  },
+  "projection": {
+    "functionName": "evaluatesResumableAuthority",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "EvaluatesResumableAuthorityContext"
+    },
+    "resultTypeReference": "AuthorityResumabilitySignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "candidate"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>AST authority identity and topology for the primary body</summary>
+
+The linked AST authority in the binding card contains the complete
+lossless token stream. This embedded view shows its identity, lineage,
+trusted projector binding, posture, and structural topology.
+
+```json
+{
+  "projectionId": "project-evaluates-resumable-authority-from-d87b298a22135ebfe1375cb52026e24b935f654da2a1d8fbb17144be6fd26f6a",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/evaluates-resumable-authority.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "resume-only-revalidated-admitted-authority",
+    "obligationId": "classify-one-prior-artifact-for-resumption",
+    "responsibilityId": "evaluates-resumable-authority",
+    "signalId": "authority-resumability"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAccessExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+<!-- physical-authority:resume-only-revalidated-admitted-authority:end -->
 
 1. Parse the candidate as the declared artifact type.
 2. Verify its exact admitted artifact hash.

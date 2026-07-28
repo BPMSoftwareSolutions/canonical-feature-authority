@@ -1,0 +1,9 @@
+{
+  "authorityType": "responsibility.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "project-one-admitted-ast-authority",
+  "obligationId": "derive-one-lossless-conformant-ast-authority",
+  "responsibilityId": "projects-ast-authority",
+  "statement": "lossless AST authority is projected",
+  "semanticOperationId": "project-ast-authority"
+}

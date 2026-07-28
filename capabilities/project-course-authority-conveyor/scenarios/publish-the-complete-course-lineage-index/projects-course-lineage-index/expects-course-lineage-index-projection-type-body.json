@@ -1,0 +1,11 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "course-lineage-index-projection-type-body",
+  "scenarioId": "publish-the-complete-course-lineage-index",
+  "obligationId": "publish-one-complete-signed-lineage-index",
+  "expectationId": "expect-one-signed-course-lineage-index",
+  "responsibilityId": "projects-course-lineage-index",
+  "signalId": "course-lineage-index-projection",
+  "bodyCount": 1,
+  "structuralProfile": "conveyor-context-declaration.v1"
+}

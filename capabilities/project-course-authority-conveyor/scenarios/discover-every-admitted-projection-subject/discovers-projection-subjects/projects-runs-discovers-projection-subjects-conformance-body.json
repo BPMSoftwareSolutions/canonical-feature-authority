@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-runs-discovers-projection-subjects-conformance-from-63dd68268ec156d37b15ef9bb3ddc68bebc88302a3248911a09cf5a751ce853f",
+  "bodyId": "runs-discovers-projection-subjects-conformance-body",
+  "structuralProfile": "conformance-delegation.v1",
+  "sourceSemanticAuthority": "projects-runs-discovers-projection-subjects-conformance.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:63dd68268ec156d37b15ef9bb3ddc68bebc88302a3248911a09cf5a751ce853f",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/runs-discovers-projection-subjects-conformance.ts"
+  },
+  "projection": {
+    "functionName": "runsDiscoversProjectionSubjectsConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsDiscoversProjectionSubjectsConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

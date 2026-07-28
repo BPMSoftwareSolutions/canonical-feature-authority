@@ -1,0 +1,25 @@
+{
+  "semanticAuthorityType": "prebound-member-delegation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "evaluate-projected-body-conformance",
+  "obligationId": "resolve-one-body-projection-conformance",
+  "expectationId": "expect-one-projection-conformance-disposition",
+  "responsibilityId": "evaluates-projected-body",
+  "signalId": "projected-body-conformance",
+  "semanticOperationId": "evaluate-projected-body",
+  "execution": {
+    "contextParameter": "context",
+    "operationMember": "evaluate",
+    "inputMember": "projectedBody",
+    "awaited": true,
+    "returnOperationResult": true
+  },
+  "forbidden": [
+    "branching",
+    "iteration",
+    "dto-construction",
+    "semantic-literals",
+    "direct-mechanism-access",
+    "local-error-policy"
+  ]
+}

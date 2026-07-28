@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "attests-admitted-authority-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/attests-admitted-authority.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "attest-one-admitted-authority-artifact",
+    "obligationId": "cryptographically-bind-one-admitted-artifact",
+    "expectationId": "expect-one-signed-authority-artifact",
+    "responsibilityId": "attests-admitted-authority",
+    "signalId": "admitted-authority-attestation",
+    "semanticOperationId": "attest-admitted-authority"
+  },
+  "projection": {
+    "functionName": "attestsAdmittedAuthority",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "AttestsAdmittedAuthorityContext"
+    },
+    "resultTypeReference": "AdmittedAuthorityAttestationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "attest",
+      "argument": {
+        "receiver": "context",
+        "member": "admitted"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

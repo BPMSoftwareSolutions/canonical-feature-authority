@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-runs-attests-admitted-authority-conformance-from-41b5e65ab54242edd073ce8c00cc7a50b07a4a79e16c919d953b85c6cbc2ee4b",
+  "bodyId": "runs-attests-admitted-authority-conformance-body",
+  "structuralProfile": "conformance-delegation.v1",
+  "sourceSemanticAuthority": "projects-runs-attests-admitted-authority-conformance.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:41b5e65ab54242edd073ce8c00cc7a50b07a4a79e16c919d953b85c6cbc2ee4b",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/runs-attests-admitted-authority-conformance.ts"
+  },
+  "projection": {
+    "functionName": "runsAttestsAdmittedAuthorityConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsAttestsAdmittedAuthorityConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

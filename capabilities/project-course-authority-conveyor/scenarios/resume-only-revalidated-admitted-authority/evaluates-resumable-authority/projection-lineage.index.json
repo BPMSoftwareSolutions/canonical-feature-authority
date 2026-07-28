@@ -1,0 +1,57 @@
+{
+  "indexType": "scenario-projection-lineage.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "resume-only-revalidated-admitted-authority",
+  "obligationId": "classify-one-prior-artifact-for-resumption",
+  "expectationId": "expect-one-resumability-disposition",
+  "responsibilityId": "evaluates-resumable-authority",
+  "signalId": "authority-resumability",
+  "semanticOperationId": "evaluate-resumable-authority",
+  "projectedBodyCount": 4,
+  "entries": [
+    {
+      "role": "primary",
+      "bodyId": "evaluates-resumable-authority-body",
+      "semanticAuthority": "projects-evaluates-resumable-authority.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:d87b298a22135ebfe1375cb52026e24b935f654da2a1d8fbb17144be6fd26f6a",
+      "bodyExpectationAuthority": "expects-evaluates-resumable-authority-body.json",
+      "fileBodyAuthority": "declares-evaluates-resumable-authority-body.json",
+      "typescriptProjectionAuthority": "projects-evaluates-resumable-authority-body.json",
+      "astAuthority": "evaluates-resumable-authority.ts.ast.authority.json",
+      "projectedBody": "evaluates-resumable-authority.ts"
+    },
+    {
+      "role": "type",
+      "bodyId": "authority-resumability-type-body",
+      "semanticAuthority": "projects-authority-resumability-type.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:917f1bd6d52f58e2be0698a08d1a77330b85e98cfc437f63d535c7b95010f8f4",
+      "bodyExpectationAuthority": "expects-authority-resumability-type-body.json",
+      "fileBodyAuthority": "declares-authority-resumability-type-body.json",
+      "typescriptProjectionAuthority": "projects-authority-resumability-type-body.json",
+      "astAuthority": "authority-resumability.type.ts.ast.authority.json",
+      "projectedBody": "authority-resumability.type.ts"
+    },
+    {
+      "role": "expectation",
+      "bodyId": "evaluates-resumable-authority-expectation-body",
+      "semanticAuthority": "projects-evaluates-resumable-authority-expectation.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:6ed5b8b66bcb4e64e53f7cf7610d73451c2964151750cc387116b869313492b9",
+      "bodyExpectationAuthority": "expects-evaluates-resumable-authority-expectation-body.json",
+      "fileBodyAuthority": "declares-evaluates-resumable-authority-expectation-body.json",
+      "typescriptProjectionAuthority": "projects-evaluates-resumable-authority-expectation-body.json",
+      "astAuthority": "evaluates-resumable-authority.expectation.ts.ast.authority.json",
+      "projectedBody": "evaluates-resumable-authority.expectation.ts"
+    },
+    {
+      "role": "conformance",
+      "bodyId": "runs-evaluates-resumable-authority-conformance-body",
+      "semanticAuthority": "projects-runs-evaluates-resumable-authority-conformance.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:ff3ec2a8fcc7f095a354966898ae1912e65c945bb3d40eefad8d6d6dacfb8c01",
+      "bodyExpectationAuthority": "expects-runs-evaluates-resumable-authority-conformance-body.json",
+      "fileBodyAuthority": "declares-runs-evaluates-resumable-authority-conformance-body.json",
+      "typescriptProjectionAuthority": "projects-runs-evaluates-resumable-authority-conformance-body.json",
+      "astAuthority": "runs-evaluates-resumable-authority-conformance.ts.ast.authority.json",
+      "projectedBody": "runs-evaluates-resumable-authority-conformance.ts"
+    }
+  ]
+}

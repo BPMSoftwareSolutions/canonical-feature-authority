@@ -1,0 +1,9 @@
+{
+  "authorityType": "responsibility.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "attest-one-admitted-authority-artifact",
+  "obligationId": "cryptographically-bind-one-admitted-artifact",
+  "responsibilityId": "attests-admitted-authority",
+  "statement": "the admitted authority is attested",
+  "semanticOperationId": "attest-admitted-authority"
+}

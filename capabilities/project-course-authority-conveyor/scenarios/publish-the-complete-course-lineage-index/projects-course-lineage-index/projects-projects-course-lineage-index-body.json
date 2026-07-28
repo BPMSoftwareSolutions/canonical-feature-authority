@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-projects-course-lineage-index-from-ece36b939356325fd945fa18502af6e70f3fd5dadbdf9e212be073eae036451d",
+  "bodyId": "projects-course-lineage-index-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-projects-course-lineage-index.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:ece36b939356325fd945fa18502af6e70f3fd5dadbdf9e212be073eae036451d",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/projects-course-lineage-index.ts"
+  },
+  "projection": {
+    "functionName": "projectsCourseLineageIndex",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProjectsCourseLineageIndexContext"
+    },
+    "resultTypeReference": "CourseLineageIndexProjectionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "project",
+      "argument": {
+        "receiver": "context",
+        "member": "lineage"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

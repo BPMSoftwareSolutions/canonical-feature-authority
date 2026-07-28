@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-red-conveyor-stop-type-from-cd27c890d5fd4b75b75be08efcaf0e884f65efe14505cc19e717d5798bcff4cd",
+  "bodyId": "red-conveyor-stop-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-red-conveyor-stop-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:cd27c890d5fd4b75b75be08efcaf0e884f65efe14505cc19e717d5798bcff4cd",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/red-conveyor-stop.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "ResolvesRedConveyorTransitionContext",
+      "ProvesResolvesRedConveyorTransitionExpectationContext",
+      "RunsResolvesRedConveyorTransitionConformanceContext",
+      "RedConveyorStopSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

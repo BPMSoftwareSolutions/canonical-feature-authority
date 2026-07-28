@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-runs-projects-course-lineage-index-conformance-from-3ecd2f80fd66814f5980644addc9dedfbf4ae28943514ce6f12d117d4edad798",
+  "bodyId": "runs-projects-course-lineage-index-conformance-body",
+  "structuralProfile": "conformance-delegation.v1",
+  "sourceSemanticAuthority": "projects-runs-projects-course-lineage-index-conformance.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:3ecd2f80fd66814f5980644addc9dedfbf4ae28943514ce6f12d117d4edad798",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/runs-projects-course-lineage-index-conformance.ts"
+  },
+  "projection": {
+    "functionName": "runsProjectsCourseLineageIndexConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsProjectsCourseLineageIndexConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

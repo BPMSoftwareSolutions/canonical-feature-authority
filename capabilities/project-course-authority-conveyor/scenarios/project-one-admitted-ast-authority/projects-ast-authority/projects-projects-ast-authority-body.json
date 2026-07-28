@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-projects-ast-authority-from-a873a4793c310c7b58aea1d7e9fcc699ab7343c911f918757c8bfd1ae8f626f9",
+  "bodyId": "projects-ast-authority-body",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "sourceSemanticAuthority": "projects-projects-ast-authority.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:a873a4793c310c7b58aea1d7e9fcc699ab7343c911f918757c8bfd1ae8f626f9",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/projects-ast-authority.ts"
+  },
+  "projection": {
+    "functionName": "projectsAstAuthority",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProjectsAstAuthorityContext"
+    },
+    "resultTypeReference": "AstAuthorityProjectionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "project",
+      "argument": {
+        "receiver": "context",
+        "member": "semanticAuthority"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

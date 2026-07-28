@@ -1,0 +1,36 @@
+{
+  "semanticExecutableType": "declaration-only-context.v1",
+  "bodyRole": "type",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "bodyId": "authority-resumability-type-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resume-only-revalidated-admitted-authority/evaluates-resumable-authority/authority-resumability.type.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "resume-only-revalidated-admitted-authority",
+    "obligationId": "classify-one-prior-artifact-for-resumption",
+    "expectationId": "expect-one-resumability-disposition",
+    "responsibilityId": "evaluates-resumable-authority",
+    "signalId": "authority-resumability",
+    "semanticOperationId": "evaluate-resumable-authority"
+  },
+  "projection": {
+    "declarations": [
+      "EvaluatesResumableAuthorityContext",
+      "ProvesEvaluatesResumableAuthorityExpectationContext",
+      "RunsEvaluatesResumableAuthorityConformanceContext",
+      "AuthorityResumabilitySignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

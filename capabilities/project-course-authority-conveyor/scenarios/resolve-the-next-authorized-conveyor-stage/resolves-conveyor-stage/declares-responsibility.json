@@ -1,0 +1,9 @@
+{
+  "authorityType": "responsibility.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "resolve-the-next-authorized-conveyor-stage",
+  "obligationId": "identify-one-authorized-next-stage",
+  "responsibilityId": "resolves-conveyor-stage",
+  "statement": "the next stage is resolved",
+  "semanticOperationId": "resolve-conveyor-stage"
+}

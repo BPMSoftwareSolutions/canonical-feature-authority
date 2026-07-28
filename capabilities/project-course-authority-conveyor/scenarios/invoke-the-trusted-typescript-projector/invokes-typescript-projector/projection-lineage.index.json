@@ -1,0 +1,57 @@
+{
+  "indexType": "scenario-projection-lineage.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "invoke-the-trusted-typescript-projector",
+  "obligationId": "emit-one-projector-signed-typescript-body",
+  "expectationId": "expect-one-projector-signed-body",
+  "responsibilityId": "invokes-typescript-projector",
+  "signalId": "typescript-body-projection",
+  "semanticOperationId": "invoke-typescript-projector",
+  "projectedBodyCount": 4,
+  "entries": [
+    {
+      "role": "primary",
+      "bodyId": "invokes-typescript-projector-body",
+      "semanticAuthority": "projects-invokes-typescript-projector.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:f477dc262bdf691ce00b2162a06ed3f8573c6f66c3c38f8f112f53904d03a95e",
+      "bodyExpectationAuthority": "expects-invokes-typescript-projector-body.json",
+      "fileBodyAuthority": "declares-invokes-typescript-projector-body.json",
+      "typescriptProjectionAuthority": "projects-invokes-typescript-projector-body.json",
+      "astAuthority": "invokes-typescript-projector.ts.ast.authority.json",
+      "projectedBody": "invokes-typescript-projector.ts"
+    },
+    {
+      "role": "type",
+      "bodyId": "typescript-body-projection-type-body",
+      "semanticAuthority": "projects-typescript-body-projection-type.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:e664c5978418f1d1b5f0fd17071dbc5e8ce9fa2b97b722bfd9e7c4059b2c5fbb",
+      "bodyExpectationAuthority": "expects-typescript-body-projection-type-body.json",
+      "fileBodyAuthority": "declares-typescript-body-projection-type-body.json",
+      "typescriptProjectionAuthority": "projects-typescript-body-projection-type-body.json",
+      "astAuthority": "typescript-body-projection.type.ts.ast.authority.json",
+      "projectedBody": "typescript-body-projection.type.ts"
+    },
+    {
+      "role": "expectation",
+      "bodyId": "invokes-typescript-projector-expectation-body",
+      "semanticAuthority": "projects-invokes-typescript-projector-expectation.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:b3da44ae55f0611a21cb57536074cea2bdf2a3304d63ba9d64e9f686f63bb052",
+      "bodyExpectationAuthority": "expects-invokes-typescript-projector-expectation-body.json",
+      "fileBodyAuthority": "declares-invokes-typescript-projector-expectation-body.json",
+      "typescriptProjectionAuthority": "projects-invokes-typescript-projector-expectation-body.json",
+      "astAuthority": "invokes-typescript-projector.expectation.ts.ast.authority.json",
+      "projectedBody": "invokes-typescript-projector.expectation.ts"
+    },
+    {
+      "role": "conformance",
+      "bodyId": "runs-invokes-typescript-projector-conformance-body",
+      "semanticAuthority": "projects-runs-invokes-typescript-projector-conformance.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:a8058c420061ba1878956a97ed1738c384815d81d1fe94d6fbf66dc7636b51b6",
+      "bodyExpectationAuthority": "expects-runs-invokes-typescript-projector-conformance-body.json",
+      "fileBodyAuthority": "declares-runs-invokes-typescript-projector-conformance-body.json",
+      "typescriptProjectionAuthority": "projects-runs-invokes-typescript-projector-conformance-body.json",
+      "astAuthority": "runs-invokes-typescript-projector-conformance.ts.ast.authority.json",
+      "projectedBody": "runs-invokes-typescript-projector-conformance.ts"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "semanticExecutableType": "declaration-only-context.v1",
+  "bodyRole": "type",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "bodyId": "bounded-model-submission-type-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/bounded-model-submission.type.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "obtain-one-bounded-model-submission",
+    "obligationId": "obtain-one-normalized-model-testimony",
+    "expectationId": "expect-one-model-submission-testimony",
+    "responsibilityId": "obtains-bounded-model-submission",
+    "signalId": "bounded-model-submission",
+    "semanticOperationId": "obtain-bounded-model-submission"
+  },
+  "projection": {
+    "declarations": [
+      "ObtainsBoundedModelSubmissionContext",
+      "ProvesObtainsBoundedModelSubmissionExpectationContext",
+      "RunsObtainsBoundedModelSubmissionConformanceContext",
+      "BoundedModelSubmissionSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

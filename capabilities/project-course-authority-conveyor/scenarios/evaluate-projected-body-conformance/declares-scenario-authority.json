@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "evaluate-projected-body-conformance",
+  "given": "one projector-signed body and its exact AST authority",
+  "when": "projection conformance is evaluated",
+  "then": "one projection-conformance disposition is emitted",
+  "independentObligationCount": 1
+}

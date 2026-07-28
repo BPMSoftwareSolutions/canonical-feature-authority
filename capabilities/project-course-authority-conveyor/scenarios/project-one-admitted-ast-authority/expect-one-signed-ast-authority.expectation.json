@@ -1,0 +1,10 @@
+{
+  "authorityType": "scenario-expectation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "project-one-admitted-ast-authority",
+  "obligationId": "derive-one-lossless-conformant-ast-authority",
+  "expectationId": "expect-one-signed-ast-authority",
+  "outcome": "one signed structurally conformant AST authority is emitted",
+  "expectedResponsibilityId": "projects-ast-authority",
+  "expectedSignalId": "ast-authority-projection"
+}

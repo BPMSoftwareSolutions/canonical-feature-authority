@@ -1,0 +1,25 @@
+{
+  "semanticAuthorityType": "prebound-member-delegation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "resolve-the-next-authorized-conveyor-stage",
+  "obligationId": "identify-one-authorized-next-stage",
+  "expectationId": "expect-one-stage-transition",
+  "responsibilityId": "resolves-conveyor-stage",
+  "signalId": "conveyor-stage-transition",
+  "semanticOperationId": "resolve-conveyor-stage",
+  "execution": {
+    "contextParameter": "context",
+    "operationMember": "resolve",
+    "inputMember": "plan",
+    "awaited": true,
+    "returnOperationResult": true
+  },
+  "forbidden": [
+    "branching",
+    "iteration",
+    "dto-construction",
+    "semantic-literals",
+    "direct-mechanism-access",
+    "local-error-policy"
+  ]
+}

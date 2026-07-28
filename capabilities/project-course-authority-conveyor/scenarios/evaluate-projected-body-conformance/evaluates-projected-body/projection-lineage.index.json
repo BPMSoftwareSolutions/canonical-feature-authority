@@ -1,0 +1,57 @@
+{
+  "indexType": "scenario-projection-lineage.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "evaluate-projected-body-conformance",
+  "obligationId": "resolve-one-body-projection-conformance",
+  "expectationId": "expect-one-projection-conformance-disposition",
+  "responsibilityId": "evaluates-projected-body",
+  "signalId": "projected-body-conformance",
+  "semanticOperationId": "evaluate-projected-body",
+  "projectedBodyCount": 4,
+  "entries": [
+    {
+      "role": "primary",
+      "bodyId": "evaluates-projected-body-body",
+      "semanticAuthority": "projects-evaluates-projected-body.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:ed24b03968a85d78a8d99475243393ca3f939cec42e9185593cba6dd3d2d7b61",
+      "bodyExpectationAuthority": "expects-evaluates-projected-body-body.json",
+      "fileBodyAuthority": "declares-evaluates-projected-body-body.json",
+      "typescriptProjectionAuthority": "projects-evaluates-projected-body-body.json",
+      "astAuthority": "evaluates-projected-body.ts.ast.authority.json",
+      "projectedBody": "evaluates-projected-body.ts"
+    },
+    {
+      "role": "type",
+      "bodyId": "projected-body-conformance-type-body",
+      "semanticAuthority": "projects-projected-body-conformance-type.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:5be7ee3575a2be57dccbea12f368edb504e6be7c053189902ea72ec743a42bb8",
+      "bodyExpectationAuthority": "expects-projected-body-conformance-type-body.json",
+      "fileBodyAuthority": "declares-projected-body-conformance-type-body.json",
+      "typescriptProjectionAuthority": "projects-projected-body-conformance-type-body.json",
+      "astAuthority": "projected-body-conformance.type.ts.ast.authority.json",
+      "projectedBody": "projected-body-conformance.type.ts"
+    },
+    {
+      "role": "expectation",
+      "bodyId": "evaluates-projected-body-expectation-body",
+      "semanticAuthority": "projects-evaluates-projected-body-expectation.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:e3fe9ca87d334642d7123933ab30f91d6e71e9318de708d9a96177558b8c9f43",
+      "bodyExpectationAuthority": "expects-evaluates-projected-body-expectation-body.json",
+      "fileBodyAuthority": "declares-evaluates-projected-body-expectation-body.json",
+      "typescriptProjectionAuthority": "projects-evaluates-projected-body-expectation-body.json",
+      "astAuthority": "evaluates-projected-body.expectation.ts.ast.authority.json",
+      "projectedBody": "evaluates-projected-body.expectation.ts"
+    },
+    {
+      "role": "conformance",
+      "bodyId": "runs-evaluates-projected-body-conformance-body",
+      "semanticAuthority": "projects-runs-evaluates-projected-body-conformance.semantic-executable.json",
+      "semanticAuthoritySha256": "sha256:96429b613c2f09af208de1fb414ef20b0fa52c2e2ebe4badb1fe3274b2f1fe2e",
+      "bodyExpectationAuthority": "expects-runs-evaluates-projected-body-conformance-body.json",
+      "fileBodyAuthority": "declares-runs-evaluates-projected-body-conformance-body.json",
+      "typescriptProjectionAuthority": "projects-runs-evaluates-projected-body-conformance-body.json",
+      "astAuthority": "runs-evaluates-projected-body-conformance.ts.ast.authority.json",
+      "projectedBody": "runs-evaluates-projected-body-conformance.ts"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-attests-admitted-authority-expectation-from-4aa5875be8c6b0ea39c785814cbc46e158e030f8d55b37c6cee43a70b5294ef5",
+  "bodyId": "attests-admitted-authority-expectation-body",
+  "structuralProfile": "expectation-execution.v1",
+  "sourceSemanticAuthority": "projects-attests-admitted-authority-expectation.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:4aa5875be8c6b0ea39c785814cbc46e158e030f8d55b37c6cee43a70b5294ef5",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/attests-admitted-authority.expectation.ts"
+  },
+  "projection": {
+    "functionName": "provesAttestsAdmittedAuthorityExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesAttestsAdmittedAuthorityExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

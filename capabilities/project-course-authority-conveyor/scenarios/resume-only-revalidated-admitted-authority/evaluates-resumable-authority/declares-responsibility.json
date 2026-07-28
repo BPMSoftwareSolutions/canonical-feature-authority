@@ -1,0 +1,9 @@
+{
+  "authorityType": "responsibility.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "resume-only-revalidated-admitted-authority",
+  "obligationId": "classify-one-prior-artifact-for-resumption",
+  "responsibilityId": "evaluates-resumable-authority",
+  "statement": "resumability is evaluated",
+  "semanticOperationId": "evaluate-resumable-authority"
+}

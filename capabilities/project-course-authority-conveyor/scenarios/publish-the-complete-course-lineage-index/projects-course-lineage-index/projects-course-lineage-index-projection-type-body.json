@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-course-lineage-index-projection-type-from-563923bd7d5adb53b9fe5d01a5ffaf18b7287816fd956d4466e9cbe53f4d5391",
+  "bodyId": "course-lineage-index-projection-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-course-lineage-index-projection-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:563923bd7d5adb53b9fe5d01a5ffaf18b7287816fd956d4466e9cbe53f4d5391",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/course-lineage-index-projection.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "ProjectsCourseLineageIndexContext",
+      "ProvesProjectsCourseLineageIndexExpectationContext",
+      "RunsProjectsCourseLineageIndexConformanceContext",
+      "CourseLineageIndexProjectionSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

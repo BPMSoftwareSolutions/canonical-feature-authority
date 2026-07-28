@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "discover-every-admitted-projection-subject",
+  "given": "discovery authority identifies the permitted authority roots and schemas",
+  "when": "the projection subjects are discovered",
+  "then": "one complete deterministically ordered projection-subject set is emitted",
+  "independentObligationCount": 1
+}

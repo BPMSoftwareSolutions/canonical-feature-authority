@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "resolves-conveyor-stage-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/resolves-conveyor-stage.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "resolve-the-next-authorized-conveyor-stage",
+    "obligationId": "identify-one-authorized-next-stage",
+    "expectationId": "expect-one-stage-transition",
+    "responsibilityId": "resolves-conveyor-stage",
+    "signalId": "conveyor-stage-transition",
+    "semanticOperationId": "resolve-conveyor-stage"
+  },
+  "projection": {
+    "functionName": "resolvesConveyorStage",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ResolvesConveyorStageContext"
+    },
+    "resultTypeReference": "ConveyorStageTransitionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "resolve",
+      "argument": {
+        "receiver": "context",
+        "member": "plan"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-resolves-conveyor-stage-expectation-from-c4a1756134938eb8e92329fb10443289afd5b49aa15b9c4ef15779ca9f4a6358",
+  "bodyId": "resolves-conveyor-stage-expectation-body",
+  "structuralProfile": "expectation-execution.v1",
+  "sourceSemanticAuthority": "projects-resolves-conveyor-stage-expectation.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:c4a1756134938eb8e92329fb10443289afd5b49aa15b9c4ef15779ca9f4a6358",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/resolves-conveyor-stage.expectation.ts"
+  },
+  "projection": {
+    "functionName": "provesResolvesConveyorStageExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesResolvesConveyorStageExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "authorityType": "obligation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "publish-the-complete-course-lineage-index",
+  "obligationId": "publish-one-complete-signed-lineage-index",
+  "statement": "one signed index links every authority, AST, body, hash, and signature",
+  "independentlyEvaluable": true
+}

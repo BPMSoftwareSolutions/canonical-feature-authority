@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "runs-invokes-typescript-projector-conformance-body",
+  "scenarioId": "invoke-the-trusted-typescript-projector",
+  "obligationId": "emit-one-projector-signed-typescript-body",
+  "responsibilityId": "invokes-typescript-projector",
+  "signalId": "typescript-body-projection",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/runs-invokes-typescript-projector-conformance.ts"
+  },
+  "semanticExecutableAuthority": "projects-runs-invokes-typescript-projector-conformance.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:a8058c420061ba1878956a97ed1738c384815d81d1fe94d6fbf66dc7636b51b6",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

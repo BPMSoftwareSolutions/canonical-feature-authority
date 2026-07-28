@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-runs-executes-course-authority-conveyor-conformance-from-242ca2d30944c7ce17b7923255a7389a3c69286c07f4a43ad22bf0b85e79720b",
+  "bodyId": "runs-executes-course-authority-conveyor-conformance-body",
+  "structuralProfile": "conformance-delegation.v1",
+  "sourceSemanticAuthority": "projects-runs-executes-course-authority-conveyor-conformance.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:242ca2d30944c7ce17b7923255a7389a3c69286c07f4a43ad22bf0b85e79720b",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/runs-executes-course-authority-conveyor-conformance.ts"
+  },
+  "projection": {
+    "functionName": "runsExecutesCourseAuthorityConveyorConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsExecutesCourseAuthorityConveyorConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

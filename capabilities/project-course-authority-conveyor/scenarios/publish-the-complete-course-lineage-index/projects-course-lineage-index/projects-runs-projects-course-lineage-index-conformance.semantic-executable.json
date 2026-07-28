@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "conformance",
+  "structuralProfile": "conformance-delegation.v1",
+  "bodyId": "runs-projects-course-lineage-index-conformance-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/publish-the-complete-course-lineage-index/projects-course-lineage-index/runs-projects-course-lineage-index-conformance.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "publish-the-complete-course-lineage-index",
+    "obligationId": "publish-one-complete-signed-lineage-index",
+    "expectationId": "expect-one-signed-course-lineage-index",
+    "responsibilityId": "projects-course-lineage-index",
+    "signalId": "course-lineage-index-projection",
+    "semanticOperationId": "project-course-lineage-index"
+  },
+  "projection": {
+    "functionName": "runsProjectsCourseLineageIndexConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsProjectsCourseLineageIndexConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "publish-the-complete-course-lineage-index",
+  "given": "every required projection subject has a conformant terminal disposition",
+  "when": "course lineage is projected",
+  "then": "one signed index links every authority, AST, body, hash, and signature",
+  "independentObligationCount": 1
+}

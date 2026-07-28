@@ -1,0 +1,10 @@
+{
+  "authorityType": "scenario-expectation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "project-one-bounded-model-request",
+  "obligationId": "produce-one-complete-model-request",
+  "expectationId": "expect-one-bounded-model-request",
+  "outcome": "one complete provider-neutral model request is emitted",
+  "expectedResponsibilityId": "projects-bounded-model-request",
+  "expectedSignalId": "bounded-model-request-projection"
+}

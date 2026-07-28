@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-ast-authority-projection-type-from-d4310b23a60bfd090658453b22d66cbb696540ceecb0e10c6b33a9a3771184b5",
+  "bodyId": "ast-authority-projection-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-ast-authority-projection-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:d4310b23a60bfd090658453b22d66cbb696540ceecb0e10c6b33a9a3771184b5",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/project-one-admitted-ast-authority/projects-ast-authority/ast-authority-projection.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "ProjectsAstAuthorityContext",
+      "ProvesProjectsAstAuthorityExpectationContext",
+      "RunsProjectsAstAuthorityConformanceContext",
+      "AstAuthorityProjectionSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

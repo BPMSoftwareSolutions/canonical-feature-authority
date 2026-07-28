@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-resolves-red-conveyor-transition-expectation-from-1fcfcad34bda84532664ece4f0a43b5138bbdbfade7b05bfca8a48374d08851a",
+  "bodyId": "resolves-red-conveyor-transition-expectation-body",
+  "structuralProfile": "expectation-execution.v1",
+  "sourceSemanticAuthority": "projects-resolves-red-conveyor-transition-expectation.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:1fcfcad34bda84532664ece4f0a43b5138bbdbfade7b05bfca8a48374d08851a",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/stop-downstream-execution-after-red/resolves-red-conveyor-transition/resolves-red-conveyor-transition.expectation.ts"
+  },
+  "projection": {
+    "functionName": "provesResolvesRedConveyorTransitionExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesResolvesRedConveyorTransitionExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

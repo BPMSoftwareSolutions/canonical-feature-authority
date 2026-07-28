@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-executes-course-authority-conveyor-expectation-from-8655a3c8cabcf87a7e9e85997234458d5163c68368bf20103adcd8557921e485",
+  "bodyId": "executes-course-authority-conveyor-expectation-body",
+  "structuralProfile": "expectation-execution.v1",
+  "sourceSemanticAuthority": "projects-executes-course-authority-conveyor-expectation.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:8655a3c8cabcf87a7e9e85997234458d5163c68368bf20103adcd8557921e485",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/execute-the-complete-admitted-conveyor-plan/executes-course-authority-conveyor/executes-course-authority-conveyor.expectation.ts"
+  },
+  "projection": {
+    "functionName": "provesExecutesCourseAuthorityConveyorExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesExecutesCourseAuthorityConveyorExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "evaluates-model-submission",
+  "semanticOperationId": "evaluate-model-submission",
+  "contextOperationMember": "evaluate",
+  "contextInputMember": "submission",
+  "signalId": "model-submission-admission"
+}

@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "resume-only-revalidated-admitted-authority",
+  "given": "one prior-stage artifact is presented for resumption",
+  "when": "resumability is evaluated",
+  "then": "one resumability disposition is emitted",
+  "independentObligationCount": 1
+}

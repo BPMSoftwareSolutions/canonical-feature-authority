@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "admitted-authority-attestation-type-body",
+  "scenarioId": "attest-one-admitted-authority-artifact",
+  "obligationId": "cryptographically-bind-one-admitted-artifact",
+  "responsibilityId": "attests-admitted-authority",
+  "signalId": "admitted-authority-attestation",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/admitted-authority-attestation.type.ts"
+  },
+  "semanticExecutableAuthority": "projects-admitted-authority-attestation-type.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:d6da023ee62f8ceb4f01cd472e33e80b1210224e256d9e362fe630f1ba75fdd0",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

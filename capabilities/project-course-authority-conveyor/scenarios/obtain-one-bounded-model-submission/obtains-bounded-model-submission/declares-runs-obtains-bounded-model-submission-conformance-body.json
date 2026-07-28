@@ -1,0 +1,22 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "runs-obtains-bounded-model-submission-conformance-body",
+  "scenarioId": "obtain-one-bounded-model-submission",
+  "obligationId": "obtain-one-normalized-model-testimony",
+  "responsibilityId": "obtains-bounded-model-submission",
+  "signalId": "bounded-model-submission",
+  "target": {
+    "language": "typescript",
+    "path": "capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/runs-obtains-bounded-model-submission-conformance.ts"
+  },
+  "semanticExecutableAuthority": "projects-runs-obtains-bounded-model-submission-conformance.semantic-executable.json",
+  "semanticExecutableSha256": "sha256:70f5c512387cfa0c46adf2b70094ea8a9e40963ca5d8a303708f4567b8b02b89",
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

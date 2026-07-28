@@ -1,0 +1,8 @@
+{
+  "bindingType": "responsibility-semantic-binding.v1",
+  "responsibilityId": "executes-course-authority-conveyor",
+  "semanticOperationId": "execute-course-authority-conveyor",
+  "contextOperationMember": "execute",
+  "contextInputMember": "plan",
+  "signalId": "course-authority-conveyor-execution"
+}

@@ -1,0 +1,29 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-runs-obtains-bounded-model-submission-conformance-from-70f5c512387cfa0c46adf2b70094ea8a9e40963ca5d8a303708f4567b8b02b89",
+  "bodyId": "runs-obtains-bounded-model-submission-conformance-body",
+  "structuralProfile": "conformance-delegation.v1",
+  "sourceSemanticAuthority": "projects-runs-obtains-bounded-model-submission-conformance.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:70f5c512387cfa0c46adf2b70094ea8a9e40963ca5d8a303708f4567b8b02b89",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/runs-obtains-bounded-model-submission-conformance.ts"
+  },
+  "projection": {
+    "functionName": "runsObtainsBoundedModelSubmissionConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsObtainsBoundedModelSubmissionConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  }
+}

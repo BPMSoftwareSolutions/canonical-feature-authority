@@ -1,0 +1,10 @@
+{
+  "authorityType": "scenario-expectation.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "publish-the-complete-course-lineage-index",
+  "obligationId": "publish-one-complete-signed-lineage-index",
+  "expectationId": "expect-one-signed-course-lineage-index",
+  "outcome": "one signed index links every authority, AST, body, hash, and signature",
+  "expectedResponsibilityId": "projects-course-lineage-index",
+  "expectedSignalId": "course-lineage-index-projection"
+}

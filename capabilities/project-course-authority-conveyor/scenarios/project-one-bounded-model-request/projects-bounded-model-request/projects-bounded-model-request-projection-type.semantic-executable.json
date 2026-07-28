@@ -1,0 +1,36 @@
+{
+  "semanticExecutableType": "declaration-only-context.v1",
+  "bodyRole": "type",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "bodyId": "bounded-model-request-projection-type-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/project-one-bounded-model-request/projects-bounded-model-request/bounded-model-request-projection.type.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "project-one-bounded-model-request",
+    "obligationId": "produce-one-complete-model-request",
+    "expectationId": "expect-one-bounded-model-request",
+    "responsibilityId": "projects-bounded-model-request",
+    "signalId": "bounded-model-request-projection",
+    "semanticOperationId": "project-bounded-model-request"
+  },
+  "projection": {
+    "declarations": [
+      "ProjectsBoundedModelRequestContext",
+      "ProvesProjectsBoundedModelRequestExpectationContext",
+      "RunsProjectsBoundedModelRequestConformanceContext",
+      "BoundedModelRequestProjectionSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

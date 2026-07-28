@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-admitted-authority-attestation-type-from-d6da023ee62f8ceb4f01cd472e33e80b1210224e256d9e362fe630f1ba75fdd0",
+  "bodyId": "admitted-authority-attestation-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-admitted-authority-attestation-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:d6da023ee62f8ceb4f01cd472e33e80b1210224e256d9e362fe630f1ba75fdd0",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/attest-one-admitted-authority-artifact/attests-admitted-authority/admitted-authority-attestation.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "AttestsAdmittedAuthorityContext",
+      "ProvesAttestsAdmittedAuthorityExpectationContext",
+      "RunsAttestsAdmittedAuthorityConformanceContext",
+      "AdmittedAuthorityAttestationSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

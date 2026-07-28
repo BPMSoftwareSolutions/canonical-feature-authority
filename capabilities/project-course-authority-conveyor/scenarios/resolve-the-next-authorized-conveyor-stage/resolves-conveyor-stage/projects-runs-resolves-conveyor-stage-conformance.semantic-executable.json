@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "conformance",
+  "structuralProfile": "conformance-delegation.v1",
+  "bodyId": "runs-resolves-conveyor-stage-conformance-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/resolve-the-next-authorized-conveyor-stage/resolves-conveyor-stage/runs-resolves-conveyor-stage-conformance.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "resolve-the-next-authorized-conveyor-stage",
+    "obligationId": "identify-one-authorized-next-stage",
+    "expectationId": "expect-one-stage-transition",
+    "responsibilityId": "resolves-conveyor-stage",
+    "signalId": "conveyor-stage-transition",
+    "semanticOperationId": "resolve-conveyor-stage"
+  },
+  "projection": {
+    "functionName": "runsResolvesConveyorStageConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsResolvesConveyorStageConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

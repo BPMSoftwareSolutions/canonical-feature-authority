@@ -1,0 +1,9 @@
+{
+  "authorityType": "scenario-authority.v1",
+  "featureId": "project-course-authority-through-a-governed-conveyor",
+  "scenarioId": "execute-the-complete-admitted-conveyor-plan",
+  "given": "one complete conveyor plan is bound to its governed execution port",
+  "when": "the course authority conveyor is executed",
+  "then": "one terminal course-conveyor signal is emitted",
+  "independentObligationCount": 1
+}

@@ -1,0 +1,11 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "runs-resolves-red-conveyor-transition-conformance-body",
+  "scenarioId": "stop-downstream-execution-after-red",
+  "obligationId": "authorize-no-downstream-stage-after-red",
+  "expectationId": "expect-one-stopped-conveyor-transition",
+  "responsibilityId": "resolves-red-conveyor-transition",
+  "signalId": "red-conveyor-stop",
+  "bodyCount": 1,
+  "structuralProfile": "conformance-delegation.v1"
+}

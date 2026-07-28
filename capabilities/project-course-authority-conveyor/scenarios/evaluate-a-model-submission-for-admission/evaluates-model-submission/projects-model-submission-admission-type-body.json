@@ -1,0 +1,21 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-model-submission-admission-type-from-c9cdf291ea986f51a2cc4d8ef23a36d06ffa7de56e155d9d0ad61d81bd0b6728",
+  "bodyId": "model-submission-admission-type-body",
+  "structuralProfile": "conveyor-context-declaration.v1",
+  "sourceSemanticAuthority": "projects-model-submission-admission-type.semantic-executable.json",
+  "sourceSemanticAuthoritySha256": "sha256:c9cdf291ea986f51a2cc4d8ef23a36d06ffa7de56e155d9d0ad61d81bd0b6728",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/evaluate-a-model-submission-for-admission/evaluates-model-submission/model-submission-admission.type.ts"
+  },
+  "projection": {
+    "declarations": [
+      "EvaluatesModelSubmissionContext",
+      "ProvesEvaluatesModelSubmissionExpectationContext",
+      "RunsEvaluatesModelSubmissionConformanceContext",
+      "ModelSubmissionAdmissionSignal",
+      "ExpectationSignal",
+      "ProjectionConformanceSignal"
+    ]
+  }
+}

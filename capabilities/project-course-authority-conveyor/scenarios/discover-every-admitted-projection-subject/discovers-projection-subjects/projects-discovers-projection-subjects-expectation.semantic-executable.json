@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "expectation",
+  "structuralProfile": "expectation-execution.v1",
+  "bodyId": "discovers-projection-subjects-expectation-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/discover-every-admitted-projection-subject/discovers-projection-subjects/discovers-projection-subjects.expectation.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "discover-every-admitted-projection-subject",
+    "obligationId": "identify-the-complete-projection-subject-set",
+    "expectationId": "expect-one-complete-projection-subject-set",
+    "responsibilityId": "discovers-projection-subjects",
+    "signalId": "projection-subject-discovery",
+    "semanticOperationId": "discover-projection-subjects"
+  },
+  "projection": {
+    "functionName": "provesDiscoversProjectionSubjectsExpectation",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ProvesDiscoversProjectionSubjectsExpectationContext"
+    },
+    "resultTypeReference": "ExpectationSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "prove",
+      "argument": {
+        "receiver": "context",
+        "member": "expectation"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

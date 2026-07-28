@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "conformance",
+  "structuralProfile": "conformance-delegation.v1",
+  "bodyId": "runs-invokes-typescript-projector-conformance-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/invoke-the-trusted-typescript-projector/invokes-typescript-projector/runs-invokes-typescript-projector-conformance.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "invoke-the-trusted-typescript-projector",
+    "obligationId": "emit-one-projector-signed-typescript-body",
+    "expectationId": "expect-one-projector-signed-body",
+    "responsibilityId": "invokes-typescript-projector",
+    "signalId": "typescript-body-projection",
+    "semanticOperationId": "invoke-typescript-projector"
+  },
+  "projection": {
+    "functionName": "runsInvokesTypescriptProjectorConformance",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "RunsInvokesTypescriptProjectorConformanceContext"
+    },
+    "resultTypeReference": "ProjectionConformanceSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "evaluate",
+      "argument": {
+        "receiver": "context",
+        "member": "subject"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}

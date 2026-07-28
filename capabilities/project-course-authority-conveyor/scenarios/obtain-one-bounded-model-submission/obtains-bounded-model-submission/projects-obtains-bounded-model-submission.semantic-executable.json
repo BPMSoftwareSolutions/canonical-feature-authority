@@ -1,0 +1,44 @@
+{
+  "semanticExecutableType": "prebound-member-delegation.v1",
+  "bodyRole": "primary",
+  "structuralProfile": "conveyor-stage-delegation.v1",
+  "bodyId": "obtains-bounded-model-submission-body",
+  "artifact": {
+    "relativePath": "capabilities/project-course-authority-conveyor/scenarios/obtain-one-bounded-model-submission/obtains-bounded-model-submission/obtains-bounded-model-submission.ts"
+  },
+  "lineage": {
+    "featureId": "project-course-authority-through-a-governed-conveyor",
+    "scenarioId": "obtain-one-bounded-model-submission",
+    "obligationId": "obtain-one-normalized-model-testimony",
+    "expectationId": "expect-one-model-submission-testimony",
+    "responsibilityId": "obtains-bounded-model-submission",
+    "signalId": "bounded-model-submission",
+    "semanticOperationId": "obtain-bounded-model-submission"
+  },
+  "projection": {
+    "functionName": "obtainsBoundedModelSubmission",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "ObtainsBoundedModelSubmissionContext"
+    },
+    "resultTypeReference": "BoundedModelSubmissionSignal",
+    "invocation": {
+      "receiver": "context",
+      "operationMember": "obtain",
+      "argument": {
+        "receiver": "context",
+        "member": "request"
+      },
+      "awaited": true,
+      "returnResult": true
+    }
+  },
+  "constraints": {
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidSemanticLiterals": true,
+    "forbidDirectEffects": true,
+    "forbidLocalErrorPolicy": true
+  }
+}
