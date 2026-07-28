@@ -21,6 +21,424 @@ policy.
 
 The conveyor coordinates authority. It does not author implementation.
 
+## User story
+
+**Feature ID:** `project-course-authority-through-a-governed-conveyor`
+
+> As a student projecting an authority-first system,
+> I want every admitted course authority to move through a governed LLM and
+> deterministic projection conveyor,
+> so that every executable body has complete canonical lineage and can be
+> proven to have been projected by the trusted projector rather than authored
+> by the model or conveyor.
+
+The user story establishes the need. It does not authorize a workflow,
+provider, prompt, AST, file, or code body by itself. Those decisions are split
+across the atomic scenarios and downstream authorities below.
+
+## Feature background
+
+The background declares facts shared by every conveyor scenario:
+
+```gherkin
+Feature: Project course authority through a governed conveyor
+  As a student projecting an authority-first system
+  I want every admitted course authority to move through a governed LLM
+    and deterministic projection conveyor
+  So that every executable body has complete canonical lineage
+    and provable projector-only code origin
+
+  Background:
+    Given canonical course authority has been admitted
+    And the conveyor execution plan has been admitted
+    And provider authority is supplied to the generic LLM connector
+    And projector authority names one trusted deterministic projector
+    And each executable target has a declared structural profile
+```
+
+The background does not claim that any scenario has succeeded. It establishes
+only the authority required to evaluate each scenario.
+
+## Canonical feature scenarios
+
+Every scenario below owns one independently evaluable obligation, one focused
+responsibility, and one observable outcome.
+
+### Scenario 1: discover every admitted projection subject
+
+```gherkin
+  Scenario: Discover every admitted projection subject
+    Given discovery authority identifies the permitted authority roots and schemas
+    When the projection subjects are discovered
+    Then one complete deterministically ordered projection-subject set is emitted
+```
+
+This scenario does not authorize projecting, repairing, or interpreting any
+subject. It authorizes only discovery.
+
+### Scenario 2: resolve the next authorized conveyor stage
+
+```gherkin
+  Scenario: Resolve the next authorized conveyor stage
+    Given the conveyor plan and current admitted stage state
+    When the next stage is resolved
+    Then one authorized stage-transition signal is emitted
+```
+
+This scenario owns transition resolution, not execution of the selected stage.
+
+### Scenario 3: project one bounded model request
+
+```gherkin
+  Scenario: Project one bounded model request
+    Given one authorized conveyor stage requires a model submission
+    When its model request authority is projected
+    Then one complete provider-neutral model request is emitted
+```
+
+The request is data. This scenario does not invoke a provider.
+
+### Scenario 4: obtain one bounded model submission
+
+```gherkin
+  Scenario: Obtain one bounded model submission
+    Given one complete provider-neutral model request
+    When the request is executed by the generic LLM connector
+    Then one normalized model-submission testimony is emitted
+```
+
+This scenario obtains testimony. It does not admit the submission as authority.
+
+### Scenario 5: evaluate a model submission for admission
+
+```gherkin
+  Scenario: Evaluate a model submission for admission
+    Given one normalized model submission and its declared admission authority
+    When the submission is evaluated
+    Then one admission disposition is emitted without altering the submission
+```
+
+Schema conformance, identity preservation, forbidden code content, and upstream
+hash checks are semantic rules of this responsibility.
+
+### Scenario 6: attest one admitted authority artifact
+
+```gherkin
+  Scenario: Attest one admitted authority artifact
+    Given one model submission has an admitted disposition
+    When the admitted authority is attested
+    Then one signed authority artifact is emitted
+```
+
+This scenario owns admission attestation. It does not project executable code.
+
+### Scenario 7: project one admitted AST authority
+
+```gherkin
+  Scenario: Project one admitted AST authority
+    Given one signed semantic authority satisfies its body expectation
+    When lossless AST authority is projected
+    Then one signed structurally conformant AST authority is emitted
+```
+
+The result is AST authority, not a TypeScript body.
+
+### Scenario 8: invoke the trusted TypeScript projector
+
+```gherkin
+  Scenario: Invoke the trusted TypeScript projector
+    Given one signed AST authority names an authorized TypeScript target
+    When the deterministic projector is invoked
+    Then one projector-signed TypeScript body is emitted
+```
+
+Only the projector may emit the `.ts` body.
+
+### Scenario 9: evaluate projected-body conformance
+
+```gherkin
+  Scenario: Evaluate projected-body conformance
+    Given one projector-signed body and its exact AST authority
+    When projection conformance is evaluated
+    Then one projection-conformance disposition is emitted
+```
+
+The evaluator observes and compares. It does not repair or re-sign the body.
+
+### Scenario 10: publish the complete course lineage index
+
+```gherkin
+  Scenario: Publish the complete course lineage index
+    Given every required projection subject has a conformant terminal disposition
+    When course lineage is projected
+    Then one signed index links every authority, AST, body, hash, and signature
+```
+
+The index is a signed navigational projection, not a detached projection
+receipt.
+
+### Scenario 11: stop downstream execution after RED
+
+```gherkin
+  Scenario: Stop downstream execution after RED
+    Given one conveyor stage has emitted a RED disposition
+    When the conveyor transition is resolved
+    Then no downstream stage is authorized
+```
+
+This is one obligation: resolve a RED transition to a stopped topology.
+
+### Scenario 12: resume only revalidated admitted authority
+
+```gherkin
+  Scenario: Resume only revalidated admitted authority
+    Given one prior-stage artifact is presented for resumption
+    When resumability is evaluated
+    Then one resumability disposition is emitted
+```
+
+Signature, hash, identity, upstream-lineage, and current-plan checks live in
+semantic authority. Malformed artifacts produce a non-resumable disposition
+rather than a runtime crash.
+
+### Scenario 13: execute the complete admitted conveyor plan
+
+```gherkin
+  Scenario: Execute the complete admitted conveyor plan
+    Given one complete conveyor plan is bound to its governed execution port
+    When the course authority conveyor is executed
+    Then one terminal course-conveyor signal is emitted
+```
+
+The public entry responsibility delegates the plan. The plan and its semantic
+interpreter own all stage behavior.
+
+## Canonical identity and responsibility ledger
+
+The following identities are proposed as the canonical documentary spine.
+When the machine-readable authority is created, these values must be preserved
+byte-for-byte through every downstream artifact.
+
+| # | Scenario ID | Obligation ID | Expectation ID | Responsibility ID | Signal ID | Semantic operation ID |
+|---:|---|---|---|---|---|---|
+| 1 | `discover-every-admitted-projection-subject` | `identify-the-complete-projection-subject-set` | `expect-one-complete-projection-subject-set` | `discovers-projection-subjects` | `projection-subject-discovery` | `discover-projection-subjects` |
+| 2 | `resolve-the-next-authorized-conveyor-stage` | `identify-one-authorized-next-stage` | `expect-one-stage-transition` | `resolves-conveyor-stage` | `conveyor-stage-transition` | `resolve-conveyor-stage` |
+| 3 | `project-one-bounded-model-request` | `produce-one-complete-model-request` | `expect-one-bounded-model-request` | `projects-bounded-model-request` | `bounded-model-request-projection` | `project-bounded-model-request` |
+| 4 | `obtain-one-bounded-model-submission` | `obtain-one-normalized-model-testimony` | `expect-one-model-submission-testimony` | `obtains-bounded-model-submission` | `bounded-model-submission` | `obtain-bounded-model-submission` |
+| 5 | `evaluate-a-model-submission-for-admission` | `resolve-one-submission-admission` | `expect-one-admission-disposition` | `evaluates-model-submission` | `model-submission-admission` | `evaluate-model-submission` |
+| 6 | `attest-one-admitted-authority-artifact` | `cryptographically-bind-one-admitted-artifact` | `expect-one-signed-authority-artifact` | `attests-admitted-authority` | `admitted-authority-attestation` | `attest-admitted-authority` |
+| 7 | `project-one-admitted-ast-authority` | `derive-one-lossless-conformant-ast-authority` | `expect-one-signed-ast-authority` | `projects-ast-authority` | `ast-authority-projection` | `project-ast-authority` |
+| 8 | `invoke-the-trusted-typescript-projector` | `emit-one-projector-signed-typescript-body` | `expect-one-projector-signed-body` | `invokes-typescript-projector` | `typescript-body-projection` | `invoke-typescript-projector` |
+| 9 | `evaluate-projected-body-conformance` | `resolve-one-body-projection-conformance` | `expect-one-projection-conformance-disposition` | `evaluates-projected-body` | `projected-body-conformance` | `evaluate-projected-body` |
+| 10 | `publish-the-complete-course-lineage-index` | `publish-one-complete-signed-lineage-index` | `expect-one-signed-course-lineage-index` | `projects-course-lineage-index` | `course-lineage-index-projection` | `project-course-lineage-index` |
+| 11 | `stop-downstream-execution-after-red` | `authorize-no-downstream-stage-after-red` | `expect-one-stopped-conveyor-transition` | `resolves-red-conveyor-transition` | `red-conveyor-stop` | `resolve-red-conveyor-transition` |
+| 12 | `resume-only-revalidated-admitted-authority` | `classify-one-prior-artifact-for-resumption` | `expect-one-resumability-disposition` | `evaluates-resumable-authority` | `authority-resumability` | `evaluate-resumable-authority` |
+| 13 | `execute-the-complete-admitted-conveyor-plan` | `execute-one-complete-admitted-conveyor-plan` | `expect-one-terminal-course-conveyor-signal` | `executes-course-authority-conveyor` | `course-authority-conveyor-execution` | `execute-course-authority-conveyor` |
+
+### Focused responsibility and outcome coverage
+
+| Responsibility ID | The one thing it owns | Expected outcome |
+|---|---|---|
+| `discovers-projection-subjects` | discover admitted subjects | complete ordered subject set |
+| `resolves-conveyor-stage` | resolve the next permitted transition | one stage-transition signal |
+| `projects-bounded-model-request` | project request authority | one complete provider-neutral request |
+| `obtains-bounded-model-submission` | invoke the supplied connector boundary | one normalized testimony |
+| `evaluates-model-submission` | determine admission conformance | one admission disposition |
+| `attests-admitted-authority` | attest an already-admitted artifact | one signed authority artifact |
+| `projects-ast-authority` | project and validate lossless AST authority | one signed AST authority |
+| `invokes-typescript-projector` | invoke the trusted projector | one signed TypeScript body |
+| `evaluates-projected-body` | compare body against AST and trust authority | one conformance disposition |
+| `projects-course-lineage-index` | project the completed lineage view | one signed Markdown index |
+| `resolves-red-conveyor-transition` | resolve downstream authority after RED | one stopped transition |
+| `evaluates-resumable-authority` | revalidate prior admitted authority | one resumability disposition |
+| `executes-course-authority-conveyor` | delegate one complete admitted plan | one terminal conveyor signal |
+
+No responsibility in this ledger owns two outcomes. No outcome is owned by two
+responsibilities.
+
+## Complete projected code-body coverage
+
+Each scenario projects four TypeScript surfaces:
+
+1. one responsibility execution body;
+2. one declaration-only context/result type body;
+3. one projected expectation test body;
+4. one projection-conformance execution body.
+
+That gives complete operational and proof coverage without placing test data,
+assertion decisions, or conformance rules in TypeScript.
+
+| # | Primary execution body | Type body | Expectation body | Conformance body |
+|---:|---|---|---|---|
+| 1 | `discovers-projection-subjects.ts` | `projection-subject-discovery.type.ts` | `discovers-projection-subjects.test.ts` | `runs-discovers-projection-subjects-conformance.ts` |
+| 2 | `resolves-conveyor-stage.ts` | `conveyor-stage-transition.type.ts` | `resolves-conveyor-stage.test.ts` | `runs-resolves-conveyor-stage-conformance.ts` |
+| 3 | `projects-bounded-model-request.ts` | `bounded-model-request-projection.type.ts` | `projects-bounded-model-request.test.ts` | `runs-projects-bounded-model-request-conformance.ts` |
+| 4 | `obtains-bounded-model-submission.ts` | `bounded-model-submission.type.ts` | `obtains-bounded-model-submission.test.ts` | `runs-obtains-bounded-model-submission-conformance.ts` |
+| 5 | `evaluates-model-submission.ts` | `model-submission-admission.type.ts` | `evaluates-model-submission.test.ts` | `runs-evaluates-model-submission-conformance.ts` |
+| 6 | `attests-admitted-authority.ts` | `admitted-authority-attestation.type.ts` | `attests-admitted-authority.test.ts` | `runs-attests-admitted-authority-conformance.ts` |
+| 7 | `projects-ast-authority.ts` | `ast-authority-projection.type.ts` | `projects-ast-authority.test.ts` | `runs-projects-ast-authority-conformance.ts` |
+| 8 | `invokes-typescript-projector.ts` | `typescript-body-projection.type.ts` | `invokes-typescript-projector.test.ts` | `runs-invokes-typescript-projector-conformance.ts` |
+| 9 | `evaluates-projected-body.ts` | `projected-body-conformance.type.ts` | `evaluates-projected-body.test.ts` | `runs-evaluates-projected-body-conformance.ts` |
+| 10 | `projects-course-lineage-index.ts` | `course-lineage-index-projection.type.ts` | `projects-course-lineage-index.test.ts` | `runs-projects-course-lineage-index-conformance.ts` |
+| 11 | `resolves-red-conveyor-transition.ts` | `red-conveyor-stop.type.ts` | `resolves-red-conveyor-transition.test.ts` | `runs-resolves-red-conveyor-transition-conformance.ts` |
+| 12 | `evaluates-resumable-authority.ts` | `authority-resumability.type.ts` | `evaluates-resumable-authority.test.ts` | `runs-evaluates-resumable-authority-conformance.ts` |
+| 13 | `executes-course-authority-conveyor.ts` | `course-authority-conveyor-execution.type.ts` | `executes-course-authority-conveyor.test.ts` | `runs-executes-course-authority-conveyor-conformance.ts` |
+
+These names are documentary file-body identities. Later body authority must
+assign their exact vertical scenario-relative paths.
+
+The proposed path derivation is:
+
+```text
+capabilities/project-course-authority-conveyor/
+  scenarios/<scenarioId>/<responsibilityId>/<codeBodyFilename>
+```
+
+Every code body in the coverage table receives an adjacent authority:
+
+```text
+<codeBodyFilename>.ast.authority.json
+```
+
+For example, Scenario 12 balances to:
+
+```text
+capabilities/project-course-authority-conveyor/
+└── scenarios/
+    └── resume-only-revalidated-admitted-authority/
+        └── evaluates-resumable-authority/
+            ├── evaluates-resumable-authority.ts
+            ├── evaluates-resumable-authority.ts.ast.authority.json
+            ├── authority-resumability.type.ts
+            ├── authority-resumability.type.ts.ast.authority.json
+            ├── evaluates-resumable-authority.test.ts
+            ├── evaluates-resumable-authority.test.ts.ast.authority.json
+            ├── runs-evaluates-resumable-authority-conformance.ts
+            └── runs-evaluates-resumable-authority-conformance.ts.ast.authority.json
+```
+
+The scenario folder also contains its obligation, expectation, responsibility,
+signal, semantic, body, and projection authority. The code surfaces never move
+to a horizontal generated-code or proof directory.
+
+### Primary responsibility body shape
+
+Every row's primary body uses the stage-delegation profile already demonstrated
+later in this document:
+
+```typescript
+export async function projectedResponsibility(
+  context: ProjectedResponsibilityContext
+): Promise<ProjectedResponsibilitySignal> {
+  return await context.execute(context.input);
+}
+```
+
+The actual exported function name, context member, input member, and result type
+come from that scenario's semantic and body authority.
+
+### Declaration-only type body shape
+
+```typescript
+export interface ProjectedResponsibilityContext {
+  readonly input: ProjectedInput;
+  readonly execute: SemanticOperation<
+    ProjectedInput,
+    ProjectedResponsibilitySignal
+  >;
+}
+```
+
+The type body declares capability. It constructs no runtime context.
+
+### Projected expectation body shape
+
+```typescript
+export async function provesProjectedExpectation(
+  context: ProvesProjectedExpectationContext
+): Promise<ExpectationSignal> {
+  const observed = await context.execute(context.fixture);
+  return await context.assert(context.expectation, observed);
+}
+```
+
+The fixture and expectation are authority values. The test body creates
+neither.
+
+### Projection-conformance body shape
+
+```typescript
+export async function runsProjectionConformance(
+  context: RunsProjectionConformanceContext
+): Promise<ProjectionConformanceSignal> {
+  return await context.evaluate(context.subject);
+}
+```
+
+The body contains no AST traversal, hash comparison, signature verification,
+forbidden-node list, or RED/GREEN branch. Those are conformance semantic
+authority.
+
+## Documentary completeness equations
+
+Before machine-readable artifacts are created, the documentation must balance:
+
+```text
+feature count                         = 1
+user-story count                      = 1
+scenario count                        = 13
+obligation count                      = 13
+expectation count                     = 13
+responsibility count                  = 13
+signal-family count                   = 13
+semantic-operation count              = 13
+primary responsibility-body count     = 13
+declaration-only type-body count       = 13
+projected expectation-body count      = 13
+projection-conformance-body count      = 13
+total projected TypeScript body count = 52
+required adjacent AST-authority count  = 52
+detached projection-receipt count      = 0
+```
+
+Cardinality invariants:
+
+```text
+for every scenario:
+  independent obligations = 1
+  focused responsibilities = 1
+  expected outcomes = 1
+  signal families = 1
+  semantic operations = 1
+  primary responsibility bodies = 1
+  type bodies = 1
+  expectation bodies = 1
+  conformance bodies = 1
+
+for every projected TypeScript body:
+  adjacent AST authorities = 1
+  embedded projector attestations = 1
+  detached projection receipts = 0
+```
+
+Identity invariants:
+
+```text
+every scenarioId appears once in the identity ledger
+every obligationId appears once in the identity ledger
+every expectationId appears once in the identity ledger
+every responsibilityId appears once in the identity ledger
+every signalId appears once in the identity ledger
+every semanticOperationId appears once in the identity ledger
+every primary body filename appears once in code-body coverage
+every primary body maps back to exactly one responsibility
+every companion body maps back to exactly one scenario
+```
+
+The future documentation-conformance evaluator must calculate these
+relationships from admitted authority. It must not rely on the counts printed
+in this prose.
+
 ```text
 human and course authority
   → bounded model request authority
@@ -759,6 +1177,18 @@ RED behavior is declarative and fail-closed:
 The projected body contains no branch implementing this. A semantic transition
 interpreter consumes the declared disposition and transition authority.
 
+```typescript
+export async function resolvesRedConveyorTransition(
+  context: ResolvesRedConveyorTransitionContext
+): Promise<RedConveyorStopSignal> {
+  return await context.resolve(context.disposition);
+}
+```
+
+`context.resolve` is bound to RED transition authority. The body does not
+contain the RED literal, choose a downstream stage, or construct the stop
+signal.
+
 ## Resume behavior
 
 Resume authority must require deterministic revalidation:
@@ -778,8 +1208,15 @@ and must not be silently trusted.
 Again, these are semantic rules. The projected entry body still remains:
 
 ```typescript
-return await context.execute(context.plan);
+export async function evaluatesResumableAuthority(
+  context: EvaluatesResumableAuthorityContext
+): Promise<AuthorityResumabilitySignal> {
+  return await context.evaluate(context.candidate);
+}
 ```
+
+The resume body does not parse attestation fields, inspect signatures, compare
+hashes, catch malformed JSON, or decide whether to reuse an artifact.
 
 ## AST structural profiles for conveyor bodies
 
