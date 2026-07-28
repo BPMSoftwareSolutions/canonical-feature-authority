@@ -33,3 +33,5 @@ See also:
 - [defines-authority-projection-boundary.md](defines-authority-projection-boundary.md) — what each layer owns and does not own.
 - [defines-capability-first-layout.md](defines-capability-first-layout.md) — why the repository is organized vertically by capability rather than horizontally by artifact type.
 - [defines-generated-body-discipline.md](defines-generated-body-discipline.md) — the rules a generated code body must follow.
+- [specifies-projected-code-body-shapes.md](specifies-projected-code-body-shapes.md) — the complete executable-body grammar, structural profiles, forbidden syntax, provenance boundary, and student acceptance checklist.
+- [specifies-projected-conveyor-implementation.md](specifies-projected-conveyor-implementation.md) — the declarative conveyor design and the exact code-body, provenance, lineage, repository-boundary, and conformance target it must project.

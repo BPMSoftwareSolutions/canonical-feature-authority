@@ -56,6 +56,8 @@ Start with the overview, then work through the numbered lessons in order:
 | 09 | [09 - Projection and Conformance Proof.md](09%20-%20Projection%20and%20Conformance%20Proof.md) | Comparing expected topology against observed topology to produce a conformance receipt. |
 | 10 | [10 - The Complete Canonical Path.md](10%20-%20The%20Complete%20Canonical%20Path.md) | The full path retraced end to end, with the identity that must never drift across layers. |
 | — | [Canonical Feature Authority File-System Spine.md](Canonical%20Feature%20Authority%20File-System%20Spine.md) | The same architecture at file-system granularity: all 21 layers, exact filenames, and the reasoning behind every naming and placement decision. Read this once the numbered lessons feel familiar — it's the bridge from concept to the `capabilities/` folder below. |
+| — | [Projected Code-Body Shape Specification](architecture/specifies-projected-code-body-shapes.md) | The implementation acceptance target: projector-signed, linear bodies with no branching, DTO construction, hard-coded semantic identity, or locally invented failure policy. |
+| — | [Projected Conveyor Implementation Specification](architecture/specifies-projected-conveyor-implementation.md) | The documentation-first conveyor design: declarative stages, clean projected bodies, repository boundaries, provenance, lineage, RED/resume semantics, and AST conformance requirements. |
 
 ## Repository layout
 

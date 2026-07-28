@@ -1,34 +1,37 @@
 # Generated Body Discipline
 
-Every `.ts` file under `capabilities/**/evaluates-*` carries a `// @generated` header and a `// DO NOT EDIT.` footer comment. This document states exactly what that discipline requires.
+Every projected `.ts` file carries a `// @generated` header and a
+`// DO NOT EDIT.` marker. This document states the minimum discipline. The
+complete executable grammar and all structural profiles are specified in
+[Projected Code-Body Shape Specification](specifies-projected-code-body-shapes.md).
 
-## The shape every generated body follows
+## The preferred responsibility-body shape
 
 ```typescript
 // @generated
-// feature-id: <featureId>
-// scenario-id: <scenarioId>
-// obligation-id: <obligationId>
-// responsibility-id: <responsibilityId>
-// signal-id: <signalId>
+// projector-id: declarative-typescript-body-projector
+// projector-key-id: <trusted-key-id>
+// projection-id: <projection-id>
+// authority-sha256: <ast-authority-hash>
+// body-sha256: <body-hash>
+// projection-signature: ed25519:<signature>
 // DO NOT EDIT.
 
 import type {
-  <ContextType>,
-  <SignalType>
+  ProjectedContext,
+  ProjectedSignal
 } from "./<type-file>.js";
 
-export async function <operationName>(
-  context: <ContextType>
-): Promise<<SignalType>> {
-  return await context.edges.invokes(
-    "<primary-semantic-edge>",
-    context
-  );
+export async function projectedOperation(
+  context: ProjectedContext
+): Promise<ProjectedSignal> {
+  return await context.preBoundSemanticOperation(context.input);
 }
 ```
 
-One exported function. One parameter — an immutable context. One statement — invoking the responsibility's declared primary semantic edge and returning its result.
+One exported function. One parameter—an immutable context. One statement—
+invoking the responsibility's pre-bound semantic operation and returning its
+result. The body contains no string edge ID and constructs no invocation DTO.
 
 ## What is never allowed to appear
 
@@ -37,15 +40,24 @@ IfStatement
 SwitchStatement
 ForStatement / WhileStatement / DoWhileStatement
 ConditionalExpression (ternary)
-Direct SDK or I/O calls
+TryStatement / CatchClause / FinallyBlock
+ThrowStatement
+Direct SDK, transport, global-runtime, or I/O calls
 Hand-constructed domain object literals (DTOs)
+Hard-coded semantic, signal, provider, or disposition identities
+Factories, builders, mappers, serializers, or formatters
 Multiple exported operations
 Multiple returned signal families
-Mutation of canonical or semantic authority
+Mutation of canonical, semantic, projection, or trust authority
 ```
 
-If any of these appear, the body is no longer a projection of admitted authority — it is authored code smuggling a decision past review. The AST conformance evaluator (see [conformance/detects-forbidden-body-structures.ts](../conformance/detects-forbidden-body-structures.ts)) exists to catch exactly this.
+If any of these appear, the body is no longer a projection of admitted
+authority. It is authored code smuggling a decision past review. The AST
+conformance evaluator exists to catch exactly this.
 
-## Why "disposable" matters
+## Why disposable matters
 
-A generated body should be safe to delete and regenerate at any time. If deleting `evaluates-scenario-atomicity.ts` and re-running the TypeScript projector would produce a file that is byte-for-byte identical (or functionally identical, given a stable projector), the body has stayed honest to its authority. If deleting it would lose behavior nobody else remembers, some decision leaked into the body that should have lived in semantic authority instead.
+A generated body must be safe to delete and regenerate at any time. If deleting
+it and running the projector does not recreate the same signed bytes, either
+authority drifted or meaning leaked into the body. Durable changes belong in
+semantic, body, or AST authority—not in the emitted TypeScript.
