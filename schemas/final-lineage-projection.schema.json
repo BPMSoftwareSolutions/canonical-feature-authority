@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/final-lineage-projection.schema.json",
+  "title": "Final navigational lineage projection with embedded provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["provenance", "payload"],
+  "properties": {
+    "provenance": {
+      "allOf": [
+        { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/provenance" },
+        {
+          "properties": {
+            "artifactType": { "const": "final-lineage-projection" }
+          }
+        }
+      ]
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lineageId", "terminalDisposition", "artifacts"],
+      "properties": {
+        "lineageId": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id" },
+        "terminalDisposition": {
+          "enum": [
+            "GREEN_COMPLETE_EMBEDDED_PROVENANCE",
+            "RED_EMBEDDED_CHAIN_INCOMPLETE"
+          ]
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "artifactType",
+              "path",
+              "artifactSha256",
+              "parentSha256",
+              "lineageRootSha256",
+              "signatureStatus"
+            ],
+            "properties": {
+              "artifactType": {
+                "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/artifactType"
+              },
+              "path": {
+                "type": "string",
+                "pattern": "^(?![A-Za-z]:)(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+              },
+              "artifactSha256": {
+                "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+              },
+              "parentSha256": {
+                "oneOf": [
+                  { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256" },
+                  { "type": "null" }
+                ]
+              },
+              "lineageRootSha256": {
+                "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+              },
+              "signatureStatus": { "enum": ["VERIFIED", "RED"] }
+            }
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "payload": {
+            "properties": {
+              "terminalDisposition": {
+                "const": "GREEN_COMPLETE_EMBEDDED_PROVENANCE"
+              }
+            },
+            "required": ["terminalDisposition"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "properties": {
+              "artifacts": {
+                "items": {
+                  "properties": {
+                    "signatureStatus": { "const": "VERIFIED" }
+                  },
+                  "required": ["signatureStatus"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

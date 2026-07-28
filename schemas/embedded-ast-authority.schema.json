@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/embedded-ast-authority.schema.json",
+  "title": "Semantic-derived TypeScript AST authority with embedded provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["provenance", "payload"],
+  "properties": {
+    "provenance": {
+      "allOf": [
+        { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/provenance" },
+        {
+          "properties": {
+            "artifactType": { "const": "typescript-ast-authority" },
+            "parent": {
+              "type": "object",
+              "required": ["artifactType", "artifactSha256"],
+              "properties": {
+                "artifactType": {
+                  "const": "model-produced-semantic-authority"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "payload": {
+      "$ref": "https://schemas.deterministic.solutions/projection/lossless-typescript-ast/1.0.0/schema.json"
+    }
+  }
+}

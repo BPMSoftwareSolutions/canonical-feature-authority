@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/runtime-composition-authority.schema.json",
+  "title": "Runtime composition authority with embedded provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["provenance", "payload"],
+  "properties": {
+    "provenance": {
+      "allOf": [
+        { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/provenance" },
+        {
+          "properties": {
+            "artifactType": { "const": "runtime-composition-authority" }
+          }
+        }
+      ]
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["compositionId", "bindings"],
+      "properties": {
+        "compositionId": {
+          "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id"
+        },
+        "bindings": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "semanticOperationId",
+              "repository",
+              "repositoryCommit",
+              "modulePath",
+              "exportedFunction",
+              "executableSha256",
+              "allowedDependencySha256"
+            ],
+            "properties": {
+              "semanticOperationId": {
+                "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id"
+              },
+              "repository": { "type": "string", "minLength": 1 },
+              "repositoryCommit": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}$"
+              },
+              "modulePath": {
+                "type": "string",
+                "pattern": "^(?![A-Za-z]:)(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+              },
+              "exportedFunction": {
+                "type": "string",
+                "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$"
+              },
+              "executableSha256": {
+                "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+              },
+              "allowedDependencySha256": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+                }
+              },
+              "runtimePolicyId": {
+                "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

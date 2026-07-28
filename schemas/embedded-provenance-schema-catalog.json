@@ -1,0 +1,42 @@
+{
+  "catalogType": "embedded-provenance-schema-catalog.v1",
+  "disposition": "RED_IMPLEMENTATION_NOT_YET_BOUND",
+  "canonicalization": {
+    "json": "RFC8785-JCS",
+    "typescript": "UTF8-LF-AFTER-HEADER"
+  },
+  "schemas": [
+    "embedded-provenance.schema.json",
+    "reviewed-intent-authority.schema.json",
+    "model-request-authority.schema.json",
+    "model-produced-semantic-authority.schema.json",
+    "embedded-ast-authority.schema.json",
+    "runtime-composition-authority.schema.json",
+    "conformance-terminal-signal.schema.json",
+    "final-lineage-projection.schema.json",
+    "embedded-typescript-provenance-header.schema.json"
+  ],
+  "externalSchemaDependencies": [
+    {
+      "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+      "repository": "declarative-typescript-body-projector",
+      "repositoryCommit": "06ccfd8bc42f3fabae44fc381af519231336a1d1",
+      "path": "contracts/semantic-invocation-function-request.schema.json"
+    },
+    {
+      "schemaId": "https://schemas.deterministic.solutions/projection/lossless-typescript-ast/1.0.0/schema.json",
+      "repository": "declarative-typescript-body-projector",
+      "repositoryCommit": "06ccfd8bc42f3fabae44fc381af519231336a1d1",
+      "path": "contracts/lossless-typescript-ast-projection.schema.json"
+    }
+  ],
+  "remainingRedGaps": [
+    "no instructor-signed reviewed intent instance",
+    "no connector-produced embedded semantic artifact",
+    "semantic-to-AST replay implementation exists only in an uncommitted, unpinned projector working tree and has not consumed a real connector-produced semantic artifact",
+    "no v1 embedded TypeScript header implementation",
+    "no signed runtime composition authority",
+    "no real thirteen-scenario terminal signals",
+    "no final signed lineage projection"
+  ]
+}

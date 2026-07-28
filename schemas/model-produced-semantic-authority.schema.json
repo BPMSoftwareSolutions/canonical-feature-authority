@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/model-produced-semantic-authority.schema.json",
+  "title": "Model-produced semantic authority with embedded provider testimony",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["provenance", "payload"],
+  "properties": {
+    "provenance": {
+      "allOf": [
+        { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/provenance" },
+        {
+          "properties": {
+            "artifactType": {
+              "const": "model-produced-semantic-authority"
+            },
+            "parent": {
+              "type": "object",
+              "required": ["artifactType", "artifactSha256"],
+              "properties": {
+                "artifactType": { "const": "model-request-authority" }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semanticAuthority",
+        "modelExecution"
+      ],
+      "properties": {
+        "semanticAuthority": {
+          "$ref": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json"
+        },
+        "modelExecution": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "attestationKind",
+            "modelRequestSha256",
+            "providerRequestSha256",
+            "providerResponseSha256",
+            "providerAuthorityId",
+            "providerAuthoritySha256",
+            "adapterId",
+            "adapterExecutableSha256",
+            "resolvedProvider",
+            "resolvedModel",
+            "providerCorrelationId",
+            "finishReason",
+            "tokenUsage",
+            "startedAt",
+            "completedAt",
+            "durationMs"
+          ],
+          "properties": {
+            "attestationKind": {
+              "enum": [
+                "connector-observed-provider-response",
+                "provider-signed-response"
+              ]
+            },
+            "modelRequestSha256": {
+              "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+            },
+            "providerRequestSha256": {
+              "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+            },
+            "providerResponseSha256": {
+              "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+            },
+            "providerAuthorityId": {
+              "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id"
+            },
+            "providerAuthoritySha256": {
+              "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+            },
+            "adapterId": {
+              "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id"
+            },
+            "adapterExecutableSha256": {
+              "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+            },
+            "resolvedProvider": { "type": "string", "minLength": 1 },
+            "resolvedModel": { "type": "string", "minLength": 1 },
+            "providerCorrelationId": { "type": "string", "minLength": 1 },
+            "finishReason": { "type": "string", "minLength": 1 },
+            "tokenUsage": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["input", "output", "total"],
+              "properties": {
+                "input": { "type": "integer", "minimum": 0 },
+                "output": { "type": "integer", "minimum": 0 },
+                "total": { "type": "integer", "minimum": 0 }
+              }
+            },
+            "startedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "completedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "durationMs": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "providerSignature": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}

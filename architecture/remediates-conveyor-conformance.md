@@ -238,6 +238,15 @@ The grader must:
 
 ### R-02: define canonical semantic projection request schemas
 
+**Progress:** the common embedded envelope and the reviewed-intent,
+model-request, model-produced-semantic, embedded-AST, runtime-composition,
+terminal-signal, final-lineage, and TypeScript-header contracts now exist in
+[`schemas/embedded-provenance-schema-catalog.json`](../schemas/embedded-provenance-schema-catalog.json).
+They have passed offline meta-schema validation plus positive and negative
+structural probes. R-02 remains open until lifecycle orchestration, concrete
+semantic projection requests, imports, input/result contracts, and effect
+policies are also schema-complete.
+
 Create schema-versioned contracts for:
 
 - one linear prebound operation delegation;
@@ -257,6 +266,17 @@ fragments, callbacks, and unbounded free-form code.
 course-specific parsing.
 
 ### R-03: establish a generic semantic-to-AST projection profile
+
+**Progress:** the projector working tree now exposes a file-system-free
+semantic projection operation and a signed embedded semantic-to-AST transition.
+The transition accepts no source, tokens, topology, or prior AST, calculates its
+loaded transition-module hash, and passes deterministic replay plus parent and
+AST substitution controls. The projector's full proof suite is GREEN.
+
+R-03 remains open until that implementation is reviewed and committed, this
+course pins the admitted commit and executable digest, a real signed
+connector-produced semantic artifact drives a course pilot, and the supported
+semantic vocabulary covers every required course body.
 
 Enhance `declarative-typescript-body-projector` only where the capability is
 generic. It may understand structural concepts such as:

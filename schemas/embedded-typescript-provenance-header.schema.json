@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/embedded-typescript-provenance-header.schema.json",
+  "title": "Parsed embedded TypeScript provenance header",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provenanceSchema",
+    "canonicalizationAlgorithm",
+    "lineageRootSha256",
+    "semanticAuthoritySha256",
+    "astAuthoritySha256",
+    "projectorId",
+    "projectorVersion",
+    "projectorExecutableSha256",
+    "projectorKeyId",
+    "bodySha256",
+    "projectionSignature"
+  ],
+  "properties": {
+    "provenanceSchema": { "const": "embedded-provenance.v1" },
+    "canonicalizationAlgorithm": { "const": "UTF8-LF-AFTER-HEADER" },
+    "lineageRootSha256": {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+    },
+    "semanticAuthoritySha256": {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+    },
+    "astAuthoritySha256": {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+    },
+    "projectorId": {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id"
+    },
+    "projectorVersion": { "type": "string", "minLength": 1 },
+    "projectorExecutableSha256": {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+    },
+    "projectorKeyId": {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+    },
+    "bodySha256": {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+    },
+    "projectionSignature": {
+      "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/ed25519Signature"
+    }
+  }
+}

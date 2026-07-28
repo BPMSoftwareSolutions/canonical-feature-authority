@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/model-request-authority.schema.json",
+  "title": "Model request authority with embedded provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["provenance", "payload"],
+  "properties": {
+    "provenance": {
+      "allOf": [
+        { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/provenance" },
+        {
+          "properties": {
+            "artifactType": { "const": "model-request-authority" },
+            "parent": {
+              "type": "object",
+              "required": ["artifactType", "artifactSha256"],
+              "properties": {
+                "artifactType": { "const": "reviewed-intent-authority" }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requestAuthorityId",
+        "scenarioId",
+        "providerAuthorityId",
+        "providerAuthoritySha256",
+        "requestPolicySha256",
+        "responseSchemaSha256",
+        "challengeNonce",
+        "requestedModelAlias"
+      ],
+      "properties": {
+        "requestAuthorityId": {
+          "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id"
+        },
+        "scenarioId": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id" },
+        "providerAuthorityId": {
+          "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id"
+        },
+        "providerAuthoritySha256": {
+          "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "requestPolicySha256": {
+          "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "responseSchemaSha256": {
+          "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "challengeNonce": {
+          "type": "string",
+          "minLength": 32,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "requestedModelAlias": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

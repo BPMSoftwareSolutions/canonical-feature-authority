@@ -381,6 +381,66 @@ This distinction must remain explicit:
 
 ## Current evidence and gaps
 
+### Embedded schema foundation
+
+The first remediation slice now defines the schema family without claiming
+that any transition has been executed or signed:
+
+- [shared embedded provenance envelope](../schemas/embedded-provenance.schema.json)
+- [reviewed intent authority](../schemas/reviewed-intent-authority.schema.json)
+- [model request authority](../schemas/model-request-authority.schema.json)
+- [model-produced semantic authority](../schemas/model-produced-semantic-authority.schema.json)
+- [embedded AST authority](../schemas/embedded-ast-authority.schema.json)
+- [runtime composition authority](../schemas/runtime-composition-authority.schema.json)
+- [conformance terminal signal](../schemas/conformance-terminal-signal.schema.json)
+- [final lineage projection](../schemas/final-lineage-projection.schema.json)
+- [parsed TypeScript provenance header](../schemas/embedded-typescript-provenance-header.schema.json)
+- [schema catalog and remaining RED gaps](../schemas/embedded-provenance-schema-catalog.json)
+
+These contracts pin `RFC8785-JCS` for JSON payloads and
+`UTF8-LF-AFTER-HEADER` for TypeScript payloads. They reject undeclared
+properties, missing transition signatures, invalid parent types, runtime
+callbacks embedded in composition authority, GREEN conformance without an
+observed effect, and a GREEN final lineage containing a RED signature.
+
+This is schema-level progress only. No placeholder digest or signature is
+admitted as real provenance, and the catalog remains
+`RED_IMPLEMENTATION_NOT_YET_BOUND`.
+
+### Trusted semantic-to-AST boundary progress
+
+The projector working tree now contains a generic semantic-authority-to-AST
+transition at
+`C:/lab/repos/declarative-typescript-body-projector/src/ast/projects-semantic-authority-to-ast.ts`.
+Its public projection operation accepts a verified embedded semantic artifact,
+posture, declared projector identity, and private-key path. It accepts no source
+text, token list, topology, previous AST, or TypeScript template.
+
+The transition:
+
+- verifies the signed parent and its canonical payload hash;
+- validates and projects the embedded semantic request through the existing
+  semantic AST kernel;
+- constructs canonical TypeScript internally from that semantic AST;
+- derives lossless tokens and compiler topology from those derived bytes;
+- calculates the loaded transition module's executable hash rather than
+  accepting that hash from the caller;
+- embeds the immediate semantic-parent hash and lineage-root hash; and
+- signs the complete AST provenance statement with Ed25519.
+
+Its proof harness at
+`C:/lab/repos/declarative-typescript-body-projector/proof/verifies-semantic-authority-to-ast-transition.ts`
+currently proves deterministic replay, equality with the ordinary canonical
+projector path, parent/root linkage, semantic-parent substitution rejection, and
+AST-payload substitution rejection. The projector's complete `npm run prove`
+gate passes, including governance registration for both new bodies.
+
+This does **not** turn the course chain GREEN. The implementation is still an
+uncommitted projector working tree, its commit and executable digest are not yet
+pinned into this repository, and no real connector-produced signed semantic
+artifact exists to drive the first course pilot. Creating a fixture parent and
+calling it live would repeat the provenance error this contract forbids.
+
 ### What is demonstrated
 
 `npm run prove:lifecycle` currently demonstrates:

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/conformance-terminal-signal.schema.json",
+  "title": "Conformance terminal signal with embedded execution evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["provenance", "payload"],
+  "properties": {
+    "provenance": {
+      "allOf": [
+        { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/provenance" },
+        {
+          "properties": {
+            "artifactType": { "const": "conformance-terminal-signal" }
+          }
+        }
+      ]
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "signalId",
+        "scenarioId",
+        "disposition",
+        "subjectBodySha256",
+        "inputSha256",
+        "observedSignalSha256",
+        "expectationAuthoritySha256",
+        "requiredEffect"
+      ],
+      "properties": {
+        "signalId": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id" },
+        "scenarioId": { "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/id" },
+        "disposition": { "enum": ["GREEN", "RED", "UNRESOLVED"] },
+        "subjectBodySha256": {
+          "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "inputSha256": {
+          "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "observedSignalSha256": {
+          "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "expectationAuthoritySha256": {
+          "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+        },
+        "requiredEffect": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["effectType", "observed", "observationSha256"],
+          "properties": {
+            "effectType": {
+              "enum": [
+                "none",
+                "provider-invocation",
+                "filesystem",
+                "projection",
+                "signature",
+                "stage-transition",
+                "lineage-publication"
+              ]
+            },
+            "observed": { "type": "boolean" },
+            "observationSha256": {
+              "$ref": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json#/$defs/sha256"
+            }
+          }
+        },
+        "findings": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "payload": {
+            "properties": {
+              "disposition": { "const": "GREEN" }
+            },
+            "required": ["disposition"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "properties": {
+              "requiredEffect": {
+                "properties": {
+                  "observed": { "const": true }
+                },
+                "required": ["observed"]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

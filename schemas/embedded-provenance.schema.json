@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/embedded-provenance.schema.json",
+  "title": "Embedded provenance envelope",
+  "description": "The shared signed, hash-linked envelope carried by generated JSON artifacts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["provenance", "payload"],
+  "properties": {
+    "provenance": { "$ref": "#/$defs/provenance" },
+    "payload": { "type": "object" }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "ed25519Signature": {
+      "type": "string",
+      "pattern": "^ed25519:[A-Za-z0-9+/]+={0,2}$"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$"
+    },
+    "artifactType": {
+      "enum": [
+        "reviewed-intent-authority",
+        "model-request-authority",
+        "model-produced-semantic-authority",
+        "typescript-ast-authority",
+        "typescript-body",
+        "expectation-body",
+        "conformance-body",
+        "runtime-composition-authority",
+        "conformance-terminal-signal",
+        "final-lineage-projection"
+      ]
+    },
+    "parent": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["artifactType", "artifactSha256"],
+          "properties": {
+            "artifactType": { "$ref": "#/$defs/artifactType" },
+            "artifactSha256": { "$ref": "#/$defs/sha256" }
+          }
+        }
+      ]
+    },
+    "transformer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "repositoryCommit",
+        "executableSha256"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "version": { "type": "string", "minLength": 1 },
+        "repositoryCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "executableSha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "canonicalizationAlgorithm",
+        "artifactType",
+        "artifactSha256",
+        "parent",
+        "lineageRootSha256",
+        "transformer",
+        "signingKeyId",
+        "signature"
+      ],
+      "properties": {
+        "schema": { "const": "embedded-provenance.v1" },
+        "canonicalizationAlgorithm": { "const": "RFC8785-JCS" },
+        "artifactType": { "$ref": "#/$defs/artifactType" },
+        "artifactSha256": { "$ref": "#/$defs/sha256" },
+        "parent": { "$ref": "#/$defs/parent" },
+        "lineageRootSha256": { "$ref": "#/$defs/sha256" },
+        "transformer": { "$ref": "#/$defs/transformer" },
+        "signingKeyId": { "$ref": "#/$defs/sha256" },
+        "signature": { "$ref": "#/$defs/ed25519Signature" }
+      }
+    }
+  }
+}

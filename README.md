@@ -63,6 +63,7 @@ Start with the overview, then work through the numbered lessons in order:
 | — | [Projected Code-Body Shape Specification](architecture/specifies-projected-code-body-shapes.md) | The implementation acceptance target: projector-signed, linear bodies with no branching, DTO construction, hard-coded semantic identity, or locally invented failure policy. |
 | — | [Projected Conveyor Implementation Specification](architecture/specifies-projected-conveyor-implementation.md) | The documentation-first conveyor design: declarative stages, clean projected bodies, repository boundaries, provenance, lineage, RED/resume semantics, and AST conformance requirements. |
 | — | [Conveyor Conformance Remediation Specification](architecture/remediates-conveyor-conformance.md) | The candid non-conformance record and required repair plan for semantic-to-AST provenance, real scenario execution, negative controls, live-provider testimony, and independent grading trust. |
+| — | [Embedded Conveyor Provenance Contract](architecture/records-live-conveyor-provenance.md) | The signed, hash-linked artifact-chain contract: canonical payload hashing, embedded transition signatures, runtime signals, one final lineage projection, anti-stub controls, and current RED gaps. |
 
 ## Repository layout
 
