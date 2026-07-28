@@ -5,7 +5,8 @@
 ```text
 SUBMITTED-SIDE ACCEPTANCE AUTHORITY IMPLEMENTED
 LIVE INSTRUCTOR TERMINAL DISPOSITION: GREEN
-PORTABLE THIRD-PARTY REVERIFICATION: RED
+INSTRUCTOR-STATEFUL REVERIFICATION: GREEN
+PORTABLE THIRD-PARTY REVERIFICATION: GREEN
 ```
 
 The four-scenario authority spine, evidence schemas, signed projected bodies,
@@ -19,13 +20,20 @@ C:/lab/runs/
   bounded-model-submission-provenance-2026-07-28T22-16-55-273Z/
 
 terminal artifact:
-sha256:df1051e016ac9c1cd45ffa848ad1c7ff2c501a87e9bcd28ad70ea67f38ec8459
+sha256:03ac995b42d0cd4ba89fc5fa9f95fca90ba392b1069d31403f3f64c8323b8d59
+
+portable verification report:
+verification/public-verification-report.json
+
+report SHA-256:
+sha256:b13e0ad77e2e0105499949eba5acf484c25c49a7ff5a059eb36aa839147dc3d4
 ```
 
-That GREEN disposition is valid for the instructor-controlled, stateful
-acceptance run. A stronger claim that an unrelated third party can verify the
-same run from public keys and persisted evidence alone remains RED until every
-item in "Governance-to-evidence remediation map" is closed.
+That GREEN disposition is valid in both verifier modes. Instructor-stateful
+mode directly consults the instructor nonce registry. Portable-public mode
+consults no private instructor state and instead verifies the externally
+anchored trust authority, signed nonce-consumption receipt, pinned dependency
+bytes, complete persisted chain, deterministic replay, and negative controls.
 
 This document is a deterministic implementation contract for independently
 accepting one live execution of:
@@ -2106,9 +2114,8 @@ the exact remediation location and behavior
 the evidence that closes the finding
 ```
 
-The following open items govern portable third-party reverification. They do
-not revoke the GREEN disposition produced inside the instructor-controlled
-boundary.
+The following closure items govern portable third-party reverification. Each
+is implemented and evidenced by the deterministic public verification report.
 
 ### GOV-PROV-001 - Anchor trust outside the evidence bundle
 
@@ -2337,8 +2344,9 @@ portable-public mode reads any private nonce-registry path
   -> NONCE_PROOF_SOURCE_NOT_PORTABLE
 ```
 
-Until that receipt exists, no output from the current verifier may be labeled
-`public-key-only`, `portable-public`, or an equivalent claim.
+This restriction is satisfied by
+`02a-nonce-consumption-receipt.json`, signed by the externally trusted
+`nonce-authority` and verified in `portable-public` mode.
 
 ### GOV-PROV-003 - Verify the complete persisted chain
 
@@ -2707,8 +2715,8 @@ The acceptance boundary becomes GREEN only when:
 ```text
 all four scenarios exist under the repository capability spine
 all four scenarios contain the complete four-body authority lineage
-all five evidence schemas are registered and meta-valid
-the embedded artifact-type enumeration admits all five types
+all six evidence schemas are registered and meta-valid
+the embedded artifact-type enumeration admits all six types
 all envelope hashes and signatures independently verify
 the nonce is fresh, single-use, and present in provider request bytes
 the instructor observer hashes exact transport bytes
@@ -2728,9 +2736,9 @@ GOV-PROV-002 is closed by an explicit portable nonce proof
 GOV-PROV-003 is closed by full-chain verification and negative controls
 ```
 
-Until all three are closed:
+All three are closed by the retained live evidence:
 
 ```text
 GREEN - INSTRUCTOR-STATEFUL BOUNDED-MODEL-SUBMISSION ACCEPTANCE
-RED - PORTABLE THIRD-PARTY REVERIFICATION INCOMPLETE
+GREEN - PORTABLE THIRD-PARTY REVERIFICATION
 ```
