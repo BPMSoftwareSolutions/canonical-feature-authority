@@ -4,15 +4,28 @@
 
 ```text
 SUBMITTED-SIDE ACCEPTANCE AUTHORITY IMPLEMENTED
-LIVE INSTRUCTOR EVIDENCE NOT YET ISSUED
-CURRENT DISPOSITION: RED
+LIVE INSTRUCTOR TERMINAL DISPOSITION: GREEN
+PORTABLE THIRD-PARTY REVERIFICATION: RED
 ```
 
 The four-scenario authority spine, evidence schemas, signed projected bodies,
 connector observation dependency contract, clean regeneration pipeline, and
-negative-control verifier are implemented. The disposition remains RED until
-an instructor-owned harness issues and consumes a fresh challenge, observes a
-live provider exchange, and signs the terminal evidence artifacts.
+negative-control verifier are implemented. The instructor-owned harness issued
+and consumed a fresh challenge, observed a live provider exchange, and signed a
+GREEN terminal disposition at:
+
+```text
+C:/lab/runs/
+  bounded-model-submission-provenance-2026-07-28T22-16-55-273Z/
+
+terminal artifact:
+sha256:df1051e016ac9c1cd45ffa848ad1c7ff2c501a87e9bcd28ad70ea67f38ec8459
+```
+
+That GREEN disposition is valid for the instructor-controlled, stateful
+acceptance run. A stronger claim that an unrelated third party can verify the
+same run from public keys and persisted evidence alone remains RED until every
+item in "Governance-to-evidence remediation map" is closed.
 
 This document is a deterministic implementation contract for independently
 accepting one live execution of:
@@ -2074,6 +2087,396 @@ function evaluatesCompleteLineage(input): Disposition {
 
 Every check fails closed. No later check may overwrite an earlier result.
 
+## Governance-to-evidence remediation map
+
+There is no separate `inspects-projected-body-governance.md` authority in this
+repository. This document is the governing inspection authority for the
+bounded-model-submission proof. An implementation finding is actionable only
+when it names:
+
+```text
+the governing clause in this document
+the observed evidence or implementation path
+the violated invariant
+the exact remediation location and behavior
+the evidence that closes the finding
+```
+
+The following open items govern portable third-party reverification. They do
+not revoke the GREEN disposition produced inside the instructor-controlled
+boundary.
+
+### GOV-PROV-001 - Anchor trust outside the evidence bundle
+
+Governing clauses:
+
+```text
+Key roles
+  "The instructor trust authority must be supplied outside the submitted
+   workspace."
+
+Terminal acceptance algorithm
+  requireTrustAuthorityIsInstructorOwned()
+  verifyPermittedKeyRole(...)
+
+RED dispositions
+  TRUST_AUTHORITY_NOT_INSTRUCTOR_CONTROLLED
+  SIGNING_KEY_NOT_TRUSTED
+  SIGNING_KEY_ROLE_NOT_PERMITTED
+```
+
+Observed evidence and implementation:
+
+```text
+run-local key copy:
+C:/lab/runs/
+  bounded-model-submission-provenance-2026-07-28T22-16-55-273Z/
+  instructor-trusted-keys.json
+
+verifier:
+C:/lab/trusted-tools/
+  canonical-feature-authority-instructor-harness/
+  verifies-live-bounded-model-submission-provenance.ts
+```
+
+The verifier currently obtains its trust keys from the run directory that also
+contains the artifacts being verified. A replacement bundle can therefore
+supply replacement evidence, replacement keys, and matching signatures. Key
+membership alone also does not enforce the fixed artifact-type-to-role mapping.
+
+Remediation is owned by:
+
+```text
+C:/lab/trusted-tools/
+  canonical-feature-authority-instructor-harness/
+  verifies-live-bounded-model-submission-provenance.ts
+
+external instructor trust authority:
+C:/lab/trusted-tools/
+  canonical-feature-authority-instructor-harness/
+  .instructor-trust/
+  bounded-model-submission-acceptance-trusted-keys.json
+```
+
+The verifier must:
+
+```text
+require an explicit absolute external trust-authority path
+reject a trust-authority path at or below the evidence run root
+JCS-hash the complete parsed external trust authority
+compare that hash with the instructor-pinned policy hash
+derive every keyId from publicKeyPem and reject a mismatch
+treat the run-local instructor-trusted-keys.json only as an auditable copy
+enforce artifact type, signer role, transformer ID, and key ID together
+```
+
+The fixed runtime-evidence role mapping is:
+
+```text
+model-request-authority
+  -> acceptance-evaluator
+independent-provider-exchange-attestation
+  -> provider-observer
+bounded-model-submission-body-reproduction
+  -> acceptance-evaluator
+runtime-composition-authority
+  -> acceptance-evaluator
+bounded-model-submission-execution-observation
+  -> runtime-observer
+complete-bounded-model-submission-lineage
+  -> acceptance-evaluator
+bounded-model-submission-acceptance-disposition
+  -> acceptance-evaluator
+```
+
+Closure evidence:
+
+```text
+the verification report records the external trust-authority absolute path
+the verification report records its JCS SHA-256
+the recorded path is not at or below the run root
+all seven signed runtime artifacts pass the fixed role mapping
+replacement-key and wrong-role negative controls return RED
+```
+
+Required negative-control outcomes:
+
+```text
+trust authority at or below the run root
+  -> TRUST_AUTHORITY_NOT_INSTRUCTOR_CONTROLLED
+external trust-authority JCS hash differs from instructor policy
+  -> TRUST_AUTHORITY_NOT_INSTRUCTOR_CONTROLLED
+artifact signature names a key absent from external trust
+  -> SIGNING_KEY_NOT_TRUSTED
+artifact is signed by a trusted key assigned to the wrong fixed role
+  -> SIGNING_KEY_ROLE_NOT_PERMITTED
+```
+
+### GOV-PROV-002 - Make the nonce claim mode-explicit
+
+Governing clauses:
+
+```text
+Challenge protocol
+  the registry key is sha256(utf8(challengeNonce))
+  the consumed attestation hash is the registry value
+  the nonce is fresh and consumed exactly once
+
+Terminal acceptance algorithm
+  verifyNonceIssuedFreshAndConsumedOnceByAttestation(...)
+
+RED dispositions
+  CHALLENGE_NONCE_INVALID
+  CHALLENGE_NONCE_EXPIRED
+  CHALLENGE_NONCE_ALREADY_USED
+```
+
+Observed evidence and implementation:
+
+```text
+challenge nonce SHA-256:
+sha256:3d485579c113d5691a56a942562d93bc518e9022c6a0c79a91c31afeb9d4e977
+
+private consumed record:
+C:/lab/trusted-tools/canonical-feature-authority-instructor-harness/
+  .instructor-secrets/nonce-registry/
+  3d485579c113d5691a56a942562d93bc518e9022c6a0c79a91c31afeb9d4e977.consumed.json
+
+provider attestation:
+C:/lab/runs/
+  bounded-model-submission-provenance-2026-07-28T22-16-55-273Z/
+  02-provider-exchange-attestation.json
+
+verifier:
+C:/lab/trusted-tools/
+  canonical-feature-authority-instructor-harness/
+  verifies-live-bounded-model-submission-provenance.ts
+```
+
+The verifier reads the private nonce registry. Its successful result is
+therefore an instructor-stateful verification, not a public-key-only portable
+verification.
+
+The verifier must expose exactly two modes:
+
+```text
+instructor-stateful
+  requires an explicit instructor nonce-registry path
+  verifies the issued-to-consumed state transition directly
+  reports that private instructor state was consulted
+
+portable-public
+  must not read .instructor-secrets
+  requires a signed nonce-consumption receipt
+  verifies the receipt through the external trust authority
+```
+
+Portable mode requires one additional evidence artifact:
+
+```text
+artifact type:
+bounded-model-submission-nonce-consumption-receipt
+
+schema:
+bounded-model-submission-nonce-consumption-receipt.schema.json
+
+required payload:
+authorityType
+nonceSha256
+consumedAttestationSha256
+issuedAt
+expiresAt
+consumedAt
+transition
+
+fixed values:
+authorityType =
+  bounded-model-submission-nonce-consumption-receipt.v1
+transition =
+  issued-to-consumed
+
+signing role:
+nonce-authority
+```
+
+The schema must be added to
+`schemas/embedded-provenance-schema-catalog.json`, the artifact type must be
+added to `schemas/embedded-provenance.schema.json`, and `nonce-authority` must
+be added to the external instructor trust authority. The receipt parent must be
+the exact provider attestation artifact hash, and its
+`consumedAttestationSha256` must equal that same hash.
+
+Closure evidence:
+
+```text
+stateful mode passes while explicitly reporting its registry dependency
+portable mode passes with the private registry directory unavailable
+portable mode verifies the nonce-authority signature and role
+portable mode verifies the nonce, attestation hash, and validity interval
+missing, substituted, reused, and wrong-role receipts return RED
+```
+
+Required negative-control outcomes:
+
+```text
+portable-public mode has no receipt
+  -> NONCE_CONSUMPTION_RECEIPT_MISSING
+receipt parent or consumedAttestationSha256 differs from provider attestation
+  -> NONCE_CONSUMPTION_RECEIPT_LINK_MISMATCH
+receipt nonceSha256 differs from sha256(utf8(challengeNonce))
+  -> CHALLENGE_NONCE_INVALID
+receipt validity interval excludes consumedAt
+  -> CHALLENGE_NONCE_EXPIRED
+receipt is signed by a trusted key assigned to a role other than nonce-authority
+  -> SIGNING_KEY_ROLE_NOT_PERMITTED
+portable-public mode reads any private nonce-registry path
+  -> NONCE_PROOF_SOURCE_NOT_PORTABLE
+```
+
+Until that receipt exists, no output from the current verifier may be labeled
+`public-key-only`, `portable-public`, or an equivalent claim.
+
+### GOV-PROV-003 - Verify the complete persisted chain
+
+Governing clauses:
+
+```text
+Evidence envelope
+Key roles
+Challenge protocol
+Terminal acceptance algorithm
+  verifyEmbeddedEnvelope(...)
+  verifyPermittedKeyRole(...)
+  verifyModelRequestAuthorityLink()
+  verifyCompleteLineageLinksAllArtifacts()
+  verifyRecordedRepositoryCommits()
+
+RED dispositions
+  ARTIFACT_PARENT_MISMATCH
+  LINEAGE_ROOT_MISMATCH
+  REPOSITORY_COMMIT_MISMATCH
+  MODEL_REQUEST_AUTHORITY_LINK_MISMATCH
+  COMPLETE_LINEAGE_LINK_MISMATCH
+```
+
+Observed evidence:
+
+```text
+C:/lab/runs/
+  bounded-model-submission-provenance-2026-07-28T22-16-55-273Z/
+  01-model-request-authority.json
+  02-provider-exchange-attestation.json
+  03-transformer-dependency-graph.json
+  04-body-reproduction.json
+  05-runtime-composition-authority.json
+  06-execution-observation.json
+  07-complete-lineage.json
+  08-acceptance-disposition.json
+  live-summary.json
+```
+
+The verifier does not yet independently validate every persisted member of
+that set. In particular, loading schemas or canonicalization code from a
+current working tree does not prove the dependency bytes recorded by the run.
+A signed assertion that reproduction succeeded is not a substitute for replay
+when portable reverification claims independent reproduction.
+
+Remediation is owned by:
+
+```text
+C:/lab/trusted-tools/
+  canonical-feature-authority-instructor-harness/
+  verifies-live-bounded-model-submission-provenance.ts
+```
+
+The verifier must fail closed unless it:
+
+```text
+loads 01-model-request-authority.json
+validates its registered artifact type, envelope, payload hash, and signature
+enforces its acceptance-evaluator signing role
+verifies its challenge nonce, requestId, provider body, and authority fields
+verifies 02 parent equals the exact 01 artifact hash
+
+validates the envelopes, hashes, signatures, and fixed roles of
+  02-provider-exchange-attestation.json
+  04-body-reproduction.json
+  05-runtime-composition-authority.json
+  06-execution-observation.json
+  07-complete-lineage.json
+  08-acceptance-disposition.json
+
+verifies 04 and 05 parent the recorded TypeScript AST authority
+verifies 06 parent equals the exact 05 artifact hash
+verifies 07 parent equals the exact 06 artifact hash
+verifies 08 parent equals the exact 07 artifact hash
+
+verifies every signed artifact carries the same lineageRootSha256
+recomputes lineageRootSha256 from the complete parsed
+  projects-capability-authority.json using RFC 8785 JCS
+
+validates every repository commit and file hash in
+  03-transformer-dependency-graph.json
+loads schemas, canonicalization code, projector code, and transformer
+  dependencies only from bytes proven by that graph
+replays semantic authority to AST and AST to body from those proven bytes
+
+verifies every artifact reference in 07-complete-lineage.json
+verifies live-summary.json agrees with the independently calculated result
+returns the first applicable RED code on any mismatch
+```
+
+Closure evidence is a deterministic verification report stored outside the
+signed lineage at:
+
+```text
+C:/lab/runs/
+  bounded-model-submission-provenance-2026-07-28T22-16-55-273Z/
+  verification/public-verification-report.json
+```
+
+That report must record:
+
+```text
+verification mode
+external trust-authority path and JCS SHA-256
+nonce proof source
+all verified artifact hashes and fixed signer roles
+lineage root recomputation
+all verified repository commits and dependency file hashes
+semantic-to-AST and AST-to-body replay results
+terminal disposition hash
+the ordered check list and final disposition
+```
+
+Positive verification is not enough. Negative controls must independently
+mutate the request authority, each parent link, lineage root, each fixed role,
+each recorded commit, one dependency byte, the nonce proof, and the terminal
+link, and must assert the exact first RED code.
+
+Required negative-control outcomes:
+
+```text
+01 payload byte changes without a new artifact hash
+  -> ARTIFACT_PAYLOAD_HASH_MISMATCH
+02 parent differs from the exact 01 artifact hash
+  -> ARTIFACT_PARENT_MISMATCH
+04, 05, 06, 07, or 08 parent differs from its required authority
+  -> ARTIFACT_PARENT_MISMATCH
+any signed artifact lineage root differs from the recomputed root
+  -> LINEAGE_ROOT_MISMATCH
+recorded repository commit is unavailable or differs
+  -> REPOSITORY_COMMIT_MISMATCH
+recorded transformer dependency byte differs
+  -> TRANSFORMER_DEPENDENCY_MISMATCH
+07 omits or substitutes any required artifact reference
+  -> COMPLETE_LINEAGE_LINK_MISMATCH
+08 parent differs from the exact 07 artifact hash
+  -> ARTIFACT_PARENT_MISMATCH
+live-summary.json differs from the independently calculated terminal result
+  -> LIVE_SUMMARY_MISMATCH
+```
+
 ### RED dispositions
 
 ```json
@@ -2094,6 +2497,9 @@ Every check fails closed. No later check may overwrite an earlier result.
   "CHALLENGE_NONCE_NOT_IN_REQUEST_AUTHORITY",
   "CHALLENGE_NONCE_NOT_IN_CONNECTOR_REQUEST",
   "CHALLENGE_NONCE_NOT_IN_PROVIDER_REQUEST_BODY",
+  "NONCE_CONSUMPTION_RECEIPT_MISSING",
+  "NONCE_CONSUMPTION_RECEIPT_LINK_MISMATCH",
+  "NONCE_PROOF_SOURCE_NOT_PORTABLE",
   "PROVIDER_AUTHORITY_HASH_MISMATCH",
   "PROVIDER_REQUEST_BODY_HASH_MISMATCH",
   "PROVIDER_RESPONSE_BODY_HASH_MISMATCH",
@@ -2121,7 +2527,8 @@ Every check fails closed. No later check may overwrite an earlier result.
   "MODEL_REQUEST_AUTHORITY_LINK_MISMATCH",
   "NORMALIZED_SUBMISSION_HASH_MISMATCH",
   "PROVIDER_ATTESTATION_LINK_MISMATCH",
-  "COMPLETE_LINEAGE_LINK_MISMATCH"
+  "COMPLETE_LINEAGE_LINK_MISMATCH",
+  "LIVE_SUMMARY_MISMATCH"
 ]
 ```
 
@@ -2308,8 +2715,18 @@ the complete lineage links every evidence artifact
 the exhaustive evaluator returns no RED or UNRESOLVED code
 ```
 
-Until then:
+The 2026-07-28 live instructor-stateful run satisfies this acceptance boundary.
+Portable third-party reverification has a separate exit condition:
 
 ```text
-RED - INDEPENDENT BOUNDED-MODEL-SUBMISSION ACCEPTANCE INCOMPLETE
+GOV-PROV-001 is closed by externally anchored trust and fixed role checks
+GOV-PROV-002 is closed by an explicit portable nonce proof
+GOV-PROV-003 is closed by full-chain verification and negative controls
+```
+
+Until all three are closed:
+
+```text
+GREEN - INSTRUCTOR-STATEFUL BOUNDED-MODEL-SUBMISSION ACCEPTANCE
+RED - PORTABLE THIRD-PARTY REVERIFICATION INCOMPLETE
 ```
