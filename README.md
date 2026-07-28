@@ -1,8 +1,15 @@
 # Canonical Feature Authority
 
-A documentation-only course for students learning how to build **intent-driven, deterministic systems** — software where behavior is declared once, as canonical authority, and every downstream artifact (readable specs, code, runtime signals, and proofs) is a traceable projection of that single declaration.
+An executable course for students learning how to build **intent-driven,
+deterministic systems** — software where behavior is declared once as canonical
+authority and every downstream artifact is a traceable projection.
 
-This is a documentation and reference repository, not a working application. The numbered lessons are Markdown files meant to be read. The `capabilities/` tree is a fully populated, real worked example — every JSON authority record and generated `.ts` file in it is genuine, faithful content — but the `runtime/`, `projection/`, `conformance/`, and `cli/` folders that would execute that authority are documentation stubs, not a running implementation. Nothing in this repository needs to build or run for the course to do its job.
+Every TypeScript file in this repository is projected from an adjacent
+`*.ts.ast.authority.json` contract. The projected file carries its own Ed25519
+attestation: projector identity, trusted-key identity, authority hash, body
+hash, and signature. There is no detached projection receipt to lose or
+misassociate. `npm run check:bodies` verifies the authority, exact body,
+signature, and trusted projector connection for all code bodies.
 
 ## Who this is for
 
@@ -70,7 +77,12 @@ canonical-feature-authority/
 
 This layout is intentionally **vertical**, not horizontal: everything about one scenario — its obligation, responsibility, semantic authority, generated code, test, and conformance evaluator — lives together in one folder, rather than being split across repository-wide `canonical-authority/`, `generated/`, `tests/`, `proof/`-style folders. See [architecture/defines-capability-first-layout.md](architecture/defines-capability-first-layout.md) for why.
 
-Every file under `capabilities/` is a real, readable artifact — not a placeholder — for the primary scenario `reject-a-scenario-with-multiple-obligations/`, and adapted analogously for its three sibling scenarios (`accept-a-scenario-with-one-obligation/`, `reject-a-scenario-with-no-obligation/`, `reject-an-ambiguously-classified-scenario/`). The `runtime/`, `projection/`, `conformance/`, and `cli/` folders are documentation stubs: they state what each module is responsible for and point back to the layer of the Spine doc that specifies it, but do not contain a working implementation — this remains a documentation-only repository. `course/README.md` still has the separate, self-paced 10-lab teaching path if you want hands-on exercises rather than a reference to read.
+Every file under `capabilities/` is a real, readable artifact for the primary
+scenario and its three siblings. The semantic runtime executes all four
+declared dispositions: atomic, zero obligations, multiple obligations, and
+unresolved classification. The course build and tests are proof gates, while
+the adjacent AST authorities make every TypeScript surface—including tests,
+configuration, runtime, projection, conformance, and CLI—reproducible.
 
 ## The governing rule
 
@@ -91,8 +103,9 @@ Each lesson repeats a small set of recurring artifacts so the same identities st
 
 ## Contributing
 
-This is a documentation and reference repository. Contributions should stay in the same spirit:
+This is an authority-first course and executable reference:
 
 - New numbered lessons should trace a concrete example through the full canonical path, with explicit artifact tags and clearly stated ownership boundaries at each layer.
 - New scenarios or capabilities under `capabilities/` should follow the exact 17-file-per-responsibility pattern established by `validate-feature-scenario-atomicity/reject-a-scenario-with-multiple-obligations/` — every file real and self-consistent, not a placeholder.
-- Changes to `runtime/`, `projection/`, `conformance/`, or `cli/` should stay documentation stubs unless there's a deliberate decision to make this repository executable, which would be a significant scope change from its current purpose.
+- Never edit a projected `.ts` file as the durable change. Change its authority,
+  project it, and require `npm run prove:projection` plus `npm test` to pass.

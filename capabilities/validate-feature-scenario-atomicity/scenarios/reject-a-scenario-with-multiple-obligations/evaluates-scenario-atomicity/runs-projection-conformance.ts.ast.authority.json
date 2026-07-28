@@ -1,0 +1,1108 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/lossless-typescript-ast/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:9e8eec601b0b66a31d7c5fac7fd7d478985404dea84c8d34f981b9b41cf31a9e"
+  },
+  "projectionId": "project-capabilities-validate-feature-scenario-atomicity-scenarios-reject-a-scenario-with-multiple-obligations-evaluates-scenario-atomicity-runs-projection-conformance",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "capabilities/validate-feature-scenario-atomicity/scenarios/reject-a-scenario-with-multiple-obligations/evaluates-scenario-atomicity/runs-projection-conformance.ts"
+  },
+  "lineage": {
+    "featureId": "canonical-feature-authority-course",
+    "scenarioId": "project-capabilities-validate-feature-scenario-atomicity-scenarios-reject-a-scenario-with-multiple-obligations-evaluates-scenario-atomicity-runs-projection-conformance",
+    "obligationId": "every-course-code-body-is-projected",
+    "responsibilityId": "projects-capabilities-validate-feature-scenario-atomicity-scenarios-reject-a-scenario-with-multiple-obligations-evaluates-scenario-atomicity-runs-projection-conformance",
+    "signalId": "course-code-body-projection-integrity"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "tokens": [
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "observesGeneratedBody"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FromKeyword",
+        "text": "from"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"../../../../../conformance/observes-generated-body.js\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "parsesGeneratedBodyAst"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FromKeyword",
+        "text": "from"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"../../../../../conformance/parses-generated-body-ast.js\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "comparesExpectedAndObservedTopology"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FromKeyword",
+        "text": "from"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"../../../../../conformance/compares-expected-and-observed-topology.js\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "detectsForbiddenBodyStructures"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FromKeyword",
+        "text": "from"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"../../../../../conformance/detects-forbidden-body-structures.js\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "evaluatesCapabilityConformance"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FromKeyword",
+        "text": "from"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"../../../../../conformance/evaluates-capability-conformance.js\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ExportKeyword",
+        "text": "export"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "AsyncKeyword",
+        "text": "async"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FunctionKeyword",
+        "text": "function"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "runsProjectionConformance"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ConstKeyword",
+        "text": "const"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "observedBody"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstAssignment",
+        "text": "="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "AwaitKeyword",
+        "text": "await"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "observesGeneratedBody"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"capabilities/validate-feature-scenario-atomicity/scenarios/reject-a-scenario-with-multiple-obligations/evaluates-scenario-atomicity/evaluates-scenario-atomicity.ts\""
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ConstKeyword",
+        "text": "const"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "observedAst"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstAssignment",
+        "text": "="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "AwaitKeyword",
+        "text": "await"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "parsesGeneratedBodyAst"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "observedBody"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "AwaitKeyword",
+        "text": "await"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "detectsForbiddenBodyStructures"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "observedAst"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ConstKeyword",
+        "text": "const"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "topologyComparison"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstAssignment",
+        "text": "="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "AwaitKeyword",
+        "text": "await"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "comparesExpectedAndObservedTopology"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "expectationPath"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"../expects-scenario-rejection.expectation.json\""
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "bodyExpectationPath"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"./expects-evaluates-scenario-atomicity-body.json\""
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "fileBodyAuthorityPath"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"./declares-evaluates-scenario-atomicity-body.json\""
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "astAuthorityPath"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"./projects-typescript-ast.json\""
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "observedAst"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReturnKeyword",
+        "text": "return"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "evaluatesCapabilityConformance"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "topologyComparison"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      }
+    ],
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "AsyncKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 8
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "ExpressionStatement",
+        "depth": 3
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 4
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "FirstStatement",
+        "depth": 3
+      },
+      {
+        "kind": "VariableDeclarationList",
+        "depth": 4
+      },
+      {
+        "kind": "VariableDeclaration",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "AwaitExpression",
+        "depth": 6
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "ObjectLiteralExpression",
+        "depth": 8
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 10
+      },
+      {
+        "kind": "ShorthandPropertyAssignment",
+        "depth": 9
+      },
+      {
+        "kind": "Identifier",
+        "depth": 10
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "CallExpression",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}

@@ -4,16 +4,16 @@
 
 ## Goal
 
-Before authoring anything, watch a projection happen. You are given an already-written declarative projection record and a compiler; you generate one file and read the receipt it produces.
+Before authoring anything, watch a projection happen. You are given an
+already-written AST authority contract and a compiler; you generate one signed
+file and verify the proof it carries.
 
 ```text
 Canonical projection
         ↓
 Compiler
         ↓
-Generated file
-        ↓
-Projection receipt
+Generated file carrying its projection attestation
 ```
 
 From the repository root:
@@ -22,19 +22,19 @@ From the repository root:
 npm run project:bodies
 ```
 
-For this lesson, the executable projector request is
-`lesson-01/projects-greets-student-body.projector.json`. The adjacent
-`projects-greets-student-body.json` shows the Spine's language-projection
-authority shape; the `.projector.json` file is its admitted operational request
-to the projector built in class. Students change authority, never
-`greets-student.ts`.
+For this lesson, the executable authority is
+`lesson-01/greets-student.ts.ast.authority.json`. It owns the lossless
+TypeScript token stream, compiler AST topology, output path, semantic lineage,
+and signing identity. Students project and inspect `greets-student.ts`; they do
+not repair that artifact by hand.
 
 ## What you should take away
 
 - **Authority is durable.** The projection record doesn't change just because you ran the compiler.
 - **Code is generated.** The file you now have didn't come from typing — it came from rendering a structure that already existed.
 - **Generated code is replaceable.** If you deleted the output file and reran the compiler, you'd get the same thing back.
-- **The receipt explains where it came from.** Every generated artifact should be traceable to the exact record that produced it.
+- **The projection is the receipt.** The signed header binds the exact body
+  bytes to the exact authority hash and trusted projector key.
 
 ## What this lab does not ask you to do yet
 

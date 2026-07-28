@@ -59,16 +59,23 @@ Lessons deliberately run out of the "natural" build order — Lesson 1 starts at
 
 Keep this repository and `declarative-typescript-body-projector` as sibling
 directories under the same parent, install each repository once with
-`npm install`, and run this from the course repository:
+`npm install`, initialize the local classroom projector identity once, and
+project from the course repository:
 
 ```text
+npm run init:projection
 npm run project:bodies
 ```
 
-The command discovers every `*.projector.json` request in this repository,
-passes each request through the projector's normal seven-step circuit, writes
-only artifacts marked as generated, and records exact expected/observed hashes
-in `course/projected-body-receipt.json`.
+If the private key is absent on a fresh workstation, initialization creates a
+new local key, updates the trusted public-key authority, and rotates the
+`keyId` admitted by every AST authority before projection.
+
+The command discovers every adjacent `*.ts.ast.authority.json` contract and
+projects all 40 TypeScript bodies. Each contract contains the lossless compiler
+token stream and AST topology. Each emitted body is its own receipt: its header
+contains the projector ID, trusted key ID, authority hash, body hash, and
+Ed25519 signature. No separate receipt file is created.
 
 Before accepting student work, verify that no projected body was hand-edited:
 
@@ -76,6 +83,7 @@ Before accepting student work, verify that no projected body was hand-edited:
 npm run check:bodies
 ```
 
-The check runs the same projections in an isolated output directory and
-compares the resulting bytes with the checked-in course artifacts. Missing,
-stale, mutated, invalid, and duplicate-target projections fail the command.
+The check reconstructs each body from AST authority and verifies its embedded
+signature with `projection-authority/trusted-projector-keys.json`. Missing,
+stale, hand-altered, incorrectly signed, invalid, and duplicate-target
+projections fail the command.

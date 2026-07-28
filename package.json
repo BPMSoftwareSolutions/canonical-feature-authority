@@ -5,8 +5,9 @@
   "description": "Reference file-system spine for the Canonical Feature Authority course — a worked example of intent-driven, deterministic projection from human need to generated code.",
   "type": "module",
   "scripts": {
-    "project:bodies": "npm --prefix ../declarative-typescript-body-projector run project-authority-tree -- --authority-root ../canonical-feature-authority --output-root ../canonical-feature-authority --receipt ../canonical-feature-authority/course/projected-body-receipt.json",
-    "check:bodies": "npm --prefix ../declarative-typescript-body-projector run project-authority-tree -- --authority-root ../canonical-feature-authority --output-root ../canonical-feature-authority --check",
+    "init:projection": "npm --prefix ../declarative-typescript-body-projector run init-signing-key -- --private-key ../declarative-typescript-body-projector/.projector-keys/classroom-ed25519-private.pem --trust-file ../canonical-feature-authority/projection-authority/trusted-projector-keys.json --authority-root ../canonical-feature-authority --projector-id declarative-typescript-body-projector",
+    "project:bodies": "npm --prefix ../declarative-typescript-body-projector run project-authority-tree -- --authority-root ../canonical-feature-authority --output-root ../canonical-feature-authority --signing-key ../declarative-typescript-body-projector/.projector-keys/classroom-ed25519-private.pem --trusted-keys ../canonical-feature-authority/projection-authority/trusted-projector-keys.json",
+    "check:bodies": "npm --prefix ../declarative-typescript-body-projector run project-authority-tree -- --authority-root ../canonical-feature-authority --output-root ../canonical-feature-authority --trusted-keys ../canonical-feature-authority/projection-authority/trusted-projector-keys.json --check",
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
     "prove:projection": "npm run check:bodies && npm run build"

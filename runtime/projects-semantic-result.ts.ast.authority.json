@@ -1,0 +1,1052 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/lossless-typescript-ast/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:9e8eec601b0b66a31d7c5fac7fd7d478985404dea84c8d34f981b9b41cf31a9e"
+  },
+  "projectionId": "project-runtime-projects-semantic-result",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "runtime/projects-semantic-result.ts"
+  },
+  "lineage": {
+    "featureId": "canonical-feature-authority-course",
+    "scenarioId": "project-runtime-projects-semantic-result",
+    "obligationId": "every-course-code-body-is-projected",
+    "responsibilityId": "projects-runtime-projects-semantic-result",
+    "signalId": "course-code-body-projection-integrity"
+  },
+  "attestation": {
+    "projectorId": "declarative-typescript-body-projector",
+    "keyId": "sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09",
+    "algorithm": "ed25519"
+  },
+  "sourceAst": {
+    "profile": "lossless-typescript-ast.v1",
+    "posture": "executable",
+    "tokens": [
+      {
+        "kind": "FirstTriviaToken",
+        "text": "// Projects resolved dispositions according to"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "FirstTriviaToken",
+        "text": "// projects-scenario-atomicity-signal.sej.json."
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ImportKeyword",
+        "text": "import"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "TypeKeyword",
+        "text": "type"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "Identifier",
+        "text": "ScenarioAtomicityDisposition"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "Identifier",
+        "text": "ScenarioAtomicitySignal"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FromKeyword",
+        "text": "from"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"../capabilities/validate-feature-scenario-atomicity/scenarios/reject-a-scenario-with-multiple-obligations/evaluates-scenario-atomicity/scenario-atomicity.type.js\""
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ExportKeyword",
+        "text": "export"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FunctionKeyword",
+        "text": "function"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "createsIndependentObligation"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "obligationId"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReturnKeyword",
+        "text": "return"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "obligationId"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "independentlyEvaluable"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "TrueKeyword",
+        "text": "true"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "AsKeyword",
+        "text": "as"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "ConstKeyword",
+        "text": "const"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ExportKeyword",
+        "text": "export"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FunctionKeyword",
+        "text": "function"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "createsUnclassifiableObligation"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "Identifier",
+        "text": "obligationId"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringKeyword",
+        "text": "string"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReturnKeyword",
+        "text": "return"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "obligationId"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "independentlyEvaluable"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"unresolved\""
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "AsKeyword",
+        "text": "as"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "ConstKeyword",
+        "text": "const"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "ExportKeyword",
+        "text": "export"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FunctionKeyword",
+        "text": "function"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "projectsSemanticResult"
+      },
+      {
+        "kind": "OpenParenToken",
+        "text": "("
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "Identifier",
+        "text": "disposition"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "ScenarioAtomicityDisposition"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseParenToken",
+        "text": ")"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "ScenarioAtomicitySignal"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "ReturnKeyword",
+        "text": "return"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "FirstPunctuation",
+        "text": "{"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "signalId"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"scenario-atomicity\""
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "disposition"
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "color"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "disposition"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "text": "==="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"SCENARIO_ATOMIC\""
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "QuestionToken",
+        "text": "?"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"GREEN\""
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"RED\""
+      },
+      {
+        "kind": "CommaToken",
+        "text": ","
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "    "
+      },
+      {
+        "kind": "Identifier",
+        "text": "blocking"
+      },
+      {
+        "kind": "ColonToken",
+        "text": ":"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "Identifier",
+        "text": "disposition"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "ExclamationEqualsEqualsToken",
+        "text": "!=="
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": " "
+      },
+      {
+        "kind": "StringLiteral",
+        "text": "\"SCENARIO_ATOMIC\""
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "WhitespaceTrivia",
+        "text": "  "
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "SemicolonToken",
+        "text": ";"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      },
+      {
+        "kind": "CloseBraceToken",
+        "text": "}"
+      },
+      {
+        "kind": "NewLineTrivia",
+        "text": "\n"
+      }
+    ],
+    "topology": [
+      {
+        "kind": "SourceFile",
+        "depth": 0
+      },
+      {
+        "kind": "ImportDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ImportClause",
+        "depth": 2
+      },
+      {
+        "kind": "NamedImports",
+        "depth": 3
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "ImportSpecifier",
+        "depth": 4
+      },
+      {
+        "kind": "Identifier",
+        "depth": 5
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 2
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "ObjectLiteralExpression",
+        "depth": 4
+      },
+      {
+        "kind": "ShorthandPropertyAssignment",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "AsExpression",
+        "depth": 6
+      },
+      {
+        "kind": "TrueKeyword",
+        "depth": 7
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "StringKeyword",
+        "depth": 3
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "ObjectLiteralExpression",
+        "depth": 4
+      },
+      {
+        "kind": "ShorthandPropertyAssignment",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "AsExpression",
+        "depth": 6
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "FunctionDeclaration",
+        "depth": 1
+      },
+      {
+        "kind": "ExportKeyword",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 2
+      },
+      {
+        "kind": "Parameter",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 3
+      },
+      {
+        "kind": "Identifier",
+        "depth": 4
+      },
+      {
+        "kind": "TypeReference",
+        "depth": 2
+      },
+      {
+        "kind": "Identifier",
+        "depth": 3
+      },
+      {
+        "kind": "Block",
+        "depth": 2
+      },
+      {
+        "kind": "ReturnStatement",
+        "depth": 3
+      },
+      {
+        "kind": "ObjectLiteralExpression",
+        "depth": 4
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 6
+      },
+      {
+        "kind": "ShorthandPropertyAssignment",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "ConditionalExpression",
+        "depth": 6
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 7
+      },
+      {
+        "kind": "Identifier",
+        "depth": 8
+      },
+      {
+        "kind": "EqualsEqualsEqualsToken",
+        "depth": 8
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 8
+      },
+      {
+        "kind": "QuestionToken",
+        "depth": 7
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "ColonToken",
+        "depth": 7
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "PropertyAssignment",
+        "depth": 5
+      },
+      {
+        "kind": "Identifier",
+        "depth": 6
+      },
+      {
+        "kind": "BinaryExpression",
+        "depth": 6
+      },
+      {
+        "kind": "Identifier",
+        "depth": 7
+      },
+      {
+        "kind": "ExclamationEqualsEqualsToken",
+        "depth": 7
+      },
+      {
+        "kind": "StringLiteral",
+        "depth": 7
+      },
+      {
+        "kind": "EndOfFileToken",
+        "depth": 1
+      }
+    ]
+  }
+}

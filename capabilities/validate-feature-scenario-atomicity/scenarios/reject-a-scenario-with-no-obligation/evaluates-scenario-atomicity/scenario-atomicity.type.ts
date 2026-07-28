@@ -1,9 +1,11 @@
 // @generated
-// projection-id: project-evaluates-scenario-atomicity-body
-// responsibility-id: evaluates-scenario-atomicity
-// signal-id: scenario-atomicity
+// projector-id: declarative-typescript-body-projector
+// projector-key-id: sha256:92efc0c88120a59b8f8ba0f5b252177ee5b260a6eb3e0ce0f23f62119703ab09
+// projection-id: project-capabilities-validate-feature-scenario-atomicity-scenarios-reject-a-scenario-with-no-obligation-evaluates-scenario-atomicity-scenario-atomicity-type
+// authority-sha256: sha256:c735196f1c04a0273ae4d1700d23a5eea48c21f2ca8fa9b53a60058b95071f45
+// body-sha256: sha256:de4ebdb0e5e5f45b0340802475ab465a9d5e5a159d1abce8fa1a79625c229857
+// projection-signature: ed25519:SFYwj0YJOzQkC9LzNI8rpj6/8Zr1DZa7lqvBPNiZT+IImScbhlAwD9jTKL/Ax7/jOTDQvy81VE/sYVCjxZ7OAg==
 // DO NOT EDIT.
-
 export interface CanonicalScenario {
   readonly scenarioId: string;
   readonly obligations: ReadonlyArray<{

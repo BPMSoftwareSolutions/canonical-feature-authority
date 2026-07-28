@@ -5,10 +5,10 @@
 Turn the admitted body authority from Layers 14–15 into a native TypeScript
 body without hand-authoring implementation.
 
-The assignment authority is:
+The assignment's compiler-AST authority is:
 
 ```text
-assignment/projects-resolves-code-body-canonical-lineage.projector.json
+assignment/resolves-code-body-canonical-lineage.ts.ast.authority.json
 ```
 
 Project it from the repository root:
@@ -33,9 +33,9 @@ Execute the resolved lineage authority
 Project the canonical lineage signal
 ```
 
-All edge identities, ordering, awaiting posture, lineage headers, parameter
-type, return type, and artifact path come from JSON authority. Students must
-not type or repair the TypeScript body.
+All tokens, compiler AST nodes, edge identities, ordering, awaiting posture,
+types, lineage, artifact path, and signing identity come from JSON authority.
+Students must not type or repair the TypeScript body.
 
 ## Verify
 
@@ -43,7 +43,7 @@ not type or repair the TypeScript body.
 npm run check:bodies
 ```
 
-The assignment is GREEN only when the on-disk bytes are exactly what the
-current authority projects. To demonstrate the boundary, edit the generated
-file, run the check to observe RED, then rerun `npm run project:bodies` to
-restore it from authority.
+The assignment is GREEN only when the on-disk body exactly realizes the current
+AST authority and its embedded Ed25519 signature verifies against the admitted
+public key. To demonstrate the boundary, edit the generated file, run the check
+to observe RED, then rerun `npm run project:bodies` to restore and re-sign it.

@@ -13,7 +13,7 @@ Body 2 — Verify expected body location
   Does the body exist at its projected path?
 
 Body 3 — Verify projected body digest
-  Do the body bytes match the current projection receipt?
+  Do the body bytes and embedded signature match the current AST authority?
 
 Body 4 — Verify body AST conformance
   Does the body contain only allowed structural forms?
