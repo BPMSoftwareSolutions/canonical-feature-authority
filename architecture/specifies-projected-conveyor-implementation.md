@@ -379,6 +379,54 @@ The body contains no AST traversal, hash comparison, signature verification,
 forbidden-node list, or RED/GREEN branch. Those are conformance semantic
 authority.
 
+## How a student traces one scenario into code
+
+Stage 8 is the concrete tie-out example.
+
+```text
+Feature
+  project-course-authority-through-a-governed-conveyor
+
+Scenario
+  invoke-the-trusted-typescript-projector
+
+Obligation
+  emit-one-projector-signed-typescript-body
+
+Expectation
+  expect-one-projector-signed-body
+
+Responsibility
+  invokes-typescript-projector
+
+Signal
+  typescript-body-projection
+
+Semantic operation
+  invoke-typescript-projector
+
+Primary body
+  invokes-typescript-projector.ts
+    → invokes-typescript-projector.ts.ast.authority.json
+
+Type body
+  typescript-body-projection.type.ts
+    → typescript-body-projection.type.ts.ast.authority.json
+
+Expected-body projection
+  invokes-typescript-projector.test.ts
+    → invokes-typescript-projector.test.ts.ast.authority.json
+
+Projection-conformance body
+  runs-invokes-typescript-projector-conformance.ts
+    → runs-invokes-typescript-projector-conformance.ts.ast.authority.json
+```
+
+The student can trace downward from the feature to a body and upward from any
+body to exactly one scenario. The same trace must work for all thirteen binding
+cards. A matching word in two filenames is not sufficient; the machine-readable
+artifacts must carry the exact IDs and upstream hashes.
+
 ## Documentary completeness equations
 
 Before machine-readable artifacts are created, the documentation must balance:
@@ -537,7 +585,29 @@ The conveyor plan is a sequence of semantic responsibilities. The projected
 TypeScript does not implement these responsibilities; it invokes their
 pre-bound ports.
 
+Every stage below includes a binding card. The card is the local join between
+the feature scenario near the top of this document and the projected code shown
+beside the stage. Students should not have to infer that relationship from a
+similar filename.
+
 ### Stage 1: discover admitted projection subjects
+
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`discover-every-admitted-projection-subject`](#scenario-1-discover-every-admitted-projection-subject) |
+| Obligation | `identify-the-complete-projection-subject-set` |
+| Expectation | `expect-one-complete-projection-subject-set` |
+| Responsibility | `discovers-projection-subjects` |
+| Signal | `projection-subject-discovery` |
+| Semantic operation | `discover-projection-subjects` |
+| Body authority chain | `expects-discovers-projection-subjects-body.json` → `declares-discovers-projection-subjects-body.json` → `projects-discovers-projection-subjects-body.json` |
+| Primary body | `discovers-projection-subjects.ts` |
+| Type body | `projection-subject-discovery.type.ts` |
+| Expected-body projection | `discovers-projection-subjects.test.ts` |
+| Projection-conformance body | `runs-discovers-projection-subjects-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
 
 Semantic authority owns:
 
@@ -563,6 +633,23 @@ sorting, or duplicate check in this body.
 
 ### Stage 2: resolve the next admitted authority stage
 
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`resolve-the-next-authorized-conveyor-stage`](#scenario-2-resolve-the-next-authorized-conveyor-stage) |
+| Obligation | `identify-one-authorized-next-stage` |
+| Expectation | `expect-one-stage-transition` |
+| Responsibility | `resolves-conveyor-stage` |
+| Signal | `conveyor-stage-transition` |
+| Semantic operation | `resolve-conveyor-stage` |
+| Body authority chain | `expects-resolves-conveyor-stage-body.json` → `declares-resolves-conveyor-stage-body.json` → `projects-resolves-conveyor-stage-body.json` |
+| Primary body | `resolves-conveyor-stage.ts` |
+| Type body | `conveyor-stage-transition.type.ts` |
+| Expected-body projection | `resolves-conveyor-stage.test.ts` |
+| Projection-conformance body | `runs-resolves-conveyor-stage-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+
 Semantic authority owns:
 
 - stage order;
@@ -586,6 +673,23 @@ There is no `if`, `switch`, stage-name array, index increment, or state-machine
 table in TypeScript.
 
 ### Stage 3: project a bounded model request
+
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`project-one-bounded-model-request`](#scenario-3-project-one-bounded-model-request) |
+| Obligation | `produce-one-complete-model-request` |
+| Expectation | `expect-one-bounded-model-request` |
+| Responsibility | `projects-bounded-model-request` |
+| Signal | `bounded-model-request-projection` |
+| Semantic operation | `project-bounded-model-request` |
+| Body authority chain | `expects-projects-bounded-model-request-body.json` → `declares-projects-bounded-model-request-body.json` → `projects-projects-bounded-model-request-body.json` |
+| Primary body | `projects-bounded-model-request.ts` |
+| Type body | `bounded-model-request-projection.type.ts` |
+| Expected-body projection | `projects-bounded-model-request.test.ts` |
+| Projection-conformance body | `runs-projects-bounded-model-request-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
 
 Request authority owns:
 
@@ -613,6 +717,23 @@ string, model name, timeout, or retry configuration.
 
 ### Stage 4: obtain one model response
 
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`obtain-one-bounded-model-submission`](#scenario-4-obtain-one-bounded-model-submission) |
+| Obligation | `obtain-one-normalized-model-testimony` |
+| Expectation | `expect-one-model-submission-testimony` |
+| Responsibility | `obtains-bounded-model-submission` |
+| Signal | `bounded-model-submission` |
+| Semantic operation | `obtain-bounded-model-submission` |
+| Body authority chain | `expects-obtains-bounded-model-submission-body.json` → `declares-obtains-bounded-model-submission-body.json` → `projects-obtains-bounded-model-submission-body.json` |
+| Primary body | `obtains-bounded-model-submission.ts` |
+| Type body | `bounded-model-submission.type.ts` |
+| Expected-body projection | `obtains-bounded-model-submission.test.ts` |
+| Projection-conformance body | `runs-obtains-bounded-model-submission-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+
 The generic connector receives a complete request authority. The conveyor body
 does not know Gemini, OpenAI, HTTP, credentials, endpoints, or SDK shapes.
 
@@ -628,6 +749,23 @@ Provider resolution, credential access, transport, timeout observation, and
 response normalization remain behind `context.obtain`.
 
 ### Stage 5: evaluate admission
+
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`evaluate-a-model-submission-for-admission`](#scenario-5-evaluate-a-model-submission-for-admission) |
+| Obligation | `resolve-one-submission-admission` |
+| Expectation | `expect-one-admission-disposition` |
+| Responsibility | `evaluates-model-submission` |
+| Signal | `model-submission-admission` |
+| Semantic operation | `evaluate-model-submission` |
+| Body authority chain | `expects-evaluates-model-submission-body.json` → `declares-evaluates-model-submission-body.json` → `projects-evaluates-model-submission-body.json` |
+| Primary body | `evaluates-model-submission.ts` |
+| Type body | `model-submission-admission.type.ts` |
+| Expected-body projection | `evaluates-model-submission.test.ts` |
+| Projection-conformance body | `runs-evaluates-model-submission-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
 
 Admission semantic authority owns:
 
@@ -651,6 +789,23 @@ schema traversal, or RED/GREEN literal.
 
 ### Stage 6: attest admitted authority
 
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`attest-one-admitted-authority-artifact`](#scenario-6-attest-one-admitted-authority-artifact) |
+| Obligation | `cryptographically-bind-one-admitted-artifact` |
+| Expectation | `expect-one-signed-authority-artifact` |
+| Responsibility | `attests-admitted-authority` |
+| Signal | `admitted-authority-attestation` |
+| Semantic operation | `attest-admitted-authority` |
+| Body authority chain | `expects-attests-admitted-authority-body.json` → `declares-attests-admitted-authority-body.json` → `projects-attests-admitted-authority-body.json` |
+| Primary body | `attests-admitted-authority.ts` |
+| Type body | `admitted-authority-attestation.type.ts` |
+| Expected-body projection | `attests-admitted-authority.test.ts` |
+| Projection-conformance body | `runs-attests-admitted-authority-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+
 Signing authority owns:
 
 - signer identity;
@@ -673,6 +828,23 @@ The body constructs no envelope, provenance object, hash payload, signature
 object, or key path.
 
 ### Stage 7: project or admit AST authority
+
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`project-one-admitted-ast-authority`](#scenario-7-project-one-admitted-ast-authority) |
+| Obligation | `derive-one-lossless-conformant-ast-authority` |
+| Expectation | `expect-one-signed-ast-authority` |
+| Responsibility | `projects-ast-authority` |
+| Signal | `ast-authority-projection` |
+| Semantic operation | `project-ast-authority` |
+| Body authority chain | `expects-projects-ast-authority-body.json` → `declares-projects-ast-authority-body.json` → `projects-projects-ast-authority-body.json` |
+| Primary body | `projects-ast-authority.ts` |
+| Type body | `ast-authority-projection.type.ts` |
+| Expected-body projection | `projects-ast-authority.test.ts` |
+| Projection-conformance body | `runs-projects-ast-authority-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
 
 Semantic and AST projection authority own:
 
@@ -703,6 +875,23 @@ projector identity merely because it proposed the AST.
 
 ### Stage 8: invoke the deterministic projector
 
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`invoke-the-trusted-typescript-projector`](#scenario-8-invoke-the-trusted-typescript-projector) |
+| Obligation | `emit-one-projector-signed-typescript-body` |
+| Expectation | `expect-one-projector-signed-body` |
+| Responsibility | `invokes-typescript-projector` |
+| Signal | `typescript-body-projection` |
+| Semantic operation | `invoke-typescript-projector` |
+| Body authority chain | `expects-invokes-typescript-projector-body.json` → `declares-invokes-typescript-projector-body.json` → `projects-invokes-typescript-projector-body.json` |
+| Primary body | `invokes-typescript-projector.ts` |
+| Type body | `typescript-body-projection.type.ts` |
+| Expected-body projection | `invokes-typescript-projector.test.ts` |
+| Projection-conformance body | `runs-invokes-typescript-projector-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+
 The projector receives admitted AST authority and emits the exact body.
 
 ```typescript
@@ -718,6 +907,23 @@ compiler import, source string, file extension rule, header builder, or
 `writeFile` capability.
 
 ### Stage 9: evaluate projected-body conformance
+
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`evaluate-projected-body-conformance`](#scenario-9-evaluate-projected-body-conformance) |
+| Obligation | `resolve-one-body-projection-conformance` |
+| Expectation | `expect-one-projection-conformance-disposition` |
+| Responsibility | `evaluates-projected-body` |
+| Signal | `projected-body-conformance` |
+| Semantic operation | `evaluate-projected-body` |
+| Body authority chain | `expects-evaluates-projected-body-body.json` → `declares-evaluates-projected-body-body.json` → `projects-evaluates-projected-body-body.json` |
+| Primary body | `evaluates-projected-body.ts` |
+| Type body | `projected-body-conformance.type.ts` |
+| Expected-body projection | `evaluates-projected-body.test.ts` |
+| Projection-conformance body | `runs-evaluates-projected-body-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
 
 Conformance authority owns:
 
@@ -742,6 +948,23 @@ The body does not compare hashes, parse headers, inspect AST nodes, or choose a
 conformance disposition.
 
 ### Stage 10: project the course lineage index
+
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`publish-the-complete-course-lineage-index`](#scenario-10-publish-the-complete-course-lineage-index) |
+| Obligation | `publish-one-complete-signed-lineage-index` |
+| Expectation | `expect-one-signed-course-lineage-index` |
+| Responsibility | `projects-course-lineage-index` |
+| Signal | `course-lineage-index-projection` |
+| Semantic operation | `project-course-lineage-index` |
+| Body authority chain | `expects-projects-course-lineage-index-body.json` → `declares-projects-course-lineage-index-body.json` → `projects-projects-course-lineage-index-body.json` |
+| Primary body | `projects-course-lineage-index.ts` |
+| Type body | `course-lineage-index-projection.type.ts` |
+| Expected-body projection | `projects-course-lineage-index.test.ts` |
+| Projection-conformance body | `runs-projects-course-lineage-index-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
 
 Index authority owns:
 
@@ -768,6 +991,23 @@ interpolation, path arithmetic, or hand-written provenance text.
 
 The strictest final shape delegates the entire admitted plan to a generic
 semantic execution port:
+
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`execute-the-complete-admitted-conveyor-plan`](#scenario-13-execute-the-complete-admitted-conveyor-plan) |
+| Obligation | `execute-one-complete-admitted-conveyor-plan` |
+| Expectation | `expect-one-terminal-course-conveyor-signal` |
+| Responsibility | `executes-course-authority-conveyor` |
+| Signal | `course-authority-conveyor-execution` |
+| Semantic operation | `execute-course-authority-conveyor` |
+| Body authority chain | `expects-executes-course-authority-conveyor-body.json` → `declares-executes-course-authority-conveyor-body.json` → `projects-executes-course-authority-conveyor-body.json` |
+| Primary body | `executes-course-authority-conveyor.ts` |
+| Type body | `course-authority-conveyor-execution.type.ts` |
+| Expected-body projection | `executes-course-authority-conveyor.test.ts` |
+| Projection-conformance body | `runs-executes-course-authority-conveyor-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
 
 ```typescript
 // @generated
@@ -1164,6 +1404,23 @@ independent reconstruction together establish provenance.
 
 RED behavior is declarative and fail-closed:
 
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`stop-downstream-execution-after-red`](#scenario-11-stop-downstream-execution-after-red) |
+| Obligation | `authorize-no-downstream-stage-after-red` |
+| Expectation | `expect-one-stopped-conveyor-transition` |
+| Responsibility | `resolves-red-conveyor-transition` |
+| Signal | `red-conveyor-stop` |
+| Semantic operation | `resolve-red-conveyor-transition` |
+| Body authority chain | `expects-resolves-red-conveyor-transition-body.json` → `declares-resolves-red-conveyor-transition-body.json` → `projects-resolves-red-conveyor-transition-body.json` |
+| Primary body | `resolves-red-conveyor-transition.ts` |
+| Type body | `red-conveyor-stop.type.ts` |
+| Expected-body projection | `resolves-red-conveyor-transition.test.ts` |
+| Projection-conformance body | `runs-resolves-red-conveyor-transition-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
+
 - a rejected model submission is not persisted as admitted authority;
 - no downstream stage executes;
 - no AST authority is admitted from that submission;
@@ -1192,6 +1449,23 @@ signal.
 ## Resume behavior
 
 Resume authority must require deterministic revalidation:
+
+**Scenario-to-body binding**
+
+| Authority/body role | Bound identity |
+|---|---|
+| Scenario | [`resume-only-revalidated-admitted-authority`](#scenario-12-resume-only-revalidated-admitted-authority) |
+| Obligation | `classify-one-prior-artifact-for-resumption` |
+| Expectation | `expect-one-resumability-disposition` |
+| Responsibility | `evaluates-resumable-authority` |
+| Signal | `authority-resumability` |
+| Semantic operation | `evaluate-resumable-authority` |
+| Body authority chain | `expects-evaluates-resumable-authority-body.json` → `declares-evaluates-resumable-authority-body.json` → `projects-evaluates-resumable-authority-body.json` |
+| Primary body | `evaluates-resumable-authority.ts` |
+| Type body | `authority-resumability.type.ts` |
+| Expected-body projection | `evaluates-resumable-authority.test.ts` |
+| Projection-conformance body | `runs-evaluates-resumable-authority-conformance.ts` |
+| AST coverage | one adjacent `*.ast.authority.json` for each of the four bodies |
 
 1. Parse the candidate as the declared artifact type.
 2. Verify its exact admitted artifact hash.
