@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/responsibility-body-expectation.type.schema.json",
+  "title": "Responsibility Body Expectation",
+  "description": "Schema for expects-evaluates-*-body.json (Spine Layer 14) — the implementation topology that must exist for a responsibility.",
+  "type": "object",
+  "required": [
+    "expectationType",
+    "bodyId",
+    "featureId",
+    "scenarioId",
+    "obligationId",
+    "responsibilityId",
+    "signalId",
+    "bodyCount",
+    "semanticEdges",
+    "target"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "expectationType": { "const": "responsibility-body-expectation.v1" },
+    "bodyId": { "type": "string" },
+    "featureId": { "type": "string" },
+    "scenarioId": { "type": "string" },
+    "obligationId": { "type": "string" },
+    "responsibilityId": { "type": "string" },
+    "signalId": { "type": "string" },
+    "bodyCount": { "type": "integer", "minimum": 1, "maximum": 1 },
+    "semanticEdges": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "target": {
+      "type": "object",
+      "required": ["language", "runtime"],
+      "properties": {
+        "language": { "type": "string" },
+        "runtime": { "type": "string" }
+      }
+    }
+  }
+}

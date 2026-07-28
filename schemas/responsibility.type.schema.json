@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/responsibility.type.schema.json",
+  "title": "Responsibility Authority",
+  "description": "Schema for declares-responsibility.json (Spine Layer 7) — the one worker that owns an obligation.",
+  "type": "object",
+  "required": ["responsibilityId", "kind", "featureId", "scenarioId", "obligationId", "statement"],
+  "additionalProperties": false,
+  "properties": {
+    "responsibilityId": { "type": "string" },
+    "kind": {
+      "type": "string",
+      "enum": ["validation", "mutation", "projection", "observation"]
+    },
+    "featureId": { "type": "string" },
+    "scenarioId": { "type": "string" },
+    "obligationId": { "type": "string" },
+    "statement": { "type": "string" }
+  }
+}

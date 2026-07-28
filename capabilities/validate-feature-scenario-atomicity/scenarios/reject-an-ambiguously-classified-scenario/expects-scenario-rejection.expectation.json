@@ -1,0 +1,21 @@
+{
+  "expectationType": "scenario-expectation.v1",
+  "featureId": "reject-non-atomic-feature-scenarios",
+  "scenarioId": "reject-an-ambiguously-classified-scenario",
+  "obligationId": "scenario-carries-one-independent-obligation",
+  "condition": {
+    "obligationCardinality": "unresolved"
+  },
+  "expectedResult": {
+    "resultId": "scenario-is-rejected"
+  },
+  "expectedSignal": {
+    "signalId": "scenario-atomicity",
+    "disposition": "SCENARIO_ATOMICITY_UNRESOLVED"
+  },
+  "expectedCardinality": {
+    "primaryResponsibilities": 1,
+    "signals": 1,
+    "scenarioBodies": 1
+  }
+}

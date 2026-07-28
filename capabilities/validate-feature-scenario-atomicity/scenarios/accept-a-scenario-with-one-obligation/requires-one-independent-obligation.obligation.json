@@ -1,0 +1,7 @@
+{
+  "obligationId": "scenario-carries-one-independent-obligation",
+  "featureId": "reject-non-atomic-feature-scenarios",
+  "scenarioId": "accept-a-scenario-with-one-obligation",
+  "statement": "A canonical scenario must carry exactly one independently evaluable obligation.",
+  "blocking": true
+}

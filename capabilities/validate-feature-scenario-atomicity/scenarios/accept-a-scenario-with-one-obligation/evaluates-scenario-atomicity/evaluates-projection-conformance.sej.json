@@ -1,0 +1,57 @@
+{
+  "semanticAuthorityType": "conformance.v1",
+  "semanticOperationId": "evaluate-projection-conformance",
+  "bodyId": "evaluates-scenario-atomicity-body",
+  "checks": [
+    {
+      "checkId": "feature-identity",
+      "expectedFrom": "requires-one-independent-obligation.obligation.json#featureId",
+      "observedFrom": "generated-body-header#feature-id"
+    },
+    {
+      "checkId": "scenario-identity",
+      "expectedFrom": "expects-scenario-acceptance.expectation.json#scenarioId",
+      "observedFrom": "generated-body-header#scenario-id"
+    },
+    {
+      "checkId": "obligation-identity",
+      "expectedFrom": "requires-one-independent-obligation.obligation.json#obligationId",
+      "observedFrom": "generated-body-header#obligation-id"
+    },
+    {
+      "checkId": "responsibility-identity",
+      "expectedFrom": "declares-responsibility.json#responsibilityId",
+      "observedFrom": "generated-body-header#responsibility-id"
+    },
+    {
+      "checkId": "signal-identity",
+      "expectedFrom": "declares-scenario-atomicity-signal.json#signalId",
+      "observedFrom": "generated-body-header#signal-id"
+    },
+    {
+      "checkId": "body-count",
+      "expected": 1,
+      "observedFrom": "filesystem#evaluates-scenario-atomicity.ts"
+    },
+    {
+      "checkId": "semantic-edge",
+      "expectedFrom": "binds-responsibility-to-semantic-edge.json#semanticEdgeId",
+      "observedFrom": "generated-ast#SemanticEdgeInvocation.edge"
+    },
+    {
+      "checkId": "ast-structure",
+      "expectedFrom": "projects-typescript-ast.json#expected",
+      "observedFrom": "generated-ast"
+    },
+    {
+      "checkId": "forbidden-structures",
+      "expectedFrom": "projects-typescript-ast.json#forbidden",
+      "observedFrom": "generated-ast"
+    },
+    {
+      "checkId": "scenario-disposition",
+      "expectedFrom": "expects-scenario-acceptance.expectation.json#expectedSignal.disposition",
+      "observedFrom": "evaluates-scenario-atomicity.test.ts#signal.disposition"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "responsibilityId": "evaluates-scenario-atomicity",
+  "kind": "validation",
+  "featureId": "reject-non-atomic-feature-scenarios",
+  "scenarioId": "reject-an-ambiguously-classified-scenario",
+  "obligationId": "scenario-carries-one-independent-obligation",
+  "statement": "Evaluate whether one canonical scenario carries exactly one independently evaluable obligation."
+}

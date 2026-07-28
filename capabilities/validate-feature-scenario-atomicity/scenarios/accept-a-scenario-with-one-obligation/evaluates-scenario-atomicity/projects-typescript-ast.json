@@ -1,0 +1,37 @@
+{
+  "astProjectionType": "typescript-ast-authority.v1",
+  "bodyId": "evaluates-scenario-atomicity-body",
+  "expected": {
+    "kind": "FunctionDeclaration",
+    "exported": true,
+    "async": true,
+    "name": "evaluatesScenarioAtomicity",
+    "parameter": {
+      "name": "context",
+      "type": "EvaluateScenarioAtomicityContext"
+    },
+    "returnType": "Promise<ScenarioAtomicitySignal>",
+    "body": [
+      {
+        "kind": "ReturnStatement",
+        "expression": {
+          "kind": "SemanticEdgeInvocation",
+          "edge": "evaluate-scenario-atomicity",
+          "input": "context"
+        }
+      }
+    ]
+  },
+  "forbidden": [
+    "IfStatement",
+    "SwitchStatement",
+    "ForStatement",
+    "WhileStatement",
+    "DoWhileStatement",
+    "ConditionalExpression",
+    "DirectSdkInvocation",
+    "DomainObjectLiteral",
+    "DtoConstruction",
+    "AuthorityMutation"
+  ]
+}

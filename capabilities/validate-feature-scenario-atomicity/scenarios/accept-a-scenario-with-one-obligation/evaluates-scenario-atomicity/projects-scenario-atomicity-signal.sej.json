@@ -1,0 +1,7 @@
+{
+  "semanticAuthorityType": "projection.v1",
+  "semanticOperationId": "project-scenario-atomicity-signal",
+  "subject": "scenario-atomicity",
+  "from": "resolvedScenarioAtomicityDisposition",
+  "output": "ScenarioAtomicitySignal"
+}

@@ -1,0 +1,41 @@
+{
+  "semanticAuthorityType": "evaluation.v1",
+  "semanticOperationId": "evaluate-obligation-cardinality",
+  "input": {
+    "from": "observedScenarioObligations"
+  },
+  "rules": [
+    {
+      "when": {
+        "classificationStatus": "resolved",
+        "count": 1
+      },
+      "then": "SCENARIO_ATOMIC"
+    },
+    {
+      "when": {
+        "classificationStatus": "resolved",
+        "count": 0
+      },
+      "then": "SCENARIO_NOT_ATOMIC"
+    },
+    {
+      "when": {
+        "classificationStatus": "resolved",
+        "count": {
+          "greaterThan": 1
+        }
+      },
+      "then": "SCENARIO_NOT_ATOMIC"
+    },
+    {
+      "when": {
+        "classificationStatus": "unresolved"
+      },
+      "then": "SCENARIO_ATOMICITY_UNRESOLVED"
+    }
+  ],
+  "output": {
+    "as": "evaluatedObligationCardinality"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "expectationType": "scenario-expectation.v1",
+  "featureId": "reject-non-atomic-feature-scenarios",
+  "scenarioId": "accept-a-scenario-with-one-obligation",
+  "obligationId": "scenario-carries-one-independent-obligation",
+  "condition": {
+    "obligationCardinality": "exactly-one"
+  },
+  "expectedResult": {
+    "resultId": "scenario-is-admitted"
+  },
+  "expectedSignal": {
+    "signalId": "scenario-atomicity",
+    "disposition": "SCENARIO_ATOMIC"
+  },
+  "expectedCardinality": {
+    "primaryResponsibilities": 1,
+    "signals": 1,
+    "scenarioBodies": 1
+  }
+}

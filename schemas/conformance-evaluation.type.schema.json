@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/conformance-evaluation.type.schema.json",
+  "title": "Conformance Evaluation",
+  "description": "Schema for the result produced by evaluates-capability-conformance.ts (Spine Layer 20-21) — the final GREEN/RED disposition for one responsibility body.",
+  "type": "object",
+  "required": ["disposition", "findings"],
+  "additionalProperties": false,
+  "properties": {
+    "disposition": {
+      "type": "string",
+      "enum": ["CONFORMS", "DOES_NOT_CONFORM"]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "EXPECTED_RESPONSIBILITY_NOT_PROJECTED",
+          "MULTIPLE_PRIMARY_RESPONSIBILITIES_PROJECTED",
+          "EXPECTED_SCENARIO_BODY_NOT_FOUND",
+          "MULTIPLE_SCENARIO_BODIES_PROJECTED",
+          "EXPECTED_SIGNAL_NOT_RETURNED",
+          "UNAUTHORIZED_SIGNAL_RETURNED",
+          "EXPECTED_DISPOSITION_NOT_OBSERVED",
+          "RESPONSIBILITY_NOT_PROJECTED",
+          "MULTIPLE_BODIES_FOR_RESPONSIBILITY",
+          "RESPONSIBILITY_EDGE_BINDING_MISSING",
+          "RESPONSIBILITY_EDGE_MISMATCH",
+          "RESPONSIBILITY_SIGNAL_MISMATCH",
+          "RESPONSIBILITY_KIND_VIOLATION",
+          "RESPONSIBILITY_CONTAINS_UNAUTHORIZED_EFFECT",
+          "RESPONSIBILITY_CONTAINS_MULTIPLE_WORKERS"
+        ]
+      }
+    }
+  }
+}

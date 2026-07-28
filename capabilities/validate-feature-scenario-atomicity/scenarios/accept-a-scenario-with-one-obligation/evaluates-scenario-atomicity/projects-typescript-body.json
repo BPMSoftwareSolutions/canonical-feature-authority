@@ -1,0 +1,39 @@
+{
+  "projectionType": "declarative-typescript-projection.v1",
+  "projectionId": "project-evaluates-scenario-atomicity-body",
+  "targetId": "typescript-esm",
+  "artifact": {
+    "path": "evaluates-scenario-atomicity.ts",
+    "imports": [
+      {
+        "kind": "import",
+        "from": "./scenario-atomicity.type.js",
+        "typeOnly": true,
+        "named": [
+          "EvaluateScenarioAtomicityContext",
+          "ScenarioAtomicitySignal"
+        ]
+      }
+    ],
+    "declaration": {
+      "kind": "function",
+      "name": "evaluatesScenarioAtomicity",
+      "export": true,
+      "async": true,
+      "parameters": [
+        {
+          "name": "context",
+          "type": "EvaluateScenarioAtomicityContext"
+        }
+      ],
+      "returnType": "Promise<ScenarioAtomicitySignal>",
+      "body": [
+        {
+          "kind": "return-semantic-invocation",
+          "edge": "evaluate-scenario-atomicity",
+          "input": "context"
+        }
+      ]
+    }
+  }
+}

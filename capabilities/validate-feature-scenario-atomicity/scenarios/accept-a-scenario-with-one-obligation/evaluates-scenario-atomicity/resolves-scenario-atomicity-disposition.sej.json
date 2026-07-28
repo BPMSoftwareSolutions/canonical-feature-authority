@@ -1,0 +1,10 @@
+{
+  "semanticAuthorityType": "disposition.v1",
+  "semanticOperationId": "resolve-scenario-atomicity-disposition",
+  "input": {
+    "from": "evaluatedObligationCardinality"
+  },
+  "output": {
+    "as": "resolvedScenarioAtomicityDisposition"
+  }
+}

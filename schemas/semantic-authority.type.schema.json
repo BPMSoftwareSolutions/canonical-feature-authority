@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/semantic-authority.type.schema.json",
+  "title": "Semantic Authority (SEJ)",
+  "description": "Schema for *.sej.json files (Spine Layers 9-13) — observation, evaluation, disposition, and result-projection records a responsibility's semantic edge is built from.",
+  "type": "object",
+  "required": ["semanticAuthorityType", "semanticOperationId"],
+  "properties": {
+    "semanticAuthorityType": {
+      "type": "string",
+      "enum": ["observation.v1", "evaluation.v1", "disposition.v1", "projection.v1", "conformance.v1"]
+    },
+    "semanticOperationId": { "type": "string" },
+    "input": {
+      "type": "object",
+      "properties": {
+        "from": { "type": "string" }
+      }
+    },
+    "output": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "properties": {
+            "as": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["when", "then"],
+        "properties": {
+          "when": { "type": "object" },
+          "then": { "type": "string" }
+        }
+      }
+    },
+    "subject": { "type": "string" },
+    "from": { "type": "string" },
+    "bodyId": { "type": "string" },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["checkId"],
+        "properties": {
+          "checkId": { "type": "string" },
+          "expectedFrom": { "type": "string" },
+          "observedFrom": { "type": "string" },
+          "expected": {}
+        }
+      }
+    }
+  }
+}

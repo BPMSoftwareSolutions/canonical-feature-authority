@@ -1,0 +1,39 @@
+{
+  "bodyContractType": "scenario-responsibility-body.v1",
+  "bodyId": "evaluates-scenario-atomicity-body",
+  "featureId": "reject-non-atomic-feature-scenarios",
+  "scenarioId": "reject-a-scenario-with-multiple-obligations",
+  "obligationId": "scenario-carries-one-independent-obligation",
+  "responsibilityId": "evaluates-scenario-atomicity",
+  "signalId": "scenario-atomicity",
+  "kind": "validation",
+  "target": {
+    "language": "typescript",
+    "runtime": "node",
+    "path": "capabilities/validate-feature-scenario-atomicity/scenarios/reject-a-scenario-with-multiple-obligations/evaluates-scenario-atomicity/evaluates-scenario-atomicity.ts"
+  },
+  "publicOperation": {
+    "name": "evaluatesScenarioAtomicity",
+    "async": true,
+    "parameter": {
+      "name": "context",
+      "type": "EvaluateScenarioAtomicityContext"
+    },
+    "returnType": "Promise<ScenarioAtomicitySignal>"
+  },
+  "execution": {
+    "primarySemanticEdge": "evaluate-scenario-atomicity",
+    "input": "context",
+    "return": "semantic-edge-result"
+  },
+  "constraints": {
+    "maximumPrimaryResponsibilities": 1,
+    "maximumSignals": 1,
+    "maximumBodyLineages": 1,
+    "forbidBranching": true,
+    "forbidIteration": true,
+    "forbidDtoConstruction": true,
+    "forbidDirectEffects": true,
+    "forbidAuthorityMutation": true
+  }
+}

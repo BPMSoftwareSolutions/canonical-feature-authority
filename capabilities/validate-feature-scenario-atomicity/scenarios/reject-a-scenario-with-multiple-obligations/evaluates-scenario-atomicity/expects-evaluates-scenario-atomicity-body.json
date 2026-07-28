@@ -1,0 +1,17 @@
+{
+  "expectationType": "responsibility-body-expectation.v1",
+  "bodyId": "evaluates-scenario-atomicity-body",
+  "featureId": "reject-non-atomic-feature-scenarios",
+  "scenarioId": "reject-a-scenario-with-multiple-obligations",
+  "obligationId": "scenario-carries-one-independent-obligation",
+  "responsibilityId": "evaluates-scenario-atomicity",
+  "signalId": "scenario-atomicity",
+  "bodyCount": 1,
+  "semanticEdges": [
+    "evaluate-scenario-atomicity"
+  ],
+  "target": {
+    "language": "typescript",
+    "runtime": "node"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "capabilityAuthorityType": "capability-authority.v1",
+  "featureId": "reject-non-atomic-feature-scenarios",
+  "capabilityId": "validate-feature-scenario-atomicity",
+  "title": "Validate feature scenario atomicity",
+  "featureFile": "rejects-non-atomic-feature-scenarios.feature",
+  "scenarios": [
+    {
+      "scenarioId": "reject-a-scenario-with-multiple-obligations",
+      "path": "scenarios/reject-a-scenario-with-multiple-obligations",
+      "expectedSignalDisposition": "SCENARIO_NOT_ATOMIC"
+    },
+    {
+      "scenarioId": "accept-a-scenario-with-one-obligation",
+      "path": "scenarios/accept-a-scenario-with-one-obligation",
+      "expectedSignalDisposition": "SCENARIO_ATOMIC"
+    },
+    {
+      "scenarioId": "reject-a-scenario-with-no-obligation",
+      "path": "scenarios/reject-a-scenario-with-no-obligation",
+      "expectedSignalDisposition": "SCENARIO_NOT_ATOMIC"
+    },
+    {
+      "scenarioId": "reject-an-ambiguously-classified-scenario",
+      "path": "scenarios/reject-an-ambiguously-classified-scenario",
+      "expectedSignalDisposition": "SCENARIO_ATOMICITY_UNRESOLVED"
+    }
+  ],
+  "signalId": "scenario-atomicity",
+  "entrypoint": "runs-feature-scenario-atomicity-validation.ts"
+}

@@ -1,0 +1,10 @@
+{
+  "semanticAuthorityType": "observation.v1",
+  "semanticOperationId": "observe-scenario-obligations",
+  "input": {
+    "from": "context.scenario"
+  },
+  "output": {
+    "as": "observedScenarioObligations"
+  }
+}

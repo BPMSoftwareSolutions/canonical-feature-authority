@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/scenario-expectation.type.schema.json",
+  "title": "Scenario Expectation",
+  "description": "Schema for expects-*.expectation.json (Spine Layer 6) — the observable result and implementation topology a scenario must produce.",
+  "type": "object",
+  "required": [
+    "expectationType",
+    "featureId",
+    "scenarioId",
+    "obligationId",
+    "condition",
+    "expectedResult",
+    "expectedSignal",
+    "expectedCardinality"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "expectationType": { "const": "scenario-expectation.v1" },
+    "featureId": { "type": "string" },
+    "scenarioId": { "type": "string" },
+    "obligationId": { "type": "string" },
+    "condition": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "expectedResult": {
+      "type": "object",
+      "required": ["resultId"],
+      "properties": {
+        "resultId": { "type": "string" }
+      }
+    },
+    "expectedSignal": {
+      "type": "object",
+      "required": ["signalId", "disposition"],
+      "properties": {
+        "signalId": { "type": "string" },
+        "disposition": { "type": "string" }
+      }
+    },
+    "expectedCardinality": {
+      "type": "object",
+      "required": ["primaryResponsibilities", "signals", "scenarioBodies"],
+      "properties": {
+        "primaryResponsibilities": { "type": "integer", "minimum": 0 },
+        "signals": { "type": "integer", "minimum": 0 },
+        "scenarioBodies": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

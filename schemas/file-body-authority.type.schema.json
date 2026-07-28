@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/file-body-authority.type.schema.json",
+  "title": "File-Body Authority",
+  "description": "Schema for declares-evaluates-*-body.json (Spine Layer 15) — the file, public operation, and structural constraints a generated body must satisfy.",
+  "type": "object",
+  "required": [
+    "bodyContractType",
+    "bodyId",
+    "featureId",
+    "scenarioId",
+    "obligationId",
+    "responsibilityId",
+    "signalId",
+    "kind",
+    "target",
+    "publicOperation",
+    "execution",
+    "constraints"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "bodyContractType": { "const": "scenario-responsibility-body.v1" },
+    "bodyId": { "type": "string" },
+    "featureId": { "type": "string" },
+    "scenarioId": { "type": "string" },
+    "obligationId": { "type": "string" },
+    "responsibilityId": { "type": "string" },
+    "signalId": { "type": "string" },
+    "kind": { "type": "string" },
+    "target": {
+      "type": "object",
+      "required": ["language", "runtime", "path"],
+      "properties": {
+        "language": { "type": "string" },
+        "runtime": { "type": "string" },
+        "path": { "type": "string" }
+      }
+    },
+    "publicOperation": {
+      "type": "object",
+      "required": ["name", "async", "parameter", "returnType"],
+      "properties": {
+        "name": { "type": "string" },
+        "async": { "type": "boolean" },
+        "parameter": {
+          "type": "object",
+          "required": ["name", "type"],
+          "properties": {
+            "name": { "type": "string" },
+            "type": { "type": "string" }
+          }
+        },
+        "returnType": { "type": "string" }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "required": ["primarySemanticEdge", "input", "return"],
+      "properties": {
+        "primarySemanticEdge": { "type": "string" },
+        "input": { "type": "string" },
+        "return": { "type": "string" }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "required": [
+        "maximumPrimaryResponsibilities",
+        "maximumSignals",
+        "maximumBodyLineages",
+        "forbidBranching",
+        "forbidIteration",
+        "forbidDtoConstruction",
+        "forbidDirectEffects",
+        "forbidAuthorityMutation"
+      ],
+      "properties": {
+        "maximumPrimaryResponsibilities": { "type": "integer" },
+        "maximumSignals": { "type": "integer" },
+        "maximumBodyLineages": { "type": "integer" },
+        "forbidBranching": { "type": "boolean" },
+        "forbidIteration": { "type": "boolean" },
+        "forbidDtoConstruction": { "type": "boolean" },
+        "forbidDirectEffects": { "type": "boolean" },
+        "forbidAuthorityMutation": { "type": "boolean" }
+      }
+    }
+  }
+}

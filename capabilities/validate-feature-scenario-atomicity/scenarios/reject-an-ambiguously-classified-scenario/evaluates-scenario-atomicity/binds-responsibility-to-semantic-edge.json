@@ -1,0 +1,5 @@
+{
+  "bindingType": "responsibility-to-semantic-edge.v1",
+  "responsibilityId": "evaluates-scenario-atomicity",
+  "semanticEdgeId": "evaluate-scenario-atomicity"
+}

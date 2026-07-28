@@ -1,0 +1,11 @@
+{
+  "name": "canonical-feature-authority",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reference file-system spine for the Canonical Feature Authority course — a worked example of intent-driven, deterministic projection from human need to generated code.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "conformance": "node --loader ts-node/esm cli/evaluates-conformance.ts"
+  }
+}

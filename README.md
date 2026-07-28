@@ -2,7 +2,7 @@
 
 A documentation-only course for students learning how to build **intent-driven, deterministic systems** — software where behavior is declared once, as canonical authority, and every downstream artifact (readable specs, code, runtime signals, and proofs) is a traceable projection of that single declaration.
 
-There is no runnable code in this repository. Every lesson is a Markdown file, and every example in those files is illustrative JSON, Gherkin, or TypeScript meant to be read, not executed. The directory structure below the lessons mirrors what a *real* implementation of this architecture would look like, so students can place their own worked examples in the same shape a production repository would use — but the folders themselves start out holding only structure and README stubs, not working code.
+This is a documentation and reference repository, not a working application. The numbered lessons are Markdown files meant to be read. The `capabilities/` tree is a fully populated, real worked example — every JSON authority record and generated `.ts` file in it is genuine, faithful content — but the `runtime/`, `projection/`, `conformance/`, and `cli/` folders that would execute that authority are documentation stubs, not a running implementation. Nothing in this repository needs to build or run for the course to do its job.
 
 ## Who this is for
 
@@ -48,24 +48,29 @@ Start with the overview, then work through the numbered lessons in order:
 | 08 | [08 - Observed Signal.md](08%20-%20Observed%20Signal.md) | What the running system emits at runtime, and how RED/GREEN dispositions are interpreted. |
 | 09 | [09 - Projection and Conformance Proof.md](09%20-%20Projection%20and%20Conformance%20Proof.md) | Comparing expected topology against observed topology to produce a conformance receipt. |
 | 10 | [10 - The Complete Canonical Path.md](10%20-%20The%20Complete%20Canonical%20Path.md) | The full path retraced end to end, with the identity that must never drift across layers. |
+| — | [Canonical Feature Authority File-System Spine.md](Canonical%20Feature%20Authority%20File-System%20Spine.md) | The same architecture at file-system granularity: all 21 layers, exact filenames, and the reasoning behind every naming and placement decision. Read this once the numbered lessons feel familiar — it's the bridge from concept to the `capabilities/` folder below. |
 
 ## Repository layout
 
-Beyond the reading list above, the repository is organized to mirror the architecture it teaches — each top-level folder owns exactly one layer of authority, matching the separation the lessons describe:
+Beyond the reading list above, the repository contains a full worked reference example — the file-system spine described in [Canonical Feature Authority File-System Spine.md](Canonical%20Feature%20Authority%20File-System%20Spine.md) — populated with one real capability, `validate-feature-scenario-atomicity`, carried through all 21 layers from human need to a conformance evaluator:
 
 ```text
 canonical-feature-authority/
 ├── course/                 10 hands-on labs, in order — see course/README.md
-├── canonical-authority/    what should exist, and why (features, scenarios, obligations, ...)
-├── semantic-authority/     what the behavior means (decisions, execution models, ...)
-├── projection-authority/   how a body is structurally rendered (AST, TypeScript rendering, ...)
-├── generated/              disposable physical output — projected, never hand-authored
-├── governance/             admission and conformance enforcement over the above
-├── proof/                  fixtures, receipts, and negative controls evidencing governance runs
-└── tools/student-cli/      the guided command surface described for working the labs
+├── architecture/           what the spine is, why it's shaped this way, and its rules
+├── capabilities/           the vertical, capability-first worked example
+│   └── validate-feature-scenario-atomicity/
+│       └── scenarios/      one folder per scenario, each self-contained end to end
+├── runtime/                the semantic-edge dispatch every generated body calls into
+├── projection/             the projectors that render each layer into the next
+├── conformance/            the evaluators that compare expected vs. observed topology
+├── schemas/                JSON Schemas for every authority-record type
+└── cli/                    the guided `cfa` command surface described for working the labs
 ```
 
-Each of those folders has its own README explaining what it owns and what it explicitly does not own. Start with [course/README.md](course/README.md) if you want the hands-on path — it walks through building a real (if small) governance body, phase by phase, using the same discipline the reading lessons describe. See [The Student Experience.md](The%20Student%20Experience.md) for the full pedagogical design behind this layout, including the capstone exercise.
+This layout is intentionally **vertical**, not horizontal: everything about one scenario — its obligation, responsibility, semantic authority, generated code, test, and conformance evaluator — lives together in one folder, rather than being split across repository-wide `canonical-authority/`, `generated/`, `tests/`, `proof/`-style folders. See [architecture/defines-capability-first-layout.md](architecture/defines-capability-first-layout.md) for why.
+
+Every file under `capabilities/` is a real, readable artifact — not a placeholder — for the primary scenario `reject-a-scenario-with-multiple-obligations/`, and adapted analogously for its three sibling scenarios (`accept-a-scenario-with-one-obligation/`, `reject-a-scenario-with-no-obligation/`, `reject-an-ambiguously-classified-scenario/`). The `runtime/`, `projection/`, `conformance/`, and `cli/` folders are documentation stubs: they state what each module is responsible for and point back to the layer of the Spine doc that specifies it, but do not contain a working implementation — this remains a documentation-only repository. `course/README.md` still has the separate, self-paced 10-lab teaching path if you want hands-on exercises rather than a reference to read.
 
 ## The governing rule
 
@@ -86,4 +91,8 @@ Each lesson repeats a small set of recurring artifacts so the same identities st
 
 ## Contributing
 
-This is a documentation-only repository. Contributions should stay in the same spirit: Markdown lessons that trace a concrete example through the full canonical path, with explicit artifact tags and clearly stated ownership boundaries at each layer.
+This is a documentation and reference repository. Contributions should stay in the same spirit:
+
+- New numbered lessons should trace a concrete example through the full canonical path, with explicit artifact tags and clearly stated ownership boundaries at each layer.
+- New scenarios or capabilities under `capabilities/` should follow the exact 17-file-per-responsibility pattern established by `validate-feature-scenario-atomicity/reject-a-scenario-with-multiple-obligations/` — every file real and self-consistent, not a placeholder.
+- Changes to `runtime/`, `projection/`, `conformance/`, or `cli/` should stay documentation stubs unless there's a deliberate decision to make this repository executable, which would be a significant scope change from its current purpose.

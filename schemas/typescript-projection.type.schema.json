@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/typescript-projection.type.schema.json",
+  "title": "TypeScript Projection Authority",
+  "description": "Schema for projects-typescript-body.json (Spine Layer 16) and projects-typescript-ast.json (Spine Layer 17).",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["projectionType", "projectionId", "targetId", "artifact"],
+      "additionalProperties": false,
+      "properties": {
+        "projectionType": { "const": "declarative-typescript-projection.v1" },
+        "projectionId": { "type": "string" },
+        "targetId": { "type": "string" },
+        "artifact": {
+          "type": "object",
+          "required": ["path", "declaration"],
+          "properties": {
+            "path": { "type": "string" },
+            "imports": { "type": "array" },
+            "declaration": {
+              "type": "object",
+              "required": ["kind", "name", "export", "async", "parameters", "returnType", "body"],
+              "properties": {
+                "kind": { "const": "function" },
+                "name": { "type": "string" },
+                "export": { "type": "boolean" },
+                "async": { "type": "boolean" },
+                "parameters": { "type": "array" },
+                "returnType": { "type": "string" },
+                "body": { "type": "array" }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["astProjectionType", "bodyId", "expected", "forbidden"],
+      "additionalProperties": false,
+      "properties": {
+        "astProjectionType": { "const": "typescript-ast-authority.v1" },
+        "bodyId": { "type": "string" },
+        "expected": { "type": "object" },
+        "forbidden": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/obligation.type.schema.json",
+  "title": "Obligation Authority",
+  "description": "Schema for a *.obligation.json file (Spine Layer 5) — the truth a scenario's responsibility must enforce.",
+  "type": "object",
+  "required": ["obligationId", "featureId", "scenarioId", "statement", "blocking"],
+  "additionalProperties": false,
+  "properties": {
+    "obligationId": { "type": "string" },
+    "featureId": { "type": "string" },
+    "scenarioId": { "type": "string" },
+    "statement": { "type": "string" },
+    "blocking": { "type": "boolean" }
+  }
+}

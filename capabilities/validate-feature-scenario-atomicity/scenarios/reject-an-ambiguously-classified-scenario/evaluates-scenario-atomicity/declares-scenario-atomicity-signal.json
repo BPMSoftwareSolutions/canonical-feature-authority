@@ -1,0 +1,12 @@
+{
+  "signalId": "scenario-atomicity",
+  "responsibilityId": "evaluates-scenario-atomicity",
+  "green": [
+    "SCENARIO_ATOMIC"
+  ],
+  "red": [
+    "SCENARIO_NOT_ATOMIC",
+    "SCENARIO_ATOMICITY_UNRESOLVED"
+  ],
+  "blocking": true
+}

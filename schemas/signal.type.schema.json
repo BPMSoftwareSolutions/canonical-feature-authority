@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/signal.type.schema.json",
+  "title": "Signal Authority",
+  "description": "Schema for declares-*-signal.json (Spine Layer 8) — the authoritative GREEN/RED dispositions a responsibility may return.",
+  "type": "object",
+  "required": ["signalId", "responsibilityId", "green", "red", "blocking"],
+  "additionalProperties": false,
+  "properties": {
+    "signalId": { "type": "string" },
+    "responsibilityId": { "type": "string" },
+    "green": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "red": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "blocking": { "type": "boolean" }
+  }
+}
