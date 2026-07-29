@@ -81,6 +81,62 @@ require a later schema and projector version. Inspection documents may express
 structured lists and tables inside `text` fenced-code blocks, as the adopted
 provenance contract does.
 
+## Document profiles
+
+The schema admits two explicit profiles:
+
+```text
+canonical-markdown.v1
+  validates deterministic Markdown structure and byte projection
+
+authority-projection-implementation-contract.v1
+  validates deterministic Markdown plus the complete implementation-contract
+  authority and projection spine
+```
+
+The strict implementation-contract profile requires a `subject` containing one
+feature ID and an ordered non-empty scenario-ID set.
+
+It also requires these level-two sections in this order:
+
+```text
+Status
+User story
+Acceptance Gherkin
+Physical canonical feature authority
+Repository spine
+Complete artifact set for the normative scenario
+Authority identity and projection ledger
+Normative evidence schemas
+Complete SEJ inputs
+Projected TypeScript bodies
+Ordered terminal acceptance algorithm
+RED dispositions
+Manual inspection sequence
+Implementation exit condition
+```
+
+Validation cross-checks:
+
+```text
+the user story contains As a, I want, and So that
+the Gherkin contains Feature, As a, I want, So that, and ordered scenario tags
+the Gherkin scenario tags equal subject.scenarioIds
+the parsed canonical feature authority equals the declared subject
+the repository spine contains the subject feature root and canonical authority
+the normative artifact set contains lineage, SEJ, AST, and TypeScript roles
+the projection ledger covers every declared scenario in order
+every ledger scenario contains primary, type, expectation, and conformance
+the normative scenario contains four complete parseable SEJ inputs
+the document contains four projected TypeScript body examples
+the normative evidence schema section contains parseable schema JSON
+the acceptance algorithm is a TypeScript projection
+the RED disposition block is a non-empty JSON array
+```
+
+Failure of any strict-profile invariant is a document-conformance failure even
+when the Markdown bytes otherwise reproduce.
+
 ## Canonical byte projection
 
 The projector must:
@@ -162,6 +218,16 @@ heading-level jump
 second level-one title
 content mutation without a new admitted output hash
 line-ending mutation
+```
+
+Strict implementation contracts add:
+
+```text
+required-section removal
+Gherkin scenario-identity substitution
+canonical feature-authority identity substitution
+missing four-body SEJ role
+missing projected TypeScript role
 ```
 
 ## Reusable ecosystem workflow

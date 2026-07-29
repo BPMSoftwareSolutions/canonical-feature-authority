@@ -142,6 +142,24 @@ from
 [the validated authority template](templates/governed-inspection-document-authority.template.json).
 The repository's `prove:projection` gate includes the governed-document proof.
 
+The proposed end-to-end new-feature capability is governed separately:
+
+```text
+npm run check:end-to-end-feature-contract
+npm run verify:end-to-end-feature-contract
+npm run prove:end-to-end-feature-contract
+```
+
+Its [JSON authority](architecture/inspects-end-to-end-feature-conveyor.authority.json)
+projects the
+[implementation contract](architecture/inspects-end-to-end-feature-conveyor.md).
+It uses the strict `authority-projection-implementation-contract.v1` profile,
+which validates the user story, Gherkin, canonical feature authority,
+repository spine, four-body SEJs, projected TypeScript, evidence contracts,
+acceptance algorithm, RED codes, inspection sequence, and exit condition.
+`prove:governed-documents` verifies both registered governed documents, and the
+repository's `prove:projection` gate invokes that complete document proof.
+
 ## The governing rule
 
 Every lesson enforces the same constraint on the running example:

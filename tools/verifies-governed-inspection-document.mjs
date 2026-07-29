@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { relative, resolve, sep } from "node:path";
 
 import {
   assertsSemanticDocumentInvariants,
@@ -16,9 +16,14 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
+const authorityArgumentIndex = process.argv.indexOf("--authority");
 const authorityPath = resolve(
-  moduleRepositoryRoot,
-  "architecture/inspects-projected-body-provenance.authority.json"
+  authorityArgumentIndex === -1
+    ? resolve(
+        moduleRepositoryRoot,
+        "architecture/inspects-projected-body-provenance.authority.json"
+      )
+    : process.argv[authorityArgumentIndex + 1]
 );
 const { schema, validate } = await createsAuthorityValidator();
 const catalog = JSON.parse(
@@ -51,8 +56,24 @@ assert(
   ),
   "Governed inspection document template is not cataloged"
 );
+const registeredAuthorityPath = relative(
+  moduleRepositoryRoot,
+  authorityPath
+).split(sep).join("/");
+assert(
+  catalog.authorities.some(
+    entry => entry.authority === registeredAuthorityPath
+  ),
+  `Governed document authority is not cataloged: ${registeredAuthorityPath}`
+);
 const { authority, projected } =
   await readsAndValidatesAuthority(authorityPath);
+assert(
+  catalog.profiles.some(
+    profile => profile.profileId === authority.documentProfile
+  ),
+  `Document profile is not cataloged: ${authority.documentProfile}`
+);
 const { authority: templateAuthority } =
   await readsAndValidatesAuthority(
     resolve(
@@ -167,6 +188,118 @@ recordsControl(
   },
   error => error.message === "DOCUMENT_PROJECTION_BYTE_DRIFT"
 );
+
+if (
+  authority.documentProfile ===
+  "authority-projection-implementation-contract.v1"
+) {
+  const missingSection = structuredClone(authority);
+  missingSection.blocks = missingSection.blocks.filter(
+    block =>
+      !(
+        block.blockType === "heading" &&
+        block.level === 2 &&
+        block.text === "User story"
+      )
+  );
+  recordsControl(
+    "required-contract-section",
+    () => assertsSemanticDocumentInvariants(missingSection),
+    error =>
+      error.message ===
+      "DOCUMENT_CONTRACT_SECTION_MISSING: User story"
+  );
+
+  const gherkinIdentity = structuredClone(authority);
+  const gherkinBlock = gherkinIdentity.blocks.find(
+    block =>
+      block.blockType === "fenced-code" &&
+      block.language === "gherkin"
+  );
+  const scenarioTagIndex = gherkinBlock.lines.findIndex(
+    line => line.includes("@scenario-id:")
+  );
+  gherkinBlock.lines[scenarioTagIndex] =
+    "  @scenario-id:substituted-scenario";
+  recordsControl(
+    "gherkin-scenario-identity",
+    () => assertsSemanticDocumentInvariants(gherkinIdentity),
+    error =>
+      error.message ===
+      "DOCUMENT_GHERKIN_SCENARIO_IDENTITY_MISMATCH"
+  );
+
+  const featureAuthorityIdentity = structuredClone(authority);
+  const featureHeadingIndex = featureAuthorityIdentity.blocks.findIndex(
+    block =>
+      block.blockType === "heading" &&
+      block.text === "Physical canonical feature authority"
+  );
+  const featureCodeBlock = featureAuthorityIdentity.blocks
+    .slice(featureHeadingIndex + 1)
+    .find(
+      block =>
+        block.blockType === "fenced-code" &&
+        block.language === "json"
+    );
+  const featureIdIndex = featureCodeBlock.lines.findIndex(
+    line => line.trim() === `"${authority.subject.featureId}",`
+  );
+  featureCodeBlock.lines[featureIdIndex] =
+    "    \"substituted-feature-id\",";
+  recordsControl(
+    "canonical-feature-authority-identity",
+    () => assertsSemanticDocumentInvariants(featureAuthorityIdentity),
+    error =>
+      error.message ===
+      "DOCUMENT_FEATURE_AUTHORITY_IDENTITY_MISMATCH"
+  );
+
+  const missingSejRole = structuredClone(authority);
+  const sejHeadingIndex = missingSejRole.blocks.findIndex(
+    block =>
+      block.blockType === "heading" &&
+      block.text === "Complete SEJ inputs"
+  );
+  const conformanceSejIndex = missingSejRole.blocks.findIndex(
+    (block, index) =>
+      index > sejHeadingIndex &&
+      block.blockType === "fenced-code" &&
+      block.language === "json" &&
+      block.lines.some(
+        line => line.includes("\"bodyRole\": \"conformance\"")
+      )
+  );
+  missingSejRole.blocks.splice(conformanceSejIndex, 1);
+  recordsControl(
+    "complete-four-body-sej-coverage",
+    () => assertsSemanticDocumentInvariants(missingSejRole),
+    error =>
+      error.message ===
+      "DOCUMENT_COMPLETE_SEJ_ROLE_COVERAGE_MISMATCH"
+  );
+
+  const missingProjectedBody = structuredClone(authority);
+  const projectedHeadingIndex = missingProjectedBody.blocks.findIndex(
+    block =>
+      block.blockType === "heading" &&
+      block.text === "Projected TypeScript bodies"
+  );
+  const projectedBodyIndex = missingProjectedBody.blocks.findIndex(
+    (block, index) =>
+      index > projectedHeadingIndex &&
+      block.blockType === "fenced-code" &&
+      block.language === "typescript"
+  );
+  missingProjectedBody.blocks.splice(projectedBodyIndex, 1);
+  recordsControl(
+    "projected-typescript-role-coverage",
+    () => assertsSemanticDocumentInvariants(missingProjectedBody),
+    error =>
+      error.message ===
+      "DOCUMENT_PROJECTED_TYPESCRIPT_ROLE_COVERAGE_MISMATCH"
+  );
+}
 
 const blockCounts = authority.blocks.reduce((counts, block) => {
   counts[block.blockType] = (counts[block.blockType] ?? 0) + 1;

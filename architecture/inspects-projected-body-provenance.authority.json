@@ -1,5 +1,6 @@
 {
   "authorityType": "governed-inspection-document-authority.v1",
+  "documentProfile": "canonical-markdown.v1",
   "documentId": "independent-bounded-model-submission-provenance-contract",
   "title": "Independent Bounded-Model-Submission Provenance Contract",
   "projection": {

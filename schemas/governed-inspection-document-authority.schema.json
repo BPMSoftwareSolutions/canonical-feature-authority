@@ -7,6 +7,7 @@
   "additionalProperties": false,
   "required": [
     "authorityType",
+    "documentProfile",
     "documentId",
     "title",
     "projection",
@@ -16,12 +17,21 @@
     "authorityType": {
       "const": "governed-inspection-document-authority.v1"
     },
+    "documentProfile": {
+      "enum": [
+        "canonical-markdown.v1",
+        "authority-projection-implementation-contract.v1"
+      ]
+    },
     "documentId": {
       "type": "string",
       "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
     },
     "title": {
       "$ref": "#/$defs/nonEmptyTrimmedLine"
+    },
+    "subject": {
+      "$ref": "#/$defs/subject"
     },
     "projection": {
       "$ref": "#/$defs/projection"
@@ -34,6 +44,27 @@
       }
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "documentProfile": {
+            "const": "authority-projection-implementation-contract.v1"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "subject"
+        ],
+        "properties": {
+          "subject": {
+            "$ref": "#/$defs/subject"
+          }
+        }
+      }
+    }
+  ],
   "$defs": {
     "sha256": {
       "type": "string",
@@ -98,6 +129,29 @@
         },
         "outputByteSha256": {
           "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "featureId",
+        "scenarioIds"
+      ],
+      "properties": {
+        "featureId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+        },
+        "scenarioIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+          }
         }
       }
     },

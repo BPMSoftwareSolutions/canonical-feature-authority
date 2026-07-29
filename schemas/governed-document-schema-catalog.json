@@ -3,8 +3,28 @@
   "schemas": [
     "governed-inspection-document-authority.schema.json"
   ],
+  "profiles": [
+    {
+      "profileId": "canonical-markdown.v1",
+      "validation": "schema-and-byte-projection"
+    },
+    {
+      "profileId": "authority-projection-implementation-contract.v1",
+      "validation": "schema-byte-and-authority-projection-spine"
+    }
+  ],
   "templates": [
     "templates/governed-inspection-document-authority.template.json"
+  ],
+  "authorities": [
+    {
+      "authority": "architecture/inspects-projected-body-provenance.authority.json",
+      "projection": "architecture/inspects-projected-body-provenance.md"
+    },
+    {
+      "authority": "architecture/inspects-end-to-end-feature-conveyor.authority.json",
+      "projection": "architecture/inspects-end-to-end-feature-conveyor.md"
+    }
   ],
   "projectors": [
     {

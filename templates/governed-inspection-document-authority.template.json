@@ -1,5 +1,6 @@
 {
   "authorityType": "governed-inspection-document-authority.v1",
+  "documentProfile": "canonical-markdown.v1",
   "documentId": "replace-governed-inspection-contract",
   "title": "Governed Inspection Contract",
   "projection": {

@@ -1,4 +1,5 @@
 architecture/inspects-projected-body-provenance.md text eol=crlf
+architecture/inspects-end-to-end-feature-conveyor.md text eol=crlf
 architecture/*.authority.json text eol=lf
 schemas/*.json text eol=lf
 templates/*.json text eol=lf

@@ -18,9 +18,13 @@
     "hash:governed-document": "node tools/projects-governed-inspection-document.mjs --hash",
     "verify:governed-document": "node tools/verifies-governed-inspection-document.mjs",
     "prove:governed-document": "npm run check:governed-document && npm run verify:governed-document",
+    "check:end-to-end-feature-contract": "node tools/projects-governed-inspection-document.mjs --authority architecture/inspects-end-to-end-feature-conveyor.authority.json --check",
+    "verify:end-to-end-feature-contract": "node tools/verifies-governed-inspection-document.mjs --authority architecture/inspects-end-to-end-feature-conveyor.authority.json",
+    "prove:end-to-end-feature-contract": "npm run check:end-to-end-feature-contract && npm run verify:end-to-end-feature-contract",
+    "prove:governed-documents": "npm run prove:governed-document && npm run prove:end-to-end-feature-contract",
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
-    "prove:projection": "npm run prove:governed-document && npm run check:bodies && npm run build",
+    "prove:projection": "npm run prove:governed-documents && npm run check:bodies && npm run build",
     "prove:lifecycle": "npm run check:bodies && npm run build && node dist/conformance/proves-projected-body-lifecycle.js"
   },
   "devDependencies": {

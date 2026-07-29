@@ -88,6 +88,246 @@ export function assertsSemanticDocumentInvariants(authority) {
       "DOCUMENT_TITLE_COUNT_INVALID: exactly one level-one heading is required"
     );
   }
+
+  if (
+    authority.documentProfile ===
+    "authority-projection-implementation-contract.v1"
+  ) {
+    assertsImplementationContractInvariants(authority);
+  }
+}
+
+const requiredImplementationSections = [
+  "Status",
+  "User story",
+  "Acceptance Gherkin",
+  "Physical canonical feature authority",
+  "Repository spine",
+  "Complete artifact set for the normative scenario",
+  "Authority identity and projection ledger",
+  "Normative evidence schemas",
+  "Complete SEJ inputs",
+  "Projected TypeScript bodies",
+  "Ordered terminal acceptance algorithm",
+  "RED dispositions",
+  "Manual inspection sequence",
+  "Implementation exit condition"
+];
+
+function sectionsByHeading(authority) {
+  const sections = new Map();
+  let current;
+  for (const block of authority.blocks) {
+    if (block.blockType === "heading" && block.level === 2) {
+      current = { heading: block.text, blocks: [] };
+      sections.set(block.text, current);
+    } else if (current) {
+      current.blocks.push(block);
+    }
+  }
+  return sections;
+}
+
+function codeBlocks(section, language) {
+  return section.blocks.filter(
+    block =>
+      block.blockType === "fenced-code" &&
+      (language === undefined || block.language === language)
+  );
+}
+
+function parsesJsonCodeBlocks(section) {
+  return codeBlocks(section, "json").map(block => {
+    try {
+      return JSON.parse(block.lines.join("\n"));
+    } catch {
+      throw new Error(
+        `DOCUMENT_CONTRACT_JSON_INVALID: ${section.heading}`
+      );
+    }
+  });
+}
+
+function assertsImplementationContractInvariants(authority) {
+  const sections = sectionsByHeading(authority);
+  let previousIndex = -1;
+  for (const heading of requiredImplementationSections) {
+    const index = authority.blocks.findIndex(
+      block =>
+        block.blockType === "heading" &&
+        block.level === 2 &&
+        block.text === heading
+    );
+    if (index === -1) {
+      throw new Error(
+        `DOCUMENT_CONTRACT_SECTION_MISSING: ${heading}`
+      );
+    }
+    if (index <= previousIndex) {
+      throw new Error(
+        `DOCUMENT_CONTRACT_SECTION_ORDER_MISMATCH: ${heading}`
+      );
+    }
+    previousIndex = index;
+  }
+
+  const userStory = codeBlocks(sections.get("User story"), "text")
+    .flatMap(block => block.lines)
+    .join("\n");
+  for (const marker of ["As a ", "I want ", "So that "]) {
+    if (!userStory.includes(marker)) {
+      throw new Error(
+        `DOCUMENT_USER_STORY_INCOMPLETE: ${marker.trim()}`
+      );
+    }
+  }
+
+  const gherkinBlocks = codeBlocks(
+    sections.get("Acceptance Gherkin"),
+    "gherkin"
+  );
+  if (gherkinBlocks.length !== 1) {
+    throw new Error("DOCUMENT_GHERKIN_BLOCK_COUNT_INVALID");
+  }
+  const gherkin = gherkinBlocks[0].lines.join("\n");
+  for (const marker of ["Feature: ", "  As a ", "  I want ", "  So that "]) {
+    if (!gherkin.includes(marker)) {
+      throw new Error(`DOCUMENT_GHERKIN_INCOMPLETE: ${marker.trim()}`);
+    }
+  }
+  const observedScenarioIds = [
+    ...gherkin.matchAll(/@scenario-id:([a-z][a-z0-9-]*)/g)
+  ].map(match => match[1]);
+  if (
+    JSON.stringify(observedScenarioIds) !==
+    JSON.stringify(authority.subject.scenarioIds)
+  ) {
+    throw new Error("DOCUMENT_GHERKIN_SCENARIO_IDENTITY_MISMATCH");
+  }
+
+  const featureAuthorities = parsesJsonCodeBlocks(
+    sections.get("Physical canonical feature authority")
+  );
+  if (featureAuthorities.length !== 1) {
+    throw new Error("DOCUMENT_FEATURE_AUTHORITY_COUNT_INVALID");
+  }
+  const featureAuthority = featureAuthorities[0];
+  if (
+    featureAuthority.authorityType !== "canonical-feature-authority.v1" ||
+    featureAuthority.featureId !== authority.subject.featureId ||
+    JSON.stringify(featureAuthority.scenarioIds) !==
+      JSON.stringify(authority.subject.scenarioIds)
+  ) {
+    throw new Error("DOCUMENT_FEATURE_AUTHORITY_IDENTITY_MISMATCH");
+  }
+
+  const repositorySpine = codeBlocks(
+    sections.get("Repository spine"),
+    "text"
+  ).flatMap(block => block.lines).join("\n");
+  for (const marker of [
+    `capabilities/${authority.subject.featureId}/`,
+    "projects-capability-authority.json",
+    "scenarios/"
+  ]) {
+    if (!repositorySpine.includes(marker)) {
+      throw new Error(`DOCUMENT_REPOSITORY_SPINE_INCOMPLETE: ${marker}`);
+    }
+  }
+
+  const artifactSet = codeBlocks(
+    sections.get("Complete artifact set for the normative scenario"),
+    "text"
+  ).flatMap(block => block.lines).join("\n");
+  for (const marker of [
+    "projection-lineage.index.json",
+    ".semantic-executable.json",
+    ".ts.ast.authority.json",
+    ".ts"
+  ]) {
+    if (!artifactSet.includes(marker)) {
+      throw new Error(`DOCUMENT_ARTIFACT_SET_INCOMPLETE: ${marker}`);
+    }
+  }
+
+  const ledgerObjects = parsesJsonCodeBlocks(
+    sections.get("Authority identity and projection ledger")
+  );
+  const ledger = ledgerObjects.find(
+    value =>
+      value?.matrixType === "four-body-sej-substitution-matrix.v1"
+  );
+  if (
+    !ledger ||
+    JSON.stringify(ledger.entries.map(entry => entry.scenarioId)) !==
+      JSON.stringify(authority.subject.scenarioIds)
+  ) {
+    throw new Error("DOCUMENT_PROJECTION_LEDGER_COVERAGE_MISMATCH");
+  }
+  const roles = ["primary", "type", "expectation", "conformance"];
+  for (const entry of ledger.entries) {
+    if (
+      JSON.stringify(entry.bodies.map(body => body.bodyRole)) !==
+      JSON.stringify(roles)
+    ) {
+      throw new Error(
+        `DOCUMENT_PROJECTION_LEDGER_ROLE_MISMATCH: ${entry.scenarioId}`
+      );
+    }
+  }
+
+  const schemaSection = sections.get("Normative evidence schemas");
+  if (
+    codeBlocks(schemaSection, "json").length === 0 ||
+    !schemaSection.blocks.some(
+      block =>
+        block.blockType === "fenced-code" &&
+        block.lines.some(line => line.includes("schemas/"))
+    )
+  ) {
+    throw new Error("DOCUMENT_NORMATIVE_SCHEMA_PROJECTION_MISSING");
+  }
+
+  const sejObjects = parsesJsonCodeBlocks(
+    sections.get("Complete SEJ inputs")
+  );
+  const observedRoles = sejObjects
+    .filter(
+      value =>
+        value?.semanticExecutableType !== undefined &&
+        value?.lineage?.scenarioId === authority.subject.scenarioIds[0]
+    )
+    .map(value => value.bodyRole);
+  if (JSON.stringify(observedRoles) !== JSON.stringify(roles)) {
+    throw new Error("DOCUMENT_COMPLETE_SEJ_ROLE_COVERAGE_MISMATCH");
+  }
+
+  if (
+    codeBlocks(
+      sections.get("Projected TypeScript bodies"),
+      "typescript"
+    ).length !== 4
+  ) {
+    throw new Error("DOCUMENT_PROJECTED_TYPESCRIPT_ROLE_COVERAGE_MISMATCH");
+  }
+  if (
+    codeBlocks(
+      sections.get("Ordered terminal acceptance algorithm"),
+      "typescript"
+    ).length !== 1
+  ) {
+    throw new Error("DOCUMENT_ACCEPTANCE_ALGORITHM_MISSING");
+  }
+  const redCodes = parsesJsonCodeBlocks(
+    sections.get("RED dispositions")
+  );
+  if (
+    redCodes.length !== 1 ||
+    !Array.isArray(redCodes[0]) ||
+    redCodes[0].length === 0
+  ) {
+    throw new Error("DOCUMENT_RED_DISPOSITIONS_INVALID");
+  }
 }
 
 export function projectsDocumentBytes(authority) {
