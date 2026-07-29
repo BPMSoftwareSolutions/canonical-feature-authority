@@ -1,0 +1,1510 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/canonical-feature-conveyor-contract.schema.json",
+  "title": "Canonical feature conveyor contract",
+  "description": "Language-neutral authority for constructing, projecting, executing, and reviewing one canonical feature in causal conveyor order.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "contract",
+    "conveyor",
+    "intent",
+    "outcome",
+    "canonicalFeatureBody",
+    "semanticAuthority",
+    "featureBodyAuthority",
+    "projectionAuthority",
+    "evaluationAuthority",
+    "reviewAuthority",
+    "projection"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://canonical-feature-authority/schemas/canonical-feature-conveyor-contract.schema.json"
+    },
+    "contract": {
+      "$ref": "#/$defs/contract"
+    },
+    "conveyor": {
+      "$ref": "#/$defs/conveyor"
+    },
+    "intent": {
+      "$ref": "#/$defs/intent"
+    },
+    "outcome": {
+      "$ref": "#/$defs/outcome"
+    },
+    "canonicalFeatureBody": {
+      "$ref": "#/$defs/canonicalFeatureBody"
+    },
+    "semanticAuthority": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/semanticAuthority"
+      }
+    },
+    "featureBodyAuthority": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/featureBody"
+      }
+    },
+    "projectionAuthority": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/projectionAuthority"
+      }
+    },
+    "evaluationAuthority": {
+      "$ref": "#/$defs/evaluationAuthority"
+    },
+    "reviewAuthority": {
+      "$ref": "#/$defs/reviewAuthority"
+    },
+    "projection": {
+      "$ref": "#/$defs/documentProjection"
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "nonEmptyText": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:[^\\r\\n]*\\S)?$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "jsonPointer": {
+      "type": "string",
+      "pattern": "^\\$"
+    },
+    "statement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statementId",
+        "text"
+      ],
+      "properties": {
+        "statementId": {
+          "$ref": "#/$defs/id"
+        },
+        "text": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
+      }
+    },
+    "statementList": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/statement"
+      }
+    },
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractType",
+        "contractId",
+        "title",
+        "status",
+        "schemaVersion"
+      ],
+      "properties": {
+        "contractType": {
+          "const": "canonical-feature-conveyor.v1"
+        },
+        "contractId": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "reviewed",
+            "admitted",
+            "rejected"
+          ]
+        },
+        "schemaVersion": {
+          "$ref": "#/$defs/version"
+        }
+      }
+    },
+    "stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stageId",
+        "purpose",
+        "requires",
+        "consumes",
+        "produces",
+        "reviewQuestions",
+        "completionCondition"
+      ],
+      "properties": {
+        "stageId": {
+          "$ref": "#/$defs/id"
+        },
+        "purpose": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "requires": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "consumes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "produces": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "reviewQuestions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/nonEmptyText"
+          }
+        },
+        "completionCondition": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
+      }
+    },
+    "conveyor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profileId",
+        "stages",
+        "constructionState"
+      ],
+      "properties": {
+        "profileId": {
+          "const": "canonical-feature-construction.v1"
+        },
+        "stages": {
+          "type": "array",
+          "minItems": 18,
+          "maxItems": 18,
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/captureIntentStage"
+            },
+            {
+              "$ref": "#/$defs/declareOutcomeStage"
+            },
+            {
+              "$ref": "#/$defs/establishFeatureStage"
+            },
+            {
+              "$ref": "#/$defs/establishScenariosStage"
+            },
+            {
+              "$ref": "#/$defs/decomposeObligationsStage"
+            },
+            {
+              "$ref": "#/$defs/declareExpectationsStage"
+            },
+            {
+              "$ref": "#/$defs/assignResponsibilitiesStage"
+            },
+            {
+              "$ref": "#/$defs/declareSignalsStage"
+            },
+            {
+              "$ref": "#/$defs/authorSemanticAuthorityStage"
+            },
+            {
+              "$ref": "#/$defs/authorSemanticExecutionStage"
+            },
+            {
+              "$ref": "#/$defs/authorFeatureBodyStage"
+            },
+            {
+              "$ref": "#/$defs/resolveLanguageProjectionStage"
+            },
+            {
+              "$ref": "#/$defs/projectExpectedAstStage"
+            },
+            {
+              "$ref": "#/$defs/projectExpectedCodeStage"
+            },
+            {
+              "$ref": "#/$defs/evaluateSemanticStage"
+            },
+            {
+              "$ref": "#/$defs/evaluateProjectedStage"
+            },
+            {
+              "$ref": "#/$defs/evaluateTranslationStage"
+            },
+            {
+              "$ref": "#/$defs/reviewFeatureStage"
+            }
+          ],
+          "items": false
+        },
+        "constructionState": {
+          "$ref": "#/$defs/constructionState"
+        }
+      }
+    },
+    "stageWithId": {
+      "$ref": "#/$defs/stage"
+    },
+    "captureIntentStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "capture-intent"
+        }
+      }
+    },
+    "declareOutcomeStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "declare-outcome"
+        }
+      }
+    },
+    "establishFeatureStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "establish-feature"
+        }
+      }
+    },
+    "establishScenariosStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "establish-scenarios"
+        }
+      }
+    },
+    "decomposeObligationsStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "decompose-obligations"
+        }
+      }
+    },
+    "declareExpectationsStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "declare-expectations"
+        }
+      }
+    },
+    "assignResponsibilitiesStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "assign-responsibilities"
+        }
+      }
+    },
+    "declareSignalsStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "declare-signals"
+        }
+      }
+    },
+    "authorSemanticAuthorityStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "author-semantic-authority"
+        }
+      }
+    },
+    "authorSemanticExecutionStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "author-semantic-execution"
+        }
+      }
+    },
+    "authorFeatureBodyStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "author-feature-body-authority"
+        }
+      }
+    },
+    "resolveLanguageProjectionStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "resolve-language-projection"
+        }
+      }
+    },
+    "projectExpectedAstStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "project-expected-ast"
+        }
+      }
+    },
+    "projectExpectedCodeStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "project-expected-code"
+        }
+      }
+    },
+    "evaluateSemanticStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "evaluate-semantic-execution"
+        }
+      }
+    },
+    "evaluateProjectedStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "evaluate-projected-execution"
+        }
+      }
+    },
+    "evaluateTranslationStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "evaluate-translation-conformance"
+        }
+      }
+    },
+    "reviewFeatureStage": {
+      "type": "object",
+      "$ref": "#/$defs/stageWithId",
+      "properties": {
+        "stageId": {
+          "const": "review-feature"
+        }
+      }
+    },
+    "constructionState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "currentStage",
+        "completedStages",
+        "eligibleNextStages"
+      ],
+      "properties": {
+        "currentStage": {
+          "$ref": "#/$defs/id"
+        },
+        "completedStages": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "eligibleNextStages": {
+          "type": "array",
+          "maxItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    },
+    "intent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor",
+        "trigger",
+        "need",
+        "purpose",
+        "constraints"
+      ],
+      "properties": {
+        "actor": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "trigger": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "need": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "purpose": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "constraints": {
+          "$ref": "#/$defs/statementList"
+        }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "outcomeId",
+        "statement",
+        "observableState"
+      ],
+      "properties": {
+        "outcomeId": {
+          "$ref": "#/$defs/id"
+        },
+        "statement": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "observableState": {
+          "$ref": "#/$defs/statementList"
+        }
+      }
+    },
+    "userStory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asA",
+        "iWant",
+        "soThat"
+      ],
+      "properties": {
+        "asA": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "iWant": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "soThat": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
+      }
+    },
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "featureId",
+        "title",
+        "userStory",
+        "governingObligation"
+      ],
+      "properties": {
+        "featureId": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "userStory": {
+          "$ref": "#/$defs/userStory"
+        },
+        "governingObligation": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
+      }
+    },
+    "behavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "given",
+        "when",
+        "then"
+      ],
+      "properties": {
+        "given": {
+          "$ref": "#/$defs/statementList"
+        },
+        "when": {
+          "$ref": "#/$defs/statement"
+        },
+        "then": {
+          "$ref": "#/$defs/statementList"
+        }
+      }
+    },
+    "obligation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "obligationId",
+        "statement"
+      ],
+      "properties": {
+        "obligationId": {
+          "$ref": "#/$defs/id"
+        },
+        "statement": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
+      }
+    },
+    "expectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expectationId",
+        "signalId",
+        "expectedDisposition"
+      ],
+      "properties": {
+        "expectationId": {
+          "$ref": "#/$defs/id"
+        },
+        "signalId": {
+          "$ref": "#/$defs/id"
+        },
+        "expectedDisposition": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        }
+      }
+    },
+    "responsibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "responsibilityId",
+        "kind",
+        "semanticOperationId"
+      ],
+      "properties": {
+        "responsibilityId": {
+          "$ref": "#/$defs/id"
+        },
+        "kind": {
+          "enum": [
+            "projection",
+            "execution",
+            "evaluation",
+            "conformance",
+            "admission"
+          ]
+        },
+        "semanticOperationId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "signal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "signalId",
+        "statement"
+      ],
+      "properties": {
+        "signalId": {
+          "$ref": "#/$defs/id"
+        },
+        "statement": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenarioId",
+        "title",
+        "behavior",
+        "obligation",
+        "expectation",
+        "responsibility",
+        "signal"
+      ],
+      "properties": {
+        "scenarioId": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "behavior": {
+          "$ref": "#/$defs/behavior"
+        },
+        "obligation": {
+          "$ref": "#/$defs/obligation"
+        },
+        "expectation": {
+          "$ref": "#/$defs/expectation"
+        },
+        "responsibility": {
+          "$ref": "#/$defs/responsibility"
+        },
+        "signal": {
+          "$ref": "#/$defs/signal"
+        }
+      }
+    },
+    "canonicalFeatureBody": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "feature",
+        "background",
+        "scenarios"
+      ],
+      "properties": {
+        "feature": {
+          "$ref": "#/$defs/feature"
+        },
+        "background": {
+          "$ref": "#/$defs/statementList"
+        },
+        "scenarios": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/scenario"
+          }
+        }
+      }
+    },
+    "contractReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId"
+      ],
+      "properties": {
+        "contractId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*\\.v[0-9]+$"
+        }
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observationId",
+        "source"
+      ],
+      "properties": {
+        "observationId": {
+          "$ref": "#/$defs/id"
+        },
+        "source": {
+          "$ref": "#/$defs/jsonPointer"
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decisionId",
+        "outcomes"
+      ],
+      "properties": {
+        "decisionId": {
+          "$ref": "#/$defs/id"
+        },
+        "outcomes": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          }
+        }
+      }
+    },
+    "semanticProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectionId",
+        "from",
+        "to"
+      ],
+      "properties": {
+        "projectionId": {
+          "$ref": "#/$defs/id"
+        },
+        "from": {
+          "$ref": "#/$defs/id"
+        },
+        "to": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*\\.v[0-9]+$"
+        }
+      }
+    },
+    "executionStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequence",
+        "operation"
+      ],
+      "properties": {
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "operation": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "semanticExecution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executionModelId",
+        "steps"
+      ],
+      "properties": {
+        "executionModelId": {
+          "$ref": "#/$defs/id"
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/executionStep"
+          }
+        }
+      }
+    },
+    "semanticAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "responsibilityId",
+        "accepts",
+        "produces",
+        "observations",
+        "decisions",
+        "projections",
+        "execution"
+      ],
+      "properties": {
+        "responsibilityId": {
+          "$ref": "#/$defs/id"
+        },
+        "accepts": {
+          "$ref": "#/$defs/contractReference"
+        },
+        "produces": {
+          "$ref": "#/$defs/contractReference"
+        },
+        "observations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/observation"
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/decision"
+          }
+        },
+        "projections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/semanticProjection"
+          }
+        },
+        "execution": {
+          "$ref": "#/$defs/semanticExecution"
+        }
+      }
+    },
+    "featureBodyOperation": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/invokeSemanticEdge"
+        },
+        {
+          "$ref": "#/$defs/returnValue"
+        }
+      ]
+    },
+    "invokeSemanticEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequence",
+        "operation",
+        "edgeId",
+        "input",
+        "assign"
+      ],
+      "properties": {
+        "sequence": {
+          "const": 1
+        },
+        "operation": {
+          "const": "invoke-semantic-edge"
+        },
+        "edgeId": {
+          "$ref": "#/$defs/id"
+        },
+        "input": {
+          "const": "$.context"
+        },
+        "assign": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "returnValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequence",
+        "operation",
+        "value"
+      ],
+      "properties": {
+        "sequence": {
+          "const": 2
+        },
+        "operation": {
+          "const": "return"
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^\\$\\.[a-z][A-Za-z0-9]*$"
+        }
+      }
+    },
+    "bodyConstraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "domainBranching",
+        "domainIteration",
+        "dtoConstruction",
+        "directEffects"
+      ],
+      "properties": {
+        "domainBranching": {
+          "const": "forbidden"
+        },
+        "domainIteration": {
+          "const": "forbidden"
+        },
+        "dtoConstruction": {
+          "const": "forbidden"
+        },
+        "directEffects": {
+          "const": "forbidden"
+        }
+      }
+    },
+    "featureBody": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bodyId",
+        "responsibilityId",
+        "bodyKind",
+        "context",
+        "operations",
+        "constraints"
+      ],
+      "properties": {
+        "bodyId": {
+          "$ref": "#/$defs/id"
+        },
+        "responsibilityId": {
+          "$ref": "#/$defs/id"
+        },
+        "bodyKind": {
+          "const": "scenario-responsibility"
+        },
+        "context": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "parameterName",
+            "contractId",
+            "immutable"
+          ],
+          "properties": {
+            "parameterName": {
+              "const": "context"
+            },
+            "contractId": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]*\\.v[0-9]+$"
+            },
+            "immutable": {
+              "const": true
+            }
+          }
+        },
+        "operations": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/invokeSemanticEdge"
+            },
+            {
+              "$ref": "#/$defs/returnValue"
+            }
+          ],
+          "items": false
+        },
+        "constraints": {
+          "$ref": "#/$defs/bodyConstraints"
+        }
+      }
+    },
+    "identifierExpression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "name"
+      ],
+      "properties": {
+        "kind": {
+          "const": "Identifier"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$"
+        }
+      }
+    },
+    "propertyAccessExpression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "receiver",
+        "member"
+      ],
+      "properties": {
+        "kind": {
+          "const": "PropertyAccessExpression"
+        },
+        "receiver": {
+          "$ref": "#/$defs/identifierExpression"
+        },
+        "member": {
+          "type": "string",
+          "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$"
+        }
+      }
+    },
+    "stringLiteralExpression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "value"
+      ],
+      "properties": {
+        "kind": {
+          "const": "StringLiteral"
+        },
+        "value": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
+      }
+    },
+    "callArgument": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/identifierExpression"
+        },
+        {
+          "$ref": "#/$defs/propertyAccessExpression"
+        },
+        {
+          "$ref": "#/$defs/stringLiteralExpression"
+        }
+      ]
+    },
+    "callExpression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "callee",
+        "arguments"
+      ],
+      "properties": {
+        "kind": {
+          "const": "CallExpression"
+        },
+        "callee": {
+          "$ref": "#/$defs/propertyAccessExpression"
+        },
+        "arguments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/callArgument"
+          }
+        }
+      }
+    },
+    "awaitExpression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "expression"
+      ],
+      "properties": {
+        "kind": {
+          "const": "AwaitExpression"
+        },
+        "expression": {
+          "$ref": "#/$defs/callExpression"
+        }
+      }
+    },
+    "returnStatement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "expression"
+      ],
+      "properties": {
+        "kind": {
+          "const": "ReturnStatement"
+        },
+        "expression": {
+          "$ref": "#/$defs/awaitExpression"
+        }
+      }
+    },
+    "parameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "typeReference",
+        "immutable"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$"
+        },
+        "typeReference": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Za-z0-9]*$"
+        },
+        "immutable": {
+          "const": true
+        }
+      }
+    },
+    "functionDeclaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "name",
+        "modifiers",
+        "parameters",
+        "returnType",
+        "body"
+      ],
+      "properties": {
+        "kind": {
+          "const": "FunctionDeclaration"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][A-Za-z0-9]*$"
+        },
+        "modifiers": {
+          "const": [
+            "export",
+            "async"
+          ]
+        },
+        "parameters": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "$ref": "#/$defs/parameter"
+          }
+        },
+        "returnType": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "typeReference"
+          ],
+          "properties": {
+            "kind": {
+              "const": "Promise"
+            },
+            "typeReference": {
+              "type": "string",
+              "pattern": "^[A-Z][A-Za-z0-9]*$"
+            }
+          }
+        },
+        "body": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "statements"
+          ],
+          "properties": {
+            "kind": {
+              "const": "Block"
+            },
+            "statements": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {
+                "$ref": "#/$defs/returnStatement"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sourceFileAst": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "statements"
+      ],
+      "properties": {
+        "kind": {
+          "const": "SourceFile"
+        },
+        "statements": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "$ref": "#/$defs/functionDeclaration"
+          }
+        }
+      }
+    },
+    "projectionAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bodyId",
+        "target",
+        "translation",
+        "expectedProjection"
+      ],
+      "properties": {
+        "bodyId": {
+          "$ref": "#/$defs/id"
+        },
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "language",
+            "moduleProfile",
+            "languageProfileId"
+          ],
+          "properties": {
+            "language": {
+              "const": "typescript"
+            },
+            "moduleProfile": {
+              "const": "typescript-esm"
+            },
+            "languageProfileId": {
+              "const": "typescript-collapsed-responsibility-body.v1"
+            }
+          }
+        },
+        "translation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceBodyId",
+            "projectionId",
+            "artifactPath"
+          ],
+          "properties": {
+            "sourceBodyId": {
+              "$ref": "#/$defs/id"
+            },
+            "projectionId": {
+              "$ref": "#/$defs/id"
+            },
+            "artifactPath": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._/-]+\\.ts$"
+            }
+          }
+        },
+        "expectedProjection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "imports",
+            "declarations",
+            "ast"
+          ],
+          "properties": {
+            "imports": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "declarations": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "ast": {
+              "$ref": "#/$defs/sourceFileAst"
+            }
+          }
+        }
+      }
+    },
+    "evaluationSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executionSource",
+        "fixtureSource",
+        "expectedSignalSource"
+      ],
+      "properties": {
+        "executionSource": {
+          "$ref": "#/$defs/jsonPointer"
+        },
+        "fixtureSource": {
+          "$ref": "#/$defs/jsonPointer"
+        },
+        "expectedSignalSource": {
+          "$ref": "#/$defs/jsonPointer"
+        }
+      }
+    },
+    "evaluationAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semanticEvaluation",
+        "projectedEvaluation",
+        "translationEvaluation",
+        "terminalDetermination"
+      ],
+      "properties": {
+        "semanticEvaluation": {
+          "$ref": "#/$defs/evaluationSource"
+        },
+        "projectedEvaluation": {
+          "$ref": "#/$defs/evaluationSource"
+        },
+        "translationEvaluation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "compare",
+            "requiredRelationship"
+          ],
+          "properties": {
+            "compare": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "$ref": "#/$defs/jsonPointer"
+              }
+            },
+            "requiredRelationship": {
+              "const": "canonical-equivalence"
+            }
+          }
+        },
+        "terminalDetermination": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "semanticExecution",
+            "projectedExecution",
+            "translation",
+            "disposition"
+          ],
+          "properties": {
+            "semanticExecution": {
+              "const": "CONFORMS"
+            },
+            "projectedExecution": {
+              "const": "CONFORMS"
+            },
+            "translation": {
+              "const": "EQUIVALENT"
+            },
+            "disposition": {
+              "const": "PROJECTION_CONFORMS"
+            }
+          }
+        }
+      }
+    },
+    "tieOut": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "ast",
+        "code"
+      ],
+      "properties": {
+        "authority": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "ast": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "code": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
+      }
+    },
+    "reviewAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "questions",
+        "translationTieOut",
+        "admissionRule"
+      ],
+      "properties": {
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/nonEmptyText"
+          }
+        },
+        "translationTieOut": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/tieOut"
+          }
+        },
+        "admissionRule": {
+          "$ref": "#/$defs/nonEmptyText"
+        }
+      }
+    },
+    "documentProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectorId",
+        "projectorVersion",
+        "outputPath",
+        "encoding",
+        "lineEnding",
+        "outputByteSha256"
+      ],
+      "properties": {
+        "projectorId": {
+          "const": "canonical-feature-conveyor-markdown-projector"
+        },
+        "projectorVersion": {
+          "const": "1.0.0"
+        },
+        "outputPath": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._/-]+\\.md$"
+        },
+        "encoding": {
+          "const": "UTF-8"
+        },
+        "lineEnding": {
+          "enum": [
+            "LF",
+            "CRLF"
+          ]
+        },
+        "outputByteSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  }
+}
