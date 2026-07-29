@@ -276,6 +276,54 @@ const bodies = new Map(
 const projections = new Map(
   authority.projectionAuthority.map(item => [item.bodyId, item])
 );
+const admissionDecision = semantics
+  .get("admits-reviewed-new-feature-request")
+  .decisions.find(
+    decision => decision.decisionId === "resolve-request-admission"
+  );
+assert(
+  JSON.stringify(admissionDecision.inputs) ===
+    JSON.stringify([
+      "$.input.reviewDisposition",
+      "$.input.existingFeatureIds",
+      "$.input.featureId"
+    ]) &&
+    JSON.stringify(admissionDecision.rules[0].when) ===
+      JSON.stringify({
+        all: [
+          {
+            left: "$.input.reviewDisposition",
+            operator: "equals",
+            right: "REVIEWED"
+          },
+          {
+            left: "$.input.existingFeatureIds",
+            operator: "not-contains",
+            right: "$.input.featureId"
+          }
+        ]
+      }) &&
+    admissionDecision.rules[1].when.otherwise === true,
+  "CONVEYOR_ADMISSION_DECISION_NOT_EXECUTABLE"
+);
+const terminalDecision = semantics
+  .get("verifies-complete-new-feature-lineage")
+  .decisions.find(
+    decision =>
+      decision.decisionId === "resolve-terminal-disposition"
+  );
+assert(
+  JSON.stringify(terminalDecision.inputs) ===
+    JSON.stringify([
+      "$.input.semanticObservation",
+      "$.input.projectedObservation",
+      "$.input.expectedSignal",
+      "$.input.astSourceCorrespondence"
+    ]) &&
+    terminalDecision.rules[0].when.all.length === 3 &&
+    terminalDecision.rules[1].when.otherwise === true,
+  "CONVEYOR_TERMINAL_DECISION_INPUT_MISMATCH"
+);
 const derivedBytes = await readFile(
   resolve(
     repositoryRoot,
@@ -370,6 +418,13 @@ for (const scenario of scenarios) {
   assert(
     body !== undefined,
     `CONVEYOR_FEATURE_BODY_MISSING: ${responsibility.responsibilityId}`
+  );
+  assert(
+    scenario.signal.resultShape.contractId ===
+      semantic.produces.contractId &&
+      scenario.signal.resultShape.shapePolicy ===
+        "disposition-only",
+    `CONVEYOR_SIGNAL_RESULT_SHAPE_MISMATCH: ${scenario.scenarioId}`
   );
   contiguous(
     semantic.execution.steps,
@@ -573,6 +628,22 @@ assert(
   ) === JSON.stringify(expectedDocumentationSections),
   "CONVEYOR_DOCUMENTATION_SECTION_ORDER_MISMATCH"
 );
+const stageDocumentationProfile =
+  authority.documentationProjection.stageDocumentationProfile;
+assert(
+  JSON.stringify(stageDocumentationProfile.requiredBlocks) ===
+    JSON.stringify([
+      "authority",
+      "meaning",
+      "projection-preview",
+      "traceability",
+      "review-questions"
+    ]) &&
+    JSON.stringify(
+      stageDocumentationProfile.stages.map(stage => stage.stageId)
+    ) === JSON.stringify(expectedStageIds),
+  "CONVEYOR_STAGE_DOCUMENTATION_PROFILE_MISMATCH"
+);
 assert(
   JSON.stringify(
     authority.documentationProjection.openingProjection
@@ -683,6 +754,35 @@ assert(
   "CONVEYOR_REQUIRED_ILLUSTRATION_MISSING"
 );
 const projectedMarkdown = projectsMarkdown(authority, derived);
+const projectedMarkdownText = projectedMarkdown.toString("utf8");
+assert(
+  (
+    projectedMarkdownText.match(
+      /^### What is established here\r?$/gm
+    ) ?? []
+  ).length === expectedStageIds.length &&
+    (
+      projectedMarkdownText.match(
+        /^### Canonical authority\r?$/gm
+      ) ?? []
+    ).length === expectedStageIds.length &&
+    (
+    projectedMarkdownText.match(
+      /^### What this becomes\r?$/gm
+    ) ?? []
+  ).length === expectedStageIds.length &&
+    (
+      projectedMarkdownText.match(
+        /^### Authority-to-code traceability\r?$/gm
+      ) ?? []
+    ).length === expectedStageIds.length &&
+    (
+      projectedMarkdownText.match(
+        /^### Review questions\r?$/gm
+      ) ?? []
+    ).length === expectedStageIds.length,
+  "CONVEYOR_STAGE_PROJECTION_PREVIEW_COVERAGE_MISMATCH"
+);
 assert(
   sha256(projectedMarkdown) === authority.projection.outputByteSha256,
   "CONVEYOR_PROJECTION_HASH_MISMATCH"
@@ -846,6 +946,48 @@ recordsControl(
       "CONVEYOR_PROJECTION_TOPOLOGY_RELATIONSHIP_MISMATCH"
     ),
   "CONVEYOR_PROJECTION_TOPOLOGY_RELATIONSHIP_MISMATCH"
+);
+const abstractAdmission = structuredClone(admissionDecision);
+abstractAdmission.rules[0].when = {
+  allRequiredInputsConform: true
+};
+recordsControl(
+  "abstract-admission-predicate",
+  () =>
+    assert(
+      JSON.stringify(abstractAdmission.rules[0].when) ===
+        JSON.stringify(admissionDecision.rules[0].when),
+      "CONVEYOR_ADMISSION_DECISION_NOT_EXECUTABLE"
+    ),
+  "CONVEYOR_ADMISSION_DECISION_NOT_EXECUTABLE"
+);
+const copiedTerminalInputs = structuredClone(terminalDecision);
+copiedTerminalInputs.inputs = [
+  "$.input.reviewDisposition",
+  "$.input.existingFeatureIds"
+];
+recordsControl(
+  "terminal-decision-input-copy",
+  () =>
+    assert(
+      JSON.stringify(copiedTerminalInputs.inputs) ===
+        JSON.stringify(terminalDecision.inputs),
+      "CONVEYOR_TERMINAL_DECISION_INPUT_MISMATCH"
+    ),
+  "CONVEYOR_TERMINAL_DECISION_INPUT_MISMATCH"
+);
+const missingStagePreview = structuredClone(authority);
+missingStagePreview.documentationProjection.stageDocumentationProfile.stages.pop();
+recordsControl(
+  "missing-stage-projection-preview",
+  () => {
+    if (!validate(missingStagePreview)) {
+      throw new Error(
+        "CONVEYOR_STAGE_DOCUMENTATION_PROFILE_MISMATCH"
+      );
+    }
+  },
+  "CONVEYOR_STAGE_DOCUMENTATION_PROFILE_MISMATCH"
 );
 bodyMutation.operations[0].edgeId = "substituted-edge";
 recordsControl(

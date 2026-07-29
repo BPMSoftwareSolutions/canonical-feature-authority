@@ -846,7 +846,8 @@
       "additionalProperties": false,
       "required": [
         "signalId",
-        "statement"
+        "statement",
+        "resultShape"
       ],
       "properties": {
         "signalId": {
@@ -854,6 +855,36 @@
         },
         "statement": {
           "$ref": "#/$defs/nonEmptyText"
+        },
+        "resultShape": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "shapePolicy",
+            "fields",
+            "rationale"
+          ],
+          "properties": {
+            "contractId": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]*\\.v[0-9]+$"
+            },
+            "shapePolicy": {
+              "const": "disposition-only"
+            },
+            "fields": {
+              "const": [
+                {
+                  "name": "disposition",
+                  "type": "string"
+                }
+              ]
+            },
+            "rationale": {
+              "$ref": "#/$defs/nonEmptyText"
+            }
+          }
         }
       }
     },
@@ -979,7 +1010,7 @@
                 "$ref": "#/$defs/id"
               },
               "when": {
-                "type": "object"
+                "$ref": "#/$defs/decisionCondition"
               },
               "then": {
                 "type": "string",
@@ -989,6 +1020,62 @@
           }
         }
       }
+    },
+    "decisionPredicate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "left",
+        "operator",
+        "right"
+      ],
+      "properties": {
+        "left": {
+          "$ref": "#/$defs/jsonPointer"
+        },
+        "operator": {
+          "enum": [
+            "equals",
+            "not-contains"
+          ]
+        },
+        "right": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "decisionCondition": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "all"
+          ],
+          "properties": {
+            "all": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/decisionPredicate"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "otherwise"
+          ],
+          "properties": {
+            "otherwise": {
+              "const": true
+            }
+          }
+        }
+      ]
     },
     "semanticProjection": {
       "type": "object",
@@ -2205,6 +2292,7 @@
       "required": [
         "profileId",
         "openingProjection",
+        "stageDocumentationProfile",
         "sections",
         "illustrations",
         "requiredIllustrations"
@@ -2299,6 +2387,79 @@
               "const": {
                 "source": "$.conveyor.stages",
                 "renderer": "ordered-conveyor"
+              }
+            }
+          }
+        },
+        "stageDocumentationProfile": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "profileId",
+            "requiredBlocks",
+            "stages"
+          ],
+          "properties": {
+            "profileId": {
+              "const": "authority-consequence-traceability-v1"
+            },
+            "requiredBlocks": {
+              "const": [
+                "authority",
+                "meaning",
+                "projection-preview",
+                "traceability",
+                "review-questions"
+              ]
+            },
+            "stages": {
+              "type": "array",
+              "minItems": 18,
+              "maxItems": 18,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "stageId",
+                  "previewKind",
+                  "source",
+                  "availability"
+                ],
+                "properties": {
+                  "stageId": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "previewKind": {
+                    "enum": [
+                      "constraint-effect",
+                      "terminal-type",
+                      "feature-execution",
+                      "scenario-to-body",
+                      "obligation-constraint",
+                      "expectation-comparison",
+                      "responsibility-identity",
+                      "signal-type",
+                      "semantic-execution-plan",
+                      "responsibility-source",
+                      "mapping-instance",
+                      "ast-with-source",
+                      "production-source",
+                      "evaluation-flow",
+                      "comparison-flow",
+                      "admission-transition"
+                    ]
+                  },
+                  "source": {
+                    "$ref": "#/$defs/jsonPointer"
+                  },
+                  "availability": {
+                    "enum": [
+                      "PROJECTOR_OUTPUT",
+                      "EXECUTABLE_MODEL",
+                      "GOVERNED_PREVIEW"
+                    ]
+                  }
+                }
               }
             }
           }

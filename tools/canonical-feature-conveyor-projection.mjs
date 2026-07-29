@@ -26,6 +26,8 @@ function stageInstruction(stage, number, title) {
   return [
     `## ${number}. ${title}`,
     "",
+    "### What is established here",
+    "",
     ...fenced(
       "text",
       [
@@ -44,12 +46,7 @@ function stageInstruction(stage, number, title) {
         `Required output: ${stage.produces.join(", ")}`,
         `Stop condition: ${stage.completionCondition}`
       ].join("\n")
-    ),
-    "",
-    "Review questions:",
-    "",
-    ...stage.reviewQuestions.map(question => `- ${question}`),
-    ""
+    )
   ];
 }
 
@@ -426,6 +423,321 @@ function perScenarioJson(authority, field) {
   );
 }
 
+function semanticExecutionFlow(semantic) {
+  const lines = [`[${semantic.accepts.contractId}]`];
+  for (const step of semantic.execution.steps) {
+    lines.push(
+      "        │",
+      "        ▼",
+      `┌─ ${step.authorityId}`,
+      `│  ${step.operation}`,
+      `│  ${step.input} → ${step.assign}`,
+      "└─"
+    );
+  }
+  lines.push(
+    "        │",
+    "        ▼",
+    `[${semantic.produces.contractId}]`
+  );
+  return fenced("text", lines.join("\n"));
+}
+
+function semanticTranslationTieOut(semantic, result) {
+  const functionName = result.projectedAst.statements.find(
+    statement => statement.kind === "function-declaration"
+  )?.name;
+  const rows = [
+    "| Authority element | Semantic execution construct | Responsibility-body construct |",
+    "| --- | --- | --- |"
+  ];
+  for (const step of semantic.execution.steps) {
+    rows.push(
+      `| ${step.authorityId} | ${step.operation} | hidden behind semantic edge |`
+    );
+  }
+  rows.push(
+    `| ${semantic.produces.contractId} | result contract | ${result.artifactPath} return type |`,
+    `| ${semantic.responsibilityId} | execution registration identity | ${functionName} lineage |`,
+    `| ${result.semanticOperationId} | semantic model identity | edge invocation string |`
+  );
+  return rows;
+}
+
+function rendersSemanticProjection(authority, semantic, derived) {
+  const result = derived.results.find(
+    item => item.responsibilityId === semantic.responsibilityId
+  );
+  if (!result) {
+    throw new Error(
+      `SEMANTIC_PROJECTION_RESULT_MISSING: ${semantic.responsibilityId}`
+    );
+  }
+  return [
+    "#### Semantic execution flow",
+    "",
+    ...semanticExecutionFlow(semantic),
+    "",
+    "#### Projected semantic execution",
+    "",
+    "Executable semantic model: AVAILABLE",
+    "",
+    "Projected semantic source availability: NOT_IMPLEMENTED",
+    "",
+    "The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.",
+    "",
+    "#### Projected responsibility boundary",
+    "",
+    ...fenced("typescript", result.projectedSource),
+    "",
+    "#### Translation tie-out",
+    "",
+    ...semanticTranslationTieOut(semantic, result)
+  ];
+}
+
+function stageProjectionPreview(profile, authority, derived) {
+  const kind = profile.previewKind;
+  const heading = [
+    "### What this becomes",
+    "",
+    `Projection availability: ${profile.availability}`,
+    ""
+  ];
+  if (kind === "constraint-effect") {
+    return [
+      ...heading,
+      ...fenced(
+        "text",
+        [
+          "Intent constraints",
+          "        │",
+          "        ▼",
+          "Projected body consequence",
+          "  permits: semantic-edge delegation",
+          "  forbids: local branching, DTO construction, and direct effects"
+        ].join("\n")
+      )
+    ];
+  }
+  if (kind === "terminal-type") {
+    const terminal = derived.results.at(-1);
+    return [
+      ...heading,
+      `Projected artifact: \`${terminal.supportingTypeArtifactPath}\``,
+      "",
+      ...fenced("typescript", terminal.supportingTypeSource)
+    ];
+  }
+  if (kind === "feature-execution") {
+    return [
+      ...heading,
+      `Projected artifact: \`${derived.featureExecution.artifactPath}\``,
+      "",
+      ...fenced(
+        "typescript",
+        derived.featureExecution.projectedSource
+      )
+    ];
+  }
+  if (
+    kind === "scenario-to-body" ||
+    kind === "responsibility-identity"
+  ) {
+    return [
+      ...heading,
+      ...fenced(
+        "text",
+        derived.results
+          .map(result => {
+            const functionName =
+              result.projectedAst.statements.find(
+                statement =>
+                  statement.kind === "function-declaration"
+              )?.name;
+            return [
+              result.scenarioId,
+              `  → ${result.responsibilityId}`,
+              `  → ${result.artifactPath}`,
+              `  → ${functionName}(...)`,
+              `  → edge ${result.semanticOperationId}`
+            ].join("\n");
+          })
+          .join("\n\n")
+      )
+    ];
+  }
+  if (kind === "obligation-constraint") {
+    return [
+      ...heading,
+      ...fenced(
+        "text",
+        authority.canonicalFeatureBody.scenarios
+          .map(scenario =>
+            [
+              `[OBLIGATION] ${scenario.obligation.obligationId}`,
+              "      ├── owns semantic decision/projection requirements",
+              "      └── forbids responsibility-body policy"
+            ].join("\n")
+          )
+          .join("\n\n")
+      )
+    ];
+  }
+  if (kind === "expectation-comparison") {
+    return [
+      ...heading,
+      ...fenced(
+        "text",
+        authority.canonicalFeatureBody.scenarios
+          .map(scenario =>
+            [
+              `Execution output (${scenario.signal.signalId}) ──┐`,
+              `                                                ├── compare ──► ${scenario.expectation.expectedDisposition} | DIVERGES`,
+              `Expected disposition (${scenario.expectation.expectationId}) ──┘`,
+              "comparison authority only; not execution policy"
+            ].join("\n")
+          )
+          .join("\n\n")
+      )
+    ];
+  }
+  if (kind === "signal-type") {
+    return [
+      ...heading,
+      ...derived.results.flatMap((result, index) => [
+        `#### ${result.supportingTypeArtifactPath}`,
+        "",
+        ...fenced("typescript", result.supportingTypeSource),
+        ...(index === derived.results.length - 1 ? [] : [""])
+      ])
+    ];
+  }
+  if (kind === "semantic-execution-plan") {
+    return [
+      ...heading,
+      "Executable semantic model: AVAILABLE",
+      "",
+      "Projected semantic source availability: NOT_IMPLEMENTED",
+      "",
+      ...authority.semanticAuthority.flatMap((semantic, index) => [
+        `#### ${semantic.responsibilityId}`,
+        "",
+        ...semanticExecutionFlow(semantic),
+        ...(index === authority.semanticAuthority.length - 1
+          ? []
+          : [""])
+      ])
+    ];
+  }
+  if (kind === "responsibility-source") {
+    return [
+      ...heading,
+      ...derived.results.flatMap((result, index) => [
+        `#### ${result.bodyId}`,
+        "",
+        ...fenced("typescript", result.projectedSource),
+        ...(index === derived.results.length - 1 ? [] : [""])
+      ])
+    ];
+  }
+  if (kind === "mapping-instance") {
+    const edgeMapping = authority.languageProfiles[0].mappings.find(
+      mapping => mapping.ruleId === "semantic-edge-to-call"
+    );
+    return [
+      ...heading,
+      ...fenced(
+        "text",
+        authority.projectionAuthority
+          .map(projection => {
+            const request = projection.input.projectorRequest;
+            return [
+              projection.input.bodyAuthorityRef,
+              `  → function ${request.function.name}`,
+              `${request.function.resultTypeReference}`,
+              `  → return type ${projection.typeResolution.resultType}`,
+              `${request.function.semanticEdgeId}`,
+              `  → ${edgeMapping.target}`
+            ].join("\n");
+          })
+          .join("\n\n")
+      )
+    ];
+  }
+  if (kind === "ast-with-source") {
+    return [
+      ...heading,
+      ...derived.results.flatMap((result, index) => [
+        `#### ${result.bodyId}`,
+        "",
+        `AST root: \`${result.projectedAst.kind}\``,
+        "",
+        ...fenced("typescript", result.projectedSource),
+        ...(index === derived.results.length - 1 ? [] : [""])
+      ])
+    ];
+  }
+  if (kind === "production-source") {
+    return [
+      ...heading,
+      `Authoritative projector output count: ${derived.results.length + 1}`,
+      "",
+      "The complete production output and translation provenance are rendered in this section."
+    ];
+  }
+  if (kind === "evaluation-flow") {
+    return [
+      ...heading,
+      ...fenced(
+        "text",
+        [
+          "execute declared model/body",
+          "        │",
+          "        ▼",
+          "capture observed signal",
+          "        │",
+          "        ▼",
+          "retain NOT_EVALUATED until runtime evidence exists"
+        ].join("\n")
+      )
+    ];
+  }
+  if (kind === "comparison-flow") {
+    return [
+      ...heading,
+      ...fenced(
+        "text",
+        [
+          "semantic observation ──┐",
+          "                       ├── compare to expectation and correspondence ──► disposition",
+          "projected observation ─┘"
+        ].join("\n")
+      )
+    ];
+  }
+  if (kind === "admission-transition") {
+    return [
+      ...heading,
+      ...fenced(
+        "text",
+        [
+          "NOT_EVALUATED",
+          "      │ runtime evidence and canonical equivalence",
+          "      ▼",
+          "PROJECTION_CONFORMS",
+          "      │ admission rule",
+          "      ▼",
+          "materialization eligible"
+        ].join("\n")
+      )
+    ];
+  }
+  throw new Error(
+    `STAGE_PROJECTION_PREVIEW_UNSUPPORTED: ${kind}`
+  );
+}
+
 const renderers = {
   "intent-section": authority => [
     `Actor: ${authority.intent.actor}`,
@@ -473,13 +785,21 @@ const renderers = {
     perScenarioJson(authority, "responsibility"),
   "signal-section": authority =>
     perScenarioJson(authority, "signal"),
-  "semantic-authority-section": authority =>
+  "semantic-authority-section": (authority, derived) =>
     authority.semanticAuthority.flatMap((semantic, index) => {
       const { execution, ...declaration } = semantic;
       return [
         `### ${semantic.responsibilityId}`,
         "",
+        "#### Canonical authority",
+        "",
         ...fenced("json", declaration),
+        "",
+        ...rendersSemanticProjection(
+          authority,
+          semantic,
+          derived
+        ),
         ...(index === authority.semanticAuthority.length - 1
           ? []
           : [""])
@@ -498,7 +818,17 @@ const renderers = {
     ...authority.featureBodyAuthority.flatMap((body, index) => [
       `### ${body.bodyId}`,
       "",
+      "#### Canonical authority",
+      "",
       ...fenced("json", body),
+      "",
+      "#### Projected responsibility body",
+      "",
+      ...fenced(
+        "typescript",
+        derived.results.find(result => result.bodyId === body.bodyId)
+          .projectedSource
+      ),
       ...(index === authority.featureBodyAuthority.length - 1
         ? []
         : [""])
@@ -530,6 +860,10 @@ const renderers = {
       `### ${result.bodyId}`,
       "",
       ...fenced("json", result.projectedAst),
+      "",
+      "#### Compact source preview",
+      "",
+      ...fenced("typescript", result.projectedSource),
       ...(index === derived.results.length - 1 ? [] : [""])
     ])
   ],
@@ -626,8 +960,12 @@ export function projectsMarkdown(authority, derived) {
   for (const [index, section] of
     authority.documentationProjection.sections.entries()) {
     const stage = authority.conveyor.stages[index];
+    const previewProfile =
+      authority.documentationProjection.stageDocumentationProfile
+        .stages[index];
     if (
       section.stageId !== stage.stageId ||
+      previewProfile.stageId !== stage.stageId ||
       typeof renderers[section.renderer] !== "function"
     ) {
       throw new Error(
@@ -640,7 +978,29 @@ export function projectsMarkdown(authority, derived) {
         index + 1,
         stageTitles[stage.stageId]
       ),
+      "",
+      "### Canonical authority",
+      "",
       ...renderers[section.renderer](authority, derived),
+      "",
+      ...stageProjectionPreview(
+        previewProfile,
+        authority,
+        derived
+      ),
+      "",
+      "### Authority-to-code traceability",
+      "",
+      "| Authority source | Projection preview | Availability | Required output |",
+      "| --- | --- | --- | --- |",
+      `| ${previewProfile.source} | ${previewProfile.previewKind} | ` +
+        `${previewProfile.availability} | ${stage.produces.join(
+          ", "
+        )} |`,
+      "",
+      "### Review questions",
+      "",
+      ...stage.reviewQuestions.map(question => `- ${question}`),
       ""
     );
   }

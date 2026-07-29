@@ -461,7 +461,18 @@
         },
         "signal": {
           "signalId": "new-feature-request-admission",
-          "statement": "The reviewed request is admitted or rejected with one deterministic disposition."
+          "statement": "The reviewed request is admitted or rejected with one deterministic disposition.",
+          "resultShape": {
+            "contractId": "new-feature-request-admission.v1",
+            "shapePolicy": "disposition-only",
+            "fields": [
+              {
+                "name": "disposition",
+                "type": "string"
+              }
+            ],
+            "rationale": "The signal reports terminal admission status; reviewed request identity remains in lineage authority."
+          }
         }
       },
       {
@@ -501,7 +512,18 @@
         },
         "signal": {
           "signalId": "complete-new-feature-authority",
-          "statement": "Every required canonical construction product exists and is causally linked."
+          "statement": "Every required canonical construction product exists and is causally linked.",
+          "resultShape": {
+            "contractId": "complete-new-feature-authority.v1",
+            "shapePolicy": "disposition-only",
+            "fields": [
+              {
+                "name": "disposition",
+                "type": "string"
+              }
+            ],
+            "rationale": "The signal reports completion status; constructed authority remains in governed artifacts."
+          }
         }
       },
       {
@@ -545,7 +567,18 @@
         },
         "signal": {
           "signalId": "complete-new-feature-materialization",
-          "statement": "Every expected artifact exists and reproduces its admitted AST."
+          "statement": "Every expected artifact exists and reproduces its admitted AST.",
+          "resultShape": {
+            "contractId": "complete-new-feature-materialization.v1",
+            "shapePolicy": "disposition-only",
+            "fields": [
+              {
+                "name": "disposition",
+                "type": "string"
+              }
+            ],
+            "rationale": "The signal reports materialization status; artifact identities and hashes remain in projection evidence."
+          }
         }
       },
       {
@@ -589,7 +622,18 @@
         },
         "signal": {
           "signalId": "observed-new-feature-execution",
-          "statement": "The projected feature produces the same observable signal as direct semantic execution."
+          "statement": "The projected feature produces the same observable signal as direct semantic execution.",
+          "resultShape": {
+            "contractId": "observed-new-feature-execution.v1",
+            "shapePolicy": "disposition-only",
+            "fields": [
+              {
+                "name": "disposition",
+                "type": "string"
+              }
+            ],
+            "rationale": "The signal reports execution conformance status; observations remain separate evaluation evidence."
+          }
         }
       },
       {
@@ -633,7 +677,18 @@
         },
         "signal": {
           "signalId": "complete-new-feature-equivalence",
-          "statement": "Canonical meaning is conserved across authority, AST, source, and both execution surfaces."
+          "statement": "Canonical meaning is conserved across authority, AST, source, and both execution surfaces.",
+          "resultShape": {
+            "contractId": "new-feature-terminal-disposition.v1",
+            "shapePolicy": "disposition-only",
+            "fields": [
+              {
+                "name": "disposition",
+                "type": "string"
+              }
+            ],
+            "rationale": "The terminal signal reports the comparison disposition; the compared evidence remains independently addressable."
+          }
         }
       }
     ]
@@ -658,20 +713,32 @@
           "decisionId": "resolve-request-admission",
           "inputs": [
             "$.input.reviewDisposition",
-            "$.input.existingFeatureIds"
+            "$.input.existingFeatureIds",
+            "$.input.featureId"
           ],
           "rules": [
             {
-              "ruleId": "resolve-request-admission-success",
+              "ruleId": "admit-reviewed-absent-feature",
               "when": {
-                "allRequiredInputsConform": true
+                "all": [
+                  {
+                    "left": "$.input.reviewDisposition",
+                    "operator": "equals",
+                    "right": "REVIEWED"
+                  },
+                  {
+                    "left": "$.input.existingFeatureIds",
+                    "operator": "not-contains",
+                    "right": "$.input.featureId"
+                  }
+                ]
               },
               "then": "ADMITTED"
             },
             {
-              "ruleId": "resolve-request-admission-fallback",
+              "ruleId": "reject-ineligible-feature",
               "when": {
-                "*": true
+                "otherwise": true
               },
               "then": "REJECTED"
             }
@@ -876,21 +943,39 @@
         {
           "decisionId": "resolve-terminal-disposition",
           "inputs": [
-            "$.input.reviewDisposition",
-            "$.input.existingFeatureIds"
+            "$.input.semanticObservation",
+            "$.input.projectedObservation",
+            "$.input.expectedSignal",
+            "$.input.astSourceCorrespondence"
           ],
           "rules": [
             {
-              "ruleId": "resolve-terminal-disposition-success",
+              "ruleId": "conform-equivalent-feature-lineage",
               "when": {
-                "allRequiredInputsConform": true
+                "all": [
+                  {
+                    "left": "$.input.semanticObservation",
+                    "operator": "equals",
+                    "right": "$.input.expectedSignal"
+                  },
+                  {
+                    "left": "$.input.projectedObservation",
+                    "operator": "equals",
+                    "right": "$.input.expectedSignal"
+                  },
+                  {
+                    "left": "$.input.astSourceCorrespondence",
+                    "operator": "equals",
+                    "right": "CONFORMS"
+                  }
+                ]
               },
               "then": "PROJECTION_CONFORMS"
             },
             {
-              "ruleId": "resolve-terminal-disposition-fallback",
+              "ruleId": "reject-divergent-feature-lineage",
               "when": {
-                "*": true
+                "otherwise": true
               },
               "then": "PROJECTION_DIVERGES"
             }
@@ -1726,7 +1811,7 @@
     "outputPath": "architecture/end-to-end-canonical-feature-conveyor.md",
     "encoding": "UTF-8",
     "lineEnding": "CRLF",
-    "outputByteSha256": "sha256:fefa06065067f490aff4efd5255732b8177638fc9eee349d09187de86234a36e",
+    "outputByteSha256": "sha256:13c73a9a2ea07d7597a86f091be4fb4eb999a34e18b951c041e0e1bf582e02d3",
     "derivedProjectionOutputPath": "architecture/end-to-end-canonical-feature-conveyor.derived-projections.json",
     "derivedProjectionSha256": "sha256:d4ec16231bbe33321cf23ff2d42015329f3205fb9cfa4b1ff971b33a90a38381"
   },
@@ -2317,6 +2402,126 @@
         "source": "$.conveyor.stages",
         "renderer": "ordered-conveyor"
       }
+    },
+    "stageDocumentationProfile": {
+      "profileId": "authority-consequence-traceability-v1",
+      "requiredBlocks": [
+        "authority",
+        "meaning",
+        "projection-preview",
+        "traceability",
+        "review-questions"
+      ],
+      "stages": [
+        {
+          "stageId": "capture-intent",
+          "previewKind": "constraint-effect",
+          "source": "$.intent.constraints",
+          "availability": "GOVERNED_PREVIEW"
+        },
+        {
+          "stageId": "declare-outcome",
+          "previewKind": "terminal-type",
+          "source": "$.derivedProjections.results",
+          "availability": "PROJECTOR_OUTPUT"
+        },
+        {
+          "stageId": "establish-feature",
+          "previewKind": "feature-execution",
+          "source": "$.derivedProjections.featureExecution",
+          "availability": "PROJECTOR_OUTPUT"
+        },
+        {
+          "stageId": "establish-scenarios",
+          "previewKind": "scenario-to-body",
+          "source": "$.projectionAuthority",
+          "availability": "PROJECTOR_OUTPUT"
+        },
+        {
+          "stageId": "decompose-obligations",
+          "previewKind": "obligation-constraint",
+          "source": "$.featureBodyAuthority.constraints",
+          "availability": "GOVERNED_PREVIEW"
+        },
+        {
+          "stageId": "declare-expectations",
+          "previewKind": "expectation-comparison",
+          "source": "$.canonicalFeatureBody.scenarios",
+          "availability": "GOVERNED_PREVIEW"
+        },
+        {
+          "stageId": "assign-responsibilities",
+          "previewKind": "responsibility-identity",
+          "source": "$.projectionAuthority",
+          "availability": "PROJECTOR_OUTPUT"
+        },
+        {
+          "stageId": "declare-signals",
+          "previewKind": "signal-type",
+          "source": "$.derivedProjections.results",
+          "availability": "PROJECTOR_OUTPUT"
+        },
+        {
+          "stageId": "author-semantic-authority",
+          "previewKind": "semantic-execution-plan",
+          "source": "$.semanticAuthority",
+          "availability": "EXECUTABLE_MODEL"
+        },
+        {
+          "stageId": "author-semantic-execution",
+          "previewKind": "semantic-execution-plan",
+          "source": "$.semanticAuthority.execution",
+          "availability": "EXECUTABLE_MODEL"
+        },
+        {
+          "stageId": "author-feature-body-authority",
+          "previewKind": "responsibility-source",
+          "source": "$.derivedProjections.results",
+          "availability": "PROJECTOR_OUTPUT"
+        },
+        {
+          "stageId": "resolve-language-projection",
+          "previewKind": "mapping-instance",
+          "source": "$.projectionAuthority",
+          "availability": "PROJECTOR_OUTPUT"
+        },
+        {
+          "stageId": "project-expected-ast",
+          "previewKind": "ast-with-source",
+          "source": "$.derivedProjections.results",
+          "availability": "PROJECTOR_OUTPUT"
+        },
+        {
+          "stageId": "project-expected-code",
+          "previewKind": "production-source",
+          "source": "$.derivedProjections.results",
+          "availability": "PROJECTOR_OUTPUT"
+        },
+        {
+          "stageId": "evaluate-semantic-execution",
+          "previewKind": "evaluation-flow",
+          "source": "$.evaluationAuthority.semanticEvaluation",
+          "availability": "GOVERNED_PREVIEW"
+        },
+        {
+          "stageId": "evaluate-projected-execution",
+          "previewKind": "evaluation-flow",
+          "source": "$.evaluationAuthority.projectedEvaluation",
+          "availability": "GOVERNED_PREVIEW"
+        },
+        {
+          "stageId": "evaluate-translation-conformance",
+          "previewKind": "comparison-flow",
+          "source": "$.evaluationAuthority.translationEvaluation",
+          "availability": "GOVERNED_PREVIEW"
+        },
+        {
+          "stageId": "review-feature",
+          "previewKind": "admission-transition",
+          "source": "$.reviewAuthority.admissionRule",
+          "availability": "GOVERNED_PREVIEW"
+        }
+      ]
     },
     "sections": [
       {

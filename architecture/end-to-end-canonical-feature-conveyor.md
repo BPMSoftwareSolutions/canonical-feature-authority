@@ -402,6 +402,8 @@ Feature-level execution
 
 ## 1. Intent
 
+### What is established here
+
 ```text
 Stage ID: capture-intent
 Purpose: Capture the human need without introducing implementation technology.
@@ -411,9 +413,7 @@ Required output: intent
 Stop condition: one implementation-neutral intent is complete
 ```
 
-Review questions:
-
-- Is the need expressed without language, framework, file, or provider decisions?
+### Canonical authority
 
 Actor: reviewer of authority-projected software
 
@@ -430,7 +430,32 @@ Constraints:
 - language projection introduces no meaning absent from canonical authority
 - execution cannot read the expected result to manufacture its observed result
 
+### What this becomes
+
+Projection availability: GOVERNED_PREVIEW
+
+```text
+Intent constraints
+        │
+        ▼
+Projected body consequence
+  permits: semantic-edge delegation
+  forbids: local branching, DTO construction, and direct effects
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.intent.constraints | constraint-effect | GOVERNED_PREVIEW | intent |
+
+### Review questions
+
+- Is the need expressed without language, framework, file, or provider decisions?
+
 ## 2. Desired outcome
+
+### What is established here
 
 ```text
 Stage ID: declare-outcome
@@ -441,9 +466,7 @@ Required output: desired-outcome
 Stop condition: one desired outcome and its observable state are complete
 ```
 
-Review questions:
-
-- Is the outcome observable without prescribing its implementation?
+### Canonical authority
 
 Outcome ID: `complete-new-feature-is-canonically-constructed`
 
@@ -456,7 +479,45 @@ Observable state:
 - every language-neutral body, expected AST, and expected source projection is visible
 - semantic execution, projected execution, and declared expectations are canonically equivalent
 
+### What this becomes
+
+Projection availability: PROJECTOR_OUTPUT
+
+Projected artifact: `src/complete-new-feature-lineage.type.ts`
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: verify-one-complete-new-feature-lineage
+// obligation-id: prove-complete-new-feature-equivalence
+// responsibility-id: verifies-complete-new-feature-lineage
+// signal-id: complete-new-feature-equivalence
+// DO NOT EDIT.
+export interface VerifyCompleteNewFeatureLineageContext {
+  readonly edges: {
+    readonly invokes: (edgeId: string, context: VerifyCompleteNewFeatureLineageContext) => Promise<NewFeatureTerminalDisposition>;
+  };
+}
+
+export interface NewFeatureTerminalDisposition {
+  readonly disposition: string;
+}
+
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.derivedProjections.results | terminal-type | PROJECTOR_OUTPUT | desired-outcome |
+
+### Review questions
+
+- Is the outcome observable without prescribing its implementation?
+
 ## 3. Canonical feature
+
+### What is established here
 
 ```text
 Stage ID: establish-feature
@@ -467,9 +528,7 @@ Required output: canonical-feature
 Stop condition: one canonical feature identity, story, and governing obligation are complete
 ```
 
-Review questions:
-
-- Does the feature preserve the intent and desired outcome without adding implementation meaning?
+### Canonical authority
 
 ```json
 {
@@ -484,7 +543,71 @@ Review questions:
 }
 ```
 
+### What this becomes
+
+Projection availability: PROJECTOR_OUTPUT
+
+Projected artifact: `composition/executes-end-to-end-canonical-feature-conveyor.ts`
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: execute-complete-canonical-feature-conveyor
+// obligation-id: execute-one-mechanically-continuous-feature-flow
+// responsibility-id: executes-end-to-end-canonical-feature-conveyor
+// signal-id: new-feature-terminal-disposition
+// DO NOT EDIT.
+import type { EndToEndCanonicalFeatureConveyorContext, NewFeatureTerminalDisposition } from "./executes-end-to-end-canonical-feature-conveyor.type.js";
+
+export async function executesEndToEndCanonicalFeatureConveyor(
+  context: EndToEndCanonicalFeatureConveyorContext
+): Promise<NewFeatureTerminalDisposition> {
+  const admission = await context.edges.invokes(
+    "admit-reviewed-new-feature-request",
+    context
+  );
+  const admittedRequest = await context.edges.invokes(
+    "adapt-new-feature-request-admission",
+    admission
+  );
+  const authority = await context.edges.invokes(
+    "project-complete-new-feature-authority",
+    admittedRequest
+  );
+  const materialization = await context.edges.invokes(
+    "materialize-complete-new-feature",
+    authority
+  );
+  const execution = await context.edges.invokes(
+    "execute-newly-materialized-feature",
+    materialization
+  );
+  const comparison = await context.edges.invokes(
+    "compose-new-feature-execution-comparison",
+    execution
+  );
+  const disposition = await context.edges.invokes(
+    "verify-complete-new-feature-lineage",
+    comparison
+  );
+  return disposition;
+}
+
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.derivedProjections.featureExecution | feature-execution | PROJECTOR_OUTPUT | canonical-feature |
+
+### Review questions
+
+- Does the feature preserve the intent and desired outcome without adding implementation meaning?
+
 ## 4. Scenarios
+
+### What is established here
 
 ```text
 Stage ID: establish-scenarios
@@ -495,9 +618,7 @@ Required output: canonical-scenarios
 Stop condition: every required feature behavior is represented by one focused scenario
 ```
 
-Review questions:
-
-- Does every scenario contain focused preconditions, one responsibility transition, and observable outcomes?
+### Canonical authority
 
 ```gherkin
 Feature: Implement one new feature end to end through a governed conveyor
@@ -636,7 +757,55 @@ verifies-complete-new-feature-lineage
 complete-new-feature-equivalence
 ```
 
+### What this becomes
+
+Projection availability: PROJECTOR_OUTPUT
+
+```text
+admit-one-reviewed-new-feature-request
+  → admits-reviewed-new-feature-request
+  → src/new-feature-request-admission.ts
+  → admitsReviewedNewFeatureRequest(...)
+  → edge admit-reviewed-new-feature-request
+
+project-one-complete-new-feature-authority
+  → projects-complete-new-feature-authority
+  → src/complete-new-feature-authority.ts
+  → projectsCompleteNewFeatureAuthority(...)
+  → edge project-complete-new-feature-authority
+
+materialize-one-complete-new-feature
+  → materializes-complete-new-feature
+  → src/complete-new-feature-materialization.ts
+  → materializesCompleteNewFeature(...)
+  → edge materialize-complete-new-feature
+
+execute-one-newly-materialized-feature
+  → executes-newly-materialized-feature
+  → src/observed-new-feature-execution.ts
+  → executesNewlyMaterializedFeature(...)
+  → edge execute-newly-materialized-feature
+
+verify-one-complete-new-feature-lineage
+  → verifies-complete-new-feature-lineage
+  → src/complete-new-feature-lineage.ts
+  → verifiesCompleteNewFeatureLineage(...)
+  → edge verify-complete-new-feature-lineage
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.projectionAuthority | scenario-to-body | PROJECTOR_OUTPUT | canonical-scenarios |
+
+### Review questions
+
+- Does every scenario contain focused preconditions, one responsibility transition, and observable outcomes?
+
 ## 5. Obligations
+
+### What is established here
 
 ```text
 Stage ID: decompose-obligations
@@ -647,9 +816,7 @@ Required output: scenario-obligations
 Stop condition: every scenario has one complete obligation
 ```
 
-Review questions:
-
-- Does each obligation express exactly the meaning that its scenario requires?
+### Canonical authority
 
 ### admit-one-reviewed-new-feature-request
 
@@ -711,7 +878,45 @@ Review questions:
 }
 ```
 
+### What this becomes
+
+Projection availability: GOVERNED_PREVIEW
+
+```text
+[OBLIGATION] establish-one-eligible-new-feature-request
+      ├── owns semantic decision/projection requirements
+      └── forbids responsibility-body policy
+
+[OBLIGATION] establish-one-complete-new-feature-authority
+      ├── owns semantic decision/projection requirements
+      └── forbids responsibility-body policy
+
+[OBLIGATION] materialize-only-admitted-new-feature-authority
+      ├── owns semantic decision/projection requirements
+      └── forbids responsibility-body policy
+
+[OBLIGATION] execute-new-feature-through-admitted-semantics
+      ├── owns semantic decision/projection requirements
+      └── forbids responsibility-body policy
+
+[OBLIGATION] prove-complete-new-feature-equivalence
+      ├── owns semantic decision/projection requirements
+      └── forbids responsibility-body policy
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.featureBodyAuthority.constraints | obligation-constraint | GOVERNED_PREVIEW | scenario-obligations |
+
+### Review questions
+
+- Does each obligation express exactly the meaning that its scenario requires?
+
 ## 6. Expectations
+
+### What is established here
 
 ```text
 Stage ID: declare-expectations
@@ -722,9 +927,7 @@ Required output: scenario-expectations
 Stop condition: every scenario has one expectation bound to one signal
 ```
 
-Review questions:
-
-- Is each expected disposition independently comparable with observed execution?
+### Canonical authority
 
 ### admit-one-reviewed-new-feature-request
 
@@ -791,7 +994,50 @@ Review questions:
 }
 ```
 
+### What this becomes
+
+Projection availability: GOVERNED_PREVIEW
+
+```text
+Execution output (new-feature-request-admission) ──┐
+                                                ├── compare ──► ADMITTED | DIVERGES
+Expected disposition (expect-one-new-feature-request-admission) ──┘
+comparison authority only; not execution policy
+
+Execution output (complete-new-feature-authority) ──┐
+                                                ├── compare ──► COMPLETE | DIVERGES
+Expected disposition (expect-one-complete-new-feature-authority) ──┘
+comparison authority only; not execution policy
+
+Execution output (complete-new-feature-materialization) ──┐
+                                                ├── compare ──► MATERIALIZED | DIVERGES
+Expected disposition (expect-one-complete-new-feature-materialization) ──┘
+comparison authority only; not execution policy
+
+Execution output (observed-new-feature-execution) ──┐
+                                                ├── compare ──► CONFORMS | DIVERGES
+Expected disposition (expect-one-observed-new-feature-execution) ──┘
+comparison authority only; not execution policy
+
+Execution output (complete-new-feature-equivalence) ──┐
+                                                ├── compare ──► PROJECTION_CONFORMS | DIVERGES
+Expected disposition (expect-complete-new-feature-equivalence) ──┘
+comparison authority only; not execution policy
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.canonicalFeatureBody.scenarios | expectation-comparison | GOVERNED_PREVIEW | scenario-expectations |
+
+### Review questions
+
+- Is each expected disposition independently comparable with observed execution?
+
 ## 7. Responsibilities
+
+### What is established here
 
 ```text
 Stage ID: assign-responsibilities
@@ -802,9 +1048,7 @@ Required output: scenario-responsibilities
 Stop condition: every obligation has one responsible semantic operation
 ```
 
-Review questions:
-
-- Does each responsibility own one semantic transition and no unrelated policy?
+### Canonical authority
 
 ### admit-one-reviewed-new-feature-request
 
@@ -871,7 +1115,55 @@ Review questions:
 }
 ```
 
+### What this becomes
+
+Projection availability: PROJECTOR_OUTPUT
+
+```text
+admit-one-reviewed-new-feature-request
+  → admits-reviewed-new-feature-request
+  → src/new-feature-request-admission.ts
+  → admitsReviewedNewFeatureRequest(...)
+  → edge admit-reviewed-new-feature-request
+
+project-one-complete-new-feature-authority
+  → projects-complete-new-feature-authority
+  → src/complete-new-feature-authority.ts
+  → projectsCompleteNewFeatureAuthority(...)
+  → edge project-complete-new-feature-authority
+
+materialize-one-complete-new-feature
+  → materializes-complete-new-feature
+  → src/complete-new-feature-materialization.ts
+  → materializesCompleteNewFeature(...)
+  → edge materialize-complete-new-feature
+
+execute-one-newly-materialized-feature
+  → executes-newly-materialized-feature
+  → src/observed-new-feature-execution.ts
+  → executesNewlyMaterializedFeature(...)
+  → edge execute-newly-materialized-feature
+
+verify-one-complete-new-feature-lineage
+  → verifies-complete-new-feature-lineage
+  → src/complete-new-feature-lineage.ts
+  → verifiesCompleteNewFeatureLineage(...)
+  → edge verify-complete-new-feature-lineage
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.projectionAuthority | responsibility-identity | PROJECTOR_OUTPUT | scenario-responsibilities |
+
+### Review questions
+
+- Does each responsibility own one semantic transition and no unrelated policy?
+
 ## 8. Signals
+
+### What is established here
 
 ```text
 Stage ID: declare-signals
@@ -882,9 +1174,7 @@ Required output: scenario-signals
 Stop condition: every responsibility produces one expectation-bound signal
 ```
 
-Review questions:
-
-- Can every declared signal be observed without reading the expectation during execution?
+### Canonical authority
 
 ### admit-one-reviewed-new-feature-request
 
@@ -893,7 +1183,18 @@ Review questions:
   "scenarioId": "admit-one-reviewed-new-feature-request",
   "signal": {
     "signalId": "new-feature-request-admission",
-    "statement": "The reviewed request is admitted or rejected with one deterministic disposition."
+    "statement": "The reviewed request is admitted or rejected with one deterministic disposition.",
+    "resultShape": {
+      "contractId": "new-feature-request-admission.v1",
+      "shapePolicy": "disposition-only",
+      "fields": [
+        {
+          "name": "disposition",
+          "type": "string"
+        }
+      ],
+      "rationale": "The signal reports terminal admission status; reviewed request identity remains in lineage authority."
+    }
   }
 }
 ```
@@ -905,7 +1206,18 @@ Review questions:
   "scenarioId": "project-one-complete-new-feature-authority",
   "signal": {
     "signalId": "complete-new-feature-authority",
-    "statement": "Every required canonical construction product exists and is causally linked."
+    "statement": "Every required canonical construction product exists and is causally linked.",
+    "resultShape": {
+      "contractId": "complete-new-feature-authority.v1",
+      "shapePolicy": "disposition-only",
+      "fields": [
+        {
+          "name": "disposition",
+          "type": "string"
+        }
+      ],
+      "rationale": "The signal reports completion status; constructed authority remains in governed artifacts."
+    }
   }
 }
 ```
@@ -917,7 +1229,18 @@ Review questions:
   "scenarioId": "materialize-one-complete-new-feature",
   "signal": {
     "signalId": "complete-new-feature-materialization",
-    "statement": "Every expected artifact exists and reproduces its admitted AST."
+    "statement": "Every expected artifact exists and reproduces its admitted AST.",
+    "resultShape": {
+      "contractId": "complete-new-feature-materialization.v1",
+      "shapePolicy": "disposition-only",
+      "fields": [
+        {
+          "name": "disposition",
+          "type": "string"
+        }
+      ],
+      "rationale": "The signal reports materialization status; artifact identities and hashes remain in projection evidence."
+    }
   }
 }
 ```
@@ -929,7 +1252,18 @@ Review questions:
   "scenarioId": "execute-one-newly-materialized-feature",
   "signal": {
     "signalId": "observed-new-feature-execution",
-    "statement": "The projected feature produces the same observable signal as direct semantic execution."
+    "statement": "The projected feature produces the same observable signal as direct semantic execution.",
+    "resultShape": {
+      "contractId": "observed-new-feature-execution.v1",
+      "shapePolicy": "disposition-only",
+      "fields": [
+        {
+          "name": "disposition",
+          "type": "string"
+        }
+      ],
+      "rationale": "The signal reports execution conformance status; observations remain separate evaluation evidence."
+    }
   }
 }
 ```
@@ -941,12 +1275,149 @@ Review questions:
   "scenarioId": "verify-one-complete-new-feature-lineage",
   "signal": {
     "signalId": "complete-new-feature-equivalence",
-    "statement": "Canonical meaning is conserved across authority, AST, source, and both execution surfaces."
+    "statement": "Canonical meaning is conserved across authority, AST, source, and both execution surfaces.",
+    "resultShape": {
+      "contractId": "new-feature-terminal-disposition.v1",
+      "shapePolicy": "disposition-only",
+      "fields": [
+        {
+          "name": "disposition",
+          "type": "string"
+        }
+      ],
+      "rationale": "The terminal signal reports the comparison disposition; the compared evidence remains independently addressable."
+    }
   }
 }
 ```
 
+### What this becomes
+
+Projection availability: PROJECTOR_OUTPUT
+
+#### src/new-feature-request-admission.type.ts
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: admit-one-reviewed-new-feature-request
+// obligation-id: establish-one-eligible-new-feature-request
+// responsibility-id: admits-reviewed-new-feature-request
+// signal-id: new-feature-request-admission
+// DO NOT EDIT.
+export interface AdmitReviewedNewFeatureRequestContext {
+  readonly edges: {
+    readonly invokes: (edgeId: string, context: AdmitReviewedNewFeatureRequestContext) => Promise<NewFeatureRequestAdmission>;
+  };
+}
+
+export interface NewFeatureRequestAdmission {
+  readonly disposition: string;
+}
+
+```
+
+#### src/complete-new-feature-authority.type.ts
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: project-one-complete-new-feature-authority
+// obligation-id: establish-one-complete-new-feature-authority
+// responsibility-id: projects-complete-new-feature-authority
+// signal-id: complete-new-feature-authority
+// DO NOT EDIT.
+export interface ProjectCompleteNewFeatureAuthorityContext {
+  readonly edges: {
+    readonly invokes: (edgeId: string, context: ProjectCompleteNewFeatureAuthorityContext) => Promise<CompleteNewFeatureAuthority>;
+  };
+}
+
+export interface CompleteNewFeatureAuthority {
+  readonly disposition: string;
+}
+
+```
+
+#### src/complete-new-feature-materialization.type.ts
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: materialize-one-complete-new-feature
+// obligation-id: materialize-only-admitted-new-feature-authority
+// responsibility-id: materializes-complete-new-feature
+// signal-id: complete-new-feature-materialization
+// DO NOT EDIT.
+export interface MaterializeCompleteNewFeatureContext {
+  readonly edges: {
+    readonly invokes: (edgeId: string, context: MaterializeCompleteNewFeatureContext) => Promise<CompleteNewFeatureMaterialization>;
+  };
+}
+
+export interface CompleteNewFeatureMaterialization {
+  readonly disposition: string;
+}
+
+```
+
+#### src/observed-new-feature-execution.type.ts
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: execute-one-newly-materialized-feature
+// obligation-id: execute-new-feature-through-admitted-semantics
+// responsibility-id: executes-newly-materialized-feature
+// signal-id: observed-new-feature-execution
+// DO NOT EDIT.
+export interface ExecuteNewlyMaterializedFeatureContext {
+  readonly edges: {
+    readonly invokes: (edgeId: string, context: ExecuteNewlyMaterializedFeatureContext) => Promise<ObservedNewFeatureExecution>;
+  };
+}
+
+export interface ObservedNewFeatureExecution {
+  readonly disposition: string;
+}
+
+```
+
+#### src/complete-new-feature-lineage.type.ts
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: verify-one-complete-new-feature-lineage
+// obligation-id: prove-complete-new-feature-equivalence
+// responsibility-id: verifies-complete-new-feature-lineage
+// signal-id: complete-new-feature-equivalence
+// DO NOT EDIT.
+export interface VerifyCompleteNewFeatureLineageContext {
+  readonly edges: {
+    readonly invokes: (edgeId: string, context: VerifyCompleteNewFeatureLineageContext) => Promise<NewFeatureTerminalDisposition>;
+  };
+}
+
+export interface NewFeatureTerminalDisposition {
+  readonly disposition: string;
+}
+
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.derivedProjections.results | signal-type | PROJECTOR_OUTPUT | scenario-signals |
+
+### Review questions
+
+- Can every declared signal be observed without reading the expectation during execution?
+
 ## 9. Semantic authority
+
+### What is established here
 
 ```text
 Stage ID: author-semantic-authority
@@ -957,11 +1428,11 @@ Required output: semantic-authority
 Stop condition: every responsibility has complete language-neutral semantic authority
 ```
 
-Review questions:
-
-- Does semantic authority own every decision and result shape required by the responsibility?
+### Canonical authority
 
 ### admits-reviewed-new-feature-request
+
+#### Canonical authority
 
 ```json
 {
@@ -983,20 +1454,32 @@ Review questions:
       "decisionId": "resolve-request-admission",
       "inputs": [
         "$.input.reviewDisposition",
-        "$.input.existingFeatureIds"
+        "$.input.existingFeatureIds",
+        "$.input.featureId"
       ],
       "rules": [
         {
-          "ruleId": "resolve-request-admission-success",
+          "ruleId": "admit-reviewed-absent-feature",
           "when": {
-            "allRequiredInputsConform": true
+            "all": [
+              {
+                "left": "$.input.reviewDisposition",
+                "operator": "equals",
+                "right": "REVIEWED"
+              },
+              {
+                "left": "$.input.existingFeatureIds",
+                "operator": "not-contains",
+                "right": "$.input.featureId"
+              }
+            ]
           },
           "then": "ADMITTED"
         },
         {
-          "ruleId": "resolve-request-admission-fallback",
+          "ruleId": "reject-ineligible-feature",
           "when": {
-            "*": true
+            "otherwise": true
           },
           "then": "REJECTED"
         }
@@ -1018,7 +1501,78 @@ Review questions:
 }
 ```
 
+#### Semantic execution flow
+
+```text
+[reviewed-new-feature-request.v1]
+        │
+        ▼
+┌─ observe-reviewed-request
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ resolve-request-admission
+│  resolve-decision
+│  $.observed → $.decision
+└─
+        │
+        ▼
+┌─ project-request-admission
+│  project-result
+│  $.decision → $.result
+└─
+        │
+        ▼
+[new-feature-request-admission.v1]
+```
+
+#### Projected semantic execution
+
+Executable semantic model: AVAILABLE
+
+Projected semantic source availability: NOT_IMPLEMENTED
+
+The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.
+
+#### Projected responsibility boundary
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: admit-one-reviewed-new-feature-request
+// obligation-id: establish-one-eligible-new-feature-request
+// responsibility-id: admits-reviewed-new-feature-request
+// signal-id: new-feature-request-admission
+// DO NOT EDIT.
+import type { AdmitReviewedNewFeatureRequestContext, NewFeatureRequestAdmission } from "./new-feature-request-admission.type.js";
+
+export async function admitsReviewedNewFeatureRequest(
+  context: AdmitReviewedNewFeatureRequestContext
+): Promise<NewFeatureRequestAdmission> {
+  return await context.edges.invokes(
+    "admit-reviewed-new-feature-request",
+    context
+  );
+}
+
+```
+
+#### Translation tie-out
+
+| Authority element | Semantic execution construct | Responsibility-body construct |
+| --- | --- | --- |
+| observe-reviewed-request | resolve-observation | hidden behind semantic edge |
+| resolve-request-admission | resolve-decision | hidden behind semantic edge |
+| project-request-admission | project-result | hidden behind semantic edge |
+| new-feature-request-admission.v1 | result contract | src/new-feature-request-admission.ts return type |
+| admits-reviewed-new-feature-request | execution registration identity | admitsReviewedNewFeatureRequest lineage |
+| admit-reviewed-new-feature-request | semantic model identity | edge invocation string |
+
 ### projects-complete-new-feature-authority
+
+#### Canonical authority
 
 ```json
 {
@@ -1051,7 +1605,71 @@ Review questions:
 }
 ```
 
+#### Semantic execution flow
+
+```text
+[admitted-new-feature-request.v1]
+        │
+        ▼
+┌─ observe-admitted-request
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ project-complete-feature-authority
+│  project-result
+│  $.observed → $.result
+└─
+        │
+        ▼
+[complete-new-feature-authority.v1]
+```
+
+#### Projected semantic execution
+
+Executable semantic model: AVAILABLE
+
+Projected semantic source availability: NOT_IMPLEMENTED
+
+The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.
+
+#### Projected responsibility boundary
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: project-one-complete-new-feature-authority
+// obligation-id: establish-one-complete-new-feature-authority
+// responsibility-id: projects-complete-new-feature-authority
+// signal-id: complete-new-feature-authority
+// DO NOT EDIT.
+import type { ProjectCompleteNewFeatureAuthorityContext, CompleteNewFeatureAuthority } from "./complete-new-feature-authority.type.js";
+
+export async function projectsCompleteNewFeatureAuthority(
+  context: ProjectCompleteNewFeatureAuthorityContext
+): Promise<CompleteNewFeatureAuthority> {
+  return await context.edges.invokes(
+    "project-complete-new-feature-authority",
+    context
+  );
+}
+
+```
+
+#### Translation tie-out
+
+| Authority element | Semantic execution construct | Responsibility-body construct |
+| --- | --- | --- |
+| observe-admitted-request | resolve-observation | hidden behind semantic edge |
+| project-complete-feature-authority | project-result | hidden behind semantic edge |
+| complete-new-feature-authority.v1 | result contract | src/complete-new-feature-authority.ts return type |
+| projects-complete-new-feature-authority | execution registration identity | projectsCompleteNewFeatureAuthority lineage |
+| project-complete-new-feature-authority | semantic model identity | edge invocation string |
+
 ### materializes-complete-new-feature
+
+#### Canonical authority
 
 ```json
 {
@@ -1084,7 +1702,71 @@ Review questions:
 }
 ```
 
+#### Semantic execution flow
+
+```text
+[complete-new-feature-authority.v1]
+        │
+        ▼
+┌─ observe-complete-feature-authority
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ project-complete-feature-materialization
+│  project-result
+│  $.observed → $.result
+└─
+        │
+        ▼
+[complete-new-feature-materialization.v1]
+```
+
+#### Projected semantic execution
+
+Executable semantic model: AVAILABLE
+
+Projected semantic source availability: NOT_IMPLEMENTED
+
+The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.
+
+#### Projected responsibility boundary
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: materialize-one-complete-new-feature
+// obligation-id: materialize-only-admitted-new-feature-authority
+// responsibility-id: materializes-complete-new-feature
+// signal-id: complete-new-feature-materialization
+// DO NOT EDIT.
+import type { MaterializeCompleteNewFeatureContext, CompleteNewFeatureMaterialization } from "./complete-new-feature-materialization.type.js";
+
+export async function materializesCompleteNewFeature(
+  context: MaterializeCompleteNewFeatureContext
+): Promise<CompleteNewFeatureMaterialization> {
+  return await context.edges.invokes(
+    "materialize-complete-new-feature",
+    context
+  );
+}
+
+```
+
+#### Translation tie-out
+
+| Authority element | Semantic execution construct | Responsibility-body construct |
+| --- | --- | --- |
+| observe-complete-feature-authority | resolve-observation | hidden behind semantic edge |
+| project-complete-feature-materialization | project-result | hidden behind semantic edge |
+| complete-new-feature-materialization.v1 | result contract | src/complete-new-feature-materialization.ts return type |
+| materializes-complete-new-feature | execution registration identity | materializesCompleteNewFeature lineage |
+| materialize-complete-new-feature | semantic model identity | edge invocation string |
+
 ### executes-newly-materialized-feature
+
+#### Canonical authority
 
 ```json
 {
@@ -1117,7 +1799,71 @@ Review questions:
 }
 ```
 
+#### Semantic execution flow
+
+```text
+[complete-new-feature-materialization.v1]
+        │
+        ▼
+┌─ observe-materialized-feature
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ project-execution-observation
+│  project-result
+│  $.observed → $.result
+└─
+        │
+        ▼
+[observed-new-feature-execution.v1]
+```
+
+#### Projected semantic execution
+
+Executable semantic model: AVAILABLE
+
+Projected semantic source availability: NOT_IMPLEMENTED
+
+The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.
+
+#### Projected responsibility boundary
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: execute-one-newly-materialized-feature
+// obligation-id: execute-new-feature-through-admitted-semantics
+// responsibility-id: executes-newly-materialized-feature
+// signal-id: observed-new-feature-execution
+// DO NOT EDIT.
+import type { ExecuteNewlyMaterializedFeatureContext, ObservedNewFeatureExecution } from "./observed-new-feature-execution.type.js";
+
+export async function executesNewlyMaterializedFeature(
+  context: ExecuteNewlyMaterializedFeatureContext
+): Promise<ObservedNewFeatureExecution> {
+  return await context.edges.invokes(
+    "execute-newly-materialized-feature",
+    context
+  );
+}
+
+```
+
+#### Translation tie-out
+
+| Authority element | Semantic execution construct | Responsibility-body construct |
+| --- | --- | --- |
+| observe-materialized-feature | resolve-observation | hidden behind semantic edge |
+| project-execution-observation | project-result | hidden behind semantic edge |
+| observed-new-feature-execution.v1 | result contract | src/observed-new-feature-execution.ts return type |
+| executes-newly-materialized-feature | execution registration identity | executesNewlyMaterializedFeature lineage |
+| execute-newly-materialized-feature | semantic model identity | edge invocation string |
+
 ### verifies-complete-new-feature-lineage
+
+#### Canonical authority
 
 ```json
 {
@@ -1138,21 +1884,39 @@ Review questions:
     {
       "decisionId": "resolve-terminal-disposition",
       "inputs": [
-        "$.input.reviewDisposition",
-        "$.input.existingFeatureIds"
+        "$.input.semanticObservation",
+        "$.input.projectedObservation",
+        "$.input.expectedSignal",
+        "$.input.astSourceCorrespondence"
       ],
       "rules": [
         {
-          "ruleId": "resolve-terminal-disposition-success",
+          "ruleId": "conform-equivalent-feature-lineage",
           "when": {
-            "allRequiredInputsConform": true
+            "all": [
+              {
+                "left": "$.input.semanticObservation",
+                "operator": "equals",
+                "right": "$.input.expectedSignal"
+              },
+              {
+                "left": "$.input.projectedObservation",
+                "operator": "equals",
+                "right": "$.input.expectedSignal"
+              },
+              {
+                "left": "$.input.astSourceCorrespondence",
+                "operator": "equals",
+                "right": "CONFORMS"
+              }
+            ]
           },
           "then": "PROJECTION_CONFORMS"
         },
         {
-          "ruleId": "resolve-terminal-disposition-fallback",
+          "ruleId": "reject-divergent-feature-lineage",
           "when": {
-            "*": true
+            "otherwise": true
           },
           "then": "PROJECTION_DIVERGES"
         }
@@ -1174,7 +1938,213 @@ Review questions:
 }
 ```
 
+#### Semantic execution flow
+
+```text
+[new-feature-execution-comparison.v1]
+        │
+        ▼
+┌─ observe-execution-comparison
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ resolve-terminal-disposition
+│  resolve-decision
+│  $.observed → $.decision
+└─
+        │
+        ▼
+┌─ project-terminal-disposition
+│  project-result
+│  $.decision → $.result
+└─
+        │
+        ▼
+[new-feature-terminal-disposition.v1]
+```
+
+#### Projected semantic execution
+
+Executable semantic model: AVAILABLE
+
+Projected semantic source availability: NOT_IMPLEMENTED
+
+The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.
+
+#### Projected responsibility boundary
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: verify-one-complete-new-feature-lineage
+// obligation-id: prove-complete-new-feature-equivalence
+// responsibility-id: verifies-complete-new-feature-lineage
+// signal-id: complete-new-feature-equivalence
+// DO NOT EDIT.
+import type { VerifyCompleteNewFeatureLineageContext, NewFeatureTerminalDisposition } from "./complete-new-feature-lineage.type.js";
+
+export async function verifiesCompleteNewFeatureLineage(
+  context: VerifyCompleteNewFeatureLineageContext
+): Promise<NewFeatureTerminalDisposition> {
+  return await context.edges.invokes(
+    "verify-complete-new-feature-lineage",
+    context
+  );
+}
+
+```
+
+#### Translation tie-out
+
+| Authority element | Semantic execution construct | Responsibility-body construct |
+| --- | --- | --- |
+| observe-execution-comparison | resolve-observation | hidden behind semantic edge |
+| resolve-terminal-disposition | resolve-decision | hidden behind semantic edge |
+| project-terminal-disposition | project-result | hidden behind semantic edge |
+| new-feature-terminal-disposition.v1 | result contract | src/complete-new-feature-lineage.ts return type |
+| verifies-complete-new-feature-lineage | execution registration identity | verifiesCompleteNewFeatureLineage lineage |
+| verify-complete-new-feature-lineage | semantic model identity | edge invocation string |
+
+### What this becomes
+
+Projection availability: EXECUTABLE_MODEL
+
+Executable semantic model: AVAILABLE
+
+Projected semantic source availability: NOT_IMPLEMENTED
+
+#### admits-reviewed-new-feature-request
+
+```text
+[reviewed-new-feature-request.v1]
+        │
+        ▼
+┌─ observe-reviewed-request
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ resolve-request-admission
+│  resolve-decision
+│  $.observed → $.decision
+└─
+        │
+        ▼
+┌─ project-request-admission
+│  project-result
+│  $.decision → $.result
+└─
+        │
+        ▼
+[new-feature-request-admission.v1]
+```
+
+#### projects-complete-new-feature-authority
+
+```text
+[admitted-new-feature-request.v1]
+        │
+        ▼
+┌─ observe-admitted-request
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ project-complete-feature-authority
+│  project-result
+│  $.observed → $.result
+└─
+        │
+        ▼
+[complete-new-feature-authority.v1]
+```
+
+#### materializes-complete-new-feature
+
+```text
+[complete-new-feature-authority.v1]
+        │
+        ▼
+┌─ observe-complete-feature-authority
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ project-complete-feature-materialization
+│  project-result
+│  $.observed → $.result
+└─
+        │
+        ▼
+[complete-new-feature-materialization.v1]
+```
+
+#### executes-newly-materialized-feature
+
+```text
+[complete-new-feature-materialization.v1]
+        │
+        ▼
+┌─ observe-materialized-feature
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ project-execution-observation
+│  project-result
+│  $.observed → $.result
+└─
+        │
+        ▼
+[observed-new-feature-execution.v1]
+```
+
+#### verifies-complete-new-feature-lineage
+
+```text
+[new-feature-execution-comparison.v1]
+        │
+        ▼
+┌─ observe-execution-comparison
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ resolve-terminal-disposition
+│  resolve-decision
+│  $.observed → $.decision
+└─
+        │
+        ▼
+┌─ project-terminal-disposition
+│  project-result
+│  $.decision → $.result
+└─
+        │
+        ▼
+[new-feature-terminal-disposition.v1]
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.semanticAuthority | semantic-execution-plan | EXECUTABLE_MODEL | semantic-authority |
+
+### Review questions
+
+- Does semantic authority own every decision and result shape required by the responsibility?
+
 ## 10. Semantic execution
+
+### What is established here
 
 ```text
 Stage ID: author-semantic-execution
@@ -1185,9 +2155,7 @@ Required output: semantic-execution
 Stop condition: every semantic authority has one deterministic execution model
 ```
 
-Review questions:
-
-- Can the semantic model execute directly without projected source code?
+### Canonical authority
 
 ### admits-reviewed-new-feature-request
 
@@ -1323,7 +2291,144 @@ Review questions:
 }
 ```
 
+### What this becomes
+
+Projection availability: EXECUTABLE_MODEL
+
+Executable semantic model: AVAILABLE
+
+Projected semantic source availability: NOT_IMPLEMENTED
+
+#### admits-reviewed-new-feature-request
+
+```text
+[reviewed-new-feature-request.v1]
+        │
+        ▼
+┌─ observe-reviewed-request
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ resolve-request-admission
+│  resolve-decision
+│  $.observed → $.decision
+└─
+        │
+        ▼
+┌─ project-request-admission
+│  project-result
+│  $.decision → $.result
+└─
+        │
+        ▼
+[new-feature-request-admission.v1]
+```
+
+#### projects-complete-new-feature-authority
+
+```text
+[admitted-new-feature-request.v1]
+        │
+        ▼
+┌─ observe-admitted-request
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ project-complete-feature-authority
+│  project-result
+│  $.observed → $.result
+└─
+        │
+        ▼
+[complete-new-feature-authority.v1]
+```
+
+#### materializes-complete-new-feature
+
+```text
+[complete-new-feature-authority.v1]
+        │
+        ▼
+┌─ observe-complete-feature-authority
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ project-complete-feature-materialization
+│  project-result
+│  $.observed → $.result
+└─
+        │
+        ▼
+[complete-new-feature-materialization.v1]
+```
+
+#### executes-newly-materialized-feature
+
+```text
+[complete-new-feature-materialization.v1]
+        │
+        ▼
+┌─ observe-materialized-feature
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ project-execution-observation
+│  project-result
+│  $.observed → $.result
+└─
+        │
+        ▼
+[observed-new-feature-execution.v1]
+```
+
+#### verifies-complete-new-feature-lineage
+
+```text
+[new-feature-execution-comparison.v1]
+        │
+        ▼
+┌─ observe-execution-comparison
+│  resolve-observation
+│  $.input → $.observed
+└─
+        │
+        ▼
+┌─ resolve-terminal-disposition
+│  resolve-decision
+│  $.observed → $.decision
+└─
+        │
+        ▼
+┌─ project-terminal-disposition
+│  project-result
+│  $.decision → $.result
+└─
+        │
+        ▼
+[new-feature-terminal-disposition.v1]
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.semanticAuthority.execution | semantic-execution-plan | EXECUTABLE_MODEL | semantic-execution |
+
+### Review questions
+
+- Can the semantic model execute directly without projected source code?
+
 ## 11. Feature-body authority
+
+### What is established here
 
 ```text
 Stage ID: author-feature-body-authority
@@ -1334,11 +2439,11 @@ Required output: feature-body-authority
 Stop condition: every responsibility has one complete constrained feature body
 ```
 
-Review questions:
-
-- Does each body invoke only its admitted semantic edge and introduce no domain meaning?
+### Canonical authority
 
 ### new-feature-request-admission
+
+#### Canonical authority
 
 ```json
 {
@@ -1373,7 +2478,32 @@ Review questions:
 }
 ```
 
+#### Projected responsibility body
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: admit-one-reviewed-new-feature-request
+// obligation-id: establish-one-eligible-new-feature-request
+// responsibility-id: admits-reviewed-new-feature-request
+// signal-id: new-feature-request-admission
+// DO NOT EDIT.
+import type { AdmitReviewedNewFeatureRequestContext, NewFeatureRequestAdmission } from "./new-feature-request-admission.type.js";
+
+export async function admitsReviewedNewFeatureRequest(
+  context: AdmitReviewedNewFeatureRequestContext
+): Promise<NewFeatureRequestAdmission> {
+  return await context.edges.invokes(
+    "admit-reviewed-new-feature-request",
+    context
+  );
+}
+
+```
+
 ### complete-new-feature-authority
+
+#### Canonical authority
 
 ```json
 {
@@ -1408,7 +2538,32 @@ Review questions:
 }
 ```
 
+#### Projected responsibility body
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: project-one-complete-new-feature-authority
+// obligation-id: establish-one-complete-new-feature-authority
+// responsibility-id: projects-complete-new-feature-authority
+// signal-id: complete-new-feature-authority
+// DO NOT EDIT.
+import type { ProjectCompleteNewFeatureAuthorityContext, CompleteNewFeatureAuthority } from "./complete-new-feature-authority.type.js";
+
+export async function projectsCompleteNewFeatureAuthority(
+  context: ProjectCompleteNewFeatureAuthorityContext
+): Promise<CompleteNewFeatureAuthority> {
+  return await context.edges.invokes(
+    "project-complete-new-feature-authority",
+    context
+  );
+}
+
+```
+
 ### complete-new-feature-materialization
+
+#### Canonical authority
 
 ```json
 {
@@ -1443,7 +2598,32 @@ Review questions:
 }
 ```
 
+#### Projected responsibility body
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: materialize-one-complete-new-feature
+// obligation-id: materialize-only-admitted-new-feature-authority
+// responsibility-id: materializes-complete-new-feature
+// signal-id: complete-new-feature-materialization
+// DO NOT EDIT.
+import type { MaterializeCompleteNewFeatureContext, CompleteNewFeatureMaterialization } from "./complete-new-feature-materialization.type.js";
+
+export async function materializesCompleteNewFeature(
+  context: MaterializeCompleteNewFeatureContext
+): Promise<CompleteNewFeatureMaterialization> {
+  return await context.edges.invokes(
+    "materialize-complete-new-feature",
+    context
+  );
+}
+
+```
+
 ### observed-new-feature-execution
+
+#### Canonical authority
 
 ```json
 {
@@ -1478,7 +2658,32 @@ Review questions:
 }
 ```
 
+#### Projected responsibility body
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: execute-one-newly-materialized-feature
+// obligation-id: execute-new-feature-through-admitted-semantics
+// responsibility-id: executes-newly-materialized-feature
+// signal-id: observed-new-feature-execution
+// DO NOT EDIT.
+import type { ExecuteNewlyMaterializedFeatureContext, ObservedNewFeatureExecution } from "./observed-new-feature-execution.type.js";
+
+export async function executesNewlyMaterializedFeature(
+  context: ExecuteNewlyMaterializedFeatureContext
+): Promise<ObservedNewFeatureExecution> {
+  return await context.edges.invokes(
+    "execute-newly-materialized-feature",
+    context
+  );
+}
+
+```
+
 ### complete-new-feature-lineage
+
+#### Canonical authority
 
 ```json
 {
@@ -1511,6 +2716,29 @@ Review questions:
     "directEffects": "forbidden"
   }
 }
+```
+
+#### Projected responsibility body
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: verify-one-complete-new-feature-lineage
+// obligation-id: prove-complete-new-feature-equivalence
+// responsibility-id: verifies-complete-new-feature-lineage
+// signal-id: complete-new-feature-equivalence
+// DO NOT EDIT.
+import type { VerifyCompleteNewFeatureLineageContext, NewFeatureTerminalDisposition } from "./complete-new-feature-lineage.type.js";
+
+export async function verifiesCompleteNewFeatureLineage(
+  context: VerifyCompleteNewFeatureLineageContext
+): Promise<NewFeatureTerminalDisposition> {
+  return await context.edges.invokes(
+    "verify-complete-new-feature-lineage",
+    context
+  );
+}
+
 ```
 
 Governed file-body system:
@@ -1657,7 +2885,138 @@ Feature-level execution
        runtime/invokes-canonical-feature-conveyor.ts
 ```
 
+### What this becomes
+
+Projection availability: PROJECTOR_OUTPUT
+
+#### new-feature-request-admission
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: admit-one-reviewed-new-feature-request
+// obligation-id: establish-one-eligible-new-feature-request
+// responsibility-id: admits-reviewed-new-feature-request
+// signal-id: new-feature-request-admission
+// DO NOT EDIT.
+import type { AdmitReviewedNewFeatureRequestContext, NewFeatureRequestAdmission } from "./new-feature-request-admission.type.js";
+
+export async function admitsReviewedNewFeatureRequest(
+  context: AdmitReviewedNewFeatureRequestContext
+): Promise<NewFeatureRequestAdmission> {
+  return await context.edges.invokes(
+    "admit-reviewed-new-feature-request",
+    context
+  );
+}
+
+```
+
+#### complete-new-feature-authority
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: project-one-complete-new-feature-authority
+// obligation-id: establish-one-complete-new-feature-authority
+// responsibility-id: projects-complete-new-feature-authority
+// signal-id: complete-new-feature-authority
+// DO NOT EDIT.
+import type { ProjectCompleteNewFeatureAuthorityContext, CompleteNewFeatureAuthority } from "./complete-new-feature-authority.type.js";
+
+export async function projectsCompleteNewFeatureAuthority(
+  context: ProjectCompleteNewFeatureAuthorityContext
+): Promise<CompleteNewFeatureAuthority> {
+  return await context.edges.invokes(
+    "project-complete-new-feature-authority",
+    context
+  );
+}
+
+```
+
+#### complete-new-feature-materialization
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: materialize-one-complete-new-feature
+// obligation-id: materialize-only-admitted-new-feature-authority
+// responsibility-id: materializes-complete-new-feature
+// signal-id: complete-new-feature-materialization
+// DO NOT EDIT.
+import type { MaterializeCompleteNewFeatureContext, CompleteNewFeatureMaterialization } from "./complete-new-feature-materialization.type.js";
+
+export async function materializesCompleteNewFeature(
+  context: MaterializeCompleteNewFeatureContext
+): Promise<CompleteNewFeatureMaterialization> {
+  return await context.edges.invokes(
+    "materialize-complete-new-feature",
+    context
+  );
+}
+
+```
+
+#### observed-new-feature-execution
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: execute-one-newly-materialized-feature
+// obligation-id: execute-new-feature-through-admitted-semantics
+// responsibility-id: executes-newly-materialized-feature
+// signal-id: observed-new-feature-execution
+// DO NOT EDIT.
+import type { ExecuteNewlyMaterializedFeatureContext, ObservedNewFeatureExecution } from "./observed-new-feature-execution.type.js";
+
+export async function executesNewlyMaterializedFeature(
+  context: ExecuteNewlyMaterializedFeatureContext
+): Promise<ObservedNewFeatureExecution> {
+  return await context.edges.invokes(
+    "execute-newly-materialized-feature",
+    context
+  );
+}
+
+```
+
+#### complete-new-feature-lineage
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: verify-one-complete-new-feature-lineage
+// obligation-id: prove-complete-new-feature-equivalence
+// responsibility-id: verifies-complete-new-feature-lineage
+// signal-id: complete-new-feature-equivalence
+// DO NOT EDIT.
+import type { VerifyCompleteNewFeatureLineageContext, NewFeatureTerminalDisposition } from "./complete-new-feature-lineage.type.js";
+
+export async function verifiesCompleteNewFeatureLineage(
+  context: VerifyCompleteNewFeatureLineageContext
+): Promise<NewFeatureTerminalDisposition> {
+  return await context.edges.invokes(
+    "verify-complete-new-feature-lineage",
+    context
+  );
+}
+
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.derivedProjections.results | responsibility-source | PROJECTOR_OUTPUT | feature-body-authority |
+
+### Review questions
+
+- Does each body invoke only its admitted semantic edge and introduce no domain meaning?
+
 ## 12. Language projection authority
+
+### What is established here
 
 ```text
 Stage ID: resolve-language-projection
@@ -1668,9 +3027,7 @@ Required output: language-projection-authority
 Stop condition: every feature body has one admitted language projection
 ```
 
-Review questions:
-
-- Does the selected language profile translate the body without changing its meaning?
+### Canonical authority
 
 ```json
 [
@@ -2042,7 +3399,60 @@ Production projector invocations:
 ]
 ```
 
+### What this becomes
+
+Projection availability: PROJECTOR_OUTPUT
+
+```text
+feature-body:new-feature-request-admission
+  → function admitsReviewedNewFeatureRequest
+NewFeatureRequestAdmission
+  → return type NewFeatureRequestAdmission
+admit-reviewed-new-feature-request
+  → context.edges.invokes CallExpression
+
+feature-body:complete-new-feature-authority
+  → function projectsCompleteNewFeatureAuthority
+CompleteNewFeatureAuthority
+  → return type CompleteNewFeatureAuthority
+project-complete-new-feature-authority
+  → context.edges.invokes CallExpression
+
+feature-body:complete-new-feature-materialization
+  → function materializesCompleteNewFeature
+CompleteNewFeatureMaterialization
+  → return type CompleteNewFeatureMaterialization
+materialize-complete-new-feature
+  → context.edges.invokes CallExpression
+
+feature-body:observed-new-feature-execution
+  → function executesNewlyMaterializedFeature
+ObservedNewFeatureExecution
+  → return type ObservedNewFeatureExecution
+execute-newly-materialized-feature
+  → context.edges.invokes CallExpression
+
+feature-body:complete-new-feature-lineage
+  → function verifiesCompleteNewFeatureLineage
+NewFeatureTerminalDisposition
+  → return type NewFeatureTerminalDisposition
+verify-complete-new-feature-lineage
+  → context.edges.invokes CallExpression
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.projectionAuthority | mapping-instance | PROJECTOR_OUTPUT | language-projection-authority |
+
+### Review questions
+
+- Does the selected language profile translate the body without changing its meaning?
+
 ## 13. Derived AST
+
+### What is established here
 
 ```text
 Stage ID: project-expected-ast
@@ -2053,9 +3463,7 @@ Required output: expected-ast
 Stop condition: every projected body has one complete expected AST
 ```
 
-Review questions:
-
-- Can every AST node be traced to feature-body authority?
+### Canonical authority
 
 ```text
 new-feature-request-admission
@@ -2211,6 +3619,29 @@ src/complete-new-feature-lineage.ts
 }
 ```
 
+#### Compact source preview
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: admit-one-reviewed-new-feature-request
+// obligation-id: establish-one-eligible-new-feature-request
+// responsibility-id: admits-reviewed-new-feature-request
+// signal-id: new-feature-request-admission
+// DO NOT EDIT.
+import type { AdmitReviewedNewFeatureRequestContext, NewFeatureRequestAdmission } from "./new-feature-request-admission.type.js";
+
+export async function admitsReviewedNewFeatureRequest(
+  context: AdmitReviewedNewFeatureRequestContext
+): Promise<NewFeatureRequestAdmission> {
+  return await context.edges.invokes(
+    "admit-reviewed-new-feature-request",
+    context
+  );
+}
+
+```
+
 ### complete-new-feature-authority
 
 ```json
@@ -2306,6 +3737,29 @@ src/complete-new-feature-lineage.ts
     }
   ]
 }
+```
+
+#### Compact source preview
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: project-one-complete-new-feature-authority
+// obligation-id: establish-one-complete-new-feature-authority
+// responsibility-id: projects-complete-new-feature-authority
+// signal-id: complete-new-feature-authority
+// DO NOT EDIT.
+import type { ProjectCompleteNewFeatureAuthorityContext, CompleteNewFeatureAuthority } from "./complete-new-feature-authority.type.js";
+
+export async function projectsCompleteNewFeatureAuthority(
+  context: ProjectCompleteNewFeatureAuthorityContext
+): Promise<CompleteNewFeatureAuthority> {
+  return await context.edges.invokes(
+    "project-complete-new-feature-authority",
+    context
+  );
+}
+
 ```
 
 ### complete-new-feature-materialization
@@ -2405,6 +3859,29 @@ src/complete-new-feature-lineage.ts
 }
 ```
 
+#### Compact source preview
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: materialize-one-complete-new-feature
+// obligation-id: materialize-only-admitted-new-feature-authority
+// responsibility-id: materializes-complete-new-feature
+// signal-id: complete-new-feature-materialization
+// DO NOT EDIT.
+import type { MaterializeCompleteNewFeatureContext, CompleteNewFeatureMaterialization } from "./complete-new-feature-materialization.type.js";
+
+export async function materializesCompleteNewFeature(
+  context: MaterializeCompleteNewFeatureContext
+): Promise<CompleteNewFeatureMaterialization> {
+  return await context.edges.invokes(
+    "materialize-complete-new-feature",
+    context
+  );
+}
+
+```
+
 ### observed-new-feature-execution
 
 ```json
@@ -2500,6 +3977,29 @@ src/complete-new-feature-lineage.ts
     }
   ]
 }
+```
+
+#### Compact source preview
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: execute-one-newly-materialized-feature
+// obligation-id: execute-new-feature-through-admitted-semantics
+// responsibility-id: executes-newly-materialized-feature
+// signal-id: observed-new-feature-execution
+// DO NOT EDIT.
+import type { ExecuteNewlyMaterializedFeatureContext, ObservedNewFeatureExecution } from "./observed-new-feature-execution.type.js";
+
+export async function executesNewlyMaterializedFeature(
+  context: ExecuteNewlyMaterializedFeatureContext
+): Promise<ObservedNewFeatureExecution> {
+  return await context.edges.invokes(
+    "execute-newly-materialized-feature",
+    context
+  );
+}
+
 ```
 
 ### complete-new-feature-lineage
@@ -2599,7 +4099,171 @@ src/complete-new-feature-lineage.ts
 }
 ```
 
+#### Compact source preview
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: verify-one-complete-new-feature-lineage
+// obligation-id: prove-complete-new-feature-equivalence
+// responsibility-id: verifies-complete-new-feature-lineage
+// signal-id: complete-new-feature-equivalence
+// DO NOT EDIT.
+import type { VerifyCompleteNewFeatureLineageContext, NewFeatureTerminalDisposition } from "./complete-new-feature-lineage.type.js";
+
+export async function verifiesCompleteNewFeatureLineage(
+  context: VerifyCompleteNewFeatureLineageContext
+): Promise<NewFeatureTerminalDisposition> {
+  return await context.edges.invokes(
+    "verify-complete-new-feature-lineage",
+    context
+  );
+}
+
+```
+
+### What this becomes
+
+Projection availability: PROJECTOR_OUTPUT
+
+#### new-feature-request-admission
+
+AST root: `source-file`
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: admit-one-reviewed-new-feature-request
+// obligation-id: establish-one-eligible-new-feature-request
+// responsibility-id: admits-reviewed-new-feature-request
+// signal-id: new-feature-request-admission
+// DO NOT EDIT.
+import type { AdmitReviewedNewFeatureRequestContext, NewFeatureRequestAdmission } from "./new-feature-request-admission.type.js";
+
+export async function admitsReviewedNewFeatureRequest(
+  context: AdmitReviewedNewFeatureRequestContext
+): Promise<NewFeatureRequestAdmission> {
+  return await context.edges.invokes(
+    "admit-reviewed-new-feature-request",
+    context
+  );
+}
+
+```
+
+#### complete-new-feature-authority
+
+AST root: `source-file`
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: project-one-complete-new-feature-authority
+// obligation-id: establish-one-complete-new-feature-authority
+// responsibility-id: projects-complete-new-feature-authority
+// signal-id: complete-new-feature-authority
+// DO NOT EDIT.
+import type { ProjectCompleteNewFeatureAuthorityContext, CompleteNewFeatureAuthority } from "./complete-new-feature-authority.type.js";
+
+export async function projectsCompleteNewFeatureAuthority(
+  context: ProjectCompleteNewFeatureAuthorityContext
+): Promise<CompleteNewFeatureAuthority> {
+  return await context.edges.invokes(
+    "project-complete-new-feature-authority",
+    context
+  );
+}
+
+```
+
+#### complete-new-feature-materialization
+
+AST root: `source-file`
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: materialize-one-complete-new-feature
+// obligation-id: materialize-only-admitted-new-feature-authority
+// responsibility-id: materializes-complete-new-feature
+// signal-id: complete-new-feature-materialization
+// DO NOT EDIT.
+import type { MaterializeCompleteNewFeatureContext, CompleteNewFeatureMaterialization } from "./complete-new-feature-materialization.type.js";
+
+export async function materializesCompleteNewFeature(
+  context: MaterializeCompleteNewFeatureContext
+): Promise<CompleteNewFeatureMaterialization> {
+  return await context.edges.invokes(
+    "materialize-complete-new-feature",
+    context
+  );
+}
+
+```
+
+#### observed-new-feature-execution
+
+AST root: `source-file`
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: execute-one-newly-materialized-feature
+// obligation-id: execute-new-feature-through-admitted-semantics
+// responsibility-id: executes-newly-materialized-feature
+// signal-id: observed-new-feature-execution
+// DO NOT EDIT.
+import type { ExecuteNewlyMaterializedFeatureContext, ObservedNewFeatureExecution } from "./observed-new-feature-execution.type.js";
+
+export async function executesNewlyMaterializedFeature(
+  context: ExecuteNewlyMaterializedFeatureContext
+): Promise<ObservedNewFeatureExecution> {
+  return await context.edges.invokes(
+    "execute-newly-materialized-feature",
+    context
+  );
+}
+
+```
+
+#### complete-new-feature-lineage
+
+AST root: `source-file`
+
+```typescript
+// @generated
+// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// scenario-id: verify-one-complete-new-feature-lineage
+// obligation-id: prove-complete-new-feature-equivalence
+// responsibility-id: verifies-complete-new-feature-lineage
+// signal-id: complete-new-feature-equivalence
+// DO NOT EDIT.
+import type { VerifyCompleteNewFeatureLineageContext, NewFeatureTerminalDisposition } from "./complete-new-feature-lineage.type.js";
+
+export async function verifiesCompleteNewFeatureLineage(
+  context: VerifyCompleteNewFeatureLineageContext
+): Promise<NewFeatureTerminalDisposition> {
+  return await context.edges.invokes(
+    "verify-complete-new-feature-lineage",
+    context
+  );
+}
+
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.derivedProjections.results | ast-with-source | PROJECTOR_OUTPUT | expected-ast |
+
+### Review questions
+
+- Can every AST node be traced to feature-body authority?
+
 ## 14. Production-projector code
+
+### What is established here
 
 ```text
 Stage ID: project-expected-code
@@ -2610,9 +4274,7 @@ Required output: expected-code
 Stop condition: every expected AST renders one deterministic source body
 ```
 
-Review questions:
-
-- Does every source construct come from the expected AST with no hand-authored additions?
+### Canonical authority
 
 ### src/new-feature-request-admission.ts
 
@@ -2889,7 +4551,27 @@ Translation provenance:
 | feature-body:complete-new-feature-lineage:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:complete-new-feature-lineage:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
+### What this becomes
+
+Projection availability: PROJECTOR_OUTPUT
+
+Authoritative projector output count: 6
+
+The complete production output and translation provenance are rendered in this section.
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.derivedProjections.results | production-source | PROJECTOR_OUTPUT | expected-code |
+
+### Review questions
+
+- Does every source construct come from the expected AST with no hand-authored additions?
+
 ## 15. Direct semantic evaluation
+
+### What is established here
 
 ```text
 Stage ID: evaluate-semantic-execution
@@ -2900,9 +4582,7 @@ Required output: semantic-evaluation
 Stop condition: every semantic execution produces one observed signal
 ```
 
-Review questions:
-
-- Was the semantic result observed without using the expected result as execution input?
+### Canonical authority
 
 ```json
 {
@@ -2932,7 +4612,33 @@ Review questions:
 
 Observed: NOT_EVALUATED
 
+### What this becomes
+
+Projection availability: GOVERNED_PREVIEW
+
+```text
+execute declared model/body
+        │
+        ▼
+capture observed signal
+        │
+        ▼
+retain NOT_EVALUATED until runtime evidence exists
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.evaluationAuthority.semanticEvaluation | evaluation-flow | GOVERNED_PREVIEW | semantic-evaluation |
+
+### Review questions
+
+- Was the semantic result observed without using the expected result as execution input?
+
 ## 16. Projected-body evaluation
+
+### What is established here
 
 ```text
 Stage ID: evaluate-projected-execution
@@ -2943,9 +4649,7 @@ Required output: projected-evaluation
 Stop condition: every projected body produces one independently observed signal
 ```
 
-Review questions:
-
-- Was the projected result observed through the same fixture boundary as semantic execution?
+### Canonical authority
 
 ```json
 {
@@ -2975,7 +4679,33 @@ Review questions:
 
 Observed: NOT_EVALUATED
 
+### What this becomes
+
+Projection availability: GOVERNED_PREVIEW
+
+```text
+execute declared model/body
+        │
+        ▼
+capture observed signal
+        │
+        ▼
+retain NOT_EVALUATED until runtime evidence exists
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.evaluationAuthority.projectedEvaluation | evaluation-flow | GOVERNED_PREVIEW | projected-evaluation |
+
+### Review questions
+
+- Was the projected result observed through the same fixture boundary as semantic execution?
+
 ## 17. Translation conformance
+
+### What is established here
 
 ```text
 Stage ID: evaluate-translation-conformance
@@ -2986,9 +4716,7 @@ Required output: translation-conformance
 Stop condition: every responsibility has one terminal translation determination
 ```
 
-Review questions:
-
-- Are the declared, semantic, and projected outcomes canonically equivalent?
+### Canonical authority
 
 ```json
 {
@@ -3047,7 +4775,29 @@ required relationship: canonical-equivalence
 observed disposition: NOT_EVALUATED
 ```
 
+### What this becomes
+
+Projection availability: GOVERNED_PREVIEW
+
+```text
+semantic observation ──┐
+                       ├── compare to expectation and correspondence ──► disposition
+projected observation ─┘
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.evaluationAuthority.translationEvaluation | comparison-flow | GOVERNED_PREVIEW | translation-conformance |
+
+### Review questions
+
+- Are the declared, semantic, and projected outcomes canonically equivalent?
+
 ## 18. Review disposition
+
+### What is established here
 
 ```text
 Stage ID: review-feature
@@ -3058,9 +4808,7 @@ Required output: review-disposition
 Stop condition: one review disposition covers the complete canonical feature
 ```
 
-Review questions:
-
-- Is every implementation construct traceable through AST, body, semantic authority, and feature intent?
+### Canonical authority
 
 Review questions:
 
@@ -3081,3 +4829,27 @@ Translation tie-out:
 | Domain branching and DTO construction are forbidden. | No branch or object-construction nodes are admitted. | No if, switch, loop, or object construction is projected. |
 
 Admission rule: Admit implementation only when construction order is complete and expectation, semantic execution, AST, projected execution, and review are canonically equivalent.
+
+### What this becomes
+
+Projection availability: GOVERNED_PREVIEW
+
+```text
+NOT_EVALUATED
+      │ runtime evidence and canonical equivalence
+      ▼
+PROJECTION_CONFORMS
+      │ admission rule
+      ▼
+materialization eligible
+```
+
+### Authority-to-code traceability
+
+| Authority source | Projection preview | Availability | Required output |
+| --- | --- | --- | --- |
+| $.reviewAuthority.admissionRule | admission-transition | GOVERNED_PREVIEW | review-disposition |
+
+### Review questions
+
+- Is every implementation construct traceable through AST, body, semantic authority, and feature intent?
