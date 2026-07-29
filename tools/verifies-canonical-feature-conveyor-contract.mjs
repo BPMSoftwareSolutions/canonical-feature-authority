@@ -2,6 +2,10 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 import Ajv2020 from "ajv/dist/2020.js";
+import {
+  projectsMarkdown,
+  sha256
+} from "./canonical-feature-conveyor-projection.mjs";
 
 const repositoryRoot = resolve(import.meta.dirname, "..");
 const schemaPath = resolve(
@@ -27,6 +31,25 @@ function contiguous(steps, code) {
     steps.every((step, index) => step.sequence === index + 1),
     code
   );
+}
+
+function assertsStageCausality(stages) {
+  const producedAt = new Map();
+  for (const [index, stage] of stages.entries()) {
+    for (const product of [...stage.requires, ...stage.consumes]) {
+      assert(
+        producedAt.has(product) && producedAt.get(product) < index,
+        `CONVEYOR_STAGE_PRODUCT_NOT_AVAILABLE: ${stage.stageId}:${product}`
+      );
+    }
+    for (const product of stage.produces) {
+      assert(
+        !producedAt.has(product),
+        `CONVEYOR_PRODUCT_HAS_MULTIPLE_PRODUCERS: ${product}`
+      );
+      producedAt.set(product, index);
+    }
+  }
 }
 
 const schema = JSON.parse(await readFile(schemaPath, "utf8"));
@@ -73,22 +96,7 @@ assert(
   "CONVEYOR_STAGE_ORDER_MISMATCH"
 );
 
-const producedAt = new Map();
-for (const [index, stage] of stages.entries()) {
-  for (const product of [...stage.requires, ...stage.consumes]) {
-    assert(
-      producedAt.has(product) && producedAt.get(product) < index,
-      `CONVEYOR_STAGE_PRODUCT_NOT_AVAILABLE: ${stage.stageId}:${product}`
-    );
-  }
-  for (const product of stage.produces) {
-    assert(
-      !producedAt.has(product),
-      `CONVEYOR_PRODUCT_HAS_MULTIPLE_PRODUCERS: ${product}`
-    );
-    producedAt.set(product, index);
-  }
-}
+assertsStageCausality(stages);
 
 const state = authority.conveyor.constructionState;
 const currentIndex = expectedStageIds.indexOf(state.currentStage);
@@ -262,6 +270,111 @@ if (authority.contract.status !== "draft") {
   );
 }
 
+const projectedMarkdown = projectsMarkdown(authority);
+assert(
+  sha256(projectedMarkdown) === authority.projection.outputByteSha256,
+  "CONVEYOR_PROJECTION_HASH_MISMATCH"
+);
+const observedMarkdown = await readFile(
+  resolve(repositoryRoot, authority.projection.outputPath)
+);
+assert(
+  observedMarkdown.equals(projectedMarkdown),
+  "CONVEYOR_PROJECTION_BYTE_DRIFT"
+);
+
+const controls = [];
+function recordsControl(name, action, expectedCode) {
+  try {
+    action();
+    throw new Error("CONTROL_WAS_ACCEPTED");
+  } catch (error) {
+    assert(error.message !== "CONTROL_WAS_ACCEPTED", `${name}: accepted`);
+    assert(
+      error.message.startsWith(expectedCode),
+      `${name}: ${error.message}`
+    );
+    controls.push(name);
+  }
+}
+
+const extraProperty = structuredClone(authority);
+extraProperty.unadmitted = true;
+recordsControl(
+  "unknown-root-property",
+  () => {
+    if (!validate(extraProperty)) {
+      throw new Error("CONVEYOR_AUTHORITY_SCHEMA_INVALID");
+    }
+  },
+  "CONVEYOR_AUTHORITY_SCHEMA_INVALID"
+);
+
+const reorderedStages = structuredClone(stages);
+[reorderedStages[0], reorderedStages[1]] = [
+  reorderedStages[1],
+  reorderedStages[0]
+];
+recordsControl(
+  "stage-order",
+  () =>
+    assert(
+      JSON.stringify(reorderedStages.map(stage => stage.stageId)) ===
+        JSON.stringify(expectedStageIds),
+      "CONVEYOR_STAGE_ORDER_MISMATCH"
+    ),
+  "CONVEYOR_STAGE_ORDER_MISMATCH"
+);
+
+const unavailableProduct = structuredClone(stages);
+unavailableProduct[1].requires = ["not-yet-produced"];
+recordsControl(
+  "stage-product-causality",
+  () => assertsStageCausality(unavailableProduct),
+  "CONVEYOR_STAGE_PRODUCT_NOT_AVAILABLE"
+);
+
+const signalMutation = structuredClone(scenarios[0]);
+signalMutation.expectation.signalId = "substituted-signal";
+recordsControl(
+  "expectation-signal-binding",
+  () =>
+    assert(
+      signalMutation.expectation.signalId ===
+        signalMutation.signal.signalId,
+      "CONVEYOR_EXPECTATION_SIGNAL_MISMATCH"
+    ),
+  "CONVEYOR_EXPECTATION_SIGNAL_MISMATCH"
+);
+
+const bodyMutation = structuredClone(
+  authority.featureBodyAuthority[0]
+);
+bodyMutation.operations[0].edgeId = "substituted-edge";
+recordsControl(
+  "body-semantic-edge-binding",
+  () =>
+    assert(
+      bodyMutation.operations[0].edgeId ===
+        scenarios[0].responsibility.semanticOperationId,
+      "CONVEYOR_BODY_EDGE_MISMATCH"
+    ),
+  "CONVEYOR_BODY_EDGE_MISMATCH"
+);
+
+const projectionMutation = structuredClone(authority);
+projectionMutation.intent.need += " mutation";
+recordsControl(
+  "markdown-byte-drift",
+  () =>
+    assert(
+      sha256(projectsMarkdown(projectionMutation)) ===
+        projectionMutation.projection.outputByteSha256,
+      "CONVEYOR_PROJECTION_HASH_MISMATCH"
+    ),
+  "CONVEYOR_PROJECTION_HASH_MISMATCH"
+);
+
 console.log("Canonical feature conveyor authority is GREEN");
 console.log(`Contract: ${authority.contract.contractId}`);
 console.log(`Stages: ${stages.length}/${expectedStageIds.length}`);
@@ -270,3 +383,5 @@ console.log(`Semantic authorities: ${semantics.size}`);
 console.log(`Feature bodies: ${bodies.size}`);
 console.log(`Expected ASTs: ${projections.size}`);
 console.log(`AST-derived source bodies: ${projectedSources.length}`);
+console.log(`Markdown byte SHA-256: ${sha256(projectedMarkdown)}`);
+console.log(`${controls.length}/${controls.length} negative controls passed`);

@@ -29,6 +29,10 @@
     {
       "authority": "architecture/inspects-end-to-end-feature-conveyor.authority.json",
       "projection": "architecture/inspects-end-to-end-feature-conveyor.md"
+    },
+    {
+      "authority": "architecture/end-to-end-canonical-feature-conveyor.authority.json",
+      "projection": "architecture/end-to-end-canonical-feature-conveyor.md"
     }
   ],
   "projectors": [
@@ -38,6 +42,13 @@
       "implementation": "tools/projects-governed-inspection-document.mjs",
       "projectionLibrary": "tools/governed-inspection-document-projection.mjs",
       "contract": "architecture/projects-governed-inspection-documentation.md"
+    },
+    {
+      "projectorId": "canonical-feature-conveyor-markdown-projector",
+      "projectorVersion": "1.0.0",
+      "implementation": "tools/projects-canonical-feature-conveyor-contract.mjs",
+      "projectionLibrary": "tools/canonical-feature-conveyor-projection.mjs",
+      "contract": "schemas/canonical-feature-conveyor-contract.schema.json"
     }
   ]
 }
