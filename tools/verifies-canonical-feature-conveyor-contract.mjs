@@ -54,25 +54,44 @@ async function assertsProjectedTypescriptCompiles(
   const adds = (artifactPath, source) => {
     files.set(resolve(temporaryRoot, artifactPath), source);
   };
-  adds(
-    derived.featureExecution.artifactPath,
-    derived.featureExecution.projectedSource
-  );
-  adds(
-    derived.featureExecution.supportingTypeArtifactPath,
-    derived.featureExecution.supportingTypeSource
-  );
-  for (const result of derived.results) {
-    adds(result.artifactPath, result.projectedSource);
+  if (derived.implementationPackage?.artifacts !== undefined) {
+    for (const artifact of derived.implementationPackage.artifacts) {
+      if (artifact.artifactPath.endsWith(".ts")) {
+        adds(artifact.artifactPath, artifact.projectedSource);
+      }
+    }
+  } else {
     adds(
-      result.supportingTypeArtifactPath,
-      result.supportingTypeSource
+      derived.featureExecution.artifactPath,
+      derived.featureExecution.projectedSource
     );
+    adds(
+      derived.featureExecution.supportingTypeArtifactPath,
+      derived.featureExecution.supportingTypeSource
+    );
+    for (const result of derived.results) {
+      adds(result.artifactPath, result.projectedSource);
+      adds(
+        result.supportingTypeArtifactPath,
+        result.supportingTypeSource
+      );
+    }
   }
   try {
     for (const [filePath, source] of files) {
       await mkdir(dirname(filePath), { recursive: true });
       await writeFile(filePath, source, "utf8");
+    }
+    const projectedPackageJson =
+      derived.implementationPackage?.artifacts.find(
+        artifact => artifact.artifactPath === "package.json"
+      );
+    if (projectedPackageJson !== undefined) {
+      await writeFile(
+        resolve(temporaryRoot, "package.json"),
+        projectedPackageJson.projectedSource,
+        "utf8"
+      );
     }
     const tsconfigPath = resolve(temporaryRoot, "tsconfig.json");
     await writeFile(
@@ -484,6 +503,76 @@ assert(
   "CONVEYOR_DERIVED_PROJECTION_HASH_MISMATCH"
 );
 const derived = JSON.parse(derivedBytes.toString("utf8"));
+const implementationCoordinates =
+  authority.implementationArtifactAuthority.projectionPackage
+    .artifacts;
+const implementationArtifacts =
+  derived.implementationPackage?.artifacts ?? [];
+unique(
+  implementationCoordinates.map(coordinate => coordinate.artifactId),
+  "CONVEYOR_IMPLEMENTATION_ARTIFACT_ID_DUPLICATED"
+);
+unique(
+  implementationCoordinates.map(
+    coordinate => coordinate.artifactPath
+  ),
+  "CONVEYOR_IMPLEMENTATION_ARTIFACT_PATH_DUPLICATED"
+);
+assert(
+  implementationCoordinates.length === 34 &&
+    implementationCoordinates.every(
+      coordinate => coordinate.projectionPosture === "PROJECTABLE"
+    ) &&
+    derived.implementationPackage?.packageId ===
+      authority.implementationArtifactAuthority.projectionPackage
+        .packageId &&
+    implementationArtifacts.length ===
+      implementationCoordinates.length,
+  "CONVEYOR_IMPLEMENTATION_PROJECTION_COVERAGE_MISMATCH"
+);
+for (const coordinate of implementationCoordinates) {
+  const artifact = implementationArtifacts.find(
+    candidate => candidate.artifactId === coordinate.artifactId
+  );
+  assert(
+    artifact !== undefined &&
+      artifact.artifactPath === coordinate.artifactPath &&
+      artifact.family === coordinate.family &&
+      artifact.sourceAuthorityRef ===
+        coordinate.sourceAuthorityRef &&
+      artifact.projectorCapability ===
+        coordinate.projectorCapability &&
+      artifact.projectionPosture ===
+        coordinate.projectionPosture &&
+      artifact.projectedSourceSha256 ===
+        sha256(Buffer.from(artifact.projectedSource, "utf8")),
+    `CONVEYOR_IMPLEMENTATION_ARTIFACT_DRIFT: ${coordinate.artifactId}`
+  );
+}
+assert(
+  derived.implementationPackage.summary.declaredArtifacts === 34 &&
+    derived.implementationPackage.summary.projectableArtifacts === 34 &&
+    derived.implementationPackage.summary.unresolvedArtifacts === 0,
+  "CONVEYOR_IMPLEMENTATION_PROJECTION_SUMMARY_MISMATCH"
+);
+assert(
+  JSON.stringify(authority.selfHostingAuthority.executionStages) ===
+    JSON.stringify(
+      authority.conveyor.stages.map(stage => stage.stageId)
+    ) &&
+    authority.selfHostingAuthority.executionStages.length === 18 &&
+    authority.selfHostingAuthority.targetPolicy
+      .postProjectionEdits === "forbidden" &&
+    implementationCoordinates.some(
+      coordinate =>
+        coordinate.artifactPath ===
+          authority.selfHostingAuthority.executorArtifactPath &&
+        coordinate.projectorCapability ===
+          "projects-self-hosting-runner" &&
+        coordinate.projectionPosture === "PROJECTABLE"
+    ),
+  "CONVEYOR_SELF_HOSTING_AUTHORITY_MISMATCH"
+);
 const derivedByBody = new Map(
   derived.results.map(item => [item.bodyId, item])
 );
@@ -568,14 +657,14 @@ assert(
   JSON.stringify(state.stageStates) ===
     JSON.stringify(expectedLifecycleStates) &&
     state.implementationAdmission ===
-      "BLOCKED_PENDING_SEMANTIC_INTERPRETER",
+      "BLOCKED_PENDING_CONFORMANCE",
   "CONVEYOR_LIFECYCLE_STATE_MISMATCH"
 );
 assert(
   authority.semanticInterpreterAuthority.bindingStatus ===
-    "NOT_IMPLEMENTED" &&
+    "IMPLEMENTED" &&
     authority.implementationArtifactAuthority.semanticInterpreter
-      .bindingStatus === "NOT_IMPLEMENTED" &&
+      .bindingStatus === "IMPLEMENTED" &&
     authority.semanticInterpreterAuthority.operators.every(
       declared =>
         authority.semanticAuthority.every(semantic =>
@@ -1443,6 +1532,35 @@ recordsControl(
   },
   "CONVEYOR_RUNTIME_REGISTRATION_COVERAGE_MISMATCH"
 );
+const incompleteImplementationProjection = structuredClone(derived);
+incompleteImplementationProjection.implementationPackage.artifacts.pop();
+recordsControl(
+  "missing-implementation-projection-artifact",
+  () =>
+    assert(
+      incompleteImplementationProjection.implementationPackage
+        .artifacts.length === implementationCoordinates.length,
+      "CONVEYOR_IMPLEMENTATION_PROJECTION_COVERAGE_MISMATCH"
+    ),
+  "CONVEYOR_IMPLEMENTATION_PROJECTION_COVERAGE_MISMATCH"
+);
+const driftedImplementationProjection = structuredClone(derived);
+driftedImplementationProjection.implementationPackage.artifacts[0]
+  .projectedSource += " ";
+recordsControl(
+  "implementation-projection-source-drift",
+  () => {
+    const artifact =
+      driftedImplementationProjection.implementationPackage
+        .artifacts[0];
+    assert(
+      artifact.projectedSourceSha256 ===
+        sha256(Buffer.from(artifact.projectedSource, "utf8")),
+      "CONVEYOR_IMPLEMENTATION_ARTIFACT_DRIFT"
+    );
+  },
+  "CONVEYOR_IMPLEMENTATION_ARTIFACT_DRIFT"
+);
 const prematureReview = structuredClone(authority);
 prematureReview.conveyor.constructionState.currentStage =
   "review-feature";
@@ -1463,10 +1581,10 @@ recordsControl(
   "CONVEYOR_REVIEW_BLOCKED_BY_NOT_EVALUATED"
 );
 const overclaimedInterpreter = structuredClone(authority);
-overclaimedInterpreter.semanticInterpreterAuthority.bindingStatus =
-  "IMPLEMENTED";
+overclaimedInterpreter.implementationArtifactAuthority
+  .semanticInterpreter.bindingStatus = "NOT_IMPLEMENTED";
 recordsControl(
-  "unbound-semantic-interpreter-overclaim",
+  "semantic-interpreter-binding-divergence",
   () =>
     assert(
       overclaimedInterpreter.semanticInterpreterAuthority

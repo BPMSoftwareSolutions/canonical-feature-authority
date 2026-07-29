@@ -2,6 +2,10 @@ import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
+import {
+  projectsCanonicalFeatureImplementationPackage
+} from "./canonical-feature-conveyor-implementation-package.mjs";
+
 const repositoryRoot = resolve(import.meta.dirname, "..");
 const authorityPath = resolve(
   repositoryRoot,
@@ -266,12 +270,15 @@ const featureExecution = {
     }))
 };
 
+const implementationPackage =
+  await projectsCanonicalFeatureImplementationPackage(authority);
 const derived = {
   derivedProjectionType:
     "canonical-feature-conveyor-derived-projections.v1",
   contractId: authority.contract.contractId,
   featureExecution,
-  results
+  results,
+  implementationPackage
 };
 const bytes = Buffer.from(`${JSON.stringify(derived, null, 2)}\n`);
 const observedHash = sha256(bytes);

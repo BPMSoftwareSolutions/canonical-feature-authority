@@ -1,0 +1,40 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+  },
+  "projectionId": "project-new-feature-request-admission-through-production-projector",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "src/new-feature-request-admission.ts"
+  },
+  "lineage": {
+    "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+    "scenarioId": "admit-one-reviewed-new-feature-request",
+    "obligationId": "establish-one-eligible-new-feature-request",
+    "responsibilityId": "admits-reviewed-new-feature-request",
+    "signalId": "new-feature-request-admission"
+  },
+  "imports": [
+    {
+      "kind": "type-only",
+      "moduleSpecifier": "./new-feature-request-admission.type.js",
+      "namedBindings": [
+        "AdmitReviewedNewFeatureRequestContext",
+        "NewFeatureRequestAdmission"
+      ]
+    }
+  ],
+  "function": {
+    "identity": "new-feature-request-admission",
+    "name": "admitsReviewedNewFeatureRequest",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "AdmitReviewedNewFeatureRequestContext"
+    },
+    "resultTypeReference": "NewFeatureRequestAdmission",
+    "semanticEdgeId": "admit-reviewed-new-feature-request",
+    "awaited": true
+  }
+}

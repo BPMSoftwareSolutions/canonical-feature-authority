@@ -255,6 +255,7 @@
     "featureExecutionProjection",
     "evaluationAuthority",
     "implementationArtifactAuthority",
+    "selfHostingAuthority",
     "reviewAuthority",
     "documentationProjection",
     "projection"
@@ -467,6 +468,9 @@
     "implementationArtifactAuthority": {
       "$ref": "#/$defs/implementationArtifactAuthority"
     },
+    "selfHostingAuthority": {
+      "$ref": "#/$defs/selfHostingAuthority"
+    },
     "reviewAuthority": {
       "$ref": "#/$defs/reviewAuthority"
     },
@@ -517,7 +521,9 @@
         "materializationBoundary",
         "fixtureBoundary",
         "evidenceBoundary",
-        "admissionRequiredStatuses"
+        "executionProof",
+        "admissionRequiredStatuses",
+        "projectionPackage"
       ],
       "properties": {
         "edgeRegistry": {
@@ -527,6 +533,7 @@
             "contractId",
             "artifactPath",
             "edgeContracts",
+            "projectorRequest",
             "bindingStatus"
           ],
           "properties": {
@@ -566,6 +573,9 @@
                   }
                 }
               }
+            },
+            "projectorRequest": {
+              "type": "object"
             },
             "bindingStatus": {
               "enum": [
@@ -629,7 +639,7 @@
               },
               "implementationRef": {
                 "type": "string",
-                "pattern": "^projected-body:[a-z][a-z0-9-]*$"
+                "pattern": "^semantic-execution:[a-z][a-z0-9-]*$"
               },
               "bindingStatus": {
                 "enum": [
@@ -712,6 +722,7 @@
             "contractId",
             "artifactPath",
             "operations",
+            "projectorRequest",
             "bindingStatus"
           ],
           "properties": {
@@ -725,6 +736,9 @@
               "const": [
                 "projects-and-writes-complete-authority"
               ]
+            },
+            "projectorRequest": {
+              "type": "object"
             },
             "bindingStatus": {
               "enum": [
@@ -741,6 +755,7 @@
             "contractId",
             "artifactPath",
             "operations",
+            "projectorRequest",
             "bindingStatus"
           ],
           "properties": {
@@ -754,6 +769,9 @@
               "const": [
                 "materializes-and-writes-artifact-manifest"
               ]
+            },
+            "projectorRequest": {
+              "type": "object"
             },
             "bindingStatus": {
               "enum": [
@@ -770,6 +788,7 @@
             "contractId",
             "artifactPath",
             "operations",
+            "projectorRequest",
             "bindingStatus"
           ],
           "properties": {
@@ -785,6 +804,9 @@
                 "loadsProjectedFixture",
                 "executes-semantic-and-projected-surfaces"
               ]
+            },
+            "projectorRequest": {
+              "type": "object"
             },
             "bindingStatus": {
               "enum": [
@@ -802,6 +824,7 @@
             "artifactPath",
             "operations",
             "canonicalization",
+            "projectorRequest",
             "bindingStatus"
           ],
           "properties": {
@@ -823,6 +846,9 @@
             "canonicalization": {
               "const": "RFC8785-JCS"
             },
+            "projectorRequest": {
+              "type": "object"
+            },
             "bindingStatus": {
               "enum": [
                 "DECLARED",
@@ -842,6 +868,216 @@
             "materializationBoundary": "IMPLEMENTED",
             "fixtureBoundary": "IMPLEMENTED",
             "evidenceBoundary": "IMPLEMENTED"
+          }
+        },
+        "executionProof": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "artifactPath",
+            "semanticSurface",
+            "projectedSurface",
+            "comparison",
+            "expectedDisposition"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "canonical-feature-conveyor-execution-proof.v1"
+            },
+            "artifactPath": {
+              "const": "evaluation/proves-canonical-feature-conveyor.ts"
+            },
+            "semanticSurface": {
+              "const": "direct-semantic-authority"
+            },
+            "projectedSurface": {
+              "const": "projected-composition-and-responsibility-bodies"
+            },
+            "comparison": {
+              "const": "RFC8785-JCS-equivalence"
+            },
+            "expectedDisposition": {
+              "const": "PROJECTION_CONFORMS"
+            }
+          }
+        },
+        "projectionPackage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "packageId",
+            "targetPolicy",
+            "posturePolicy",
+            "validationPolicy",
+            "artifacts"
+          ],
+          "properties": {
+            "packageId": {
+              "const": "end-to-end-canonical-feature-conveyor-implementation.v1"
+            },
+            "targetPolicy": {
+              "const": {
+                "root": "caller-supplied-empty-root",
+                "authoritySource": "canonical-json-only",
+                "markdownScraping": "forbidden",
+                "overwrite": "forbidden"
+              }
+            },
+            "posturePolicy": {
+              "const": [
+                "PROJECTABLE",
+                "PROJECTOR_MISSING",
+                "AUTHORITY_INCOMPLETE",
+                "BLOCKED_BY_DEPENDENCY",
+                "MATERIALIZED",
+                "VERIFIED"
+              ]
+            },
+            "validationPolicy": {
+              "const": {
+                "projectableArtifacts": "byte-for-byte",
+                "unresolvedArtifacts": "presence-is-not-verification",
+                "undeclaredArtifacts": "reject-within-governed-roots",
+                "typescript": "strict-compile",
+                "lineage": "authority-ref-and-source-hash"
+              }
+            },
+            "artifacts": {
+              "type": "array",
+              "minItems": 34,
+              "maxItems": 34,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "artifactId",
+                  "family",
+                  "artifactPath",
+                  "sourceAuthorityRef",
+                  "projectorCapability",
+                  "projectionPosture"
+                ],
+                "properties": {
+                  "artifactId": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "family": {
+                    "enum": [
+                      "package-support",
+                      "composition",
+                      "responsibility-body",
+                      "responsibility-type",
+                      "runtime-registration",
+                      "runtime-adapter",
+                      "semantic-interpreter",
+                      "runtime-port",
+                      "evaluation-port",
+                      "evaluation-proof",
+                      "self-hosting-runner"
+                    ]
+                  },
+                  "artifactPath": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9._/-]+\\.(?:ts|mjs|json)$"
+                  },
+                  "sourceAuthorityRef": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "projectorCapability": {
+                    "enum": [
+                      "projects-production-typescript",
+                      "projects-runtime-edge-registration",
+                      "projects-runtime-adapter",
+                      "projects-semantic-interpreter",
+                      "projects-evaluation-proof",
+                      "projects-self-hosting-runner",
+                      "projects-package-support"
+                    ]
+                  },
+                  "projectionPosture": {
+                    "enum": [
+                      "PROJECTABLE",
+                      "PROJECTOR_MISSING",
+                      "AUTHORITY_INCOMPLETE",
+                      "BLOCKED_BY_DEPENDENCY",
+                      "MATERIALIZED",
+                      "VERIFIED"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "selfHostingAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId",
+        "authorityInputPath",
+        "derivedProjectionInputPath",
+        "executorArtifactPath",
+        "executionStages",
+        "targetPolicy",
+        "acceptance"
+      ],
+      "properties": {
+        "contractId": {
+          "const": "canonical-feature-conveyor-self-hosting.v1"
+        },
+        "authorityInputPath": {
+          "const": "architecture/end-to-end-canonical-feature-conveyor.authority.json"
+        },
+        "derivedProjectionInputPath": {
+          "const": "architecture/end-to-end-canonical-feature-conveyor.derived-projections.json"
+        },
+        "executorArtifactPath": {
+          "const": "runtime/self-hosts-canonical-feature-conveyor.mjs"
+        },
+        "executionStages": {
+          "const": [
+            "capture-intent",
+            "declare-outcome",
+            "establish-feature",
+            "establish-scenarios",
+            "decompose-obligations",
+            "declare-expectations",
+            "assign-responsibilities",
+            "declare-signals",
+            "author-semantic-authority",
+            "author-semantic-execution",
+            "author-feature-body-authority",
+            "resolve-language-projection",
+            "project-expected-ast",
+            "project-expected-code",
+            "evaluate-semantic-execution",
+            "evaluate-projected-execution",
+            "evaluate-translation-conformance",
+            "review-feature"
+          ]
+        },
+        "targetPolicy": {
+          "const": {
+            "root": "caller-supplied-empty-root",
+            "overwrite": "forbidden",
+            "postProjectionEdits": "forbidden",
+            "authoritySource": "canonical-json-and-admitted-derived-projection"
+          }
+        },
+        "acceptance": {
+          "const": {
+            "stageReplay": "18-of-18-in-causal-order",
+            "governedArtifactComparison": "byte-for-byte",
+            "typescript": "strict-compile",
+            "semanticExecution": "executed",
+            "projectedExecution": "executed",
+            "translation": "canonical-equivalence",
+            "terminalDisposition": "PROJECTION_CONFORMS",
+            "liveProviderRun": "required-on-untouched-clone"
           }
         }
       }

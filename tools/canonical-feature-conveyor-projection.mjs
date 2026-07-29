@@ -371,6 +371,32 @@ function rendersFeatureDestination(authority, derived) {
     "",
     ...fenced("json", authority.implementationArtifactAuthority),
     "",
+    "### Executable implementation projection map",
+    "",
+    `Package: \`${derived.implementationPackage.packageId}\``,
+    "",
+    `Topology SHA-256: \`${derived.implementationPackage.topologySha256}\``,
+    "",
+    "| Artifact | Family | Projector capability | Posture | Source SHA-256 |",
+    "| --- | --- | --- | --- | --- |",
+    ...derived.implementationPackage.artifacts.map(
+      artifact =>
+        `| \`${artifact.artifactPath}\` | ${artifact.family} | ` +
+        `\`${artifact.projectorCapability}\` | ` +
+        `\`${artifact.projectionPosture}\` | ` +
+        `\`${artifact.projectedSourceSha256}\` |`
+    ),
+    "",
+    "Projection source policy: canonical JSON authority only; Markdown scraping is forbidden.",
+    "",
+    "Execution proof: direct semantic authority and the projected composition plus responsibility bodies must be RFC8785-JCS equivalent and terminate with `PROJECTION_CONFORMS`.",
+    "",
+    "### Fractal self-hosting acceptance",
+    "",
+    ...fenced("json", authority.selfHostingAuthority),
+    "",
+    "The projected self-hosting runner must replay all 18 construction stages, materialize a fresh empty-root clone, compile and execute it, compare every governed artifact byte-for-byte with its source projection, and leave the clone unedited before the required live-provider run.",
+    "",
     "### Projected responsibility bodies",
     "",
     ...responsibilityProjectionTable(authority, derived),
