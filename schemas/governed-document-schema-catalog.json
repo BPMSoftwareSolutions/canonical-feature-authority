@@ -48,6 +48,8 @@
       "projectorVersion": "1.0.0",
       "implementation": "tools/projects-canonical-feature-conveyor-contract.mjs",
       "projectionLibrary": "tools/canonical-feature-conveyor-projection.mjs",
+      "codeBodyProjector": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+      "derivedProjectionIntegration": "tools/projects-canonical-feature-conveyor-derived-bodies.mjs",
       "contract": "schemas/canonical-feature-conveyor-contract.schema.json"
     }
   ]

@@ -15,7 +15,9 @@
         "purpose": "Capture the human need without introducing implementation technology.",
         "requires": [],
         "consumes": [],
-        "produces": ["intent"],
+        "produces": [
+          "intent"
+        ],
         "reviewQuestions": [
           "Is the need expressed without language, framework, file, or provider decisions?"
         ],
@@ -24,9 +26,15 @@
       {
         "stageId": "declare-outcome",
         "purpose": "State the observable condition that satisfies the admitted intent.",
-        "requires": ["intent"],
-        "consumes": ["intent"],
-        "produces": ["desired-outcome"],
+        "requires": [
+          "intent"
+        ],
+        "consumes": [
+          "intent"
+        ],
+        "produces": [
+          "desired-outcome"
+        ],
         "reviewQuestions": [
           "Is the outcome observable without prescribing its implementation?"
         ],
@@ -35,9 +43,16 @@
       {
         "stageId": "establish-feature",
         "purpose": "Establish one canonical feature identity and user story from the admitted outcome.",
-        "requires": ["desired-outcome"],
-        "consumes": ["intent", "desired-outcome"],
-        "produces": ["canonical-feature"],
+        "requires": [
+          "desired-outcome"
+        ],
+        "consumes": [
+          "intent",
+          "desired-outcome"
+        ],
+        "produces": [
+          "canonical-feature"
+        ],
         "reviewQuestions": [
           "Does the feature preserve the intent and desired outcome without adding implementation meaning?"
         ],
@@ -46,9 +61,15 @@
       {
         "stageId": "establish-scenarios",
         "purpose": "Decompose the feature into focused observable behavior transitions.",
-        "requires": ["canonical-feature"],
-        "consumes": ["canonical-feature"],
-        "produces": ["canonical-scenarios"],
+        "requires": [
+          "canonical-feature"
+        ],
+        "consumes": [
+          "canonical-feature"
+        ],
+        "produces": [
+          "canonical-scenarios"
+        ],
         "reviewQuestions": [
           "Does every scenario contain focused preconditions, one responsibility transition, and observable outcomes?"
         ],
@@ -57,9 +78,15 @@
       {
         "stageId": "decompose-obligations",
         "purpose": "Extract exactly one governing obligation from every scenario.",
-        "requires": ["canonical-scenarios"],
-        "consumes": ["canonical-scenarios"],
-        "produces": ["scenario-obligations"],
+        "requires": [
+          "canonical-scenarios"
+        ],
+        "consumes": [
+          "canonical-scenarios"
+        ],
+        "produces": [
+          "scenario-obligations"
+        ],
         "reviewQuestions": [
           "Does each obligation express exactly the meaning that its scenario requires?"
         ],
@@ -68,9 +95,16 @@
       {
         "stageId": "declare-expectations",
         "purpose": "Declare the disposition expected when each scenario obligation is satisfied.",
-        "requires": ["scenario-obligations"],
-        "consumes": ["canonical-scenarios", "scenario-obligations"],
-        "produces": ["scenario-expectations"],
+        "requires": [
+          "scenario-obligations"
+        ],
+        "consumes": [
+          "canonical-scenarios",
+          "scenario-obligations"
+        ],
+        "produces": [
+          "scenario-expectations"
+        ],
         "reviewQuestions": [
           "Is each expected disposition independently comparable with observed execution?"
         ],
@@ -79,9 +113,16 @@
       {
         "stageId": "assign-responsibilities",
         "purpose": "Assign one accountable responsibility to satisfy each admitted obligation.",
-        "requires": ["scenario-expectations"],
-        "consumes": ["scenario-obligations", "scenario-expectations"],
-        "produces": ["scenario-responsibilities"],
+        "requires": [
+          "scenario-expectations"
+        ],
+        "consumes": [
+          "scenario-obligations",
+          "scenario-expectations"
+        ],
+        "produces": [
+          "scenario-responsibilities"
+        ],
         "reviewQuestions": [
           "Does each responsibility own one semantic transition and no unrelated policy?"
         ],
@@ -90,9 +131,16 @@
       {
         "stageId": "declare-signals",
         "purpose": "Declare the observable signal produced by every responsibility.",
-        "requires": ["scenario-responsibilities"],
-        "consumes": ["scenario-expectations", "scenario-responsibilities"],
-        "produces": ["scenario-signals"],
+        "requires": [
+          "scenario-responsibilities"
+        ],
+        "consumes": [
+          "scenario-expectations",
+          "scenario-responsibilities"
+        ],
+        "produces": [
+          "scenario-signals"
+        ],
         "reviewQuestions": [
           "Can every declared signal be observed without reading the expectation during execution?"
         ],
@@ -101,9 +149,16 @@
       {
         "stageId": "author-semantic-authority",
         "purpose": "Define the language-neutral observations, decisions, and projections owned by every responsibility.",
-        "requires": ["scenario-signals"],
-        "consumes": ["scenario-responsibilities", "scenario-signals"],
-        "produces": ["semantic-authority"],
+        "requires": [
+          "scenario-signals"
+        ],
+        "consumes": [
+          "scenario-responsibilities",
+          "scenario-signals"
+        ],
+        "produces": [
+          "semantic-authority"
+        ],
         "reviewQuestions": [
           "Does semantic authority own every decision and result shape required by the responsibility?"
         ],
@@ -112,9 +167,15 @@
       {
         "stageId": "author-semantic-execution",
         "purpose": "Order the admitted semantic operations into directly executable models.",
-        "requires": ["semantic-authority"],
-        "consumes": ["semantic-authority"],
-        "produces": ["semantic-execution"],
+        "requires": [
+          "semantic-authority"
+        ],
+        "consumes": [
+          "semantic-authority"
+        ],
+        "produces": [
+          "semantic-execution"
+        ],
         "reviewQuestions": [
           "Can the semantic model execute directly without projected source code?"
         ],
@@ -123,9 +184,16 @@
       {
         "stageId": "author-feature-body-authority",
         "purpose": "Collapse each semantic execution edge into one language-neutral executable body.",
-        "requires": ["semantic-execution"],
-        "consumes": ["scenario-responsibilities", "semantic-execution"],
-        "produces": ["feature-body-authority"],
+        "requires": [
+          "semantic-execution"
+        ],
+        "consumes": [
+          "scenario-responsibilities",
+          "semantic-execution"
+        ],
+        "produces": [
+          "feature-body-authority"
+        ],
         "reviewQuestions": [
           "Does each body invoke only its admitted semantic edge and introduce no domain meaning?"
         ],
@@ -134,9 +202,15 @@
       {
         "stageId": "resolve-language-projection",
         "purpose": "Bind each feature body to one admitted language and module profile.",
-        "requires": ["feature-body-authority"],
-        "consumes": ["feature-body-authority"],
-        "produces": ["language-projection-authority"],
+        "requires": [
+          "feature-body-authority"
+        ],
+        "consumes": [
+          "feature-body-authority"
+        ],
+        "produces": [
+          "language-projection-authority"
+        ],
         "reviewQuestions": [
           "Does the selected language profile translate the body without changing its meaning?"
         ],
@@ -145,9 +219,16 @@
       {
         "stageId": "project-expected-ast",
         "purpose": "Project each feature body into the complete expected language AST.",
-        "requires": ["language-projection-authority"],
-        "consumes": ["feature-body-authority", "language-projection-authority"],
-        "produces": ["expected-ast"],
+        "requires": [
+          "language-projection-authority"
+        ],
+        "consumes": [
+          "feature-body-authority",
+          "language-projection-authority"
+        ],
+        "produces": [
+          "expected-ast"
+        ],
         "reviewQuestions": [
           "Can every AST node be traced to feature-body authority?"
         ],
@@ -156,9 +237,15 @@
       {
         "stageId": "project-expected-code",
         "purpose": "Render expected source code exclusively from the admitted AST.",
-        "requires": ["expected-ast"],
-        "consumes": ["expected-ast"],
-        "produces": ["expected-code"],
+        "requires": [
+          "expected-ast"
+        ],
+        "consumes": [
+          "expected-ast"
+        ],
+        "produces": [
+          "expected-code"
+        ],
         "reviewQuestions": [
           "Does every source construct come from the expected AST with no hand-authored additions?"
         ],
@@ -167,9 +254,16 @@
       {
         "stageId": "evaluate-semantic-execution",
         "purpose": "Execute semantic authority directly and observe its signals.",
-        "requires": ["semantic-execution"],
-        "consumes": ["semantic-execution", "scenario-signals"],
-        "produces": ["semantic-evaluation"],
+        "requires": [
+          "semantic-execution"
+        ],
+        "consumes": [
+          "semantic-execution",
+          "scenario-signals"
+        ],
+        "produces": [
+          "semantic-evaluation"
+        ],
         "reviewQuestions": [
           "Was the semantic result observed without using the expected result as execution input?"
         ],
@@ -178,9 +272,16 @@
       {
         "stageId": "evaluate-projected-execution",
         "purpose": "Execute the projected embodiment and observe its signals independently.",
-        "requires": ["expected-code"],
-        "consumes": ["expected-code", "scenario-signals"],
-        "produces": ["projected-evaluation"],
+        "requires": [
+          "expected-code"
+        ],
+        "consumes": [
+          "expected-code",
+          "scenario-signals"
+        ],
+        "produces": [
+          "projected-evaluation"
+        ],
         "reviewQuestions": [
           "Was the projected result observed through the same fixture boundary as semantic execution?"
         ],
@@ -189,9 +290,18 @@
       {
         "stageId": "evaluate-translation-conformance",
         "purpose": "Compare declared expectations, semantic observations, and projected observations.",
-        "requires": ["semantic-evaluation", "projected-evaluation"],
-        "consumes": ["scenario-expectations", "semantic-evaluation", "projected-evaluation"],
-        "produces": ["translation-conformance"],
+        "requires": [
+          "semantic-evaluation",
+          "projected-evaluation"
+        ],
+        "consumes": [
+          "scenario-expectations",
+          "semantic-evaluation",
+          "projected-evaluation"
+        ],
+        "produces": [
+          "translation-conformance"
+        ],
         "reviewQuestions": [
           "Are the declared, semantic, and projected outcomes canonically equivalent?"
         ],
@@ -200,9 +310,16 @@
       {
         "stageId": "review-feature",
         "purpose": "Present the complete construction lineage for human implementation admission.",
-        "requires": ["translation-conformance"],
-        "consumes": ["canonical-feature", "translation-conformance"],
-        "produces": ["review-disposition"],
+        "requires": [
+          "translation-conformance"
+        ],
+        "consumes": [
+          "canonical-feature",
+          "translation-conformance"
+        ],
+        "produces": [
+          "review-disposition"
+        ],
         "reviewQuestions": [
           "Is every implementation construct traceable through AST, body, semantic authority, and feature intent?"
         ],
@@ -533,20 +650,44 @@
       "observations": [
         {
           "observationId": "observe-reviewed-request",
-          "source": "$.canonicalFeatureBody.scenarios[0]"
+          "sourceRef": "scenario:admit-one-reviewed-new-feature-request"
         }
       ],
       "decisions": [
         {
           "decisionId": "resolve-request-admission",
-          "outcomes": ["ADMITTED", "REJECTED"]
+          "inputs": [
+            "$.input.reviewDisposition",
+            "$.input.existingFeatureIds"
+          ],
+          "rules": [
+            {
+              "ruleId": "resolve-request-admission-success",
+              "when": {
+                "allRequiredInputsConform": true
+              },
+              "then": "ADMITTED"
+            },
+            {
+              "ruleId": "resolve-request-admission-fallback",
+              "when": {
+                "*": true
+              },
+              "then": "REJECTED"
+            }
+          ]
         }
       ],
       "projections": [
         {
           "projectionId": "project-request-admission",
           "from": "resolve-request-admission",
-          "to": "new-feature-request-admission.v1"
+          "to": "new-feature-request-admission.v1",
+          "fields": {
+            "responsibilityId": "$.responsibilityId",
+            "signalId": "$.signalId",
+            "disposition": "$.decision.disposition"
+          }
         }
       ],
       "execution": {
@@ -554,15 +695,24 @@
         "steps": [
           {
             "sequence": 1,
-            "operation": "observe-reviewed-request"
+            "operation": "resolve-observation",
+            "authorityId": "observe-reviewed-request",
+            "input": "$.input",
+            "assign": "$.observed"
           },
           {
             "sequence": 2,
-            "operation": "resolve-request-admission"
+            "operation": "resolve-decision",
+            "authorityId": "resolve-request-admission",
+            "input": "$.observed",
+            "assign": "$.decision"
           },
           {
             "sequence": 3,
-            "operation": "project-request-admission"
+            "operation": "project-result",
+            "authorityId": "project-request-admission",
+            "input": "$.decision",
+            "assign": "$.result"
           }
         ]
       }
@@ -578,7 +728,7 @@
       "observations": [
         {
           "observationId": "observe-admitted-request",
-          "source": "$.canonicalFeatureBody.feature"
+          "sourceRef": "scenario:project-one-complete-new-feature-authority"
         }
       ],
       "decisions": [],
@@ -586,7 +736,12 @@
         {
           "projectionId": "project-complete-feature-authority",
           "from": "observe-admitted-request",
-          "to": "complete-new-feature-authority.v1"
+          "to": "complete-new-feature-authority.v1",
+          "fields": {
+            "responsibilityId": "$.responsibilityId",
+            "signalId": "$.signalId",
+            "disposition": "$.observed.disposition"
+          }
         }
       ],
       "execution": {
@@ -594,11 +749,17 @@
         "steps": [
           {
             "sequence": 1,
-            "operation": "observe-admitted-request"
+            "operation": "resolve-observation",
+            "authorityId": "observe-admitted-request",
+            "input": "$.input",
+            "assign": "$.observed"
           },
           {
             "sequence": 2,
-            "operation": "project-complete-feature-authority"
+            "operation": "project-result",
+            "authorityId": "project-complete-feature-authority",
+            "input": "$.observed",
+            "assign": "$.result"
           }
         ]
       }
@@ -614,7 +775,7 @@
       "observations": [
         {
           "observationId": "observe-complete-feature-authority",
-          "source": "$.featureBodyAuthority"
+          "sourceRef": "scenario:materialize-one-complete-new-feature"
         }
       ],
       "decisions": [],
@@ -622,7 +783,12 @@
         {
           "projectionId": "project-complete-feature-materialization",
           "from": "observe-complete-feature-authority",
-          "to": "complete-new-feature-materialization.v1"
+          "to": "complete-new-feature-materialization.v1",
+          "fields": {
+            "responsibilityId": "$.responsibilityId",
+            "signalId": "$.signalId",
+            "disposition": "$.observed.disposition"
+          }
         }
       ],
       "execution": {
@@ -630,11 +796,17 @@
         "steps": [
           {
             "sequence": 1,
-            "operation": "observe-complete-feature-authority"
+            "operation": "resolve-observation",
+            "authorityId": "observe-complete-feature-authority",
+            "input": "$.input",
+            "assign": "$.observed"
           },
           {
             "sequence": 2,
-            "operation": "project-complete-feature-materialization"
+            "operation": "project-result",
+            "authorityId": "project-complete-feature-materialization",
+            "input": "$.observed",
+            "assign": "$.result"
           }
         ]
       }
@@ -650,7 +822,7 @@
       "observations": [
         {
           "observationId": "observe-materialized-feature",
-          "source": "$.projectionAuthority"
+          "sourceRef": "scenario:execute-one-newly-materialized-feature"
         }
       ],
       "decisions": [],
@@ -658,7 +830,12 @@
         {
           "projectionId": "project-execution-observation",
           "from": "observe-materialized-feature",
-          "to": "observed-new-feature-execution.v1"
+          "to": "observed-new-feature-execution.v1",
+          "fields": {
+            "responsibilityId": "$.responsibilityId",
+            "signalId": "$.signalId",
+            "disposition": "$.observed.disposition"
+          }
         }
       ],
       "execution": {
@@ -666,11 +843,17 @@
         "steps": [
           {
             "sequence": 1,
-            "operation": "observe-materialized-feature"
+            "operation": "resolve-observation",
+            "authorityId": "observe-materialized-feature",
+            "input": "$.input",
+            "assign": "$.observed"
           },
           {
             "sequence": 2,
-            "operation": "project-execution-observation"
+            "operation": "project-result",
+            "authorityId": "project-execution-observation",
+            "input": "$.observed",
+            "assign": "$.result"
           }
         ]
       }
@@ -686,20 +869,44 @@
       "observations": [
         {
           "observationId": "observe-execution-comparison",
-          "source": "$.evaluationAuthority"
+          "sourceRef": "scenario:verify-one-complete-new-feature-lineage"
         }
       ],
       "decisions": [
         {
           "decisionId": "resolve-terminal-disposition",
-          "outcomes": ["PROJECTION_CONFORMS", "PROJECTION_DIVERGES"]
+          "inputs": [
+            "$.input.reviewDisposition",
+            "$.input.existingFeatureIds"
+          ],
+          "rules": [
+            {
+              "ruleId": "resolve-terminal-disposition-success",
+              "when": {
+                "allRequiredInputsConform": true
+              },
+              "then": "PROJECTION_CONFORMS"
+            },
+            {
+              "ruleId": "resolve-terminal-disposition-fallback",
+              "when": {
+                "*": true
+              },
+              "then": "PROJECTION_DIVERGES"
+            }
+          ]
         }
       ],
       "projections": [
         {
           "projectionId": "project-terminal-disposition",
           "from": "resolve-terminal-disposition",
-          "to": "new-feature-terminal-disposition.v1"
+          "to": "new-feature-terminal-disposition.v1",
+          "fields": {
+            "responsibilityId": "$.responsibilityId",
+            "signalId": "$.signalId",
+            "disposition": "$.decision.disposition"
+          }
         }
       ],
       "execution": {
@@ -707,15 +914,24 @@
         "steps": [
           {
             "sequence": 1,
-            "operation": "observe-execution-comparison"
+            "operation": "resolve-observation",
+            "authorityId": "observe-execution-comparison",
+            "input": "$.input",
+            "assign": "$.observed"
           },
           {
             "sequence": 2,
-            "operation": "resolve-terminal-disposition"
+            "operation": "resolve-decision",
+            "authorityId": "resolve-terminal-disposition",
+            "input": "$.observed",
+            "assign": "$.decision"
           },
           {
             "sequence": 3,
-            "operation": "project-terminal-disposition"
+            "operation": "project-result",
+            "authorityId": "project-terminal-disposition",
+            "input": "$.decision",
+            "assign": "$.result"
           }
         ]
       }
@@ -873,382 +1089,602 @@
       }
     }
   ],
+  "featureExecutionAuthority": {
+    "executionId": "execute-end-to-end-canonical-feature-conveyor",
+    "executionKind": "linear-feature-conveyor",
+    "contextContractId": "end-to-end-canonical-feature-conveyor-context.v1",
+    "terminalContractId": "new-feature-terminal-disposition.v1",
+    "steps": [
+      {
+        "sequence": 1,
+        "operation": "invoke-responsibility",
+        "responsibilityId": "admits-reviewed-new-feature-request",
+        "semanticOperationId": "admit-reviewed-new-feature-request",
+        "acceptsContractId": "reviewed-new-feature-request.v1",
+        "producesContractId": "new-feature-request-admission.v1",
+        "input": "$.context",
+        "assign": "$.admission"
+      },
+      {
+        "sequence": 2,
+        "operation": "invoke-adapter",
+        "responsibilityId": "adapts-new-feature-request-admission",
+        "semanticOperationId": "adapt-new-feature-request-admission",
+        "acceptsContractId": "new-feature-request-admission.v1",
+        "producesContractId": "admitted-new-feature-request.v1",
+        "input": "$.admission",
+        "assign": "$.admittedRequest"
+      },
+      {
+        "sequence": 3,
+        "operation": "invoke-responsibility",
+        "responsibilityId": "projects-complete-new-feature-authority",
+        "semanticOperationId": "project-complete-new-feature-authority",
+        "acceptsContractId": "admitted-new-feature-request.v1",
+        "producesContractId": "complete-new-feature-authority.v1",
+        "input": "$.admittedRequest",
+        "assign": "$.authority"
+      },
+      {
+        "sequence": 4,
+        "operation": "invoke-responsibility",
+        "responsibilityId": "materializes-complete-new-feature",
+        "semanticOperationId": "materialize-complete-new-feature",
+        "acceptsContractId": "complete-new-feature-authority.v1",
+        "producesContractId": "complete-new-feature-materialization.v1",
+        "input": "$.authority",
+        "assign": "$.materialization"
+      },
+      {
+        "sequence": 5,
+        "operation": "invoke-responsibility",
+        "responsibilityId": "executes-newly-materialized-feature",
+        "semanticOperationId": "execute-newly-materialized-feature",
+        "acceptsContractId": "complete-new-feature-materialization.v1",
+        "producesContractId": "observed-new-feature-execution.v1",
+        "input": "$.materialization",
+        "assign": "$.execution"
+      },
+      {
+        "sequence": 6,
+        "operation": "invoke-adapter",
+        "responsibilityId": "composes-new-feature-execution-comparison",
+        "semanticOperationId": "compose-new-feature-execution-comparison",
+        "acceptsContractId": "observed-new-feature-execution.v1",
+        "producesContractId": "new-feature-execution-comparison.v1",
+        "input": "$.execution",
+        "assign": "$.comparison"
+      },
+      {
+        "sequence": 7,
+        "operation": "invoke-responsibility",
+        "responsibilityId": "verifies-complete-new-feature-lineage",
+        "semanticOperationId": "verify-complete-new-feature-lineage",
+        "acceptsContractId": "new-feature-execution-comparison.v1",
+        "producesContractId": "new-feature-terminal-disposition.v1",
+        "input": "$.comparison",
+        "assign": "$.disposition"
+      },
+      {
+        "sequence": 8,
+        "operation": "return",
+        "input": "$.disposition"
+      }
+    ]
+  },
   "projectionAuthority": [
     {
       "bodyId": "new-feature-request-admission",
-      "target": {
-        "language": "typescript",
-        "moduleProfile": "typescript-esm",
-        "languageProfileId": "typescript-collapsed-responsibility-body.v1"
+      "languageProfileId": "typescript-collapsed-responsibility-body-v1",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
       },
-      "translation": {
-        "sourceBodyId": "new-feature-request-admission",
-        "projectionId": "project-new-feature-request-admission",
-        "artifactPath": "src/new-feature-request-admission.ts"
-      },
-      "expectedProjection": {
-        "imports": [],
-        "declarations": [],
-        "ast": {
-          "kind": "SourceFile",
-          "statements": [
+      "input": {
+        "bodyAuthorityRef": "feature-body:new-feature-request-admission",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-new-feature-request-admission-through-production-projector",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/new-feature-request-admission.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "admit-one-reviewed-new-feature-request",
+            "obligationId": "establish-one-eligible-new-feature-request",
+            "responsibilityId": "admits-reviewed-new-feature-request",
+            "signalId": "new-feature-request-admission"
+          },
+          "imports": [
             {
-              "kind": "FunctionDeclaration",
-              "name": "admitsReviewedNewFeatureRequest",
-              "modifiers": ["export", "async"],
-              "parameters": [
-                {
-                  "name": "context",
-                  "typeReference": "AdmitReviewedNewFeatureRequestContext",
-                  "immutable": true
-                }
-              ],
-              "returnType": {
-                "kind": "Promise",
-                "typeReference": "NewFeatureRequestAdmission"
-              },
-              "body": {
-                "kind": "Block",
-                "statements": [
-                  {
-                    "kind": "ReturnStatement",
-                    "expression": {
-                      "kind": "AwaitExpression",
-                      "expression": {
-                        "kind": "CallExpression",
-                        "callee": {
-                          "kind": "PropertyAccessExpression",
-                          "receiver": {
-                            "kind": "Identifier",
-                            "name": "context"
-                          },
-                          "member": "invoke"
-                        },
-                        "arguments": [
-                          {
-                            "kind": "StringLiteral",
-                            "value": "admit-reviewed-new-feature-request"
-                          },
-                          {
-                            "kind": "Identifier",
-                            "name": "context"
-                          }
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
+              "kind": "type-only",
+              "moduleSpecifier": "./new-feature-request-admission.type.js",
+              "namedBindings": [
+                "AdmitReviewedNewFeatureRequestContext",
+                "NewFeatureRequestAdmission"
+              ]
             }
-          ]
+          ],
+          "function": {
+            "identity": "new-feature-request-admission",
+            "name": "admitsReviewedNewFeatureRequest",
+            "contextParameter": {
+              "name": "context",
+              "typeReference": "AdmitReviewedNewFeatureRequestContext"
+            },
+            "resultTypeReference": "NewFeatureRequestAdmission",
+            "semanticEdgeId": "admit-reviewed-new-feature-request",
+            "awaited": true
+          }
         }
+      },
+      "expectedArtifact": {
+        "path": "src/new-feature-request-admission.ts",
+        "language": "typescript"
+      },
+      "typeResolution": {
+        "contextType": "AdmitReviewedNewFeatureRequestContext",
+        "resultType": "NewFeatureRequestAdmission"
       }
     },
     {
       "bodyId": "complete-new-feature-authority",
-      "target": {
-        "language": "typescript",
-        "moduleProfile": "typescript-esm",
-        "languageProfileId": "typescript-collapsed-responsibility-body.v1"
+      "languageProfileId": "typescript-collapsed-responsibility-body-v1",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
       },
-      "translation": {
-        "sourceBodyId": "complete-new-feature-authority",
-        "projectionId": "project-complete-new-feature-authority-body",
-        "artifactPath": "src/complete-new-feature-authority.ts"
-      },
-      "expectedProjection": {
-        "imports": [],
-        "declarations": [],
-        "ast": {
-          "kind": "SourceFile",
-          "statements": [
+      "input": {
+        "bodyAuthorityRef": "feature-body:complete-new-feature-authority",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-complete-new-feature-authority-through-production-projector",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/complete-new-feature-authority.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "project-one-complete-new-feature-authority",
+            "obligationId": "establish-one-complete-new-feature-authority",
+            "responsibilityId": "projects-complete-new-feature-authority",
+            "signalId": "complete-new-feature-authority"
+          },
+          "imports": [
             {
-              "kind": "FunctionDeclaration",
-              "name": "projectsCompleteNewFeatureAuthority",
-              "modifiers": ["export", "async"],
-              "parameters": [
-                {
-                  "name": "context",
-                  "typeReference": "ProjectCompleteNewFeatureAuthorityContext",
-                  "immutable": true
-                }
-              ],
-              "returnType": {
-                "kind": "Promise",
-                "typeReference": "CompleteNewFeatureAuthority"
-              },
-              "body": {
-                "kind": "Block",
-                "statements": [
-                  {
-                    "kind": "ReturnStatement",
-                    "expression": {
-                      "kind": "AwaitExpression",
-                      "expression": {
-                        "kind": "CallExpression",
-                        "callee": {
-                          "kind": "PropertyAccessExpression",
-                          "receiver": {
-                            "kind": "Identifier",
-                            "name": "context"
-                          },
-                          "member": "invoke"
-                        },
-                        "arguments": [
-                          {
-                            "kind": "StringLiteral",
-                            "value": "project-complete-new-feature-authority"
-                          },
-                          {
-                            "kind": "Identifier",
-                            "name": "context"
-                          }
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
+              "kind": "type-only",
+              "moduleSpecifier": "./complete-new-feature-authority.type.js",
+              "namedBindings": [
+                "ProjectCompleteNewFeatureAuthorityContext",
+                "CompleteNewFeatureAuthority"
+              ]
             }
-          ]
+          ],
+          "function": {
+            "identity": "complete-new-feature-authority",
+            "name": "projectsCompleteNewFeatureAuthority",
+            "contextParameter": {
+              "name": "context",
+              "typeReference": "ProjectCompleteNewFeatureAuthorityContext"
+            },
+            "resultTypeReference": "CompleteNewFeatureAuthority",
+            "semanticEdgeId": "project-complete-new-feature-authority",
+            "awaited": true
+          }
         }
+      },
+      "expectedArtifact": {
+        "path": "src/complete-new-feature-authority.ts",
+        "language": "typescript"
+      },
+      "typeResolution": {
+        "contextType": "ProjectCompleteNewFeatureAuthorityContext",
+        "resultType": "CompleteNewFeatureAuthority"
       }
     },
     {
       "bodyId": "complete-new-feature-materialization",
-      "target": {
-        "language": "typescript",
-        "moduleProfile": "typescript-esm",
-        "languageProfileId": "typescript-collapsed-responsibility-body.v1"
+      "languageProfileId": "typescript-collapsed-responsibility-body-v1",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
       },
-      "translation": {
-        "sourceBodyId": "complete-new-feature-materialization",
-        "projectionId": "project-complete-new-feature-materialization",
-        "artifactPath": "src/complete-new-feature-materialization.ts"
-      },
-      "expectedProjection": {
-        "imports": [],
-        "declarations": [],
-        "ast": {
-          "kind": "SourceFile",
-          "statements": [
+      "input": {
+        "bodyAuthorityRef": "feature-body:complete-new-feature-materialization",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-complete-new-feature-materialization-through-production-projector",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/complete-new-feature-materialization.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "materialize-one-complete-new-feature",
+            "obligationId": "materialize-only-admitted-new-feature-authority",
+            "responsibilityId": "materializes-complete-new-feature",
+            "signalId": "complete-new-feature-materialization"
+          },
+          "imports": [
             {
-              "kind": "FunctionDeclaration",
-              "name": "materializesCompleteNewFeature",
-              "modifiers": ["export", "async"],
-              "parameters": [
-                {
-                  "name": "context",
-                  "typeReference": "MaterializeCompleteNewFeatureContext",
-                  "immutable": true
-                }
-              ],
-              "returnType": {
-                "kind": "Promise",
-                "typeReference": "CompleteNewFeatureMaterialization"
-              },
-              "body": {
-                "kind": "Block",
-                "statements": [
-                  {
-                    "kind": "ReturnStatement",
-                    "expression": {
-                      "kind": "AwaitExpression",
-                      "expression": {
-                        "kind": "CallExpression",
-                        "callee": {
-                          "kind": "PropertyAccessExpression",
-                          "receiver": {
-                            "kind": "Identifier",
-                            "name": "context"
-                          },
-                          "member": "invoke"
-                        },
-                        "arguments": [
-                          {
-                            "kind": "StringLiteral",
-                            "value": "materialize-complete-new-feature"
-                          },
-                          {
-                            "kind": "Identifier",
-                            "name": "context"
-                          }
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
+              "kind": "type-only",
+              "moduleSpecifier": "./complete-new-feature-materialization.type.js",
+              "namedBindings": [
+                "MaterializeCompleteNewFeatureContext",
+                "CompleteNewFeatureMaterialization"
+              ]
             }
-          ]
+          ],
+          "function": {
+            "identity": "complete-new-feature-materialization",
+            "name": "materializesCompleteNewFeature",
+            "contextParameter": {
+              "name": "context",
+              "typeReference": "MaterializeCompleteNewFeatureContext"
+            },
+            "resultTypeReference": "CompleteNewFeatureMaterialization",
+            "semanticEdgeId": "materialize-complete-new-feature",
+            "awaited": true
+          }
         }
+      },
+      "expectedArtifact": {
+        "path": "src/complete-new-feature-materialization.ts",
+        "language": "typescript"
+      },
+      "typeResolution": {
+        "contextType": "MaterializeCompleteNewFeatureContext",
+        "resultType": "CompleteNewFeatureMaterialization"
       }
     },
     {
       "bodyId": "observed-new-feature-execution",
-      "target": {
-        "language": "typescript",
-        "moduleProfile": "typescript-esm",
-        "languageProfileId": "typescript-collapsed-responsibility-body.v1"
+      "languageProfileId": "typescript-collapsed-responsibility-body-v1",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
       },
-      "translation": {
-        "sourceBodyId": "observed-new-feature-execution",
-        "projectionId": "project-observed-new-feature-execution",
-        "artifactPath": "src/observed-new-feature-execution.ts"
-      },
-      "expectedProjection": {
-        "imports": [],
-        "declarations": [],
-        "ast": {
-          "kind": "SourceFile",
-          "statements": [
+      "input": {
+        "bodyAuthorityRef": "feature-body:observed-new-feature-execution",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-observed-new-feature-execution-through-production-projector",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/observed-new-feature-execution.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "execute-one-newly-materialized-feature",
+            "obligationId": "execute-new-feature-through-admitted-semantics",
+            "responsibilityId": "executes-newly-materialized-feature",
+            "signalId": "observed-new-feature-execution"
+          },
+          "imports": [
             {
-              "kind": "FunctionDeclaration",
-              "name": "executesNewlyMaterializedFeature",
-              "modifiers": ["export", "async"],
-              "parameters": [
-                {
-                  "name": "context",
-                  "typeReference": "ExecuteNewlyMaterializedFeatureContext",
-                  "immutable": true
-                }
-              ],
-              "returnType": {
-                "kind": "Promise",
-                "typeReference": "ObservedNewFeatureExecution"
-              },
-              "body": {
-                "kind": "Block",
-                "statements": [
-                  {
-                    "kind": "ReturnStatement",
-                    "expression": {
-                      "kind": "AwaitExpression",
-                      "expression": {
-                        "kind": "CallExpression",
-                        "callee": {
-                          "kind": "PropertyAccessExpression",
-                          "receiver": {
-                            "kind": "Identifier",
-                            "name": "context"
-                          },
-                          "member": "invoke"
-                        },
-                        "arguments": [
-                          {
-                            "kind": "StringLiteral",
-                            "value": "execute-newly-materialized-feature"
-                          },
-                          {
-                            "kind": "Identifier",
-                            "name": "context"
-                          }
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
+              "kind": "type-only",
+              "moduleSpecifier": "./observed-new-feature-execution.type.js",
+              "namedBindings": [
+                "ExecuteNewlyMaterializedFeatureContext",
+                "ObservedNewFeatureExecution"
+              ]
             }
-          ]
+          ],
+          "function": {
+            "identity": "observed-new-feature-execution",
+            "name": "executesNewlyMaterializedFeature",
+            "contextParameter": {
+              "name": "context",
+              "typeReference": "ExecuteNewlyMaterializedFeatureContext"
+            },
+            "resultTypeReference": "ObservedNewFeatureExecution",
+            "semanticEdgeId": "execute-newly-materialized-feature",
+            "awaited": true
+          }
         }
+      },
+      "expectedArtifact": {
+        "path": "src/observed-new-feature-execution.ts",
+        "language": "typescript"
+      },
+      "typeResolution": {
+        "contextType": "ExecuteNewlyMaterializedFeatureContext",
+        "resultType": "ObservedNewFeatureExecution"
       }
     },
     {
       "bodyId": "complete-new-feature-lineage",
-      "target": {
-        "language": "typescript",
-        "moduleProfile": "typescript-esm",
-        "languageProfileId": "typescript-collapsed-responsibility-body.v1"
+      "languageProfileId": "typescript-collapsed-responsibility-body-v1",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
       },
-      "translation": {
-        "sourceBodyId": "complete-new-feature-lineage",
-        "projectionId": "project-complete-new-feature-lineage",
-        "artifactPath": "src/complete-new-feature-lineage.ts"
-      },
-      "expectedProjection": {
-        "imports": [],
-        "declarations": [],
-        "ast": {
-          "kind": "SourceFile",
-          "statements": [
+      "input": {
+        "bodyAuthorityRef": "feature-body:complete-new-feature-lineage",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-complete-new-feature-lineage-through-production-projector",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/complete-new-feature-lineage.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "verify-one-complete-new-feature-lineage",
+            "obligationId": "prove-complete-new-feature-equivalence",
+            "responsibilityId": "verifies-complete-new-feature-lineage",
+            "signalId": "complete-new-feature-equivalence"
+          },
+          "imports": [
             {
-              "kind": "FunctionDeclaration",
-              "name": "verifiesCompleteNewFeatureLineage",
-              "modifiers": ["export", "async"],
-              "parameters": [
-                {
-                  "name": "context",
-                  "typeReference": "VerifyCompleteNewFeatureLineageContext",
-                  "immutable": true
-                }
-              ],
-              "returnType": {
-                "kind": "Promise",
-                "typeReference": "NewFeatureTerminalDisposition"
-              },
-              "body": {
-                "kind": "Block",
-                "statements": [
-                  {
-                    "kind": "ReturnStatement",
-                    "expression": {
-                      "kind": "AwaitExpression",
-                      "expression": {
-                        "kind": "CallExpression",
-                        "callee": {
-                          "kind": "PropertyAccessExpression",
-                          "receiver": {
-                            "kind": "Identifier",
-                            "name": "context"
-                          },
-                          "member": "invoke"
-                        },
-                        "arguments": [
-                          {
-                            "kind": "StringLiteral",
-                            "value": "verify-complete-new-feature-lineage"
-                          },
-                          {
-                            "kind": "Identifier",
-                            "name": "context"
-                          }
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
+              "kind": "type-only",
+              "moduleSpecifier": "./complete-new-feature-lineage.type.js",
+              "namedBindings": [
+                "VerifyCompleteNewFeatureLineageContext",
+                "NewFeatureTerminalDisposition"
+              ]
             }
-          ]
+          ],
+          "function": {
+            "identity": "complete-new-feature-lineage",
+            "name": "verifiesCompleteNewFeatureLineage",
+            "contextParameter": {
+              "name": "context",
+              "typeReference": "VerifyCompleteNewFeatureLineageContext"
+            },
+            "resultTypeReference": "NewFeatureTerminalDisposition",
+            "semanticEdgeId": "verify-complete-new-feature-lineage",
+            "awaited": true
+          }
         }
+      },
+      "expectedArtifact": {
+        "path": "src/complete-new-feature-lineage.ts",
+        "language": "typescript"
+      },
+      "typeResolution": {
+        "contextType": "VerifyCompleteNewFeatureLineageContext",
+        "resultType": "NewFeatureTerminalDisposition"
       }
     }
   ],
+  "featureExecutionProjection": {
+    "executionAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor",
+    "languageProfileId": "typescript-linear-feature-conveyor-v1",
+    "projector": {
+      "projectorId": "projects-typescript-body",
+      "projectorVersion": "1.0.0",
+      "projectionProfileId": "typescript-linear-feature-conveyor-v1",
+      "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+      "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+    },
+    "projectorRequest": {
+      "contract": {
+        "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+        "schemaVersion": "1.0.0",
+        "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+      },
+      "projectionId": "project-end-to-end-canonical-feature-conveyor-through-production-projector",
+      "targetLanguage": "typescript",
+      "artifact": {
+        "relativePath": "composition/executes-end-to-end-canonical-feature-conveyor.ts"
+      },
+      "lineage": {
+        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "scenarioId": "execute-complete-canonical-feature-conveyor",
+        "obligationId": "execute-one-mechanically-continuous-feature-flow",
+        "responsibilityId": "executes-end-to-end-canonical-feature-conveyor",
+        "signalId": "new-feature-terminal-disposition"
+      },
+      "imports": [
+        {
+          "kind": "type-only",
+          "moduleSpecifier": "./executes-end-to-end-canonical-feature-conveyor.type.js",
+          "namedBindings": [
+            "EndToEndCanonicalFeatureConveyorContext",
+            "NewFeatureTerminalDisposition"
+          ]
+        }
+      ],
+      "function": {
+        "identity": "execute-end-to-end-canonical-feature-conveyor",
+        "name": "executesEndToEndCanonicalFeatureConveyor",
+        "contextParameter": {
+          "name": "context",
+          "typeReference": "EndToEndCanonicalFeatureConveyorContext"
+        },
+        "resultTypeReference": "NewFeatureTerminalDisposition",
+        "statements": [
+          {
+            "kind": "const-edge",
+            "name": "admission",
+            "receiverPath": ["context", "edges"],
+            "operation": "invokes",
+            "edgeId": "admit-reviewed-new-feature-request",
+            "input": "context"
+          },
+          {
+            "kind": "const-edge",
+            "name": "admittedRequest",
+            "receiverPath": ["context", "edges"],
+            "operation": "invokes",
+            "edgeId": "adapt-new-feature-request-admission",
+            "input": "admission"
+          },
+          {
+            "kind": "const-edge",
+            "name": "authority",
+            "receiverPath": ["context", "edges"],
+            "operation": "invokes",
+            "edgeId": "project-complete-new-feature-authority",
+            "input": "admittedRequest"
+          },
+          {
+            "kind": "const-edge",
+            "name": "materialization",
+            "receiverPath": ["context", "edges"],
+            "operation": "invokes",
+            "edgeId": "materialize-complete-new-feature",
+            "input": "authority"
+          },
+          {
+            "kind": "const-edge",
+            "name": "execution",
+            "receiverPath": ["context", "edges"],
+            "operation": "invokes",
+            "edgeId": "execute-newly-materialized-feature",
+            "input": "materialization"
+          },
+          {
+            "kind": "const-edge",
+            "name": "comparison",
+            "receiverPath": ["context", "edges"],
+            "operation": "invokes",
+            "edgeId": "compose-new-feature-execution-comparison",
+            "input": "execution"
+          },
+          {
+            "kind": "const-edge",
+            "name": "disposition",
+            "receiverPath": ["context", "edges"],
+            "operation": "invokes",
+            "edgeId": "verify-complete-new-feature-lineage",
+            "input": "comparison"
+          },
+          {
+            "kind": "return-value",
+            "value": {
+              "kind": "identifier",
+              "name": "disposition"
+            }
+          }
+        ]
+      }
+    },
+    "expectedArtifact": {
+      "path": "composition/executes-end-to-end-canonical-feature-conveyor.ts",
+      "language": "typescript",
+      "runtime": "node",
+      "moduleProfile": "typescript-esm"
+    }
+  },
   "evaluationAuthority": {
     "semanticEvaluation": {
-      "executionSource": "$.semanticAuthority[*].execution",
-      "fixtureSource": "$.canonicalFeatureBody.scenarios[*].behavior.given",
-      "expectedSignalSource": "$.canonicalFeatureBody.scenarios[*].signal"
+      "executionRefs": [
+        "responsibility:admits-reviewed-new-feature-request",
+        "responsibility:projects-complete-new-feature-authority",
+        "responsibility:materializes-complete-new-feature",
+        "responsibility:executes-newly-materialized-feature",
+        "responsibility:verifies-complete-new-feature-lineage"
+      ],
+      "fixtureRefs": [
+        "scenario:admit-one-reviewed-new-feature-request",
+        "scenario:project-one-complete-new-feature-authority",
+        "scenario:materialize-one-complete-new-feature",
+        "scenario:execute-one-newly-materialized-feature",
+        "scenario:verify-one-complete-new-feature-lineage"
+      ],
+      "expectedSignalRefs": [
+        "signal:new-feature-request-admission",
+        "signal:complete-new-feature-authority",
+        "signal:complete-new-feature-materialization",
+        "signal:observed-new-feature-execution",
+        "signal:complete-new-feature-equivalence"
+      ]
     },
     "projectedEvaluation": {
-      "executionSource": "$.projectionAuthority[*].expectedProjection.ast",
-      "fixtureSource": "$.canonicalFeatureBody.scenarios[*].behavior.given",
-      "expectedSignalSource": "$.canonicalFeatureBody.scenarios[*].signal"
+      "executionRefs": [
+        "feature-body:new-feature-request-admission",
+        "feature-body:complete-new-feature-authority",
+        "feature-body:complete-new-feature-materialization",
+        "feature-body:observed-new-feature-execution",
+        "feature-body:complete-new-feature-lineage"
+      ],
+      "fixtureRefs": [
+        "scenario:admit-one-reviewed-new-feature-request",
+        "scenario:project-one-complete-new-feature-authority",
+        "scenario:materialize-one-complete-new-feature",
+        "scenario:execute-one-newly-materialized-feature",
+        "scenario:verify-one-complete-new-feature-lineage"
+      ],
+      "expectedSignalRefs": [
+        "signal:new-feature-request-admission",
+        "signal:complete-new-feature-authority",
+        "signal:complete-new-feature-materialization",
+        "signal:observed-new-feature-execution",
+        "signal:complete-new-feature-equivalence"
+      ]
     },
     "translationEvaluation": {
-      "compare": [
-        "$.semanticEvaluation.observedSignal",
-        "$.projectedEvaluation.observedSignal",
-        "$.canonicalFeatureBody.scenarios[*].expectation"
+      "comparisonRefs": [
+        "semantic-observation:responsibility:admits-reviewed-new-feature-request",
+        "semantic-observation:responsibility:projects-complete-new-feature-authority",
+        "semantic-observation:responsibility:materializes-complete-new-feature",
+        "semantic-observation:responsibility:executes-newly-materialized-feature",
+        "semantic-observation:responsibility:verifies-complete-new-feature-lineage",
+        "projected-observation:feature-body:new-feature-request-admission",
+        "projected-observation:feature-body:complete-new-feature-authority",
+        "projected-observation:feature-body:complete-new-feature-materialization",
+        "projected-observation:feature-body:observed-new-feature-execution",
+        "projected-observation:feature-body:complete-new-feature-lineage",
+        "signal:new-feature-request-admission",
+        "signal:complete-new-feature-authority",
+        "signal:complete-new-feature-materialization",
+        "signal:observed-new-feature-execution",
+        "signal:complete-new-feature-equivalence"
       ],
       "requiredRelationship": "canonical-equivalence"
     },
-    "terminalDetermination": {
-      "semanticExecution": "CONFORMS",
-      "projectedExecution": "CONFORMS",
-      "translation": "EQUIVALENT",
-      "disposition": "PROJECTION_CONFORMS"
+    "policy": {
+      "possibleDispositions": [
+        "PROJECTION_CONFORMS",
+        "SEMANTIC_EXECUTION_DIVERGES",
+        "PROJECTED_EXECUTION_DIVERGES",
+        "TRANSLATION_DIVERGES",
+        "NOT_EVALUATED"
+      ]
+    },
+    "observation": {
+      "semanticExecution": "NOT_EVALUATED",
+      "projectedExecution": "NOT_EVALUATED",
+      "translation": "NOT_EVALUATED",
+      "disposition": "NOT_EVALUATED"
     }
   },
   "reviewAuthority": {
@@ -1290,6 +1726,640 @@
     "outputPath": "architecture/end-to-end-canonical-feature-conveyor.md",
     "encoding": "UTF-8",
     "lineEnding": "CRLF",
-    "outputByteSha256": "sha256:304bc5d2060c1f5b5a1c77791c39315d6367172cd2f52ba0d8cb9d07d82db7aa"
+    "outputByteSha256": "sha256:b02a504370ef69e6a068aec20eddb45b10554b132afad71a611ea2afa969293d",
+    "derivedProjectionOutputPath": "architecture/end-to-end-canonical-feature-conveyor.derived-projections.json",
+    "derivedProjectionSha256": "sha256:d4ec16231bbe33321cf23ff2d42015329f3205fb9cfa4b1ff971b33a90a38381"
+  },
+  "languageProfiles": [
+    {
+      "languageProfileId": "typescript-collapsed-responsibility-body-v1",
+      "targetLanguage": "typescript",
+      "moduleProfile": "typescript-esm",
+      "bodyKind": "scenario-responsibility",
+      "mappings": [
+        {
+          "ruleId": "body-to-exported-async-function",
+          "source": "scenario-responsibility body",
+          "target": "exported async FunctionDeclaration"
+        },
+        {
+          "ruleId": "context-to-parameter",
+          "source": "body.context",
+          "target": "one immutable function parameter"
+        },
+        {
+          "ruleId": "semantic-edge-to-call",
+          "source": "invoke-semantic-edge",
+          "target": "context.edges.invokes CallExpression"
+        },
+        {
+          "ruleId": "edge-id-to-string-literal",
+          "source": "invoke-semantic-edge.edgeId",
+          "target": "first call argument StringLiteral"
+        },
+        {
+          "ruleId": "context-input-to-identifier",
+          "source": "invoke-semantic-edge.input $.context",
+          "target": "second call argument context Identifier"
+        },
+        {
+          "ruleId": "asynchronous-invocation-to-await",
+          "source": "semantic edge invocation",
+          "target": "AwaitExpression"
+        },
+        {
+          "ruleId": "return-operation-to-return-statement",
+          "source": "return operation",
+          "target": "ReturnStatement containing awaited invocation"
+        }
+      ],
+      "namingRules": {
+        "functionName": "camel-case(responsibilityId)",
+        "contextType": "resolve(typeResolution.contextType)",
+        "resultType": "resolve(typeResolution.resultType)"
+      }
+    }
+  ],
+  "fileBodyAuthority": {
+    "systemId": "end-to-end-canonical-feature-conveyor",
+    "roots": {
+      "capability": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+      "generated": "generated/typescript",
+      "semanticAuthority": "semantic-authority",
+      "projectionAuthority": "projection-authority"
+    },
+    "placementRules": [
+      {
+        "placementId": "place-feature",
+        "artifactRole": "feature",
+        "sourceRef": "$.canonicalFeatureBody.feature",
+        "pathTemplate": "{capabilityRoot}/{featureId}.feature"
+      },
+      {
+        "placementId": "place-scenario-authority",
+        "artifactRole": "scenario-authority",
+        "sourceRef": "$.canonicalFeatureBody.scenarios",
+        "pathTemplate": "{capabilityRoot}/scenarios/{scenarioId}/declares-scenario-authority.json"
+      },
+      {
+        "placementId": "place-semantic-authority",
+        "artifactRole": "semantic-authority",
+        "sourceRef": "$.semanticAuthority",
+        "pathTemplate": "{responsibilityRoot}/{semanticOperationId}.semantic-authority.json"
+      },
+      {
+        "placementId": "place-feature-body-authority",
+        "artifactRole": "feature-body-authority",
+        "sourceRef": "$.featureBodyAuthority",
+        "pathTemplate": "{responsibilityRoot}/{bodyId}.feature-body-authority.json"
+      },
+      {
+        "placementId": "place-ast-authority",
+        "artifactRole": "ast-authority",
+        "sourceRef": "$.derivedProjections",
+        "pathTemplate": "{responsibilityRoot}/{bodyId}.ts.ast.authority.json"
+      },
+      {
+        "placementId": "place-projected-code",
+        "artifactRole": "projected-code-body",
+        "sourceRef": "$.derivedProjections",
+        "pathTemplate": "{responsibilityRoot}/{bodyId}.ts"
+      },
+      {
+        "placementId": "place-supporting-types",
+        "artifactRole": "supporting-type-body",
+        "sourceRef": "$.fileBodyAuthority.supportingTypes",
+        "pathTemplate": "{responsibilityRoot}/{bodyId}.type.ts"
+      },
+      {
+        "placementId": "place-semantic-registration",
+        "artifactRole": "semantic-registration-body",
+        "sourceRef": "$.semanticAuthority",
+        "pathTemplate": "{responsibilityRoot}/registers-{semanticOperationId}.ts"
+      },
+      {
+        "placementId": "place-composition",
+        "artifactRole": "composition-body",
+        "sourceRef": "$.fileBodyAuthority.composition",
+        "pathTemplate": "{capabilityRoot}/composition/executes-end-to-end-canonical-feature-conveyor.ts"
+      },
+      {
+        "placementId": "place-runtime-adapter",
+        "artifactRole": "runtime-adapter-body",
+        "sourceRef": "$.fileBodyAuthority.composition",
+        "pathTemplate": "{capabilityRoot}/runtime/invokes-canonical-feature-conveyor.ts"
+      }
+    ],
+    "supportingTypes": [
+      {
+        "contractId": "admit-reviewed-new-feature-request-context.v1",
+        "typeName": "AdmitReviewedNewFeatureRequestContext",
+        "declaredTypeNames": [
+          "AdmitReviewedNewFeatureRequestContext",
+          "NewFeatureRequestAdmission"
+        ],
+        "schemaRef": "schema:AdmitReviewedNewFeatureRequestContext:NewFeatureRequestAdmission",
+        "artifactPath": "src/new-feature-request-admission.type.ts",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-new-feature-request-admission-supporting-types",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/new-feature-request-admission.type.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "admit-one-reviewed-new-feature-request",
+            "obligationId": "establish-one-eligible-new-feature-request",
+            "responsibilityId": "admits-reviewed-new-feature-request",
+            "signalId": "new-feature-request-admission"
+          },
+          "declarations": [
+            {
+              "interface": {
+                "identity": "new-feature-request-admission-context",
+                "name": "AdmitReviewedNewFeatureRequestContext",
+                "members": [
+                  {
+                    "name": "edges",
+                    "members": [
+                      {
+                        "name": "invokes",
+                        "typeReference": "(edgeId: string, context: AdmitReviewedNewFeatureRequestContext) => Promise<NewFeatureRequestAdmission>"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "interface": {
+                "identity": "new-feature-request-admission-result",
+                "name": "NewFeatureRequestAdmission",
+                "members": [
+                  {
+                    "name": "disposition",
+                    "typeReference": "string"
+                  }
+                ],
+                "separatedBefore": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "contractId": "project-complete-new-feature-authority-context.v1",
+        "typeName": "ProjectCompleteNewFeatureAuthorityContext",
+        "declaredTypeNames": [
+          "ProjectCompleteNewFeatureAuthorityContext",
+          "CompleteNewFeatureAuthority"
+        ],
+        "schemaRef": "schema:ProjectCompleteNewFeatureAuthorityContext:CompleteNewFeatureAuthority",
+        "artifactPath": "src/complete-new-feature-authority.type.ts",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-complete-new-feature-authority-supporting-types",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/complete-new-feature-authority.type.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "project-one-complete-new-feature-authority",
+            "obligationId": "establish-one-complete-new-feature-authority",
+            "responsibilityId": "projects-complete-new-feature-authority",
+            "signalId": "complete-new-feature-authority"
+          },
+          "declarations": [
+            {
+              "interface": {
+                "identity": "complete-new-feature-authority-context",
+                "name": "ProjectCompleteNewFeatureAuthorityContext",
+                "members": [
+                  {
+                    "name": "edges",
+                    "members": [
+                      {
+                        "name": "invokes",
+                        "typeReference": "(edgeId: string, context: ProjectCompleteNewFeatureAuthorityContext) => Promise<CompleteNewFeatureAuthority>"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "interface": {
+                "identity": "complete-new-feature-authority-result",
+                "name": "CompleteNewFeatureAuthority",
+                "members": [
+                  {
+                    "name": "disposition",
+                    "typeReference": "string"
+                  }
+                ],
+                "separatedBefore": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "contractId": "materialize-complete-new-feature-context.v1",
+        "typeName": "MaterializeCompleteNewFeatureContext",
+        "declaredTypeNames": [
+          "MaterializeCompleteNewFeatureContext",
+          "CompleteNewFeatureMaterialization"
+        ],
+        "schemaRef": "schema:MaterializeCompleteNewFeatureContext:CompleteNewFeatureMaterialization",
+        "artifactPath": "src/complete-new-feature-materialization.type.ts",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-complete-new-feature-materialization-supporting-types",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/complete-new-feature-materialization.type.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "materialize-one-complete-new-feature",
+            "obligationId": "materialize-only-admitted-new-feature-authority",
+            "responsibilityId": "materializes-complete-new-feature",
+            "signalId": "complete-new-feature-materialization"
+          },
+          "declarations": [
+            {
+              "interface": {
+                "identity": "complete-new-feature-materialization-context",
+                "name": "MaterializeCompleteNewFeatureContext",
+                "members": [
+                  {
+                    "name": "edges",
+                    "members": [
+                      {
+                        "name": "invokes",
+                        "typeReference": "(edgeId: string, context: MaterializeCompleteNewFeatureContext) => Promise<CompleteNewFeatureMaterialization>"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "interface": {
+                "identity": "complete-new-feature-materialization-result",
+                "name": "CompleteNewFeatureMaterialization",
+                "members": [
+                  {
+                    "name": "disposition",
+                    "typeReference": "string"
+                  }
+                ],
+                "separatedBefore": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "contractId": "execute-newly-materialized-feature-context.v1",
+        "typeName": "ExecuteNewlyMaterializedFeatureContext",
+        "declaredTypeNames": [
+          "ExecuteNewlyMaterializedFeatureContext",
+          "ObservedNewFeatureExecution"
+        ],
+        "schemaRef": "schema:ExecuteNewlyMaterializedFeatureContext:ObservedNewFeatureExecution",
+        "artifactPath": "src/observed-new-feature-execution.type.ts",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-observed-new-feature-execution-supporting-types",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/observed-new-feature-execution.type.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "execute-one-newly-materialized-feature",
+            "obligationId": "execute-new-feature-through-admitted-semantics",
+            "responsibilityId": "executes-newly-materialized-feature",
+            "signalId": "observed-new-feature-execution"
+          },
+          "declarations": [
+            {
+              "interface": {
+                "identity": "observed-new-feature-execution-context",
+                "name": "ExecuteNewlyMaterializedFeatureContext",
+                "members": [
+                  {
+                    "name": "edges",
+                    "members": [
+                      {
+                        "name": "invokes",
+                        "typeReference": "(edgeId: string, context: ExecuteNewlyMaterializedFeatureContext) => Promise<ObservedNewFeatureExecution>"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "interface": {
+                "identity": "observed-new-feature-execution-result",
+                "name": "ObservedNewFeatureExecution",
+                "members": [
+                  {
+                    "name": "disposition",
+                    "typeReference": "string"
+                  }
+                ],
+                "separatedBefore": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "contractId": "verify-complete-new-feature-lineage-context.v1",
+        "typeName": "VerifyCompleteNewFeatureLineageContext",
+        "declaredTypeNames": [
+          "VerifyCompleteNewFeatureLineageContext",
+          "NewFeatureTerminalDisposition"
+        ],
+        "schemaRef": "schema:VerifyCompleteNewFeatureLineageContext:NewFeatureTerminalDisposition",
+        "artifactPath": "src/complete-new-feature-lineage.type.ts",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-complete-new-feature-lineage-supporting-types",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/complete-new-feature-lineage.type.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "verify-one-complete-new-feature-lineage",
+            "obligationId": "prove-complete-new-feature-equivalence",
+            "responsibilityId": "verifies-complete-new-feature-lineage",
+            "signalId": "complete-new-feature-equivalence"
+          },
+          "declarations": [
+            {
+              "interface": {
+                "identity": "complete-new-feature-lineage-context",
+                "name": "VerifyCompleteNewFeatureLineageContext",
+                "members": [
+                  {
+                    "name": "edges",
+                    "members": [
+                      {
+                        "name": "invokes",
+                        "typeReference": "(edgeId: string, context: VerifyCompleteNewFeatureLineageContext) => Promise<NewFeatureTerminalDisposition>"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "interface": {
+                "identity": "complete-new-feature-lineage-result",
+                "name": "NewFeatureTerminalDisposition",
+                "members": [
+                  {
+                    "name": "disposition",
+                    "typeReference": "string"
+                  }
+                ],
+                "separatedBefore": true
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "composition": {
+      "entrypoint": "composition/executes-end-to-end-canonical-feature-conveyor.ts",
+      "entrypointAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor",
+      "runtimeAdapter": "runtime/invokes-canonical-feature-conveyor.ts",
+      "runtimeAdapterAuthorityRef": "external-authority:end-to-end-canonical-feature-conveyor-runtime-adapter"
+    },
+    "topologyPolicy": {
+      "undeclaredArtifacts": "reject",
+      "missingArtifacts": "reject",
+      "duplicateTargets": "reject"
+    }
+  },
+  "documentationProjection": {
+    "profileId": "canonical-feature-course-document-v1",
+    "openingProjection": {
+      "sectionId": "feature-destination",
+      "title": "Feature destination",
+      "intendedOutcome": {
+        "source": "$.outcome",
+        "renderer": "intended-outcome"
+      },
+      "executionFlow": {
+        "source": "$.featureExecutionAuthority.steps",
+        "renderer": "linear-execution-sketch"
+      },
+      "featureCodeBody": {
+        "source": "$.featureExecutionAuthority",
+        "projectorRef": "$.featureExecutionProjection.projector",
+        "renderer": "projected-source-fence"
+      },
+      "responsibilityBodyIndex": {
+        "source": "$.featureBodyAuthority",
+        "join": [
+          "$.canonicalFeatureBody.scenarios",
+          "$.semanticAuthority",
+          "$.projectionAuthority"
+        ],
+        "renderer": "responsibility-projection-table"
+      },
+      "fileBodySystem": {
+        "source": "$.fileBodyAuthority",
+        "renderer": "file-tree"
+      },
+      "derivationOverview": {
+        "source": "$.conveyor.stages",
+        "renderer": "ordered-conveyor"
+      }
+    },
+    "sections": [
+      {
+        "sectionId": "capture-intent",
+        "stageId": "capture-intent",
+        "source": "$.intent",
+        "renderer": "intent-section"
+      },
+      {
+        "sectionId": "declare-outcome",
+        "stageId": "declare-outcome",
+        "source": "$.outcome",
+        "renderer": "outcome-section"
+      },
+      {
+        "sectionId": "establish-feature",
+        "stageId": "establish-feature",
+        "source": "$.canonicalFeatureBody.feature",
+        "renderer": "feature-section"
+      },
+      {
+        "sectionId": "establish-scenarios",
+        "stageId": "establish-scenarios",
+        "source": "$.canonicalFeatureBody.scenarios",
+        "renderer": "gherkin-section"
+      },
+      {
+        "sectionId": "decompose-obligations",
+        "stageId": "decompose-obligations",
+        "source": "$.canonicalFeatureBody.scenarios",
+        "renderer": "obligation-section"
+      },
+      {
+        "sectionId": "declare-expectations",
+        "stageId": "declare-expectations",
+        "source": "$.canonicalFeatureBody.scenarios",
+        "renderer": "expectation-section"
+      },
+      {
+        "sectionId": "assign-responsibilities",
+        "stageId": "assign-responsibilities",
+        "source": "$.canonicalFeatureBody.scenarios",
+        "renderer": "responsibility-section"
+      },
+      {
+        "sectionId": "declare-signals",
+        "stageId": "declare-signals",
+        "source": "$.canonicalFeatureBody.scenarios",
+        "renderer": "signal-section"
+      },
+      {
+        "sectionId": "author-semantic-authority",
+        "stageId": "author-semantic-authority",
+        "source": "$.semanticAuthority",
+        "renderer": "semantic-authority-section"
+      },
+      {
+        "sectionId": "author-semantic-execution",
+        "stageId": "author-semantic-execution",
+        "source": "$.semanticAuthority",
+        "renderer": "semantic-execution-section"
+      },
+      {
+        "sectionId": "author-feature-body-authority",
+        "stageId": "author-feature-body-authority",
+        "source": "$.featureBodyAuthority",
+        "renderer": "feature-body-section"
+      },
+      {
+        "sectionId": "resolve-language-projection",
+        "stageId": "resolve-language-projection",
+        "source": "$.languageProfiles",
+        "renderer": "language-profile-section"
+      },
+      {
+        "sectionId": "project-expected-ast",
+        "stageId": "project-expected-ast",
+        "source": "$.derivedProjections",
+        "renderer": "derived-ast-section"
+      },
+      {
+        "sectionId": "project-expected-code",
+        "stageId": "project-expected-code",
+        "source": "$.derivedProjections",
+        "renderer": "derived-code-section"
+      },
+      {
+        "sectionId": "evaluate-semantic-execution",
+        "stageId": "evaluate-semantic-execution",
+        "source": "$.evaluationAuthority.semanticEvaluation",
+        "renderer": "semantic-evaluation-section"
+      },
+      {
+        "sectionId": "evaluate-projected-execution",
+        "stageId": "evaluate-projected-execution",
+        "source": "$.evaluationAuthority.projectedEvaluation",
+        "renderer": "projected-evaluation-section"
+      },
+      {
+        "sectionId": "evaluate-translation-conformance",
+        "stageId": "evaluate-translation-conformance",
+        "source": "$.evaluationAuthority.translationEvaluation",
+        "renderer": "translation-section"
+      },
+      {
+        "sectionId": "review-feature",
+        "stageId": "review-feature",
+        "source": "$.reviewAuthority",
+        "renderer": "review-section"
+      }
+    ],
+    "illustrations": [
+      {
+        "illustrationId": "canonical-conveyor-flow",
+        "kind": "ordered-conveyor",
+        "sourceRefs": [
+          "$.conveyor.stages"
+        ]
+      },
+      {
+        "illustrationId": "scenario-circuits",
+        "kind": "scenario-circuit",
+        "sourceRefs": [
+          "$.canonicalFeatureBody.scenarios"
+        ]
+      },
+      {
+        "illustrationId": "file-body-system",
+        "kind": "file-tree",
+        "sourceRefs": [
+          "$.fileBodyAuthority"
+        ]
+      },
+      {
+        "illustrationId": "authority-to-code",
+        "kind": "projection-chain",
+        "sourceRefs": [
+          "$.featureBodyAuthority",
+          "$.languageProfiles",
+          "$.derivedProjections"
+        ]
+      },
+      {
+        "illustrationId": "execution-equivalence",
+        "kind": "dual-execution-comparison",
+        "sourceRefs": [
+          "$.evaluationAuthority"
+        ]
+      }
+    ],
+    "requiredIllustrations": [
+      "canonical-conveyor-flow",
+      "scenario-circuits",
+      "file-body-system",
+      "authority-to-code",
+      "execution-equivalence"
+    ]
   }
 }

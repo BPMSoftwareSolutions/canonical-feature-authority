@@ -14,20 +14,43 @@ export function sha256(bytes) {
   return `sha256:${createHash("sha256").update(bytes).digest("hex")}`;
 }
 
-function json(value) {
-  return ["```json", ...JSON.stringify(value, null, 2).split("\n"), "```"];
+function fenced(language, value) {
+  const content =
+    typeof value === "string"
+      ? value.replace(/\r\n/g, "\n").split("\n")
+      : JSON.stringify(value, null, 2).split("\n");
+  return [`\`\`\`${language}`, ...content, "```"];
 }
 
-function typescript(source) {
-  return ["```typescript", ...source.split("\n"), "```"];
-}
-
-function text(lines) {
-  return ["```text", ...lines, "```"];
-}
-
-function bullet(statements) {
-  return statements.map(value => `- ${value.text ?? value}`);
+function stageInstruction(stage, number, title) {
+  return [
+    `## ${number}. ${title}`,
+    "",
+    ...fenced(
+      "text",
+      [
+        `Stage ID: ${stage.stageId}`,
+        `Purpose: ${stage.purpose}`,
+        `Authorized inputs: ${
+          stage.consumes.length === 0
+            ? "none"
+            : stage.consumes.join(", ")
+        }`,
+        `Required prior products: ${
+          stage.requires.length === 0
+            ? "none"
+            : stage.requires.join(", ")
+        }`,
+        `Required output: ${stage.produces.join(", ")}`,
+        `Stop condition: ${stage.completionCondition}`
+      ].join("\n")
+    ),
+    "",
+    "Review questions:",
+    "",
+    ...stage.reviewQuestions.map(question => `- ${question}`),
+    ""
+  ];
 }
 
 const stageTitles = {
@@ -43,70 +66,18 @@ const stageTitles = {
   "author-semantic-execution": "Semantic execution",
   "author-feature-body-authority": "Feature-body authority",
   "resolve-language-projection": "Language projection authority",
-  "project-expected-ast": "Expected AST",
-  "project-expected-code": "Expected code projection",
+  "project-expected-ast": "Derived AST",
+  "project-expected-code": "Production-projector code",
   "evaluate-semantic-execution": "Direct semantic evaluation",
   "evaluate-projected-execution": "Projected-body evaluation",
   "evaluate-translation-conformance": "Translation conformance",
   "review-feature": "Review disposition"
 };
 
-function stageInstruction(stage, number) {
-  return [
-    `## ${number}. ${stageTitles[stage.stageId]}`,
-    "",
-    ...text([
-      `Stage ID: ${stage.stageId}`,
-      `Purpose: ${stage.purpose}`,
-      `Authorized inputs: ${stage.consumes.length === 0 ? "none" : stage.consumes.join(", ")}`,
-      `Required prior products: ${stage.requires.length === 0 ? "none" : stage.requires.join(", ")}`,
-      `Required output: ${stage.produces.join(", ")}`,
-      `Stop condition: ${stage.completionCondition}`
-    ]),
-    "",
-    "Review questions:",
-    "",
-    ...stage.reviewQuestions.map(question => `- ${question}`)
-  ];
-}
-
-function rendersExpression(expression) {
-  if (expression.kind === "Identifier") return expression.name;
-  if (expression.kind === "StringLiteral") {
-    return JSON.stringify(expression.value);
-  }
-  if (expression.kind === "PropertyAccessExpression") {
-    return `${rendersExpression(expression.receiver)}.${expression.member}`;
-  }
-  throw new Error(`UNSUPPORTED_AST_EXPRESSION: ${expression.kind}`);
-}
-
-export function rendersTypescript(ast) {
-  const declaration = ast.statements[0];
-  const parameter = declaration.parameters[0];
-  const returned = declaration.body.statements[0];
-  const call = returned.expression.expression;
-  return [
-    `export async function ${declaration.name}(`,
-    `  ${parameter.name}: ${parameter.typeReference}`,
-    `): Promise<${declaration.returnType.typeReference}> {`,
-    `  return await ${rendersExpression(call.callee)}(`,
-    ...call.arguments.map(
-      (argument, index) =>
-        `    ${rendersExpression(argument)}${
-          index === call.arguments.length - 1 ? "" : ","
-        }`
-    ),
-    "  );",
-    "}"
-  ].join("\n");
-}
-
 function rendersGherkin(authority) {
   const { feature, background, scenarios } =
     authority.canonicalFeatureBody;
   const lines = [
-    "```gherkin",
     `Feature: ${feature.title}`,
     `  As a ${feature.userStory.asA}`,
     `  I want ${feature.userStory.iWant}`,
@@ -132,68 +103,262 @@ function rendersGherkin(authority) {
         .map(outcome => `    And ${outcome.text}`)
     );
   }
-  lines.push("```");
-  return lines;
+  return fenced("gherkin", lines.join("\n"));
 }
 
-function sectionJsonByScenario(authority, field) {
+function conveyorIllustration(authority) {
+  return fenced(
+    "text",
+    authority.conveyor.stages
+      .flatMap((stage, index) => [
+        `${index + 1}. ${stage.stageId}`,
+        ...(index === authority.conveyor.stages.length - 1
+          ? []
+          : ["   |", "   v"])
+      ])
+      .join("\n")
+  );
+}
+
+function scenarioIllustrations(authority) {
   const lines = [];
   for (const scenario of authority.canonicalFeatureBody.scenarios) {
     lines.push(
       `### ${scenario.scenarioId}`,
       "",
-      ...json({
-        scenarioId: scenario.scenarioId,
-        [field]: scenario[field]
-      }),
+      ...fenced(
+        "text",
+        [
+          scenario.scenarioId,
+          "  |",
+          "  v",
+          scenario.obligation.obligationId,
+          "  |",
+          "  v",
+          scenario.expectation.expectationId,
+          "  |",
+          "  v",
+          scenario.responsibility.responsibilityId,
+          "  |",
+          "  v",
+          scenario.signal.signalId
+        ].join("\n")
+      ),
       ""
     );
   }
   return lines.slice(0, -1);
 }
 
-function semanticWithoutExecution(value) {
-  const { execution, ...semantic } = value;
-  return semantic;
-}
-
-function stage(authority, stageId) {
-  const index = authority.conveyor.stages.findIndex(
-    candidate => candidate.stageId === stageId
-  );
-  if (index === -1) throw new Error(`CONVEYOR_STAGE_MISSING: ${stageId}`);
-  return {
-    definition: authority.conveyor.stages[index],
-    number: index + 1
-  };
-}
-
-function beginsStage(lines, authority, stageId) {
-  const selected = stage(authority, stageId);
+function fileTreeIllustration(authority, derived) {
+  const root = authority.fileBodyAuthority.roots.capability;
+  const lines = [root];
+  for (const result of derived.results) {
+    const scenario = authority.canonicalFeatureBody.scenarios.find(
+      candidate => candidate.scenarioId === result.scenarioId
+    );
+    lines.push(
+      `|-- scenarios/${result.scenarioId}/`,
+      `|   \`-- ${result.responsibilityId}/`,
+      `|       |-- ${scenario.responsibility.semanticOperationId}.semantic-authority.json`,
+      `|       |-- ${result.bodyId}.feature-body-authority.json`,
+      `|       |-- ${result.bodyId}.ts.ast.authority.json`,
+      `|       |-- ${result.bodyId}.type.ts`,
+      `|       |-- ${result.bodyId}.ts`,
+      `|       \`-- registers-${result.semanticOperationId}.ts`
+    );
+  }
   lines.push(
-    ...stageInstruction(selected.definition, selected.number),
-    ""
+    "|-- composition/",
+    `|   \`-- ${authority.fileBodyAuthority.composition.entrypoint
+      .split("/")
+      .at(-1)}`,
+    "\`-- runtime/",
+    `    \`-- ${authority.fileBodyAuthority.composition.runtimeAdapter
+      .split("/")
+      .at(-1)}`
+  );
+  return fenced("text", lines.join("\n"));
+}
+
+function projectionIllustrations(derived) {
+  const lines = [];
+  for (const result of derived.results) {
+    lines.push(
+      result.bodyId,
+      "  | feature-body authority",
+      "  v",
+      result.projector.projectionProfileId,
+      "  | production projector",
+      "  v",
+      `${result.bodyId}.projectedAst`,
+      "  | production source printer",
+      "  v",
+      result.artifactPath,
+      ""
+    );
+  }
+  return fenced("text", lines.slice(0, -1).join("\n"));
+}
+
+function executionIllustration(authority) {
+  return fenced(
+    "text",
+    [
+      "semantic authority ------> direct semantic execution",
+      "        |                             |",
+      "        |                             v",
+      "        |                    semantic observation",
+      "        |                             |",
+      "        v                             v",
+      "feature-body authority -> projected execution",
+      "                                      |",
+      "                                      v",
+      "                             projected observation",
+      "                                      |",
+      "                                      v",
+      `required relationship: ${authority.evaluationAuthority.translationEvaluation.requiredRelationship}`,
+      `observed disposition: ${authority.evaluationAuthority.observation.disposition}`
+    ].join("\n")
   );
 }
 
-export function projectsMarkdown(authority) {
-  const lines = [
-    `# ${authority.contract.title}`,
+function featureExecutionIllustration(authority) {
+  const lines = [];
+  for (const step of authority.featureExecutionAuthority.steps) {
+    if (step.operation === "return") {
+      continue;
+    }
+    if (lines.length === 0) {
+      lines.push(`[${step.acceptsContractId}]`);
+    }
+    lines.push(
+      "        |",
+      `        |  ${step.sequence}. ${step.responsibilityId}`,
+      "        v",
+      `[${step.producesContractId}]`
+    );
+  }
+  return fenced("text", lines.join("\n"));
+}
+
+function responsibilityProjectionTable(authority, derived) {
+  const rows = [
+    "| Sequence | Responsibility | Input | Output | Projected artifact |",
+    "| --- | --- | --- | --- | --- |"
+  ];
+  let sequence = 0;
+  for (const result of derived.results) {
+    const semantic = authority.semanticAuthority.find(
+      item => item.responsibilityId === result.responsibilityId
+    );
+    sequence += 1;
+    rows.push(
+      `| ${sequence} | ${result.responsibilityId} | ` +
+        `${semantic.accepts.contractId} | ` +
+        `${semantic.produces.contractId} | ${result.artifactPath} |`
+    );
+  }
+  return rows;
+}
+
+function rendersFeatureDestination(authority, derived) {
+  const opening = authority.documentationProjection.openingProjection;
+  if (
+    opening.sectionId !== "feature-destination" ||
+    derived.featureExecution?.projectedSource === undefined
+  ) {
+    throw new Error("FEATURE_DESTINATION_PROJECTION_UNAVAILABLE");
+  }
+  return [
+    `## ${opening.title}`,
     "",
-    ...json(authority.contract),
+    "### Intended outcome",
     "",
-    "The contract is authored, rendered, implemented, evaluated, and reviewed",
-    "in the same causal conveyor order. A later stage may consume only products",
-    "admitted by earlier stages.",
+    authority.outcome.statement,
     "",
-    "## Construction state",
+    "### Complete execution flow",
     "",
-    ...json(authority.conveyor.constructionState),
+    ...featureExecutionIllustration(authority),
+    "",
+    "Current projection target: Node / TypeScript",
+    "",
+    "### Projected feature execution body",
+    "",
+    `Artifact: \`${derived.featureExecution.artifactPath}\``,
+    "",
+    ...fenced(
+      "typescript",
+      derived.featureExecution.projectedSource
+    ),
+    "",
+    "### Projected responsibility bodies",
+    "",
+    ...responsibilityProjectionTable(authority, derived),
+    "",
+    "### File-body system",
+    "",
+    ...fileTreeIllustration(authority, derived),
+    "",
+    "### How the document gets there",
+    "",
+    ...conveyorIllustration(authority),
     ""
   ];
+}
 
-  beginsStage(lines, authority, "capture-intent");
-  lines.push(
+function rendersIllustration(authority, derived, kind) {
+  const declaration =
+    authority.documentationProjection.illustrations.find(
+      illustration => illustration.kind === kind
+    );
+  if (
+    !declaration ||
+    !authority.documentationProjection.requiredIllustrations.includes(
+      declaration.illustrationId
+    )
+  ) {
+    throw new Error(
+      `REQUIRED_ILLUSTRATION_AUTHORITY_MISSING: ${kind}`
+    );
+  }
+  if (kind === "ordered-conveyor") {
+    return conveyorIllustration(authority);
+  }
+  if (kind === "scenario-circuit") {
+    return scenarioIllustrations(authority);
+  }
+  if (kind === "file-tree") {
+    return fileTreeIllustration(authority, derived);
+  }
+  if (kind === "projection-chain") {
+    return projectionIllustrations(derived);
+  }
+  if (kind === "dual-execution-comparison") {
+    return executionIllustration(authority);
+  }
+  throw new Error(`ILLUSTRATION_KIND_UNSUPPORTED: ${kind}`);
+}
+
+function perScenarioJson(authority, field) {
+  return authority.canonicalFeatureBody.scenarios.flatMap(
+    (scenario, index) => [
+      `### ${scenario.scenarioId}`,
+      "",
+      ...fenced("json", {
+        scenarioId: scenario.scenarioId,
+        [field]: scenario[field]
+      }),
+      ...(index ===
+      authority.canonicalFeatureBody.scenarios.length - 1
+        ? []
+        : [""])
+    ]
+  );
+}
+
+const renderers = {
+  "intent-section": authority => [
     `Actor: ${authority.intent.actor}`,
     "",
     `Trigger: ${authority.intent.trigger}`,
@@ -204,140 +369,149 @@ export function projectsMarkdown(authority) {
     "",
     "Constraints:",
     "",
-    ...bullet(authority.intent.constraints),
-    ""
-  );
-
-  beginsStage(lines, authority, "declare-outcome");
-  lines.push(
+    ...authority.intent.constraints.map(item => `- ${item.text}`)
+  ],
+  "outcome-section": authority => [
     `Outcome ID: \`${authority.outcome.outcomeId}\``,
     "",
     authority.outcome.statement,
     "",
     "Observable state:",
     "",
-    ...bullet(authority.outcome.observableState),
-    ""
-  );
-
-  beginsStage(lines, authority, "establish-feature");
-  lines.push(
-    ...json(authority.canonicalFeatureBody.feature),
+    ...authority.outcome.observableState.map(
+      item => `- ${item.text}`
+    )
+  ],
+  "feature-section": authority => [
+    ...fenced("json", authority.canonicalFeatureBody.feature)
+  ],
+  "gherkin-section": authority => [
+    ...rendersGherkin(authority),
     "",
-    "User-story projection:",
+    "Scenario circuits:",
     "",
-    ...text([
-      `As a ${authority.canonicalFeatureBody.feature.userStory.asA}`,
-      `I want ${authority.canonicalFeatureBody.feature.userStory.iWant}`,
-      `So that ${authority.canonicalFeatureBody.feature.userStory.soThat}`
+    ...rendersIllustration(
+      authority,
+      undefined,
+      "scenario-circuit"
+    )
+  ],
+  "obligation-section": authority =>
+    perScenarioJson(authority, "obligation"),
+  "expectation-section": authority =>
+    perScenarioJson(authority, "expectation"),
+  "responsibility-section": authority =>
+    perScenarioJson(authority, "responsibility"),
+  "signal-section": authority =>
+    perScenarioJson(authority, "signal"),
+  "semantic-authority-section": authority =>
+    authority.semanticAuthority.flatMap((semantic, index) => {
+      const { execution, ...declaration } = semantic;
+      return [
+        `### ${semantic.responsibilityId}`,
+        "",
+        ...fenced("json", declaration),
+        ...(index === authority.semanticAuthority.length - 1
+          ? []
+          : [""])
+      ];
+    }),
+  "semantic-execution-section": authority =>
+    authority.semanticAuthority.flatMap((semantic, index) => [
+      `### ${semantic.responsibilityId}`,
+      "",
+      ...fenced("json", semantic.execution),
+      ...(index === authority.semanticAuthority.length - 1
+        ? []
+        : [""])
     ]),
-    ""
-  );
-
-  beginsStage(lines, authority, "establish-scenarios");
-  lines.push(...rendersGherkin(authority), "");
-
-  beginsStage(lines, authority, "decompose-obligations");
-  lines.push(...sectionJsonByScenario(authority, "obligation"), "");
-
-  beginsStage(lines, authority, "declare-expectations");
-  lines.push(...sectionJsonByScenario(authority, "expectation"), "");
-
-  beginsStage(lines, authority, "assign-responsibilities");
-  lines.push(...sectionJsonByScenario(authority, "responsibility"), "");
-
-  beginsStage(lines, authority, "declare-signals");
-  lines.push(...sectionJsonByScenario(authority, "signal"), "");
-
-  beginsStage(lines, authority, "author-semantic-authority");
-  for (const semantic of authority.semanticAuthority) {
-    lines.push(
-      `### ${semantic.responsibilityId}`,
+  "feature-body-section": (authority, derived) => [
+    ...authority.featureBodyAuthority.flatMap((body, index) => [
+      `### ${body.bodyId}`,
       "",
-      ...json(semanticWithoutExecution(semantic)),
-      ""
-    );
-  }
-
-  beginsStage(lines, authority, "author-semantic-execution");
-  for (const semantic of authority.semanticAuthority) {
-    lines.push(
-      `### ${semantic.responsibilityId}`,
+      ...fenced("json", body),
+      ...(index === authority.featureBodyAuthority.length - 1
+        ? []
+        : [""])
+    ]),
+    "",
+    "Governed file-body system:",
+    "",
+    ...rendersIllustration(authority, derived, "file-tree")
+  ],
+  "language-profile-section": authority => [
+    ...fenced("json", authority.languageProfiles),
+    "",
+    "Production projector invocations:",
+    "",
+    ...fenced("json", authority.projectionAuthority)
+  ],
+  "derived-ast-section": (_authority, derived) => [
+    ...rendersIllustration(
+      _authority,
+      derived,
+      "projection-chain"
+    ),
+    "",
+    ...derived.results.flatMap((result, index) => [
+      `### ${result.bodyId}`,
       "",
-      ...json({
-        responsibilityId: semantic.responsibilityId,
-        execution: semantic.execution
-      }),
-      ""
-    );
-  }
-
-  beginsStage(lines, authority, "author-feature-body-authority");
-  for (const body of authority.featureBodyAuthority) {
-    lines.push(`### ${body.bodyId}`, "", ...json(body), "");
-  }
-
-  beginsStage(lines, authority, "resolve-language-projection");
-  for (const projection of authority.projectionAuthority) {
-    lines.push(
-      `### ${projection.bodyId}`,
+      ...fenced("json", result.projectedAst),
+      ...(index === derived.results.length - 1 ? [] : [""])
+    ])
+  ],
+  "derived-code-section": (_authority, derived) =>
+    derived.results.flatMap((result, index) => [
+      `### ${result.artifactPath}`,
       "",
-      ...json({
-        bodyId: projection.bodyId,
-        target: projection.target,
-        translation: projection.translation
-      }),
-      ""
-    );
-  }
-
-  beginsStage(lines, authority, "project-expected-ast");
-  for (const projection of authority.projectionAuthority) {
-    lines.push(
-      `### ${projection.bodyId}`,
+      ...fenced("typescript", result.projectedSource),
       "",
-      ...json(projection.expectedProjection.ast),
-      ""
-    );
-  }
-
-  beginsStage(lines, authority, "project-expected-code");
-  for (const projection of authority.projectionAuthority) {
-    lines.push(
-      `### ${projection.translation.artifactPath}`,
+      `### ${result.supportingTypeArtifactPath}`,
       "",
-      ...typescript(
-        rendersTypescript(projection.expectedProjection.ast)
+      ...fenced("typescript", result.supportingTypeSource),
+      "",
+      "Translation provenance:",
+      "",
+      "| Source authority | Projection rule | AST path | Source range |",
+      "| --- | --- | --- | --- |",
+      ...result.translationProvenance.map(
+        row =>
+          `| ${row.sourceAuthorityRef} | ${row.projectionRuleId} | ` +
+          `${row.astPath} | ${row.sourceRange} |`
       ),
-      ""
-    );
-  }
-
-  beginsStage(lines, authority, "evaluate-semantic-execution");
-  lines.push(
-    ...json(authority.evaluationAuthority.semanticEvaluation),
-    ""
-  );
-
-  beginsStage(lines, authority, "evaluate-projected-execution");
-  lines.push(
-    ...json(authority.evaluationAuthority.projectedEvaluation),
-    ""
-  );
-
-  beginsStage(lines, authority, "evaluate-translation-conformance");
-  lines.push(
-    ...json({
+      ...(index === derived.results.length - 1 ? [] : [""])
+    ]),
+  "semantic-evaluation-section": authority => [
+    ...fenced(
+      "json",
+      authority.evaluationAuthority.semanticEvaluation
+    ),
+    "",
+    `Observed: ${authority.evaluationAuthority.observation.semanticExecution}`
+  ],
+  "projected-evaluation-section": authority => [
+    ...fenced(
+      "json",
+      authority.evaluationAuthority.projectedEvaluation
+    ),
+    "",
+    `Observed: ${authority.evaluationAuthority.observation.projectedExecution}`
+  ],
+  "translation-section": authority => [
+    ...fenced("json", {
+      policy: authority.evaluationAuthority.policy,
       translationEvaluation:
         authority.evaluationAuthority.translationEvaluation,
-      terminalDetermination:
-        authority.evaluationAuthority.terminalDetermination
+      observation: authority.evaluationAuthority.observation
     }),
-    ""
-  );
-
-  beginsStage(lines, authority, "review-feature");
-  lines.push(
+    "",
+    ...rendersIllustration(
+      authority,
+      undefined,
+      "dual-execution-comparison"
+    )
+  ],
+  "review-section": authority => [
     "Review questions:",
     "",
     ...authority.reviewAuthority.questions.map(
@@ -349,16 +523,54 @@ export function projectsMarkdown(authority) {
     "| Canonical authority | Expected AST | Expected code |",
     "| --- | --- | --- |",
     ...authority.reviewAuthority.translationTieOut.map(
-      row =>
-        `| ${row.authority.replaceAll("|", "\\|")} | ` +
-        `${row.ast.replaceAll("|", "\\|")} | ` +
-        `${row.code.replaceAll("|", "\\|")} |`
+      row => `| ${row.authority} | ${row.ast} | ${row.code} |`
     ),
     "",
-    `Admission rule: ${authority.reviewAuthority.admissionRule}`,
-    ""
-  );
+    `Admission rule: ${authority.reviewAuthority.admissionRule}`
+  ]
+};
 
+export function projectsMarkdown(authority, derived) {
+  const lines = [
+    `# ${authority.contract.title}`,
+    "",
+    ...fenced("json", authority.contract),
+    "",
+    ...rendersFeatureDestination(authority, derived),
+    "## Construction state",
+    "",
+    ...fenced("json", authority.conveyor.constructionState),
+    "",
+    "## Canonical conveyor flow",
+    "",
+    ...rendersIllustration(
+      authority,
+      derived,
+      "ordered-conveyor"
+    ),
+    ""
+  ];
+  for (const [index, section] of
+    authority.documentationProjection.sections.entries()) {
+    const stage = authority.conveyor.stages[index];
+    if (
+      section.stageId !== stage.stageId ||
+      typeof renderers[section.renderer] !== "function"
+    ) {
+      throw new Error(
+        `DOCUMENTATION_SECTION_PROFILE_INVALID: ${section.sectionId}`
+      );
+    }
+    lines.push(
+      ...stageInstruction(
+        stage,
+        index + 1,
+        stageTitles[stage.stageId]
+      ),
+      ...renderers[section.renderer](authority, derived),
+      ""
+    );
+  }
   const eol =
     authority.projection.lineEnding === "CRLF" ? "\r\n" : "\n";
   return Buffer.from(lines.join(eol), "utf8");

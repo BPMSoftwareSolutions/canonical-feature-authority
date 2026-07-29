@@ -14,9 +14,14 @@
     "canonicalFeatureBody",
     "semanticAuthority",
     "featureBodyAuthority",
+    "featureExecutionAuthority",
+    "languageProfiles",
+    "fileBodyAuthority",
     "projectionAuthority",
+    "featureExecutionProjection",
     "evaluationAuthority",
     "reviewAuthority",
+    "documentationProjection",
     "projection"
   ],
   "properties": {
@@ -52,6 +57,165 @@
         "$ref": "#/$defs/featureBody"
       }
     },
+    "languageProfiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/languageProfile"
+      }
+    },
+    "fileBodyAuthority": {
+      "$ref": "#/$defs/fileBodyAuthority"
+    },
+    "featureExecutionAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executionId",
+        "executionKind",
+        "contextContractId",
+        "terminalContractId",
+        "steps"
+      ],
+      "properties": {
+        "executionId": {
+          "const": "execute-end-to-end-canonical-feature-conveyor"
+        },
+        "executionKind": {
+          "const": "linear-feature-conveyor"
+        },
+        "contextContractId": {
+          "const": "end-to-end-canonical-feature-conveyor-context.v1"
+        },
+        "terminalContractId": {
+          "const": "new-feature-terminal-disposition.v1"
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sequence",
+              "operation",
+              "input"
+            ],
+            "properties": {
+              "sequence": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 8
+              },
+              "operation": {
+                "enum": [
+                  "invoke-responsibility",
+                  "invoke-adapter",
+                  "return"
+                ]
+              },
+              "responsibilityId": {
+                "$ref": "#/$defs/id"
+              },
+              "semanticOperationId": {
+                "$ref": "#/$defs/id"
+              },
+              "acceptsContractId": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]*\\.v[0-9]+$"
+              },
+              "producesContractId": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]*\\.v[0-9]+$"
+              },
+              "input": {
+                "type": "string",
+                "pattern": "^\\$\\.[A-Za-z][A-Za-z0-9]*$"
+              },
+              "assign": {
+                "type": "string",
+                "pattern": "^\\$\\.[A-Za-z][A-Za-z0-9]*$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "featureExecutionProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executionAuthorityRef",
+        "languageProfileId",
+        "projector",
+        "projectorRequest",
+        "expectedArtifact"
+      ],
+      "properties": {
+        "executionAuthorityRef": {
+          "const": "feature-execution:execute-end-to-end-canonical-feature-conveyor"
+        },
+        "languageProfileId": {
+          "const": "typescript-linear-feature-conveyor-v1"
+        },
+        "projector": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "projectorId",
+            "projectorVersion",
+            "projectionProfileId",
+            "executablePath",
+            "executableSha256"
+          ],
+          "properties": {
+            "projectorId": {
+              "const": "projects-typescript-body"
+            },
+            "projectorVersion": {
+              "const": "1.0.0"
+            },
+            "projectionProfileId": {
+              "const": "typescript-linear-feature-conveyor-v1"
+            },
+            "executablePath": {
+              "type": "string"
+            },
+            "executableSha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          }
+        },
+        "projectorRequest": {
+          "type": "object"
+        },
+        "expectedArtifact": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "language",
+            "runtime",
+            "moduleProfile"
+          ],
+          "properties": {
+            "path": {
+              "const": "composition/executes-end-to-end-canonical-feature-conveyor.ts"
+            },
+            "language": {
+              "const": "typescript"
+            },
+            "runtime": {
+              "const": "node"
+            },
+            "moduleProfile": {
+              "const": "typescript-esm"
+            }
+          }
+        }
+      }
+    },
     "projectionAuthority": {
       "type": "array",
       "minItems": 1,
@@ -65,11 +229,40 @@
     "reviewAuthority": {
       "$ref": "#/$defs/reviewAuthority"
     },
+    "documentationProjection": {
+      "$ref": "#/$defs/documentationProjection"
+    },
     "projection": {
       "$ref": "#/$defs/documentProjection"
     }
   },
   "$defs": {
+    "openingProjectionPart": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "renderer"
+      ],
+      "properties": {
+        "source": {
+          "enum": [
+            "$.outcome",
+            "$.featureExecutionAuthority.steps",
+            "$.fileBodyAuthority",
+            "$.conveyor.stages"
+          ]
+        },
+        "renderer": {
+          "enum": [
+            "intended-outcome",
+            "linear-execution-sketch",
+            "file-tree",
+            "ordered-conveyor"
+          ]
+        }
+      }
+    },
     "id": {
       "type": "string",
       "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
@@ -742,14 +935,15 @@
       "additionalProperties": false,
       "required": [
         "observationId",
-        "source"
+        "sourceRef"
       ],
       "properties": {
         "observationId": {
           "$ref": "#/$defs/id"
         },
-        "source": {
-          "$ref": "#/$defs/jsonPointer"
+        "sourceRef": {
+          "type": "string",
+          "pattern": "^(scenario|feature-body|evaluation|feature):[a-z][a-z0-9-]*$"
         }
       }
     },
@@ -758,19 +952,40 @@
       "additionalProperties": false,
       "required": [
         "decisionId",
-        "outcomes"
+        "inputs",
+        "rules"
       ],
       "properties": {
         "decisionId": {
           "$ref": "#/$defs/id"
         },
-        "outcomes": {
+        "inputs": {
           "type": "array",
-          "minItems": 2,
+          "minItems": 1,
           "uniqueItems": true,
           "items": {
-            "type": "string",
-            "pattern": "^[A-Z][A-Z0-9_]*$"
+            "$ref": "#/$defs/jsonPointer"
+          }
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["ruleId", "when", "then"],
+            "properties": {
+              "ruleId": {
+                "$ref": "#/$defs/id"
+              },
+              "when": {
+                "type": "object"
+              },
+              "then": {
+                "type": "string",
+                "pattern": "^[A-Z][A-Z0-9_]*$"
+              }
+            }
           }
         }
       }
@@ -781,7 +996,8 @@
       "required": [
         "projectionId",
         "from",
-        "to"
+        "to",
+        "fields"
       ],
       "properties": {
         "projectionId": {
@@ -793,6 +1009,13 @@
         "to": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9-]*\\.v[0-9]+$"
+        },
+        "fields": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "$ref": "#/$defs/jsonPointer"
+          }
         }
       }
     },
@@ -801,7 +1024,10 @@
       "additionalProperties": false,
       "required": [
         "sequence",
-        "operation"
+        "operation",
+        "authorityId",
+        "input",
+        "assign"
       ],
       "properties": {
         "sequence": {
@@ -809,7 +1035,20 @@
           "minimum": 1
         },
         "operation": {
+          "enum": [
+            "resolve-observation",
+            "resolve-decision",
+            "project-result"
+          ]
+        },
+        "authorityId": {
           "$ref": "#/$defs/id"
+        },
+        "input": {
+          "$ref": "#/$defs/jsonPointer"
+        },
+        "assign": {
+          "$ref": "#/$defs/jsonPointer"
         }
       }
     },
@@ -1266,13 +1505,80 @@
       "additionalProperties": false,
       "required": [
         "bodyId",
-        "target",
-        "translation",
-        "expectedProjection"
+        "languageProfileId",
+        "projector",
+        "input",
+        "expectedArtifact",
+        "typeResolution"
       ],
       "properties": {
         "bodyId": {
           "$ref": "#/$defs/id"
+        },
+        "languageProfileId": {
+          "$ref": "#/$defs/id"
+        },
+        "projector": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "projectorId",
+            "projectorVersion",
+            "projectionProfileId",
+            "executablePath",
+            "executableSha256"
+          ],
+          "properties": {
+            "projectorId": {
+              "const": "projects-typescript-body"
+            },
+            "projectorVersion": {
+              "const": "1.0.0"
+            },
+            "projectionProfileId": {
+              "const": "typescript-collapsed-responsibility-body-v1"
+            },
+            "executablePath": {
+              "type": "string"
+            },
+            "executableSha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          }
+        },
+        "input": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "bodyAuthorityRef",
+            "projectorRequest"
+          ],
+          "properties": {
+            "bodyAuthorityRef": {
+              "type": "string",
+              "pattern": "^feature-body:[a-z][a-z0-9-]*$"
+            },
+            "projectorRequest": {
+              "type": "object"
+            }
+          }
+        },
+        "expectedArtifact": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "language"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._/-]+\\.ts$"
+            },
+            "language": {
+              "const": "typescript"
+            }
+          }
         },
         "target": {
           "type": "object",
@@ -1315,25 +1621,21 @@
             }
           }
         },
-        "expectedProjection": {
+        "typeResolution": {
           "type": "object",
           "additionalProperties": false,
           "required": [
-            "imports",
-            "declarations",
-            "ast"
+            "contextType",
+            "resultType"
           ],
           "properties": {
-            "imports": {
-              "type": "array",
-              "maxItems": 0
+            "contextType": {
+              "type": "string",
+              "pattern": "^[A-Z][A-Za-z0-9]*$"
             },
-            "declarations": {
-              "type": "array",
-              "maxItems": 0
-            },
-            "ast": {
-              "$ref": "#/$defs/sourceFileAst"
+            "resultType": {
+              "type": "string",
+              "pattern": "^[A-Z][A-Za-z0-9]*$"
             }
           }
         }
@@ -1343,19 +1645,34 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "executionSource",
-        "fixtureSource",
-        "expectedSignalSource"
+        "executionRefs",
+        "fixtureRefs",
+        "expectedSignalRefs"
       ],
       "properties": {
-        "executionSource": {
-          "$ref": "#/$defs/jsonPointer"
+        "executionRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         },
-        "fixtureSource": {
-          "$ref": "#/$defs/jsonPointer"
+        "fixtureRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         },
-        "expectedSignalSource": {
-          "$ref": "#/$defs/jsonPointer"
+        "expectedSignalRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -1366,7 +1683,8 @@
         "semanticEvaluation",
         "projectedEvaluation",
         "translationEvaluation",
-        "terminalDetermination"
+        "policy",
+        "observation"
       ],
       "properties": {
         "semanticEvaluation": {
@@ -1379,16 +1697,16 @@
           "type": "object",
           "additionalProperties": false,
           "required": [
-            "compare",
+            "comparisonRefs",
             "requiredRelationship"
           ],
           "properties": {
-            "compare": {
+            "comparisonRefs": {
               "type": "array",
               "minItems": 3,
-              "maxItems": 3,
+              "uniqueItems": true,
               "items": {
-                "$ref": "#/$defs/jsonPointer"
+                "type": "string"
               }
             },
             "requiredRelationship": {
@@ -1396,7 +1714,30 @@
             }
           }
         },
-        "terminalDetermination": {
+        "policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "possibleDispositions"
+          ],
+          "properties": {
+            "possibleDispositions": {
+              "type": "array",
+              "minItems": 5,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "PROJECTION_CONFORMS",
+                  "SEMANTIC_EXECUTION_DIVERGES",
+                  "PROJECTED_EXECUTION_DIVERGES",
+                  "TRANSLATION_DIVERGES",
+                  "NOT_EVALUATED"
+                ]
+              }
+            }
+          }
+        },
+        "observation": {
           "type": "object",
           "additionalProperties": false,
           "required": [
@@ -1407,16 +1748,16 @@
           ],
           "properties": {
             "semanticExecution": {
-              "const": "CONFORMS"
+              "const": "NOT_EVALUATED"
             },
             "projectedExecution": {
-              "const": "CONFORMS"
+              "const": "NOT_EVALUATED"
             },
             "translation": {
-              "const": "EQUIVALENT"
+              "const": "NOT_EVALUATED"
             },
             "disposition": {
-              "const": "PROJECTION_CONFORMS"
+              "const": "NOT_EVALUATED"
             }
           }
         }
@@ -1470,6 +1811,622 @@
         }
       }
     },
+    "languageProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "languageProfileId",
+        "targetLanguage",
+        "moduleProfile",
+        "bodyKind",
+        "mappings",
+        "namingRules"
+      ],
+      "properties": {
+        "languageProfileId": {
+          "$ref": "#/$defs/id"
+        },
+        "targetLanguage": {
+          "const": "typescript"
+        },
+        "moduleProfile": {
+          "const": "typescript-esm"
+        },
+        "bodyKind": {
+          "const": "scenario-responsibility"
+        },
+        "mappings": {
+          "type": "array",
+          "minItems": 7,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "ruleId",
+              "source",
+              "target"
+            ],
+            "properties": {
+              "ruleId": {
+                "$ref": "#/$defs/id"
+              },
+              "source": {
+                "$ref": "#/$defs/nonEmptyText"
+              },
+              "target": {
+                "$ref": "#/$defs/nonEmptyText"
+              }
+            }
+          }
+        },
+        "namingRules": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "functionName",
+            "contextType",
+            "resultType"
+          ],
+          "properties": {
+            "functionName": {
+              "const": "camel-case(responsibilityId)"
+            },
+            "contextType": {
+              "const": "resolve(typeResolution.contextType)"
+            },
+            "resultType": {
+              "const": "resolve(typeResolution.resultType)"
+            }
+          }
+        }
+      }
+    },
+    "fileBodyAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "systemId",
+        "roots",
+        "placementRules",
+        "supportingTypes",
+        "composition",
+        "topologyPolicy"
+      ],
+      "properties": {
+        "systemId": {
+          "$ref": "#/$defs/id"
+        },
+        "roots": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "capability",
+            "generated",
+            "semanticAuthority",
+            "projectionAuthority"
+          ],
+          "properties": {
+            "capability": {
+              "type": "string"
+            },
+            "generated": {
+              "type": "string"
+            },
+            "semanticAuthority": {
+              "type": "string"
+            },
+            "projectionAuthority": {
+              "type": "string"
+            }
+          }
+        },
+        "placementRules": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "placementId",
+              "artifactRole",
+              "sourceRef",
+              "pathTemplate"
+            ],
+            "properties": {
+              "placementId": {
+                "$ref": "#/$defs/id"
+              },
+              "artifactRole": {
+                "enum": [
+                  "feature",
+                  "scenario-authority",
+                  "semantic-authority",
+                  "feature-body-authority",
+                  "ast-authority",
+                  "projected-code-body",
+                  "supporting-type-body",
+                  "semantic-registration-body",
+                  "composition-body",
+                  "runtime-adapter-body"
+                ]
+              },
+              "sourceRef": {
+                "type": "string"
+              },
+              "pathTemplate": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "supportingTypes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "contractId",
+              "typeName",
+              "declaredTypeNames",
+              "schemaRef",
+              "artifactPath",
+              "projectorRequest"
+            ],
+            "properties": {
+              "contractId": {
+                "type": "string"
+              },
+              "typeName": {
+                "type": "string",
+                "pattern": "^[A-Z][A-Za-z0-9]*$"
+              },
+              "declaredTypeNames": {
+                "type": "array",
+                "minItems": 2,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Z][A-Za-z0-9]*$"
+                }
+              },
+              "schemaRef": {
+                "type": "string"
+              },
+              "artifactPath": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9._/-]+\\.type\\.ts$"
+              },
+              "projectorRequest": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "composition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "entrypoint",
+            "entrypointAuthorityRef",
+            "runtimeAdapter",
+            "runtimeAdapterAuthorityRef"
+          ],
+          "properties": {
+            "entrypoint": {
+              "type": "string"
+            },
+            "entrypointAuthorityRef": {
+              "type": "string",
+              "const": "feature-execution:execute-end-to-end-canonical-feature-conveyor"
+            },
+            "runtimeAdapter": {
+              "type": "string"
+            },
+            "runtimeAdapterAuthorityRef": {
+              "type": "string",
+              "pattern": "^external-authority:[a-z][a-z0-9-]*$"
+            }
+          }
+        },
+        "topologyPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "undeclaredArtifacts",
+            "missingArtifacts",
+            "duplicateTargets"
+          ],
+          "properties": {
+            "undeclaredArtifacts": {
+              "const": "reject"
+            },
+            "missingArtifacts": {
+              "const": "reject"
+            },
+            "duplicateTargets": {
+              "const": "reject"
+            }
+          }
+        }
+      }
+    },
+    "documentationProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profileId",
+        "openingProjection",
+        "sections",
+        "illustrations",
+        "requiredIllustrations"
+      ],
+      "properties": {
+        "profileId": {
+          "const": "canonical-feature-course-document-v1"
+        },
+        "openingProjection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sectionId",
+            "title",
+            "intendedOutcome",
+            "executionFlow",
+            "featureCodeBody",
+            "responsibilityBodyIndex",
+            "fileBodySystem",
+            "derivationOverview"
+          ],
+          "properties": {
+            "sectionId": {
+              "const": "feature-destination"
+            },
+            "title": {
+              "const": "Feature destination"
+            },
+            "intendedOutcome": {
+              "const": {
+                "source": "$.outcome",
+                "renderer": "intended-outcome"
+              }
+            },
+            "executionFlow": {
+              "const": {
+                "source": "$.featureExecutionAuthority.steps",
+                "renderer": "linear-execution-sketch"
+              }
+            },
+            "featureCodeBody": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "source",
+                "projectorRef",
+                "renderer"
+              ],
+              "properties": {
+                "source": {
+                  "const": "$.featureExecutionAuthority"
+                },
+                "projectorRef": {
+                  "const": "$.featureExecutionProjection.projector"
+                },
+                "renderer": {
+                  "const": "projected-source-fence"
+                }
+              }
+            },
+            "responsibilityBodyIndex": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "source",
+                "join",
+                "renderer"
+              ],
+              "properties": {
+                "source": {
+                  "const": "$.featureBodyAuthority"
+                },
+                "join": {
+                  "const": [
+                    "$.canonicalFeatureBody.scenarios",
+                    "$.semanticAuthority",
+                    "$.projectionAuthority"
+                  ]
+                },
+                "renderer": {
+                  "const": "responsibility-projection-table"
+                }
+              }
+            },
+            "fileBodySystem": {
+              "const": {
+                "source": "$.fileBodyAuthority",
+                "renderer": "file-tree"
+              }
+            },
+            "derivationOverview": {
+              "const": {
+                "source": "$.conveyor.stages",
+                "renderer": "ordered-conveyor"
+              }
+            }
+          }
+        },
+        "sections": {
+          "type": "array",
+          "minItems": 18,
+          "maxItems": 18,
+          "prefixItems": [
+            {
+              "const": {
+                "sectionId": "capture-intent",
+                "stageId": "capture-intent",
+                "source": "$.intent",
+                "renderer": "intent-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "declare-outcome",
+                "stageId": "declare-outcome",
+                "source": "$.outcome",
+                "renderer": "outcome-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "establish-feature",
+                "stageId": "establish-feature",
+                "source": "$.canonicalFeatureBody.feature",
+                "renderer": "feature-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "establish-scenarios",
+                "stageId": "establish-scenarios",
+                "source": "$.canonicalFeatureBody.scenarios",
+                "renderer": "gherkin-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "decompose-obligations",
+                "stageId": "decompose-obligations",
+                "source": "$.canonicalFeatureBody.scenarios",
+                "renderer": "obligation-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "declare-expectations",
+                "stageId": "declare-expectations",
+                "source": "$.canonicalFeatureBody.scenarios",
+                "renderer": "expectation-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "assign-responsibilities",
+                "stageId": "assign-responsibilities",
+                "source": "$.canonicalFeatureBody.scenarios",
+                "renderer": "responsibility-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "declare-signals",
+                "stageId": "declare-signals",
+                "source": "$.canonicalFeatureBody.scenarios",
+                "renderer": "signal-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "author-semantic-authority",
+                "stageId": "author-semantic-authority",
+                "source": "$.semanticAuthority",
+                "renderer": "semantic-authority-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "author-semantic-execution",
+                "stageId": "author-semantic-execution",
+                "source": "$.semanticAuthority",
+                "renderer": "semantic-execution-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "author-feature-body-authority",
+                "stageId": "author-feature-body-authority",
+                "source": "$.featureBodyAuthority",
+                "renderer": "feature-body-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "resolve-language-projection",
+                "stageId": "resolve-language-projection",
+                "source": "$.languageProfiles",
+                "renderer": "language-profile-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "project-expected-ast",
+                "stageId": "project-expected-ast",
+                "source": "$.derivedProjections",
+                "renderer": "derived-ast-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "project-expected-code",
+                "stageId": "project-expected-code",
+                "source": "$.derivedProjections",
+                "renderer": "derived-code-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "evaluate-semantic-execution",
+                "stageId": "evaluate-semantic-execution",
+                "source": "$.evaluationAuthority.semanticEvaluation",
+                "renderer": "semantic-evaluation-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "evaluate-projected-execution",
+                "stageId": "evaluate-projected-execution",
+                "source": "$.evaluationAuthority.projectedEvaluation",
+                "renderer": "projected-evaluation-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "evaluate-translation-conformance",
+                "stageId": "evaluate-translation-conformance",
+                "source": "$.evaluationAuthority.translationEvaluation",
+                "renderer": "translation-section"
+              }
+            },
+            {
+              "const": {
+                "sectionId": "review-feature",
+                "stageId": "review-feature",
+                "source": "$.reviewAuthority",
+                "renderer": "review-section"
+              }
+            }
+          ],
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sectionId",
+              "stageId",
+              "source",
+              "renderer"
+            ],
+            "properties": {
+              "sectionId": {
+                "$ref": "#/$defs/id"
+              },
+              "stageId": {
+                "$ref": "#/$defs/id"
+              },
+              "source": {
+                "$ref": "#/$defs/jsonPointer"
+              },
+              "renderer": {
+                "$ref": "#/$defs/id"
+              }
+            }
+          }
+        },
+        "illustrations": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "prefixItems": [
+            {
+              "const": {
+                "illustrationId": "canonical-conveyor-flow",
+                "kind": "ordered-conveyor",
+                "sourceRefs": ["$.conveyor.stages"]
+              }
+            },
+            {
+              "const": {
+                "illustrationId": "scenario-circuits",
+                "kind": "scenario-circuit",
+                "sourceRefs": [
+                  "$.canonicalFeatureBody.scenarios"
+                ]
+              }
+            },
+            {
+              "const": {
+                "illustrationId": "file-body-system",
+                "kind": "file-tree",
+                "sourceRefs": ["$.fileBodyAuthority"]
+              }
+            },
+            {
+              "const": {
+                "illustrationId": "authority-to-code",
+                "kind": "projection-chain",
+                "sourceRefs": [
+                  "$.featureBodyAuthority",
+                  "$.languageProfiles",
+                  "$.derivedProjections"
+                ]
+              }
+            },
+            {
+              "const": {
+                "illustrationId": "execution-equivalence",
+                "kind": "dual-execution-comparison",
+                "sourceRefs": ["$.evaluationAuthority"]
+              }
+            }
+          ],
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "illustrationId",
+              "kind",
+              "sourceRefs"
+            ],
+            "properties": {
+              "illustrationId": {
+                "$ref": "#/$defs/id"
+              },
+              "kind": {
+                "enum": [
+                  "ordered-conveyor",
+                  "scenario-circuit",
+                  "file-tree",
+                  "projection-chain",
+                  "dual-execution-comparison"
+                ]
+              },
+              "sourceRefs": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/jsonPointer"
+                }
+              }
+            }
+          }
+        },
+        "requiredIllustrations": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "const": [
+            "canonical-conveyor-flow",
+            "scenario-circuits",
+            "file-body-system",
+            "authority-to-code",
+            "execution-equivalence"
+          ],
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    },
     "documentProjection": {
       "type": "object",
       "additionalProperties": false,
@@ -1477,9 +2434,11 @@
         "projectorId",
         "projectorVersion",
         "outputPath",
+        "derivedProjectionOutputPath",
         "encoding",
         "lineEnding",
-        "outputByteSha256"
+        "outputByteSha256",
+        "derivedProjectionSha256"
       ],
       "properties": {
         "projectorId": {
@@ -1492,6 +2451,10 @@
           "type": "string",
           "pattern": "^[A-Za-z0-9._/-]+\\.md$"
         },
+        "derivedProjectionOutputPath": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._/-]+\\.json$"
+        },
         "encoding": {
           "const": "UTF-8"
         },
@@ -1502,6 +2465,16 @@
           ]
         },
         "outputByteSha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "derivedProjectionSha256": {
           "oneOf": [
             {
               "$ref": "#/$defs/sha256"

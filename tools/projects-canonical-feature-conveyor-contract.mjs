@@ -19,7 +19,19 @@ const authorityPath = resolve(
   "architecture/end-to-end-canonical-feature-conveyor.authority.json"
 );
 const authority = await readsConveyorAuthority(authorityPath);
-const projected = projectsMarkdown(authority);
+const derivedPath = resolve(
+  repositoryRoot,
+  authority.projection.derivedProjectionOutputPath
+);
+const derivedBytes = await readFile(derivedPath);
+if (
+  sha256(derivedBytes) !==
+  authority.projection.derivedProjectionSha256
+) {
+  throw new Error("DERIVED_PROJECTION_HASH_MISMATCH");
+}
+const derived = JSON.parse(derivedBytes.toString("utf8"));
+const projected = projectsMarkdown(authority, derived);
 const projectedHash = sha256(projected);
 
 if (modes[0] === "--hash") {

@@ -1,0 +1,1408 @@
+{
+  "derivedProjectionType": "canonical-feature-conveyor-derived-projections.v1",
+  "contractId": "end-to-end-canonical-feature-conveyor",
+  "featureExecution": {
+    "projectionType": "production-projector-result.v1",
+    "executionId": "execute-end-to-end-canonical-feature-conveyor",
+    "projector": {
+      "projectorId": "projects-typescript-body",
+      "projectorVersion": "1.0.0",
+      "projectionProfileId": "typescript-linear-feature-conveyor-v1",
+      "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+      "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+    },
+    "inputSha256": "sha256:cc3b1b6948ebfe1106eeb7bcc4e5c0945a7c1475f646c967e904a47294471e02",
+    "artifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.ts",
+    "projectedAst": {
+      "kind": "source-file",
+      "leadingComments": [
+        {
+          "kind": "line-comment",
+          "text": " @generated"
+        },
+        {
+          "kind": "line-comment",
+          "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+        },
+        {
+          "kind": "line-comment",
+          "text": " scenario-id: execute-complete-canonical-feature-conveyor"
+        },
+        {
+          "kind": "line-comment",
+          "text": " obligation-id: execute-one-mechanically-continuous-feature-flow"
+        },
+        {
+          "kind": "line-comment",
+          "text": " responsibility-id: executes-end-to-end-canonical-feature-conveyor"
+        },
+        {
+          "kind": "line-comment",
+          "text": " signal-id: new-feature-terminal-disposition"
+        },
+        {
+          "kind": "line-comment",
+          "text": " DO NOT EDIT."
+        }
+      ],
+      "imports": [
+        {
+          "kind": "type-only-import",
+          "moduleSpecifier": "./executes-end-to-end-canonical-feature-conveyor.type.js",
+          "namedBindings": [
+            "EndToEndCanonicalFeatureConveyorContext",
+            "NewFeatureTerminalDisposition"
+          ]
+        }
+      ],
+      "statements": [
+        {
+          "kind": "function-declaration",
+          "identity": "execute-end-to-end-canonical-feature-conveyor",
+          "modifiers": [
+            "export",
+            "async"
+          ],
+          "name": "executesEndToEndCanonicalFeatureConveyor",
+          "parameters": [
+            {
+              "kind": "parameter",
+              "name": "context",
+              "typeReference": "EndToEndCanonicalFeatureConveyorContext",
+              "immutable": true
+            }
+          ],
+          "returnType": {
+            "kind": "promise",
+            "typeReference": "NewFeatureTerminalDisposition"
+          },
+          "body": {
+            "kind": "block",
+            "statements": [
+              {
+                "kind": "const-binding",
+                "name": "admission",
+                "expression": {
+                  "kind": "await-expression",
+                  "expression": {
+                    "kind": "semantic-edge-invocation",
+                    "receiverPath": [
+                      "context",
+                      "edges"
+                    ],
+                    "operation": "invokes",
+                    "edgeId": "admit-reviewed-new-feature-request",
+                    "arguments": [
+                      {
+                        "kind": "identifier-reference",
+                        "name": "context"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "kind": "const-binding",
+                "name": "admittedRequest",
+                "expression": {
+                  "kind": "await-expression",
+                  "expression": {
+                    "kind": "semantic-edge-invocation",
+                    "receiverPath": [
+                      "context",
+                      "edges"
+                    ],
+                    "operation": "invokes",
+                    "edgeId": "adapt-new-feature-request-admission",
+                    "arguments": [
+                      {
+                        "kind": "identifier-reference",
+                        "name": "admission"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "kind": "const-binding",
+                "name": "authority",
+                "expression": {
+                  "kind": "await-expression",
+                  "expression": {
+                    "kind": "semantic-edge-invocation",
+                    "receiverPath": [
+                      "context",
+                      "edges"
+                    ],
+                    "operation": "invokes",
+                    "edgeId": "project-complete-new-feature-authority",
+                    "arguments": [
+                      {
+                        "kind": "identifier-reference",
+                        "name": "admittedRequest"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "kind": "const-binding",
+                "name": "materialization",
+                "expression": {
+                  "kind": "await-expression",
+                  "expression": {
+                    "kind": "semantic-edge-invocation",
+                    "receiverPath": [
+                      "context",
+                      "edges"
+                    ],
+                    "operation": "invokes",
+                    "edgeId": "materialize-complete-new-feature",
+                    "arguments": [
+                      {
+                        "kind": "identifier-reference",
+                        "name": "authority"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "kind": "const-binding",
+                "name": "execution",
+                "expression": {
+                  "kind": "await-expression",
+                  "expression": {
+                    "kind": "semantic-edge-invocation",
+                    "receiverPath": [
+                      "context",
+                      "edges"
+                    ],
+                    "operation": "invokes",
+                    "edgeId": "execute-newly-materialized-feature",
+                    "arguments": [
+                      {
+                        "kind": "identifier-reference",
+                        "name": "materialization"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "kind": "const-binding",
+                "name": "comparison",
+                "expression": {
+                  "kind": "await-expression",
+                  "expression": {
+                    "kind": "semantic-edge-invocation",
+                    "receiverPath": [
+                      "context",
+                      "edges"
+                    ],
+                    "operation": "invokes",
+                    "edgeId": "compose-new-feature-execution-comparison",
+                    "arguments": [
+                      {
+                        "kind": "identifier-reference",
+                        "name": "execution"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "kind": "const-binding",
+                "name": "disposition",
+                "expression": {
+                  "kind": "await-expression",
+                  "expression": {
+                    "kind": "semantic-edge-invocation",
+                    "receiverPath": [
+                      "context",
+                      "edges"
+                    ],
+                    "operation": "invokes",
+                    "edgeId": "verify-complete-new-feature-lineage",
+                    "arguments": [
+                      {
+                        "kind": "identifier-reference",
+                        "name": "comparison"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "kind": "return-value-statement",
+                "expression": {
+                  "kind": "identifier-reference",
+                  "name": "disposition"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: execute-complete-canonical-feature-conveyor\n// obligation-id: execute-one-mechanically-continuous-feature-flow\n// responsibility-id: executes-end-to-end-canonical-feature-conveyor\n// signal-id: new-feature-terminal-disposition\n// DO NOT EDIT.\nimport type { EndToEndCanonicalFeatureConveyorContext, NewFeatureTerminalDisposition } from \"./executes-end-to-end-canonical-feature-conveyor.type.js\";\n\nexport async function executesEndToEndCanonicalFeatureConveyor(\n  context: EndToEndCanonicalFeatureConveyorContext\n): Promise<NewFeatureTerminalDisposition> {\n  const admission = await context.edges.invokes(\n    \"admit-reviewed-new-feature-request\",\n    context\n  );\n  const admittedRequest = await context.edges.invokes(\n    \"adapt-new-feature-request-admission\",\n    admission\n  );\n  const authority = await context.edges.invokes(\n    \"project-complete-new-feature-authority\",\n    admittedRequest\n  );\n  const materialization = await context.edges.invokes(\n    \"materialize-complete-new-feature\",\n    authority\n  );\n  const execution = await context.edges.invokes(\n    \"execute-newly-materialized-feature\",\n    materialization\n  );\n  const comparison = await context.edges.invokes(\n    \"compose-new-feature-execution-comparison\",\n    execution\n  );\n  const disposition = await context.edges.invokes(\n    \"verify-complete-new-feature-lineage\",\n    comparison\n  );\n  return disposition;\n}\n",
+    "projectedSourceSha256": "sha256:c18760aaf872a9c33de3ceec729438708cb388a3f4763d5bed7ac6b53f5f1e54",
+    "translationProvenance": [
+      {
+        "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor:step:1",
+        "projectionRuleId": "invoke-responsibility",
+        "astPath": "$.statements[0].body.statements[0]",
+        "sourceRange": "13-13"
+      },
+      {
+        "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor:step:2",
+        "projectionRuleId": "invoke-adapter",
+        "astPath": "$.statements[0].body.statements[1]",
+        "sourceRange": "17-17"
+      },
+      {
+        "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor:step:3",
+        "projectionRuleId": "invoke-responsibility",
+        "astPath": "$.statements[0].body.statements[2]",
+        "sourceRange": "21-21"
+      },
+      {
+        "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor:step:4",
+        "projectionRuleId": "invoke-responsibility",
+        "astPath": "$.statements[0].body.statements[3]",
+        "sourceRange": "25-25"
+      },
+      {
+        "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor:step:5",
+        "projectionRuleId": "invoke-responsibility",
+        "astPath": "$.statements[0].body.statements[4]",
+        "sourceRange": "29-29"
+      },
+      {
+        "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor:step:6",
+        "projectionRuleId": "invoke-adapter",
+        "astPath": "$.statements[0].body.statements[5]",
+        "sourceRange": "33-33"
+      },
+      {
+        "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor:step:7",
+        "projectionRuleId": "invoke-responsibility",
+        "astPath": "$.statements[0].body.statements[6]",
+        "sourceRange": "37-37"
+      },
+      {
+        "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor:step:8",
+        "projectionRuleId": "return-assigned-terminal-value",
+        "astPath": "$.statements[0].body.statements[7]",
+        "sourceRange": "41-41"
+      }
+    ]
+  },
+  "results": [
+    {
+      "projectionType": "production-projector-result.v1",
+      "bodyId": "new-feature-request-admission",
+      "scenarioId": "admit-one-reviewed-new-feature-request",
+      "responsibilityId": "admits-reviewed-new-feature-request",
+      "semanticOperationId": "admit-reviewed-new-feature-request",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      },
+      "inputSha256": "sha256:e1626fe213ae26c472dca02f56a00bf915093efeb263743db4752df478ef923d",
+      "artifactPath": "src/new-feature-request-admission.ts",
+      "projectedAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: admit-one-reviewed-new-feature-request"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: establish-one-eligible-new-feature-request"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: admits-reviewed-new-feature-request"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: new-feature-request-admission"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [
+          {
+            "kind": "type-only-import",
+            "moduleSpecifier": "./new-feature-request-admission.type.js",
+            "namedBindings": [
+              "AdmitReviewedNewFeatureRequestContext",
+              "NewFeatureRequestAdmission"
+            ]
+          }
+        ],
+        "statements": [
+          {
+            "kind": "function-declaration",
+            "identity": "new-feature-request-admission",
+            "modifiers": [
+              "export",
+              "async"
+            ],
+            "name": "admitsReviewedNewFeatureRequest",
+            "parameters": [
+              {
+                "kind": "parameter",
+                "name": "context",
+                "typeReference": "AdmitReviewedNewFeatureRequestContext",
+                "immutable": true
+              }
+            ],
+            "returnType": {
+              "kind": "promise",
+              "typeReference": "NewFeatureRequestAdmission"
+            },
+            "body": {
+              "kind": "block",
+              "statements": [
+                {
+                  "kind": "return-statement",
+                  "expression": {
+                    "kind": "await-expression",
+                    "expression": {
+                      "kind": "semantic-edge-invocation",
+                      "receiverPath": [
+                        "context",
+                        "edges"
+                      ],
+                      "operation": "invokes",
+                      "edgeId": "admit-reviewed-new-feature-request",
+                      "arguments": [
+                        {
+                          "kind": "identifier-reference",
+                          "name": "context"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: admit-one-reviewed-new-feature-request\n// obligation-id: establish-one-eligible-new-feature-request\n// responsibility-id: admits-reviewed-new-feature-request\n// signal-id: new-feature-request-admission\n// DO NOT EDIT.\nimport type { AdmitReviewedNewFeatureRequestContext, NewFeatureRequestAdmission } from \"./new-feature-request-admission.type.js\";\n\nexport async function admitsReviewedNewFeatureRequest(\n  context: AdmitReviewedNewFeatureRequestContext\n): Promise<NewFeatureRequestAdmission> {\n  return await context.edges.invokes(\n    \"admit-reviewed-new-feature-request\",\n    context\n  );\n}\n",
+      "projectedSourceSha256": "sha256:5775279a03ee5133629cdcaffb2fc4288e24b7f7b695a8b13de873e1b68df04f",
+      "supportingTypeArtifactPath": "src/new-feature-request-admission.type.ts",
+      "supportingTypeAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: admit-one-reviewed-new-feature-request"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: establish-one-eligible-new-feature-request"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: admits-reviewed-new-feature-request"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: new-feature-request-admission"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [],
+        "statements": [
+          {
+            "kind": "interface-declaration",
+            "identity": "new-feature-request-admission-context",
+            "modifiers": [
+              "export"
+            ],
+            "name": "AdmitReviewedNewFeatureRequestContext",
+            "members": [
+              {
+                "kind": "nested-property-signature",
+                "name": "edges",
+                "immutable": true,
+                "members": [
+                  {
+                    "kind": "property-signature",
+                    "name": "invokes",
+                    "typeReference": "(edgeId: string, context: AdmitReviewedNewFeatureRequestContext) => Promise<NewFeatureRequestAdmission>",
+                    "immutable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
+            "separatedBefore": true,
+            "identity": "new-feature-request-admission-result",
+            "modifiers": [
+              "export"
+            ],
+            "name": "NewFeatureRequestAdmission",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "disposition",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          }
+        ]
+      },
+      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: admit-one-reviewed-new-feature-request\n// obligation-id: establish-one-eligible-new-feature-request\n// responsibility-id: admits-reviewed-new-feature-request\n// signal-id: new-feature-request-admission\n// DO NOT EDIT.\nexport interface AdmitReviewedNewFeatureRequestContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: AdmitReviewedNewFeatureRequestContext) => Promise<NewFeatureRequestAdmission>;\n  };\n}\n\nexport interface NewFeatureRequestAdmission {\n  readonly disposition: string;\n}\n",
+      "supportingTypeSourceSha256": "sha256:e1150862f8382c8a78627fa0ad5eb939579aa3bd7eca7ed17668c902c4768af2",
+      "translationProvenance": [
+        {
+          "sourceAuthorityRef": "responsibility:admits-reviewed-new-feature-request",
+          "projectionRuleId": "body-to-exported-async-function",
+          "astPath": "$.statements[0]",
+          "sourceRange": "10-10"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:new-feature-request-admission:context",
+          "projectionRuleId": "context-to-parameter",
+          "astPath": "$.statements[0].parameters[0]",
+          "sourceRange": "11-11"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:new-feature-request-admission:operations[0]",
+          "projectionRuleId": "semantic-edge-to-call",
+          "astPath": "$.statements[0].body.statements[0].expression.expression",
+          "sourceRange": "13-16"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:new-feature-request-admission:operations[0].edgeId",
+          "projectionRuleId": "edge-id-to-string-literal",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.edgeId",
+          "sourceRange": "14-14"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:new-feature-request-admission:operations[0].input",
+          "projectionRuleId": "context-input-to-identifier",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.arguments[0]",
+          "sourceRange": "15-15"
+        }
+      ]
+    },
+    {
+      "projectionType": "production-projector-result.v1",
+      "bodyId": "complete-new-feature-authority",
+      "scenarioId": "project-one-complete-new-feature-authority",
+      "responsibilityId": "projects-complete-new-feature-authority",
+      "semanticOperationId": "project-complete-new-feature-authority",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      },
+      "inputSha256": "sha256:f4cc63c13597759334aaa02700e7b836ee378084d098e9d84601cac6fb0445f8",
+      "artifactPath": "src/complete-new-feature-authority.ts",
+      "projectedAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: project-one-complete-new-feature-authority"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: establish-one-complete-new-feature-authority"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: projects-complete-new-feature-authority"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: complete-new-feature-authority"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [
+          {
+            "kind": "type-only-import",
+            "moduleSpecifier": "./complete-new-feature-authority.type.js",
+            "namedBindings": [
+              "ProjectCompleteNewFeatureAuthorityContext",
+              "CompleteNewFeatureAuthority"
+            ]
+          }
+        ],
+        "statements": [
+          {
+            "kind": "function-declaration",
+            "identity": "complete-new-feature-authority",
+            "modifiers": [
+              "export",
+              "async"
+            ],
+            "name": "projectsCompleteNewFeatureAuthority",
+            "parameters": [
+              {
+                "kind": "parameter",
+                "name": "context",
+                "typeReference": "ProjectCompleteNewFeatureAuthorityContext",
+                "immutable": true
+              }
+            ],
+            "returnType": {
+              "kind": "promise",
+              "typeReference": "CompleteNewFeatureAuthority"
+            },
+            "body": {
+              "kind": "block",
+              "statements": [
+                {
+                  "kind": "return-statement",
+                  "expression": {
+                    "kind": "await-expression",
+                    "expression": {
+                      "kind": "semantic-edge-invocation",
+                      "receiverPath": [
+                        "context",
+                        "edges"
+                      ],
+                      "operation": "invokes",
+                      "edgeId": "project-complete-new-feature-authority",
+                      "arguments": [
+                        {
+                          "kind": "identifier-reference",
+                          "name": "context"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: project-one-complete-new-feature-authority\n// obligation-id: establish-one-complete-new-feature-authority\n// responsibility-id: projects-complete-new-feature-authority\n// signal-id: complete-new-feature-authority\n// DO NOT EDIT.\nimport type { ProjectCompleteNewFeatureAuthorityContext, CompleteNewFeatureAuthority } from \"./complete-new-feature-authority.type.js\";\n\nexport async function projectsCompleteNewFeatureAuthority(\n  context: ProjectCompleteNewFeatureAuthorityContext\n): Promise<CompleteNewFeatureAuthority> {\n  return await context.edges.invokes(\n    \"project-complete-new-feature-authority\",\n    context\n  );\n}\n",
+      "projectedSourceSha256": "sha256:dbd818e3e4897ef0bdf494bc7410dfcd065c1ecf0a7258050705d8ed36991ed4",
+      "supportingTypeArtifactPath": "src/complete-new-feature-authority.type.ts",
+      "supportingTypeAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: project-one-complete-new-feature-authority"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: establish-one-complete-new-feature-authority"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: projects-complete-new-feature-authority"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: complete-new-feature-authority"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [],
+        "statements": [
+          {
+            "kind": "interface-declaration",
+            "identity": "complete-new-feature-authority-context",
+            "modifiers": [
+              "export"
+            ],
+            "name": "ProjectCompleteNewFeatureAuthorityContext",
+            "members": [
+              {
+                "kind": "nested-property-signature",
+                "name": "edges",
+                "immutable": true,
+                "members": [
+                  {
+                    "kind": "property-signature",
+                    "name": "invokes",
+                    "typeReference": "(edgeId: string, context: ProjectCompleteNewFeatureAuthorityContext) => Promise<CompleteNewFeatureAuthority>",
+                    "immutable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
+            "separatedBefore": true,
+            "identity": "complete-new-feature-authority-result",
+            "modifiers": [
+              "export"
+            ],
+            "name": "CompleteNewFeatureAuthority",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "disposition",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          }
+        ]
+      },
+      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: project-one-complete-new-feature-authority\n// obligation-id: establish-one-complete-new-feature-authority\n// responsibility-id: projects-complete-new-feature-authority\n// signal-id: complete-new-feature-authority\n// DO NOT EDIT.\nexport interface ProjectCompleteNewFeatureAuthorityContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: ProjectCompleteNewFeatureAuthorityContext) => Promise<CompleteNewFeatureAuthority>;\n  };\n}\n\nexport interface CompleteNewFeatureAuthority {\n  readonly disposition: string;\n}\n",
+      "supportingTypeSourceSha256": "sha256:c4e9e5c89698dbc81a21b71dd170c542a7c66ea45c1d6fa97c86b7aafce07b7c",
+      "translationProvenance": [
+        {
+          "sourceAuthorityRef": "responsibility:projects-complete-new-feature-authority",
+          "projectionRuleId": "body-to-exported-async-function",
+          "astPath": "$.statements[0]",
+          "sourceRange": "10-10"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:complete-new-feature-authority:context",
+          "projectionRuleId": "context-to-parameter",
+          "astPath": "$.statements[0].parameters[0]",
+          "sourceRange": "11-11"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:complete-new-feature-authority:operations[0]",
+          "projectionRuleId": "semantic-edge-to-call",
+          "astPath": "$.statements[0].body.statements[0].expression.expression",
+          "sourceRange": "13-16"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:complete-new-feature-authority:operations[0].edgeId",
+          "projectionRuleId": "edge-id-to-string-literal",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.edgeId",
+          "sourceRange": "14-14"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:complete-new-feature-authority:operations[0].input",
+          "projectionRuleId": "context-input-to-identifier",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.arguments[0]",
+          "sourceRange": "15-15"
+        }
+      ]
+    },
+    {
+      "projectionType": "production-projector-result.v1",
+      "bodyId": "complete-new-feature-materialization",
+      "scenarioId": "materialize-one-complete-new-feature",
+      "responsibilityId": "materializes-complete-new-feature",
+      "semanticOperationId": "materialize-complete-new-feature",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      },
+      "inputSha256": "sha256:59b3cbe9c54c0f5d0aa389d494fc580ec54c1d56bcc8ea7589f3b6e0ad9d7054",
+      "artifactPath": "src/complete-new-feature-materialization.ts",
+      "projectedAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: materialize-one-complete-new-feature"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: materialize-only-admitted-new-feature-authority"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: materializes-complete-new-feature"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: complete-new-feature-materialization"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [
+          {
+            "kind": "type-only-import",
+            "moduleSpecifier": "./complete-new-feature-materialization.type.js",
+            "namedBindings": [
+              "MaterializeCompleteNewFeatureContext",
+              "CompleteNewFeatureMaterialization"
+            ]
+          }
+        ],
+        "statements": [
+          {
+            "kind": "function-declaration",
+            "identity": "complete-new-feature-materialization",
+            "modifiers": [
+              "export",
+              "async"
+            ],
+            "name": "materializesCompleteNewFeature",
+            "parameters": [
+              {
+                "kind": "parameter",
+                "name": "context",
+                "typeReference": "MaterializeCompleteNewFeatureContext",
+                "immutable": true
+              }
+            ],
+            "returnType": {
+              "kind": "promise",
+              "typeReference": "CompleteNewFeatureMaterialization"
+            },
+            "body": {
+              "kind": "block",
+              "statements": [
+                {
+                  "kind": "return-statement",
+                  "expression": {
+                    "kind": "await-expression",
+                    "expression": {
+                      "kind": "semantic-edge-invocation",
+                      "receiverPath": [
+                        "context",
+                        "edges"
+                      ],
+                      "operation": "invokes",
+                      "edgeId": "materialize-complete-new-feature",
+                      "arguments": [
+                        {
+                          "kind": "identifier-reference",
+                          "name": "context"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: materialize-one-complete-new-feature\n// obligation-id: materialize-only-admitted-new-feature-authority\n// responsibility-id: materializes-complete-new-feature\n// signal-id: complete-new-feature-materialization\n// DO NOT EDIT.\nimport type { MaterializeCompleteNewFeatureContext, CompleteNewFeatureMaterialization } from \"./complete-new-feature-materialization.type.js\";\n\nexport async function materializesCompleteNewFeature(\n  context: MaterializeCompleteNewFeatureContext\n): Promise<CompleteNewFeatureMaterialization> {\n  return await context.edges.invokes(\n    \"materialize-complete-new-feature\",\n    context\n  );\n}\n",
+      "projectedSourceSha256": "sha256:6ba37ea7c6c97e735e421b3bf8359cdd0706e4971aa91991bf9b627adb061d35",
+      "supportingTypeArtifactPath": "src/complete-new-feature-materialization.type.ts",
+      "supportingTypeAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: materialize-one-complete-new-feature"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: materialize-only-admitted-new-feature-authority"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: materializes-complete-new-feature"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: complete-new-feature-materialization"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [],
+        "statements": [
+          {
+            "kind": "interface-declaration",
+            "identity": "complete-new-feature-materialization-context",
+            "modifiers": [
+              "export"
+            ],
+            "name": "MaterializeCompleteNewFeatureContext",
+            "members": [
+              {
+                "kind": "nested-property-signature",
+                "name": "edges",
+                "immutable": true,
+                "members": [
+                  {
+                    "kind": "property-signature",
+                    "name": "invokes",
+                    "typeReference": "(edgeId: string, context: MaterializeCompleteNewFeatureContext) => Promise<CompleteNewFeatureMaterialization>",
+                    "immutable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
+            "separatedBefore": true,
+            "identity": "complete-new-feature-materialization-result",
+            "modifiers": [
+              "export"
+            ],
+            "name": "CompleteNewFeatureMaterialization",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "disposition",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          }
+        ]
+      },
+      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: materialize-one-complete-new-feature\n// obligation-id: materialize-only-admitted-new-feature-authority\n// responsibility-id: materializes-complete-new-feature\n// signal-id: complete-new-feature-materialization\n// DO NOT EDIT.\nexport interface MaterializeCompleteNewFeatureContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: MaterializeCompleteNewFeatureContext) => Promise<CompleteNewFeatureMaterialization>;\n  };\n}\n\nexport interface CompleteNewFeatureMaterialization {\n  readonly disposition: string;\n}\n",
+      "supportingTypeSourceSha256": "sha256:6f2b3e7c75772bd3e00c7f49223d9e50c1c6c37a9982a5499b43cd8e8f83c5ec",
+      "translationProvenance": [
+        {
+          "sourceAuthorityRef": "responsibility:materializes-complete-new-feature",
+          "projectionRuleId": "body-to-exported-async-function",
+          "astPath": "$.statements[0]",
+          "sourceRange": "10-10"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:complete-new-feature-materialization:context",
+          "projectionRuleId": "context-to-parameter",
+          "astPath": "$.statements[0].parameters[0]",
+          "sourceRange": "11-11"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:complete-new-feature-materialization:operations[0]",
+          "projectionRuleId": "semantic-edge-to-call",
+          "astPath": "$.statements[0].body.statements[0].expression.expression",
+          "sourceRange": "13-16"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:complete-new-feature-materialization:operations[0].edgeId",
+          "projectionRuleId": "edge-id-to-string-literal",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.edgeId",
+          "sourceRange": "14-14"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:complete-new-feature-materialization:operations[0].input",
+          "projectionRuleId": "context-input-to-identifier",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.arguments[0]",
+          "sourceRange": "15-15"
+        }
+      ]
+    },
+    {
+      "projectionType": "production-projector-result.v1",
+      "bodyId": "observed-new-feature-execution",
+      "scenarioId": "execute-one-newly-materialized-feature",
+      "responsibilityId": "executes-newly-materialized-feature",
+      "semanticOperationId": "execute-newly-materialized-feature",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      },
+      "inputSha256": "sha256:a5a327f02c34fe573f7a228e9c1e02b6ff34de3be4875438a360cde92232c237",
+      "artifactPath": "src/observed-new-feature-execution.ts",
+      "projectedAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: execute-one-newly-materialized-feature"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: execute-new-feature-through-admitted-semantics"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: executes-newly-materialized-feature"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: observed-new-feature-execution"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [
+          {
+            "kind": "type-only-import",
+            "moduleSpecifier": "./observed-new-feature-execution.type.js",
+            "namedBindings": [
+              "ExecuteNewlyMaterializedFeatureContext",
+              "ObservedNewFeatureExecution"
+            ]
+          }
+        ],
+        "statements": [
+          {
+            "kind": "function-declaration",
+            "identity": "observed-new-feature-execution",
+            "modifiers": [
+              "export",
+              "async"
+            ],
+            "name": "executesNewlyMaterializedFeature",
+            "parameters": [
+              {
+                "kind": "parameter",
+                "name": "context",
+                "typeReference": "ExecuteNewlyMaterializedFeatureContext",
+                "immutable": true
+              }
+            ],
+            "returnType": {
+              "kind": "promise",
+              "typeReference": "ObservedNewFeatureExecution"
+            },
+            "body": {
+              "kind": "block",
+              "statements": [
+                {
+                  "kind": "return-statement",
+                  "expression": {
+                    "kind": "await-expression",
+                    "expression": {
+                      "kind": "semantic-edge-invocation",
+                      "receiverPath": [
+                        "context",
+                        "edges"
+                      ],
+                      "operation": "invokes",
+                      "edgeId": "execute-newly-materialized-feature",
+                      "arguments": [
+                        {
+                          "kind": "identifier-reference",
+                          "name": "context"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: execute-one-newly-materialized-feature\n// obligation-id: execute-new-feature-through-admitted-semantics\n// responsibility-id: executes-newly-materialized-feature\n// signal-id: observed-new-feature-execution\n// DO NOT EDIT.\nimport type { ExecuteNewlyMaterializedFeatureContext, ObservedNewFeatureExecution } from \"./observed-new-feature-execution.type.js\";\n\nexport async function executesNewlyMaterializedFeature(\n  context: ExecuteNewlyMaterializedFeatureContext\n): Promise<ObservedNewFeatureExecution> {\n  return await context.edges.invokes(\n    \"execute-newly-materialized-feature\",\n    context\n  );\n}\n",
+      "projectedSourceSha256": "sha256:d68e519ca89291776c130cf1c3de23cdb526427f2b22365d33dcbb0dde888ea1",
+      "supportingTypeArtifactPath": "src/observed-new-feature-execution.type.ts",
+      "supportingTypeAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: execute-one-newly-materialized-feature"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: execute-new-feature-through-admitted-semantics"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: executes-newly-materialized-feature"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: observed-new-feature-execution"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [],
+        "statements": [
+          {
+            "kind": "interface-declaration",
+            "identity": "observed-new-feature-execution-context",
+            "modifiers": [
+              "export"
+            ],
+            "name": "ExecuteNewlyMaterializedFeatureContext",
+            "members": [
+              {
+                "kind": "nested-property-signature",
+                "name": "edges",
+                "immutable": true,
+                "members": [
+                  {
+                    "kind": "property-signature",
+                    "name": "invokes",
+                    "typeReference": "(edgeId: string, context: ExecuteNewlyMaterializedFeatureContext) => Promise<ObservedNewFeatureExecution>",
+                    "immutable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
+            "separatedBefore": true,
+            "identity": "observed-new-feature-execution-result",
+            "modifiers": [
+              "export"
+            ],
+            "name": "ObservedNewFeatureExecution",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "disposition",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          }
+        ]
+      },
+      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: execute-one-newly-materialized-feature\n// obligation-id: execute-new-feature-through-admitted-semantics\n// responsibility-id: executes-newly-materialized-feature\n// signal-id: observed-new-feature-execution\n// DO NOT EDIT.\nexport interface ExecuteNewlyMaterializedFeatureContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: ExecuteNewlyMaterializedFeatureContext) => Promise<ObservedNewFeatureExecution>;\n  };\n}\n\nexport interface ObservedNewFeatureExecution {\n  readonly disposition: string;\n}\n",
+      "supportingTypeSourceSha256": "sha256:28d333f6f7d9cad5d60c72db47f6a0c4aa08e1e46e2f92a8bd2c929e1e5bc6a8",
+      "translationProvenance": [
+        {
+          "sourceAuthorityRef": "responsibility:executes-newly-materialized-feature",
+          "projectionRuleId": "body-to-exported-async-function",
+          "astPath": "$.statements[0]",
+          "sourceRange": "10-10"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:observed-new-feature-execution:context",
+          "projectionRuleId": "context-to-parameter",
+          "astPath": "$.statements[0].parameters[0]",
+          "sourceRange": "11-11"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:observed-new-feature-execution:operations[0]",
+          "projectionRuleId": "semantic-edge-to-call",
+          "astPath": "$.statements[0].body.statements[0].expression.expression",
+          "sourceRange": "13-16"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:observed-new-feature-execution:operations[0].edgeId",
+          "projectionRuleId": "edge-id-to-string-literal",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.edgeId",
+          "sourceRange": "14-14"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:observed-new-feature-execution:operations[0].input",
+          "projectionRuleId": "context-input-to-identifier",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.arguments[0]",
+          "sourceRange": "15-15"
+        }
+      ]
+    },
+    {
+      "projectionType": "production-projector-result.v1",
+      "bodyId": "complete-new-feature-lineage",
+      "scenarioId": "verify-one-complete-new-feature-lineage",
+      "responsibilityId": "verifies-complete-new-feature-lineage",
+      "semanticOperationId": "verify-complete-new-feature-lineage",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      },
+      "inputSha256": "sha256:c47b8ea08352c1cd489ebb3aaa4be255f32e182bda02012a5f4ab567ae6e349e",
+      "artifactPath": "src/complete-new-feature-lineage.ts",
+      "projectedAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: verify-one-complete-new-feature-lineage"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: prove-complete-new-feature-equivalence"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: verifies-complete-new-feature-lineage"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: complete-new-feature-equivalence"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [
+          {
+            "kind": "type-only-import",
+            "moduleSpecifier": "./complete-new-feature-lineage.type.js",
+            "namedBindings": [
+              "VerifyCompleteNewFeatureLineageContext",
+              "NewFeatureTerminalDisposition"
+            ]
+          }
+        ],
+        "statements": [
+          {
+            "kind": "function-declaration",
+            "identity": "complete-new-feature-lineage",
+            "modifiers": [
+              "export",
+              "async"
+            ],
+            "name": "verifiesCompleteNewFeatureLineage",
+            "parameters": [
+              {
+                "kind": "parameter",
+                "name": "context",
+                "typeReference": "VerifyCompleteNewFeatureLineageContext",
+                "immutable": true
+              }
+            ],
+            "returnType": {
+              "kind": "promise",
+              "typeReference": "NewFeatureTerminalDisposition"
+            },
+            "body": {
+              "kind": "block",
+              "statements": [
+                {
+                  "kind": "return-statement",
+                  "expression": {
+                    "kind": "await-expression",
+                    "expression": {
+                      "kind": "semantic-edge-invocation",
+                      "receiverPath": [
+                        "context",
+                        "edges"
+                      ],
+                      "operation": "invokes",
+                      "edgeId": "verify-complete-new-feature-lineage",
+                      "arguments": [
+                        {
+                          "kind": "identifier-reference",
+                          "name": "context"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: verify-one-complete-new-feature-lineage\n// obligation-id: prove-complete-new-feature-equivalence\n// responsibility-id: verifies-complete-new-feature-lineage\n// signal-id: complete-new-feature-equivalence\n// DO NOT EDIT.\nimport type { VerifyCompleteNewFeatureLineageContext, NewFeatureTerminalDisposition } from \"./complete-new-feature-lineage.type.js\";\n\nexport async function verifiesCompleteNewFeatureLineage(\n  context: VerifyCompleteNewFeatureLineageContext\n): Promise<NewFeatureTerminalDisposition> {\n  return await context.edges.invokes(\n    \"verify-complete-new-feature-lineage\",\n    context\n  );\n}\n",
+      "projectedSourceSha256": "sha256:a4b8c2f8b02c6760e7cd7918576eba2eaec3d17df6c284843cb5588dc889078a",
+      "supportingTypeArtifactPath": "src/complete-new-feature-lineage.type.ts",
+      "supportingTypeAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: verify-one-complete-new-feature-lineage"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: prove-complete-new-feature-equivalence"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: verifies-complete-new-feature-lineage"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: complete-new-feature-equivalence"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [],
+        "statements": [
+          {
+            "kind": "interface-declaration",
+            "identity": "complete-new-feature-lineage-context",
+            "modifiers": [
+              "export"
+            ],
+            "name": "VerifyCompleteNewFeatureLineageContext",
+            "members": [
+              {
+                "kind": "nested-property-signature",
+                "name": "edges",
+                "immutable": true,
+                "members": [
+                  {
+                    "kind": "property-signature",
+                    "name": "invokes",
+                    "typeReference": "(edgeId: string, context: VerifyCompleteNewFeatureLineageContext) => Promise<NewFeatureTerminalDisposition>",
+                    "immutable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
+            "separatedBefore": true,
+            "identity": "complete-new-feature-lineage-result",
+            "modifiers": [
+              "export"
+            ],
+            "name": "NewFeatureTerminalDisposition",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "disposition",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          }
+        ]
+      },
+      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: verify-one-complete-new-feature-lineage\n// obligation-id: prove-complete-new-feature-equivalence\n// responsibility-id: verifies-complete-new-feature-lineage\n// signal-id: complete-new-feature-equivalence\n// DO NOT EDIT.\nexport interface VerifyCompleteNewFeatureLineageContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: VerifyCompleteNewFeatureLineageContext) => Promise<NewFeatureTerminalDisposition>;\n  };\n}\n\nexport interface NewFeatureTerminalDisposition {\n  readonly disposition: string;\n}\n",
+      "supportingTypeSourceSha256": "sha256:518b82723f19fceaa13af7f7f4379b1db57da96475b16e2eb5f8020fbcdf85cd",
+      "translationProvenance": [
+        {
+          "sourceAuthorityRef": "responsibility:verifies-complete-new-feature-lineage",
+          "projectionRuleId": "body-to-exported-async-function",
+          "astPath": "$.statements[0]",
+          "sourceRange": "10-10"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:complete-new-feature-lineage:context",
+          "projectionRuleId": "context-to-parameter",
+          "astPath": "$.statements[0].parameters[0]",
+          "sourceRange": "11-11"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:complete-new-feature-lineage:operations[0]",
+          "projectionRuleId": "semantic-edge-to-call",
+          "astPath": "$.statements[0].body.statements[0].expression.expression",
+          "sourceRange": "13-16"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:complete-new-feature-lineage:operations[0].edgeId",
+          "projectionRuleId": "edge-id-to-string-literal",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.edgeId",
+          "sourceRange": "14-14"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:complete-new-feature-lineage:operations[0].input",
+          "projectionRuleId": "context-input-to-identifier",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.arguments[0]",
+          "sourceRange": "15-15"
+        }
+      ]
+    }
+  ]
+}

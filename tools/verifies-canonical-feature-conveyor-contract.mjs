@@ -52,6 +52,41 @@ function assertsStageCausality(stages) {
   }
 }
 
+function assertsLanguageProfile(profile) {
+  const expected = new Map([
+    [
+      "semantic-edge-to-call",
+      "context.edges.invokes CallExpression"
+    ],
+    [
+      "edge-id-to-string-literal",
+      "first call argument StringLiteral"
+    ],
+    [
+      "context-input-to-identifier",
+      "second call argument context Identifier"
+    ],
+    [
+      "asynchronous-invocation-to-await",
+      "AwaitExpression"
+    ],
+    [
+      "return-operation-to-return-statement",
+      "ReturnStatement containing awaited invocation"
+    ]
+  ]);
+  for (const [ruleId, target] of expected) {
+    assert(
+      profile.mappings.some(
+        mapping =>
+          mapping.ruleId === ruleId &&
+          mapping.target === target
+      ),
+      `CONVEYOR_LANGUAGE_PROFILE_RULE_MISMATCH: ${ruleId}`
+    );
+  }
+}
+
 const schema = JSON.parse(await readFile(schemaPath, "utf8"));
 const authority = JSON.parse(await readFile(authorityPath, "utf8"));
 const ajv = new Ajv2020({
@@ -89,6 +124,86 @@ const expectedStageIds = [
   "evaluate-translation-conformance",
   "review-feature"
 ];
+const expectedDocumentationSections = [
+  ["capture-intent", "$.intent", "intent-section"],
+  ["declare-outcome", "$.outcome", "outcome-section"],
+  [
+    "establish-feature",
+    "$.canonicalFeatureBody.feature",
+    "feature-section"
+  ],
+  [
+    "establish-scenarios",
+    "$.canonicalFeatureBody.scenarios",
+    "gherkin-section"
+  ],
+  [
+    "decompose-obligations",
+    "$.canonicalFeatureBody.scenarios",
+    "obligation-section"
+  ],
+  [
+    "declare-expectations",
+    "$.canonicalFeatureBody.scenarios",
+    "expectation-section"
+  ],
+  [
+    "assign-responsibilities",
+    "$.canonicalFeatureBody.scenarios",
+    "responsibility-section"
+  ],
+  [
+    "declare-signals",
+    "$.canonicalFeatureBody.scenarios",
+    "signal-section"
+  ],
+  [
+    "author-semantic-authority",
+    "$.semanticAuthority",
+    "semantic-authority-section"
+  ],
+  [
+    "author-semantic-execution",
+    "$.semanticAuthority",
+    "semantic-execution-section"
+  ],
+  [
+    "author-feature-body-authority",
+    "$.featureBodyAuthority",
+    "feature-body-section"
+  ],
+  [
+    "resolve-language-projection",
+    "$.languageProfiles",
+    "language-profile-section"
+  ],
+  [
+    "project-expected-ast",
+    "$.derivedProjections",
+    "derived-ast-section"
+  ],
+  [
+    "project-expected-code",
+    "$.derivedProjections",
+    "derived-code-section"
+  ],
+  [
+    "evaluate-semantic-execution",
+    "$.evaluationAuthority.semanticEvaluation",
+    "semantic-evaluation-section"
+  ],
+  [
+    "evaluate-projected-execution",
+    "$.evaluationAuthority.projectedEvaluation",
+    "projected-evaluation-section"
+  ],
+  [
+    "evaluate-translation-conformance",
+    "$.evaluationAuthority.translationEvaluation",
+    "translation-section"
+  ],
+  ["review-feature", "$.reviewAuthority", "review-section"]
+];
 const stages = authority.conveyor.stages;
 assert(
   JSON.stringify(stages.map(stage => stage.stageId)) ===
@@ -97,6 +212,7 @@ assert(
 );
 
 assertsStageCausality(stages);
+assertsLanguageProfile(authority.languageProfiles[0]);
 
 const state = authority.conveyor.constructionState;
 const currentIndex = expectedStageIds.indexOf(state.currentStage);
@@ -160,6 +276,76 @@ const bodies = new Map(
 const projections = new Map(
   authority.projectionAuthority.map(item => [item.bodyId, item])
 );
+const derivedBytes = await readFile(
+  resolve(
+    repositoryRoot,
+    authority.projection.derivedProjectionOutputPath
+  )
+);
+assert(
+  sha256(derivedBytes) ===
+    authority.projection.derivedProjectionSha256,
+  "CONVEYOR_DERIVED_PROJECTION_HASH_MISMATCH"
+);
+const derived = JSON.parse(derivedBytes.toString("utf8"));
+const derivedByBody = new Map(
+  derived.results.map(item => [item.bodyId, item])
+);
+const featureSteps = authority.featureExecutionAuthority.steps;
+contiguous(
+  featureSteps,
+  "CONVEYOR_FEATURE_EXECUTION_SEQUENCE_INVALID"
+);
+for (let index = 0; index < featureSteps.length - 2; index += 1) {
+  assert(
+    featureSteps[index].producesContractId ===
+      featureSteps[index + 1].acceptsContractId,
+    `CONVEYOR_FEATURE_CONTRACT_DISCONTINUITY: ${featureSteps[index].sequence}`
+  );
+}
+assert(
+  featureSteps.at(-1).operation === "return" &&
+    featureSteps.at(-1).input === featureSteps.at(-2).assign &&
+    featureSteps.at(-2).producesContractId ===
+      authority.featureExecutionAuthority.terminalContractId,
+  "CONVEYOR_FEATURE_TERMINAL_BINDING_MISMATCH"
+);
+const featureRequestStatements =
+  authority.featureExecutionProjection.projectorRequest.function
+    .statements;
+assert(
+  featureRequestStatements.length === featureSteps.length &&
+    featureRequestStatements.every((statement, index) => {
+      const step = featureSteps[index];
+      if (step.operation === "return") {
+        return (
+          statement.kind === "return-value" &&
+          statement.value.name === step.input.slice(2)
+        );
+      }
+      return (
+        statement.edgeId === step.semanticOperationId &&
+        statement.input === step.input.slice(2) &&
+        statement.name === step.assign.slice(2)
+      );
+    }),
+  "CONVEYOR_FEATURE_PROJECTOR_INPUT_MISMATCH"
+);
+assert(
+  derived.featureExecution.projector.executableSha256 ===
+    authority.featureExecutionProjection.projector
+      .executableSha256 &&
+    derived.featureExecution.projectedSourceSha256 ===
+      sha256(
+        Buffer.from(
+          derived.featureExecution.projectedSource,
+          "utf8"
+        )
+      ) &&
+    derived.featureExecution.translationProvenance.length ===
+      featureSteps.length,
+  "CONVEYOR_FEATURE_PRODUCTION_PROJECTION_MISMATCH"
+);
 assert(
   semantics.size === scenarios.length,
   "CONVEYOR_SEMANTIC_AUTHORITY_COVERAGE_MISMATCH"
@@ -173,7 +359,6 @@ assert(
   "CONVEYOR_PROJECTION_AUTHORITY_COVERAGE_MISMATCH"
 );
 
-const projectedSources = [];
 for (const scenario of scenarios) {
   const responsibility = scenario.responsibility;
   const semantic = semantics.get(responsibility.responsibilityId);
@@ -189,6 +374,25 @@ for (const scenario of scenarios) {
   contiguous(
     semantic.execution.steps,
     `CONVEYOR_SEMANTIC_EXECUTION_SEQUENCE_INVALID: ${responsibility.responsibilityId}`
+  );
+  const declaredAuthorityIds = new Set([
+    ...semantic.observations.map(item => item.observationId),
+    ...semantic.decisions.map(item => item.decisionId),
+    ...semantic.projections.map(item => item.projectionId)
+  ]);
+  for (const step of semantic.execution.steps) {
+    assert(
+      declaredAuthorityIds.has(step.authorityId),
+      `CONVEYOR_EXECUTION_AUTHORITY_UNRESOLVED: ${step.authorityId}`
+    );
+  }
+  assert(
+    semantic.observations.every(
+      observation =>
+        observation.sourceRef ===
+        `scenario:${scenario.scenarioId}`
+    ),
+    `CONVEYOR_OBSERVATION_IDENTITY_MISMATCH: ${scenario.scenarioId}`
   );
   contiguous(
     body.operations,
@@ -206,61 +410,57 @@ for (const scenario of scenarios) {
   const projection = projections.get(body.bodyId);
   assert(
     projection !== undefined &&
-      projection.translation.sourceBodyId === body.bodyId,
+      projection.input.bodyAuthorityRef ===
+        `feature-body:${body.bodyId}`,
     `CONVEYOR_PROJECTION_BODY_MISMATCH: ${body.bodyId}`
   );
-  const declaration =
-    projection.expectedProjection.ast.statements[0];
-  const returnStatement = declaration.body.statements[0];
-  const call = returnStatement.expression.expression;
-  const edgeLiteral = call.arguments[0];
-  const contextArgument = call.arguments[1];
+  const request = projection.input.projectorRequest;
   assert(
-    declaration.parameters[0].name === body.context.parameterName,
-    `CONVEYOR_AST_CONTEXT_MISMATCH: ${body.bodyId}`
+    request.function.semanticEdgeId ===
+      body.operations[0].edgeId,
+    `CONVEYOR_PROJECTOR_INPUT_EDGE_MISMATCH: ${body.bodyId}`
   );
   assert(
-    edgeLiteral.kind === "StringLiteral" &&
-      edgeLiteral.value === body.operations[0].edgeId,
-    `CONVEYOR_AST_EDGE_MISMATCH: ${body.bodyId}`
+    request.function.contextParameter.name ===
+      body.context.parameterName &&
+      request.function.contextParameter.typeReference ===
+        projection.typeResolution.contextType &&
+      request.function.resultTypeReference ===
+        projection.typeResolution.resultType,
+    `CONVEYOR_PROJECTOR_INPUT_TYPE_MISMATCH: ${body.bodyId}`
+  );
+  const result = derivedByBody.get(body.bodyId);
+  assert(
+    result !== undefined &&
+      result.projector.projectorId ===
+        projection.projector.projectorId &&
+      result.projector.executableSha256 ===
+        projection.projector.executableSha256,
+    `CONVEYOR_PRODUCTION_PROJECTION_MISSING: ${body.bodyId}`
   );
   assert(
-    contextArgument.kind === "Identifier" &&
-      contextArgument.name === body.context.parameterName,
-    `CONVEYOR_AST_INPUT_MISMATCH: ${body.bodyId}`
+    result.projectedSourceSha256 ===
+      sha256(Buffer.from(result.projectedSource, "utf8")) &&
+      result.supportingTypeSourceSha256 ===
+        sha256(
+          Buffer.from(result.supportingTypeSource, "utf8")
+        ),
+    `CONVEYOR_PRODUCTION_SOURCE_HASH_MISMATCH: ${body.bodyId}`
   );
-  const forbiddenKinds = new Set([
-    "IfStatement",
-    "SwitchStatement",
-    "ForStatement",
-    "WhileStatement",
-    "ObjectLiteralExpression",
-    "NewExpression"
-  ]);
-  const serializedAst = JSON.stringify(
-    projection.expectedProjection.ast
+  const invocation =
+    result.projectedAst.statements[0].body.statements[0]
+      .expression.expression;
+  assert(
+    invocation.edgeId === body.operations[0].edgeId &&
+      JSON.stringify(invocation.receiverPath) ===
+        JSON.stringify(["context", "edges"]) &&
+      invocation.operation === "invokes",
+    `CONVEYOR_PRODUCTION_AST_EDGE_MISMATCH: ${body.bodyId}`
   );
-  for (const kind of forbiddenKinds) {
-    assert(
-      !serializedAst.includes(`"kind":"${kind}"`),
-      `CONVEYOR_AST_FORBIDDEN_KIND: ${body.bodyId}:${kind}`
-    );
-  }
-  const parameter = declaration.parameters[0];
-  const source = [
-    `export async function ${declaration.name}(`,
-    `  ${parameter.name}: ${parameter.typeReference}`,
-    `): Promise<${declaration.returnType.typeReference}> {`,
-    `  return await ${call.callee.receiver.name}.${call.callee.member}(`,
-    `    ${JSON.stringify(edgeLiteral.value)},`,
-    `    ${contextArgument.name}`,
-    "  );",
-    "}"
-  ].join("\n");
-  projectedSources.push({
-    bodyId: body.bodyId,
-    source
-  });
+  assert(
+    result.translationProvenance.length >= 5,
+    `CONVEYOR_TRANSLATION_PROVENANCE_INCOMPLETE: ${body.bodyId}`
+  );
 }
 
 if (authority.contract.status !== "draft") {
@@ -270,7 +470,171 @@ if (authority.contract.status !== "draft") {
   );
 }
 
-const projectedMarkdown = projectsMarkdown(authority);
+assert(
+  authority.evaluationAuthority.observation.disposition ===
+    "NOT_EVALUATED",
+  "CONVEYOR_EVALUATION_PREDECLARED"
+);
+const requiredFileRoles = [
+  "feature",
+  "scenario-authority",
+  "semantic-authority",
+  "feature-body-authority",
+  "ast-authority",
+  "projected-code-body",
+  "supporting-type-body",
+  "semantic-registration-body",
+  "composition-body",
+  "runtime-adapter-body"
+];
+assert(
+  requiredFileRoles.every(role =>
+    authority.fileBodyAuthority.placementRules.some(
+      placement => placement.artifactRole === role
+    )
+  ),
+  "CONVEYOR_FILE_BODY_ROLE_COVERAGE_MISMATCH"
+);
+const rendererSource = await readFile(
+  resolve(
+    repositoryRoot,
+    "tools/canonical-feature-conveyor-projection.mjs"
+  ),
+  "utf8"
+);
+for (const forbidden of [
+  "export async function ${",
+  "context.edges.invokes",
+  "camelCase(",
+  'kind: "FunctionDeclaration"',
+  'kind: "ReturnStatement"',
+  'kind: "AwaitExpression"'
+]) {
+  assert(
+    !rendererSource.includes(forbidden),
+    `DOCUMENTATION_RENDERER_CONTAINS_LANGUAGE_LOGIC: ${forbidden}`
+  );
+}
+assert(
+  JSON.stringify(
+    authority.documentationProjection.sections.map(section => [
+      section.stageId,
+      section.source,
+      section.renderer
+    ])
+  ) === JSON.stringify(expectedDocumentationSections),
+  "CONVEYOR_DOCUMENTATION_SECTION_ORDER_MISMATCH"
+);
+assert(
+  JSON.stringify(
+    authority.documentationProjection.openingProjection
+  ) ===
+    JSON.stringify({
+      sectionId: "feature-destination",
+      title: "Feature destination",
+      intendedOutcome: {
+        source: "$.outcome",
+        renderer: "intended-outcome"
+      },
+      executionFlow: {
+        source: "$.featureExecutionAuthority.steps",
+        renderer: "linear-execution-sketch"
+      },
+      featureCodeBody: {
+        source: "$.featureExecutionAuthority",
+        projectorRef:
+          "$.featureExecutionProjection.projector",
+        renderer: "projected-source-fence"
+      },
+      responsibilityBodyIndex: {
+        source: "$.featureBodyAuthority",
+        join: [
+          "$.canonicalFeatureBody.scenarios",
+          "$.semanticAuthority",
+          "$.projectionAuthority"
+        ],
+        renderer: "responsibility-projection-table"
+      },
+      fileBodySystem: {
+        source: "$.fileBodyAuthority",
+        renderer: "file-tree"
+      },
+      derivationOverview: {
+        source: "$.conveyor.stages",
+        renderer: "ordered-conveyor"
+      }
+    }),
+  "CONVEYOR_OPENING_PROJECTION_PROFILE_MISMATCH"
+);
+const authoredAuthorityKeys = [];
+function collectsKeys(value, path = "$") {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) =>
+      collectsKeys(item, `${path}[${index}]`)
+    );
+    return;
+  }
+  if (value === null || typeof value !== "object") return;
+  for (const [key, child] of Object.entries(value)) {
+    if (
+      [
+        "expectedProjection",
+        "projectedAst",
+        "projectedSource"
+      ].includes(key)
+    ) {
+      authoredAuthorityKeys.push(`${path}.${key}`);
+    }
+    collectsKeys(child, `${path}.${key}`);
+  }
+}
+collectsKeys(authority);
+assert(
+  authoredAuthorityKeys.length === 0,
+  `CONVEYOR_AUTHORED_PROJECTION_OUTPUT_PRESENT: ${authoredAuthorityKeys.join(
+    ","
+  )}`
+);
+const identityReferences = [
+  ...authority.semanticAuthority.flatMap(semantic =>
+    semantic.observations.map(observation => observation.sourceRef)
+  ),
+  ...authority.evaluationAuthority.semanticEvaluation.executionRefs,
+  ...authority.evaluationAuthority.semanticEvaluation.fixtureRefs,
+  ...authority.evaluationAuthority.semanticEvaluation
+    .expectedSignalRefs,
+  ...authority.evaluationAuthority.projectedEvaluation.executionRefs,
+  ...authority.evaluationAuthority.projectedEvaluation.fixtureRefs,
+  ...authority.evaluationAuthority.projectedEvaluation
+    .expectedSignalRefs,
+  ...authority.evaluationAuthority.translationEvaluation.comparisonRefs
+];
+assert(
+  identityReferences.every(
+    reference =>
+      !reference.includes("[") && !reference.includes("*")
+  ),
+  "CONVEYOR_BRITTLE_IDENTITY_REFERENCE_PRESENT"
+);
+assert(
+  authority.fileBodyAuthority.composition.entrypointAuthorityRef ===
+    authority.featureExecutionProjection.executionAuthorityRef &&
+    authority.fileBodyAuthority.composition.runtimeAdapterAuthorityRef.startsWith(
+      "external-authority:"
+    ),
+  "CONVEYOR_COMPOSITION_ORIGIN_UNDECLARED"
+);
+assert(
+  authority.documentationProjection.requiredIllustrations.every(
+    illustrationId =>
+      authority.documentationProjection.illustrations.some(
+        illustration =>
+          illustration.illustrationId === illustrationId
+      )
+  ),
+  "CONVEYOR_REQUIRED_ILLUSTRATION_MISSING"
+);
+const projectedMarkdown = projectsMarkdown(authority, derived);
 assert(
   sha256(projectedMarkdown) === authority.projection.outputByteSha256,
   "CONVEYOR_PROJECTION_HASH_MISMATCH"
@@ -350,6 +714,74 @@ recordsControl(
 const bodyMutation = structuredClone(
   authority.featureBodyAuthority[0]
 );
+
+const profileMutation = structuredClone(
+  authority.languageProfiles[0]
+);
+profileMutation.mappings.find(
+  mapping => mapping.ruleId === "semantic-edge-to-call"
+).target = "context.invoke CallExpression";
+recordsControl(
+  "language-profile-rule-substitution",
+  () => assertsLanguageProfile(profileMutation),
+  "CONVEYOR_LANGUAGE_PROFILE_RULE_MISMATCH"
+);
+
+const firstProjection = authority.projectionAuthority[0];
+const projectorExecutable = resolve(
+  repositoryRoot,
+  firstProjection.projector.executablePath
+);
+const productionProjector = await import(
+  new URL(
+    `file:///${projectorExecutable.replaceAll("\\", "/")}`
+  )
+);
+const mutatedRequest = structuredClone(
+  firstProjection.input.projectorRequest
+);
+mutatedRequest.function.semanticEdgeId =
+  "mutated-reviewed-feature-request-edge";
+const mutatedResult =
+  productionProjector
+    .derivesCanonicalTypeScriptFromSemanticAuthority(
+      mutatedRequest
+    );
+const mutatedSource = Buffer.from(
+  mutatedResult.sourceBytes
+).toString("utf8");
+assert(
+  mutatedSource !== derived.results[0].projectedSource &&
+    mutatedSource.includes(
+      '"mutated-reviewed-feature-request-edge"'
+    ),
+  "PRODUCTION_PROJECTOR_MUTATION_DID_NOT_PROPAGATE"
+);
+const mutatedDerived = structuredClone(derived);
+mutatedDerived.results[0].projectedAst =
+  mutatedResult.semanticAst;
+mutatedDerived.results[0].projectedSource = mutatedSource;
+assert(
+  sha256(projectsMarkdown(authority, mutatedDerived)) !==
+    authority.projection.outputByteSha256,
+  "DOCUMENTATION_DID_NOT_RENDER_PRODUCTION_PROJECTOR_MUTATION"
+);
+controls.push("production-projector-mutation-propagation");
+const discontinuousFeature = structuredClone(
+  authority.featureExecutionAuthority
+);
+discontinuousFeature.steps[2].acceptsContractId =
+  "unbound-feature-input.v1";
+recordsControl(
+  "feature-execution-contract-continuity",
+  () =>
+    assert(
+      discontinuousFeature.steps[1].producesContractId ===
+        discontinuousFeature.steps[2].acceptsContractId,
+      "CONVEYOR_FEATURE_CONTRACT_DISCONTINUITY"
+    ),
+  "CONVEYOR_FEATURE_CONTRACT_DISCONTINUITY"
+);
 bodyMutation.operations[0].edgeId = "substituted-edge";
 recordsControl(
   "body-semantic-edge-binding",
@@ -368,7 +800,7 @@ recordsControl(
   "markdown-byte-drift",
   () =>
     assert(
-      sha256(projectsMarkdown(projectionMutation)) ===
+      sha256(projectsMarkdown(projectionMutation, derived)) ===
         projectionMutation.projection.outputByteSha256,
       "CONVEYOR_PROJECTION_HASH_MISMATCH"
     ),
@@ -381,7 +813,8 @@ console.log(`Stages: ${stages.length}/${expectedStageIds.length}`);
 console.log(`Scenarios: ${scenarios.length}`);
 console.log(`Semantic authorities: ${semantics.size}`);
 console.log(`Feature bodies: ${bodies.size}`);
-console.log(`Expected ASTs: ${projections.size}`);
-console.log(`AST-derived source bodies: ${projectedSources.length}`);
+console.log(`Production-projected ASTs: ${derived.results.length}`);
+console.log(`Production-projected source bodies: ${derived.results.length}`);
+console.log("Production-projected feature execution bodies: 1");
 console.log(`Markdown byte SHA-256: ${sha256(projectedMarkdown)}`);
 console.log(`${controls.length}/${controls.length} negative controls passed`);
