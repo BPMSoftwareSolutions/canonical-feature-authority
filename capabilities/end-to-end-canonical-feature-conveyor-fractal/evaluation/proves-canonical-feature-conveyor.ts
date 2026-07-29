@@ -5,6 +5,7 @@
 import { invokesCanonicalFeatureConveyor } from "../runtime/invokes-canonical-feature-conveyor.js";
 import { interpretsCanonicalFeatureSemanticAuthority } from "../runtime/interprets-canonical-feature-semantic-authority.js";
 import type { SemanticObservationResolver } from "../runtime/interprets-canonical-feature-semantic-authority.js";
+import { loadsCanonicalFeatureSemanticAuthority } from "../runtime/loads-canonical-feature-semantic-authority.js";
 
 function artifactRef(artifactId: string) {
   return {
@@ -104,8 +105,15 @@ const responsibilityIds = [
   "composes-new-feature-execution-comparison",
   "verifies-complete-new-feature-lineage"
 ] as const;
+const semanticAuthorities =
+  await loadsCanonicalFeatureSemanticAuthority({
+    repositoryRoot: process.cwd()
+  });
 const semanticInterpreter =
-  interpretsCanonicalFeatureSemanticAuthority(createsResolver());
+  interpretsCanonicalFeatureSemanticAuthority(
+    semanticAuthorities,
+    createsResolver()
+  );
 let semanticResult: unknown = request;
 for (const responsibilityId of responsibilityIds) {
   semanticResult = await semanticInterpreter.executes(
@@ -116,7 +124,10 @@ for (const responsibilityId of responsibilityIds) {
 const projectedResult = await invokesCanonicalFeatureConveyor({
   request,
   interpreter:
-    interpretsCanonicalFeatureSemanticAuthority(createsResolver())
+    interpretsCanonicalFeatureSemanticAuthority(
+      semanticAuthorities,
+      createsResolver()
+    )
 });
 if (canonicalizes(semanticResult) !== canonicalizes(projectedResult)) {
   throw new Error("SEMANTIC_PROJECTED_EXECUTION_DIVERGES");

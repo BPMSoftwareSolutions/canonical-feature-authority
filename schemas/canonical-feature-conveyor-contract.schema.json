@@ -520,6 +520,7 @@
         "compositionTypes",
         "registrations",
         "semanticInterpreter",
+        "semanticAuthorityLoader",
         "runtimeAdapter",
         "authorityProjectorBoundary",
         "materializationBoundary",
@@ -661,7 +662,9 @@
           "required": [
             "authorityRef",
             "artifactPath",
-            "bindingStatus"
+            "bindingStatus",
+            "dataOwnership",
+            "authorityInput"
           ],
           "properties": {
             "authorityRef": {
@@ -669,6 +672,79 @@
             },
             "artifactPath": {
               "const": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts"
+            },
+            "bindingStatus": {
+              "enum": [
+                "NOT_IMPLEMENTED",
+                "IMPLEMENTED"
+              ]
+            },
+            "dataOwnership": {
+              "const": "interpreter-logic-only"
+            },
+            "authorityInput": {
+              "const": "runtime-loaded-semantic-authorities"
+            }
+          }
+        },
+        "semanticAuthorityLoader": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "authorityRef",
+            "artifactPath",
+            "sourceArtifactPaths",
+            "sourceMediaType",
+            "repositoryRootInput",
+            "decoding",
+            "runtimeValidation",
+            "governanceValidation",
+            "authorityOwnership",
+            "embeddedSemanticAuthority",
+            "bindingStatus"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "canonical-feature-semantic-authority-loader.v1"
+            },
+            "authorityRef": {
+              "const": "implementation-artifact:semantic-authority-loader"
+            },
+            "artifactPath": {
+              "const": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts"
+            },
+            "sourceArtifactPaths": {
+              "const": [
+                "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/admit-reviewed-new-feature-request.semantic-authority.json",
+                "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/adapt-new-feature-request-admission.semantic-authority.json",
+                "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/project-complete-new-feature-authority.semantic-authority.json",
+                "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/materialize-complete-new-feature.semantic-authority.json",
+                "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/execute-newly-materialized-feature.semantic-authority.json",
+                "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/compose-new-feature-execution-comparison.semantic-authority.json",
+                "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/verify-complete-new-feature-lineage.semantic-authority.json"
+              ]
+            },
+            "sourceMediaType": {
+              "const": "application/json"
+            },
+            "repositoryRootInput": {
+              "const": "explicit-runtime-argument"
+            },
+            "decoding": {
+              "const": "UTF-8-then-JSON.parse"
+            },
+            "runtimeValidation": {
+              "const": "required-semantic-authority-envelope"
+            },
+            "governanceValidation": {
+              "const": "canonical-feature-conveyor-contract-schema"
+            },
+            "authorityOwnership": {
+              "const": "scenario-owned-json-artifacts"
+            },
+            "embeddedSemanticAuthority": {
+              "const": "forbidden"
             },
             "bindingStatus": {
               "enum": [
@@ -868,6 +944,7 @@
             "compositionTypes": "MATERIALIZED",
             "registrations": "IMPLEMENTED",
             "semanticInterpreter": "IMPLEMENTED",
+            "semanticAuthorityLoader": "IMPLEMENTED",
             "runtimeAdapter": "IMPLEMENTED",
             "authorityProjectorBoundary": "IMPLEMENTED",
             "materializationBoundary": "IMPLEMENTED",
@@ -894,7 +971,7 @@
               "const": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/proves-canonical-feature-conveyor.ts"
             },
             "semanticSurface": {
-              "const": "direct-semantic-authority"
+              "const": "runtime-loaded-scenario-semantic-authority-json"
             },
             "projectedSurface": {
               "const": "projected-composition-and-responsibility-bodies"
@@ -978,13 +1055,15 @@
               "const": {
                 "localModuleBoundary": "capability-root-only",
                 "externalModuleImports": "forbidden",
-                "conveyorSpecificToolsOutsideCapability": "forbidden"
+                "conveyorSpecificToolsOutsideCapability": "forbidden",
+                "runtimeAuthorityLoading": "scenario-owned-json-files-only",
+                "embeddedSemanticAuthority": "forbidden"
               }
             },
             "supplementalArtifacts": {
               "type": "array",
-              "minItems": 9,
-              "maxItems": 9,
+              "minItems": 10,
+              "maxItems": 10,
               "items": {
                 "type": "object",
                 "additionalProperties": false,
@@ -1010,6 +1089,7 @@
                       "runtime-registration",
                       "runtime-adapter",
                       "semantic-interpreter",
+                      "semantic-authority-loader",
                       "runtime-port",
                       "evaluation-port",
                       "evaluation-proof",
@@ -1030,6 +1110,7 @@
                       "projects-runtime-edge-registration",
                       "projects-runtime-adapter",
                       "projects-semantic-interpreter",
+                      "projects-semantic-authority-loader",
                       "projects-evaluation-proof",
                       "projects-self-hosting-runner"
                     ]
@@ -2529,6 +2610,7 @@
         "contractId",
         "bindingStatus",
         "requiredArtifact",
+        "authorityLoading",
         "pathDialect",
         "operations",
         "inputOperations",
@@ -2548,6 +2630,16 @@
         },
         "requiredArtifact": {
           "const": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts"
+        },
+        "authorityLoading": {
+          "const": {
+            "authoritySource": "scenario-owned-semantic-authority-json",
+            "loaderAuthorityRef": "implementation-artifact:semantic-authority-loader",
+            "repositoryRootInput": "explicit-runtime-argument",
+            "interpreterDataOwnership": "none",
+            "embeddedSemanticAuthority": "forbidden",
+            "failureDisposition": "RED"
+          }
         },
         "pathDialect": {
           "const": {

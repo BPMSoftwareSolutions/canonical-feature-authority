@@ -35,6 +35,70 @@ function contiguous(steps, code) {
   );
 }
 
+function expectedSemanticAuthorityArtifactPaths(authority) {
+  const capabilityRoot = authority.fileBodyAuthority.roots.capability;
+  return authority.canonicalFeatureBody.scenarios.map(scenario => {
+    const responsibility = scenario.responsibility;
+    return `${capabilityRoot}/scenarios/${scenario.scenarioId}/${responsibility.responsibilityId}/${responsibility.semanticOperationId}.semantic-authority.json`;
+  });
+}
+
+function assertsSemanticAuthorityRuntimeBoundary(
+  authority,
+  implementationArtifacts
+) {
+  const loader =
+    authority.implementationArtifactAuthority.semanticAuthorityLoader;
+  const expectedSourcePaths =
+    expectedSemanticAuthorityArtifactPaths(authority);
+  assert(
+    loader.bindingStatus === "IMPLEMENTED" &&
+      JSON.stringify(loader.sourceArtifactPaths) ===
+        JSON.stringify(expectedSourcePaths),
+    "CONVEYOR_SEMANTIC_AUTHORITY_LOADER_SOURCE_MISMATCH"
+  );
+  const loaderArtifact = implementationArtifacts.find(
+    artifact => artifact.artifactPath === loader.artifactPath
+  );
+  assert(
+    loaderArtifact !== undefined &&
+      loaderArtifact.projectorCapability ===
+        "projects-semantic-authority-loader" &&
+      expectedSourcePaths.every(path =>
+        loaderArtifact.projectedSource.includes(
+          JSON.stringify(path)
+        )
+      ) &&
+      loaderArtifact.projectedSource.includes("readFile") &&
+      loaderArtifact.projectedSource.includes("JSON.parse"),
+    "CONVEYOR_SEMANTIC_AUTHORITY_LOADER_NOT_PROJECTED"
+  );
+  const interpreter =
+    authority.implementationArtifactAuthority.semanticInterpreter;
+  const interpreterArtifact = implementationArtifacts.find(
+    artifact => artifact.artifactPath === interpreter.artifactPath
+  );
+  assert(
+    interpreterArtifact !== undefined &&
+      interpreterArtifact.projectedSource.includes(
+        "semanticAuthorities: readonly SemanticAuthority[]"
+      ) &&
+      !interpreterArtifact.projectedSource.includes(
+        "const semanticAuthorities"
+      ) &&
+      authority.semanticAuthority.every(
+        semantic =>
+          !interpreterArtifact.projectedSource.includes(
+            JSON.stringify(semantic)
+          ) &&
+          !interpreterArtifact.projectedSource.includes(
+            JSON.stringify(semantic, null, 2)
+          )
+      ),
+    "CONVEYOR_SEMANTIC_AUTHORITY_EMBEDDED_IN_INTERPRETER"
+  );
+}
+
 async function assertsProjectedTypescriptCompiles(
   authority,
   derived
@@ -438,6 +502,12 @@ const supplementalCoordinates =
 const implementationArtifacts =
   derived.implementationPackage?.artifacts ?? [];
 const implementationCoordinates = implementationArtifacts;
+const expectedImplementationArtifactCount =
+  3 +
+  scenarios.length * 7 +
+  supplementalCoordinates.length +
+  authority.fractalProjectionAuthority.sourceModules.length +
+  authority.fractalProjectionAuthority.embeddedRuntimes.length;
 unique(
   implementationCoordinates.map(coordinate => coordinate.artifactId),
   "CONVEYOR_IMPLEMENTATION_ARTIFACT_ID_DUPLICATED"
@@ -449,7 +519,8 @@ unique(
   "CONVEYOR_IMPLEMENTATION_ARTIFACT_PATH_DUPLICATED"
 );
 assert(
-  implementationCoordinates.length === 69 &&
+  implementationCoordinates.length ===
+    expectedImplementationArtifactCount &&
     implementationCoordinates.every(
       coordinate =>
         coordinate.projectionPosture === "PROJECTABLE" &&
@@ -489,9 +560,15 @@ for (const coordinate of supplementalCoordinates) {
     `CONVEYOR_IMPLEMENTATION_ARTIFACT_DRIFT: ${coordinate.artifactId}`
   );
 }
+assertsSemanticAuthorityRuntimeBoundary(
+  authority,
+  implementationArtifacts
+);
 assert(
-  derived.implementationPackage.summary.declaredArtifacts === 69 &&
-    derived.implementationPackage.summary.projectableArtifacts === 69 &&
+  derived.implementationPackage.summary.declaredArtifacts ===
+    expectedImplementationArtifactCount &&
+    derived.implementationPackage.summary.projectableArtifacts ===
+      expectedImplementationArtifactCount &&
     derived.implementationPackage.summary.unresolvedArtifacts === 0,
   "CONVEYOR_IMPLEMENTATION_PROJECTION_SUMMARY_MISMATCH"
 );
@@ -1310,6 +1387,18 @@ assert(
   "CONVEYOR_STAGE_PROJECTION_PREVIEW_COVERAGE_MISMATCH"
 );
 assert(
+  projectedMarkdownText.includes(
+    `Required semantic authority loader artifact: \`${authority.implementationArtifactAuthority.semanticAuthorityLoader.artifactPath}\``
+  ) &&
+    projectedMarkdownText.includes(
+      "Semantic authority runtime source: scenario-owned `.semantic-authority.json` artifacts."
+    ) &&
+    projectedMarkdownText.includes(
+      "Embedded semantic authority in TypeScript: FORBIDDEN"
+    ),
+  "CONVEYOR_SEMANTIC_AUTHORITY_LOADING_DOCUMENTATION_MISSING"
+);
+assert(
   sha256(projectedMarkdown) === authority.projection.outputByteSha256,
   "CONVEYOR_PROJECTION_HASH_MISMATCH"
 );
@@ -1646,6 +1735,37 @@ recordsControl(
       "CONVEYOR_SEMANTIC_INTERPRETER_BINDING_MISMATCH"
     ),
   "CONVEYOR_SEMANTIC_INTERPRETER_BINDING_MISMATCH"
+);
+const missingSemanticAuthoritySource = structuredClone(authority);
+missingSemanticAuthoritySource.implementationArtifactAuthority
+  .semanticAuthorityLoader.sourceArtifactPaths.pop();
+recordsControl(
+  "semantic-authority-loader-source-omission",
+  () =>
+    assertsSemanticAuthorityRuntimeBoundary(
+      missingSemanticAuthoritySource,
+      implementationArtifacts
+    ),
+  "CONVEYOR_SEMANTIC_AUTHORITY_LOADER_SOURCE_MISMATCH"
+);
+const embeddedSemanticAuthority = structuredClone(derived);
+const embeddedInterpreter =
+  embeddedSemanticAuthority.implementationPackage.artifacts.find(
+    artifact =>
+      artifact.artifactPath ===
+      authority.implementationArtifactAuthority.semanticInterpreter
+        .artifactPath
+  );
+embeddedInterpreter.projectedSource +=
+  "\nconst semanticAuthorities = [];\n";
+recordsControl(
+  "semantic-authority-embedded-in-interpreter",
+  () =>
+    assertsSemanticAuthorityRuntimeBoundary(
+      authority,
+      embeddedSemanticAuthority.implementationPackage.artifacts
+    ),
+  "CONVEYOR_SEMANTIC_AUTHORITY_EMBEDDED_IN_INTERPRETER"
 );
 const prematureImplementationAdmission = structuredClone(authority);
 prematureImplementationAdmission.conveyor.constructionState

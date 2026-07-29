@@ -29,7 +29,7 @@ const EXPECTED_STAGE_IDS = [
   "review-feature"
 ];
 const EXPECTED_PACKAGE_ID = "end-to-end-canonical-feature-conveyor-implementation.v1";
-const EXPECTED_ARTIFACT_COUNT = 69;
+const EXPECTED_ARTIFACT_COUNT = 70;
 const CAPABILITY_ROOT = "capabilities/end-to-end-canonical-feature-conveyor-fractal";
 const FEATURE_ID = "end-to-end-canonical-feature-conveyor-fractal";
 const executes = promisify(execFile);

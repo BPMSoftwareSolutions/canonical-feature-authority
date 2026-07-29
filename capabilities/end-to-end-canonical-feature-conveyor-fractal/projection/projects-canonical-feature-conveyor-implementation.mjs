@@ -171,8 +171,15 @@ function assertsGovernedCoordinates(repositoryRoot) {
     );
     seen.add(artifact.artifactPath);
   }
+  const expectedArtifactCount =
+    3 +
+    authority.canonicalFeatureBody.scenarios.length * 7 +
+    authority.implementationArtifactAuthority.projectionPackage
+      .supplementalArtifacts.length +
+    authority.fractalProjectionAuthority.sourceModules.length +
+    authority.fractalProjectionAuthority.embeddedRuntimes.length;
   asserts(
-    projected.artifacts.length === 69,
+    projected.artifacts.length === expectedArtifactCount,
     "CAPABILITY_ARTIFACT_COUNT_MISMATCH"
   );
 }

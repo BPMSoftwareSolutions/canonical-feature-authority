@@ -208,12 +208,97 @@ function projectsRuntimeAdapter(authority) {
   ].join("\n")}`;
 }
 
-function projectsSemanticInterpreter(authority) {
-  const semanticAuthority = JSON.stringify(
-    authority.semanticAuthority,
+function projectsSemanticAuthorityLoader(authority) {
+  const loader =
+    authority.implementationArtifactAuthority.semanticAuthorityLoader;
+  const interpreter =
+    authority.implementationArtifactAuthority.semanticInterpreter;
+  const sourceArtifactPaths = JSON.stringify(
+    loader.sourceArtifactPaths,
     null,
     2
   );
+  const interpreterModule = relativeModule(
+    loader.artifactPath,
+    interpreter.artifactPath
+  );
+  return `${[
+    ...header(
+      "implementation-artifact:semantic-authority-loader"
+    ),
+    'import { readFile } from "node:fs/promises";',
+    'import { resolve, sep } from "node:path";',
+    "",
+    `import type { SemanticAuthority } from ${JSON.stringify(interpreterModule)};`,
+    "",
+    "export interface LoadCanonicalFeatureSemanticAuthorityContext {",
+    "  readonly repositoryRoot: string;",
+    "}",
+    "",
+    `const semanticAuthorityArtifactPaths = ${sourceArtifactPaths} as const;`,
+    "",
+    "function isRecord(value: unknown): value is Record<string, unknown> {",
+    '  return value !== null && typeof value === "object" && !Array.isArray(value);',
+    "}",
+    "",
+    "function parsesSemanticAuthority(",
+    "  artifactPath: string,",
+    "  source: string",
+    "): SemanticAuthority {",
+    "  let value: unknown;",
+    "  try {",
+    "    value = JSON.parse(source);",
+    "  } catch {",
+    "    throw new Error(`SEMANTIC_AUTHORITY_JSON_INVALID: ${artifactPath}`);",
+    "  }",
+    "  if (",
+    "    !isRecord(value) ||",
+    '    typeof value.responsibilityId !== "string" ||',
+    "    !Array.isArray(value.observations) ||",
+    "    !Array.isArray(value.decisions) ||",
+    "    !Array.isArray(value.projections) ||",
+    "    !isRecord(value.execution) ||",
+    '    typeof value.execution.executionModelId !== "string" ||',
+    "    !Array.isArray(value.execution.steps)",
+    "  ) {",
+    "    throw new Error(`SEMANTIC_AUTHORITY_ENVELOPE_INVALID: ${artifactPath}`);",
+    "  }",
+    "  return value as unknown as SemanticAuthority;",
+    "}",
+    "",
+    "export async function loadsCanonicalFeatureSemanticAuthority(",
+    "  context: LoadCanonicalFeatureSemanticAuthorityContext",
+    "): Promise<readonly SemanticAuthority[]> {",
+    "  const repositoryRoot = resolve(context.repositoryRoot);",
+    "  const authorities = await Promise.all(",
+    "    semanticAuthorityArtifactPaths.map(async artifactPath => {",
+    "      const authorityPath = resolve(",
+    "        repositoryRoot,",
+    '        ...artifactPath.split("/")',
+    "      );",
+    "      if (",
+    "        authorityPath === repositoryRoot ||",
+    "        !authorityPath.startsWith(`${repositoryRoot}${sep}`)",
+    "      ) {",
+    "        throw new Error(`SEMANTIC_AUTHORITY_PATH_ESCAPES_ROOT: ${artifactPath}`);",
+    "      }",
+    '      const source = await readFile(authorityPath, "utf8");',
+    "      return parsesSemanticAuthority(artifactPath, source);",
+    "    })",
+    "  );",
+    "  const responsibilityIds = authorities.map(",
+    "    authority => authority.responsibilityId",
+    "  );",
+    "  if (new Set(responsibilityIds).size !== responsibilityIds.length) {",
+    '    throw new Error("SEMANTIC_AUTHORITY_RESPONSIBILITY_DUPLICATED");',
+    "  }",
+    "  return authorities;",
+    "}",
+    ""
+  ].join("\n")}`;
+}
+
+function projectsSemanticInterpreter(_authority) {
   return `${[
     ...header(
       "semantic-interpreter:canonical-feature-semantic-interpreter.v1"
@@ -240,7 +325,7 @@ function projectsSemanticInterpreter(authority) {
     "  readonly value?: unknown;",
     "}",
     "",
-    "interface SemanticAuthority {",
+    "export interface SemanticAuthority {",
     "  readonly [key: string]: unknown;",
     "  readonly responsibilityId: string;",
     "  readonly observations: readonly Record<string, unknown>[];",
@@ -251,8 +336,6 @@ function projectsSemanticInterpreter(authority) {
     "    readonly steps: readonly Record<string, unknown>[];",
     "  };",
     "}",
-    "",
-    `const semanticAuthorities: readonly SemanticAuthority[] = ${semanticAuthority};`,
     "",
     "function isRecord(value: unknown): value is Record<string, unknown> {",
     "  return value !== null && typeof value === \"object\" && !Array.isArray(value);",
@@ -335,6 +418,7 @@ function projectsSemanticInterpreter(authority) {
     "}",
     "",
     "export function interpretsCanonicalFeatureSemanticAuthority(",
+    "  semanticAuthorities: readonly SemanticAuthority[],",
     "  resolver: SemanticObservationResolver",
     "): SemanticAuthorityInterpreter {",
     "  return {",
@@ -431,11 +515,18 @@ function projectsEvaluationProof(authority) {
   const expectedDisposition =
     authority.implementationArtifactAuthority.executionProof
       .expectedDisposition;
+  const loaderModule = relativeModule(
+    authority.implementationArtifactAuthority.executionProof
+      .artifactPath,
+    authority.implementationArtifactAuthority
+      .semanticAuthorityLoader.artifactPath
+  );
   return `${[
     ...header("implementation-artifact:execution-proof"),
     'import { invokesCanonicalFeatureConveyor } from "../runtime/invokes-canonical-feature-conveyor.js";',
     'import { interpretsCanonicalFeatureSemanticAuthority } from "../runtime/interprets-canonical-feature-semantic-authority.js";',
     'import type { SemanticObservationResolver } from "../runtime/interprets-canonical-feature-semantic-authority.js";',
+    `import { loadsCanonicalFeatureSemanticAuthority } from ${JSON.stringify(loaderModule)};`,
     "",
     "function artifactRef(artifactId: string) {",
     "  return {",
@@ -527,8 +618,15 @@ function projectsEvaluationProof(authority) {
     '  lineageId: "projected-conveyor-proof-lineage"',
     "};",
     `const responsibilityIds = ${JSON.stringify(responsibilityIds, null, 2)} as const;`,
+    "const semanticAuthorities =",
+    "  await loadsCanonicalFeatureSemanticAuthority({",
+    "    repositoryRoot: process.cwd()",
+    "  });",
     "const semanticInterpreter =",
-    "  interpretsCanonicalFeatureSemanticAuthority(createsResolver());",
+    "  interpretsCanonicalFeatureSemanticAuthority(",
+    "    semanticAuthorities,",
+    "    createsResolver()",
+    "  );",
     "let semanticResult: unknown = request;",
     "for (const responsibilityId of responsibilityIds) {",
     "  semanticResult = await semanticInterpreter.executes(",
@@ -539,7 +637,10 @@ function projectsEvaluationProof(authority) {
     "const projectedResult = await invokesCanonicalFeatureConveyor({",
     "  request,",
     "  interpreter:",
-    "    interpretsCanonicalFeatureSemanticAuthority(createsResolver())",
+    "    interpretsCanonicalFeatureSemanticAuthority(",
+    "      semanticAuthorities,",
+    "      createsResolver()",
+    "    )",
     "});",
     "if (canonicalizes(semanticResult) !== canonicalizes(projectedResult)) {",
     "  throw new Error(\"SEMANTIC_PROJECTED_EXECUTION_DIVERGES\");",
@@ -1299,6 +1400,12 @@ export async function projectsCanonicalFeatureImplementationPackage(
       "projects-semantic-interpreter"
     ) {
       source = projectsSemanticInterpreter(authority);
+      projectorIdentity = implementationProjector;
+    } else if (
+      coordinate.projectorCapability ===
+      "projects-semantic-authority-loader"
+    ) {
+      source = projectsSemanticAuthorityLoader(authority);
       projectorIdentity = implementationProjector;
     } else if (
       coordinate.projectorCapability === "projects-evaluation-proof"

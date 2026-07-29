@@ -662,6 +662,30 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   "semanticInterpreter": {
     "authorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
     "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts",
+    "bindingStatus": "IMPLEMENTED",
+    "dataOwnership": "interpreter-logic-only",
+    "authorityInput": "runtime-loaded-semantic-authorities"
+  },
+  "semanticAuthorityLoader": {
+    "contractId": "canonical-feature-semantic-authority-loader.v1",
+    "authorityRef": "implementation-artifact:semantic-authority-loader",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts",
+    "sourceArtifactPaths": [
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/admit-reviewed-new-feature-request.semantic-authority.json",
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/adapt-new-feature-request-admission.semantic-authority.json",
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/project-complete-new-feature-authority.semantic-authority.json",
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/materialize-complete-new-feature.semantic-authority.json",
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/execute-newly-materialized-feature.semantic-authority.json",
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/compose-new-feature-execution-comparison.semantic-authority.json",
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/verify-complete-new-feature-lineage.semantic-authority.json"
+    ],
+    "sourceMediaType": "application/json",
+    "repositoryRootInput": "explicit-runtime-argument",
+    "decoding": "UTF-8-then-JSON.parse",
+    "runtimeValidation": "required-semantic-authority-envelope",
+    "governanceValidation": "canonical-feature-conveyor-contract-schema",
+    "authorityOwnership": "scenario-owned-json-artifacts",
+    "embeddedSemanticAuthority": "forbidden",
     "bindingStatus": "IMPLEMENTED"
   },
   "runtimeAdapter": {
@@ -908,7 +932,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   "executionProof": {
     "contractId": "canonical-feature-conveyor-execution-proof.v1",
     "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/proves-canonical-feature-conveyor.ts",
-    "semanticSurface": "direct-semantic-authority",
+    "semanticSurface": "runtime-loaded-scenario-semantic-authority-json",
     "projectedSurface": "projected-composition-and-responsibility-bodies",
     "comparison": "RFC8785-JCS-equivalence",
     "expectedDisposition": "PROJECTION_CONFORMS"
@@ -918,6 +942,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
     "compositionTypes": "MATERIALIZED",
     "registrations": "IMPLEMENTED",
     "semanticInterpreter": "IMPLEMENTED",
+    "semanticAuthorityLoader": "IMPLEMENTED",
     "runtimeAdapter": "IMPLEMENTED",
     "authorityProjectorBoundary": "IMPLEMENTED",
     "materializationBoundary": "IMPLEMENTED",
@@ -957,7 +982,9 @@ export interface EndToEndCanonicalFeatureConveyorContext {
     "dependencyPolicy": {
       "localModuleBoundary": "capability-root-only",
       "externalModuleImports": "forbidden",
-      "conveyorSpecificToolsOutsideCapability": "forbidden"
+      "conveyorSpecificToolsOutsideCapability": "forbidden",
+      "runtimeAuthorityLoading": "scenario-owned-json-files-only",
+      "embeddedSemanticAuthority": "forbidden"
     },
     "supplementalArtifacts": [
       {
@@ -986,6 +1013,16 @@ export interface EndToEndCanonicalFeatureConveyorContext {
         "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts",
         "sourceAuthorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
         "projectorCapability": "projects-semantic-interpreter",
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
+      },
+      {
+        "artifactId": "canonical-feature-semantic-authority-loader",
+        "family": "semantic-authority-loader",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts",
+        "sourceAuthorityRef": "implementation-artifact:semantic-authority-loader",
+        "projectorCapability": "projects-semantic-authority-loader",
         "projectionPosture": "PROJECTABLE",
         "ownership": "projector-owned",
         "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
@@ -1072,7 +1109,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
 
 Package: `end-to-end-canonical-feature-conveyor-implementation.v1`
 
-Topology SHA-256: `sha256:3f18d919a7610c507eb72e9e0c3fe33da28a81dfd42421ddee15dce3b12073dc`
+Topology SHA-256: `sha256:34618b4c16a7c101c601faf15b89c45d01de936ea8503577f80710868b501de6`
 
 | Artifact | Family | Projector capability | Posture | Source SHA-256 |
 | --- | --- | --- | --- | --- |
@@ -1130,19 +1167,20 @@ Topology SHA-256: `sha256:3f18d919a7610c507eb72e9e0c3fe33da28a81dfd42421ddee15dc
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/invokes-canonical-feature-conveyor.ts` | runtime-adapter | `projects-runtime-adapter` | `PROJECTABLE` | `sha256:e54c99d4e4186c958307f4bb6646e3d634f258d5201be434995cd2085959d93c` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/canonical-feature-edge-registry.type.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:b44012097a2ec216228a32fe85305836a3a264135d65d78e6dbf12c5276286aa` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.type.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:dc2e0b8e457ba5a3769c8d653cb8c09c978790f941837a02f7ba01f27418c555` |
-| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts` | semantic-interpreter | `projects-semantic-interpreter` | `PROJECTABLE` | `sha256:bc8aa1dbe447578db75b88933b10ae89ea0f2526743dd18bdbb9a614032bb79c` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts` | semantic-interpreter | `projects-semantic-interpreter` | `PROJECTABLE` | `sha256:666eae51636ea5ddd00818c658f9d471b5d9f9762cbf0d7670ca8a6806841577` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts` | semantic-authority-loader | `projects-semantic-authority-loader` | `PROJECTABLE` | `sha256:4198381e1cda43a117f422b4bf4bbb682387bb07d40913ae217eb3d6018ec10d` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-authority-projector.port.ts` | runtime-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:ebfd0389d45c88064e89b6688962571005a51d1e20472d02adec027bf3fecafd` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-materializer.port.ts` | runtime-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:954684ef3161f48e4490f42c4f80d582a99cfb041ba9a8eea5114d7dbaf5e78f` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/canonical-feature-evaluation-fixture.port.ts` | evaluation-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:f213b82fff7896dc81423cb0dfb2cf0beda5b4145bfdffcb95f60e0bf24c013e` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/governed-artifact-evidence-store.port.ts` | evaluation-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:7673741779ee83695898ed3e2eddab97458ff6c1f58b967e3e1fdc753bcce2ce` |
-| `capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/proves-canonical-feature-conveyor.ts` | evaluation-proof | `projects-evaluation-proof` | `PROJECTABLE` | `sha256:0291ab12dac1b1278adb5b4da99a5e13eff6751c044f1d28f7c8332824e9670e` |
-| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/self-hosts-canonical-feature-conveyor.mjs` | self-hosting-runner | `projects-self-hosting-runner` | `PROJECTABLE` | `sha256:25b067475fa06d4d9d7d1c117720f605318bc074c66f1561b31a1a9b27544265` |
-| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/canonical-feature-conveyor-implementation-package.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:4b85b8cd1c89255a96d5f6b641fc2d7e65e52ec404f0b7a6bcd5d5fd4a5443e8` |
-| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/canonical-feature-conveyor-projection.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:f464de3203b4997c1b2b407bc9f17444adf3890aaeab6c604fd539075b72c306` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/proves-canonical-feature-conveyor.ts` | evaluation-proof | `projects-evaluation-proof` | `PROJECTABLE` | `sha256:87ae6152051350918ee5a83d89c3cc4166a60e3b4b19a188c92c68ad816c0ed1` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/self-hosts-canonical-feature-conveyor.mjs` | self-hosting-runner | `projects-self-hosting-runner` | `PROJECTABLE` | `sha256:b302a4072871e6a2734e1fd2757d0c070392b5af72ffa6f64efbd638eee7b0c7` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/canonical-feature-conveyor-implementation-package.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:35b668a098de9c1ce427c1a5c84874f302dcb5a95c85827ce936d57bfe8287bd` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/canonical-feature-conveyor-projection.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:2b9aa585b3e3149c3c7007184921f36ea26c1609ad2389800e95fb14ce6aa48d` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-contract.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:0a937ea632eb33994ff13ade8ee812b36ee47fe549a49f2f4373ca53324f55e0` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-derived-bodies.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:29cbd2242e170e2f88eb8af43b6e8a16c5d77edc0bfce2a37abdb77976278ea5` |
-| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-implementation.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:b615988732452a3307bba56f71e17e78c8a440fa5f47fdebb871afdac1f21e3b` |
-| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/verifies-canonical-feature-conveyor-contract.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:455a2b346a8aa26487063b4eca15ff893d488f25b0316b3aecbeca5d87bd2257` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-implementation.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:e636ca4a3a762c77bcad4cc599cc366e43f941ef559ba06584b18a16b430dfd7` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/verifies-canonical-feature-conveyor-contract.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:0b5fdbd37d344e9c8308545190ca3919c1af846eed41f7f60c8d83d14fe94c5e` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/ajv-2020.bundle.mjs` | embedded-runtime | `projects-capability-local-runtime-snapshot` | `PROJECTABLE` | `sha256:6c69a45405bb860cfd3a2b1835d6bb905cdddffec486fd4426dd8863057b6dfa` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs` | embedded-runtime | `projects-capability-local-runtime-snapshot` | `PROJECTABLE` | `sha256:0f1f8e7b25ca750fb8f051314c64ab37d0f0d185562203c16e39be4f456523ae` |
 
@@ -3275,9 +3313,13 @@ Semantic interpreter binding: IMPLEMENTED
 
 Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
-Projected semantic source availability: NOT_IMPLEMENTED
+Required semantic authority loader artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts`
 
-The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.
+Semantic authority runtime source: scenario-owned `.semantic-authority.json` artifacts.
+
+Embedded semantic authority in TypeScript: FORBIDDEN
+
+The governed JSON execution plan above is loaded at runtime and interpreted without a TypeScript authority copy.
 
 #### Projected responsibility boundary
 
@@ -3401,9 +3443,13 @@ Semantic interpreter binding: IMPLEMENTED
 
 Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
-Projected semantic source availability: NOT_IMPLEMENTED
+Required semantic authority loader artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts`
 
-The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.
+Semantic authority runtime source: scenario-owned `.semantic-authority.json` artifacts.
+
+Embedded semantic authority in TypeScript: FORBIDDEN
+
+The governed JSON execution plan above is loaded at runtime and interpreted without a TypeScript authority copy.
 
 #### Projected responsibility boundary
 
@@ -3530,9 +3576,13 @@ Semantic interpreter binding: IMPLEMENTED
 
 Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
-Projected semantic source availability: NOT_IMPLEMENTED
+Required semantic authority loader artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts`
 
-The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.
+Semantic authority runtime source: scenario-owned `.semantic-authority.json` artifacts.
+
+Embedded semantic authority in TypeScript: FORBIDDEN
+
+The governed JSON execution plan above is loaded at runtime and interpreted without a TypeScript authority copy.
 
 #### Projected responsibility boundary
 
@@ -3659,9 +3709,13 @@ Semantic interpreter binding: IMPLEMENTED
 
 Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
-Projected semantic source availability: NOT_IMPLEMENTED
+Required semantic authority loader artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts`
 
-The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.
+Semantic authority runtime source: scenario-owned `.semantic-authority.json` artifacts.
+
+Embedded semantic authority in TypeScript: FORBIDDEN
+
+The governed JSON execution plan above is loaded at runtime and interpreted without a TypeScript authority copy.
 
 #### Projected responsibility boundary
 
@@ -3804,9 +3858,13 @@ Semantic interpreter binding: IMPLEMENTED
 
 Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
-Projected semantic source availability: NOT_IMPLEMENTED
+Required semantic authority loader artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts`
 
-The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.
+Semantic authority runtime source: scenario-owned `.semantic-authority.json` artifacts.
+
+Embedded semantic authority in TypeScript: FORBIDDEN
+
+The governed JSON execution plan above is loaded at runtime and interpreted without a TypeScript authority copy.
 
 #### Projected responsibility boundary
 
@@ -3948,9 +4006,13 @@ Semantic interpreter binding: IMPLEMENTED
 
 Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
-Projected semantic source availability: NOT_IMPLEMENTED
+Required semantic authority loader artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts`
 
-The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.
+Semantic authority runtime source: scenario-owned `.semantic-authority.json` artifacts.
+
+Embedded semantic authority in TypeScript: FORBIDDEN
+
+The governed JSON execution plan above is loaded at runtime and interpreted without a TypeScript authority copy.
 
 #### Projected responsibility boundary
 
@@ -4138,9 +4200,13 @@ Semantic interpreter binding: IMPLEMENTED
 
 Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
-Projected semantic source availability: NOT_IMPLEMENTED
+Required semantic authority loader artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts`
 
-The governed execution plan above is authoritative; no illustrative semantic-kernel TypeScript is substituted.
+Semantic authority runtime source: scenario-owned `.semantic-authority.json` artifacts.
+
+Embedded semantic authority in TypeScript: FORBIDDEN
+
+The governed JSON execution plan above is loaded at runtime and interpreted without a TypeScript authority copy.
 
 #### Projected responsibility boundary
 
@@ -4184,7 +4250,11 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Projected semantic source availability: NOT_IMPLEMENTED
+Required semantic authority loader artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts`
+
+Semantic authority runtime source: scenario-owned `.semantic-authority.json` artifacts.
+
+Embedded semantic authority in TypeScript: FORBIDDEN
 
 #### admits-reviewed-new-feature-request
 
@@ -4377,6 +4447,14 @@ Stop condition: every semantic authority has one deterministic execution model
   "contractId": "canonical-feature-semantic-interpreter.v1",
   "bindingStatus": "IMPLEMENTED",
   "requiredArtifact": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts",
+  "authorityLoading": {
+    "authoritySource": "scenario-owned-semantic-authority-json",
+    "loaderAuthorityRef": "implementation-artifact:semantic-authority-loader",
+    "repositoryRootInput": "explicit-runtime-argument",
+    "interpreterDataOwnership": "none",
+    "embeddedSemanticAuthority": "forbidden",
+    "failureDisposition": "RED"
+  },
   "pathDialect": {
     "dialectId": "rooted-member-path.v1",
     "rootToken": "$",
@@ -4630,7 +4708,11 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Projected semantic source availability: NOT_IMPLEMENTED
+Required semantic authority loader artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts`
+
+Semantic authority runtime source: scenario-owned `.semantic-authority.json` artifacts.
+
+Embedded semantic authority in TypeScript: FORBIDDEN
 
 #### admits-reviewed-new-feature-request
 
@@ -6575,6 +6657,30 @@ Compilation and runtime artifact authority:
   "semanticInterpreter": {
     "authorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
     "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts",
+    "bindingStatus": "IMPLEMENTED",
+    "dataOwnership": "interpreter-logic-only",
+    "authorityInput": "runtime-loaded-semantic-authorities"
+  },
+  "semanticAuthorityLoader": {
+    "contractId": "canonical-feature-semantic-authority-loader.v1",
+    "authorityRef": "implementation-artifact:semantic-authority-loader",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts",
+    "sourceArtifactPaths": [
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/admit-reviewed-new-feature-request.semantic-authority.json",
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/adapt-new-feature-request-admission.semantic-authority.json",
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/project-complete-new-feature-authority.semantic-authority.json",
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/materialize-complete-new-feature.semantic-authority.json",
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/execute-newly-materialized-feature.semantic-authority.json",
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/compose-new-feature-execution-comparison.semantic-authority.json",
+      "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/verify-complete-new-feature-lineage.semantic-authority.json"
+    ],
+    "sourceMediaType": "application/json",
+    "repositoryRootInput": "explicit-runtime-argument",
+    "decoding": "UTF-8-then-JSON.parse",
+    "runtimeValidation": "required-semantic-authority-envelope",
+    "governanceValidation": "canonical-feature-conveyor-contract-schema",
+    "authorityOwnership": "scenario-owned-json-artifacts",
+    "embeddedSemanticAuthority": "forbidden",
     "bindingStatus": "IMPLEMENTED"
   },
   "runtimeAdapter": {
@@ -6821,7 +6927,7 @@ Compilation and runtime artifact authority:
   "executionProof": {
     "contractId": "canonical-feature-conveyor-execution-proof.v1",
     "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/proves-canonical-feature-conveyor.ts",
-    "semanticSurface": "direct-semantic-authority",
+    "semanticSurface": "runtime-loaded-scenario-semantic-authority-json",
     "projectedSurface": "projected-composition-and-responsibility-bodies",
     "comparison": "RFC8785-JCS-equivalence",
     "expectedDisposition": "PROJECTION_CONFORMS"
@@ -6831,6 +6937,7 @@ Compilation and runtime artifact authority:
     "compositionTypes": "MATERIALIZED",
     "registrations": "IMPLEMENTED",
     "semanticInterpreter": "IMPLEMENTED",
+    "semanticAuthorityLoader": "IMPLEMENTED",
     "runtimeAdapter": "IMPLEMENTED",
     "authorityProjectorBoundary": "IMPLEMENTED",
     "materializationBoundary": "IMPLEMENTED",
@@ -6870,7 +6977,9 @@ Compilation and runtime artifact authority:
     "dependencyPolicy": {
       "localModuleBoundary": "capability-root-only",
       "externalModuleImports": "forbidden",
-      "conveyorSpecificToolsOutsideCapability": "forbidden"
+      "conveyorSpecificToolsOutsideCapability": "forbidden",
+      "runtimeAuthorityLoading": "scenario-owned-json-files-only",
+      "embeddedSemanticAuthority": "forbidden"
     },
     "supplementalArtifacts": [
       {
@@ -6899,6 +7008,16 @@ Compilation and runtime artifact authority:
         "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts",
         "sourceAuthorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
         "projectorCapability": "projects-semantic-interpreter",
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
+      },
+      {
+        "artifactId": "canonical-feature-semantic-authority-loader",
+        "family": "semantic-authority-loader",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts",
+        "sourceAuthorityRef": "implementation-artifact:semantic-authority-loader",
+        "projectorCapability": "projects-semantic-authority-loader",
         "projectionPosture": "PROJECTABLE",
         "ownership": "projector-owned",
         "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
