@@ -1,0 +1,30 @@
+{
+  "bodyId": "new-feature-execution-comparison",
+  "responsibilityId": "composes-new-feature-execution-comparison",
+  "bodyKind": "scenario-responsibility",
+  "context": {
+    "parameterName": "context",
+    "contractId": "compose-new-feature-execution-comparison-context.v1",
+    "immutable": true
+  },
+  "operations": [
+    {
+      "sequence": 1,
+      "operation": "invoke-semantic-edge",
+      "edgeId": "compose-new-feature-execution-comparison",
+      "input": "$.context",
+      "assign": "comparison"
+    },
+    {
+      "sequence": 2,
+      "operation": "return",
+      "value": "$.comparison"
+    }
+  ],
+  "constraints": {
+    "domainBranching": "forbidden",
+    "domainIteration": "forbidden",
+    "dtoConstruction": "forbidden",
+    "directEffects": "forbidden"
+  }
+}

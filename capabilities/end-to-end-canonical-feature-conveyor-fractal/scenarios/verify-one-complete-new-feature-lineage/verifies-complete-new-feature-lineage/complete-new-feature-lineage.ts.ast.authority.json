@@ -1,0 +1,92 @@
+{
+  "kind": "source-file",
+  "leadingComments": [
+    {
+      "kind": "line-comment",
+      "text": " @generated"
+    },
+    {
+      "kind": "line-comment",
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
+    },
+    {
+      "kind": "line-comment",
+      "text": " scenario-id: verify-one-complete-new-feature-lineage"
+    },
+    {
+      "kind": "line-comment",
+      "text": " obligation-id: prove-complete-new-feature-equivalence"
+    },
+    {
+      "kind": "line-comment",
+      "text": " responsibility-id: verifies-complete-new-feature-lineage"
+    },
+    {
+      "kind": "line-comment",
+      "text": " signal-id: complete-new-feature-equivalence"
+    },
+    {
+      "kind": "line-comment",
+      "text": " DO NOT EDIT."
+    }
+  ],
+  "imports": [
+    {
+      "kind": "type-only-import",
+      "moduleSpecifier": "./complete-new-feature-lineage.type.js",
+      "namedBindings": [
+        "VerifyCompleteNewFeatureLineageContext",
+        "NewFeatureTerminalDisposition"
+      ]
+    }
+  ],
+  "statements": [
+    {
+      "kind": "function-declaration",
+      "identity": "complete-new-feature-lineage",
+      "modifiers": [
+        "export",
+        "async"
+      ],
+      "name": "verifiesCompleteNewFeatureLineage",
+      "parameters": [
+        {
+          "kind": "parameter",
+          "name": "context",
+          "typeReference": "VerifyCompleteNewFeatureLineageContext",
+          "immutable": true
+        }
+      ],
+      "returnType": {
+        "kind": "promise",
+        "typeReference": "NewFeatureTerminalDisposition"
+      },
+      "body": {
+        "kind": "block",
+        "statements": [
+          {
+            "kind": "return-statement",
+            "expression": {
+              "kind": "await-expression",
+              "expression": {
+                "kind": "semantic-edge-invocation",
+                "receiverPath": [
+                  "context",
+                  "edges"
+                ],
+                "operation": "invokes",
+                "edgeId": "verify-complete-new-feature-lineage",
+                "arguments": [
+                  {
+                    "kind": "identifier-reference",
+                    "name": "context"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "scenarioId": "execute-one-newly-materialized-feature",
+  "title": "Execute one newly materialized feature",
+  "behavior": {
+    "given": [
+      {
+        "statementId": "complete-materialization-is-available",
+        "text": "one complete new-feature materialization"
+      },
+      {
+        "statementId": "runtime-composition-is-admitted",
+        "text": "one admitted runtime composition"
+      }
+    ],
+    "when": {
+      "statementId": "materialized-feature-is-executed",
+      "text": "the materialized feature executes through its admitted semantic edges"
+    },
+    "then": [
+      {
+        "statementId": "feature-execution-is-observed",
+        "text": "one new-feature execution observation is produced"
+      }
+    ]
+  },
+  "obligation": {
+    "obligationId": "execute-new-feature-through-admitted-semantics",
+    "statement": "Projected execution must use the same admitted semantic responsibility exercised by direct semantic evaluation."
+  },
+  "expectation": {
+    "expectationId": "expect-one-observed-new-feature-execution",
+    "signalId": "observed-new-feature-execution",
+    "expectedDisposition": "CONFORMS"
+  },
+  "responsibility": {
+    "responsibilityId": "executes-newly-materialized-feature",
+    "kind": "execution",
+    "semanticOperationId": "execute-newly-materialized-feature"
+  },
+  "signal": {
+    "signalId": "observed-new-feature-execution",
+    "statement": "The projected feature produces the same observable signal as direct semantic execution.",
+    "resultShape": {
+      "contractId": "observed-new-feature-execution.v1",
+      "shapePolicy": "lineage-evidence-envelope",
+      "fields": [
+        {
+          "name": "disposition",
+          "type": "literal-union",
+          "allowedValues": [
+            "CONFORMS",
+            "DIVERGES"
+          ]
+        },
+        {
+          "name": "featureId",
+          "type": "string"
+        },
+        {
+          "name": "artifactManifestRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "semanticObservationRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "projectedObservationRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "expectedSignalRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "astSourceCorrespondenceRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "lineageId",
+          "type": "string"
+        }
+      ],
+      "rationale": "The execution result transports independently addressable semantic, projected, expected, and correspondence evidence to comparison."
+    }
+  }
+}

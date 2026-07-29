@@ -1,0 +1,75 @@
+{
+  "responsibilityId": "projects-complete-new-feature-authority",
+  "accepts": {
+    "contractId": "admitted-new-feature-request.v1"
+  },
+  "produces": {
+    "contractId": "complete-new-feature-authority.v1"
+  },
+  "observations": [
+    {
+      "observationId": "observe-admitted-request",
+      "sourceRef": "scenario:project-one-complete-new-feature-authority",
+      "resolution": {
+        "portRef": "implementation-artifact:authority-projector",
+        "operationId": "projects-and-writes-complete-authority",
+        "input": "$.input",
+        "producesFields": [
+          "featureId",
+          "requestRef",
+          "authorityRef",
+          "lineageId"
+        ]
+      }
+    }
+  ],
+  "decisions": [],
+  "projections": [
+    {
+      "projectionId": "project-complete-feature-authority",
+      "from": "observe-admitted-request",
+      "to": "complete-new-feature-authority.v1",
+      "fields": {
+        "disposition": {
+          "kind": "literal",
+          "value": "COMPLETE"
+        },
+        "featureId": {
+          "kind": "path",
+          "path": "$.observed.featureId"
+        },
+        "requestRef": {
+          "kind": "path",
+          "path": "$.observed.requestRef"
+        },
+        "authorityRef": {
+          "kind": "path",
+          "path": "$.observed.authorityRef"
+        },
+        "lineageId": {
+          "kind": "path",
+          "path": "$.observed.lineageId"
+        }
+      }
+    }
+  ],
+  "execution": {
+    "executionModelId": "project-complete-new-feature-authority",
+    "steps": [
+      {
+        "sequence": 1,
+        "operation": "resolve-observation",
+        "authorityId": "observe-admitted-request",
+        "input": "$.input",
+        "assign": "$.observed"
+      },
+      {
+        "sequence": 2,
+        "operation": "project-result",
+        "authorityId": "project-complete-feature-authority",
+        "input": "$.observed",
+        "assign": "$.result"
+      }
+    ]
+  }
+}

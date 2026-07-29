@@ -1,0 +1,74 @@
+{
+  "scenarioId": "materialize-one-complete-new-feature",
+  "title": "Materialize one complete new feature",
+  "behavior": {
+    "given": [
+      {
+        "statementId": "complete-feature-authority-is-admitted",
+        "text": "one admitted complete new-feature authority"
+      },
+      {
+        "statementId": "materialization-root-is-empty",
+        "text": "one empty controlled materialization root"
+      }
+    ],
+    "when": {
+      "statementId": "feature-authority-is-materialized",
+      "text": "every admitted body and language projection is materialized"
+    },
+    "then": [
+      {
+        "statementId": "complete-materialization-is-observed",
+        "text": "one complete projected new-feature materialization is observed"
+      }
+    ]
+  },
+  "obligation": {
+    "obligationId": "materialize-only-admitted-new-feature-authority",
+    "statement": "Materialization must derive every executable body from admitted feature-body and AST authority."
+  },
+  "expectation": {
+    "expectationId": "expect-one-complete-new-feature-materialization",
+    "signalId": "complete-new-feature-materialization",
+    "expectedDisposition": "MATERIALIZED"
+  },
+  "responsibility": {
+    "responsibilityId": "materializes-complete-new-feature",
+    "kind": "projection",
+    "semanticOperationId": "materialize-complete-new-feature"
+  },
+  "signal": {
+    "signalId": "complete-new-feature-materialization",
+    "statement": "Every expected artifact exists and reproduces its admitted AST.",
+    "resultShape": {
+      "contractId": "complete-new-feature-materialization.v1",
+      "shapePolicy": "lineage-evidence-envelope",
+      "fields": [
+        {
+          "name": "disposition",
+          "type": "literal-union",
+          "allowedValues": [
+            "MATERIALIZED"
+          ]
+        },
+        {
+          "name": "featureId",
+          "type": "string"
+        },
+        {
+          "name": "authorityRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "artifactManifestRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "lineageId",
+          "type": "string"
+        }
+      ],
+      "rationale": "The result carries the authority and content-addressed artifact manifest required to execute the materialized feature."
+    }
+  }
+}

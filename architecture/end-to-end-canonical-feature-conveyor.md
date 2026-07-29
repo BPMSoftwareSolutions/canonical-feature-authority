@@ -54,11 +54,11 @@ Current projection target: Node / TypeScript
 
 ### Projected feature execution body
 
-Artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts`
+Artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.ts`
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: execute-complete-canonical-feature-conveyor
 // obligation-id: execute-one-mechanically-continuous-feature-flow
 // responsibility-id: executes-end-to-end-canonical-feature-conveyor
@@ -104,11 +104,11 @@ export async function executesEndToEndCanonicalFeatureConveyor(
 
 ### Projected heterogeneous composition types
 
-Artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts`
+Artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.type.ts`
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: execute-complete-canonical-feature-conveyor
 // obligation-id: execute-one-mechanically-continuous-feature-flow
 // responsibility-id: executes-end-to-end-canonical-feature-conveyor
@@ -205,7 +205,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
 {
   "edgeRegistry": {
     "contractId": "canonical-feature-edge-registry.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/canonical-feature-edge-registry.type.ts",
     "edgeContracts": [
       {
         "sequence": 1,
@@ -259,10 +259,10 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "projectionId": "project-canonical-feature-edge-registry-type",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts"
+        "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/canonical-feature-edge-registry.type.ts"
       },
       "lineage": {
-        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "featureId": "end-to-end-canonical-feature-conveyor-fractal",
         "scenarioId": "execute-complete-canonical-feature-conveyor",
         "obligationId": "execute-one-mechanically-continuous-feature-flow",
         "responsibilityId": "executes-end-to-end-canonical-feature-conveyor",
@@ -298,7 +298,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
     "bindingStatus": "IMPLEMENTED"
   },
   "compositionTypes": {
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
     "authorityRef": "implementation-artifact:composition-types",
     "bindingStatus": "PROJECTOR_OUTPUT_AVAILABLE",
     "projectorRequest": {
@@ -310,10 +310,10 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "projectionId": "project-end-to-end-canonical-feature-conveyor-composition-types",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
+        "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
       },
       "lineage": {
-        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "featureId": "end-to-end-canonical-feature-conveyor-fractal",
         "scenarioId": "execute-complete-canonical-feature-conveyor",
         "obligationId": "execute-one-mechanically-continuous-feature-flow",
         "responsibilityId": "executes-end-to-end-canonical-feature-conveyor",
@@ -612,61 +612,61 @@ export interface EndToEndCanonicalFeatureConveyorContext {
     {
       "responsibilityId": "admits-reviewed-new-feature-request",
       "edgeId": "admit-reviewed-new-feature-request",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-admit-reviewed-new-feature-request.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/registers-admit-reviewed-new-feature-request.ts",
       "implementationRef": "semantic-execution:admit-reviewed-new-feature-request",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "adapts-new-feature-request-admission",
       "edgeId": "adapt-new-feature-request-admission",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-adapt-new-feature-request-admission.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/registers-adapt-new-feature-request-admission.ts",
       "implementationRef": "semantic-execution:adapt-new-feature-request-admission",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "projects-complete-new-feature-authority",
       "edgeId": "project-complete-new-feature-authority",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-project-complete-new-feature-authority.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/registers-project-complete-new-feature-authority.ts",
       "implementationRef": "semantic-execution:project-complete-new-feature-authority",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "materializes-complete-new-feature",
       "edgeId": "materialize-complete-new-feature",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-materialize-complete-new-feature.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/registers-materialize-complete-new-feature.ts",
       "implementationRef": "semantic-execution:materialize-complete-new-feature",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "executes-newly-materialized-feature",
       "edgeId": "execute-newly-materialized-feature",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-execute-newly-materialized-feature.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/registers-execute-newly-materialized-feature.ts",
       "implementationRef": "semantic-execution:execute-newly-materialized-feature",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "composes-new-feature-execution-comparison",
       "edgeId": "compose-new-feature-execution-comparison",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-compose-new-feature-execution-comparison.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/registers-compose-new-feature-execution-comparison.ts",
       "implementationRef": "semantic-execution:compose-new-feature-execution-comparison",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "verifies-complete-new-feature-lineage",
       "edgeId": "verify-complete-new-feature-lineage",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-verify-complete-new-feature-lineage.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/registers-verify-complete-new-feature-lineage.ts",
       "implementationRef": "semantic-execution:verify-complete-new-feature-lineage",
       "bindingStatus": "IMPLEMENTED"
     }
   ],
   "semanticInterpreter": {
     "authorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts",
     "bindingStatus": "IMPLEMENTED"
   },
   "runtimeAdapter": {
     "contractId": "canonical-feature-runtime-adapter.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/invokes-canonical-feature-conveyor.ts",
     "acceptsContractId": "reviewed-new-feature-request.v1",
     "constructsContextContractId": "end-to-end-canonical-feature-conveyor-context.v1",
     "producesContractId": "new-feature-terminal-disposition.v1",
@@ -678,7 +678,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   },
   "authorityProjectorBoundary": {
     "contractId": "complete-new-feature-authority-projector-port.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-authority-projector.port.ts",
     "operations": [
       "projects-and-writes-complete-authority"
     ],
@@ -691,10 +691,10 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "projectionId": "project-complete-new-feature-authority-projector-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts"
+        "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-authority-projector.port.ts"
       },
       "lineage": {
-        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "featureId": "end-to-end-canonical-feature-conveyor-fractal",
         "scenarioId": "project-one-complete-new-feature-authority",
         "obligationId": "establish-one-complete-new-feature-authority",
         "responsibilityId": "projects-complete-new-feature-authority",
@@ -734,7 +734,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   },
   "materializationBoundary": {
     "contractId": "complete-new-feature-materializer-port.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-materializer.port.ts",
     "operations": [
       "materializes-and-writes-artifact-manifest"
     ],
@@ -747,10 +747,10 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "projectionId": "project-complete-new-feature-materializer-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts"
+        "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-materializer.port.ts"
       },
       "lineage": {
-        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "featureId": "end-to-end-canonical-feature-conveyor-fractal",
         "scenarioId": "materialize-one-complete-new-feature",
         "obligationId": "materialize-only-admitted-new-feature-authority",
         "responsibilityId": "materializes-complete-new-feature",
@@ -790,7 +790,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   },
   "fixtureBoundary": {
     "contractId": "canonical-feature-evaluation-fixture-port.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/canonical-feature-evaluation-fixture.port.ts",
     "operations": [
       "loadsSemanticFixture",
       "loadsProjectedFixture",
@@ -805,10 +805,10 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "projectionId": "project-canonical-feature-evaluation-fixture-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts"
+        "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/canonical-feature-evaluation-fixture.port.ts"
       },
       "lineage": {
-        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "featureId": "end-to-end-canonical-feature-conveyor-fractal",
         "scenarioId": "execute-one-newly-materialized-feature",
         "obligationId": "execute-new-feature-through-admitted-semantics",
         "responsibilityId": "executes-newly-materialized-feature",
@@ -842,7 +842,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   },
   "evidenceBoundary": {
     "contractId": "governed-artifact-evidence-store.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/governed-artifact-evidence-store.port.ts",
     "operations": [
       "writes",
       "resolves",
@@ -860,10 +860,10 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "projectionId": "project-governed-artifact-evidence-store-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts"
+        "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/governed-artifact-evidence-store.port.ts"
       },
       "lineage": {
-        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "featureId": "end-to-end-canonical-feature-conveyor-fractal",
         "scenarioId": "compose-one-new-feature-execution-comparison",
         "obligationId": "compose-complete-execution-comparison",
         "responsibilityId": "composes-new-feature-execution-comparison",
@@ -907,7 +907,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   },
   "executionProof": {
     "contractId": "canonical-feature-conveyor-execution-proof.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/proves-canonical-feature-conveyor.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/proves-canonical-feature-conveyor.ts",
     "semanticSurface": "direct-semantic-authority",
     "projectedSurface": "projected-composition-and-responsibility-bodies",
     "comparison": "RFC8785-JCS-equivalence",
@@ -929,7 +929,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
     "targetPolicy": {
       "root": "governed-repository-workspace",
       "repositoryRoot": ".",
-      "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+      "capabilityRoot": "capabilities/end-to-end-canonical-feature-conveyor-fractal",
       "projectionMode": "working-tree",
       "reviewSurface": "git-diff",
       "authoritySource": "canonical-json-only",
@@ -953,11 +953,17 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "typescript": "strict-compile",
       "lineage": "authority-ref-and-source-hash"
     },
-    "artifacts": [
+    "fileBodyCoordinates": "derive-from-file-body-placement-rules",
+    "dependencyPolicy": {
+      "localModuleBoundary": "capability-root-only",
+      "externalModuleImports": "forbidden",
+      "conveyorSpecificToolsOutsideCapability": "forbidden"
+    },
+    "supplementalArtifacts": [
       {
         "artifactId": "canonical-feature-edge-registry-type",
         "family": "composition",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/canonical-feature-edge-registry.type.ts",
         "sourceAuthorityRef": "implementation-artifact:edge-registry",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
@@ -967,7 +973,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       {
         "artifactId": "end-to-end-canonical-feature-conveyor-type",
         "family": "composition",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
         "sourceAuthorityRef": "implementation-artifact:composition-types",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
@@ -975,239 +981,9 @@ export interface EndToEndCanonicalFeatureConveyorContext {
         "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
-        "artifactId": "end-to-end-canonical-feature-conveyor-body",
-        "family": "composition",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts",
-        "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "new-feature-request-admission-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "new-feature-request-admission-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts",
-        "sourceAuthorityRef": "feature-body:new-feature-request-admission",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "admitted-new-feature-request-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "admitted-new-feature-request-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts",
-        "sourceAuthorityRef": "feature-body:admitted-new-feature-request",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "complete-new-feature-authority-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "complete-new-feature-authority-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts",
-        "sourceAuthorityRef": "feature-body:complete-new-feature-authority",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "complete-new-feature-materialization-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "complete-new-feature-materialization-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts",
-        "sourceAuthorityRef": "feature-body:complete-new-feature-materialization",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "observed-new-feature-execution-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "observed-new-feature-execution-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts",
-        "sourceAuthorityRef": "feature-body:observed-new-feature-execution",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "new-feature-execution-comparison-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "new-feature-execution-comparison-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts",
-        "sourceAuthorityRef": "feature-body:new-feature-execution-comparison",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "complete-new-feature-lineage-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "complete-new-feature-lineage-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts",
-        "sourceAuthorityRef": "feature-body:complete-new-feature-lineage",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-admit-reviewed-new-feature-request",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-admit-reviewed-new-feature-request.ts",
-        "sourceAuthorityRef": "runtime-registration:admits-reviewed-new-feature-request",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-adapt-new-feature-request-admission",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-adapt-new-feature-request-admission.ts",
-        "sourceAuthorityRef": "runtime-registration:adapts-new-feature-request-admission",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-project-complete-new-feature-authority",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-project-complete-new-feature-authority.ts",
-        "sourceAuthorityRef": "runtime-registration:projects-complete-new-feature-authority",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-materialize-complete-new-feature",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-materialize-complete-new-feature.ts",
-        "sourceAuthorityRef": "runtime-registration:materializes-complete-new-feature",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-execute-newly-materialized-feature",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-execute-newly-materialized-feature.ts",
-        "sourceAuthorityRef": "runtime-registration:executes-newly-materialized-feature",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-compose-new-feature-execution-comparison",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-compose-new-feature-execution-comparison.ts",
-        "sourceAuthorityRef": "runtime-registration:composes-new-feature-execution-comparison",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-verify-complete-new-feature-lineage",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-verify-complete-new-feature-lineage.ts",
-        "sourceAuthorityRef": "runtime-registration:verifies-complete-new-feature-lineage",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "canonical-feature-runtime-adapter",
-        "family": "runtime-adapter",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts",
-        "sourceAuthorityRef": "implementation-artifact:runtime-adapter",
-        "projectorCapability": "projects-runtime-adapter",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
         "artifactId": "canonical-feature-semantic-interpreter",
         "family": "semantic-interpreter",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts",
         "sourceAuthorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
         "projectorCapability": "projects-semantic-interpreter",
         "projectionPosture": "PROJECTABLE",
@@ -1217,7 +993,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       {
         "artifactId": "complete-new-feature-authority-projector-port",
         "family": "runtime-port",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-authority-projector.port.ts",
         "sourceAuthorityRef": "implementation-artifact:authority-projector-boundary",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
@@ -1227,7 +1003,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       {
         "artifactId": "complete-new-feature-materializer-port",
         "family": "runtime-port",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-materializer.port.ts",
         "sourceAuthorityRef": "implementation-artifact:materialization-boundary",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
@@ -1237,7 +1013,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       {
         "artifactId": "canonical-feature-evaluation-fixture-port",
         "family": "evaluation-port",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/canonical-feature-evaluation-fixture.port.ts",
         "sourceAuthorityRef": "implementation-artifact:evaluation-fixture",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
@@ -1247,7 +1023,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       {
         "artifactId": "governed-artifact-evidence-store-port",
         "family": "evaluation-port",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/governed-artifact-evidence-store.port.ts",
         "sourceAuthorityRef": "implementation-artifact:evidence-store",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
@@ -1257,7 +1033,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       {
         "artifactId": "canonical-feature-conveyor-execution-proof",
         "family": "evaluation-proof",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/proves-canonical-feature-conveyor.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/proves-canonical-feature-conveyor.ts",
         "sourceAuthorityRef": "implementation-artifact:execution-proof",
         "projectorCapability": "projects-evaluation-proof",
         "projectionPosture": "PROJECTABLE",
@@ -1267,7 +1043,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       {
         "artifactId": "canonical-feature-conveyor-self-hosting-runner",
         "family": "self-hosting-runner",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/self-hosts-canonical-feature-conveyor.mjs",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/self-hosts-canonical-feature-conveyor.mjs",
         "sourceAuthorityRef": "self-hosting:canonical-feature-conveyor-self-hosting.v1",
         "projectorCapability": "projects-self-hosting-runner",
         "projectionPosture": "PROJECTABLE",
@@ -1278,7 +1054,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   },
   "workspaceProjectionAuthority": {
     "repositoryRoot": ".",
-    "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+    "capabilityRoot": "capabilities/end-to-end-canonical-feature-conveyor-fractal",
     "projectionMode": "working-tree",
     "reviewSurface": "git-diff",
     "sourceMaterialization": "direct-to-governed-capability-paths",
@@ -1296,42 +1072,79 @@ export interface EndToEndCanonicalFeatureConveyorContext {
 
 Package: `end-to-end-canonical-feature-conveyor-implementation.v1`
 
-Topology SHA-256: `sha256:38352ba06167fb62c97c592ec4588adc24070613296d5093f20be76805b4cfbc`
+Topology SHA-256: `sha256:3f18d919a7610c507eb72e9e0c3fe33da28a81dfd42421ddee15dce3b12073dc`
 
 | Artifact | Family | Projector capability | Posture | Source SHA-256 |
 | --- | --- | --- | --- | --- |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:6cf495e0db0a7d7f202cf6afc979b8a03bc67a3238dd17b6e98d7d0b17d9ec02` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:2cd7457ff0674a8142ac55b2472dbd71facf435ef6da094711bacb65ffeec94c` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:c18760aaf872a9c33de3ceec729438708cb388a3f4763d5bed7ac6b53f5f1e54` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:7df0787bf451f8e6734dd175d66fb7c20ded5550451f75504fbdffbef3554655` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:5775279a03ee5133629cdcaffb2fc4288e24b7f7b695a8b13de873e1b68df04f` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:0a0bf656cc05c3a49bc139ca8e77223a204d5970c34e306a94f5bd8b739e488a` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:0713a762e035d6291ff59f426d709c799e343d440837f346999e3c67e9a43170` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:e19594453839bc33a4acf9bf67e397dacd5af5df313a69a5453460066bdb7ee1` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:dbd818e3e4897ef0bdf494bc7410dfcd065c1ecf0a7258050705d8ed36991ed4` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:451cd3ab8bb8bed75d56c7676935d63a994ee93794b83af5cab8a86c061022e1` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:6ba37ea7c6c97e735e421b3bf8359cdd0706e4971aa91991bf9b627adb061d35` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:7a8ae2350439ef0201b44424390058731161104c60346345ae9fc774a83cbdd2` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:d68e519ca89291776c130cf1c3de23cdb526427f2b22365d33dcbb0dde888ea1` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:e0fc5ce2a71e9fa5d09e0b17086658b94d85d890e8bf292d07312b803786865f` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:737ab9df69da37602e78332556d1c87606317ae4565ad8ebea12f5a87dfe8b1a` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:f2cb6b94b1e3c9d26b74dd75d84a31da766507f969982f4408b0d64719825144` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:a4b8c2f8b02c6760e7cd7918576eba2eaec3d17df6c284843cb5588dc889078a` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-admit-reviewed-new-feature-request.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:ff61bec3a18c265bf588ce4006f8f8bd1796774e8d6709c15de722a8092f26c4` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-adapt-new-feature-request-admission.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:0cb1719df73a7aacd506659b0cefc1b8cfa8ac37da64b0a0571baf5e65628fd8` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-project-complete-new-feature-authority.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:0023b6eeea606933b036ec584ef884f7ab647b44eb2852e62992cbc319a8812b` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-materialize-complete-new-feature.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:c597e884fa5e5bee0b97365ebdfa1393c97a4a7a70e95f2a8c9118fdde566ce9` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-execute-newly-materialized-feature.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:1ea966ca912793b65878730655eae93dac2cce40e303719b587bb4f47710f07c` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-compose-new-feature-execution-comparison.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:f11691a783de1e439e6bf25842b088a08075f10e6c0bb5917f2b7189dc7e05d2` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-verify-complete-new-feature-lineage.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:9749e2c925aa4e6e68ad462a6be1833f6436d7fd54b55338a6278de9f1680230` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts` | runtime-adapter | `projects-runtime-adapter` | `PROJECTABLE` | `sha256:4a260b9fd942d8806f7871781d3a047475fb182c5390d54e68ab8fade2117150` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts` | semantic-interpreter | `projects-semantic-interpreter` | `PROJECTABLE` | `sha256:bc8aa1dbe447578db75b88933b10ae89ea0f2526743dd18bdbb9a614032bb79c` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts` | runtime-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:ebe3b3b175a4ae2a964f3104867f8d013844a4f77dac4a7a122b87e4eba2157b` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts` | runtime-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:1e610f49228b3a678fbcd0c4530fbd1cbbda1b8860122cbb8cad64c75ae59410` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts` | evaluation-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:9df5364344166427a0ec0be7dfb2b926a2be1dde37fa1325b62ad4391817ad95` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts` | evaluation-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:282deaaa89e7267abb5c7433a97acb804e80db3266f3602c5702585140208a0b` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/proves-canonical-feature-conveyor.ts` | evaluation-proof | `projects-evaluation-proof` | `PROJECTABLE` | `sha256:0291ab12dac1b1278adb5b4da99a5e13eff6751c044f1d28f7c8332824e9670e` |
-| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/self-hosts-canonical-feature-conveyor.mjs` | self-hosting-runner | `projects-self-hosting-runner` | `PROJECTABLE` | `sha256:216403f2b2e0237ad66467f428961aff8dc2fc2bb57ac08008f18412cd86a3f1` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/end-to-end-canonical-feature-conveyor-fractal.feature` | feature | `projects-file-body-system` | `PROJECTABLE` | `sha256:2e1c568f7ce8307986c168fd47e5edb0c97c5793e204e92c2734b6603d654571` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/declares-scenario-authority.json` | scenario-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:9de725f934a5fb8de13daadedaae27ed4137acb680d8827144b8fe484c988149` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/admit-reviewed-new-feature-request.semantic-authority.json` | semantic-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:67da793c734e51797ae5b77c83ae93918f1fc0d392de7579601c08f74fcaaa96` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.feature-body-authority.json` | feature-body-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:df2510f28b4bf28d743c1b0f6198035cfe90dec5be3c85ce14e0004e3670acb1` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts.ast.authority.json` | ast-authority | `projects-production-typescript` | `PROJECTABLE` | `sha256:cdf1484a3c627d1384edeb2644f62a9b674c924d025e203c9cfd45c15344b8d9` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:49242352cf6178dcc37dcc708ece04eef588c1708b5dcad78fa469edf4c11130` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:e792cd5166d6c82506992fd97259b45b9ce615800fd8aebcde1f414ebf0963e9` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/registers-admit-reviewed-new-feature-request.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:cf627d851f8221e50a9f0fbae22f4e3e04d5b6888de1a4a62941a218c53d34ce` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/declares-scenario-authority.json` | scenario-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:a845eb2ee09b5877e6c95afc31d08172c66f1e303b92138abe5624100e3935ec` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/adapt-new-feature-request-admission.semantic-authority.json` | semantic-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:b49c9d93f581c7e6376e02bcd866a301fc5c68264787c968709b5cb6f5a72952` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.feature-body-authority.json` | feature-body-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:4f2d7450a356bd24cb0f568705eee30eee9c9aec118a20f94cf94e5b0f901771` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts.ast.authority.json` | ast-authority | `projects-production-typescript` | `PROJECTABLE` | `sha256:7962609e96d8ceacc0d80a926e841af780bd505c3cbb29860fb4b3ba5a946a63` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:d3b392d5e192fbadc6e790075828e972a0ff092777829fcb75441c33c6bcb59d` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:3d2f262de6223bba9db4e5816940d549b94e3066ae6cf98d50f933f4970dd712` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/registers-adapt-new-feature-request-admission.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:8f0f6caed9e89f82609b78a3c14ae3b567159ddb573129e6e5f54c2d62245064` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/declares-scenario-authority.json` | scenario-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:86148e2802700bf211b18cb53930a0af25578952c3750615e5ac9e4d19f418ce` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/project-complete-new-feature-authority.semantic-authority.json` | semantic-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:c0137a89082bfd4b17cc9d5e9ceb3a6080a5ca3b4e23ac2f51b08bd7f03b4beb` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.feature-body-authority.json` | feature-body-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:6f65983f14311a3ac7bf78c5f4d5cf25479059b52d45107e56e0d3d00a8b13fe` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts.ast.authority.json` | ast-authority | `projects-production-typescript` | `PROJECTABLE` | `sha256:43206300e2c615fa26dc8caea758cd574b540428ba1d6eca3ce0f7fe61c727d5` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:668bebfd230f81b6a4ffd0297ce557f35fb32e4ac863716347c5340a02119fce` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:a84716b9b1d23238a1e8ff3899ff6e3fe6c2b21c3189f8441e476ddcf7293245` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/registers-project-complete-new-feature-authority.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:9e330b319d36947752a20cf560d0907805b8c02bad872f9d1ee1597076f2adcd` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/declares-scenario-authority.json` | scenario-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:587f7c730e80a6f666caa735010a2f554533c6cece10fc88153797f767419428` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/materialize-complete-new-feature.semantic-authority.json` | semantic-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:83efe2faff6e96a71f3b95f0dc22964c5eea713ecbb501119b93d7070e64506a` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.feature-body-authority.json` | feature-body-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:7b584b2698ab1f86527b754e9069ebf22e769753fe32197cec921ccadef0bf0a` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts.ast.authority.json` | ast-authority | `projects-production-typescript` | `PROJECTABLE` | `sha256:07cb2f5fd64cdd54d8d9e63c9b2ede010d265e67be5d23925e7fc6ba72e73420` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:b2eb25bfd2b09b6758c3c45a23fcae3cfc03c225db5cb8339fbe918e14b4c17c` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:479078e7a24d6edca25c2011b236999818c67af9745614531243f6826ad6cbb8` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/registers-materialize-complete-new-feature.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:9b4bc58e691dbec31c89fc40b5c43babd44183baeda6d04e2ad97253a4c63d4f` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/declares-scenario-authority.json` | scenario-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:7b6b92fe81f3a82e533a32c6a0455954451edf9f56caab1b6b4ab4714d0545d1` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/execute-newly-materialized-feature.semantic-authority.json` | semantic-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:c8753887f0404015818233b66ab37900932d287e575387f309ec32d7ee156fb2` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.feature-body-authority.json` | feature-body-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:5b6ccd57c5ab5cbf4f1ef05b4e02faa7fd59acce72ced9ba47563439606939ea` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts.ast.authority.json` | ast-authority | `projects-production-typescript` | `PROJECTABLE` | `sha256:5846d520a84c00b399d77bfb473e9a376538edc63db51967837533247f868772` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:95392f7eee9698f46c706a95fabcedcdfb45a5fd5bbd1d1ab5d604bf06162f50` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:09bea4fc160c0e3e9a27b9cd14f9612b5bc2cf233eaddbc5b1f27ca1ca01adab` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/registers-execute-newly-materialized-feature.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:d0df58135e0f40cefc0341efe77cd20a7217aa05199f68b3810bfbc0460f9a42` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/declares-scenario-authority.json` | scenario-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:be2cd14d8428d3eb26b07785e347af71a4d75bf4b3c5e92173eba4b18727d9b0` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/compose-new-feature-execution-comparison.semantic-authority.json` | semantic-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:4136c878a61cd2963065fb06941473ceefb778e973fa205fabc6298007140483` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.feature-body-authority.json` | feature-body-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:0fee6bfe765dbd6a804db5eba3fb21b592a338a2b895f84525212cea73cfeec8` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts.ast.authority.json` | ast-authority | `projects-production-typescript` | `PROJECTABLE` | `sha256:7df2c234730f50dac358023ba27b6be61a82f6fafcf6c2f7e535c7b689019b84` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:8aa4ba862f5318ec63d506771e70fd35759efa25d15fe0adfed8c9532ce50f0a` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:66005a95220840af656da2f78f2249366111bb7d08ddc19c3a08babf9de11116` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/registers-compose-new-feature-execution-comparison.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:da7379b93e1969b7a2e036d5eab6822fd6f828eb99c90d621e77bcf8ee8ed5a6` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/declares-scenario-authority.json` | scenario-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:af816ffd542c74090dc159d94b70538f945d7940e5bca40ad955f844e5cf514d` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/verify-complete-new-feature-lineage.semantic-authority.json` | semantic-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:bac273e4c0485bccc7421836eb8c1fbaa7423e335019c5be74fb984145badcff` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.feature-body-authority.json` | feature-body-authority | `projects-file-body-system` | `PROJECTABLE` | `sha256:3daf15f0cfac812da82c50e66eae8133789708aec3e1c57856c77a946fa1ddbf` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts.ast.authority.json` | ast-authority | `projects-production-typescript` | `PROJECTABLE` | `sha256:ef16ad1b48ef1b82ef2a6a16a260924fbfe02089fd097fce632d0117a033b866` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:0efcced8544f440c14db5aa6b94f5891f947f4d936446f62719c72021abbd7e4` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:8c410030f50f11dbed1edf94cae443bb35ee56de42b3418e1893b87b5e757151` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/registers-verify-complete-new-feature-lineage.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:b473a2b09289b58e9939ccafec409cfd7b9423771ecfcdfd5031683942b68d73` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:97505cbe58e8c1d5101f08b774e169cd7036d3b5d9702901bce72d58050c5698` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/invokes-canonical-feature-conveyor.ts` | runtime-adapter | `projects-runtime-adapter` | `PROJECTABLE` | `sha256:e54c99d4e4186c958307f4bb6646e3d634f258d5201be434995cd2085959d93c` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/canonical-feature-edge-registry.type.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:b44012097a2ec216228a32fe85305836a3a264135d65d78e6dbf12c5276286aa` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.type.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:dc2e0b8e457ba5a3769c8d653cb8c09c978790f941837a02f7ba01f27418c555` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts` | semantic-interpreter | `projects-semantic-interpreter` | `PROJECTABLE` | `sha256:bc8aa1dbe447578db75b88933b10ae89ea0f2526743dd18bdbb9a614032bb79c` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-authority-projector.port.ts` | runtime-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:ebfd0389d45c88064e89b6688962571005a51d1e20472d02adec027bf3fecafd` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-materializer.port.ts` | runtime-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:954684ef3161f48e4490f42c4f80d582a99cfb041ba9a8eea5114d7dbaf5e78f` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/canonical-feature-evaluation-fixture.port.ts` | evaluation-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:f213b82fff7896dc81423cb0dfb2cf0beda5b4145bfdffcb95f60e0bf24c013e` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/governed-artifact-evidence-store.port.ts` | evaluation-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:7673741779ee83695898ed3e2eddab97458ff6c1f58b967e3e1fdc753bcce2ce` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/proves-canonical-feature-conveyor.ts` | evaluation-proof | `projects-evaluation-proof` | `PROJECTABLE` | `sha256:0291ab12dac1b1278adb5b4da99a5e13eff6751c044f1d28f7c8332824e9670e` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/self-hosts-canonical-feature-conveyor.mjs` | self-hosting-runner | `projects-self-hosting-runner` | `PROJECTABLE` | `sha256:25b067475fa06d4d9d7d1c117720f605318bc074c66f1561b31a1a9b27544265` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/canonical-feature-conveyor-implementation-package.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:4b85b8cd1c89255a96d5f6b641fc2d7e65e52ec404f0b7a6bcd5d5fd4a5443e8` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/canonical-feature-conveyor-projection.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:f464de3203b4997c1b2b407bc9f17444adf3890aaeab6c604fd539075b72c306` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-contract.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:0a937ea632eb33994ff13ade8ee812b36ee47fe549a49f2f4373ca53324f55e0` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-derived-bodies.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:29cbd2242e170e2f88eb8af43b6e8a16c5d77edc0bfce2a37abdb77976278ea5` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-implementation.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:b615988732452a3307bba56f71e17e78c8a440fa5f47fdebb871afdac1f21e3b` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/verifies-canonical-feature-conveyor-contract.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:455a2b346a8aa26487063b4eca15ff893d488f25b0316b3aecbeca5d87bd2257` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/ajv-2020.bundle.mjs` | embedded-runtime | `projects-capability-local-runtime-snapshot` | `PROJECTABLE` | `sha256:6c69a45405bb860cfd3a2b1835d6bb905cdddffec486fd4426dd8863057b6dfa` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs` | embedded-runtime | `projects-capability-local-runtime-snapshot` | `PROJECTABLE` | `sha256:0f1f8e7b25ca750fb8f051314c64ab37d0f0d185562203c16e39be4f456523ae` |
 
 Projection source policy: canonical JSON authority only; Markdown scraping is forbidden.
 
@@ -1344,7 +1157,7 @@ Execution proof: direct semantic authority and the projected composition plus re
   "contractId": "canonical-feature-conveyor-self-hosting.v1",
   "authorityInputPath": "architecture/end-to-end-canonical-feature-conveyor.authority.json",
   "derivedProjectionInputPath": "architecture/end-to-end-canonical-feature-conveyor.derived-projections.json",
-  "executorArtifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/self-hosts-canonical-feature-conveyor.mjs",
+  "executorArtifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/self-hosts-canonical-feature-conveyor.mjs",
   "executionStages": [
     "capture-intent",
     "declare-outcome",
@@ -1368,7 +1181,7 @@ Execution proof: direct semantic authority and the projected composition plus re
   "targetPolicy": {
     "root": "governed-repository-workspace",
     "repositoryRoot": ".",
-    "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+    "capabilityRoot": "capabilities/end-to-end-canonical-feature-conveyor-fractal",
     "overwrite": "replace-only-if-lineage-matches",
     "postProjectionEdits": "forbidden",
     "authoritySource": "canonical-json-and-admitted-derived-projection",
@@ -1394,13 +1207,13 @@ The projected self-hosting runner must replay all 18 construction stages, materi
 
 | Sequence | Responsibility | Input | Output | Projected artifact |
 | --- | --- | --- | --- | --- |
-| 1 | admits-reviewed-new-feature-request | end-to-end-canonical-feature-conveyor-context.v1 | new-feature-request-admission.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts |
-| 2 | adapts-new-feature-request-admission | new-feature-request-admission.v1 | admitted-new-feature-request.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts |
-| 3 | projects-complete-new-feature-authority | admitted-new-feature-request.v1 | complete-new-feature-authority.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts |
-| 4 | materializes-complete-new-feature | complete-new-feature-authority.v1 | complete-new-feature-materialization.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts |
-| 5 | executes-newly-materialized-feature | complete-new-feature-materialization.v1 | observed-new-feature-execution.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts |
-| 6 | composes-new-feature-execution-comparison | observed-new-feature-execution.v1 | new-feature-execution-comparison.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts |
-| 7 | verifies-complete-new-feature-lineage | new-feature-execution-comparison.v1 | new-feature-terminal-disposition.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts |
+| 1 | admits-reviewed-new-feature-request | end-to-end-canonical-feature-conveyor-context.v1 | new-feature-request-admission.v1 | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts |
+| 2 | adapts-new-feature-request-admission | new-feature-request-admission.v1 | admitted-new-feature-request.v1 | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts |
+| 3 | projects-complete-new-feature-authority | admitted-new-feature-request.v1 | complete-new-feature-authority.v1 | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts |
+| 4 | materializes-complete-new-feature | complete-new-feature-authority.v1 | complete-new-feature-materialization.v1 | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts |
+| 5 | executes-newly-materialized-feature | complete-new-feature-materialization.v1 | observed-new-feature-execution.v1 | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts |
+| 6 | composes-new-feature-execution-comparison | observed-new-feature-execution.v1 | new-feature-execution-comparison.v1 | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts |
+| 7 | verifies-complete-new-feature-lineage | new-feature-execution-comparison.v1 | new-feature-terminal-disposition.v1 | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts |
 
 ### File-body system
 
@@ -1425,22 +1238,22 @@ Scenario
         └── admits-reviewed-new-feature-request
             │
             ├─► [SA] Semantic Authority
-            │      admit-reviewed-new-feature-request.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/admit-reviewed-new-feature-request.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      new-feature-request-admission.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      new-feature-request-admission.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      new-feature-request-admission.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      new-feature-request-admission.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts
             │
             └─► [REG] Runtime Registration
-                   registers-admit-reviewed-new-feature-request.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/registers-admit-reviewed-new-feature-request.ts
 
 Scenario
 └── adapt-one-new-feature-request-admission
@@ -1449,22 +1262,22 @@ Scenario
         └── adapts-new-feature-request-admission
             │
             ├─► [SA] Semantic Authority
-            │      adapt-new-feature-request-admission.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/adapt-new-feature-request-admission.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      admitted-new-feature-request.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      admitted-new-feature-request.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      admitted-new-feature-request.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      admitted-new-feature-request.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts
             │
             └─► [REG] Runtime Registration
-                   registers-adapt-new-feature-request-admission.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/registers-adapt-new-feature-request-admission.ts
 
 Scenario
 └── project-one-complete-new-feature-authority
@@ -1473,22 +1286,22 @@ Scenario
         └── projects-complete-new-feature-authority
             │
             ├─► [SA] Semantic Authority
-            │      project-complete-new-feature-authority.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/project-complete-new-feature-authority.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      complete-new-feature-authority.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      complete-new-feature-authority.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      complete-new-feature-authority.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      complete-new-feature-authority.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts
             │
             └─► [REG] Runtime Registration
-                   registers-project-complete-new-feature-authority.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/registers-project-complete-new-feature-authority.ts
 
 Scenario
 └── materialize-one-complete-new-feature
@@ -1497,22 +1310,22 @@ Scenario
         └── materializes-complete-new-feature
             │
             ├─► [SA] Semantic Authority
-            │      materialize-complete-new-feature.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/materialize-complete-new-feature.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      complete-new-feature-materialization.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      complete-new-feature-materialization.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      complete-new-feature-materialization.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      complete-new-feature-materialization.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts
             │
             └─► [REG] Runtime Registration
-                   registers-materialize-complete-new-feature.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/registers-materialize-complete-new-feature.ts
 
 Scenario
 └── execute-one-newly-materialized-feature
@@ -1521,22 +1334,22 @@ Scenario
         └── executes-newly-materialized-feature
             │
             ├─► [SA] Semantic Authority
-            │      execute-newly-materialized-feature.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/execute-newly-materialized-feature.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      observed-new-feature-execution.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      observed-new-feature-execution.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      observed-new-feature-execution.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      observed-new-feature-execution.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts
             │
             └─► [REG] Runtime Registration
-                   registers-execute-newly-materialized-feature.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/registers-execute-newly-materialized-feature.ts
 
 Scenario
 └── compose-one-new-feature-execution-comparison
@@ -1545,22 +1358,22 @@ Scenario
         └── composes-new-feature-execution-comparison
             │
             ├─► [SA] Semantic Authority
-            │      compose-new-feature-execution-comparison.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/compose-new-feature-execution-comparison.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      new-feature-execution-comparison.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      new-feature-execution-comparison.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      new-feature-execution-comparison.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      new-feature-execution-comparison.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts
             │
             └─► [REG] Runtime Registration
-                   registers-compose-new-feature-execution-comparison.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/registers-compose-new-feature-execution-comparison.ts
 
 Scenario
 └── verify-one-complete-new-feature-lineage
@@ -1569,29 +1382,29 @@ Scenario
         └── verifies-complete-new-feature-lineage
             │
             ├─► [SA] Semantic Authority
-            │      verify-complete-new-feature-lineage.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/verify-complete-new-feature-lineage.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      complete-new-feature-lineage.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      complete-new-feature-lineage.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      complete-new-feature-lineage.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      complete-new-feature-lineage.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts
             │
             └─► [REG] Runtime Registration
-                   registers-verify-complete-new-feature-lineage.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/registers-verify-complete-new-feature-lineage.ts
 
 Feature-level execution
 ├─► [FLOW] Feature Execution Body
-│      capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts
+│      capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.ts
 │
 └─► [PORT] Runtime Adapter
-       capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts
+       capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/invokes-canonical-feature-conveyor.ts
 ```
 
 ### How the document gets there
@@ -1893,11 +1706,11 @@ Observable state:
 
 Projection availability: PROJECTOR_OUTPUT
 
-Projected artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts`
+Projected artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.type.ts`
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: verify-one-complete-new-feature-lineage
 // obligation-id: prove-complete-new-feature-equivalence
 // responsibility-id: verifies-complete-new-feature-lineage
@@ -1951,7 +1764,7 @@ Stop condition: one canonical feature identity, story, and governing obligation 
 
 ```json
 {
-  "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+  "featureId": "end-to-end-canonical-feature-conveyor-fractal",
   "title": "Implement one new feature end to end through a governed conveyor",
   "userStory": {
     "asA": "reviewer of authority-projected software",
@@ -1966,11 +1779,11 @@ Stop condition: one canonical feature identity, story, and governing obligation 
 
 Projection availability: PROJECTOR_OUTPUT
 
-Projected artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts`
+Projected artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.ts`
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: execute-complete-canonical-feature-conveyor
 // obligation-id: execute-one-mechanically-continuous-feature-flow
 // responsibility-id: executes-end-to-end-canonical-feature-conveyor
@@ -2230,43 +2043,43 @@ Projection availability: PROJECTOR_OUTPUT
 ```text
 admit-one-reviewed-new-feature-request
   → admits-reviewed-new-feature-request
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts
   → admitsReviewedNewFeatureRequest(...)
   → edge admit-reviewed-new-feature-request
 
 adapt-one-new-feature-request-admission
   → adapts-new-feature-request-admission
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts
   → adaptsNewFeatureRequestAdmission(...)
   → edge adapt-new-feature-request-admission
 
 project-one-complete-new-feature-authority
   → projects-complete-new-feature-authority
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts
   → projectsCompleteNewFeatureAuthority(...)
   → edge project-complete-new-feature-authority
 
 materialize-one-complete-new-feature
   → materializes-complete-new-feature
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts
   → materializesCompleteNewFeature(...)
   → edge materialize-complete-new-feature
 
 execute-one-newly-materialized-feature
   → executes-newly-materialized-feature
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts
   → executesNewlyMaterializedFeature(...)
   → edge execute-newly-materialized-feature
 
 compose-one-new-feature-execution-comparison
   → composes-new-feature-execution-comparison
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts
   → composesNewFeatureExecutionComparison(...)
   → edge compose-new-feature-execution-comparison
 
 verify-one-complete-new-feature-lineage
   → verifies-complete-new-feature-lineage
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts
   → verifiesCompleteNewFeatureLineage(...)
   → edge verify-complete-new-feature-lineage
 ```
@@ -2694,43 +2507,43 @@ Projection availability: PROJECTOR_OUTPUT
 ```text
 admit-one-reviewed-new-feature-request
   → admits-reviewed-new-feature-request
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts
   → admitsReviewedNewFeatureRequest(...)
   → edge admit-reviewed-new-feature-request
 
 adapt-one-new-feature-request-admission
   → adapts-new-feature-request-admission
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts
   → adaptsNewFeatureRequestAdmission(...)
   → edge adapt-new-feature-request-admission
 
 project-one-complete-new-feature-authority
   → projects-complete-new-feature-authority
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts
   → projectsCompleteNewFeatureAuthority(...)
   → edge project-complete-new-feature-authority
 
 materialize-one-complete-new-feature
   → materializes-complete-new-feature
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts
   → materializesCompleteNewFeature(...)
   → edge materialize-complete-new-feature
 
 execute-one-newly-materialized-feature
   → executes-newly-materialized-feature
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts
   → executesNewlyMaterializedFeature(...)
   → edge execute-newly-materialized-feature
 
 compose-one-new-feature-execution-comparison
   → composes-new-feature-execution-comparison
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts
   → composesNewFeatureExecutionComparison(...)
   → edge compose-new-feature-execution-comparison
 
 verify-one-complete-new-feature-lineage
   → verifies-complete-new-feature-lineage
-  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts
+  → capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts
   → verifiesCompleteNewFeatureLineage(...)
   → edge verify-complete-new-feature-lineage
 ```
@@ -3069,11 +2882,11 @@ Stop condition: every responsibility produces one expectation-bound signal
 
 Projection availability: PROJECTOR_OUTPUT
 
-#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts
+#### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: admit-one-reviewed-new-feature-request
 // obligation-id: establish-one-eligible-new-feature-request
 // responsibility-id: admits-reviewed-new-feature-request
@@ -3101,11 +2914,11 @@ export interface NewFeatureRequestAdmission {
 
 ```
 
-#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts
+#### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: adapt-one-new-feature-request-admission
 // obligation-id: bridge-admission-to-admitted-request-contract
 // responsibility-id: adapts-new-feature-request-admission
@@ -3131,11 +2944,11 @@ export interface AdmittedNewFeatureRequest {
 
 ```
 
-#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts
+#### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: project-one-complete-new-feature-authority
 // obligation-id: establish-one-complete-new-feature-authority
 // responsibility-id: projects-complete-new-feature-authority
@@ -3162,11 +2975,11 @@ export interface CompleteNewFeatureAuthority {
 
 ```
 
-#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts
+#### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: materialize-one-complete-new-feature
 // obligation-id: materialize-only-admitted-new-feature-authority
 // responsibility-id: materializes-complete-new-feature
@@ -3193,11 +3006,11 @@ export interface CompleteNewFeatureMaterialization {
 
 ```
 
-#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts
+#### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: execute-one-newly-materialized-feature
 // obligation-id: execute-new-feature-through-admitted-semantics
 // responsibility-id: executes-newly-materialized-feature
@@ -3229,11 +3042,11 @@ export interface ObservedNewFeatureExecution {
 
 ```
 
-#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts
+#### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: compose-one-new-feature-execution-comparison
 // obligation-id: compose-complete-execution-comparison
 // responsibility-id: composes-new-feature-execution-comparison
@@ -3263,11 +3076,11 @@ export interface NewFeatureExecutionComparison {
 
 ```
 
-#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts
+#### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: verify-one-complete-new-feature-lineage
 // obligation-id: prove-complete-new-feature-equivalence
 // responsibility-id: verifies-complete-new-feature-lineage
@@ -3460,7 +3273,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -3470,7 +3283,7 @@ The governed execution plan above is authoritative; no illustrative semantic-ker
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: admit-one-reviewed-new-feature-request
 // obligation-id: establish-one-eligible-new-feature-request
 // responsibility-id: admits-reviewed-new-feature-request
@@ -3496,7 +3309,7 @@ export async function admitsReviewedNewFeatureRequest(
 | observe-reviewed-request | resolve-observation | hidden behind semantic edge |
 | resolve-request-admission | resolve-decision | hidden behind semantic edge |
 | project-request-admission | project-result | hidden behind semantic edge |
-| new-feature-request-admission.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts return type |
+| new-feature-request-admission.v1 | result contract | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts return type |
 | admits-reviewed-new-feature-request | execution registration identity | admitsReviewedNewFeatureRequest lineage |
 | admit-reviewed-new-feature-request | semantic model identity | edge invocation string |
 
@@ -3586,7 +3399,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -3596,7 +3409,7 @@ The governed execution plan above is authoritative; no illustrative semantic-ker
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: adapt-one-new-feature-request-admission
 // obligation-id: bridge-admission-to-admitted-request-contract
 // responsibility-id: adapts-new-feature-request-admission
@@ -3621,7 +3434,7 @@ export async function adaptsNewFeatureRequestAdmission(
 | --- | --- | --- |
 | observe-request-admission | resolve-observation | hidden behind semantic edge |
 | project-admitted-new-feature-request | project-result | hidden behind semantic edge |
-| admitted-new-feature-request.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts return type |
+| admitted-new-feature-request.v1 | result contract | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts return type |
 | adapts-new-feature-request-admission | execution registration identity | adaptsNewFeatureRequestAdmission lineage |
 | adapt-new-feature-request-admission | semantic model identity | edge invocation string |
 
@@ -3715,7 +3528,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -3725,7 +3538,7 @@ The governed execution plan above is authoritative; no illustrative semantic-ker
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: project-one-complete-new-feature-authority
 // obligation-id: establish-one-complete-new-feature-authority
 // responsibility-id: projects-complete-new-feature-authority
@@ -3750,7 +3563,7 @@ export async function projectsCompleteNewFeatureAuthority(
 | --- | --- | --- |
 | observe-admitted-request | resolve-observation | hidden behind semantic edge |
 | project-complete-feature-authority | project-result | hidden behind semantic edge |
-| complete-new-feature-authority.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts return type |
+| complete-new-feature-authority.v1 | result contract | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts return type |
 | projects-complete-new-feature-authority | execution registration identity | projectsCompleteNewFeatureAuthority lineage |
 | project-complete-new-feature-authority | semantic model identity | edge invocation string |
 
@@ -3844,7 +3657,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -3854,7 +3667,7 @@ The governed execution plan above is authoritative; no illustrative semantic-ker
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: materialize-one-complete-new-feature
 // obligation-id: materialize-only-admitted-new-feature-authority
 // responsibility-id: materializes-complete-new-feature
@@ -3879,7 +3692,7 @@ export async function materializesCompleteNewFeature(
 | --- | --- | --- |
 | observe-complete-feature-authority | resolve-observation | hidden behind semantic edge |
 | project-complete-feature-materialization | project-result | hidden behind semantic edge |
-| complete-new-feature-materialization.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts return type |
+| complete-new-feature-materialization.v1 | result contract | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts return type |
 | materializes-complete-new-feature | execution registration identity | materializesCompleteNewFeature lineage |
 | materialize-complete-new-feature | semantic model identity | edge invocation string |
 
@@ -3989,7 +3802,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -3999,7 +3812,7 @@ The governed execution plan above is authoritative; no illustrative semantic-ker
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: execute-one-newly-materialized-feature
 // obligation-id: execute-new-feature-through-admitted-semantics
 // responsibility-id: executes-newly-materialized-feature
@@ -4024,7 +3837,7 @@ export async function executesNewlyMaterializedFeature(
 | --- | --- | --- |
 | observe-materialized-feature | resolve-observation | hidden behind semantic edge |
 | project-execution-observation | project-result | hidden behind semantic edge |
-| observed-new-feature-execution.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts return type |
+| observed-new-feature-execution.v1 | result contract | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts return type |
 | executes-newly-materialized-feature | execution registration identity | executesNewlyMaterializedFeature lineage |
 | execute-newly-materialized-feature | semantic model identity | edge invocation string |
 
@@ -4133,7 +3946,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -4143,7 +3956,7 @@ The governed execution plan above is authoritative; no illustrative semantic-ker
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: compose-one-new-feature-execution-comparison
 // obligation-id: compose-complete-execution-comparison
 // responsibility-id: composes-new-feature-execution-comparison
@@ -4168,7 +3981,7 @@ export async function composesNewFeatureExecutionComparison(
 | --- | --- | --- |
 | observe-comparison-inputs | resolve-observation | hidden behind semantic edge |
 | project-new-feature-execution-comparison | project-result | hidden behind semantic edge |
-| new-feature-execution-comparison.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts return type |
+| new-feature-execution-comparison.v1 | result contract | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts return type |
 | composes-new-feature-execution-comparison | execution registration identity | composesNewFeatureExecutionComparison lineage |
 | compose-new-feature-execution-comparison | semantic model identity | edge invocation string |
 
@@ -4323,7 +4136,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -4333,7 +4146,7 @@ The governed execution plan above is authoritative; no illustrative semantic-ker
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: verify-one-complete-new-feature-lineage
 // obligation-id: prove-complete-new-feature-equivalence
 // responsibility-id: verifies-complete-new-feature-lineage
@@ -4359,7 +4172,7 @@ export async function verifiesCompleteNewFeatureLineage(
 | observe-execution-comparison | resolve-observation | hidden behind semantic edge |
 | resolve-terminal-disposition | resolve-decision | hidden behind semantic edge |
 | project-terminal-disposition | project-result | hidden behind semantic edge |
-| new-feature-terminal-disposition.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts return type |
+| new-feature-terminal-disposition.v1 | result contract | capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts return type |
 | verifies-complete-new-feature-lineage | execution registration identity | verifiesCompleteNewFeatureLineage lineage |
 | verify-complete-new-feature-lineage | semantic model identity | edge invocation string |
 
@@ -4563,7 +4376,7 @@ Stop condition: every semantic authority has one deterministic execution model
 {
   "contractId": "canonical-feature-semantic-interpreter.v1",
   "bindingStatus": "IMPLEMENTED",
-  "requiredArtifact": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts",
+  "requiredArtifact": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts",
   "pathDialect": {
     "dialectId": "rooted-member-path.v1",
     "rootToken": "$",
@@ -5044,7 +4857,7 @@ Stop condition: every responsibility has one complete constrained feature body
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: admit-one-reviewed-new-feature-request
 // obligation-id: establish-one-eligible-new-feature-request
 // responsibility-id: admits-reviewed-new-feature-request
@@ -5104,7 +4917,7 @@ export async function admitsReviewedNewFeatureRequest(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: adapt-one-new-feature-request-admission
 // obligation-id: bridge-admission-to-admitted-request-contract
 // responsibility-id: adapts-new-feature-request-admission
@@ -5164,7 +4977,7 @@ export async function adaptsNewFeatureRequestAdmission(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: project-one-complete-new-feature-authority
 // obligation-id: establish-one-complete-new-feature-authority
 // responsibility-id: projects-complete-new-feature-authority
@@ -5224,7 +5037,7 @@ export async function projectsCompleteNewFeatureAuthority(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: materialize-one-complete-new-feature
 // obligation-id: materialize-only-admitted-new-feature-authority
 // responsibility-id: materializes-complete-new-feature
@@ -5284,7 +5097,7 @@ export async function materializesCompleteNewFeature(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: execute-one-newly-materialized-feature
 // obligation-id: execute-new-feature-through-admitted-semantics
 // responsibility-id: executes-newly-materialized-feature
@@ -5344,7 +5157,7 @@ export async function executesNewlyMaterializedFeature(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: compose-one-new-feature-execution-comparison
 // obligation-id: compose-complete-execution-comparison
 // responsibility-id: composes-new-feature-execution-comparison
@@ -5404,7 +5217,7 @@ export async function composesNewFeatureExecutionComparison(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: verify-one-complete-new-feature-lineage
 // obligation-id: prove-complete-new-feature-equivalence
 // responsibility-id: verifies-complete-new-feature-lineage
@@ -5446,22 +5259,22 @@ Scenario
         └── admits-reviewed-new-feature-request
             │
             ├─► [SA] Semantic Authority
-            │      admit-reviewed-new-feature-request.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/admit-reviewed-new-feature-request.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      new-feature-request-admission.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      new-feature-request-admission.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      new-feature-request-admission.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      new-feature-request-admission.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts
             │
             └─► [REG] Runtime Registration
-                   registers-admit-reviewed-new-feature-request.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/registers-admit-reviewed-new-feature-request.ts
 
 Scenario
 └── adapt-one-new-feature-request-admission
@@ -5470,22 +5283,22 @@ Scenario
         └── adapts-new-feature-request-admission
             │
             ├─► [SA] Semantic Authority
-            │      adapt-new-feature-request-admission.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/adapt-new-feature-request-admission.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      admitted-new-feature-request.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      admitted-new-feature-request.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      admitted-new-feature-request.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      admitted-new-feature-request.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts
             │
             └─► [REG] Runtime Registration
-                   registers-adapt-new-feature-request-admission.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/registers-adapt-new-feature-request-admission.ts
 
 Scenario
 └── project-one-complete-new-feature-authority
@@ -5494,22 +5307,22 @@ Scenario
         └── projects-complete-new-feature-authority
             │
             ├─► [SA] Semantic Authority
-            │      project-complete-new-feature-authority.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/project-complete-new-feature-authority.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      complete-new-feature-authority.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      complete-new-feature-authority.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      complete-new-feature-authority.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      complete-new-feature-authority.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts
             │
             └─► [REG] Runtime Registration
-                   registers-project-complete-new-feature-authority.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/registers-project-complete-new-feature-authority.ts
 
 Scenario
 └── materialize-one-complete-new-feature
@@ -5518,22 +5331,22 @@ Scenario
         └── materializes-complete-new-feature
             │
             ├─► [SA] Semantic Authority
-            │      materialize-complete-new-feature.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/materialize-complete-new-feature.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      complete-new-feature-materialization.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      complete-new-feature-materialization.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      complete-new-feature-materialization.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      complete-new-feature-materialization.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts
             │
             └─► [REG] Runtime Registration
-                   registers-materialize-complete-new-feature.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/registers-materialize-complete-new-feature.ts
 
 Scenario
 └── execute-one-newly-materialized-feature
@@ -5542,22 +5355,22 @@ Scenario
         └── executes-newly-materialized-feature
             │
             ├─► [SA] Semantic Authority
-            │      execute-newly-materialized-feature.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/execute-newly-materialized-feature.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      observed-new-feature-execution.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      observed-new-feature-execution.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      observed-new-feature-execution.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      observed-new-feature-execution.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts
             │
             └─► [REG] Runtime Registration
-                   registers-execute-newly-materialized-feature.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/registers-execute-newly-materialized-feature.ts
 
 Scenario
 └── compose-one-new-feature-execution-comparison
@@ -5566,22 +5379,22 @@ Scenario
         └── composes-new-feature-execution-comparison
             │
             ├─► [SA] Semantic Authority
-            │      compose-new-feature-execution-comparison.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/compose-new-feature-execution-comparison.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      new-feature-execution-comparison.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      new-feature-execution-comparison.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      new-feature-execution-comparison.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      new-feature-execution-comparison.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts
             │
             └─► [REG] Runtime Registration
-                   registers-compose-new-feature-execution-comparison.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/registers-compose-new-feature-execution-comparison.ts
 
 Scenario
 └── verify-one-complete-new-feature-lineage
@@ -5590,29 +5403,29 @@ Scenario
         └── verifies-complete-new-feature-lineage
             │
             ├─► [SA] Semantic Authority
-            │      verify-complete-new-feature-lineage.semantic-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/verify-complete-new-feature-lineage.semantic-authority.json
             │
             ├─► [FB] Feature Body Authority
-            │      complete-new-feature-lineage.feature-body-authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.feature-body-authority.json
             │
             ├─► [AST] Projected AST
-            │      complete-new-feature-lineage.ts.ast.authority.json
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts.ast.authority.json
             │
             ├─► [TYPE] Projected Type Definitions
-            │      complete-new-feature-lineage.type.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.type.ts
             │
             ├─► [TS] Projected Runtime Body
-            │      complete-new-feature-lineage.ts
+            │      capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts
             │
             └─► [REG] Runtime Registration
-                   registers-verify-complete-new-feature-lineage.ts
+                   capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/registers-verify-complete-new-feature-lineage.ts
 
 Feature-level execution
 ├─► [FLOW] Feature Execution Body
-│      capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts
+│      capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.ts
 │
 └─► [PORT] Runtime Adapter
-       capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts
+       capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/invokes-canonical-feature-conveyor.ts
 ```
 
 ### What this becomes
@@ -5623,7 +5436,7 @@ Projection availability: PROJECTOR_OUTPUT
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: admit-one-reviewed-new-feature-request
 // obligation-id: establish-one-eligible-new-feature-request
 // responsibility-id: admits-reviewed-new-feature-request
@@ -5646,7 +5459,7 @@ export async function admitsReviewedNewFeatureRequest(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: adapt-one-new-feature-request-admission
 // obligation-id: bridge-admission-to-admitted-request-contract
 // responsibility-id: adapts-new-feature-request-admission
@@ -5669,7 +5482,7 @@ export async function adaptsNewFeatureRequestAdmission(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: project-one-complete-new-feature-authority
 // obligation-id: establish-one-complete-new-feature-authority
 // responsibility-id: projects-complete-new-feature-authority
@@ -5692,7 +5505,7 @@ export async function projectsCompleteNewFeatureAuthority(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: materialize-one-complete-new-feature
 // obligation-id: materialize-only-admitted-new-feature-authority
 // responsibility-id: materializes-complete-new-feature
@@ -5715,7 +5528,7 @@ export async function materializesCompleteNewFeature(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: execute-one-newly-materialized-feature
 // obligation-id: execute-new-feature-through-admitted-semantics
 // responsibility-id: executes-newly-materialized-feature
@@ -5738,7 +5551,7 @@ export async function executesNewlyMaterializedFeature(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: compose-one-new-feature-execution-comparison
 // obligation-id: compose-complete-execution-comparison
 // responsibility-id: composes-new-feature-execution-comparison
@@ -5761,7 +5574,7 @@ export async function composesNewFeatureExecutionComparison(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: verify-one-complete-new-feature-lineage
 // obligation-id: prove-complete-new-feature-equivalence
 // responsibility-id: verifies-complete-new-feature-lineage
@@ -5869,8 +5682,8 @@ Production projector invocations:
       "projectorId": "projects-typescript-body",
       "projectorVersion": "1.0.0",
       "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
-      "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
-      "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      "executablePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs",
+      "executableSha256": "sha256:0f1f8e7b25ca750fb8f051314c64ab37d0f0d185562203c16e39be4f456523ae"
     },
     "input": {
       "bodyAuthorityRef": "feature-body:new-feature-request-admission",
@@ -5883,10 +5696,10 @@ Production projector invocations:
         "projectionId": "project-new-feature-request-admission-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts"
+          "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts"
         },
         "lineage": {
-          "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+          "featureId": "end-to-end-canonical-feature-conveyor-fractal",
           "scenarioId": "admit-one-reviewed-new-feature-request",
           "obligationId": "establish-one-eligible-new-feature-request",
           "responsibilityId": "admits-reviewed-new-feature-request",
@@ -5916,7 +5729,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts",
+      "path": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -5931,8 +5744,8 @@ Production projector invocations:
       "projectorId": "projects-typescript-body",
       "projectorVersion": "1.0.0",
       "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
-      "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
-      "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      "executablePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs",
+      "executableSha256": "sha256:0f1f8e7b25ca750fb8f051314c64ab37d0f0d185562203c16e39be4f456523ae"
     },
     "input": {
       "bodyAuthorityRef": "feature-body:admitted-new-feature-request",
@@ -5945,10 +5758,10 @@ Production projector invocations:
         "projectionId": "project-admitted-new-feature-request-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts"
+          "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts"
         },
         "lineage": {
-          "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+          "featureId": "end-to-end-canonical-feature-conveyor-fractal",
           "scenarioId": "adapt-one-new-feature-request-admission",
           "obligationId": "bridge-admission-to-admitted-request-contract",
           "responsibilityId": "adapts-new-feature-request-admission",
@@ -5978,7 +5791,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts",
+      "path": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -5993,8 +5806,8 @@ Production projector invocations:
       "projectorId": "projects-typescript-body",
       "projectorVersion": "1.0.0",
       "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
-      "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
-      "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      "executablePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs",
+      "executableSha256": "sha256:0f1f8e7b25ca750fb8f051314c64ab37d0f0d185562203c16e39be4f456523ae"
     },
     "input": {
       "bodyAuthorityRef": "feature-body:complete-new-feature-authority",
@@ -6007,10 +5820,10 @@ Production projector invocations:
         "projectionId": "project-complete-new-feature-authority-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts"
+          "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts"
         },
         "lineage": {
-          "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+          "featureId": "end-to-end-canonical-feature-conveyor-fractal",
           "scenarioId": "project-one-complete-new-feature-authority",
           "obligationId": "establish-one-complete-new-feature-authority",
           "responsibilityId": "projects-complete-new-feature-authority",
@@ -6040,7 +5853,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts",
+      "path": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -6055,8 +5868,8 @@ Production projector invocations:
       "projectorId": "projects-typescript-body",
       "projectorVersion": "1.0.0",
       "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
-      "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
-      "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      "executablePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs",
+      "executableSha256": "sha256:0f1f8e7b25ca750fb8f051314c64ab37d0f0d185562203c16e39be4f456523ae"
     },
     "input": {
       "bodyAuthorityRef": "feature-body:complete-new-feature-materialization",
@@ -6069,10 +5882,10 @@ Production projector invocations:
         "projectionId": "project-complete-new-feature-materialization-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts"
+          "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts"
         },
         "lineage": {
-          "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+          "featureId": "end-to-end-canonical-feature-conveyor-fractal",
           "scenarioId": "materialize-one-complete-new-feature",
           "obligationId": "materialize-only-admitted-new-feature-authority",
           "responsibilityId": "materializes-complete-new-feature",
@@ -6102,7 +5915,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts",
+      "path": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -6117,8 +5930,8 @@ Production projector invocations:
       "projectorId": "projects-typescript-body",
       "projectorVersion": "1.0.0",
       "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
-      "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
-      "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      "executablePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs",
+      "executableSha256": "sha256:0f1f8e7b25ca750fb8f051314c64ab37d0f0d185562203c16e39be4f456523ae"
     },
     "input": {
       "bodyAuthorityRef": "feature-body:observed-new-feature-execution",
@@ -6131,10 +5944,10 @@ Production projector invocations:
         "projectionId": "project-observed-new-feature-execution-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts"
+          "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts"
         },
         "lineage": {
-          "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+          "featureId": "end-to-end-canonical-feature-conveyor-fractal",
           "scenarioId": "execute-one-newly-materialized-feature",
           "obligationId": "execute-new-feature-through-admitted-semantics",
           "responsibilityId": "executes-newly-materialized-feature",
@@ -6164,7 +5977,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts",
+      "path": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -6179,8 +5992,8 @@ Production projector invocations:
       "projectorId": "projects-typescript-body",
       "projectorVersion": "1.0.0",
       "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
-      "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
-      "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      "executablePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs",
+      "executableSha256": "sha256:0f1f8e7b25ca750fb8f051314c64ab37d0f0d185562203c16e39be4f456523ae"
     },
     "input": {
       "bodyAuthorityRef": "feature-body:new-feature-execution-comparison",
@@ -6193,10 +6006,10 @@ Production projector invocations:
         "projectionId": "project-new-feature-execution-comparison-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts"
+          "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts"
         },
         "lineage": {
-          "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+          "featureId": "end-to-end-canonical-feature-conveyor-fractal",
           "scenarioId": "compose-one-new-feature-execution-comparison",
           "obligationId": "compose-complete-execution-comparison",
           "responsibilityId": "composes-new-feature-execution-comparison",
@@ -6226,7 +6039,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts",
+      "path": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -6241,8 +6054,8 @@ Production projector invocations:
       "projectorId": "projects-typescript-body",
       "projectorVersion": "1.0.0",
       "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
-      "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
-      "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      "executablePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs",
+      "executableSha256": "sha256:0f1f8e7b25ca750fb8f051314c64ab37d0f0d185562203c16e39be4f456523ae"
     },
     "input": {
       "bodyAuthorityRef": "feature-body:complete-new-feature-lineage",
@@ -6255,10 +6068,10 @@ Production projector invocations:
         "projectionId": "project-complete-new-feature-lineage-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts"
+          "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts"
         },
         "lineage": {
-          "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+          "featureId": "end-to-end-canonical-feature-conveyor-fractal",
           "scenarioId": "verify-one-complete-new-feature-lineage",
           "obligationId": "prove-complete-new-feature-equivalence",
           "responsibilityId": "verifies-complete-new-feature-lineage",
@@ -6288,7 +6101,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts",
+      "path": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -6305,7 +6118,7 @@ Compilation and runtime artifact authority:
 {
   "edgeRegistry": {
     "contractId": "canonical-feature-edge-registry.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/canonical-feature-edge-registry.type.ts",
     "edgeContracts": [
       {
         "sequence": 1,
@@ -6359,10 +6172,10 @@ Compilation and runtime artifact authority:
       "projectionId": "project-canonical-feature-edge-registry-type",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts"
+        "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/canonical-feature-edge-registry.type.ts"
       },
       "lineage": {
-        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "featureId": "end-to-end-canonical-feature-conveyor-fractal",
         "scenarioId": "execute-complete-canonical-feature-conveyor",
         "obligationId": "execute-one-mechanically-continuous-feature-flow",
         "responsibilityId": "executes-end-to-end-canonical-feature-conveyor",
@@ -6398,7 +6211,7 @@ Compilation and runtime artifact authority:
     "bindingStatus": "IMPLEMENTED"
   },
   "compositionTypes": {
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
     "authorityRef": "implementation-artifact:composition-types",
     "bindingStatus": "PROJECTOR_OUTPUT_AVAILABLE",
     "projectorRequest": {
@@ -6410,10 +6223,10 @@ Compilation and runtime artifact authority:
       "projectionId": "project-end-to-end-canonical-feature-conveyor-composition-types",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
+        "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
       },
       "lineage": {
-        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "featureId": "end-to-end-canonical-feature-conveyor-fractal",
         "scenarioId": "execute-complete-canonical-feature-conveyor",
         "obligationId": "execute-one-mechanically-continuous-feature-flow",
         "responsibilityId": "executes-end-to-end-canonical-feature-conveyor",
@@ -6712,61 +6525,61 @@ Compilation and runtime artifact authority:
     {
       "responsibilityId": "admits-reviewed-new-feature-request",
       "edgeId": "admit-reviewed-new-feature-request",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-admit-reviewed-new-feature-request.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/registers-admit-reviewed-new-feature-request.ts",
       "implementationRef": "semantic-execution:admit-reviewed-new-feature-request",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "adapts-new-feature-request-admission",
       "edgeId": "adapt-new-feature-request-admission",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-adapt-new-feature-request-admission.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/registers-adapt-new-feature-request-admission.ts",
       "implementationRef": "semantic-execution:adapt-new-feature-request-admission",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "projects-complete-new-feature-authority",
       "edgeId": "project-complete-new-feature-authority",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-project-complete-new-feature-authority.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/registers-project-complete-new-feature-authority.ts",
       "implementationRef": "semantic-execution:project-complete-new-feature-authority",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "materializes-complete-new-feature",
       "edgeId": "materialize-complete-new-feature",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-materialize-complete-new-feature.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/registers-materialize-complete-new-feature.ts",
       "implementationRef": "semantic-execution:materialize-complete-new-feature",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "executes-newly-materialized-feature",
       "edgeId": "execute-newly-materialized-feature",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-execute-newly-materialized-feature.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/registers-execute-newly-materialized-feature.ts",
       "implementationRef": "semantic-execution:execute-newly-materialized-feature",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "composes-new-feature-execution-comparison",
       "edgeId": "compose-new-feature-execution-comparison",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-compose-new-feature-execution-comparison.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/registers-compose-new-feature-execution-comparison.ts",
       "implementationRef": "semantic-execution:compose-new-feature-execution-comparison",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "verifies-complete-new-feature-lineage",
       "edgeId": "verify-complete-new-feature-lineage",
-      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-verify-complete-new-feature-lineage.ts",
+      "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/registers-verify-complete-new-feature-lineage.ts",
       "implementationRef": "semantic-execution:verify-complete-new-feature-lineage",
       "bindingStatus": "IMPLEMENTED"
     }
   ],
   "semanticInterpreter": {
     "authorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts",
     "bindingStatus": "IMPLEMENTED"
   },
   "runtimeAdapter": {
     "contractId": "canonical-feature-runtime-adapter.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/invokes-canonical-feature-conveyor.ts",
     "acceptsContractId": "reviewed-new-feature-request.v1",
     "constructsContextContractId": "end-to-end-canonical-feature-conveyor-context.v1",
     "producesContractId": "new-feature-terminal-disposition.v1",
@@ -6778,7 +6591,7 @@ Compilation and runtime artifact authority:
   },
   "authorityProjectorBoundary": {
     "contractId": "complete-new-feature-authority-projector-port.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-authority-projector.port.ts",
     "operations": [
       "projects-and-writes-complete-authority"
     ],
@@ -6791,10 +6604,10 @@ Compilation and runtime artifact authority:
       "projectionId": "project-complete-new-feature-authority-projector-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts"
+        "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-authority-projector.port.ts"
       },
       "lineage": {
-        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "featureId": "end-to-end-canonical-feature-conveyor-fractal",
         "scenarioId": "project-one-complete-new-feature-authority",
         "obligationId": "establish-one-complete-new-feature-authority",
         "responsibilityId": "projects-complete-new-feature-authority",
@@ -6834,7 +6647,7 @@ Compilation and runtime artifact authority:
   },
   "materializationBoundary": {
     "contractId": "complete-new-feature-materializer-port.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-materializer.port.ts",
     "operations": [
       "materializes-and-writes-artifact-manifest"
     ],
@@ -6847,10 +6660,10 @@ Compilation and runtime artifact authority:
       "projectionId": "project-complete-new-feature-materializer-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts"
+        "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-materializer.port.ts"
       },
       "lineage": {
-        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "featureId": "end-to-end-canonical-feature-conveyor-fractal",
         "scenarioId": "materialize-one-complete-new-feature",
         "obligationId": "materialize-only-admitted-new-feature-authority",
         "responsibilityId": "materializes-complete-new-feature",
@@ -6890,7 +6703,7 @@ Compilation and runtime artifact authority:
   },
   "fixtureBoundary": {
     "contractId": "canonical-feature-evaluation-fixture-port.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/canonical-feature-evaluation-fixture.port.ts",
     "operations": [
       "loadsSemanticFixture",
       "loadsProjectedFixture",
@@ -6905,10 +6718,10 @@ Compilation and runtime artifact authority:
       "projectionId": "project-canonical-feature-evaluation-fixture-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts"
+        "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/canonical-feature-evaluation-fixture.port.ts"
       },
       "lineage": {
-        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "featureId": "end-to-end-canonical-feature-conveyor-fractal",
         "scenarioId": "execute-one-newly-materialized-feature",
         "obligationId": "execute-new-feature-through-admitted-semantics",
         "responsibilityId": "executes-newly-materialized-feature",
@@ -6942,7 +6755,7 @@ Compilation and runtime artifact authority:
   },
   "evidenceBoundary": {
     "contractId": "governed-artifact-evidence-store.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/governed-artifact-evidence-store.port.ts",
     "operations": [
       "writes",
       "resolves",
@@ -6960,10 +6773,10 @@ Compilation and runtime artifact authority:
       "projectionId": "project-governed-artifact-evidence-store-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts"
+        "relativePath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/governed-artifact-evidence-store.port.ts"
       },
       "lineage": {
-        "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+        "featureId": "end-to-end-canonical-feature-conveyor-fractal",
         "scenarioId": "compose-one-new-feature-execution-comparison",
         "obligationId": "compose-complete-execution-comparison",
         "responsibilityId": "composes-new-feature-execution-comparison",
@@ -7007,7 +6820,7 @@ Compilation and runtime artifact authority:
   },
   "executionProof": {
     "contractId": "canonical-feature-conveyor-execution-proof.v1",
-    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/proves-canonical-feature-conveyor.ts",
+    "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/proves-canonical-feature-conveyor.ts",
     "semanticSurface": "direct-semantic-authority",
     "projectedSurface": "projected-composition-and-responsibility-bodies",
     "comparison": "RFC8785-JCS-equivalence",
@@ -7029,7 +6842,7 @@ Compilation and runtime artifact authority:
     "targetPolicy": {
       "root": "governed-repository-workspace",
       "repositoryRoot": ".",
-      "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+      "capabilityRoot": "capabilities/end-to-end-canonical-feature-conveyor-fractal",
       "projectionMode": "working-tree",
       "reviewSurface": "git-diff",
       "authoritySource": "canonical-json-only",
@@ -7053,11 +6866,17 @@ Compilation and runtime artifact authority:
       "typescript": "strict-compile",
       "lineage": "authority-ref-and-source-hash"
     },
-    "artifacts": [
+    "fileBodyCoordinates": "derive-from-file-body-placement-rules",
+    "dependencyPolicy": {
+      "localModuleBoundary": "capability-root-only",
+      "externalModuleImports": "forbidden",
+      "conveyorSpecificToolsOutsideCapability": "forbidden"
+    },
+    "supplementalArtifacts": [
       {
         "artifactId": "canonical-feature-edge-registry-type",
         "family": "composition",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/canonical-feature-edge-registry.type.ts",
         "sourceAuthorityRef": "implementation-artifact:edge-registry",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
@@ -7067,7 +6886,7 @@ Compilation and runtime artifact authority:
       {
         "artifactId": "end-to-end-canonical-feature-conveyor-type",
         "family": "composition",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
         "sourceAuthorityRef": "implementation-artifact:composition-types",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
@@ -7075,239 +6894,9 @@ Compilation and runtime artifact authority:
         "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
-        "artifactId": "end-to-end-canonical-feature-conveyor-body",
-        "family": "composition",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts",
-        "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "new-feature-request-admission-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "new-feature-request-admission-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts",
-        "sourceAuthorityRef": "feature-body:new-feature-request-admission",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "admitted-new-feature-request-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "admitted-new-feature-request-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts",
-        "sourceAuthorityRef": "feature-body:admitted-new-feature-request",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "complete-new-feature-authority-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "complete-new-feature-authority-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts",
-        "sourceAuthorityRef": "feature-body:complete-new-feature-authority",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "complete-new-feature-materialization-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "complete-new-feature-materialization-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts",
-        "sourceAuthorityRef": "feature-body:complete-new-feature-materialization",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "observed-new-feature-execution-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "observed-new-feature-execution-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts",
-        "sourceAuthorityRef": "feature-body:observed-new-feature-execution",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "new-feature-execution-comparison-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "new-feature-execution-comparison-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts",
-        "sourceAuthorityRef": "feature-body:new-feature-execution-comparison",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "complete-new-feature-lineage-type",
-        "family": "responsibility-type",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts",
-        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "complete-new-feature-lineage-body",
-        "family": "responsibility-body",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts",
-        "sourceAuthorityRef": "feature-body:complete-new-feature-lineage",
-        "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-admit-reviewed-new-feature-request",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-admit-reviewed-new-feature-request.ts",
-        "sourceAuthorityRef": "runtime-registration:admits-reviewed-new-feature-request",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-adapt-new-feature-request-admission",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-adapt-new-feature-request-admission.ts",
-        "sourceAuthorityRef": "runtime-registration:adapts-new-feature-request-admission",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-project-complete-new-feature-authority",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-project-complete-new-feature-authority.ts",
-        "sourceAuthorityRef": "runtime-registration:projects-complete-new-feature-authority",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-materialize-complete-new-feature",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-materialize-complete-new-feature.ts",
-        "sourceAuthorityRef": "runtime-registration:materializes-complete-new-feature",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-execute-newly-materialized-feature",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-execute-newly-materialized-feature.ts",
-        "sourceAuthorityRef": "runtime-registration:executes-newly-materialized-feature",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-compose-new-feature-execution-comparison",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-compose-new-feature-execution-comparison.ts",
-        "sourceAuthorityRef": "runtime-registration:composes-new-feature-execution-comparison",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "register-verify-complete-new-feature-lineage",
-        "family": "runtime-registration",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-verify-complete-new-feature-lineage.ts",
-        "sourceAuthorityRef": "runtime-registration:verifies-complete-new-feature-lineage",
-        "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
-        "artifactId": "canonical-feature-runtime-adapter",
-        "family": "runtime-adapter",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts",
-        "sourceAuthorityRef": "implementation-artifact:runtime-adapter",
-        "projectorCapability": "projects-runtime-adapter",
-        "projectionPosture": "PROJECTABLE",
-        "ownership": "projector-owned",
-        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
-      },
-      {
         "artifactId": "canonical-feature-semantic-interpreter",
         "family": "semantic-interpreter",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts",
         "sourceAuthorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
         "projectorCapability": "projects-semantic-interpreter",
         "projectionPosture": "PROJECTABLE",
@@ -7317,7 +6906,7 @@ Compilation and runtime artifact authority:
       {
         "artifactId": "complete-new-feature-authority-projector-port",
         "family": "runtime-port",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-authority-projector.port.ts",
         "sourceAuthorityRef": "implementation-artifact:authority-projector-boundary",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
@@ -7327,7 +6916,7 @@ Compilation and runtime artifact authority:
       {
         "artifactId": "complete-new-feature-materializer-port",
         "family": "runtime-port",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-materializer.port.ts",
         "sourceAuthorityRef": "implementation-artifact:materialization-boundary",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
@@ -7337,7 +6926,7 @@ Compilation and runtime artifact authority:
       {
         "artifactId": "canonical-feature-evaluation-fixture-port",
         "family": "evaluation-port",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/canonical-feature-evaluation-fixture.port.ts",
         "sourceAuthorityRef": "implementation-artifact:evaluation-fixture",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
@@ -7347,7 +6936,7 @@ Compilation and runtime artifact authority:
       {
         "artifactId": "governed-artifact-evidence-store-port",
         "family": "evaluation-port",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/governed-artifact-evidence-store.port.ts",
         "sourceAuthorityRef": "implementation-artifact:evidence-store",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
@@ -7357,7 +6946,7 @@ Compilation and runtime artifact authority:
       {
         "artifactId": "canonical-feature-conveyor-execution-proof",
         "family": "evaluation-proof",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/proves-canonical-feature-conveyor.ts",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/proves-canonical-feature-conveyor.ts",
         "sourceAuthorityRef": "implementation-artifact:execution-proof",
         "projectorCapability": "projects-evaluation-proof",
         "projectionPosture": "PROJECTABLE",
@@ -7367,7 +6956,7 @@ Compilation and runtime artifact authority:
       {
         "artifactId": "canonical-feature-conveyor-self-hosting-runner",
         "family": "self-hosting-runner",
-        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/self-hosts-canonical-feature-conveyor.mjs",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/self-hosts-canonical-feature-conveyor.mjs",
         "sourceAuthorityRef": "self-hosting:canonical-feature-conveyor-self-hosting.v1",
         "projectorCapability": "projects-self-hosting-runner",
         "projectionPosture": "PROJECTABLE",
@@ -7378,7 +6967,7 @@ Compilation and runtime artifact authority:
   },
   "workspaceProjectionAuthority": {
     "repositoryRoot": ".",
-    "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+    "capabilityRoot": "capabilities/end-to-end-canonical-feature-conveyor-fractal",
     "projectionMode": "working-tree",
     "reviewSurface": "git-diff",
     "sourceMaterialization": "direct-to-governed-capability-paths",
@@ -7482,7 +7071,7 @@ typescript-collapsed-responsibility-body-v1
 new-feature-request-admission.projectedAst
   | production source printer
   v
-capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts
+capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts
 
 admitted-new-feature-request
   | feature-body authority
@@ -7493,7 +7082,7 @@ typescript-collapsed-responsibility-body-v1
 admitted-new-feature-request.projectedAst
   | production source printer
   v
-capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts
+capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts
 
 complete-new-feature-authority
   | feature-body authority
@@ -7504,7 +7093,7 @@ typescript-collapsed-responsibility-body-v1
 complete-new-feature-authority.projectedAst
   | production source printer
   v
-capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts
+capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts
 
 complete-new-feature-materialization
   | feature-body authority
@@ -7515,7 +7104,7 @@ typescript-collapsed-responsibility-body-v1
 complete-new-feature-materialization.projectedAst
   | production source printer
   v
-capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts
+capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts
 
 observed-new-feature-execution
   | feature-body authority
@@ -7526,7 +7115,7 @@ typescript-collapsed-responsibility-body-v1
 observed-new-feature-execution.projectedAst
   | production source printer
   v
-capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts
+capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts
 
 new-feature-execution-comparison
   | feature-body authority
@@ -7537,7 +7126,7 @@ typescript-collapsed-responsibility-body-v1
 new-feature-execution-comparison.projectedAst
   | production source printer
   v
-capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts
+capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts
 
 complete-new-feature-lineage
   | feature-body authority
@@ -7548,7 +7137,7 @@ typescript-collapsed-responsibility-body-v1
 complete-new-feature-lineage.projectedAst
   | production source printer
   v
-capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts
+capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts
 ```
 
 ### new-feature-request-admission
@@ -7563,7 +7152,7 @@ capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/sr
     },
     {
       "kind": "line-comment",
-      "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
     },
     {
       "kind": "line-comment",
@@ -7652,7 +7241,7 @@ capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/sr
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: admit-one-reviewed-new-feature-request
 // obligation-id: establish-one-eligible-new-feature-request
 // responsibility-id: admits-reviewed-new-feature-request
@@ -7683,7 +7272,7 @@ export async function admitsReviewedNewFeatureRequest(
     },
     {
       "kind": "line-comment",
-      "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
     },
     {
       "kind": "line-comment",
@@ -7772,7 +7361,7 @@ export async function admitsReviewedNewFeatureRequest(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: adapt-one-new-feature-request-admission
 // obligation-id: bridge-admission-to-admitted-request-contract
 // responsibility-id: adapts-new-feature-request-admission
@@ -7803,7 +7392,7 @@ export async function adaptsNewFeatureRequestAdmission(
     },
     {
       "kind": "line-comment",
-      "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
     },
     {
       "kind": "line-comment",
@@ -7892,7 +7481,7 @@ export async function adaptsNewFeatureRequestAdmission(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: project-one-complete-new-feature-authority
 // obligation-id: establish-one-complete-new-feature-authority
 // responsibility-id: projects-complete-new-feature-authority
@@ -7923,7 +7512,7 @@ export async function projectsCompleteNewFeatureAuthority(
     },
     {
       "kind": "line-comment",
-      "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
     },
     {
       "kind": "line-comment",
@@ -8012,7 +7601,7 @@ export async function projectsCompleteNewFeatureAuthority(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: materialize-one-complete-new-feature
 // obligation-id: materialize-only-admitted-new-feature-authority
 // responsibility-id: materializes-complete-new-feature
@@ -8043,7 +7632,7 @@ export async function materializesCompleteNewFeature(
     },
     {
       "kind": "line-comment",
-      "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
     },
     {
       "kind": "line-comment",
@@ -8132,7 +7721,7 @@ export async function materializesCompleteNewFeature(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: execute-one-newly-materialized-feature
 // obligation-id: execute-new-feature-through-admitted-semantics
 // responsibility-id: executes-newly-materialized-feature
@@ -8163,7 +7752,7 @@ export async function executesNewlyMaterializedFeature(
     },
     {
       "kind": "line-comment",
-      "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
     },
     {
       "kind": "line-comment",
@@ -8252,7 +7841,7 @@ export async function executesNewlyMaterializedFeature(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: compose-one-new-feature-execution-comparison
 // obligation-id: compose-complete-execution-comparison
 // responsibility-id: composes-new-feature-execution-comparison
@@ -8283,7 +7872,7 @@ export async function composesNewFeatureExecutionComparison(
     },
     {
       "kind": "line-comment",
-      "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
     },
     {
       "kind": "line-comment",
@@ -8372,7 +7961,7 @@ export async function composesNewFeatureExecutionComparison(
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: verify-one-complete-new-feature-lineage
 // obligation-id: prove-complete-new-feature-equivalence
 // responsibility-id: verifies-complete-new-feature-lineage
@@ -8401,7 +7990,7 @@ AST root: `source-file`
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: admit-one-reviewed-new-feature-request
 // obligation-id: establish-one-eligible-new-feature-request
 // responsibility-id: admits-reviewed-new-feature-request
@@ -8426,7 +8015,7 @@ AST root: `source-file`
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: adapt-one-new-feature-request-admission
 // obligation-id: bridge-admission-to-admitted-request-contract
 // responsibility-id: adapts-new-feature-request-admission
@@ -8451,7 +8040,7 @@ AST root: `source-file`
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: project-one-complete-new-feature-authority
 // obligation-id: establish-one-complete-new-feature-authority
 // responsibility-id: projects-complete-new-feature-authority
@@ -8476,7 +8065,7 @@ AST root: `source-file`
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: materialize-one-complete-new-feature
 // obligation-id: materialize-only-admitted-new-feature-authority
 // responsibility-id: materializes-complete-new-feature
@@ -8501,7 +8090,7 @@ AST root: `source-file`
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: execute-one-newly-materialized-feature
 // obligation-id: execute-new-feature-through-admitted-semantics
 // responsibility-id: executes-newly-materialized-feature
@@ -8526,7 +8115,7 @@ AST root: `source-file`
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: compose-one-new-feature-execution-comparison
 // obligation-id: compose-complete-execution-comparison
 // responsibility-id: composes-new-feature-execution-comparison
@@ -8551,7 +8140,7 @@ AST root: `source-file`
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: verify-one-complete-new-feature-lineage
 // obligation-id: prove-complete-new-feature-equivalence
 // responsibility-id: verifies-complete-new-feature-lineage
@@ -8595,11 +8184,11 @@ Stop condition: every expected AST renders one deterministic source body
 
 ### Canonical authority
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: admit-one-reviewed-new-feature-request
 // obligation-id: establish-one-eligible-new-feature-request
 // responsibility-id: admits-reviewed-new-feature-request
@@ -8618,11 +8207,11 @@ export async function admitsReviewedNewFeatureRequest(
 
 ```
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/admit-one-reviewed-new-feature-request/admits-reviewed-new-feature-request/new-feature-request-admission.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: admit-one-reviewed-new-feature-request
 // obligation-id: establish-one-eligible-new-feature-request
 // responsibility-id: admits-reviewed-new-feature-request
@@ -8660,11 +8249,11 @@ Translation provenance:
 | feature-body:new-feature-request-admission:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:new-feature-request-admission:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: adapt-one-new-feature-request-admission
 // obligation-id: bridge-admission-to-admitted-request-contract
 // responsibility-id: adapts-new-feature-request-admission
@@ -8683,11 +8272,11 @@ export async function adaptsNewFeatureRequestAdmission(
 
 ```
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/adapt-one-new-feature-request-admission/adapts-new-feature-request-admission/admitted-new-feature-request.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: adapt-one-new-feature-request-admission
 // obligation-id: bridge-admission-to-admitted-request-contract
 // responsibility-id: adapts-new-feature-request-admission
@@ -8723,11 +8312,11 @@ Translation provenance:
 | feature-body:admitted-new-feature-request:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:admitted-new-feature-request:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: project-one-complete-new-feature-authority
 // obligation-id: establish-one-complete-new-feature-authority
 // responsibility-id: projects-complete-new-feature-authority
@@ -8746,11 +8335,11 @@ export async function projectsCompleteNewFeatureAuthority(
 
 ```
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/project-one-complete-new-feature-authority/projects-complete-new-feature-authority/complete-new-feature-authority.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: project-one-complete-new-feature-authority
 // obligation-id: establish-one-complete-new-feature-authority
 // responsibility-id: projects-complete-new-feature-authority
@@ -8787,11 +8376,11 @@ Translation provenance:
 | feature-body:complete-new-feature-authority:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:complete-new-feature-authority:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: materialize-one-complete-new-feature
 // obligation-id: materialize-only-admitted-new-feature-authority
 // responsibility-id: materializes-complete-new-feature
@@ -8810,11 +8399,11 @@ export async function materializesCompleteNewFeature(
 
 ```
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/materialize-one-complete-new-feature/materializes-complete-new-feature/complete-new-feature-materialization.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: materialize-one-complete-new-feature
 // obligation-id: materialize-only-admitted-new-feature-authority
 // responsibility-id: materializes-complete-new-feature
@@ -8851,11 +8440,11 @@ Translation provenance:
 | feature-body:complete-new-feature-materialization:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:complete-new-feature-materialization:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: execute-one-newly-materialized-feature
 // obligation-id: execute-new-feature-through-admitted-semantics
 // responsibility-id: executes-newly-materialized-feature
@@ -8874,11 +8463,11 @@ export async function executesNewlyMaterializedFeature(
 
 ```
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/execute-one-newly-materialized-feature/executes-newly-materialized-feature/observed-new-feature-execution.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: execute-one-newly-materialized-feature
 // obligation-id: execute-new-feature-through-admitted-semantics
 // responsibility-id: executes-newly-materialized-feature
@@ -8920,11 +8509,11 @@ Translation provenance:
 | feature-body:observed-new-feature-execution:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:observed-new-feature-execution:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: compose-one-new-feature-execution-comparison
 // obligation-id: compose-complete-execution-comparison
 // responsibility-id: composes-new-feature-execution-comparison
@@ -8943,11 +8532,11 @@ export async function composesNewFeatureExecutionComparison(
 
 ```
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/compose-one-new-feature-execution-comparison/composes-new-feature-execution-comparison/new-feature-execution-comparison.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: compose-one-new-feature-execution-comparison
 // obligation-id: compose-complete-execution-comparison
 // responsibility-id: composes-new-feature-execution-comparison
@@ -8987,11 +8576,11 @@ Translation provenance:
 | feature-body:new-feature-execution-comparison:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:new-feature-execution-comparison:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: verify-one-complete-new-feature-lineage
 // obligation-id: prove-complete-new-feature-equivalence
 // responsibility-id: verifies-complete-new-feature-lineage
@@ -9010,11 +8599,11 @@ export async function verifiesCompleteNewFeatureLineage(
 
 ```
 
-### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts
+### capabilities/end-to-end-canonical-feature-conveyor-fractal/scenarios/verify-one-complete-new-feature-lineage/verifies-complete-new-feature-lineage/complete-new-feature-lineage.type.ts
 
 ```typescript
 // @generated
-// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor
+// feature-id: end-to-end-canonical-feature-conveyor-fractal
 // scenario-id: verify-one-complete-new-feature-lineage
 // obligation-id: prove-complete-new-feature-equivalence
 // responsibility-id: verifies-complete-new-feature-lineage

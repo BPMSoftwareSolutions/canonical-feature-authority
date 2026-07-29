@@ -1,0 +1,63 @@
+{
+  "scenarioId": "verify-one-complete-new-feature-lineage",
+  "title": "Verify one complete new-feature lineage",
+  "behavior": {
+    "given": [
+      {
+        "statementId": "execution-comparison-is-available",
+        "text": "one complete new-feature execution comparison carrying all required evidence references"
+      }
+    ],
+    "when": {
+      "statementId": "translation-equivalence-is-evaluated",
+      "text": "the pinned interpreter resolves and compares the referenced expectation, execution, AST, and code evidence"
+    },
+    "then": [
+      {
+        "statementId": "terminal-disposition-is-observed",
+        "text": "one terminal canonical-feature construction disposition is produced"
+      }
+    ]
+  },
+  "obligation": {
+    "obligationId": "prove-complete-new-feature-equivalence",
+    "statement": "Declared expectation, direct semantic execution, and projected execution must be canonically equivalent."
+  },
+  "expectation": {
+    "expectationId": "expect-complete-new-feature-equivalence",
+    "signalId": "complete-new-feature-equivalence",
+    "expectedDisposition": "PROJECTION_CONFORMS"
+  },
+  "responsibility": {
+    "responsibilityId": "verifies-complete-new-feature-lineage",
+    "kind": "conformance",
+    "semanticOperationId": "verify-complete-new-feature-lineage"
+  },
+  "signal": {
+    "signalId": "complete-new-feature-equivalence",
+    "statement": "Canonical meaning is conserved across authority, AST, source, and both execution surfaces.",
+    "resultShape": {
+      "contractId": "new-feature-terminal-disposition.v1",
+      "shapePolicy": "terminal-disposition",
+      "fields": [
+        {
+          "name": "disposition",
+          "type": "literal-union",
+          "allowedValues": [
+            "PROJECTION_CONFORMS",
+            "PROJECTION_DIVERGES"
+          ]
+        },
+        {
+          "name": "comparisonEvidenceRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "lineageId",
+          "type": "string"
+        }
+      ],
+      "rationale": "The terminal result binds its literal disposition to the exact comparison evidence and lineage that produced it."
+    }
+  }
+}

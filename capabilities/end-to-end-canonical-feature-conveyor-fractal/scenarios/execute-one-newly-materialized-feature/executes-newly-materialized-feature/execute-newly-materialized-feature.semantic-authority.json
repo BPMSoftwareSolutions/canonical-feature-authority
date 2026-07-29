@@ -1,0 +1,91 @@
+{
+  "responsibilityId": "executes-newly-materialized-feature",
+  "accepts": {
+    "contractId": "complete-new-feature-materialization.v1"
+  },
+  "produces": {
+    "contractId": "observed-new-feature-execution.v1"
+  },
+  "observations": [
+    {
+      "observationId": "observe-materialized-feature",
+      "sourceRef": "scenario:execute-one-newly-materialized-feature",
+      "resolution": {
+        "portRef": "implementation-artifact:evaluation-fixture",
+        "operationId": "executes-semantic-and-projected-surfaces",
+        "input": "$.input",
+        "producesFields": [
+          "disposition",
+          "featureId",
+          "artifactManifestRef",
+          "semanticObservationRef",
+          "projectedObservationRef",
+          "expectedSignalRef",
+          "astSourceCorrespondenceRef",
+          "lineageId"
+        ]
+      }
+    }
+  ],
+  "decisions": [],
+  "projections": [
+    {
+      "projectionId": "project-execution-observation",
+      "from": "observe-materialized-feature",
+      "to": "observed-new-feature-execution.v1",
+      "fields": {
+        "disposition": {
+          "kind": "path",
+          "path": "$.observed.disposition"
+        },
+        "featureId": {
+          "kind": "path",
+          "path": "$.observed.featureId"
+        },
+        "artifactManifestRef": {
+          "kind": "path",
+          "path": "$.observed.artifactManifestRef"
+        },
+        "semanticObservationRef": {
+          "kind": "path",
+          "path": "$.observed.semanticObservationRef"
+        },
+        "projectedObservationRef": {
+          "kind": "path",
+          "path": "$.observed.projectedObservationRef"
+        },
+        "expectedSignalRef": {
+          "kind": "path",
+          "path": "$.observed.expectedSignalRef"
+        },
+        "astSourceCorrespondenceRef": {
+          "kind": "path",
+          "path": "$.observed.astSourceCorrespondenceRef"
+        },
+        "lineageId": {
+          "kind": "path",
+          "path": "$.observed.lineageId"
+        }
+      }
+    }
+  ],
+  "execution": {
+    "executionModelId": "execute-newly-materialized-feature",
+    "steps": [
+      {
+        "sequence": 1,
+        "operation": "resolve-observation",
+        "authorityId": "observe-materialized-feature",
+        "input": "$.input",
+        "assign": "$.observed"
+      },
+      {
+        "sequence": 2,
+        "operation": "project-result",
+        "authorityId": "project-execution-observation",
+        "input": "$.observed",
+        "assign": "$.result"
+      }
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "scenarioId": "compose-one-new-feature-execution-comparison",
+  "title": "Compose one new-feature execution comparison",
+  "behavior": {
+    "given": [
+      {
+        "statementId": "observed-feature-execution-is-available",
+        "text": "one observed new-feature execution carrying semantic, projected, expected-signal, and AST-source correspondence references"
+      }
+    ],
+    "when": {
+      "statementId": "execution-comparison-is-composed",
+      "text": "the execution and its comparison inputs are assembled into one canonical comparison"
+    },
+    "then": [
+      {
+        "statementId": "execution-comparison-is-observed",
+        "text": "one new-feature execution comparison is observed"
+      }
+    ]
+  },
+  "obligation": {
+    "obligationId": "compose-complete-execution-comparison",
+    "statement": "Lineage verification must receive semantic observation, projected observation, expected signal, and AST-source correspondence together."
+  },
+  "expectation": {
+    "expectationId": "expect-one-complete-execution-comparison",
+    "signalId": "new-feature-execution-comparison",
+    "expectedDisposition": "COMPLETE"
+  },
+  "responsibility": {
+    "responsibilityId": "composes-new-feature-execution-comparison",
+    "kind": "projection",
+    "semanticOperationId": "compose-new-feature-execution-comparison"
+  },
+  "signal": {
+    "signalId": "new-feature-execution-comparison",
+    "statement": "All four inputs required by terminal lineage verification are present in one comparison contract.",
+    "resultShape": {
+      "contractId": "new-feature-execution-comparison.v1",
+      "shapePolicy": "execution-comparison",
+      "fields": [
+        {
+          "name": "disposition",
+          "type": "literal-union",
+          "allowedValues": [
+            "COMPLETE"
+          ]
+        },
+        {
+          "name": "featureId",
+          "type": "string"
+        },
+        {
+          "name": "semanticObservationRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "projectedObservationRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "expectedSignalRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "astSourceCorrespondenceRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "comparisonEvidenceRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "lineageId",
+          "type": "string"
+        }
+      ],
+      "rationale": "The comparison contract carries every immutable evidence reference evaluated by the terminal conformance decision."
+    }
+  }
+}

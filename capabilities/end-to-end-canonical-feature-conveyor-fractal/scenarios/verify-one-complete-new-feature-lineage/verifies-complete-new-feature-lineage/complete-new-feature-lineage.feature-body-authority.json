@@ -1,0 +1,30 @@
+{
+  "bodyId": "complete-new-feature-lineage",
+  "responsibilityId": "verifies-complete-new-feature-lineage",
+  "bodyKind": "scenario-responsibility",
+  "context": {
+    "parameterName": "context",
+    "contractId": "verify-complete-new-feature-lineage-context.v1",
+    "immutable": true
+  },
+  "operations": [
+    {
+      "sequence": 1,
+      "operation": "invoke-semantic-edge",
+      "edgeId": "verify-complete-new-feature-lineage",
+      "input": "$.context",
+      "assign": "disposition"
+    },
+    {
+      "sequence": 2,
+      "operation": "return",
+      "value": "$.disposition"
+    }
+  ],
+  "constraints": {
+    "domainBranching": "forbidden",
+    "domainIteration": "forbidden",
+    "dtoConstruction": "forbidden",
+    "directEffects": "forbidden"
+  }
+}

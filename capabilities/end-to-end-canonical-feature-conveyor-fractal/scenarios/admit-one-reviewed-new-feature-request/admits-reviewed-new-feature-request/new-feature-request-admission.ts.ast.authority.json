@@ -1,0 +1,92 @@
+{
+  "kind": "source-file",
+  "leadingComments": [
+    {
+      "kind": "line-comment",
+      "text": " @generated"
+    },
+    {
+      "kind": "line-comment",
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
+    },
+    {
+      "kind": "line-comment",
+      "text": " scenario-id: admit-one-reviewed-new-feature-request"
+    },
+    {
+      "kind": "line-comment",
+      "text": " obligation-id: establish-one-eligible-new-feature-request"
+    },
+    {
+      "kind": "line-comment",
+      "text": " responsibility-id: admits-reviewed-new-feature-request"
+    },
+    {
+      "kind": "line-comment",
+      "text": " signal-id: new-feature-request-admission"
+    },
+    {
+      "kind": "line-comment",
+      "text": " DO NOT EDIT."
+    }
+  ],
+  "imports": [
+    {
+      "kind": "type-only-import",
+      "moduleSpecifier": "./new-feature-request-admission.type.js",
+      "namedBindings": [
+        "AdmitReviewedNewFeatureRequestContext",
+        "NewFeatureRequestAdmission"
+      ]
+    }
+  ],
+  "statements": [
+    {
+      "kind": "function-declaration",
+      "identity": "new-feature-request-admission",
+      "modifiers": [
+        "export",
+        "async"
+      ],
+      "name": "admitsReviewedNewFeatureRequest",
+      "parameters": [
+        {
+          "kind": "parameter",
+          "name": "context",
+          "typeReference": "AdmitReviewedNewFeatureRequestContext",
+          "immutable": true
+        }
+      ],
+      "returnType": {
+        "kind": "promise",
+        "typeReference": "NewFeatureRequestAdmission"
+      },
+      "body": {
+        "kind": "block",
+        "statements": [
+          {
+            "kind": "return-statement",
+            "expression": {
+              "kind": "await-expression",
+              "expression": {
+                "kind": "semantic-edge-invocation",
+                "receiverPath": [
+                  "context",
+                  "edges"
+                ],
+                "operation": "invokes",
+                "edgeId": "admit-reviewed-new-feature-request",
+                "arguments": [
+                  {
+                    "kind": "identifier-reference",
+                    "name": "context"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "responsibilityId": "adapts-new-feature-request-admission",
+  "accepts": {
+    "contractId": "new-feature-request-admission.v1"
+  },
+  "produces": {
+    "contractId": "admitted-new-feature-request.v1"
+  },
+  "observations": [
+    {
+      "observationId": "observe-request-admission",
+      "sourceRef": "scenario:adapt-one-new-feature-request-admission",
+      "resolution": {
+        "portRef": "semantic-interpreter:input",
+        "operationId": "preserves-admission-envelope",
+        "input": "$.input",
+        "producesFields": [
+          "disposition",
+          "featureId",
+          "requestRef",
+          "lineageId"
+        ]
+      }
+    }
+  ],
+  "decisions": [],
+  "projections": [
+    {
+      "projectionId": "project-admitted-new-feature-request",
+      "from": "observe-request-admission",
+      "to": "admitted-new-feature-request.v1",
+      "fields": {
+        "disposition": {
+          "kind": "path",
+          "path": "$.observed.disposition"
+        },
+        "featureId": {
+          "kind": "path",
+          "path": "$.observed.featureId"
+        },
+        "requestRef": {
+          "kind": "path",
+          "path": "$.observed.requestRef"
+        },
+        "lineageId": {
+          "kind": "path",
+          "path": "$.observed.lineageId"
+        }
+      }
+    }
+  ],
+  "execution": {
+    "executionModelId": "adapt-new-feature-request-admission",
+    "steps": [
+      {
+        "sequence": 1,
+        "operation": "resolve-observation",
+        "authorityId": "observe-request-admission",
+        "input": "$.input",
+        "assign": "$.observed"
+      },
+      {
+        "sequence": 2,
+        "operation": "project-result",
+        "authorityId": "project-admitted-new-feature-request",
+        "input": "$.observed",
+        "assign": "$.result"
+      }
+    ]
+  }
+}

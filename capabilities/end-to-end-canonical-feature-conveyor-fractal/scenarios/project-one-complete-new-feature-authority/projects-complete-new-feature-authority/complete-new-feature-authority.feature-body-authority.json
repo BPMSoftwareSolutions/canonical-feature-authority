@@ -1,0 +1,30 @@
+{
+  "bodyId": "complete-new-feature-authority",
+  "responsibilityId": "projects-complete-new-feature-authority",
+  "bodyKind": "scenario-responsibility",
+  "context": {
+    "parameterName": "context",
+    "contractId": "project-complete-new-feature-authority-context.v1",
+    "immutable": true
+  },
+  "operations": [
+    {
+      "sequence": 1,
+      "operation": "invoke-semantic-edge",
+      "edgeId": "project-complete-new-feature-authority",
+      "input": "$.context",
+      "assign": "authority"
+    },
+    {
+      "sequence": 2,
+      "operation": "return",
+      "value": "$.authority"
+    }
+  ],
+  "constraints": {
+    "domainBranching": "forbidden",
+    "domainIteration": "forbidden",
+    "dtoConstruction": "forbidden",
+    "directEffects": "forbidden"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "kind": "source-file",
+  "leadingComments": [
+    {
+      "kind": "line-comment",
+      "text": " @generated"
+    },
+    {
+      "kind": "line-comment",
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
+    },
+    {
+      "kind": "line-comment",
+      "text": " scenario-id: project-one-complete-new-feature-authority"
+    },
+    {
+      "kind": "line-comment",
+      "text": " obligation-id: establish-one-complete-new-feature-authority"
+    },
+    {
+      "kind": "line-comment",
+      "text": " responsibility-id: projects-complete-new-feature-authority"
+    },
+    {
+      "kind": "line-comment",
+      "text": " signal-id: complete-new-feature-authority"
+    },
+    {
+      "kind": "line-comment",
+      "text": " DO NOT EDIT."
+    }
+  ],
+  "imports": [
+    {
+      "kind": "type-only-import",
+      "moduleSpecifier": "./complete-new-feature-authority.type.js",
+      "namedBindings": [
+        "ProjectCompleteNewFeatureAuthorityContext",
+        "CompleteNewFeatureAuthority"
+      ]
+    }
+  ],
+  "statements": [
+    {
+      "kind": "function-declaration",
+      "identity": "complete-new-feature-authority",
+      "modifiers": [
+        "export",
+        "async"
+      ],
+      "name": "projectsCompleteNewFeatureAuthority",
+      "parameters": [
+        {
+          "kind": "parameter",
+          "name": "context",
+          "typeReference": "ProjectCompleteNewFeatureAuthorityContext",
+          "immutable": true
+        }
+      ],
+      "returnType": {
+        "kind": "promise",
+        "typeReference": "CompleteNewFeatureAuthority"
+      },
+      "body": {
+        "kind": "block",
+        "statements": [
+          {
+            "kind": "return-statement",
+            "expression": {
+              "kind": "await-expression",
+              "expression": {
+                "kind": "semantic-edge-invocation",
+                "receiverPath": [
+                  "context",
+                  "edges"
+                ],
+                "operation": "invokes",
+                "edgeId": "project-complete-new-feature-authority",
+                "arguments": [
+                  {
+                    "kind": "identifier-reference",
+                    "name": "context"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

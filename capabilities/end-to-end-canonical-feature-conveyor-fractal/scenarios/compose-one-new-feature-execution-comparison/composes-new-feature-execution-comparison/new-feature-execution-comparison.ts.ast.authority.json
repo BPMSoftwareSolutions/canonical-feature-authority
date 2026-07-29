@@ -1,0 +1,92 @@
+{
+  "kind": "source-file",
+  "leadingComments": [
+    {
+      "kind": "line-comment",
+      "text": " @generated"
+    },
+    {
+      "kind": "line-comment",
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
+    },
+    {
+      "kind": "line-comment",
+      "text": " scenario-id: compose-one-new-feature-execution-comparison"
+    },
+    {
+      "kind": "line-comment",
+      "text": " obligation-id: compose-complete-execution-comparison"
+    },
+    {
+      "kind": "line-comment",
+      "text": " responsibility-id: composes-new-feature-execution-comparison"
+    },
+    {
+      "kind": "line-comment",
+      "text": " signal-id: new-feature-execution-comparison"
+    },
+    {
+      "kind": "line-comment",
+      "text": " DO NOT EDIT."
+    }
+  ],
+  "imports": [
+    {
+      "kind": "type-only-import",
+      "moduleSpecifier": "./new-feature-execution-comparison.type.js",
+      "namedBindings": [
+        "ComposeNewFeatureExecutionComparisonContext",
+        "NewFeatureExecutionComparison"
+      ]
+    }
+  ],
+  "statements": [
+    {
+      "kind": "function-declaration",
+      "identity": "new-feature-execution-comparison",
+      "modifiers": [
+        "export",
+        "async"
+      ],
+      "name": "composesNewFeatureExecutionComparison",
+      "parameters": [
+        {
+          "kind": "parameter",
+          "name": "context",
+          "typeReference": "ComposeNewFeatureExecutionComparisonContext",
+          "immutable": true
+        }
+      ],
+      "returnType": {
+        "kind": "promise",
+        "typeReference": "NewFeatureExecutionComparison"
+      },
+      "body": {
+        "kind": "block",
+        "statements": [
+          {
+            "kind": "return-statement",
+            "expression": {
+              "kind": "await-expression",
+              "expression": {
+                "kind": "semantic-edge-invocation",
+                "receiverPath": [
+                  "context",
+                  "edges"
+                ],
+                "operation": "invokes",
+                "edgeId": "compose-new-feature-execution-comparison",
+                "arguments": [
+                  {
+                    "kind": "identifier-reference",
+                    "name": "context"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "responsibilityId": "materializes-complete-new-feature",
+  "accepts": {
+    "contractId": "complete-new-feature-authority.v1"
+  },
+  "produces": {
+    "contractId": "complete-new-feature-materialization.v1"
+  },
+  "observations": [
+    {
+      "observationId": "observe-complete-feature-authority",
+      "sourceRef": "scenario:materialize-one-complete-new-feature",
+      "resolution": {
+        "portRef": "implementation-artifact:feature-materializer",
+        "operationId": "materializes-and-writes-artifact-manifest",
+        "input": "$.input",
+        "producesFields": [
+          "featureId",
+          "authorityRef",
+          "artifactManifestRef",
+          "lineageId"
+        ]
+      }
+    }
+  ],
+  "decisions": [],
+  "projections": [
+    {
+      "projectionId": "project-complete-feature-materialization",
+      "from": "observe-complete-feature-authority",
+      "to": "complete-new-feature-materialization.v1",
+      "fields": {
+        "disposition": {
+          "kind": "literal",
+          "value": "MATERIALIZED"
+        },
+        "featureId": {
+          "kind": "path",
+          "path": "$.observed.featureId"
+        },
+        "authorityRef": {
+          "kind": "path",
+          "path": "$.observed.authorityRef"
+        },
+        "artifactManifestRef": {
+          "kind": "path",
+          "path": "$.observed.artifactManifestRef"
+        },
+        "lineageId": {
+          "kind": "path",
+          "path": "$.observed.lineageId"
+        }
+      }
+    }
+  ],
+  "execution": {
+    "executionModelId": "materialize-complete-new-feature",
+    "steps": [
+      {
+        "sequence": 1,
+        "operation": "resolve-observation",
+        "authorityId": "observe-complete-feature-authority",
+        "input": "$.input",
+        "assign": "$.observed"
+      },
+      {
+        "sequence": 2,
+        "operation": "project-result",
+        "authorityId": "project-complete-feature-materialization",
+        "input": "$.observed",
+        "assign": "$.result"
+      }
+    ]
+  }
+}

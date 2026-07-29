@@ -46,10 +46,10 @@
     {
       "projectorId": "canonical-feature-conveyor-markdown-projector",
       "projectorVersion": "1.0.0",
-      "implementation": "tools/projects-canonical-feature-conveyor-contract.mjs",
-      "projectionLibrary": "tools/canonical-feature-conveyor-projection.mjs",
-      "codeBodyProjector": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
-      "derivedProjectionIntegration": "tools/projects-canonical-feature-conveyor-derived-bodies.mjs",
+      "implementation": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-contract.mjs",
+      "projectionLibrary": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/canonical-feature-conveyor-projection.mjs",
+      "codeBodyProjector": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs",
+      "derivedProjectionIntegration": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-derived-bodies.mjs",
       "contract": "schemas/canonical-feature-conveyor-contract.schema.json"
     }
   ]

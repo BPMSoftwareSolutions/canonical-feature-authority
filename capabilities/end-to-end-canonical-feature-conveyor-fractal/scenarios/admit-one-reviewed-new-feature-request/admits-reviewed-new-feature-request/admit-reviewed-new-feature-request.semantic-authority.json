@@ -1,0 +1,127 @@
+{
+  "responsibilityId": "admits-reviewed-new-feature-request",
+  "accepts": {
+    "contractId": "end-to-end-canonical-feature-conveyor-context.v1"
+  },
+  "produces": {
+    "contractId": "new-feature-request-admission.v1"
+  },
+  "observations": [
+    {
+      "observationId": "observe-reviewed-request",
+      "sourceRef": "scenario:admit-one-reviewed-new-feature-request",
+      "resolution": {
+        "portRef": "implementation-artifact:runtime-adapter",
+        "operationId": "loads-reviewed-request-context",
+        "input": "$.input",
+        "producesFields": [
+          "reviewDisposition",
+          "existingFeatureIds",
+          "featureId",
+          "requestRef",
+          "lineageId"
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "decisionId": "resolve-request-admission",
+      "inputs": [
+        "$.input.reviewDisposition",
+        "$.input.existingFeatureIds",
+        "$.input.featureId"
+      ],
+      "rules": [
+        {
+          "ruleId": "admit-reviewed-absent-feature",
+          "when": {
+            "all": [
+              {
+                "left": {
+                  "kind": "path",
+                  "path": "$.input.reviewDisposition"
+                },
+                "operator": "equals",
+                "right": {
+                  "kind": "literal",
+                  "value": "REVIEWED"
+                }
+              },
+              {
+                "left": {
+                  "kind": "path",
+                  "path": "$.input.existingFeatureIds"
+                },
+                "operator": "not-contains",
+                "right": {
+                  "kind": "path",
+                  "path": "$.input.featureId"
+                }
+              }
+            ]
+          },
+          "then": "ADMITTED"
+        },
+        {
+          "ruleId": "reject-ineligible-feature",
+          "when": {
+            "otherwise": true
+          },
+          "then": "REJECTED"
+        }
+      ]
+    }
+  ],
+  "projections": [
+    {
+      "projectionId": "project-request-admission",
+      "from": "resolve-request-admission",
+      "to": "new-feature-request-admission.v1",
+      "fields": {
+        "disposition": {
+          "kind": "path",
+          "path": "$.decision.disposition"
+        },
+        "featureId": {
+          "kind": "path",
+          "path": "$.input.featureId"
+        },
+        "requestRef": {
+          "kind": "path",
+          "path": "$.input.requestRef"
+        },
+        "lineageId": {
+          "kind": "path",
+          "path": "$.input.lineageId"
+        }
+      }
+    }
+  ],
+  "execution": {
+    "executionModelId": "admit-reviewed-new-feature-request",
+    "steps": [
+      {
+        "sequence": 1,
+        "operation": "resolve-observation",
+        "authorityId": "observe-reviewed-request",
+        "input": "$.input",
+        "assign": "$.observed"
+      },
+      {
+        "sequence": 2,
+        "operation": "resolve-decision",
+        "authorityId": "resolve-request-admission",
+        "input": "$.observed",
+        "assign": "$.decision"
+      },
+      {
+        "sequence": 3,
+        "operation": "project-result",
+        "authorityId": "project-request-admission",
+        "input": "$.decision",
+        "assign": "$.result"
+      }
+    ]
+  }
+}

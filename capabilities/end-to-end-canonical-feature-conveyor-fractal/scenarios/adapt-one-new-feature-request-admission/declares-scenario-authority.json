@@ -1,0 +1,66 @@
+{
+  "scenarioId": "adapt-one-new-feature-request-admission",
+  "title": "Adapt one request admission into an admitted request",
+  "behavior": {
+    "given": [
+      {
+        "statementId": "request-admission-is-available",
+        "text": "one ADMITTED new-feature request admission carrying request, feature, and lineage identity"
+      }
+    ],
+    "when": {
+      "statementId": "request-admission-is-adapted",
+      "text": "the admission is transformed into the canonical admitted-request contract"
+    },
+    "then": [
+      {
+        "statementId": "admitted-request-is-observed",
+        "text": "one admitted new-feature request is observed"
+      }
+    ]
+  },
+  "obligation": {
+    "obligationId": "bridge-admission-to-admitted-request-contract",
+    "statement": "The admitted-request contract must be derived explicitly from a successful request admission."
+  },
+  "expectation": {
+    "expectationId": "expect-one-admitted-new-feature-request",
+    "signalId": "admitted-new-feature-request",
+    "expectedDisposition": "ADMITTED"
+  },
+  "responsibility": {
+    "responsibilityId": "adapts-new-feature-request-admission",
+    "kind": "projection",
+    "semanticOperationId": "adapt-new-feature-request-admission"
+  },
+  "signal": {
+    "signalId": "admitted-new-feature-request",
+    "statement": "A successful admission is represented by the exact contract consumed by authority projection.",
+    "resultShape": {
+      "contractId": "admitted-new-feature-request.v1",
+      "shapePolicy": "lineage-evidence-envelope",
+      "fields": [
+        {
+          "name": "disposition",
+          "type": "literal-union",
+          "allowedValues": [
+            "ADMITTED"
+          ]
+        },
+        {
+          "name": "featureId",
+          "type": "string"
+        },
+        {
+          "name": "requestRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "lineageId",
+          "type": "string"
+        }
+      ],
+      "rationale": "The adapter conserves the admitted request reference, feature identity, and lineage while changing only the boundary contract."
+    }
+  }
+}

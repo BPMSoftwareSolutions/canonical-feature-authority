@@ -1,0 +1,30 @@
+{
+  "bodyId": "observed-new-feature-execution",
+  "responsibilityId": "executes-newly-materialized-feature",
+  "bodyKind": "scenario-responsibility",
+  "context": {
+    "parameterName": "context",
+    "contractId": "execute-newly-materialized-feature-context.v1",
+    "immutable": true
+  },
+  "operations": [
+    {
+      "sequence": 1,
+      "operation": "invoke-semantic-edge",
+      "edgeId": "execute-newly-materialized-feature",
+      "input": "$.context",
+      "assign": "observation"
+    },
+    {
+      "sequence": 2,
+      "operation": "return",
+      "value": "$.observation"
+    }
+  ],
+  "constraints": {
+    "domainBranching": "forbidden",
+    "domainIteration": "forbidden",
+    "dtoConstruction": "forbidden",
+    "directEffects": "forbidden"
+  }
+}

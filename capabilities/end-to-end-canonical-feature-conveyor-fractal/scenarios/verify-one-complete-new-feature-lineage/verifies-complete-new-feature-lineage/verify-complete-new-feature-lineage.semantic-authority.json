@@ -1,0 +1,137 @@
+{
+  "responsibilityId": "verifies-complete-new-feature-lineage",
+  "accepts": {
+    "contractId": "new-feature-execution-comparison.v1"
+  },
+  "produces": {
+    "contractId": "new-feature-terminal-disposition.v1"
+  },
+  "observations": [
+    {
+      "observationId": "observe-execution-comparison",
+      "sourceRef": "scenario:verify-one-complete-new-feature-lineage",
+      "resolution": {
+        "portRef": "implementation-artifact:evidence-store",
+        "operationId": "resolves-and-verifies-comparison-evidence",
+        "input": "$.input",
+        "producesFields": [
+          "featureId",
+          "semanticObservationRef",
+          "projectedObservationRef",
+          "expectedSignalRef",
+          "astSourceCorrespondenceRef",
+          "comparisonEvidenceRef",
+          "lineageId"
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "decisionId": "resolve-terminal-disposition",
+      "inputs": [
+        "$.input.semanticObservationRef",
+        "$.input.projectedObservationRef",
+        "$.input.expectedSignalRef",
+        "$.input.astSourceCorrespondenceRef"
+      ],
+      "rules": [
+        {
+          "ruleId": "conform-equivalent-feature-lineage",
+          "when": {
+            "all": [
+              {
+                "left": {
+                  "kind": "path",
+                  "path": "$.input.semanticObservationRef"
+                },
+                "operator": "evidence-equivalent",
+                "right": {
+                  "kind": "path",
+                  "path": "$.input.expectedSignalRef"
+                }
+              },
+              {
+                "left": {
+                  "kind": "path",
+                  "path": "$.input.projectedObservationRef"
+                },
+                "operator": "evidence-equivalent",
+                "right": {
+                  "kind": "path",
+                  "path": "$.input.expectedSignalRef"
+                }
+              },
+              {
+                "left": {
+                  "kind": "path",
+                  "path": "$.input.astSourceCorrespondenceRef"
+                },
+                "operator": "artifact-disposition-equals",
+                "right": {
+                  "kind": "literal",
+                  "value": "CONFORMS"
+                }
+              }
+            ]
+          },
+          "then": "PROJECTION_CONFORMS"
+        },
+        {
+          "ruleId": "reject-divergent-feature-lineage",
+          "when": {
+            "otherwise": true
+          },
+          "then": "PROJECTION_DIVERGES"
+        }
+      ]
+    }
+  ],
+  "projections": [
+    {
+      "projectionId": "project-terminal-disposition",
+      "from": "resolve-terminal-disposition",
+      "to": "new-feature-terminal-disposition.v1",
+      "fields": {
+        "disposition": {
+          "kind": "path",
+          "path": "$.decision.disposition"
+        },
+        "comparisonEvidenceRef": {
+          "kind": "path",
+          "path": "$.input.comparisonEvidenceRef"
+        },
+        "lineageId": {
+          "kind": "path",
+          "path": "$.input.lineageId"
+        }
+      }
+    }
+  ],
+  "execution": {
+    "executionModelId": "verify-complete-new-feature-lineage",
+    "steps": [
+      {
+        "sequence": 1,
+        "operation": "resolve-observation",
+        "authorityId": "observe-execution-comparison",
+        "input": "$.input",
+        "assign": "$.observed"
+      },
+      {
+        "sequence": 2,
+        "operation": "resolve-decision",
+        "authorityId": "resolve-terminal-disposition",
+        "input": "$.observed",
+        "assign": "$.decision"
+      },
+      {
+        "sequence": 3,
+        "operation": "project-result",
+        "authorityId": "project-terminal-disposition",
+        "input": "$.decision",
+        "assign": "$.result"
+      }
+    ]
+  }
+}

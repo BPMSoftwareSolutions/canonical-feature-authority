@@ -1,0 +1,90 @@
+{
+  "responsibilityId": "composes-new-feature-execution-comparison",
+  "accepts": {
+    "contractId": "observed-new-feature-execution.v1"
+  },
+  "produces": {
+    "contractId": "new-feature-execution-comparison.v1"
+  },
+  "observations": [
+    {
+      "observationId": "observe-comparison-inputs",
+      "sourceRef": "scenario:compose-one-new-feature-execution-comparison",
+      "resolution": {
+        "portRef": "implementation-artifact:evidence-store",
+        "operationId": "writes-execution-comparison-evidence",
+        "input": "$.input",
+        "producesFields": [
+          "featureId",
+          "semanticObservationRef",
+          "projectedObservationRef",
+          "expectedSignalRef",
+          "astSourceCorrespondenceRef",
+          "comparisonEvidenceRef",
+          "lineageId"
+        ]
+      }
+    }
+  ],
+  "decisions": [],
+  "projections": [
+    {
+      "projectionId": "project-new-feature-execution-comparison",
+      "from": "observe-comparison-inputs",
+      "to": "new-feature-execution-comparison.v1",
+      "fields": {
+        "disposition": {
+          "kind": "literal",
+          "value": "COMPLETE"
+        },
+        "featureId": {
+          "kind": "path",
+          "path": "$.observed.featureId"
+        },
+        "semanticObservationRef": {
+          "kind": "path",
+          "path": "$.observed.semanticObservationRef"
+        },
+        "projectedObservationRef": {
+          "kind": "path",
+          "path": "$.observed.projectedObservationRef"
+        },
+        "expectedSignalRef": {
+          "kind": "path",
+          "path": "$.observed.expectedSignalRef"
+        },
+        "astSourceCorrespondenceRef": {
+          "kind": "path",
+          "path": "$.observed.astSourceCorrespondenceRef"
+        },
+        "comparisonEvidenceRef": {
+          "kind": "path",
+          "path": "$.observed.comparisonEvidenceRef"
+        },
+        "lineageId": {
+          "kind": "path",
+          "path": "$.observed.lineageId"
+        }
+      }
+    }
+  ],
+  "execution": {
+    "executionModelId": "compose-new-feature-execution-comparison",
+    "steps": [
+      {
+        "sequence": 1,
+        "operation": "resolve-observation",
+        "authorityId": "observe-comparison-inputs",
+        "input": "$.input",
+        "assign": "$.observed"
+      },
+      {
+        "sequence": 2,
+        "operation": "project-result",
+        "authorityId": "project-new-feature-execution-comparison",
+        "input": "$.observed",
+        "assign": "$.result"
+      }
+    ]
+  }
+}

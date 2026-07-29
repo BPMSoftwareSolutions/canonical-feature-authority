@@ -1,0 +1,30 @@
+{
+  "bodyId": "complete-new-feature-materialization",
+  "responsibilityId": "materializes-complete-new-feature",
+  "bodyKind": "scenario-responsibility",
+  "context": {
+    "parameterName": "context",
+    "contractId": "materialize-complete-new-feature-context.v1",
+    "immutable": true
+  },
+  "operations": [
+    {
+      "sequence": 1,
+      "operation": "invoke-semantic-edge",
+      "edgeId": "materialize-complete-new-feature",
+      "input": "$.context",
+      "assign": "materialization"
+    },
+    {
+      "sequence": 2,
+      "operation": "return",
+      "value": "$.materialization"
+    }
+  ],
+  "constraints": {
+    "domainBranching": "forbidden",
+    "domainIteration": "forbidden",
+    "dtoConstruction": "forbidden",
+    "directEffects": "forbidden"
+  }
+}

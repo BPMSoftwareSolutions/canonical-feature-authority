@@ -1,0 +1,71 @@
+{
+  "scenarioId": "admit-one-reviewed-new-feature-request",
+  "title": "Admit one reviewed new-feature request",
+  "behavior": {
+    "given": [
+      {
+        "statementId": "reviewed-new-feature-request-is-present",
+        "text": "one instructor-reviewed new-feature request"
+      },
+      {
+        "statementId": "requested-feature-is-absent",
+        "text": "its feature identity is absent from the implementation root"
+      }
+    ],
+    "when": {
+      "statementId": "request-eligibility-is-evaluated",
+      "text": "the request is evaluated against construction eligibility"
+    },
+    "then": [
+      {
+        "statementId": "request-admission-is-observed",
+        "text": "one new-feature request admission is observed"
+      }
+    ]
+  },
+  "obligation": {
+    "obligationId": "establish-one-eligible-new-feature-request",
+    "statement": "Only one complete, reviewed, previously nonexistent feature request may enter construction."
+  },
+  "expectation": {
+    "expectationId": "expect-one-new-feature-request-admission",
+    "signalId": "new-feature-request-admission",
+    "expectedDisposition": "ADMITTED"
+  },
+  "responsibility": {
+    "responsibilityId": "admits-reviewed-new-feature-request",
+    "kind": "admission",
+    "semanticOperationId": "admit-reviewed-new-feature-request"
+  },
+  "signal": {
+    "signalId": "new-feature-request-admission",
+    "statement": "The reviewed request is admitted or rejected with one deterministic disposition.",
+    "resultShape": {
+      "contractId": "new-feature-request-admission.v1",
+      "shapePolicy": "lineage-evidence-envelope",
+      "fields": [
+        {
+          "name": "disposition",
+          "type": "literal-union",
+          "allowedValues": [
+            "ADMITTED",
+            "REJECTED"
+          ]
+        },
+        {
+          "name": "featureId",
+          "type": "string"
+        },
+        {
+          "name": "requestRef",
+          "type": "governed-artifact-ref"
+        },
+        {
+          "name": "lineageId",
+          "type": "string"
+        }
+      ],
+      "rationale": "The admission carries the reviewed request identity and immutable lineage required by every downstream responsibility."
+    }
+  }
+}

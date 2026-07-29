@@ -1,0 +1,92 @@
+{
+  "kind": "source-file",
+  "leadingComments": [
+    {
+      "kind": "line-comment",
+      "text": " @generated"
+    },
+    {
+      "kind": "line-comment",
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
+    },
+    {
+      "kind": "line-comment",
+      "text": " scenario-id: execute-one-newly-materialized-feature"
+    },
+    {
+      "kind": "line-comment",
+      "text": " obligation-id: execute-new-feature-through-admitted-semantics"
+    },
+    {
+      "kind": "line-comment",
+      "text": " responsibility-id: executes-newly-materialized-feature"
+    },
+    {
+      "kind": "line-comment",
+      "text": " signal-id: observed-new-feature-execution"
+    },
+    {
+      "kind": "line-comment",
+      "text": " DO NOT EDIT."
+    }
+  ],
+  "imports": [
+    {
+      "kind": "type-only-import",
+      "moduleSpecifier": "./observed-new-feature-execution.type.js",
+      "namedBindings": [
+        "ExecuteNewlyMaterializedFeatureContext",
+        "ObservedNewFeatureExecution"
+      ]
+    }
+  ],
+  "statements": [
+    {
+      "kind": "function-declaration",
+      "identity": "observed-new-feature-execution",
+      "modifiers": [
+        "export",
+        "async"
+      ],
+      "name": "executesNewlyMaterializedFeature",
+      "parameters": [
+        {
+          "kind": "parameter",
+          "name": "context",
+          "typeReference": "ExecuteNewlyMaterializedFeatureContext",
+          "immutable": true
+        }
+      ],
+      "returnType": {
+        "kind": "promise",
+        "typeReference": "ObservedNewFeatureExecution"
+      },
+      "body": {
+        "kind": "block",
+        "statements": [
+          {
+            "kind": "return-statement",
+            "expression": {
+              "kind": "await-expression",
+              "expression": {
+                "kind": "semantic-edge-invocation",
+                "receiverPath": [
+                  "context",
+                  "edges"
+                ],
+                "operation": "invokes",
+                "edgeId": "execute-newly-materialized-feature",
+                "arguments": [
+                  {
+                    "kind": "identifier-reference",
+                    "name": "context"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

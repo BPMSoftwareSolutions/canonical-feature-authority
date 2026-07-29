@@ -1,0 +1,92 @@
+{
+  "kind": "source-file",
+  "leadingComments": [
+    {
+      "kind": "line-comment",
+      "text": " @generated"
+    },
+    {
+      "kind": "line-comment",
+      "text": " feature-id: end-to-end-canonical-feature-conveyor-fractal"
+    },
+    {
+      "kind": "line-comment",
+      "text": " scenario-id: materialize-one-complete-new-feature"
+    },
+    {
+      "kind": "line-comment",
+      "text": " obligation-id: materialize-only-admitted-new-feature-authority"
+    },
+    {
+      "kind": "line-comment",
+      "text": " responsibility-id: materializes-complete-new-feature"
+    },
+    {
+      "kind": "line-comment",
+      "text": " signal-id: complete-new-feature-materialization"
+    },
+    {
+      "kind": "line-comment",
+      "text": " DO NOT EDIT."
+    }
+  ],
+  "imports": [
+    {
+      "kind": "type-only-import",
+      "moduleSpecifier": "./complete-new-feature-materialization.type.js",
+      "namedBindings": [
+        "MaterializeCompleteNewFeatureContext",
+        "CompleteNewFeatureMaterialization"
+      ]
+    }
+  ],
+  "statements": [
+    {
+      "kind": "function-declaration",
+      "identity": "complete-new-feature-materialization",
+      "modifiers": [
+        "export",
+        "async"
+      ],
+      "name": "materializesCompleteNewFeature",
+      "parameters": [
+        {
+          "kind": "parameter",
+          "name": "context",
+          "typeReference": "MaterializeCompleteNewFeatureContext",
+          "immutable": true
+        }
+      ],
+      "returnType": {
+        "kind": "promise",
+        "typeReference": "CompleteNewFeatureMaterialization"
+      },
+      "body": {
+        "kind": "block",
+        "statements": [
+          {
+            "kind": "return-statement",
+            "expression": {
+              "kind": "await-expression",
+              "expression": {
+                "kind": "semantic-edge-invocation",
+                "receiverPath": [
+                  "context",
+                  "edges"
+                ],
+                "operation": "invokes",
+                "edgeId": "materialize-complete-new-feature",
+                "arguments": [
+                  {
+                    "kind": "identifier-reference",
+                    "name": "context"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

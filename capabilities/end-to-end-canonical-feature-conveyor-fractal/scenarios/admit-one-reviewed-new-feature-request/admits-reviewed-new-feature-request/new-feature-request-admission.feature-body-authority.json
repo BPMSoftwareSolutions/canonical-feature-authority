@@ -1,0 +1,30 @@
+{
+  "bodyId": "new-feature-request-admission",
+  "responsibilityId": "admits-reviewed-new-feature-request",
+  "bodyKind": "scenario-responsibility",
+  "context": {
+    "parameterName": "context",
+    "contractId": "admit-reviewed-new-feature-request-context.v1",
+    "immutable": true
+  },
+  "operations": [
+    {
+      "sequence": 1,
+      "operation": "invoke-semantic-edge",
+      "edgeId": "admit-reviewed-new-feature-request",
+      "input": "$.context",
+      "assign": "admission"
+    },
+    {
+      "sequence": 2,
+      "operation": "return",
+      "value": "$.admission"
+    }
+  ],
+  "constraints": {
+    "domainBranching": "forbidden",
+    "domainIteration": "forbidden",
+    "dtoConstruction": "forbidden",
+    "directEffects": "forbidden"
+  }
+}
