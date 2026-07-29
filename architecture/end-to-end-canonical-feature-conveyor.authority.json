@@ -327,7 +327,7 @@
       }
     ],
     "constructionState": {
-      "currentStage": "review-feature",
+      "currentStage": "evaluate-semantic-execution",
       "completedStages": [
         "capture-intent",
         "declare-outcome",
@@ -342,14 +342,86 @@
         "author-feature-body-authority",
         "resolve-language-projection",
         "project-expected-ast",
-        "project-expected-code",
-        "evaluate-semantic-execution",
-        "evaluate-projected-execution",
-        "evaluate-translation-conformance"
+        "project-expected-code"
       ],
       "eligibleNextStages": [
-        "review-feature"
-      ]
+        "evaluate-semantic-execution"
+      ],
+      "stageStates": [
+        {
+          "stageId": "capture-intent",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "declare-outcome",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "establish-feature",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "establish-scenarios",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "decompose-obligations",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "declare-expectations",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "assign-responsibilities",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "declare-signals",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "author-semantic-authority",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "author-semantic-execution",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "author-feature-body-authority",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "resolve-language-projection",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "project-expected-ast",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "project-expected-code",
+          "lifecycleState": "AUTHORITY_DECLARED"
+        },
+        {
+          "stageId": "evaluate-semantic-execution",
+          "lifecycleState": "EXECUTION_PENDING"
+        },
+        {
+          "stageId": "evaluate-projected-execution",
+          "lifecycleState": "EXECUTION_PENDING"
+        },
+        {
+          "stageId": "evaluate-translation-conformance",
+          "lifecycleState": "EXECUTION_PENDING"
+        },
+        {
+          "stageId": "review-feature",
+          "lifecycleState": "BLOCKED"
+        }
+      ],
+      "implementationAdmission": "BLOCKED_PENDING_SEMANTIC_INTERPRETER"
     }
   },
   "intent": {
@@ -464,14 +536,96 @@
           "statement": "The reviewed request is admitted or rejected with one deterministic disposition.",
           "resultShape": {
             "contractId": "new-feature-request-admission.v1",
-            "shapePolicy": "disposition-only",
+            "shapePolicy": "lineage-evidence-envelope",
             "fields": [
               {
                 "name": "disposition",
+                "type": "literal-union",
+                "allowedValues": [
+                  "ADMITTED",
+                  "REJECTED"
+                ]
+              },
+              {
+                "name": "featureId",
+                "type": "string"
+              },
+              {
+                "name": "requestRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "lineageId",
                 "type": "string"
               }
             ],
-            "rationale": "The signal reports terminal admission status; reviewed request identity remains in lineage authority."
+            "rationale": "The admission carries the reviewed request identity and immutable lineage required by every downstream responsibility."
+          }
+        }
+      },
+      {
+        "scenarioId": "adapt-one-new-feature-request-admission",
+        "title": "Adapt one request admission into an admitted request",
+        "behavior": {
+          "given": [
+            {
+              "statementId": "request-admission-is-available",
+              "text": "one ADMITTED new-feature request admission carrying request, feature, and lineage identity"
+            }
+          ],
+          "when": {
+            "statementId": "request-admission-is-adapted",
+            "text": "the admission is transformed into the canonical admitted-request contract"
+          },
+          "then": [
+            {
+              "statementId": "admitted-request-is-observed",
+              "text": "one admitted new-feature request is observed"
+            }
+          ]
+        },
+        "obligation": {
+          "obligationId": "bridge-admission-to-admitted-request-contract",
+          "statement": "The admitted-request contract must be derived explicitly from a successful request admission."
+        },
+        "expectation": {
+          "expectationId": "expect-one-admitted-new-feature-request",
+          "signalId": "admitted-new-feature-request",
+          "expectedDisposition": "ADMITTED"
+        },
+        "responsibility": {
+          "responsibilityId": "adapts-new-feature-request-admission",
+          "kind": "projection",
+          "semanticOperationId": "adapt-new-feature-request-admission"
+        },
+        "signal": {
+          "signalId": "admitted-new-feature-request",
+          "statement": "A successful admission is represented by the exact contract consumed by authority projection.",
+          "resultShape": {
+            "contractId": "admitted-new-feature-request.v1",
+            "shapePolicy": "lineage-evidence-envelope",
+            "fields": [
+              {
+                "name": "disposition",
+                "type": "literal-union",
+                "allowedValues": [
+                  "ADMITTED"
+                ]
+              },
+              {
+                "name": "featureId",
+                "type": "string"
+              },
+              {
+                "name": "requestRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "lineageId",
+                "type": "string"
+              }
+            ],
+            "rationale": "The adapter conserves the admitted request reference, feature identity, and lineage while changing only the boundary contract."
           }
         }
       },
@@ -515,14 +669,33 @@
           "statement": "Every required canonical construction product exists and is causally linked.",
           "resultShape": {
             "contractId": "complete-new-feature-authority.v1",
-            "shapePolicy": "disposition-only",
+            "shapePolicy": "lineage-evidence-envelope",
             "fields": [
               {
                 "name": "disposition",
+                "type": "literal-union",
+                "allowedValues": [
+                  "COMPLETE"
+                ]
+              },
+              {
+                "name": "featureId",
+                "type": "string"
+              },
+              {
+                "name": "requestRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "authorityRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "lineageId",
                 "type": "string"
               }
             ],
-            "rationale": "The signal reports completion status; constructed authority remains in governed artifacts."
+            "rationale": "The result identifies the exact admitted request and complete authority artifact consumed by materialization."
           }
         }
       },
@@ -570,14 +743,33 @@
           "statement": "Every expected artifact exists and reproduces its admitted AST.",
           "resultShape": {
             "contractId": "complete-new-feature-materialization.v1",
-            "shapePolicy": "disposition-only",
+            "shapePolicy": "lineage-evidence-envelope",
             "fields": [
               {
                 "name": "disposition",
+                "type": "literal-union",
+                "allowedValues": [
+                  "MATERIALIZED"
+                ]
+              },
+              {
+                "name": "featureId",
+                "type": "string"
+              },
+              {
+                "name": "authorityRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "artifactManifestRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "lineageId",
                 "type": "string"
               }
             ],
-            "rationale": "The signal reports materialization status; artifact identities and hashes remain in projection evidence."
+            "rationale": "The result carries the authority and content-addressed artifact manifest required to execute the materialized feature."
           }
         }
       },
@@ -625,14 +817,128 @@
           "statement": "The projected feature produces the same observable signal as direct semantic execution.",
           "resultShape": {
             "contractId": "observed-new-feature-execution.v1",
-            "shapePolicy": "disposition-only",
+            "shapePolicy": "lineage-evidence-envelope",
             "fields": [
               {
                 "name": "disposition",
+                "type": "literal-union",
+                "allowedValues": [
+                  "CONFORMS",
+                  "DIVERGES"
+                ]
+              },
+              {
+                "name": "featureId",
+                "type": "string"
+              },
+              {
+                "name": "artifactManifestRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "semanticObservationRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "projectedObservationRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "expectedSignalRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "astSourceCorrespondenceRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "lineageId",
                 "type": "string"
               }
             ],
-            "rationale": "The signal reports execution conformance status; observations remain separate evaluation evidence."
+            "rationale": "The execution result transports independently addressable semantic, projected, expected, and correspondence evidence to comparison."
+          }
+        }
+      },
+      {
+        "scenarioId": "compose-one-new-feature-execution-comparison",
+        "title": "Compose one new-feature execution comparison",
+        "behavior": {
+          "given": [
+            {
+              "statementId": "observed-feature-execution-is-available",
+              "text": "one observed new-feature execution carrying semantic, projected, expected-signal, and AST-source correspondence references"
+            }
+          ],
+          "when": {
+            "statementId": "execution-comparison-is-composed",
+            "text": "the execution and its comparison inputs are assembled into one canonical comparison"
+          },
+          "then": [
+            {
+              "statementId": "execution-comparison-is-observed",
+              "text": "one new-feature execution comparison is observed"
+            }
+          ]
+        },
+        "obligation": {
+          "obligationId": "compose-complete-execution-comparison",
+          "statement": "Lineage verification must receive semantic observation, projected observation, expected signal, and AST-source correspondence together."
+        },
+        "expectation": {
+          "expectationId": "expect-one-complete-execution-comparison",
+          "signalId": "new-feature-execution-comparison",
+          "expectedDisposition": "COMPLETE"
+        },
+        "responsibility": {
+          "responsibilityId": "composes-new-feature-execution-comparison",
+          "kind": "projection",
+          "semanticOperationId": "compose-new-feature-execution-comparison"
+        },
+        "signal": {
+          "signalId": "new-feature-execution-comparison",
+          "statement": "All four inputs required by terminal lineage verification are present in one comparison contract.",
+          "resultShape": {
+            "contractId": "new-feature-execution-comparison.v1",
+            "shapePolicy": "execution-comparison",
+            "fields": [
+              {
+                "name": "disposition",
+                "type": "literal-union",
+                "allowedValues": [
+                  "COMPLETE"
+                ]
+              },
+              {
+                "name": "featureId",
+                "type": "string"
+              },
+              {
+                "name": "semanticObservationRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "projectedObservationRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "expectedSignalRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "astSourceCorrespondenceRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "comparisonEvidenceRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "lineageId",
+                "type": "string"
+              }
+            ],
+            "rationale": "The comparison contract carries every immutable evidence reference evaluated by the terminal conformance decision."
           }
         }
       },
@@ -642,17 +948,13 @@
         "behavior": {
           "given": [
             {
-              "statementId": "semantic-evaluation-is-available",
-              "text": "one direct semantic evaluation"
-            },
-            {
-              "statementId": "projected-evaluation-is-available",
-              "text": "one independently observed projected evaluation"
+              "statementId": "execution-comparison-is-available",
+              "text": "one complete new-feature execution comparison carrying all required evidence references"
             }
           ],
           "when": {
             "statementId": "translation-equivalence-is-evaluated",
-            "text": "their expectation, execution, AST, and code relationships are reviewed"
+            "text": "the pinned interpreter resolves and compares the referenced expectation, execution, AST, and code evidence"
           },
           "then": [
             {
@@ -680,14 +982,26 @@
           "statement": "Canonical meaning is conserved across authority, AST, source, and both execution surfaces.",
           "resultShape": {
             "contractId": "new-feature-terminal-disposition.v1",
-            "shapePolicy": "disposition-only",
+            "shapePolicy": "terminal-disposition",
             "fields": [
               {
                 "name": "disposition",
+                "type": "literal-union",
+                "allowedValues": [
+                  "PROJECTION_CONFORMS",
+                  "PROJECTION_DIVERGES"
+                ]
+              },
+              {
+                "name": "comparisonEvidenceRef",
+                "type": "governed-artifact-ref"
+              },
+              {
+                "name": "lineageId",
                 "type": "string"
               }
             ],
-            "rationale": "The terminal signal reports the comparison disposition; the compared evidence remains independently addressable."
+            "rationale": "The terminal result binds its literal disposition to the exact comparison evidence and lineage that produced it."
           }
         }
       }
@@ -697,7 +1011,7 @@
     {
       "responsibilityId": "admits-reviewed-new-feature-request",
       "accepts": {
-        "contractId": "reviewed-new-feature-request.v1"
+        "contractId": "end-to-end-canonical-feature-conveyor-context.v1"
       },
       "produces": {
         "contractId": "new-feature-request-admission.v1"
@@ -705,7 +1019,19 @@
       "observations": [
         {
           "observationId": "observe-reviewed-request",
-          "sourceRef": "scenario:admit-one-reviewed-new-feature-request"
+          "sourceRef": "scenario:admit-one-reviewed-new-feature-request",
+          "resolution": {
+            "portRef": "implementation-artifact:runtime-adapter",
+            "operationId": "loads-reviewed-request-context",
+            "input": "$.input",
+            "producesFields": [
+              "reviewDisposition",
+              "existingFeatureIds",
+              "featureId",
+              "requestRef",
+              "lineageId"
+            ]
+          }
         }
       ],
       "decisions": [
@@ -721,15 +1047,27 @@
               "ruleId": "admit-reviewed-absent-feature",
               "when": {
                 "all": [
-                  {
-                    "left": "$.input.reviewDisposition",
-                    "operator": "equals",
-                    "right": "REVIEWED"
-                  },
-                  {
-                    "left": "$.input.existingFeatureIds",
-                    "operator": "not-contains",
-                    "right": "$.input.featureId"
+            {
+              "left": {
+                "kind": "path",
+                "path": "$.input.reviewDisposition"
+              },
+              "operator": "equals",
+              "right": {
+                "kind": "literal",
+                "value": "REVIEWED"
+              }
+            },
+            {
+              "left": {
+                "kind": "path",
+                "path": "$.input.existingFeatureIds"
+              },
+              "operator": "not-contains",
+              "right": {
+                "kind": "path",
+                "path": "$.input.featureId"
+              }
                   }
                 ]
               },
@@ -751,9 +1089,22 @@
           "from": "resolve-request-admission",
           "to": "new-feature-request-admission.v1",
           "fields": {
-            "responsibilityId": "$.responsibilityId",
-            "signalId": "$.signalId",
-            "disposition": "$.decision.disposition"
+            "disposition": {
+              "kind": "path",
+              "path": "$.decision.disposition"
+            },
+            "featureId": {
+              "kind": "path",
+              "path": "$.input.featureId"
+            },
+            "requestRef": {
+              "kind": "path",
+              "path": "$.input.requestRef"
+            },
+            "lineageId": {
+              "kind": "path",
+              "path": "$.input.lineageId"
+            }
           }
         }
       ],
@@ -785,6 +1136,77 @@
       }
     },
     {
+      "responsibilityId": "adapts-new-feature-request-admission",
+      "accepts": {
+        "contractId": "new-feature-request-admission.v1"
+      },
+      "produces": {
+        "contractId": "admitted-new-feature-request.v1"
+      },
+      "observations": [
+        {
+          "observationId": "observe-request-admission",
+          "sourceRef": "scenario:adapt-one-new-feature-request-admission",
+          "resolution": {
+            "portRef": "semantic-interpreter:input",
+            "operationId": "preserves-admission-envelope",
+            "input": "$.input",
+            "producesFields": [
+              "disposition",
+              "featureId",
+              "requestRef",
+              "lineageId"
+            ]
+          }
+        }
+      ],
+      "decisions": [],
+      "projections": [
+        {
+          "projectionId": "project-admitted-new-feature-request",
+          "from": "observe-request-admission",
+          "to": "admitted-new-feature-request.v1",
+          "fields": {
+            "disposition": {
+              "kind": "path",
+              "path": "$.observed.disposition"
+            },
+            "featureId": {
+              "kind": "path",
+              "path": "$.observed.featureId"
+            },
+            "requestRef": {
+              "kind": "path",
+              "path": "$.observed.requestRef"
+            },
+            "lineageId": {
+              "kind": "path",
+              "path": "$.observed.lineageId"
+            }
+          }
+        }
+      ],
+      "execution": {
+        "executionModelId": "adapt-new-feature-request-admission",
+        "steps": [
+          {
+            "sequence": 1,
+            "operation": "resolve-observation",
+            "authorityId": "observe-request-admission",
+            "input": "$.input",
+            "assign": "$.observed"
+          },
+          {
+            "sequence": 2,
+            "operation": "project-result",
+            "authorityId": "project-admitted-new-feature-request",
+            "input": "$.observed",
+            "assign": "$.result"
+          }
+        ]
+      }
+    },
+    {
       "responsibilityId": "projects-complete-new-feature-authority",
       "accepts": {
         "contractId": "admitted-new-feature-request.v1"
@@ -795,7 +1217,18 @@
       "observations": [
         {
           "observationId": "observe-admitted-request",
-          "sourceRef": "scenario:project-one-complete-new-feature-authority"
+          "sourceRef": "scenario:project-one-complete-new-feature-authority",
+          "resolution": {
+            "portRef": "implementation-artifact:authority-projector",
+            "operationId": "projects-and-writes-complete-authority",
+            "input": "$.input",
+            "producesFields": [
+              "featureId",
+              "requestRef",
+              "authorityRef",
+              "lineageId"
+            ]
+          }
         }
       ],
       "decisions": [],
@@ -805,9 +1238,26 @@
           "from": "observe-admitted-request",
           "to": "complete-new-feature-authority.v1",
           "fields": {
-            "responsibilityId": "$.responsibilityId",
-            "signalId": "$.signalId",
-            "disposition": "$.observed.disposition"
+            "disposition": {
+              "kind": "literal",
+              "value": "COMPLETE"
+            },
+            "featureId": {
+              "kind": "path",
+              "path": "$.observed.featureId"
+            },
+            "requestRef": {
+              "kind": "path",
+              "path": "$.observed.requestRef"
+            },
+            "authorityRef": {
+              "kind": "path",
+              "path": "$.observed.authorityRef"
+            },
+            "lineageId": {
+              "kind": "path",
+              "path": "$.observed.lineageId"
+            }
           }
         }
       ],
@@ -842,7 +1292,18 @@
       "observations": [
         {
           "observationId": "observe-complete-feature-authority",
-          "sourceRef": "scenario:materialize-one-complete-new-feature"
+          "sourceRef": "scenario:materialize-one-complete-new-feature",
+          "resolution": {
+            "portRef": "implementation-artifact:feature-materializer",
+            "operationId": "materializes-and-writes-artifact-manifest",
+            "input": "$.input",
+            "producesFields": [
+              "featureId",
+              "authorityRef",
+              "artifactManifestRef",
+              "lineageId"
+            ]
+          }
         }
       ],
       "decisions": [],
@@ -852,9 +1313,26 @@
           "from": "observe-complete-feature-authority",
           "to": "complete-new-feature-materialization.v1",
           "fields": {
-            "responsibilityId": "$.responsibilityId",
-            "signalId": "$.signalId",
-            "disposition": "$.observed.disposition"
+            "disposition": {
+              "kind": "literal",
+              "value": "MATERIALIZED"
+            },
+            "featureId": {
+              "kind": "path",
+              "path": "$.observed.featureId"
+            },
+            "authorityRef": {
+              "kind": "path",
+              "path": "$.observed.authorityRef"
+            },
+            "artifactManifestRef": {
+              "kind": "path",
+              "path": "$.observed.artifactManifestRef"
+            },
+            "lineageId": {
+              "kind": "path",
+              "path": "$.observed.lineageId"
+            }
           }
         }
       ],
@@ -889,7 +1367,22 @@
       "observations": [
         {
           "observationId": "observe-materialized-feature",
-          "sourceRef": "scenario:execute-one-newly-materialized-feature"
+          "sourceRef": "scenario:execute-one-newly-materialized-feature",
+          "resolution": {
+            "portRef": "implementation-artifact:evaluation-fixture",
+            "operationId": "executes-semantic-and-projected-surfaces",
+            "input": "$.input",
+            "producesFields": [
+              "disposition",
+              "featureId",
+              "artifactManifestRef",
+              "semanticObservationRef",
+              "projectedObservationRef",
+              "expectedSignalRef",
+              "astSourceCorrespondenceRef",
+              "lineageId"
+            ]
+          }
         }
       ],
       "decisions": [],
@@ -899,9 +1392,38 @@
           "from": "observe-materialized-feature",
           "to": "observed-new-feature-execution.v1",
           "fields": {
-            "responsibilityId": "$.responsibilityId",
-            "signalId": "$.signalId",
-            "disposition": "$.observed.disposition"
+            "disposition": {
+              "kind": "path",
+              "path": "$.observed.disposition"
+            },
+            "featureId": {
+              "kind": "path",
+              "path": "$.observed.featureId"
+            },
+            "artifactManifestRef": {
+              "kind": "path",
+              "path": "$.observed.artifactManifestRef"
+            },
+            "semanticObservationRef": {
+              "kind": "path",
+              "path": "$.observed.semanticObservationRef"
+            },
+            "projectedObservationRef": {
+              "kind": "path",
+              "path": "$.observed.projectedObservationRef"
+            },
+            "expectedSignalRef": {
+              "kind": "path",
+              "path": "$.observed.expectedSignalRef"
+            },
+            "astSourceCorrespondenceRef": {
+              "kind": "path",
+              "path": "$.observed.astSourceCorrespondenceRef"
+            },
+            "lineageId": {
+              "kind": "path",
+              "path": "$.observed.lineageId"
+            }
           }
         }
       ],
@@ -926,6 +1448,96 @@
       }
     },
     {
+      "responsibilityId": "composes-new-feature-execution-comparison",
+      "accepts": {
+        "contractId": "observed-new-feature-execution.v1"
+      },
+      "produces": {
+        "contractId": "new-feature-execution-comparison.v1"
+      },
+      "observations": [
+        {
+          "observationId": "observe-comparison-inputs",
+          "sourceRef": "scenario:compose-one-new-feature-execution-comparison",
+          "resolution": {
+            "portRef": "implementation-artifact:evidence-store",
+            "operationId": "writes-execution-comparison-evidence",
+            "input": "$.input",
+            "producesFields": [
+              "featureId",
+              "semanticObservationRef",
+              "projectedObservationRef",
+              "expectedSignalRef",
+              "astSourceCorrespondenceRef",
+              "comparisonEvidenceRef",
+              "lineageId"
+            ]
+          }
+        }
+      ],
+      "decisions": [],
+      "projections": [
+        {
+          "projectionId": "project-new-feature-execution-comparison",
+          "from": "observe-comparison-inputs",
+          "to": "new-feature-execution-comparison.v1",
+          "fields": {
+            "disposition": {
+              "kind": "literal",
+              "value": "COMPLETE"
+            },
+            "featureId": {
+              "kind": "path",
+              "path": "$.observed.featureId"
+            },
+            "semanticObservationRef": {
+              "kind": "path",
+              "path": "$.observed.semanticObservationRef"
+            },
+            "projectedObservationRef": {
+              "kind": "path",
+              "path": "$.observed.projectedObservationRef"
+            },
+            "expectedSignalRef": {
+              "kind": "path",
+              "path": "$.observed.expectedSignalRef"
+            },
+            "astSourceCorrespondenceRef": {
+              "kind": "path",
+              "path": "$.observed.astSourceCorrespondenceRef"
+            },
+            "comparisonEvidenceRef": {
+              "kind": "path",
+              "path": "$.observed.comparisonEvidenceRef"
+            },
+            "lineageId": {
+              "kind": "path",
+              "path": "$.observed.lineageId"
+            }
+          }
+        }
+      ],
+      "execution": {
+        "executionModelId": "compose-new-feature-execution-comparison",
+        "steps": [
+          {
+            "sequence": 1,
+            "operation": "resolve-observation",
+            "authorityId": "observe-comparison-inputs",
+            "input": "$.input",
+            "assign": "$.observed"
+          },
+          {
+            "sequence": 2,
+            "operation": "project-result",
+            "authorityId": "project-new-feature-execution-comparison",
+            "input": "$.observed",
+            "assign": "$.result"
+          }
+        ]
+      }
+    },
+    {
       "responsibilityId": "verifies-complete-new-feature-lineage",
       "accepts": {
         "contractId": "new-feature-execution-comparison.v1"
@@ -936,37 +1548,69 @@
       "observations": [
         {
           "observationId": "observe-execution-comparison",
-          "sourceRef": "scenario:verify-one-complete-new-feature-lineage"
+          "sourceRef": "scenario:verify-one-complete-new-feature-lineage",
+          "resolution": {
+            "portRef": "implementation-artifact:evidence-store",
+            "operationId": "resolves-and-verifies-comparison-evidence",
+            "input": "$.input",
+            "producesFields": [
+              "featureId",
+              "semanticObservationRef",
+              "projectedObservationRef",
+              "expectedSignalRef",
+              "astSourceCorrespondenceRef",
+              "comparisonEvidenceRef",
+              "lineageId"
+            ]
+          }
         }
       ],
       "decisions": [
         {
           "decisionId": "resolve-terminal-disposition",
-          "inputs": [
-            "$.input.semanticObservation",
-            "$.input.projectedObservation",
-            "$.input.expectedSignal",
-            "$.input.astSourceCorrespondence"
+        "inputs": [
+          "$.input.semanticObservationRef",
+          "$.input.projectedObservationRef",
+          "$.input.expectedSignalRef",
+          "$.input.astSourceCorrespondenceRef"
           ],
           "rules": [
             {
               "ruleId": "conform-equivalent-feature-lineage",
               "when": {
                 "all": [
-                  {
-                    "left": "$.input.semanticObservation",
-                    "operator": "equals",
-                    "right": "$.input.expectedSignal"
-                  },
-                  {
-                    "left": "$.input.projectedObservation",
-                    "operator": "equals",
-                    "right": "$.input.expectedSignal"
-                  },
-                  {
-                    "left": "$.input.astSourceCorrespondence",
-                    "operator": "equals",
-                    "right": "CONFORMS"
+            {
+              "left": {
+                "kind": "path",
+                "path": "$.input.semanticObservationRef"
+              },
+              "operator": "evidence-equivalent",
+              "right": {
+                "kind": "path",
+                "path": "$.input.expectedSignalRef"
+              }
+            },
+            {
+              "left": {
+                "kind": "path",
+                "path": "$.input.projectedObservationRef"
+              },
+              "operator": "evidence-equivalent",
+              "right": {
+                "kind": "path",
+                "path": "$.input.expectedSignalRef"
+              }
+            },
+            {
+              "left": {
+                "kind": "path",
+                "path": "$.input.astSourceCorrespondenceRef"
+              },
+              "operator": "artifact-disposition-equals",
+              "right": {
+                "kind": "literal",
+                "value": "CONFORMS"
+              }
                   }
                 ]
               },
@@ -988,9 +1632,18 @@
           "from": "resolve-terminal-disposition",
           "to": "new-feature-terminal-disposition.v1",
           "fields": {
-            "responsibilityId": "$.responsibilityId",
-            "signalId": "$.signalId",
-            "disposition": "$.decision.disposition"
+            "disposition": {
+              "kind": "path",
+              "path": "$.decision.disposition"
+            },
+            "comparisonEvidenceRef": {
+              "kind": "path",
+              "path": "$.input.comparisonEvidenceRef"
+            },
+            "lineageId": {
+              "kind": "path",
+              "path": "$.input.lineageId"
+            }
           }
         }
       ],
@@ -1022,6 +1675,71 @@
       }
     }
   ],
+  "semanticInterpreterAuthority": {
+    "contractId": "canonical-feature-semantic-interpreter.v1",
+    "bindingStatus": "NOT_IMPLEMENTED",
+    "requiredArtifact": "runtime/interprets-canonical-feature-semantic-authority.ts",
+    "pathDialect": {
+      "dialectId": "rooted-member-path.v1",
+      "rootToken": "$",
+      "memberSeparator": ".",
+      "arrayTraversal": "forbidden",
+      "missingMemberDisposition": "RED",
+      "evaluationDocument": "immutable input-observed-decision-result scope",
+      "stepInputBehavior": "select operation input without rebasing the evaluation document"
+    },
+    "operations": [
+      {
+        "operationId": "resolve-observation",
+        "semantics": "resolve the declared observation through the fixture and evidence ports and assign it at the declared path"
+      },
+      {
+        "operationId": "resolve-decision",
+        "semantics": "evaluate rules in declaration order and select exactly the first matching rule"
+      },
+      {
+        "operationId": "project-result",
+        "semantics": "resolve each declared path or literal field without implicit fields and assign the canonical result"
+      }
+    ],
+    "inputOperations": [
+      "preserves-admission-envelope"
+    ],
+    "operators": [
+      {
+        "operatorId": "equals",
+        "semantics": "JCS equality of resolved operands"
+      },
+      {
+        "operatorId": "not-contains",
+        "semantics": "the resolved left array contains no JCS-equal right value"
+      },
+      {
+        "operatorId": "evidence-equivalent",
+        "semantics": "resolved evidence payloads have equal JCS bytes"
+      },
+      {
+        "operatorId": "artifact-disposition-equals",
+        "semantics": "the resolved evidence payload disposition equals the literal right operand"
+      }
+    ],
+    "projectionValueKinds": [
+      "path",
+      "literal"
+    ],
+    "evidenceOutput": {
+      "contractId": "semantic-execution-evidence.v1",
+      "canonicalization": "RFC8785-JCS",
+      "digest": "SHA-256",
+      "requiredFields": [
+        "executionModelId",
+        "inputRef",
+        "stepObservations",
+        "resultRef",
+        "lineageId"
+      ]
+    }
+  },
   "featureBodyAuthority": [
     {
       "bodyId": "new-feature-request-admission",
@@ -1044,6 +1762,36 @@
           "sequence": 2,
           "operation": "return",
           "value": "$.admission"
+        }
+      ],
+      "constraints": {
+        "domainBranching": "forbidden",
+        "domainIteration": "forbidden",
+        "dtoConstruction": "forbidden",
+        "directEffects": "forbidden"
+      }
+    },
+    {
+      "bodyId": "admitted-new-feature-request",
+      "responsibilityId": "adapts-new-feature-request-admission",
+      "bodyKind": "scenario-responsibility",
+      "context": {
+        "parameterName": "context",
+        "contractId": "adapt-new-feature-request-admission-context.v1",
+        "immutable": true
+      },
+      "operations": [
+        {
+          "sequence": 1,
+          "operation": "invoke-semantic-edge",
+          "edgeId": "adapt-new-feature-request-admission",
+          "input": "$.context",
+          "assign": "admittedRequest"
+        },
+        {
+          "sequence": 2,
+          "operation": "return",
+          "value": "$.admittedRequest"
         }
       ],
       "constraints": {
@@ -1144,6 +1892,36 @@
       }
     },
     {
+      "bodyId": "new-feature-execution-comparison",
+      "responsibilityId": "composes-new-feature-execution-comparison",
+      "bodyKind": "scenario-responsibility",
+      "context": {
+        "parameterName": "context",
+        "contractId": "compose-new-feature-execution-comparison-context.v1",
+        "immutable": true
+      },
+      "operations": [
+        {
+          "sequence": 1,
+          "operation": "invoke-semantic-edge",
+          "edgeId": "compose-new-feature-execution-comparison",
+          "input": "$.context",
+          "assign": "comparison"
+        },
+        {
+          "sequence": 2,
+          "operation": "return",
+          "value": "$.comparison"
+        }
+      ],
+      "constraints": {
+        "domainBranching": "forbidden",
+        "domainIteration": "forbidden",
+        "dtoConstruction": "forbidden",
+        "directEffects": "forbidden"
+      }
+    },
+    {
       "bodyId": "complete-new-feature-lineage",
       "responsibilityId": "verifies-complete-new-feature-lineage",
       "bodyKind": "scenario-responsibility",
@@ -1184,8 +1962,8 @@
         "sequence": 1,
         "operation": "invoke-responsibility",
         "responsibilityId": "admits-reviewed-new-feature-request",
-        "semanticOperationId": "admit-reviewed-new-feature-request",
-        "acceptsContractId": "reviewed-new-feature-request.v1",
+      "semanticOperationId": "admit-reviewed-new-feature-request",
+      "acceptsContractId": "end-to-end-canonical-feature-conveyor-context.v1",
         "producesContractId": "new-feature-request-admission.v1",
         "input": "$.context",
         "assign": "$.admission"
@@ -1318,6 +2096,68 @@
       "typeResolution": {
         "contextType": "AdmitReviewedNewFeatureRequestContext",
         "resultType": "NewFeatureRequestAdmission"
+      }
+    },
+    {
+      "bodyId": "admitted-new-feature-request",
+      "languageProfileId": "typescript-collapsed-responsibility-body-v1",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      },
+      "input": {
+        "bodyAuthorityRef": "feature-body:admitted-new-feature-request",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-admitted-new-feature-request-through-production-projector",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/admitted-new-feature-request.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "adapt-one-new-feature-request-admission",
+            "obligationId": "bridge-admission-to-admitted-request-contract",
+            "responsibilityId": "adapts-new-feature-request-admission",
+            "signalId": "admitted-new-feature-request"
+          },
+          "imports": [
+            {
+              "kind": "type-only",
+              "moduleSpecifier": "./admitted-new-feature-request.type.js",
+              "namedBindings": [
+                "AdaptNewFeatureRequestAdmissionContext",
+                "AdmittedNewFeatureRequest"
+              ]
+            }
+          ],
+          "function": {
+            "identity": "admitted-new-feature-request",
+            "name": "adaptsNewFeatureRequestAdmission",
+            "contextParameter": {
+              "name": "context",
+              "typeReference": "AdaptNewFeatureRequestAdmissionContext"
+            },
+            "resultTypeReference": "AdmittedNewFeatureRequest",
+            "semanticEdgeId": "adapt-new-feature-request-admission",
+            "awaited": true
+          }
+        }
+      },
+      "expectedArtifact": {
+        "path": "src/admitted-new-feature-request.ts",
+        "language": "typescript"
+      },
+      "typeResolution": {
+        "contextType": "AdaptNewFeatureRequestAdmissionContext",
+        "resultType": "AdmittedNewFeatureRequest"
       }
     },
     {
@@ -1507,6 +2347,68 @@
       }
     },
     {
+      "bodyId": "new-feature-execution-comparison",
+      "languageProfileId": "typescript-collapsed-responsibility-body-v1",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      },
+      "input": {
+        "bodyAuthorityRef": "feature-body:new-feature-execution-comparison",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-new-feature-execution-comparison-through-production-projector",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/new-feature-execution-comparison.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "compose-one-new-feature-execution-comparison",
+            "obligationId": "compose-complete-execution-comparison",
+            "responsibilityId": "composes-new-feature-execution-comparison",
+            "signalId": "new-feature-execution-comparison"
+          },
+          "imports": [
+            {
+              "kind": "type-only",
+              "moduleSpecifier": "./new-feature-execution-comparison.type.js",
+              "namedBindings": [
+                "ComposeNewFeatureExecutionComparisonContext",
+                "NewFeatureExecutionComparison"
+              ]
+            }
+          ],
+          "function": {
+            "identity": "new-feature-execution-comparison",
+            "name": "composesNewFeatureExecutionComparison",
+            "contextParameter": {
+              "name": "context",
+              "typeReference": "ComposeNewFeatureExecutionComparisonContext"
+            },
+            "resultTypeReference": "NewFeatureExecutionComparison",
+            "semanticEdgeId": "compose-new-feature-execution-comparison",
+            "awaited": true
+          }
+        }
+      },
+      "expectedArtifact": {
+        "path": "src/new-feature-execution-comparison.ts",
+        "language": "typescript"
+      },
+      "typeResolution": {
+        "contextType": "ComposeNewFeatureExecutionComparisonContext",
+        "resultType": "NewFeatureExecutionComparison"
+      }
+    },
+    {
       "bodyId": "complete-new-feature-lineage",
       "languageProfileId": "typescript-collapsed-responsibility-body-v1",
       "projector": {
@@ -1693,65 +2595,83 @@
     "semanticEvaluation": {
       "executionRefs": [
         "responsibility:admits-reviewed-new-feature-request",
+        "responsibility:adapts-new-feature-request-admission",
         "responsibility:projects-complete-new-feature-authority",
         "responsibility:materializes-complete-new-feature",
         "responsibility:executes-newly-materialized-feature",
+        "responsibility:composes-new-feature-execution-comparison",
         "responsibility:verifies-complete-new-feature-lineage"
       ],
       "fixtureRefs": [
         "scenario:admit-one-reviewed-new-feature-request",
+        "scenario:adapt-one-new-feature-request-admission",
         "scenario:project-one-complete-new-feature-authority",
         "scenario:materialize-one-complete-new-feature",
         "scenario:execute-one-newly-materialized-feature",
+        "scenario:compose-one-new-feature-execution-comparison",
         "scenario:verify-one-complete-new-feature-lineage"
       ],
       "expectedSignalRefs": [
         "signal:new-feature-request-admission",
+        "signal:admitted-new-feature-request",
         "signal:complete-new-feature-authority",
         "signal:complete-new-feature-materialization",
         "signal:observed-new-feature-execution",
+        "signal:new-feature-execution-comparison",
         "signal:complete-new-feature-equivalence"
       ]
     },
     "projectedEvaluation": {
       "executionRefs": [
         "feature-body:new-feature-request-admission",
+        "feature-body:admitted-new-feature-request",
         "feature-body:complete-new-feature-authority",
         "feature-body:complete-new-feature-materialization",
         "feature-body:observed-new-feature-execution",
+        "feature-body:new-feature-execution-comparison",
         "feature-body:complete-new-feature-lineage"
       ],
       "fixtureRefs": [
         "scenario:admit-one-reviewed-new-feature-request",
+        "scenario:adapt-one-new-feature-request-admission",
         "scenario:project-one-complete-new-feature-authority",
         "scenario:materialize-one-complete-new-feature",
         "scenario:execute-one-newly-materialized-feature",
+        "scenario:compose-one-new-feature-execution-comparison",
         "scenario:verify-one-complete-new-feature-lineage"
       ],
       "expectedSignalRefs": [
         "signal:new-feature-request-admission",
+        "signal:admitted-new-feature-request",
         "signal:complete-new-feature-authority",
         "signal:complete-new-feature-materialization",
         "signal:observed-new-feature-execution",
+        "signal:new-feature-execution-comparison",
         "signal:complete-new-feature-equivalence"
       ]
     },
     "translationEvaluation": {
       "comparisonRefs": [
         "semantic-observation:responsibility:admits-reviewed-new-feature-request",
+        "semantic-observation:responsibility:adapts-new-feature-request-admission",
         "semantic-observation:responsibility:projects-complete-new-feature-authority",
         "semantic-observation:responsibility:materializes-complete-new-feature",
         "semantic-observation:responsibility:executes-newly-materialized-feature",
+        "semantic-observation:responsibility:composes-new-feature-execution-comparison",
         "semantic-observation:responsibility:verifies-complete-new-feature-lineage",
         "projected-observation:feature-body:new-feature-request-admission",
+        "projected-observation:feature-body:admitted-new-feature-request",
         "projected-observation:feature-body:complete-new-feature-authority",
         "projected-observation:feature-body:complete-new-feature-materialization",
         "projected-observation:feature-body:observed-new-feature-execution",
+        "projected-observation:feature-body:new-feature-execution-comparison",
         "projected-observation:feature-body:complete-new-feature-lineage",
         "signal:new-feature-request-admission",
+        "signal:admitted-new-feature-request",
         "signal:complete-new-feature-authority",
         "signal:complete-new-feature-materialization",
         "signal:observed-new-feature-execution",
+        "signal:new-feature-execution-comparison",
         "signal:complete-new-feature-equivalence"
       ],
       "requiredRelationship": "canonical-equivalence"
@@ -1770,6 +2690,475 @@
       "projectedExecution": "NOT_EVALUATED",
       "translation": "NOT_EVALUATED",
       "disposition": "NOT_EVALUATED"
+    }
+  },
+  "implementationArtifactAuthority": {
+    "edgeRegistry": {
+      "contractId": "canonical-feature-edge-registry.v1",
+      "artifactPath": "composition/canonical-feature-edge-registry.type.ts",
+      "edgeContracts": [
+        {
+          "sequence": 1,
+          "edgeId": "admit-reviewed-new-feature-request",
+          "inputContractId": "end-to-end-canonical-feature-conveyor-context.v1",
+          "outputContractId": "new-feature-request-admission.v1"
+        },
+        {
+          "sequence": 2,
+          "edgeId": "adapt-new-feature-request-admission",
+          "inputContractId": "new-feature-request-admission.v1",
+          "outputContractId": "admitted-new-feature-request.v1"
+        },
+        {
+          "sequence": 3,
+          "edgeId": "project-complete-new-feature-authority",
+          "inputContractId": "admitted-new-feature-request.v1",
+          "outputContractId": "complete-new-feature-authority.v1"
+        },
+        {
+          "sequence": 4,
+          "edgeId": "materialize-complete-new-feature",
+          "inputContractId": "complete-new-feature-authority.v1",
+          "outputContractId": "complete-new-feature-materialization.v1"
+        },
+        {
+          "sequence": 5,
+          "edgeId": "execute-newly-materialized-feature",
+          "inputContractId": "complete-new-feature-materialization.v1",
+          "outputContractId": "observed-new-feature-execution.v1"
+        },
+        {
+          "sequence": 6,
+          "edgeId": "compose-new-feature-execution-comparison",
+          "inputContractId": "observed-new-feature-execution.v1",
+          "outputContractId": "new-feature-execution-comparison.v1"
+        },
+        {
+          "sequence": 7,
+          "edgeId": "verify-complete-new-feature-lineage",
+          "inputContractId": "new-feature-execution-comparison.v1",
+          "outputContractId": "new-feature-terminal-disposition.v1"
+        }
+      ],
+      "bindingStatus": "DECLARED"
+    },
+    "compositionTypes": {
+      "artifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
+      "authorityRef": "implementation-artifact:composition-types",
+      "bindingStatus": "PROJECTOR_OUTPUT_AVAILABLE",
+      "projectorRequest": {
+        "contract": {
+          "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+          "schemaVersion": "1.0.0",
+          "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+        },
+        "projectionId": "project-end-to-end-canonical-feature-conveyor-composition-types",
+        "targetLanguage": "typescript",
+        "artifact": {
+          "relativePath": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
+        },
+        "lineage": {
+          "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+          "scenarioId": "execute-complete-canonical-feature-conveyor",
+          "obligationId": "execute-one-mechanically-continuous-feature-flow",
+          "responsibilityId": "executes-end-to-end-canonical-feature-conveyor",
+          "signalId": "new-feature-terminal-disposition"
+        },
+        "declarations": [
+          {
+            "interface": {
+              "identity": "governed-artifact-ref",
+              "name": "GovernedArtifactRef",
+              "members": [
+                {
+                  "name": "artifactId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "sha256",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "mediaType",
+                  "typeReference": "string"
+                }
+              ]
+            }
+          },
+          {
+            "interface": {
+              "identity": "new-feature-request-admission",
+              "name": "NewFeatureRequestAdmission",
+              "members": [
+                {
+                  "name": "disposition",
+                  "unionAlternatives": [
+                    "ADMITTED",
+                    "REJECTED"
+                  ]
+                },
+                {
+                  "name": "featureId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "requestRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                }
+              ],
+              "separatedBefore": true
+            }
+          },
+          {
+            "interface": {
+              "identity": "admitted-new-feature-request",
+              "name": "AdmittedNewFeatureRequest",
+              "members": [
+                {
+                  "name": "disposition",
+                  "typeReference": "ADMITTED",
+                  "literal": true
+                },
+                {
+                  "name": "featureId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "requestRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                }
+              ],
+              "separatedBefore": true
+            }
+          },
+          {
+            "interface": {
+              "identity": "complete-new-feature-authority",
+              "name": "CompleteNewFeatureAuthority",
+              "members": [
+                {
+                  "name": "disposition",
+                  "typeReference": "COMPLETE",
+                  "literal": true
+                },
+                {
+                  "name": "featureId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "requestRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "authorityRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                }
+              ],
+              "separatedBefore": true
+            }
+          },
+          {
+            "interface": {
+              "identity": "complete-new-feature-materialization",
+              "name": "CompleteNewFeatureMaterialization",
+              "members": [
+                {
+                  "name": "disposition",
+                  "typeReference": "MATERIALIZED",
+                  "literal": true
+                },
+                {
+                  "name": "featureId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "authorityRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "artifactManifestRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                }
+              ],
+              "separatedBefore": true
+            }
+          },
+          {
+            "interface": {
+              "identity": "observed-new-feature-execution",
+              "name": "ObservedNewFeatureExecution",
+              "members": [
+                {
+                  "name": "disposition",
+                  "unionAlternatives": [
+                    "CONFORMS",
+                    "DIVERGES"
+                  ]
+                },
+                {
+                  "name": "featureId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "artifactManifestRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "semanticObservationRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "projectedObservationRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "expectedSignalRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "astSourceCorrespondenceRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                }
+              ],
+              "separatedBefore": true
+            }
+          },
+          {
+            "interface": {
+              "identity": "new-feature-execution-comparison",
+              "name": "NewFeatureExecutionComparison",
+              "members": [
+                {
+                  "name": "disposition",
+                  "typeReference": "COMPLETE",
+                  "literal": true
+                },
+                {
+                  "name": "featureId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "semanticObservationRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "projectedObservationRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "expectedSignalRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "astSourceCorrespondenceRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "comparisonEvidenceRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                }
+              ],
+              "separatedBefore": true
+            }
+          },
+          {
+            "interface": {
+              "identity": "new-feature-terminal-disposition",
+              "name": "NewFeatureTerminalDisposition",
+              "members": [
+                {
+                  "name": "disposition",
+                  "unionAlternatives": [
+                    "PROJECTION_CONFORMS",
+                    "PROJECTION_DIVERGES"
+                  ]
+                },
+                {
+                  "name": "comparisonEvidenceRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                }
+              ],
+              "separatedBefore": true
+            }
+          },
+          {
+            "interface": {
+              "identity": "end-to-end-canonical-feature-conveyor-context",
+              "name": "EndToEndCanonicalFeatureConveyorContext",
+              "members": [
+                {
+                  "name": "featureId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "requestRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "edges",
+                  "members": [
+                    {
+                      "name": "invokes",
+                      "typeReference": "<K extends \"admit-reviewed-new-feature-request\" | \"adapt-new-feature-request-admission\" | \"project-complete-new-feature-authority\" | \"materialize-complete-new-feature\" | \"execute-newly-materialized-feature\" | \"compose-new-feature-execution-comparison\" | \"verify-complete-new-feature-lineage\">(edgeId: K, input: K extends \"admit-reviewed-new-feature-request\" ? EndToEndCanonicalFeatureConveyorContext : K extends \"adapt-new-feature-request-admission\" ? NewFeatureRequestAdmission : K extends \"project-complete-new-feature-authority\" ? AdmittedNewFeatureRequest : K extends \"materialize-complete-new-feature\" ? CompleteNewFeatureAuthority : K extends \"execute-newly-materialized-feature\" ? CompleteNewFeatureMaterialization : K extends \"compose-new-feature-execution-comparison\" ? ObservedNewFeatureExecution : NewFeatureExecutionComparison) => Promise<K extends \"admit-reviewed-new-feature-request\" ? NewFeatureRequestAdmission : K extends \"adapt-new-feature-request-admission\" ? AdmittedNewFeatureRequest : K extends \"project-complete-new-feature-authority\" ? CompleteNewFeatureAuthority : K extends \"materialize-complete-new-feature\" ? CompleteNewFeatureMaterialization : K extends \"execute-newly-materialized-feature\" ? ObservedNewFeatureExecution : K extends \"compose-new-feature-execution-comparison\" ? NewFeatureExecutionComparison : NewFeatureTerminalDisposition>"
+                    }
+                  ]
+                }
+              ],
+              "separatedBefore": true
+            }
+          }
+        ]
+      }
+    },
+    "registrations": [
+      {
+        "responsibilityId": "admits-reviewed-new-feature-request",
+        "edgeId": "admit-reviewed-new-feature-request",
+        "artifactPath": "runtime/registers-admit-reviewed-new-feature-request.ts",
+        "implementationRef": "projected-body:new-feature-request-admission",
+        "bindingStatus": "DECLARED"
+      },
+      {
+        "responsibilityId": "adapts-new-feature-request-admission",
+        "edgeId": "adapt-new-feature-request-admission",
+        "artifactPath": "runtime/registers-adapt-new-feature-request-admission.ts",
+        "implementationRef": "projected-body:admitted-new-feature-request",
+        "bindingStatus": "DECLARED"
+      },
+      {
+        "responsibilityId": "projects-complete-new-feature-authority",
+        "edgeId": "project-complete-new-feature-authority",
+        "artifactPath": "runtime/registers-project-complete-new-feature-authority.ts",
+        "implementationRef": "projected-body:complete-new-feature-authority",
+        "bindingStatus": "DECLARED"
+      },
+      {
+        "responsibilityId": "materializes-complete-new-feature",
+        "edgeId": "materialize-complete-new-feature",
+        "artifactPath": "runtime/registers-materialize-complete-new-feature.ts",
+        "implementationRef": "projected-body:complete-new-feature-materialization",
+        "bindingStatus": "DECLARED"
+      },
+      {
+        "responsibilityId": "executes-newly-materialized-feature",
+        "edgeId": "execute-newly-materialized-feature",
+        "artifactPath": "runtime/registers-execute-newly-materialized-feature.ts",
+        "implementationRef": "projected-body:observed-new-feature-execution",
+        "bindingStatus": "DECLARED"
+      },
+      {
+        "responsibilityId": "composes-new-feature-execution-comparison",
+        "edgeId": "compose-new-feature-execution-comparison",
+        "artifactPath": "runtime/registers-compose-new-feature-execution-comparison.ts",
+        "implementationRef": "projected-body:new-feature-execution-comparison",
+        "bindingStatus": "DECLARED"
+      },
+      {
+        "responsibilityId": "verifies-complete-new-feature-lineage",
+        "edgeId": "verify-complete-new-feature-lineage",
+        "artifactPath": "runtime/registers-verify-complete-new-feature-lineage.ts",
+        "implementationRef": "projected-body:complete-new-feature-lineage",
+        "bindingStatus": "DECLARED"
+      }
+    ],
+    "semanticInterpreter": {
+      "authorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
+      "artifactPath": "runtime/interprets-canonical-feature-semantic-authority.ts",
+      "bindingStatus": "NOT_IMPLEMENTED"
+    },
+    "runtimeAdapter": {
+      "contractId": "canonical-feature-runtime-adapter.v1",
+      "artifactPath": "runtime/invokes-canonical-feature-conveyor.ts",
+      "acceptsContractId": "reviewed-new-feature-request.v1",
+      "constructsContextContractId": "end-to-end-canonical-feature-conveyor-context.v1",
+      "producesContractId": "new-feature-terminal-disposition.v1",
+      "operations": [
+        "loads-reviewed-request-context",
+        "invokes-conveyor"
+      ],
+      "bindingStatus": "DECLARED"
+    },
+    "authorityProjectorBoundary": {
+      "contractId": "complete-new-feature-authority-projector-port.v1",
+      "artifactPath": "runtime/complete-new-feature-authority-projector.port.ts",
+      "operations": [
+        "projects-and-writes-complete-authority"
+      ],
+      "bindingStatus": "DECLARED"
+    },
+    "materializationBoundary": {
+      "contractId": "complete-new-feature-materializer-port.v1",
+      "artifactPath": "runtime/complete-new-feature-materializer.port.ts",
+      "operations": [
+        "materializes-and-writes-artifact-manifest"
+      ],
+      "bindingStatus": "DECLARED"
+    },
+    "fixtureBoundary": {
+      "contractId": "canonical-feature-evaluation-fixture-port.v1",
+      "artifactPath": "evaluation/canonical-feature-evaluation-fixture.port.ts",
+      "operations": [
+        "loadsSemanticFixture",
+        "loadsProjectedFixture",
+        "executes-semantic-and-projected-surfaces"
+      ],
+      "bindingStatus": "DECLARED"
+    },
+    "evidenceBoundary": {
+      "contractId": "governed-artifact-evidence-store.v1",
+      "artifactPath": "evaluation/governed-artifact-evidence-store.port.ts",
+      "operations": [
+        "writes",
+        "resolves",
+        "verifies",
+        "writes-execution-comparison-evidence",
+        "resolves-and-verifies-comparison-evidence"
+      ],
+      "canonicalization": "RFC8785-JCS",
+      "bindingStatus": "DECLARED"
+    },
+    "admissionRequiredStatuses": {
+      "edgeRegistry": "IMPLEMENTED",
+      "compositionTypes": "MATERIALIZED",
+      "registrations": "IMPLEMENTED",
+      "semanticInterpreter": "IMPLEMENTED",
+      "runtimeAdapter": "IMPLEMENTED",
+      "authorityProjectorBoundary": "IMPLEMENTED",
+      "materializationBoundary": "IMPLEMENTED",
+      "fixtureBoundary": "IMPLEMENTED",
+      "evidenceBoundary": "IMPLEMENTED"
     }
   },
   "reviewAuthority": {
@@ -1803,7 +3192,7 @@
         "code": "No if, switch, loop, or object construction is projected."
       }
     ],
-    "admissionRule": "Admit implementation only when construction order is complete and expectation, semantic execution, AST, projected execution, and review are canonically equivalent."
+    "admissionRule": "Admit implementation only when the pinned semantic interpreter is implemented, semantic and projected evaluation are executed, translation conformance is CONFORMS, every runtime artifact binding is implemented, and the review stage is no longer blocked."
   },
   "projection": {
     "projectorId": "canonical-feature-conveyor-markdown-projector",
@@ -1811,9 +3200,9 @@
     "outputPath": "architecture/end-to-end-canonical-feature-conveyor.md",
     "encoding": "UTF-8",
     "lineEnding": "CRLF",
-    "outputByteSha256": "sha256:13c73a9a2ea07d7597a86f091be4fb4eb999a34e18b951c041e0e1bf582e02d3",
+    "outputByteSha256": "sha256:4c8ab7418f3708ed3529dc7767756b5e1fdb0c79fa890de451c4938daf42008b",
     "derivedProjectionOutputPath": "architecture/end-to-end-canonical-feature-conveyor.derived-projections.json",
-    "derivedProjectionSha256": "sha256:d4ec16231bbe33321cf23ff2d42015329f3205fb9cfa4b1ff971b33a90a38381"
+    "derivedProjectionSha256": "sha256:ddda2ccabcc2b304703ebc2b28d5ff5c7656681a65facdf2d6dd29d11d137674"
   },
   "languageProfiles": [
     {
@@ -2052,9 +3441,10 @@
       {
         "contractId": "admit-reviewed-new-feature-request-context.v1",
         "typeName": "AdmitReviewedNewFeatureRequestContext",
-        "declaredTypeNames": [
-          "AdmitReviewedNewFeatureRequestContext",
-          "NewFeatureRequestAdmission"
+      "declaredTypeNames": [
+        "GovernedArtifactRef",
+        "AdmitReviewedNewFeatureRequestContext",
+        "NewFeatureRequestAdmission"
         ],
         "schemaRef": "schema:AdmitReviewedNewFeatureRequestContext:NewFeatureRequestAdmission",
         "artifactPath": "src/new-feature-request-admission.type.ts",
@@ -2076,8 +3466,28 @@
             "responsibilityId": "admits-reviewed-new-feature-request",
             "signalId": "new-feature-request-admission"
           },
-          "declarations": [
-            {
+        "declarations": [
+          {
+            "interface": {
+              "identity": "governed-artifact-ref",
+              "name": "GovernedArtifactRef",
+              "members": [
+                {
+                  "name": "artifactId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "sha256",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "mediaType",
+                  "typeReference": "string"
+                }
+              ]
+            }
+          },
+          {
               "interface": {
                 "identity": "new-feature-request-admission-context",
                 "name": "AdmitReviewedNewFeatureRequestContext",
@@ -2098,9 +3508,119 @@
               "interface": {
                 "identity": "new-feature-request-admission-result",
                 "name": "NewFeatureRequestAdmission",
+              "members": [
+                {
+                  "name": "disposition",
+                  "unionAlternatives": [
+                    "ADMITTED",
+                    "REJECTED"
+                  ]
+                },
+                {
+                  "name": "featureId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "requestRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                }
+              ],
+                "separatedBefore": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "contractId": "adapt-new-feature-request-admission-context.v1",
+        "typeName": "AdaptNewFeatureRequestAdmissionContext",
+        "declaredTypeNames": [
+          "GovernedArtifactRef",
+          "AdaptNewFeatureRequestAdmissionContext",
+          "AdmittedNewFeatureRequest"
+        ],
+        "schemaRef": "schema:AdaptNewFeatureRequestAdmissionContext:AdmittedNewFeatureRequest",
+        "artifactPath": "src/admitted-new-feature-request.type.ts",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-admitted-new-feature-request-supporting-types",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/admitted-new-feature-request.type.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "adapt-one-new-feature-request-admission",
+            "obligationId": "bridge-admission-to-admitted-request-contract",
+            "responsibilityId": "adapts-new-feature-request-admission",
+            "signalId": "admitted-new-feature-request"
+          },
+          "declarations": [
+            {
+              "interface": {
+                "identity": "governed-artifact-ref",
+                "name": "GovernedArtifactRef",
+                "members": [
+                  {
+                    "name": "artifactId",
+                    "typeReference": "string"
+                  },
+                  {
+                    "name": "sha256",
+                    "typeReference": "string"
+                  },
+                  {
+                    "name": "mediaType",
+                    "typeReference": "string"
+                  }
+                ]
+              }
+            },
+            {
+              "interface": {
+                "identity": "admitted-new-feature-request-context",
+                "name": "AdaptNewFeatureRequestAdmissionContext",
+                "members": [
+                  {
+                    "name": "edges",
+                    "members": [
+                      {
+                        "name": "invokes",
+                        "typeReference": "(edgeId: string, context: AdaptNewFeatureRequestAdmissionContext) => Promise<AdmittedNewFeatureRequest>"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "interface": {
+                "identity": "admitted-new-feature-request-result",
+                "name": "AdmittedNewFeatureRequest",
                 "members": [
                   {
                     "name": "disposition",
+                    "typeReference": "ADMITTED",
+                    "literal": true
+                  },
+                  {
+                    "name": "featureId",
+                    "typeReference": "string"
+                  },
+                  {
+                    "name": "requestRef",
+                    "typeReference": "GovernedArtifactRef"
+                  },
+                  {
+                    "name": "lineageId",
                     "typeReference": "string"
                   }
                 ],
@@ -2113,9 +3633,10 @@
       {
         "contractId": "project-complete-new-feature-authority-context.v1",
         "typeName": "ProjectCompleteNewFeatureAuthorityContext",
-        "declaredTypeNames": [
-          "ProjectCompleteNewFeatureAuthorityContext",
-          "CompleteNewFeatureAuthority"
+      "declaredTypeNames": [
+        "GovernedArtifactRef",
+        "ProjectCompleteNewFeatureAuthorityContext",
+        "CompleteNewFeatureAuthority"
         ],
         "schemaRef": "schema:ProjectCompleteNewFeatureAuthorityContext:CompleteNewFeatureAuthority",
         "artifactPath": "src/complete-new-feature-authority.type.ts",
@@ -2137,8 +3658,28 @@
             "responsibilityId": "projects-complete-new-feature-authority",
             "signalId": "complete-new-feature-authority"
           },
-          "declarations": [
-            {
+        "declarations": [
+          {
+            "interface": {
+              "identity": "governed-artifact-ref",
+              "name": "GovernedArtifactRef",
+              "members": [
+                {
+                  "name": "artifactId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "sha256",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "mediaType",
+                  "typeReference": "string"
+                }
+              ]
+            }
+          },
+          {
               "interface": {
                 "identity": "complete-new-feature-authority-context",
                 "name": "ProjectCompleteNewFeatureAuthorityContext",
@@ -2159,12 +3700,29 @@
               "interface": {
                 "identity": "complete-new-feature-authority-result",
                 "name": "CompleteNewFeatureAuthority",
-                "members": [
-                  {
-                    "name": "disposition",
-                    "typeReference": "string"
-                  }
-                ],
+              "members": [
+                {
+                  "name": "disposition",
+                  "typeReference": "COMPLETE",
+                  "literal": true
+                },
+                {
+                  "name": "featureId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "requestRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "authorityRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                }
+              ],
                 "separatedBefore": true
               }
             }
@@ -2174,9 +3732,10 @@
       {
         "contractId": "materialize-complete-new-feature-context.v1",
         "typeName": "MaterializeCompleteNewFeatureContext",
-        "declaredTypeNames": [
-          "MaterializeCompleteNewFeatureContext",
-          "CompleteNewFeatureMaterialization"
+      "declaredTypeNames": [
+        "GovernedArtifactRef",
+        "MaterializeCompleteNewFeatureContext",
+        "CompleteNewFeatureMaterialization"
         ],
         "schemaRef": "schema:MaterializeCompleteNewFeatureContext:CompleteNewFeatureMaterialization",
         "artifactPath": "src/complete-new-feature-materialization.type.ts",
@@ -2198,8 +3757,28 @@
             "responsibilityId": "materializes-complete-new-feature",
             "signalId": "complete-new-feature-materialization"
           },
-          "declarations": [
-            {
+        "declarations": [
+          {
+            "interface": {
+              "identity": "governed-artifact-ref",
+              "name": "GovernedArtifactRef",
+              "members": [
+                {
+                  "name": "artifactId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "sha256",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "mediaType",
+                  "typeReference": "string"
+                }
+              ]
+            }
+          },
+          {
               "interface": {
                 "identity": "complete-new-feature-materialization-context",
                 "name": "MaterializeCompleteNewFeatureContext",
@@ -2220,12 +3799,29 @@
               "interface": {
                 "identity": "complete-new-feature-materialization-result",
                 "name": "CompleteNewFeatureMaterialization",
-                "members": [
-                  {
-                    "name": "disposition",
-                    "typeReference": "string"
-                  }
-                ],
+              "members": [
+                {
+                  "name": "disposition",
+                  "typeReference": "MATERIALIZED",
+                  "literal": true
+                },
+                {
+                  "name": "featureId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "authorityRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "artifactManifestRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                }
+              ],
                 "separatedBefore": true
               }
             }
@@ -2235,9 +3831,10 @@
       {
         "contractId": "execute-newly-materialized-feature-context.v1",
         "typeName": "ExecuteNewlyMaterializedFeatureContext",
-        "declaredTypeNames": [
-          "ExecuteNewlyMaterializedFeatureContext",
-          "ObservedNewFeatureExecution"
+      "declaredTypeNames": [
+        "GovernedArtifactRef",
+        "ExecuteNewlyMaterializedFeatureContext",
+        "ObservedNewFeatureExecution"
         ],
         "schemaRef": "schema:ExecuteNewlyMaterializedFeatureContext:ObservedNewFeatureExecution",
         "artifactPath": "src/observed-new-feature-execution.type.ts",
@@ -2259,8 +3856,28 @@
             "responsibilityId": "executes-newly-materialized-feature",
             "signalId": "observed-new-feature-execution"
           },
-          "declarations": [
-            {
+        "declarations": [
+          {
+            "interface": {
+              "identity": "governed-artifact-ref",
+              "name": "GovernedArtifactRef",
+              "members": [
+                {
+                  "name": "artifactId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "sha256",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "mediaType",
+                  "typeReference": "string"
+                }
+              ]
+            }
+          },
+          {
               "interface": {
                 "identity": "observed-new-feature-execution-context",
                 "name": "ExecuteNewlyMaterializedFeatureContext",
@@ -2281,9 +3898,151 @@
               "interface": {
                 "identity": "observed-new-feature-execution-result",
                 "name": "ObservedNewFeatureExecution",
+              "members": [
+                {
+                  "name": "disposition",
+                  "unionAlternatives": [
+                    "CONFORMS",
+                    "DIVERGES"
+                  ]
+                },
+                {
+                  "name": "featureId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "artifactManifestRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "semanticObservationRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "projectedObservationRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "expectedSignalRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "astSourceCorrespondenceRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                }
+              ],
+                "separatedBefore": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "contractId": "compose-new-feature-execution-comparison-context.v1",
+        "typeName": "ComposeNewFeatureExecutionComparisonContext",
+        "declaredTypeNames": [
+          "GovernedArtifactRef",
+          "ComposeNewFeatureExecutionComparisonContext",
+          "NewFeatureExecutionComparison"
+        ],
+        "schemaRef": "schema:ComposeNewFeatureExecutionComparisonContext:NewFeatureExecutionComparison",
+        "artifactPath": "src/new-feature-execution-comparison.type.ts",
+        "projectorRequest": {
+          "contract": {
+            "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+            "schemaVersion": "1.0.0",
+            "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+          },
+          "projectionId": "project-new-feature-execution-comparison-supporting-types",
+          "targetLanguage": "typescript",
+          "artifact": {
+            "relativePath": "src/new-feature-execution-comparison.type.ts"
+          },
+          "lineage": {
+            "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "scenarioId": "compose-one-new-feature-execution-comparison",
+            "obligationId": "compose-complete-execution-comparison",
+            "responsibilityId": "composes-new-feature-execution-comparison",
+            "signalId": "new-feature-execution-comparison"
+          },
+          "declarations": [
+            {
+              "interface": {
+                "identity": "governed-artifact-ref",
+                "name": "GovernedArtifactRef",
+                "members": [
+                  {
+                    "name": "artifactId",
+                    "typeReference": "string"
+                  },
+                  {
+                    "name": "sha256",
+                    "typeReference": "string"
+                  },
+                  {
+                    "name": "mediaType",
+                    "typeReference": "string"
+                  }
+                ]
+              }
+            },
+            {
+              "interface": {
+                "identity": "new-feature-execution-comparison-context",
+                "name": "ComposeNewFeatureExecutionComparisonContext",
+                "members": [
+                  {
+                    "name": "edges",
+                    "members": [
+                      {
+                        "name": "invokes",
+                        "typeReference": "(edgeId: string, context: ComposeNewFeatureExecutionComparisonContext) => Promise<NewFeatureExecutionComparison>"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "interface": {
+                "identity": "new-feature-execution-comparison-result",
+                "name": "NewFeatureExecutionComparison",
                 "members": [
                   {
                     "name": "disposition",
+                    "typeReference": "COMPLETE",
+                    "literal": true
+                  },
+                  {
+                    "name": "featureId",
+                    "typeReference": "string"
+                  },
+                  {
+                    "name": "semanticObservationRef",
+                    "typeReference": "GovernedArtifactRef"
+                  },
+                  {
+                    "name": "projectedObservationRef",
+                    "typeReference": "GovernedArtifactRef"
+                  },
+                  {
+                    "name": "expectedSignalRef",
+                    "typeReference": "GovernedArtifactRef"
+                  },
+                  {
+                    "name": "astSourceCorrespondenceRef",
+                    "typeReference": "GovernedArtifactRef"
+                  },
+                  {
+                    "name": "comparisonEvidenceRef",
+                    "typeReference": "GovernedArtifactRef"
+                  },
+                  {
+                    "name": "lineageId",
                     "typeReference": "string"
                   }
                 ],
@@ -2296,9 +4055,10 @@
       {
         "contractId": "verify-complete-new-feature-lineage-context.v1",
         "typeName": "VerifyCompleteNewFeatureLineageContext",
-        "declaredTypeNames": [
-          "VerifyCompleteNewFeatureLineageContext",
-          "NewFeatureTerminalDisposition"
+      "declaredTypeNames": [
+        "GovernedArtifactRef",
+        "VerifyCompleteNewFeatureLineageContext",
+        "NewFeatureTerminalDisposition"
         ],
         "schemaRef": "schema:VerifyCompleteNewFeatureLineageContext:NewFeatureTerminalDisposition",
         "artifactPath": "src/complete-new-feature-lineage.type.ts",
@@ -2320,8 +4080,28 @@
             "responsibilityId": "verifies-complete-new-feature-lineage",
             "signalId": "complete-new-feature-equivalence"
           },
-          "declarations": [
-            {
+        "declarations": [
+          {
+            "interface": {
+              "identity": "governed-artifact-ref",
+              "name": "GovernedArtifactRef",
+              "members": [
+                {
+                  "name": "artifactId",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "sha256",
+                  "typeReference": "string"
+                },
+                {
+                  "name": "mediaType",
+                  "typeReference": "string"
+                }
+              ]
+            }
+          },
+          {
               "interface": {
                 "identity": "complete-new-feature-lineage-context",
                 "name": "VerifyCompleteNewFeatureLineageContext",
@@ -2342,12 +4122,23 @@
               "interface": {
                 "identity": "complete-new-feature-lineage-result",
                 "name": "NewFeatureTerminalDisposition",
-                "members": [
-                  {
-                    "name": "disposition",
-                    "typeReference": "string"
-                  }
-                ],
+              "members": [
+                {
+                  "name": "disposition",
+                  "unionAlternatives": [
+                    "PROJECTION_CONFORMS",
+                    "PROJECTION_DIVERGES"
+                  ]
+                },
+                {
+                  "name": "comparisonEvidenceRef",
+                  "typeReference": "GovernedArtifactRef"
+                },
+                {
+                  "name": "lineageId",
+                  "typeReference": "string"
+                }
+              ],
                 "separatedBefore": true
               }
             }
@@ -2359,7 +4150,7 @@
       "entrypoint": "composition/executes-end-to-end-canonical-feature-conveyor.ts",
       "entrypointAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor",
       "runtimeAdapter": "runtime/invokes-canonical-feature-conveyor.ts",
-      "runtimeAdapterAuthorityRef": "external-authority:end-to-end-canonical-feature-conveyor-runtime-adapter"
+      "runtimeAdapterAuthorityRef": "implementation-artifact:canonical-feature-runtime-adapter.v1"
     },
     "topologyPolicy": {
       "undeclaredArtifacts": "reject",
@@ -2463,15 +4254,15 @@
         },
         {
           "stageId": "author-semantic-authority",
-          "previewKind": "semantic-execution-plan",
-          "source": "$.semanticAuthority",
-          "availability": "EXECUTABLE_MODEL"
+        "previewKind": "semantic-execution-plan",
+        "source": "$.semanticAuthority",
+        "availability": "DECLARATIVE_MODEL"
         },
         {
           "stageId": "author-semantic-execution",
-          "previewKind": "semantic-execution-plan",
-          "source": "$.semanticAuthority.execution",
-          "availability": "EXECUTABLE_MODEL"
+        "previewKind": "semantic-execution-plan",
+        "source": "$.semanticAuthority.execution",
+        "availability": "DECLARATIVE_MODEL"
         },
         {
           "stageId": "author-feature-body-authority",

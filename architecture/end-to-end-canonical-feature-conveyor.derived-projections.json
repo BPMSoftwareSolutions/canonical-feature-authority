@@ -247,6 +247,430 @@
     },
     "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: execute-complete-canonical-feature-conveyor\n// obligation-id: execute-one-mechanically-continuous-feature-flow\n// responsibility-id: executes-end-to-end-canonical-feature-conveyor\n// signal-id: new-feature-terminal-disposition\n// DO NOT EDIT.\nimport type { EndToEndCanonicalFeatureConveyorContext, NewFeatureTerminalDisposition } from \"./executes-end-to-end-canonical-feature-conveyor.type.js\";\n\nexport async function executesEndToEndCanonicalFeatureConveyor(\n  context: EndToEndCanonicalFeatureConveyorContext\n): Promise<NewFeatureTerminalDisposition> {\n  const admission = await context.edges.invokes(\n    \"admit-reviewed-new-feature-request\",\n    context\n  );\n  const admittedRequest = await context.edges.invokes(\n    \"adapt-new-feature-request-admission\",\n    admission\n  );\n  const authority = await context.edges.invokes(\n    \"project-complete-new-feature-authority\",\n    admittedRequest\n  );\n  const materialization = await context.edges.invokes(\n    \"materialize-complete-new-feature\",\n    authority\n  );\n  const execution = await context.edges.invokes(\n    \"execute-newly-materialized-feature\",\n    materialization\n  );\n  const comparison = await context.edges.invokes(\n    \"compose-new-feature-execution-comparison\",\n    execution\n  );\n  const disposition = await context.edges.invokes(\n    \"verify-complete-new-feature-lineage\",\n    comparison\n  );\n  return disposition;\n}\n",
     "projectedSourceSha256": "sha256:c18760aaf872a9c33de3ceec729438708cb388a3f4763d5bed7ac6b53f5f1e54",
+    "supportingTypeArtifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
+    "supportingTypeAst": {
+      "kind": "source-file",
+      "leadingComments": [
+        {
+          "kind": "line-comment",
+          "text": " @generated"
+        },
+        {
+          "kind": "line-comment",
+          "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+        },
+        {
+          "kind": "line-comment",
+          "text": " scenario-id: execute-complete-canonical-feature-conveyor"
+        },
+        {
+          "kind": "line-comment",
+          "text": " obligation-id: execute-one-mechanically-continuous-feature-flow"
+        },
+        {
+          "kind": "line-comment",
+          "text": " responsibility-id: executes-end-to-end-canonical-feature-conveyor"
+        },
+        {
+          "kind": "line-comment",
+          "text": " signal-id: new-feature-terminal-disposition"
+        },
+        {
+          "kind": "line-comment",
+          "text": " DO NOT EDIT."
+        }
+      ],
+      "imports": [],
+      "statements": [
+        {
+          "kind": "interface-declaration",
+          "identity": "governed-artifact-ref",
+          "modifiers": [
+            "export"
+          ],
+          "name": "GovernedArtifactRef",
+          "members": [
+            {
+              "kind": "property-signature",
+              "name": "artifactId",
+              "typeReference": "string",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "sha256",
+              "typeReference": "string",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "mediaType",
+              "typeReference": "string",
+              "immutable": true
+            }
+          ]
+        },
+        {
+          "kind": "interface-declaration",
+          "separatedBefore": true,
+          "identity": "new-feature-request-admission",
+          "modifiers": [
+            "export"
+          ],
+          "name": "NewFeatureRequestAdmission",
+          "members": [
+            {
+              "kind": "property-signature",
+              "name": "disposition",
+              "typeReference": "",
+              "unionAlternatives": [
+                "ADMITTED",
+                "REJECTED"
+              ],
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "featureId",
+              "typeReference": "string",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "requestRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "lineageId",
+              "typeReference": "string",
+              "immutable": true
+            }
+          ]
+        },
+        {
+          "kind": "interface-declaration",
+          "separatedBefore": true,
+          "identity": "admitted-new-feature-request",
+          "modifiers": [
+            "export"
+          ],
+          "name": "AdmittedNewFeatureRequest",
+          "members": [
+            {
+              "kind": "property-signature",
+              "name": "disposition",
+              "typeReference": "ADMITTED",
+              "literal": true,
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "featureId",
+              "typeReference": "string",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "requestRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "lineageId",
+              "typeReference": "string",
+              "immutable": true
+            }
+          ]
+        },
+        {
+          "kind": "interface-declaration",
+          "separatedBefore": true,
+          "identity": "complete-new-feature-authority",
+          "modifiers": [
+            "export"
+          ],
+          "name": "CompleteNewFeatureAuthority",
+          "members": [
+            {
+              "kind": "property-signature",
+              "name": "disposition",
+              "typeReference": "COMPLETE",
+              "literal": true,
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "featureId",
+              "typeReference": "string",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "requestRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "authorityRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "lineageId",
+              "typeReference": "string",
+              "immutable": true
+            }
+          ]
+        },
+        {
+          "kind": "interface-declaration",
+          "separatedBefore": true,
+          "identity": "complete-new-feature-materialization",
+          "modifiers": [
+            "export"
+          ],
+          "name": "CompleteNewFeatureMaterialization",
+          "members": [
+            {
+              "kind": "property-signature",
+              "name": "disposition",
+              "typeReference": "MATERIALIZED",
+              "literal": true,
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "featureId",
+              "typeReference": "string",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "authorityRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "artifactManifestRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "lineageId",
+              "typeReference": "string",
+              "immutable": true
+            }
+          ]
+        },
+        {
+          "kind": "interface-declaration",
+          "separatedBefore": true,
+          "identity": "observed-new-feature-execution",
+          "modifiers": [
+            "export"
+          ],
+          "name": "ObservedNewFeatureExecution",
+          "members": [
+            {
+              "kind": "property-signature",
+              "name": "disposition",
+              "typeReference": "",
+              "unionAlternatives": [
+                "CONFORMS",
+                "DIVERGES"
+              ],
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "featureId",
+              "typeReference": "string",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "artifactManifestRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "semanticObservationRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "projectedObservationRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "expectedSignalRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "astSourceCorrespondenceRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "lineageId",
+              "typeReference": "string",
+              "immutable": true
+            }
+          ]
+        },
+        {
+          "kind": "interface-declaration",
+          "separatedBefore": true,
+          "identity": "new-feature-execution-comparison",
+          "modifiers": [
+            "export"
+          ],
+          "name": "NewFeatureExecutionComparison",
+          "members": [
+            {
+              "kind": "property-signature",
+              "name": "disposition",
+              "typeReference": "COMPLETE",
+              "literal": true,
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "featureId",
+              "typeReference": "string",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "semanticObservationRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "projectedObservationRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "expectedSignalRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "astSourceCorrespondenceRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "comparisonEvidenceRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "lineageId",
+              "typeReference": "string",
+              "immutable": true
+            }
+          ]
+        },
+        {
+          "kind": "interface-declaration",
+          "separatedBefore": true,
+          "identity": "new-feature-terminal-disposition",
+          "modifiers": [
+            "export"
+          ],
+          "name": "NewFeatureTerminalDisposition",
+          "members": [
+            {
+              "kind": "property-signature",
+              "name": "disposition",
+              "typeReference": "",
+              "unionAlternatives": [
+                "PROJECTION_CONFORMS",
+                "PROJECTION_DIVERGES"
+              ],
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "comparisonEvidenceRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "lineageId",
+              "typeReference": "string",
+              "immutable": true
+            }
+          ]
+        },
+        {
+          "kind": "interface-declaration",
+          "separatedBefore": true,
+          "identity": "end-to-end-canonical-feature-conveyor-context",
+          "modifiers": [
+            "export"
+          ],
+          "name": "EndToEndCanonicalFeatureConveyorContext",
+          "members": [
+            {
+              "kind": "property-signature",
+              "name": "featureId",
+              "typeReference": "string",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "requestRef",
+              "typeReference": "GovernedArtifactRef",
+              "immutable": true
+            },
+            {
+              "kind": "property-signature",
+              "name": "lineageId",
+              "typeReference": "string",
+              "immutable": true
+            },
+            {
+              "kind": "nested-property-signature",
+              "name": "edges",
+              "immutable": true,
+              "members": [
+                {
+                  "kind": "property-signature",
+                  "name": "invokes",
+                  "typeReference": "<K extends \"admit-reviewed-new-feature-request\" | \"adapt-new-feature-request-admission\" | \"project-complete-new-feature-authority\" | \"materialize-complete-new-feature\" | \"execute-newly-materialized-feature\" | \"compose-new-feature-execution-comparison\" | \"verify-complete-new-feature-lineage\">(edgeId: K, input: K extends \"admit-reviewed-new-feature-request\" ? EndToEndCanonicalFeatureConveyorContext : K extends \"adapt-new-feature-request-admission\" ? NewFeatureRequestAdmission : K extends \"project-complete-new-feature-authority\" ? AdmittedNewFeatureRequest : K extends \"materialize-complete-new-feature\" ? CompleteNewFeatureAuthority : K extends \"execute-newly-materialized-feature\" ? CompleteNewFeatureMaterialization : K extends \"compose-new-feature-execution-comparison\" ? ObservedNewFeatureExecution : NewFeatureExecutionComparison) => Promise<K extends \"admit-reviewed-new-feature-request\" ? NewFeatureRequestAdmission : K extends \"adapt-new-feature-request-admission\" ? AdmittedNewFeatureRequest : K extends \"project-complete-new-feature-authority\" ? CompleteNewFeatureAuthority : K extends \"materialize-complete-new-feature\" ? CompleteNewFeatureMaterialization : K extends \"execute-newly-materialized-feature\" ? ObservedNewFeatureExecution : K extends \"compose-new-feature-execution-comparison\" ? NewFeatureExecutionComparison : NewFeatureTerminalDisposition>",
+                  "immutable": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: execute-complete-canonical-feature-conveyor\n// obligation-id: execute-one-mechanically-continuous-feature-flow\n// responsibility-id: executes-end-to-end-canonical-feature-conveyor\n// signal-id: new-feature-terminal-disposition\n// DO NOT EDIT.\nexport interface GovernedArtifactRef {\n  readonly artifactId: string;\n  readonly sha256: string;\n  readonly mediaType: string;\n}\n\nexport interface NewFeatureRequestAdmission {\n  readonly disposition:\n    | \"ADMITTED\"\n    | \"REJECTED\";\n  readonly featureId: string;\n  readonly requestRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n\nexport interface AdmittedNewFeatureRequest {\n  readonly disposition: \"ADMITTED\";\n  readonly featureId: string;\n  readonly requestRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n\nexport interface CompleteNewFeatureAuthority {\n  readonly disposition: \"COMPLETE\";\n  readonly featureId: string;\n  readonly requestRef: GovernedArtifactRef;\n  readonly authorityRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n\nexport interface CompleteNewFeatureMaterialization {\n  readonly disposition: \"MATERIALIZED\";\n  readonly featureId: string;\n  readonly authorityRef: GovernedArtifactRef;\n  readonly artifactManifestRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n\nexport interface ObservedNewFeatureExecution {\n  readonly disposition:\n    | \"CONFORMS\"\n    | \"DIVERGES\";\n  readonly featureId: string;\n  readonly artifactManifestRef: GovernedArtifactRef;\n  readonly semanticObservationRef: GovernedArtifactRef;\n  readonly projectedObservationRef: GovernedArtifactRef;\n  readonly expectedSignalRef: GovernedArtifactRef;\n  readonly astSourceCorrespondenceRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n\nexport interface NewFeatureExecutionComparison {\n  readonly disposition: \"COMPLETE\";\n  readonly featureId: string;\n  readonly semanticObservationRef: GovernedArtifactRef;\n  readonly projectedObservationRef: GovernedArtifactRef;\n  readonly expectedSignalRef: GovernedArtifactRef;\n  readonly astSourceCorrespondenceRef: GovernedArtifactRef;\n  readonly comparisonEvidenceRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n\nexport interface NewFeatureTerminalDisposition {\n  readonly disposition:\n    | \"PROJECTION_CONFORMS\"\n    | \"PROJECTION_DIVERGES\";\n  readonly comparisonEvidenceRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n\nexport interface EndToEndCanonicalFeatureConveyorContext {\n  readonly featureId: string;\n  readonly requestRef: GovernedArtifactRef;\n  readonly lineageId: string;\n  readonly edges: {\n    readonly invokes: <K extends \"admit-reviewed-new-feature-request\" | \"adapt-new-feature-request-admission\" | \"project-complete-new-feature-authority\" | \"materialize-complete-new-feature\" | \"execute-newly-materialized-feature\" | \"compose-new-feature-execution-comparison\" | \"verify-complete-new-feature-lineage\">(edgeId: K, input: K extends \"admit-reviewed-new-feature-request\" ? EndToEndCanonicalFeatureConveyorContext : K extends \"adapt-new-feature-request-admission\" ? NewFeatureRequestAdmission : K extends \"project-complete-new-feature-authority\" ? AdmittedNewFeatureRequest : K extends \"materialize-complete-new-feature\" ? CompleteNewFeatureAuthority : K extends \"execute-newly-materialized-feature\" ? CompleteNewFeatureMaterialization : K extends \"compose-new-feature-execution-comparison\" ? ObservedNewFeatureExecution : NewFeatureExecutionComparison) => Promise<K extends \"admit-reviewed-new-feature-request\" ? NewFeatureRequestAdmission : K extends \"adapt-new-feature-request-admission\" ? AdmittedNewFeatureRequest : K extends \"project-complete-new-feature-authority\" ? CompleteNewFeatureAuthority : K extends \"materialize-complete-new-feature\" ? CompleteNewFeatureMaterialization : K extends \"execute-newly-materialized-feature\" ? ObservedNewFeatureExecution : K extends \"compose-new-feature-execution-comparison\" ? NewFeatureExecutionComparison : NewFeatureTerminalDisposition>;\n  };\n}\n",
+    "supportingTypeSourceSha256": "sha256:72990f8321733675de0db1375967a94baca44c7ca24ea63de56c051021ce19d4",
     "translationProvenance": [
       {
         "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor:step:1",
@@ -445,6 +869,34 @@
         "statements": [
           {
             "kind": "interface-declaration",
+            "identity": "governed-artifact-ref",
+            "modifiers": [
+              "export"
+            ],
+            "name": "GovernedArtifactRef",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "artifactId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "sha256",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "mediaType",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
             "identity": "new-feature-request-admission-context",
             "modifiers": [
               "export"
@@ -478,6 +930,28 @@
               {
                 "kind": "property-signature",
                 "name": "disposition",
+                "typeReference": "",
+                "unionAlternatives": [
+                  "ADMITTED",
+                  "REJECTED"
+                ],
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "featureId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "requestRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "lineageId",
                 "typeReference": "string",
                 "immutable": true
               }
@@ -485,8 +959,8 @@
           }
         ]
       },
-      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: admit-one-reviewed-new-feature-request\n// obligation-id: establish-one-eligible-new-feature-request\n// responsibility-id: admits-reviewed-new-feature-request\n// signal-id: new-feature-request-admission\n// DO NOT EDIT.\nexport interface AdmitReviewedNewFeatureRequestContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: AdmitReviewedNewFeatureRequestContext) => Promise<NewFeatureRequestAdmission>;\n  };\n}\n\nexport interface NewFeatureRequestAdmission {\n  readonly disposition: string;\n}\n",
-      "supportingTypeSourceSha256": "sha256:e1150862f8382c8a78627fa0ad5eb939579aa3bd7eca7ed17668c902c4768af2",
+      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: admit-one-reviewed-new-feature-request\n// obligation-id: establish-one-eligible-new-feature-request\n// responsibility-id: admits-reviewed-new-feature-request\n// signal-id: new-feature-request-admission\n// DO NOT EDIT.\nexport interface GovernedArtifactRef {\n  readonly artifactId: string;\n  readonly sha256: string;\n  readonly mediaType: string;\n}\nexport interface AdmitReviewedNewFeatureRequestContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: AdmitReviewedNewFeatureRequestContext) => Promise<NewFeatureRequestAdmission>;\n  };\n}\n\nexport interface NewFeatureRequestAdmission {\n  readonly disposition:\n    | \"ADMITTED\"\n    | \"REJECTED\";\n  readonly featureId: string;\n  readonly requestRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n",
+      "supportingTypeSourceSha256": "sha256:7df0787bf451f8e6734dd175d66fb7c20ded5550451f75504fbdffbef3554655",
       "translationProvenance": [
         {
           "sourceAuthorityRef": "responsibility:admits-reviewed-new-feature-request",
@@ -514,6 +988,274 @@
         },
         {
           "sourceAuthorityRef": "feature-body:new-feature-request-admission:operations[0].input",
+          "projectionRuleId": "context-input-to-identifier",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.arguments[0]",
+          "sourceRange": "15-15"
+        }
+      ]
+    },
+    {
+      "projectionType": "production-projector-result.v1",
+      "bodyId": "admitted-new-feature-request",
+      "scenarioId": "adapt-one-new-feature-request-admission",
+      "responsibilityId": "adapts-new-feature-request-admission",
+      "semanticOperationId": "adapt-new-feature-request-admission",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      },
+      "inputSha256": "sha256:3cbabf00665505215c484aa80a278881ef8df75e562224b04e4d7d9b2c930748",
+      "artifactPath": "src/admitted-new-feature-request.ts",
+      "projectedAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: adapt-one-new-feature-request-admission"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: bridge-admission-to-admitted-request-contract"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: adapts-new-feature-request-admission"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: admitted-new-feature-request"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [
+          {
+            "kind": "type-only-import",
+            "moduleSpecifier": "./admitted-new-feature-request.type.js",
+            "namedBindings": [
+              "AdaptNewFeatureRequestAdmissionContext",
+              "AdmittedNewFeatureRequest"
+            ]
+          }
+        ],
+        "statements": [
+          {
+            "kind": "function-declaration",
+            "identity": "admitted-new-feature-request",
+            "modifiers": [
+              "export",
+              "async"
+            ],
+            "name": "adaptsNewFeatureRequestAdmission",
+            "parameters": [
+              {
+                "kind": "parameter",
+                "name": "context",
+                "typeReference": "AdaptNewFeatureRequestAdmissionContext",
+                "immutable": true
+              }
+            ],
+            "returnType": {
+              "kind": "promise",
+              "typeReference": "AdmittedNewFeatureRequest"
+            },
+            "body": {
+              "kind": "block",
+              "statements": [
+                {
+                  "kind": "return-statement",
+                  "expression": {
+                    "kind": "await-expression",
+                    "expression": {
+                      "kind": "semantic-edge-invocation",
+                      "receiverPath": [
+                        "context",
+                        "edges"
+                      ],
+                      "operation": "invokes",
+                      "edgeId": "adapt-new-feature-request-admission",
+                      "arguments": [
+                        {
+                          "kind": "identifier-reference",
+                          "name": "context"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: adapt-one-new-feature-request-admission\n// obligation-id: bridge-admission-to-admitted-request-contract\n// responsibility-id: adapts-new-feature-request-admission\n// signal-id: admitted-new-feature-request\n// DO NOT EDIT.\nimport type { AdaptNewFeatureRequestAdmissionContext, AdmittedNewFeatureRequest } from \"./admitted-new-feature-request.type.js\";\n\nexport async function adaptsNewFeatureRequestAdmission(\n  context: AdaptNewFeatureRequestAdmissionContext\n): Promise<AdmittedNewFeatureRequest> {\n  return await context.edges.invokes(\n    \"adapt-new-feature-request-admission\",\n    context\n  );\n}\n",
+      "projectedSourceSha256": "sha256:0713a762e035d6291ff59f426d709c799e343d440837f346999e3c67e9a43170",
+      "supportingTypeArtifactPath": "src/admitted-new-feature-request.type.ts",
+      "supportingTypeAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: adapt-one-new-feature-request-admission"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: bridge-admission-to-admitted-request-contract"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: adapts-new-feature-request-admission"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: admitted-new-feature-request"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [],
+        "statements": [
+          {
+            "kind": "interface-declaration",
+            "identity": "governed-artifact-ref",
+            "modifiers": [
+              "export"
+            ],
+            "name": "GovernedArtifactRef",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "artifactId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "sha256",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "mediaType",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
+            "identity": "admitted-new-feature-request-context",
+            "modifiers": [
+              "export"
+            ],
+            "name": "AdaptNewFeatureRequestAdmissionContext",
+            "members": [
+              {
+                "kind": "nested-property-signature",
+                "name": "edges",
+                "immutable": true,
+                "members": [
+                  {
+                    "kind": "property-signature",
+                    "name": "invokes",
+                    "typeReference": "(edgeId: string, context: AdaptNewFeatureRequestAdmissionContext) => Promise<AdmittedNewFeatureRequest>",
+                    "immutable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
+            "separatedBefore": true,
+            "identity": "admitted-new-feature-request-result",
+            "modifiers": [
+              "export"
+            ],
+            "name": "AdmittedNewFeatureRequest",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "disposition",
+                "typeReference": "ADMITTED",
+                "literal": true,
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "featureId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "requestRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "lineageId",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          }
+        ]
+      },
+      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: adapt-one-new-feature-request-admission\n// obligation-id: bridge-admission-to-admitted-request-contract\n// responsibility-id: adapts-new-feature-request-admission\n// signal-id: admitted-new-feature-request\n// DO NOT EDIT.\nexport interface GovernedArtifactRef {\n  readonly artifactId: string;\n  readonly sha256: string;\n  readonly mediaType: string;\n}\nexport interface AdaptNewFeatureRequestAdmissionContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: AdaptNewFeatureRequestAdmissionContext) => Promise<AdmittedNewFeatureRequest>;\n  };\n}\n\nexport interface AdmittedNewFeatureRequest {\n  readonly disposition: \"ADMITTED\";\n  readonly featureId: string;\n  readonly requestRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n",
+      "supportingTypeSourceSha256": "sha256:0a0bf656cc05c3a49bc139ca8e77223a204d5970c34e306a94f5bd8b739e488a",
+      "translationProvenance": [
+        {
+          "sourceAuthorityRef": "responsibility:adapts-new-feature-request-admission",
+          "projectionRuleId": "body-to-exported-async-function",
+          "astPath": "$.statements[0]",
+          "sourceRange": "10-10"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:admitted-new-feature-request:context",
+          "projectionRuleId": "context-to-parameter",
+          "astPath": "$.statements[0].parameters[0]",
+          "sourceRange": "11-11"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:admitted-new-feature-request:operations[0]",
+          "projectionRuleId": "semantic-edge-to-call",
+          "astPath": "$.statements[0].body.statements[0].expression.expression",
+          "sourceRange": "13-16"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:admitted-new-feature-request:operations[0].edgeId",
+          "projectionRuleId": "edge-id-to-string-literal",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.edgeId",
+          "sourceRange": "14-14"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:admitted-new-feature-request:operations[0].input",
           "projectionRuleId": "context-input-to-identifier",
           "astPath": "$.statements[0].body.statements[0].expression.expression.arguments[0]",
           "sourceRange": "15-15"
@@ -666,6 +1408,34 @@
         "statements": [
           {
             "kind": "interface-declaration",
+            "identity": "governed-artifact-ref",
+            "modifiers": [
+              "export"
+            ],
+            "name": "GovernedArtifactRef",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "artifactId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "sha256",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "mediaType",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
             "identity": "complete-new-feature-authority-context",
             "modifiers": [
               "export"
@@ -699,6 +1469,31 @@
               {
                 "kind": "property-signature",
                 "name": "disposition",
+                "typeReference": "COMPLETE",
+                "literal": true,
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "featureId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "requestRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "authorityRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "lineageId",
                 "typeReference": "string",
                 "immutable": true
               }
@@ -706,8 +1501,8 @@
           }
         ]
       },
-      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: project-one-complete-new-feature-authority\n// obligation-id: establish-one-complete-new-feature-authority\n// responsibility-id: projects-complete-new-feature-authority\n// signal-id: complete-new-feature-authority\n// DO NOT EDIT.\nexport interface ProjectCompleteNewFeatureAuthorityContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: ProjectCompleteNewFeatureAuthorityContext) => Promise<CompleteNewFeatureAuthority>;\n  };\n}\n\nexport interface CompleteNewFeatureAuthority {\n  readonly disposition: string;\n}\n",
-      "supportingTypeSourceSha256": "sha256:c4e9e5c89698dbc81a21b71dd170c542a7c66ea45c1d6fa97c86b7aafce07b7c",
+      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: project-one-complete-new-feature-authority\n// obligation-id: establish-one-complete-new-feature-authority\n// responsibility-id: projects-complete-new-feature-authority\n// signal-id: complete-new-feature-authority\n// DO NOT EDIT.\nexport interface GovernedArtifactRef {\n  readonly artifactId: string;\n  readonly sha256: string;\n  readonly mediaType: string;\n}\nexport interface ProjectCompleteNewFeatureAuthorityContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: ProjectCompleteNewFeatureAuthorityContext) => Promise<CompleteNewFeatureAuthority>;\n  };\n}\n\nexport interface CompleteNewFeatureAuthority {\n  readonly disposition: \"COMPLETE\";\n  readonly featureId: string;\n  readonly requestRef: GovernedArtifactRef;\n  readonly authorityRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n",
+      "supportingTypeSourceSha256": "sha256:e19594453839bc33a4acf9bf67e397dacd5af5df313a69a5453460066bdb7ee1",
       "translationProvenance": [
         {
           "sourceAuthorityRef": "responsibility:projects-complete-new-feature-authority",
@@ -887,6 +1682,34 @@
         "statements": [
           {
             "kind": "interface-declaration",
+            "identity": "governed-artifact-ref",
+            "modifiers": [
+              "export"
+            ],
+            "name": "GovernedArtifactRef",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "artifactId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "sha256",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "mediaType",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
             "identity": "complete-new-feature-materialization-context",
             "modifiers": [
               "export"
@@ -920,6 +1743,31 @@
               {
                 "kind": "property-signature",
                 "name": "disposition",
+                "typeReference": "MATERIALIZED",
+                "literal": true,
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "featureId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "authorityRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "artifactManifestRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "lineageId",
                 "typeReference": "string",
                 "immutable": true
               }
@@ -927,8 +1775,8 @@
           }
         ]
       },
-      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: materialize-one-complete-new-feature\n// obligation-id: materialize-only-admitted-new-feature-authority\n// responsibility-id: materializes-complete-new-feature\n// signal-id: complete-new-feature-materialization\n// DO NOT EDIT.\nexport interface MaterializeCompleteNewFeatureContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: MaterializeCompleteNewFeatureContext) => Promise<CompleteNewFeatureMaterialization>;\n  };\n}\n\nexport interface CompleteNewFeatureMaterialization {\n  readonly disposition: string;\n}\n",
-      "supportingTypeSourceSha256": "sha256:6f2b3e7c75772bd3e00c7f49223d9e50c1c6c37a9982a5499b43cd8e8f83c5ec",
+      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: materialize-one-complete-new-feature\n// obligation-id: materialize-only-admitted-new-feature-authority\n// responsibility-id: materializes-complete-new-feature\n// signal-id: complete-new-feature-materialization\n// DO NOT EDIT.\nexport interface GovernedArtifactRef {\n  readonly artifactId: string;\n  readonly sha256: string;\n  readonly mediaType: string;\n}\nexport interface MaterializeCompleteNewFeatureContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: MaterializeCompleteNewFeatureContext) => Promise<CompleteNewFeatureMaterialization>;\n  };\n}\n\nexport interface CompleteNewFeatureMaterialization {\n  readonly disposition: \"MATERIALIZED\";\n  readonly featureId: string;\n  readonly authorityRef: GovernedArtifactRef;\n  readonly artifactManifestRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n",
+      "supportingTypeSourceSha256": "sha256:451cd3ab8bb8bed75d56c7676935d63a994ee93794b83af5cab8a86c061022e1",
       "translationProvenance": [
         {
           "sourceAuthorityRef": "responsibility:materializes-complete-new-feature",
@@ -1108,6 +1956,34 @@
         "statements": [
           {
             "kind": "interface-declaration",
+            "identity": "governed-artifact-ref",
+            "modifiers": [
+              "export"
+            ],
+            "name": "GovernedArtifactRef",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "artifactId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "sha256",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "mediaType",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
             "identity": "observed-new-feature-execution-context",
             "modifiers": [
               "export"
@@ -1141,6 +2017,52 @@
               {
                 "kind": "property-signature",
                 "name": "disposition",
+                "typeReference": "",
+                "unionAlternatives": [
+                  "CONFORMS",
+                  "DIVERGES"
+                ],
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "featureId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "artifactManifestRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "semanticObservationRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "projectedObservationRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "expectedSignalRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "astSourceCorrespondenceRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "lineageId",
                 "typeReference": "string",
                 "immutable": true
               }
@@ -1148,8 +2070,8 @@
           }
         ]
       },
-      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: execute-one-newly-materialized-feature\n// obligation-id: execute-new-feature-through-admitted-semantics\n// responsibility-id: executes-newly-materialized-feature\n// signal-id: observed-new-feature-execution\n// DO NOT EDIT.\nexport interface ExecuteNewlyMaterializedFeatureContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: ExecuteNewlyMaterializedFeatureContext) => Promise<ObservedNewFeatureExecution>;\n  };\n}\n\nexport interface ObservedNewFeatureExecution {\n  readonly disposition: string;\n}\n",
-      "supportingTypeSourceSha256": "sha256:28d333f6f7d9cad5d60c72db47f6a0c4aa08e1e46e2f92a8bd2c929e1e5bc6a8",
+      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: execute-one-newly-materialized-feature\n// obligation-id: execute-new-feature-through-admitted-semantics\n// responsibility-id: executes-newly-materialized-feature\n// signal-id: observed-new-feature-execution\n// DO NOT EDIT.\nexport interface GovernedArtifactRef {\n  readonly artifactId: string;\n  readonly sha256: string;\n  readonly mediaType: string;\n}\nexport interface ExecuteNewlyMaterializedFeatureContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: ExecuteNewlyMaterializedFeatureContext) => Promise<ObservedNewFeatureExecution>;\n  };\n}\n\nexport interface ObservedNewFeatureExecution {\n  readonly disposition:\n    | \"CONFORMS\"\n    | \"DIVERGES\";\n  readonly featureId: string;\n  readonly artifactManifestRef: GovernedArtifactRef;\n  readonly semanticObservationRef: GovernedArtifactRef;\n  readonly projectedObservationRef: GovernedArtifactRef;\n  readonly expectedSignalRef: GovernedArtifactRef;\n  readonly astSourceCorrespondenceRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n",
+      "supportingTypeSourceSha256": "sha256:7a8ae2350439ef0201b44424390058731161104c60346345ae9fc774a83cbdd2",
       "translationProvenance": [
         {
           "sourceAuthorityRef": "responsibility:executes-newly-materialized-feature",
@@ -1177,6 +2099,298 @@
         },
         {
           "sourceAuthorityRef": "feature-body:observed-new-feature-execution:operations[0].input",
+          "projectionRuleId": "context-input-to-identifier",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.arguments[0]",
+          "sourceRange": "15-15"
+        }
+      ]
+    },
+    {
+      "projectionType": "production-projector-result.v1",
+      "bodyId": "new-feature-execution-comparison",
+      "scenarioId": "compose-one-new-feature-execution-comparison",
+      "responsibilityId": "composes-new-feature-execution-comparison",
+      "semanticOperationId": "compose-new-feature-execution-comparison",
+      "projector": {
+        "projectorId": "projects-typescript-body",
+        "projectorVersion": "1.0.0",
+        "projectionProfileId": "typescript-collapsed-responsibility-body-v1",
+        "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
+        "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
+      },
+      "inputSha256": "sha256:b3d36890dead51f50578a7ffff3639559e8c2fb0c91509cdc985697660cc0f48",
+      "artifactPath": "src/new-feature-execution-comparison.ts",
+      "projectedAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: compose-one-new-feature-execution-comparison"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: compose-complete-execution-comparison"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: composes-new-feature-execution-comparison"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: new-feature-execution-comparison"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [
+          {
+            "kind": "type-only-import",
+            "moduleSpecifier": "./new-feature-execution-comparison.type.js",
+            "namedBindings": [
+              "ComposeNewFeatureExecutionComparisonContext",
+              "NewFeatureExecutionComparison"
+            ]
+          }
+        ],
+        "statements": [
+          {
+            "kind": "function-declaration",
+            "identity": "new-feature-execution-comparison",
+            "modifiers": [
+              "export",
+              "async"
+            ],
+            "name": "composesNewFeatureExecutionComparison",
+            "parameters": [
+              {
+                "kind": "parameter",
+                "name": "context",
+                "typeReference": "ComposeNewFeatureExecutionComparisonContext",
+                "immutable": true
+              }
+            ],
+            "returnType": {
+              "kind": "promise",
+              "typeReference": "NewFeatureExecutionComparison"
+            },
+            "body": {
+              "kind": "block",
+              "statements": [
+                {
+                  "kind": "return-statement",
+                  "expression": {
+                    "kind": "await-expression",
+                    "expression": {
+                      "kind": "semantic-edge-invocation",
+                      "receiverPath": [
+                        "context",
+                        "edges"
+                      ],
+                      "operation": "invokes",
+                      "edgeId": "compose-new-feature-execution-comparison",
+                      "arguments": [
+                        {
+                          "kind": "identifier-reference",
+                          "name": "context"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: compose-one-new-feature-execution-comparison\n// obligation-id: compose-complete-execution-comparison\n// responsibility-id: composes-new-feature-execution-comparison\n// signal-id: new-feature-execution-comparison\n// DO NOT EDIT.\nimport type { ComposeNewFeatureExecutionComparisonContext, NewFeatureExecutionComparison } from \"./new-feature-execution-comparison.type.js\";\n\nexport async function composesNewFeatureExecutionComparison(\n  context: ComposeNewFeatureExecutionComparisonContext\n): Promise<NewFeatureExecutionComparison> {\n  return await context.edges.invokes(\n    \"compose-new-feature-execution-comparison\",\n    context\n  );\n}\n",
+      "projectedSourceSha256": "sha256:737ab9df69da37602e78332556d1c87606317ae4565ad8ebea12f5a87dfe8b1a",
+      "supportingTypeArtifactPath": "src/new-feature-execution-comparison.type.ts",
+      "supportingTypeAst": {
+        "kind": "source-file",
+        "leadingComments": [
+          {
+            "kind": "line-comment",
+            "text": " @generated"
+          },
+          {
+            "kind": "line-comment",
+            "text": " feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor"
+          },
+          {
+            "kind": "line-comment",
+            "text": " scenario-id: compose-one-new-feature-execution-comparison"
+          },
+          {
+            "kind": "line-comment",
+            "text": " obligation-id: compose-complete-execution-comparison"
+          },
+          {
+            "kind": "line-comment",
+            "text": " responsibility-id: composes-new-feature-execution-comparison"
+          },
+          {
+            "kind": "line-comment",
+            "text": " signal-id: new-feature-execution-comparison"
+          },
+          {
+            "kind": "line-comment",
+            "text": " DO NOT EDIT."
+          }
+        ],
+        "imports": [],
+        "statements": [
+          {
+            "kind": "interface-declaration",
+            "identity": "governed-artifact-ref",
+            "modifiers": [
+              "export"
+            ],
+            "name": "GovernedArtifactRef",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "artifactId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "sha256",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "mediaType",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
+            "identity": "new-feature-execution-comparison-context",
+            "modifiers": [
+              "export"
+            ],
+            "name": "ComposeNewFeatureExecutionComparisonContext",
+            "members": [
+              {
+                "kind": "nested-property-signature",
+                "name": "edges",
+                "immutable": true,
+                "members": [
+                  {
+                    "kind": "property-signature",
+                    "name": "invokes",
+                    "typeReference": "(edgeId: string, context: ComposeNewFeatureExecutionComparisonContext) => Promise<NewFeatureExecutionComparison>",
+                    "immutable": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
+            "separatedBefore": true,
+            "identity": "new-feature-execution-comparison-result",
+            "modifiers": [
+              "export"
+            ],
+            "name": "NewFeatureExecutionComparison",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "disposition",
+                "typeReference": "COMPLETE",
+                "literal": true,
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "featureId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "semanticObservationRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "projectedObservationRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "expectedSignalRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "astSourceCorrespondenceRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "comparisonEvidenceRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "lineageId",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          }
+        ]
+      },
+      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: compose-one-new-feature-execution-comparison\n// obligation-id: compose-complete-execution-comparison\n// responsibility-id: composes-new-feature-execution-comparison\n// signal-id: new-feature-execution-comparison\n// DO NOT EDIT.\nexport interface GovernedArtifactRef {\n  readonly artifactId: string;\n  readonly sha256: string;\n  readonly mediaType: string;\n}\nexport interface ComposeNewFeatureExecutionComparisonContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: ComposeNewFeatureExecutionComparisonContext) => Promise<NewFeatureExecutionComparison>;\n  };\n}\n\nexport interface NewFeatureExecutionComparison {\n  readonly disposition: \"COMPLETE\";\n  readonly featureId: string;\n  readonly semanticObservationRef: GovernedArtifactRef;\n  readonly projectedObservationRef: GovernedArtifactRef;\n  readonly expectedSignalRef: GovernedArtifactRef;\n  readonly astSourceCorrespondenceRef: GovernedArtifactRef;\n  readonly comparisonEvidenceRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n",
+      "supportingTypeSourceSha256": "sha256:e0fc5ce2a71e9fa5d09e0b17086658b94d85d890e8bf292d07312b803786865f",
+      "translationProvenance": [
+        {
+          "sourceAuthorityRef": "responsibility:composes-new-feature-execution-comparison",
+          "projectionRuleId": "body-to-exported-async-function",
+          "astPath": "$.statements[0]",
+          "sourceRange": "10-10"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:new-feature-execution-comparison:context",
+          "projectionRuleId": "context-to-parameter",
+          "astPath": "$.statements[0].parameters[0]",
+          "sourceRange": "11-11"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:new-feature-execution-comparison:operations[0]",
+          "projectionRuleId": "semantic-edge-to-call",
+          "astPath": "$.statements[0].body.statements[0].expression.expression",
+          "sourceRange": "13-16"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:new-feature-execution-comparison:operations[0].edgeId",
+          "projectionRuleId": "edge-id-to-string-literal",
+          "astPath": "$.statements[0].body.statements[0].expression.expression.edgeId",
+          "sourceRange": "14-14"
+        },
+        {
+          "sourceAuthorityRef": "feature-body:new-feature-execution-comparison:operations[0].input",
           "projectionRuleId": "context-input-to-identifier",
           "astPath": "$.statements[0].body.statements[0].expression.expression.arguments[0]",
           "sourceRange": "15-15"
@@ -1329,6 +2543,34 @@
         "statements": [
           {
             "kind": "interface-declaration",
+            "identity": "governed-artifact-ref",
+            "modifiers": [
+              "export"
+            ],
+            "name": "GovernedArtifactRef",
+            "members": [
+              {
+                "kind": "property-signature",
+                "name": "artifactId",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "sha256",
+                "typeReference": "string",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "mediaType",
+                "typeReference": "string",
+                "immutable": true
+              }
+            ]
+          },
+          {
+            "kind": "interface-declaration",
             "identity": "complete-new-feature-lineage-context",
             "modifiers": [
               "export"
@@ -1362,6 +2604,22 @@
               {
                 "kind": "property-signature",
                 "name": "disposition",
+                "typeReference": "",
+                "unionAlternatives": [
+                  "PROJECTION_CONFORMS",
+                  "PROJECTION_DIVERGES"
+                ],
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "comparisonEvidenceRef",
+                "typeReference": "GovernedArtifactRef",
+                "immutable": true
+              },
+              {
+                "kind": "property-signature",
+                "name": "lineageId",
                 "typeReference": "string",
                 "immutable": true
               }
@@ -1369,8 +2627,8 @@
           }
         ]
       },
-      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: verify-one-complete-new-feature-lineage\n// obligation-id: prove-complete-new-feature-equivalence\n// responsibility-id: verifies-complete-new-feature-lineage\n// signal-id: complete-new-feature-equivalence\n// DO NOT EDIT.\nexport interface VerifyCompleteNewFeatureLineageContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: VerifyCompleteNewFeatureLineageContext) => Promise<NewFeatureTerminalDisposition>;\n  };\n}\n\nexport interface NewFeatureTerminalDisposition {\n  readonly disposition: string;\n}\n",
-      "supportingTypeSourceSha256": "sha256:518b82723f19fceaa13af7f7f4379b1db57da96475b16e2eb5f8020fbcdf85cd",
+      "supportingTypeSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: verify-one-complete-new-feature-lineage\n// obligation-id: prove-complete-new-feature-equivalence\n// responsibility-id: verifies-complete-new-feature-lineage\n// signal-id: complete-new-feature-equivalence\n// DO NOT EDIT.\nexport interface GovernedArtifactRef {\n  readonly artifactId: string;\n  readonly sha256: string;\n  readonly mediaType: string;\n}\nexport interface VerifyCompleteNewFeatureLineageContext {\n  readonly edges: {\n    readonly invokes: (edgeId: string, context: VerifyCompleteNewFeatureLineageContext) => Promise<NewFeatureTerminalDisposition>;\n  };\n}\n\nexport interface NewFeatureTerminalDisposition {\n  readonly disposition:\n    | \"PROJECTION_CONFORMS\"\n    | \"PROJECTION_DIVERGES\";\n  readonly comparisonEvidenceRef: GovernedArtifactRef;\n  readonly lineageId: string;\n}\n",
+      "supportingTypeSourceSha256": "sha256:f2cb6b94b1e3c9d26b74dd75d84a31da766507f969982f4408b0d64719825144",
       "translationProvenance": [
         {
           "sourceAuthorityRef": "responsibility:verifies-complete-new-feature-lineage",

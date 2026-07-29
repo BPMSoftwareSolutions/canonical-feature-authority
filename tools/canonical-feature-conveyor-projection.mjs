@@ -358,6 +358,19 @@ function rendersFeatureDestination(authority, derived) {
       derived.featureExecution.projectedSource
     ),
     "",
+    "### Projected heterogeneous composition types",
+    "",
+    `Artifact: \`${derived.featureExecution.supportingTypeArtifactPath}\``,
+    "",
+    ...fenced(
+      "typescript",
+      derived.featureExecution.supportingTypeSource
+    ),
+    "",
+    "### Required implementation artifact set",
+    "",
+    ...fenced("json", authority.implementationArtifactAuthority),
+    "",
     "### Projected responsibility bodies",
     "",
     ...responsibilityProjectionTable(authority, derived),
@@ -480,7 +493,11 @@ function rendersSemanticProjection(authority, semantic, derived) {
     "",
     "#### Projected semantic execution",
     "",
-    "Executable semantic model: AVAILABLE",
+    "Declarative semantic model: AVAILABLE",
+    "",
+    `Semantic interpreter binding: ${authority.semanticInterpreterAuthority.bindingStatus}`,
+    "",
+    `Required interpreter artifact: \`${authority.semanticInterpreterAuthority.requiredArtifact}\``,
     "",
     "Projected semantic source availability: NOT_IMPLEMENTED",
     "",
@@ -616,7 +633,9 @@ function stageProjectionPreview(profile, authority, derived) {
   if (kind === "semantic-execution-plan") {
     return [
       ...heading,
-      "Executable semantic model: AVAILABLE",
+      "Declarative semantic model: AVAILABLE",
+      "",
+      `Semantic interpreter binding: ${authority.semanticInterpreterAuthority.bindingStatus}`,
       "",
       "Projected semantic source availability: NOT_IMPLEMENTED",
       "",
@@ -681,7 +700,7 @@ function stageProjectionPreview(profile, authority, derived) {
   if (kind === "production-source") {
     return [
       ...heading,
-      `Authoritative projector output count: ${derived.results.length + 1}`,
+      `Authoritative projector output count: ${derived.results.length * 2 + 2}`,
       "",
       "The complete production output and translation provenance are rendered in this section."
     ];
@@ -805,15 +824,20 @@ const renderers = {
           : [""])
       ];
     }),
-  "semantic-execution-section": authority =>
-    authority.semanticAuthority.flatMap((semantic, index) => [
+  "semantic-execution-section": authority => [
+    "### Pinned semantic interpreter contract",
+    "",
+    ...fenced("json", authority.semanticInterpreterAuthority),
+    "",
+    ...authority.semanticAuthority.flatMap((semantic, index) => [
       `### ${semantic.responsibilityId}`,
       "",
       ...fenced("json", semantic.execution),
       ...(index === authority.semanticAuthority.length - 1
         ? []
         : [""])
-    ]),
+    ])
+  ],
   "feature-body-section": (authority, derived) => [
     ...authority.featureBodyAuthority.flatMap((body, index) => [
       `### ${body.bodyId}`,
@@ -847,7 +871,11 @@ const renderers = {
     "",
     "Production projector invocations:",
     "",
-    ...fenced("json", authority.projectionAuthority)
+    ...fenced("json", authority.projectionAuthority),
+    "",
+    "Compilation and runtime artifact authority:",
+    "",
+    ...fenced("json", authority.implementationArtifactAuthority)
   ],
   "derived-ast-section": (_authority, derived) => [
     ...rendersIllustration(
@@ -933,7 +961,9 @@ const renderers = {
       row => `| ${row.authority} | ${row.ast} | ${row.code} |`
     ),
     "",
-    `Admission rule: ${authority.reviewAuthority.admissionRule}`
+    `Admission rule: ${authority.reviewAuthority.admissionRule}`,
+    "",
+    `Current implementation admission: ${authority.conveyor.constructionState.implementationAdmission}`
   ]
 };
 

@@ -1,5 +1,14 @@
-import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { execFile } from "node:child_process";
+import {
+  mkdir,
+  mkdtemp,
+  readFile,
+  rm,
+  writeFile
+} from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { dirname, resolve } from "node:path";
+import { promisify } from "node:util";
 
 import Ajv2020 from "ajv/dist/2020.js";
 import {
@@ -31,6 +40,93 @@ function contiguous(steps, code) {
     steps.every((step, index) => step.sequence === index + 1),
     code
   );
+}
+
+async function assertsProjectedTypescriptCompiles(
+  authority,
+  derived
+) {
+  const executes = promisify(execFile);
+  const temporaryRoot = await mkdtemp(
+    resolve(tmpdir(), "canonical-feature-conveyor-")
+  );
+  const files = new Map();
+  const adds = (artifactPath, source) => {
+    files.set(resolve(temporaryRoot, artifactPath), source);
+  };
+  adds(
+    derived.featureExecution.artifactPath,
+    derived.featureExecution.projectedSource
+  );
+  adds(
+    derived.featureExecution.supportingTypeArtifactPath,
+    derived.featureExecution.supportingTypeSource
+  );
+  for (const result of derived.results) {
+    adds(result.artifactPath, result.projectedSource);
+    adds(
+      result.supportingTypeArtifactPath,
+      result.supportingTypeSource
+    );
+  }
+  try {
+    for (const [filePath, source] of files) {
+      await mkdir(dirname(filePath), { recursive: true });
+      await writeFile(filePath, source, "utf8");
+    }
+    const tsconfigPath = resolve(temporaryRoot, "tsconfig.json");
+    await writeFile(
+      tsconfigPath,
+      `${JSON.stringify(
+        {
+          compilerOptions: {
+            module: "NodeNext",
+            moduleResolution: "NodeNext",
+            noEmit: true,
+            skipLibCheck: true,
+            strict: true,
+            target: "ES2022"
+          },
+          include: ["**/*.ts"]
+        },
+        null,
+        2
+      )}\n`,
+      "utf8"
+    );
+    try {
+      await executes(
+        process.execPath,
+        [
+          resolve(
+            repositoryRoot,
+            "node_modules/typescript/bin/tsc"
+          ),
+          "--project",
+          tsconfigPath
+        ],
+        {
+          cwd: temporaryRoot
+        }
+      );
+    } catch (error) {
+      throw new Error(
+        `CONVEYOR_PROJECTED_TYPESCRIPT_DOES_NOT_COMPILE: ${
+          error.stdout ?? error.stderr ?? error.message
+        }`
+      );
+    }
+  } finally {
+    const resolvedTemporaryRoot = resolve(temporaryRoot);
+    assert(
+      resolvedTemporaryRoot.startsWith(resolve(tmpdir())),
+      "CONVEYOR_TYPECHECK_TEMPORARY_ROOT_INVALID"
+    );
+    await rm(resolvedTemporaryRoot, {
+      force: true,
+      recursive: true
+    });
+  }
 }
 
 function assertsStageCausality(stages) {
@@ -276,6 +372,37 @@ const bodies = new Map(
 const projections = new Map(
   authority.projectionAuthority.map(item => [item.bodyId, item])
 );
+const observationPortOperations = new Map([
+  [
+    "implementation-artifact:runtime-adapter",
+    authority.implementationArtifactAuthority.runtimeAdapter
+      .operations
+  ],
+  [
+    "semantic-interpreter:input",
+    authority.semanticInterpreterAuthority.inputOperations
+  ],
+  [
+    "implementation-artifact:authority-projector",
+    authority.implementationArtifactAuthority
+      .authorityProjectorBoundary.operations
+  ],
+  [
+    "implementation-artifact:feature-materializer",
+    authority.implementationArtifactAuthority
+      .materializationBoundary.operations
+  ],
+  [
+    "implementation-artifact:evaluation-fixture",
+    authority.implementationArtifactAuthority.fixtureBoundary
+      .operations
+  ],
+  [
+    "implementation-artifact:evidence-store",
+    authority.implementationArtifactAuthority.evidenceBoundary
+      .operations
+  ]
+]);
 const admissionDecision = semantics
   .get("admits-reviewed-new-feature-request")
   .decisions.find(
@@ -292,14 +419,26 @@ assert(
       JSON.stringify({
         all: [
           {
-            left: "$.input.reviewDisposition",
+            left: {
+              kind: "path",
+              path: "$.input.reviewDisposition"
+            },
             operator: "equals",
-            right: "REVIEWED"
+            right: {
+              kind: "literal",
+              value: "REVIEWED"
+            }
           },
           {
-            left: "$.input.existingFeatureIds",
+            left: {
+              kind: "path",
+              path: "$.input.existingFeatureIds"
+            },
             operator: "not-contains",
-            right: "$.input.featureId"
+            right: {
+              kind: "path",
+              path: "$.input.featureId"
+            }
           }
         ]
       }) &&
@@ -313,14 +452,23 @@ const terminalDecision = semantics
       decision.decisionId === "resolve-terminal-disposition"
   );
 assert(
-  JSON.stringify(terminalDecision.inputs) ===
+    JSON.stringify(terminalDecision.inputs) ===
     JSON.stringify([
-      "$.input.semanticObservation",
-      "$.input.projectedObservation",
-      "$.input.expectedSignal",
-      "$.input.astSourceCorrespondence"
+      "$.input.semanticObservationRef",
+      "$.input.projectedObservationRef",
+      "$.input.expectedSignalRef",
+      "$.input.astSourceCorrespondenceRef"
     ]) &&
-    terminalDecision.rules[0].when.all.length === 3 &&
+    JSON.stringify(
+      terminalDecision.rules[0].when.all.map(
+        predicate => predicate.operator
+      )
+    ) ===
+      JSON.stringify([
+        "evidence-equivalent",
+        "evidence-equivalent",
+        "artifact-disposition-equals"
+      ]) &&
     terminalDecision.rules[1].when.otherwise === true,
   "CONVEYOR_TERMINAL_DECISION_INPUT_MISMATCH"
 );
@@ -357,6 +505,98 @@ assert(
     featureSteps.at(-2).producesContractId ===
       authority.featureExecutionAuthority.terminalContractId,
   "CONVEYOR_FEATURE_TERMINAL_BINDING_MISMATCH"
+);
+const invocationSteps = featureSteps.slice(0, -1);
+const edgeContracts =
+  authority.implementationArtifactAuthority.edgeRegistry
+    .edgeContracts;
+assert(
+  JSON.stringify(
+    edgeContracts.map(contract => [
+      contract.sequence,
+      contract.edgeId,
+      contract.inputContractId,
+      contract.outputContractId
+    ])
+  ) ===
+    JSON.stringify(
+      invocationSteps.map(step => [
+        step.sequence,
+        step.semanticOperationId,
+        step.acceptsContractId,
+        step.producesContractId
+      ])
+    ),
+  "CONVEYOR_EDGE_REGISTRY_FLOW_MISMATCH"
+);
+for (const step of invocationSteps) {
+  const scenario = scenarios.find(
+    candidate =>
+      candidate.responsibility.responsibilityId ===
+        step.responsibilityId &&
+      candidate.responsibility.semanticOperationId ===
+        step.semanticOperationId
+  );
+  assert(
+    scenario !== undefined,
+    `CONVEYOR_RUNTIME_EDGE_ORPHANED: ${step.semanticOperationId}`
+  );
+  assert(
+    scenario.signal.resultShape.contractId ===
+      step.producesContractId &&
+      semantics.get(step.responsibilityId)?.accepts.contractId ===
+        step.acceptsContractId &&
+      semantics.get(step.responsibilityId)?.produces.contractId ===
+        step.producesContractId &&
+      bodies.get(step.responsibilityId)?.operations[0].edgeId ===
+        step.semanticOperationId,
+    `CONVEYOR_RUNTIME_EDGE_LINEAGE_MISMATCH: ${step.semanticOperationId}`
+  );
+}
+const expectedLifecycleStates = expectedStageIds.map(
+  (stageId, index) => ({
+    stageId,
+    lifecycleState:
+      index < 14
+        ? "AUTHORITY_DECLARED"
+        : index < 17
+          ? "EXECUTION_PENDING"
+          : "BLOCKED"
+  })
+);
+assert(
+  JSON.stringify(state.stageStates) ===
+    JSON.stringify(expectedLifecycleStates) &&
+    state.implementationAdmission ===
+      "BLOCKED_PENDING_SEMANTIC_INTERPRETER",
+  "CONVEYOR_LIFECYCLE_STATE_MISMATCH"
+);
+assert(
+  authority.semanticInterpreterAuthority.bindingStatus ===
+    "NOT_IMPLEMENTED" &&
+    authority.implementationArtifactAuthority.semanticInterpreter
+      .bindingStatus === "NOT_IMPLEMENTED" &&
+    authority.semanticInterpreterAuthority.operators.every(
+      declared =>
+        authority.semanticAuthority.every(semantic =>
+          semantic.decisions.every(decision =>
+            decision.rules.every(rule =>
+              rule.when.otherwise === true
+                ? true
+                : rule.when.all.every(
+                    predicate =>
+                      authority.semanticInterpreterAuthority.operators
+                        .some(
+                          operator =>
+                            operator.operatorId ===
+                            predicate.operator
+                        )
+                  )
+            )
+          )
+        )
+    ),
+  "CONVEYOR_SEMANTIC_INTERPRETER_AUTHORITY_MISMATCH"
 );
 const featureRequestStatements =
   authority.featureExecutionProjection.projectorRequest.function
@@ -421,10 +661,18 @@ for (const scenario of scenarios) {
   );
   assert(
     scenario.signal.resultShape.contractId ===
-      semantic.produces.contractId &&
-      scenario.signal.resultShape.shapePolicy ===
-        "disposition-only",
+      semantic.produces.contractId,
     `CONVEYOR_SIGNAL_RESULT_SHAPE_MISMATCH: ${scenario.scenarioId}`
+  );
+  assert(
+    semantic.projections.length === 1 &&
+      JSON.stringify(
+        Object.keys(semantic.projections[0].fields)
+      ) ===
+        JSON.stringify(
+          scenario.signal.resultShape.fields.map(field => field.name)
+        ),
+    `CONVEYOR_SEMANTIC_RESULT_FIELD_MISMATCH: ${scenario.scenarioId}`
   );
   contiguous(
     semantic.execution.steps,
@@ -449,6 +697,29 @@ for (const scenario of scenarios) {
     ),
     `CONVEYOR_OBSERVATION_IDENTITY_MISMATCH: ${scenario.scenarioId}`
   );
+  for (const observation of semantic.observations) {
+    assert(
+      observationPortOperations
+        .get(observation.resolution.portRef)
+        ?.includes(observation.resolution.operationId) === true,
+      `CONVEYOR_OBSERVATION_PORT_OPERATION_UNBOUND: ${observation.observationId}`
+    );
+    const observedProjectionFields = Object.values(
+      semantic.projections[0].fields
+    )
+      .filter(
+        operand =>
+          operand.kind === "path" &&
+          operand.path.startsWith("$.observed.")
+      )
+      .map(operand => operand.path.slice("$.observed.".length));
+    assert(
+      observedProjectionFields.every(field =>
+        observation.resolution.producesFields.includes(field)
+      ),
+      `CONVEYOR_OBSERVATION_FIELD_UNBOUND: ${observation.observationId}`
+    );
+  }
   contiguous(
     body.operations,
     `CONVEYOR_FEATURE_BODY_SEQUENCE_INVALID: ${body.bodyId}`
@@ -516,7 +787,121 @@ for (const scenario of scenarios) {
     result.translationProvenance.length >= 5,
     `CONVEYOR_TRANSLATION_PROVENANCE_INCOMPLETE: ${body.bodyId}`
   );
+  const supportingAuthority =
+    authority.fileBodyAuthority.supportingTypes.find(
+      item =>
+        item.artifactPath ===
+        result.supportingTypeArtifactPath
+    );
+  const resultDeclaration =
+    supportingAuthority?.projectorRequest.declarations.find(
+      declaration =>
+        declaration.interface?.name ===
+        projection.typeResolution.resultType
+    )?.interface;
+  assert(
+    resultDeclaration !== undefined &&
+      JSON.stringify(
+        resultDeclaration.members.map(member => member.name)
+      ) ===
+        JSON.stringify(
+          scenario.signal.resultShape.fields.map(field => field.name)
+        ),
+    `CONVEYOR_SIGNAL_TYPE_FIELD_MISMATCH: ${scenario.signal.signalId}`
+  );
+  for (const [index, field] of
+    scenario.signal.resultShape.fields.entries()) {
+    const member = resultDeclaration.members[index];
+    assert(
+      (field.type === "governed-artifact-ref" &&
+        member.typeReference === "GovernedArtifactRef") ||
+        (field.type === "string" &&
+          member.typeReference === "string") ||
+        (field.type === "literal-union" &&
+          member.typeReference !== "string" &&
+          (member.literal === true ||
+            JSON.stringify(member.unionAlternatives) ===
+              JSON.stringify(field.allowedValues))),
+      `CONVEYOR_SIGNAL_TYPE_MEMBER_MISMATCH: ${scenario.signal.signalId}:${field.name}`
+    );
+  }
 }
+
+const expectedResponsibilityRefs = scenarios.map(
+  scenario =>
+    `responsibility:${scenario.responsibility.responsibilityId}`
+);
+const expectedBodyRefs = scenarios.map(
+  scenario =>
+    `feature-body:${bodies.get(
+      scenario.responsibility.responsibilityId
+    ).bodyId}`
+);
+const expectedFixtureRefs = scenarios.map(
+  scenario => `scenario:${scenario.scenarioId}`
+);
+const expectedSignalRefs = scenarios.map(
+  scenario => `signal:${scenario.signal.signalId}`
+);
+assert(
+  JSON.stringify(
+    authority.evaluationAuthority.semanticEvaluation.executionRefs
+  ) === JSON.stringify(expectedResponsibilityRefs) &&
+    JSON.stringify(
+      authority.evaluationAuthority.projectedEvaluation.executionRefs
+    ) === JSON.stringify(expectedBodyRefs) &&
+    JSON.stringify(
+      authority.evaluationAuthority.semanticEvaluation.fixtureRefs
+    ) === JSON.stringify(expectedFixtureRefs) &&
+    JSON.stringify(
+      authority.evaluationAuthority.projectedEvaluation.fixtureRefs
+    ) === JSON.stringify(expectedFixtureRefs) &&
+    JSON.stringify(
+      authority.evaluationAuthority.semanticEvaluation
+        .expectedSignalRefs
+    ) === JSON.stringify(expectedSignalRefs) &&
+    JSON.stringify(
+      authority.evaluationAuthority.projectedEvaluation
+        .expectedSignalRefs
+    ) === JSON.stringify(expectedSignalRefs),
+  "CONVEYOR_EVALUATION_EDGE_COVERAGE_MISMATCH"
+);
+const registrations =
+  authority.implementationArtifactAuthority.registrations;
+assert(
+  JSON.stringify(
+    registrations.map(registration => [
+      registration.responsibilityId,
+      registration.edgeId
+    ])
+  ) ===
+    JSON.stringify(
+      invocationSteps.map(step => [
+        step.responsibilityId,
+        step.semanticOperationId
+      ])
+    ),
+  "CONVEYOR_RUNTIME_REGISTRATION_COVERAGE_MISMATCH"
+);
+const compositionTypeSource =
+  derived.featureExecution.supportingTypeSource;
+assert(
+  derived.featureExecution.supportingTypeArtifactPath ===
+    authority.implementationArtifactAuthority.compositionTypes
+      .artifactPath &&
+    derived.featureExecution.supportingTypeSourceSha256 ===
+      sha256(Buffer.from(compositionTypeSource, "utf8")) &&
+    invocationSteps.every(step =>
+      compositionTypeSource.includes(
+        JSON.stringify(step.semanticOperationId)
+      )
+    ) &&
+    !compositionTypeSource.includes(
+      "(edgeId: string, context: EndToEndCanonicalFeatureConveyorContext)"
+    ),
+  "CONVEYOR_HETEROGENEOUS_COMPOSITION_TYPES_MISMATCH"
+);
+await assertsProjectedTypescriptCompiles(authority, derived);
 
 if (authority.contract.status !== "draft") {
   assert(
@@ -738,9 +1123,9 @@ assert(
 assert(
   authority.fileBodyAuthority.composition.entrypointAuthorityRef ===
     authority.featureExecutionProjection.executionAuthorityRef &&
-    authority.fileBodyAuthority.composition.runtimeAdapterAuthorityRef.startsWith(
-      "external-authority:"
-    ),
+    authority.fileBodyAuthority.composition
+      .runtimeAdapterAuthorityRef ===
+      "implementation-artifact:canonical-feature-runtime-adapter.v1",
   "CONVEYOR_COMPOSITION_ORIGIN_UNDECLARED"
 );
 assert(
@@ -1001,6 +1386,130 @@ recordsControl(
   "CONVEYOR_BODY_EDGE_MISMATCH"
 );
 
+const orphanedRuntimeAuthority = structuredClone(authority);
+orphanedRuntimeAuthority.canonicalFeatureBody.scenarios =
+  orphanedRuntimeAuthority.canonicalFeatureBody.scenarios.filter(
+    scenario =>
+      scenario.responsibility.semanticOperationId !==
+      "adapt-new-feature-request-admission"
+  );
+recordsControl(
+  "orphaned-runtime-edge",
+  () =>
+    assert(
+      orphanedRuntimeAuthority.featureExecutionAuthority.steps
+        .slice(0, -1)
+        .every(step =>
+          orphanedRuntimeAuthority.canonicalFeatureBody.scenarios.some(
+            scenario =>
+              scenario.responsibility.semanticOperationId ===
+              step.semanticOperationId
+          )
+        ),
+      "CONVEYOR_RUNTIME_EDGE_ORPHANED"
+    ),
+  "CONVEYOR_RUNTIME_EDGE_ORPHANED"
+);
+const dispositionOnlySignal = structuredClone(authority);
+dispositionOnlySignal.canonicalFeatureBody.scenarios[0].signal
+  .resultShape.fields = [
+  {
+    name: "disposition",
+    type: "literal-union",
+    allowedValues: ["ADMITTED", "REJECTED"]
+  }
+];
+recordsControl(
+  "disposition-only-intermediate-contract",
+  () => {
+    if (!validate(dispositionOnlySignal)) {
+      throw new Error(
+        "CONVEYOR_SIGNAL_LINEAGE_ENVELOPE_INCOMPLETE"
+      );
+    }
+  },
+  "CONVEYOR_SIGNAL_LINEAGE_ENVELOPE_INCOMPLETE"
+);
+const incompleteRegistrations = structuredClone(authority);
+incompleteRegistrations.implementationArtifactAuthority.registrations.pop();
+recordsControl(
+  "missing-runtime-registration",
+  () => {
+    if (!validate(incompleteRegistrations)) {
+      throw new Error(
+        "CONVEYOR_RUNTIME_REGISTRATION_COVERAGE_MISMATCH"
+      );
+    }
+  },
+  "CONVEYOR_RUNTIME_REGISTRATION_COVERAGE_MISMATCH"
+);
+const prematureReview = structuredClone(authority);
+prematureReview.conveyor.constructionState.currentStage =
+  "review-feature";
+prematureReview.conveyor.constructionState.completedStages =
+  expectedStageIds.slice(0, 17);
+prematureReview.conveyor.constructionState.eligibleNextStages = [
+  "review-feature"
+];
+recordsControl(
+  "not-evaluated-review-admission",
+  () => {
+    if (!validate(prematureReview)) {
+      throw new Error(
+        "CONVEYOR_REVIEW_BLOCKED_BY_NOT_EVALUATED"
+      );
+    }
+  },
+  "CONVEYOR_REVIEW_BLOCKED_BY_NOT_EVALUATED"
+);
+const overclaimedInterpreter = structuredClone(authority);
+overclaimedInterpreter.semanticInterpreterAuthority.bindingStatus =
+  "IMPLEMENTED";
+recordsControl(
+  "unbound-semantic-interpreter-overclaim",
+  () =>
+    assert(
+      overclaimedInterpreter.semanticInterpreterAuthority
+        .bindingStatus ===
+        overclaimedInterpreter.implementationArtifactAuthority
+          .semanticInterpreter.bindingStatus,
+      "CONVEYOR_SEMANTIC_INTERPRETER_BINDING_MISMATCH"
+    ),
+  "CONVEYOR_SEMANTIC_INTERPRETER_BINDING_MISMATCH"
+);
+const prematureImplementationAdmission = structuredClone(authority);
+prematureImplementationAdmission.conveyor.constructionState
+  .implementationAdmission = "ADMITTED";
+recordsControl(
+  "implementation-admission-before-runtime-conformance",
+  () => {
+    if (!validate(prematureImplementationAdmission)) {
+      throw new Error(
+        "CONVEYOR_IMPLEMENTATION_ADMISSION_REQUIREMENTS_UNSATISFIED"
+      );
+    }
+  },
+  "CONVEYOR_IMPLEMENTATION_ADMISSION_REQUIREMENTS_UNSATISFIED"
+);
+const unboundObservationOperation = structuredClone(
+  authority.semanticAuthority[0].observations[0]
+);
+unboundObservationOperation.resolution.operationId =
+  "undeclared-observation-operation";
+recordsControl(
+  "unbound-observation-port-operation",
+  () =>
+    assert(
+      observationPortOperations
+        .get(unboundObservationOperation.resolution.portRef)
+        ?.includes(
+          unboundObservationOperation.resolution.operationId
+        ) === true,
+      "CONVEYOR_OBSERVATION_PORT_OPERATION_UNBOUND"
+    ),
+  "CONVEYOR_OBSERVATION_PORT_OPERATION_UNBOUND"
+);
+
 const projectionMutation = structuredClone(authority);
 projectionMutation.intent.need += " mutation";
 recordsControl(
@@ -1023,5 +1532,9 @@ console.log(`Feature bodies: ${bodies.size}`);
 console.log(`Production-projected ASTs: ${derived.results.length}`);
 console.log(`Production-projected source bodies: ${derived.results.length}`);
 console.log("Production-projected feature execution bodies: 1");
+console.log("Production-projected composition type bodies: 1");
+console.log(
+  `Production-projected supporting type bodies: ${derived.results.length}`
+);
 console.log(`Markdown byte SHA-256: ${sha256(projectedMarkdown)}`);
 console.log(`${controls.length}/${controls.length} negative controls passed`);

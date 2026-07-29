@@ -212,8 +212,17 @@ const projectedFeature =
   featureProjector.derivesCanonicalTypeScriptFromSemanticAuthority(
     featureProjection.projectorRequest
   );
+const compositionTypes =
+  authority.implementationArtifactAuthority.compositionTypes;
+const projectedCompositionTypes =
+  featureProjector.derivesCanonicalTypeScriptFromSemanticAuthority(
+    compositionTypes.projectorRequest
+  );
 const featureSource = Buffer.from(
   projectedFeature.sourceBytes
+).toString("utf8");
+const compositionTypeSource = Buffer.from(
+  projectedCompositionTypes.sourceBytes
 ).toString("utf8");
 const featureExecution = {
   projectionType: "production-projector-result.v1",
@@ -229,6 +238,11 @@ const featureExecution = {
   projectedAst: projectedFeature.semanticAst,
   projectedSource: featureSource,
   projectedSourceSha256: projectedFeature.sourceSha256,
+  supportingTypeArtifactPath: compositionTypes.artifactPath,
+  supportingTypeAst: projectedCompositionTypes.semanticAst,
+  supportingTypeSource: compositionTypeSource,
+  supportingTypeSourceSha256:
+    projectedCompositionTypes.sourceSha256,
   translationProvenance:
     authority.featureExecutionAuthority.steps.map(step => ({
       sourceAuthorityRef:

@@ -5,6 +5,239 @@
   "description": "Language-neutral authority for constructing, projecting, executing, and reviewing one canonical feature in causal conveyor order.",
   "type": "object",
   "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "evaluationAuthority": {
+            "type": "object",
+            "properties": {
+              "observation": {
+                "type": "object",
+                "properties": {
+                  "disposition": {
+                    "const": "NOT_EVALUATED"
+                  }
+                },
+                "required": [
+                  "disposition"
+                ]
+              }
+            },
+            "required": [
+              "observation"
+            ]
+          }
+        },
+        "required": [
+          "evaluationAuthority"
+        ]
+      },
+      "then": {
+        "properties": {
+          "conveyor": {
+            "type": "object",
+            "properties": {
+              "constructionState": {
+                "type": "object",
+                "properties": {
+                  "currentStage": {
+                    "not": {
+                      "const": "review-feature"
+                    }
+                  },
+                  "implementationAdmission": {
+                    "not": {
+                      "const": "ADMITTED"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "semanticInterpreterAuthority": {
+            "type": "object",
+            "properties": {
+              "bindingStatus": {
+                "const": "NOT_IMPLEMENTED"
+              }
+            },
+            "required": [
+              "bindingStatus"
+            ]
+          }
+        },
+        "required": [
+          "semanticInterpreterAuthority"
+        ]
+      },
+      "then": {
+        "properties": {
+          "conveyor": {
+            "type": "object",
+            "properties": {
+              "constructionState": {
+                "type": "object",
+                "properties": {
+                  "implementationAdmission": {
+                    "const": "BLOCKED_PENDING_SEMANTIC_INTERPRETER"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "conveyor": {
+            "type": "object",
+            "properties": {
+              "constructionState": {
+                "type": "object",
+                "properties": {
+                  "implementationAdmission": {
+                    "const": "ADMITTED"
+                  }
+                },
+                "required": [
+                  "implementationAdmission"
+                ]
+              }
+            },
+            "required": [
+              "constructionState"
+            ]
+          }
+        },
+        "required": [
+          "conveyor"
+        ]
+      },
+      "then": {
+        "properties": {
+          "semanticInterpreterAuthority": {
+            "type": "object",
+            "properties": {
+              "bindingStatus": {
+                "const": "IMPLEMENTED"
+              }
+            }
+          },
+          "evaluationAuthority": {
+            "type": "object",
+            "properties": {
+              "observation": {
+                "type": "object",
+                "properties": {
+                  "semanticExecution": {
+                    "const": "EXECUTED"
+                  },
+                  "projectedExecution": {
+                    "const": "EXECUTED"
+                  },
+                  "translation": {
+                    "const": "CONFORMS"
+                  },
+                  "disposition": {
+                    "const": "PROJECTION_CONFORMS"
+                  }
+                }
+              }
+            }
+          },
+          "implementationArtifactAuthority": {
+            "type": "object",
+            "properties": {
+              "edgeRegistry": {
+                "type": "object",
+                "properties": {
+                  "bindingStatus": {
+                    "const": "IMPLEMENTED"
+                  }
+                }
+              },
+              "compositionTypes": {
+                "type": "object",
+                "properties": {
+                  "bindingStatus": {
+                    "const": "MATERIALIZED"
+                  }
+                }
+              },
+              "registrations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "bindingStatus": {
+                      "const": "IMPLEMENTED"
+                    }
+                  }
+                }
+              },
+              "semanticInterpreter": {
+                "type": "object",
+                "properties": {
+                  "bindingStatus": {
+                    "const": "IMPLEMENTED"
+                  }
+                }
+              },
+              "runtimeAdapter": {
+                "type": "object",
+                "properties": {
+                  "bindingStatus": {
+                    "const": "IMPLEMENTED"
+                  }
+                }
+              },
+              "authorityProjectorBoundary": {
+                "type": "object",
+                "properties": {
+                  "bindingStatus": {
+                    "const": "IMPLEMENTED"
+                  }
+                }
+              },
+              "materializationBoundary": {
+                "type": "object",
+                "properties": {
+                  "bindingStatus": {
+                    "const": "IMPLEMENTED"
+                  }
+                }
+              },
+              "fixtureBoundary": {
+                "type": "object",
+                "properties": {
+                  "bindingStatus": {
+                    "const": "IMPLEMENTED"
+                  }
+                }
+              },
+              "evidenceBoundary": {
+                "type": "object",
+                "properties": {
+                  "bindingStatus": {
+                    "const": "IMPLEMENTED"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
   "required": [
     "$schema",
     "contract",
@@ -13,6 +246,7 @@
     "outcome",
     "canonicalFeatureBody",
     "semanticAuthority",
+    "semanticInterpreterAuthority",
     "featureBodyAuthority",
     "featureExecutionAuthority",
     "languageProfiles",
@@ -20,6 +254,7 @@
     "projectionAuthority",
     "featureExecutionProjection",
     "evaluationAuthority",
+    "implementationArtifactAuthority",
     "reviewAuthority",
     "documentationProjection",
     "projection"
@@ -49,6 +284,9 @@
       "items": {
         "$ref": "#/$defs/semanticAuthority"
       }
+    },
+    "semanticInterpreterAuthority": {
+      "$ref": "#/$defs/semanticInterpreterAuthority"
     },
     "featureBodyAuthority": {
       "type": "array",
@@ -226,6 +464,9 @@
     "evaluationAuthority": {
       "$ref": "#/$defs/evaluationAuthority"
     },
+    "implementationArtifactAuthority": {
+      "$ref": "#/$defs/implementationArtifactAuthority"
+    },
     "reviewAuthority": {
       "$ref": "#/$defs/reviewAuthority"
     },
@@ -260,6 +501,348 @@
             "projection-topology",
             "ordered-conveyor"
           ]
+        }
+      }
+    },
+    "implementationArtifactAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "edgeRegistry",
+        "compositionTypes",
+        "registrations",
+        "semanticInterpreter",
+        "runtimeAdapter",
+        "authorityProjectorBoundary",
+        "materializationBoundary",
+        "fixtureBoundary",
+        "evidenceBoundary",
+        "admissionRequiredStatuses"
+      ],
+      "properties": {
+        "edgeRegistry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "artifactPath",
+            "edgeContracts",
+            "bindingStatus"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "canonical-feature-edge-registry.v1"
+            },
+            "artifactPath": {
+              "const": "composition/canonical-feature-edge-registry.type.ts"
+            },
+            "edgeContracts": {
+              "type": "array",
+              "minItems": 7,
+              "maxItems": 7,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "sequence",
+                  "edgeId",
+                  "inputContractId",
+                  "outputContractId"
+                ],
+                "properties": {
+                  "sequence": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 7
+                  },
+                  "edgeId": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "inputContractId": {
+                    "type": "string"
+                  },
+                  "outputContractId": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "bindingStatus": {
+              "enum": [
+                "DECLARED",
+                "IMPLEMENTED"
+              ]
+            }
+          }
+        },
+        "compositionTypes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "artifactPath",
+            "authorityRef",
+            "projectorRequest",
+            "bindingStatus"
+          ],
+          "properties": {
+            "artifactPath": {
+              "const": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
+            },
+            "authorityRef": {
+              "const": "implementation-artifact:composition-types"
+            },
+            "projectorRequest": {
+              "type": "object"
+            },
+            "bindingStatus": {
+              "enum": [
+                "PROJECTOR_OUTPUT_AVAILABLE",
+                "MATERIALIZED"
+              ]
+            }
+          }
+        },
+        "registrations": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "responsibilityId",
+              "edgeId",
+              "artifactPath",
+              "implementationRef",
+              "bindingStatus"
+            ],
+            "properties": {
+              "responsibilityId": {
+                "$ref": "#/$defs/id"
+              },
+              "edgeId": {
+                "$ref": "#/$defs/id"
+              },
+              "artifactPath": {
+                "type": "string",
+                "pattern": "^runtime/registers-[a-z][a-z0-9-]*\\.ts$"
+              },
+              "implementationRef": {
+                "type": "string",
+                "pattern": "^projected-body:[a-z][a-z0-9-]*$"
+              },
+              "bindingStatus": {
+                "enum": [
+                  "DECLARED",
+                  "IMPLEMENTED"
+                ]
+              }
+            }
+          }
+        },
+        "semanticInterpreter": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authorityRef",
+            "artifactPath",
+            "bindingStatus"
+          ],
+          "properties": {
+            "authorityRef": {
+              "const": "semantic-interpreter:canonical-feature-semantic-interpreter.v1"
+            },
+            "artifactPath": {
+              "const": "runtime/interprets-canonical-feature-semantic-authority.ts"
+            },
+            "bindingStatus": {
+              "enum": [
+                "NOT_IMPLEMENTED",
+                "IMPLEMENTED"
+              ]
+            }
+          }
+        },
+        "runtimeAdapter": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "artifactPath",
+            "acceptsContractId",
+            "constructsContextContractId",
+            "producesContractId",
+            "operations",
+            "bindingStatus"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "canonical-feature-runtime-adapter.v1"
+            },
+            "artifactPath": {
+              "const": "runtime/invokes-canonical-feature-conveyor.ts"
+            },
+            "acceptsContractId": {
+              "const": "reviewed-new-feature-request.v1"
+            },
+            "constructsContextContractId": {
+              "const": "end-to-end-canonical-feature-conveyor-context.v1"
+            },
+            "producesContractId": {
+              "const": "new-feature-terminal-disposition.v1"
+            },
+            "operations": {
+              "const": [
+                "loads-reviewed-request-context",
+                "invokes-conveyor"
+              ]
+            },
+            "bindingStatus": {
+              "enum": [
+                "DECLARED",
+                "IMPLEMENTED"
+              ]
+            }
+          }
+        },
+        "authorityProjectorBoundary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "artifactPath",
+            "operations",
+            "bindingStatus"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "complete-new-feature-authority-projector-port.v1"
+            },
+            "artifactPath": {
+              "const": "runtime/complete-new-feature-authority-projector.port.ts"
+            },
+            "operations": {
+              "const": [
+                "projects-and-writes-complete-authority"
+              ]
+            },
+            "bindingStatus": {
+              "enum": [
+                "DECLARED",
+                "IMPLEMENTED"
+              ]
+            }
+          }
+        },
+        "materializationBoundary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "artifactPath",
+            "operations",
+            "bindingStatus"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "complete-new-feature-materializer-port.v1"
+            },
+            "artifactPath": {
+              "const": "runtime/complete-new-feature-materializer.port.ts"
+            },
+            "operations": {
+              "const": [
+                "materializes-and-writes-artifact-manifest"
+              ]
+            },
+            "bindingStatus": {
+              "enum": [
+                "DECLARED",
+                "IMPLEMENTED"
+              ]
+            }
+          }
+        },
+        "fixtureBoundary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "artifactPath",
+            "operations",
+            "bindingStatus"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "canonical-feature-evaluation-fixture-port.v1"
+            },
+            "artifactPath": {
+              "const": "evaluation/canonical-feature-evaluation-fixture.port.ts"
+            },
+            "operations": {
+              "const": [
+                "loadsSemanticFixture",
+                "loadsProjectedFixture",
+                "executes-semantic-and-projected-surfaces"
+              ]
+            },
+            "bindingStatus": {
+              "enum": [
+                "DECLARED",
+                "IMPLEMENTED"
+              ]
+            }
+          }
+        },
+        "evidenceBoundary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "artifactPath",
+            "operations",
+            "canonicalization",
+            "bindingStatus"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "governed-artifact-evidence-store.v1"
+            },
+            "artifactPath": {
+              "const": "evaluation/governed-artifact-evidence-store.port.ts"
+            },
+            "operations": {
+              "const": [
+                "writes",
+                "resolves",
+                "verifies",
+                "writes-execution-comparison-evidence",
+                "resolves-and-verifies-comparison-evidence"
+              ]
+            },
+            "canonicalization": {
+              "const": "RFC8785-JCS"
+            },
+            "bindingStatus": {
+              "enum": [
+                "DECLARED",
+                "IMPLEMENTED"
+              ]
+            }
+          }
+        },
+        "admissionRequiredStatuses": {
+          "const": {
+            "edgeRegistry": "IMPLEMENTED",
+            "compositionTypes": "MATERIALIZED",
+            "registrations": "IMPLEMENTED",
+            "semanticInterpreter": "IMPLEMENTED",
+            "runtimeAdapter": "IMPLEMENTED",
+            "authorityProjectorBoundary": "IMPLEMENTED",
+            "materializationBoundary": "IMPLEMENTED",
+            "fixtureBoundary": "IMPLEMENTED",
+            "evidenceBoundary": "IMPLEMENTED"
+          }
         }
       }
     },
@@ -643,7 +1226,9 @@
       "required": [
         "currentStage",
         "completedStages",
-        "eligibleNextStages"
+        "eligibleNextStages",
+        "stageStates",
+        "implementationAdmission"
       ],
       "properties": {
         "currentStage": {
@@ -663,6 +1248,42 @@
           "items": {
             "$ref": "#/$defs/id"
           }
+        },
+        "stageStates": {
+          "type": "array",
+          "minItems": 18,
+          "maxItems": 18,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "stageId",
+              "lifecycleState"
+            ],
+            "properties": {
+              "stageId": {
+                "$ref": "#/$defs/id"
+              },
+              "lifecycleState": {
+                "enum": [
+                  "AUTHORITY_DECLARED",
+                  "EXECUTION_PENDING",
+                  "EXECUTED",
+                  "CONFORMS",
+                  "DIVERGES",
+                  "BLOCKED"
+                ]
+              }
+            }
+          }
+        },
+        "implementationAdmission": {
+          "enum": [
+            "BLOCKED_PENDING_SEMANTIC_INTERPRETER",
+            "BLOCKED_PENDING_CONFORMANCE",
+            "ADMITTED",
+            "REJECTED"
+          ]
         }
       }
     },
@@ -857,34 +1478,355 @@
           "$ref": "#/$defs/nonEmptyText"
         },
         "resultShape": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "contractId",
-            "shapePolicy",
-            "fields",
-            "rationale"
-          ],
-          "properties": {
-            "contractId": {
-              "type": "string",
-              "pattern": "^[a-z][a-z0-9-]*\\.v[0-9]+$"
-            },
-            "shapePolicy": {
-              "const": "disposition-only"
-            },
-            "fields": {
-              "const": [
-                {
-                  "name": "disposition",
-                  "type": "string"
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "contractId",
+                "shapePolicy",
+                "fields",
+                "rationale"
+              ],
+              "properties": {
+                "contractId": {
+                  "const": "new-feature-request-admission.v1"
+                },
+                "shapePolicy": {
+                  "const": "lineage-evidence-envelope"
+                },
+                "fields": {
+                  "const": [
+                    {
+                      "name": "disposition",
+                      "type": "literal-union",
+                      "allowedValues": [
+                        "ADMITTED",
+                        "REJECTED"
+                      ]
+                    },
+                    {
+                      "name": "featureId",
+                      "type": "string"
+                    },
+                    {
+                      "name": "requestRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "lineageId",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "rationale": {
+                  "$ref": "#/$defs/nonEmptyText"
                 }
-              ]
+              }
             },
-            "rationale": {
-              "$ref": "#/$defs/nonEmptyText"
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "contractId",
+                "shapePolicy",
+                "fields",
+                "rationale"
+              ],
+              "properties": {
+                "contractId": {
+                  "const": "admitted-new-feature-request.v1"
+                },
+                "shapePolicy": {
+                  "const": "lineage-evidence-envelope"
+                },
+                "fields": {
+                  "const": [
+                    {
+                      "name": "disposition",
+                      "type": "literal-union",
+                      "allowedValues": [
+                        "ADMITTED"
+                      ]
+                    },
+                    {
+                      "name": "featureId",
+                      "type": "string"
+                    },
+                    {
+                      "name": "requestRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "lineageId",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "rationale": {
+                  "$ref": "#/$defs/nonEmptyText"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "contractId",
+                "shapePolicy",
+                "fields",
+                "rationale"
+              ],
+              "properties": {
+                "contractId": {
+                  "const": "complete-new-feature-authority.v1"
+                },
+                "shapePolicy": {
+                  "const": "lineage-evidence-envelope"
+                },
+                "fields": {
+                  "const": [
+                    {
+                      "name": "disposition",
+                      "type": "literal-union",
+                      "allowedValues": [
+                        "COMPLETE"
+                      ]
+                    },
+                    {
+                      "name": "featureId",
+                      "type": "string"
+                    },
+                    {
+                      "name": "requestRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "authorityRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "lineageId",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "rationale": {
+                  "$ref": "#/$defs/nonEmptyText"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "contractId",
+                "shapePolicy",
+                "fields",
+                "rationale"
+              ],
+              "properties": {
+                "contractId": {
+                  "const": "complete-new-feature-materialization.v1"
+                },
+                "shapePolicy": {
+                  "const": "lineage-evidence-envelope"
+                },
+                "fields": {
+                  "const": [
+                    {
+                      "name": "disposition",
+                      "type": "literal-union",
+                      "allowedValues": [
+                        "MATERIALIZED"
+                      ]
+                    },
+                    {
+                      "name": "featureId",
+                      "type": "string"
+                    },
+                    {
+                      "name": "authorityRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "artifactManifestRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "lineageId",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "rationale": {
+                  "$ref": "#/$defs/nonEmptyText"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "contractId",
+                "shapePolicy",
+                "fields",
+                "rationale"
+              ],
+              "properties": {
+                "contractId": {
+                  "const": "observed-new-feature-execution.v1"
+                },
+                "shapePolicy": {
+                  "const": "lineage-evidence-envelope"
+                },
+                "fields": {
+                  "const": [
+                    {
+                      "name": "disposition",
+                      "type": "literal-union",
+                      "allowedValues": [
+                        "CONFORMS",
+                        "DIVERGES"
+                      ]
+                    },
+                    {
+                      "name": "featureId",
+                      "type": "string"
+                    },
+                    {
+                      "name": "artifactManifestRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "semanticObservationRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "projectedObservationRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "expectedSignalRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "astSourceCorrespondenceRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "lineageId",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "rationale": {
+                  "$ref": "#/$defs/nonEmptyText"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "contractId",
+                "shapePolicy",
+                "fields",
+                "rationale"
+              ],
+              "properties": {
+                "contractId": {
+                  "const": "new-feature-execution-comparison.v1"
+                },
+                "shapePolicy": {
+                  "const": "execution-comparison"
+                },
+                "fields": {
+                  "const": [
+                    {
+                      "name": "disposition",
+                      "type": "literal-union",
+                      "allowedValues": [
+                        "COMPLETE"
+                      ]
+                    },
+                    {
+                      "name": "featureId",
+                      "type": "string"
+                    },
+                    {
+                      "name": "semanticObservationRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "projectedObservationRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "expectedSignalRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "astSourceCorrespondenceRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "comparisonEvidenceRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "lineageId",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "rationale": {
+                  "$ref": "#/$defs/nonEmptyText"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "contractId",
+                "shapePolicy",
+                "fields",
+                "rationale"
+              ],
+              "properties": {
+                "contractId": {
+                  "const": "new-feature-terminal-disposition.v1"
+                },
+                "shapePolicy": {
+                  "const": "terminal-disposition"
+                },
+                "fields": {
+                  "const": [
+                    {
+                      "name": "disposition",
+                      "type": "literal-union",
+                      "allowedValues": [
+                        "PROJECTION_CONFORMS",
+                        "PROJECTION_DIVERGES"
+                      ]
+                    },
+                    {
+                      "name": "comparisonEvidenceRef",
+                      "type": "governed-artifact-ref"
+                    },
+                    {
+                      "name": "lineageId",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "rationale": {
+                  "$ref": "#/$defs/nonEmptyText"
+                }
+              }
             }
-          }
+          ]
         }
       }
     },
@@ -966,7 +1908,8 @@
       "additionalProperties": false,
       "required": [
         "observationId",
-        "sourceRef"
+        "sourceRef",
+        "resolution"
       ],
       "properties": {
         "observationId": {
@@ -975,6 +1918,37 @@
         "sourceRef": {
           "type": "string",
           "pattern": "^(scenario|feature-body|evaluation|feature):[a-z][a-z0-9-]*$"
+        },
+        "resolution": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "portRef",
+            "operationId",
+            "input",
+            "producesFields"
+          ],
+          "properties": {
+            "portRef": {
+              "type": "string",
+              "pattern": "^(implementation-artifact|semantic-interpreter):[a-z][a-z0-9.-]*$"
+            },
+            "operationId": {
+              "$ref": "#/$defs/id"
+            },
+            "input": {
+              "$ref": "#/$defs/jsonPointer"
+            },
+            "producesFields": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][A-Za-z0-9]*$"
+              }
+            }
+          }
         }
       }
     },
@@ -1031,19 +2005,75 @@
       ],
       "properties": {
         "left": {
-          "$ref": "#/$defs/jsonPointer"
+          "$ref": "#/$defs/pathOperand"
         },
         "operator": {
           "enum": [
             "equals",
-            "not-contains"
+            "not-contains",
+            "evidence-equivalent",
+            "artifact-disposition-equals"
           ]
         },
         "right": {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/semanticOperand"
         }
       }
+    },
+    "pathOperand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "path"
+      ],
+      "properties": {
+        "kind": {
+          "const": "path"
+        },
+        "path": {
+          "$ref": "#/$defs/jsonPointer"
+        }
+      }
+    },
+    "literalOperand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "value"
+      ],
+      "properties": {
+        "kind": {
+          "const": "literal"
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "semanticOperand": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/pathOperand"
+        },
+        {
+          "$ref": "#/$defs/literalOperand"
+        }
+      ]
     },
     "decisionCondition": {
       "oneOf": [
@@ -1101,7 +2131,7 @@
           "type": "object",
           "minProperties": 1,
           "additionalProperties": {
-            "$ref": "#/$defs/jsonPointer"
+            "$ref": "#/$defs/semanticOperand"
           }
         }
       }
@@ -1204,6 +2234,107 @@
         }
       }
     },
+    "semanticInterpreterAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId",
+        "bindingStatus",
+        "requiredArtifact",
+        "pathDialect",
+        "operations",
+        "inputOperations",
+        "operators",
+        "projectionValueKinds",
+        "evidenceOutput"
+      ],
+      "properties": {
+        "contractId": {
+          "const": "canonical-feature-semantic-interpreter.v1"
+        },
+        "bindingStatus": {
+          "enum": [
+            "NOT_IMPLEMENTED",
+            "IMPLEMENTED"
+          ]
+        },
+        "requiredArtifact": {
+          "const": "runtime/interprets-canonical-feature-semantic-authority.ts"
+        },
+        "pathDialect": {
+          "const": {
+            "dialectId": "rooted-member-path.v1",
+            "rootToken": "$",
+            "memberSeparator": ".",
+            "arrayTraversal": "forbidden",
+            "missingMemberDisposition": "RED",
+            "evaluationDocument": "immutable input-observed-decision-result scope",
+            "stepInputBehavior": "select operation input without rebasing the evaluation document"
+          }
+        },
+        "operations": {
+          "const": [
+            {
+              "operationId": "resolve-observation",
+              "semantics": "resolve the declared observation through the fixture and evidence ports and assign it at the declared path"
+            },
+            {
+              "operationId": "resolve-decision",
+              "semantics": "evaluate rules in declaration order and select exactly the first matching rule"
+            },
+            {
+              "operationId": "project-result",
+              "semantics": "resolve each declared path or literal field without implicit fields and assign the canonical result"
+            }
+          ]
+        },
+        "inputOperations": {
+          "const": [
+            "preserves-admission-envelope"
+          ]
+        },
+        "operators": {
+          "const": [
+            {
+              "operatorId": "equals",
+              "semantics": "JCS equality of resolved operands"
+            },
+            {
+              "operatorId": "not-contains",
+              "semantics": "the resolved left array contains no JCS-equal right value"
+            },
+            {
+              "operatorId": "evidence-equivalent",
+              "semantics": "resolved evidence payloads have equal JCS bytes"
+            },
+            {
+              "operatorId": "artifact-disposition-equals",
+              "semantics": "the resolved evidence payload disposition equals the literal right operand"
+            }
+          ]
+        },
+        "projectionValueKinds": {
+          "const": [
+            "path",
+            "literal"
+          ]
+        },
+        "evidenceOutput": {
+          "const": {
+            "contractId": "semantic-execution-evidence.v1",
+            "canonicalization": "RFC8785-JCS",
+            "digest": "SHA-256",
+            "requiredFields": [
+              "executionModelId",
+              "inputRef",
+              "stepObservations",
+              "resultRef",
+              "lineageId"
+            ]
+          }
+        }
+      }
+    },
     "featureBodyOperation": {
       "oneOf": [
         {
@@ -1238,7 +2369,8 @@
           "const": "$.context"
         },
         "assign": {
-          "$ref": "#/$defs/id"
+          "type": "string",
+          "pattern": "^[a-z][A-Za-z0-9]*$"
         }
       }
     },
@@ -1835,16 +2967,34 @@
           ],
           "properties": {
             "semanticExecution": {
-              "const": "NOT_EVALUATED"
+              "enum": [
+                "NOT_EVALUATED",
+                "EXECUTED",
+                "DIVERGES"
+              ]
             },
             "projectedExecution": {
-              "const": "NOT_EVALUATED"
+              "enum": [
+                "NOT_EVALUATED",
+                "EXECUTED",
+                "DIVERGES"
+              ]
             },
             "translation": {
-              "const": "NOT_EVALUATED"
+              "enum": [
+                "NOT_EVALUATED",
+                "CONFORMS",
+                "DIVERGES"
+              ]
             },
             "disposition": {
-              "const": "NOT_EVALUATED"
+              "enum": [
+                "PROJECTION_CONFORMS",
+                "SEMANTIC_EXECUTION_DIVERGES",
+                "PROJECTED_EXECUTION_DIVERGES",
+                "TRANSLATION_DIVERGES",
+                "NOT_EVALUATED"
+              ]
             }
           }
         }
@@ -2260,7 +3410,7 @@
             },
             "runtimeAdapterAuthorityRef": {
               "type": "string",
-              "pattern": "^external-authority:[a-z][a-z0-9-]*$"
+              "pattern": "^(external-authority|implementation-artifact):[a-z][a-z0-9.-]*$"
             }
           }
         },
@@ -2455,7 +3605,7 @@
                   "availability": {
                     "enum": [
                       "PROJECTOR_OUTPUT",
-                      "EXECUTABLE_MODEL",
+                      "DECLARATIVE_MODEL",
                       "GOVERNED_PREVIEW"
                     ]
                   }
