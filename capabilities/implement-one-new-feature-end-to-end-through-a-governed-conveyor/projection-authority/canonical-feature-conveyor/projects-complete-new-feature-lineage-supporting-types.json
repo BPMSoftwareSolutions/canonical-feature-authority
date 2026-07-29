@@ -1,0 +1,82 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+  },
+  "projectionId": "project-complete-new-feature-lineage-supporting-types",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts"
+  },
+  "lineage": {
+    "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+    "scenarioId": "verify-one-complete-new-feature-lineage",
+    "obligationId": "prove-complete-new-feature-equivalence",
+    "responsibilityId": "verifies-complete-new-feature-lineage",
+    "signalId": "complete-new-feature-equivalence"
+  },
+  "declarations": [
+    {
+      "interface": {
+        "identity": "governed-artifact-ref",
+        "name": "GovernedArtifactRef",
+        "members": [
+          {
+            "name": "artifactId",
+            "typeReference": "string"
+          },
+          {
+            "name": "sha256",
+            "typeReference": "string"
+          },
+          {
+            "name": "mediaType",
+            "typeReference": "string"
+          }
+        ]
+      }
+    },
+    {
+      "interface": {
+        "identity": "complete-new-feature-lineage-context",
+        "name": "VerifyCompleteNewFeatureLineageContext",
+        "members": [
+          {
+            "name": "edges",
+            "members": [
+              {
+                "name": "invokes",
+                "typeReference": "(edgeId: string, context: VerifyCompleteNewFeatureLineageContext) => Promise<NewFeatureTerminalDisposition>"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "interface": {
+        "identity": "complete-new-feature-lineage-result",
+        "name": "NewFeatureTerminalDisposition",
+        "members": [
+          {
+            "name": "disposition",
+            "unionAlternatives": [
+              "PROJECTION_CONFORMS",
+              "PROJECTION_DIVERGES"
+            ]
+          },
+          {
+            "name": "comparisonEvidenceRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "lineageId",
+            "typeReference": "string"
+          }
+        ],
+        "separatedBefore": true
+      }
+    }
+  ]
+}

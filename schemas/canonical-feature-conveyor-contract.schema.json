@@ -440,7 +440,7 @@
           ],
           "properties": {
             "path": {
-              "const": "composition/executes-end-to-end-canonical-feature-conveyor.ts"
+              "const": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts"
             },
             "language": {
               "const": "typescript"
@@ -523,6 +523,7 @@
         "evidenceBoundary",
         "executionProof",
         "admissionRequiredStatuses",
+        "workspaceProjectionAuthority",
         "projectionPackage"
       ],
       "properties": {
@@ -541,7 +542,7 @@
               "const": "canonical-feature-edge-registry.v1"
             },
             "artifactPath": {
-              "const": "composition/canonical-feature-edge-registry.type.ts"
+              "const": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts"
             },
             "edgeContracts": {
               "type": "array",
@@ -596,7 +597,7 @@
           ],
           "properties": {
             "artifactPath": {
-              "const": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
+              "const": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
             },
             "authorityRef": {
               "const": "implementation-artifact:composition-types"
@@ -635,7 +636,7 @@
               },
               "artifactPath": {
                 "type": "string",
-                "pattern": "^runtime/registers-[a-z][a-z0-9-]*\\.ts$"
+                "pattern": "^capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-[a-z][a-z0-9-]*\\.ts$"
               },
               "implementationRef": {
                 "type": "string",
@@ -663,7 +664,7 @@
               "const": "semantic-interpreter:canonical-feature-semantic-interpreter.v1"
             },
             "artifactPath": {
-              "const": "runtime/interprets-canonical-feature-semantic-authority.ts"
+              "const": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts"
             },
             "bindingStatus": {
               "enum": [
@@ -690,7 +691,7 @@
               "const": "canonical-feature-runtime-adapter.v1"
             },
             "artifactPath": {
-              "const": "runtime/invokes-canonical-feature-conveyor.ts"
+              "const": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts"
             },
             "acceptsContractId": {
               "const": "reviewed-new-feature-request.v1"
@@ -730,7 +731,7 @@
               "const": "complete-new-feature-authority-projector-port.v1"
             },
             "artifactPath": {
-              "const": "runtime/complete-new-feature-authority-projector.port.ts"
+              "const": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts"
             },
             "operations": {
               "const": [
@@ -763,7 +764,7 @@
               "const": "complete-new-feature-materializer-port.v1"
             },
             "artifactPath": {
-              "const": "runtime/complete-new-feature-materializer.port.ts"
+              "const": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts"
             },
             "operations": {
               "const": [
@@ -796,7 +797,7 @@
               "const": "canonical-feature-evaluation-fixture-port.v1"
             },
             "artifactPath": {
-              "const": "evaluation/canonical-feature-evaluation-fixture.port.ts"
+              "const": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts"
             },
             "operations": {
               "const": [
@@ -832,7 +833,7 @@
               "const": "governed-artifact-evidence-store.v1"
             },
             "artifactPath": {
-              "const": "evaluation/governed-artifact-evidence-store.port.ts"
+              "const": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts"
             },
             "operations": {
               "const": [
@@ -886,7 +887,7 @@
               "const": "canonical-feature-conveyor-execution-proof.v1"
             },
             "artifactPath": {
-              "const": "evaluation/proves-canonical-feature-conveyor.ts"
+              "const": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/proves-canonical-feature-conveyor.ts"
             },
             "semanticSurface": {
               "const": "direct-semantic-authority"
@@ -900,6 +901,21 @@
             "expectedDisposition": {
               "const": "PROJECTION_CONFORMS"
             }
+          }
+        },
+        "workspaceProjectionAuthority": {
+          "const": {
+            "repositoryRoot": ".",
+            "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "projectionMode": "working-tree",
+            "reviewSurface": "git-diff",
+            "sourceMaterialization": "direct-to-governed-capability-paths",
+            "alternateFileTopologies": "forbidden",
+            "dirtyStatePolicy": "PRESERVE_UNRELATED_DIRTY_PATHS",
+            "failurePolicy": "LEAVE_AUTHORIZED_PARTIAL_DELTA",
+            "compileRoot": ".",
+            "executionRoot": ".",
+            "evidenceRoot": "machine-local-outside-repository"
           }
         },
         "projectionPackage": {
@@ -918,10 +934,16 @@
             },
             "targetPolicy": {
               "const": {
-                "root": "caller-supplied-empty-root",
+                "root": "governed-repository-workspace",
+                "repositoryRoot": ".",
+                "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+                "projectionMode": "working-tree",
+                "reviewSurface": "git-diff",
                 "authoritySource": "canonical-json-only",
                 "markdownScraping": "forbidden",
-                "overwrite": "forbidden"
+                "overwrite": "replace-only-if-lineage-matches",
+                "pathPolicy": "all-artifacts-descend-from-capability-root",
+                "alternateFileTopologies": "forbidden"
               }
             },
             "posturePolicy": {
@@ -945,8 +967,8 @@
             },
             "artifacts": {
               "type": "array",
-              "minItems": 34,
-              "maxItems": 34,
+              "minItems": 32,
+              "maxItems": 32,
               "items": {
                 "type": "object",
                 "additionalProperties": false,
@@ -956,7 +978,9 @@
                   "artifactPath",
                   "sourceAuthorityRef",
                   "projectorCapability",
-                  "projectionPosture"
+                  "projectionPosture",
+                  "ownership",
+                  "existingFilePolicy"
                 ],
                 "properties": {
                   "artifactId": {
@@ -964,7 +988,6 @@
                   },
                   "family": {
                     "enum": [
-                      "package-support",
                       "composition",
                       "responsibility-body",
                       "responsibility-type",
@@ -979,7 +1002,7 @@
                   },
                   "artifactPath": {
                     "type": "string",
-                    "pattern": "^[A-Za-z0-9._/-]+\\.(?:ts|mjs|json)$"
+                    "pattern": "^capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/(?:composition|evaluation|runtime|src)/[A-Za-z0-9._/-]+\\.(?:ts|mjs|json)$"
                   },
                   "sourceAuthorityRef": {
                     "type": "string",
@@ -992,8 +1015,7 @@
                       "projects-runtime-adapter",
                       "projects-semantic-interpreter",
                       "projects-evaluation-proof",
-                      "projects-self-hosting-runner",
-                      "projects-package-support"
+                      "projects-self-hosting-runner"
                     ]
                   },
                   "projectionPosture": {
@@ -1005,6 +1027,12 @@
                       "MATERIALIZED",
                       "VERIFIED"
                     ]
+                  },
+                  "ownership": {
+                    "const": "projector-owned"
+                  },
+                  "existingFilePolicy": {
+                    "const": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
                   }
                 }
               }
@@ -1036,7 +1064,7 @@
           "const": "architecture/end-to-end-canonical-feature-conveyor.derived-projections.json"
         },
         "executorArtifactPath": {
-          "const": "runtime/self-hosts-canonical-feature-conveyor.mjs"
+          "const": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/self-hosts-canonical-feature-conveyor.mjs"
         },
         "executionStages": {
           "const": [
@@ -1062,22 +1090,26 @@
         },
         "targetPolicy": {
           "const": {
-            "root": "caller-supplied-empty-root",
-            "overwrite": "forbidden",
+            "root": "governed-repository-workspace",
+            "repositoryRoot": ".",
+            "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+            "overwrite": "replace-only-if-lineage-matches",
             "postProjectionEdits": "forbidden",
-            "authoritySource": "canonical-json-and-admitted-derived-projection"
+            "authoritySource": "canonical-json-and-admitted-derived-projection",
+            "reviewSurface": "git-diff",
+            "alternateFileTopologies": "forbidden"
           }
         },
         "acceptance": {
           "const": {
             "stageReplay": "18-of-18-in-causal-order",
-            "governedArtifactComparison": "byte-for-byte",
+            "governedArtifactComparison": "byte-for-byte-in-place",
             "typescript": "strict-compile",
             "semanticExecution": "executed",
             "projectedExecution": "executed",
             "translation": "canonical-equivalence",
             "terminalDisposition": "PROJECTION_CONFORMS",
-            "liveProviderRun": "required-on-untouched-clone"
+            "liveProviderRun": "required-on-projected-working-tree"
           }
         }
       }
@@ -2495,7 +2527,7 @@
           ]
         },
         "requiredArtifact": {
-          "const": "runtime/interprets-canonical-feature-semantic-authority.ts"
+          "const": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts"
         },
         "pathDialect": {
           "const": {

@@ -1,0 +1,88 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+  },
+  "projectionId": "project-complete-new-feature-authority-supporting-types",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts"
+  },
+  "lineage": {
+    "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+    "scenarioId": "project-one-complete-new-feature-authority",
+    "obligationId": "establish-one-complete-new-feature-authority",
+    "responsibilityId": "projects-complete-new-feature-authority",
+    "signalId": "complete-new-feature-authority"
+  },
+  "declarations": [
+    {
+      "interface": {
+        "identity": "governed-artifact-ref",
+        "name": "GovernedArtifactRef",
+        "members": [
+          {
+            "name": "artifactId",
+            "typeReference": "string"
+          },
+          {
+            "name": "sha256",
+            "typeReference": "string"
+          },
+          {
+            "name": "mediaType",
+            "typeReference": "string"
+          }
+        ]
+      }
+    },
+    {
+      "interface": {
+        "identity": "complete-new-feature-authority-context",
+        "name": "ProjectCompleteNewFeatureAuthorityContext",
+        "members": [
+          {
+            "name": "edges",
+            "members": [
+              {
+                "name": "invokes",
+                "typeReference": "(edgeId: string, context: ProjectCompleteNewFeatureAuthorityContext) => Promise<CompleteNewFeatureAuthority>"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "interface": {
+        "identity": "complete-new-feature-authority-result",
+        "name": "CompleteNewFeatureAuthority",
+        "members": [
+          {
+            "name": "disposition",
+            "typeReference": "COMPLETE",
+            "literal": true
+          },
+          {
+            "name": "featureId",
+            "typeReference": "string"
+          },
+          {
+            "name": "requestRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "authorityRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "lineageId",
+            "typeReference": "string"
+          }
+        ],
+        "separatedBefore": true
+      }
+    }
+  ]
+}

@@ -1,13 +1,6 @@
 import { execFile } from "node:child_process";
-import {
-  mkdir,
-  mkdtemp,
-  readFile,
-  rm,
-  writeFile
-} from "node:fs/promises";
-import { tmpdir } from "node:os";
-import { dirname, resolve } from "node:path";
+import { readFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import { promisify } from "node:util";
 
 import Ajv2020 from "ajv/dist/2020.js";
@@ -47,104 +40,40 @@ async function assertsProjectedTypescriptCompiles(
   derived
 ) {
   const executes = promisify(execFile);
-  const temporaryRoot = await mkdtemp(
-    resolve(tmpdir(), "canonical-feature-conveyor-")
-  );
-  const files = new Map();
-  const adds = (artifactPath, source) => {
-    files.set(resolve(temporaryRoot, artifactPath), source);
-  };
-  if (derived.implementationPackage?.artifacts !== undefined) {
-    for (const artifact of derived.implementationPackage.artifacts) {
-      if (artifact.artifactPath.endsWith(".ts")) {
-        adds(artifact.artifactPath, artifact.projectedSource);
-      }
-    }
-  } else {
-    adds(
-      derived.featureExecution.artifactPath,
-      derived.featureExecution.projectedSource
-    );
-    adds(
-      derived.featureExecution.supportingTypeArtifactPath,
-      derived.featureExecution.supportingTypeSource
-    );
-    for (const result of derived.results) {
-      adds(result.artifactPath, result.projectedSource);
-      adds(
-        result.supportingTypeArtifactPath,
-        result.supportingTypeSource
-      );
-    }
-  }
-  try {
-    for (const [filePath, source] of files) {
-      await mkdir(dirname(filePath), { recursive: true });
-      await writeFile(filePath, source, "utf8");
-    }
-    const projectedPackageJson =
-      derived.implementationPackage?.artifacts.find(
-        artifact => artifact.artifactPath === "package.json"
-      );
-    if (projectedPackageJson !== undefined) {
-      await writeFile(
-        resolve(temporaryRoot, "package.json"),
-        projectedPackageJson.projectedSource,
-        "utf8"
-      );
-    }
-    const tsconfigPath = resolve(temporaryRoot, "tsconfig.json");
-    await writeFile(
-      tsconfigPath,
-      `${JSON.stringify(
-        {
-          compilerOptions: {
-            module: "NodeNext",
-            moduleResolution: "NodeNext",
-            noEmit: true,
-            skipLibCheck: true,
-            strict: true,
-            target: "ES2022"
-          },
-          include: ["**/*.ts"]
-        },
-        null,
-        2
-      )}\n`,
+  const artifacts =
+    derived.implementationPackage?.artifacts ?? [];
+  for (const artifact of artifacts) {
+    if (!artifact.artifactPath.endsWith(".ts")) continue;
+    const observedSource = await readFile(
+      resolve(repositoryRoot, artifact.artifactPath),
       "utf8"
     );
-    try {
-      await executes(
-        process.execPath,
-        [
-          resolve(
-            repositoryRoot,
-            "node_modules/typescript/bin/tsc"
-          ),
-          "--project",
-          tsconfigPath
-        ],
-        {
-          cwd: temporaryRoot
-        }
-      );
-    } catch (error) {
-      throw new Error(
-        `CONVEYOR_PROJECTED_TYPESCRIPT_DOES_NOT_COMPILE: ${
-          error.stdout ?? error.stderr ?? error.message
-        }`
-      );
-    }
-  } finally {
-    const resolvedTemporaryRoot = resolve(temporaryRoot);
     assert(
-      resolvedTemporaryRoot.startsWith(resolve(tmpdir())),
-      "CONVEYOR_TYPECHECK_TEMPORARY_ROOT_INVALID"
+      observedSource === artifact.projectedSource,
+      `CONVEYOR_REPOSITORY_PROJECTED_BYTES_DRIFT: ${artifact.artifactPath}`
     );
-    await rm(resolvedTemporaryRoot, {
-      force: true,
-      recursive: true
-    });
+  }
+  try {
+    await executes(
+      process.execPath,
+      [
+        resolve(
+          repositoryRoot,
+          "node_modules/typescript/bin/tsc"
+        ),
+        "--project",
+        resolve(repositoryRoot, "tsconfig.json")
+      ],
+      {
+        cwd: repositoryRoot
+      }
+    );
+  } catch (error) {
+    throw new Error(
+      `CONVEYOR_REPOSITORY_PROJECTED_TYPESCRIPT_DOES_NOT_COMPILE: ${
+        error.stdout ?? error.stderr ?? error.message
+      }`
+    );
   }
 }
 
@@ -519,9 +448,16 @@ unique(
   "CONVEYOR_IMPLEMENTATION_ARTIFACT_PATH_DUPLICATED"
 );
 assert(
-  implementationCoordinates.length === 34 &&
+  implementationCoordinates.length === 32 &&
     implementationCoordinates.every(
-      coordinate => coordinate.projectionPosture === "PROJECTABLE"
+      coordinate =>
+        coordinate.projectionPosture === "PROJECTABLE" &&
+        coordinate.ownership === "projector-owned" &&
+        coordinate.existingFilePolicy ===
+          "REPLACE_IF_GENERATED_LINEAGE_MATCHES" &&
+        coordinate.artifactPath.startsWith(
+          `${authority.implementationArtifactAuthority.workspaceProjectionAuthority.capabilityRoot}/`
+        )
     ) &&
     derived.implementationPackage?.packageId ===
       authority.implementationArtifactAuthority.projectionPackage
@@ -544,14 +480,17 @@ for (const coordinate of implementationCoordinates) {
         coordinate.projectorCapability &&
       artifact.projectionPosture ===
         coordinate.projectionPosture &&
+      artifact.ownership === coordinate.ownership &&
+      artifact.existingFilePolicy ===
+        coordinate.existingFilePolicy &&
       artifact.projectedSourceSha256 ===
         sha256(Buffer.from(artifact.projectedSource, "utf8")),
     `CONVEYOR_IMPLEMENTATION_ARTIFACT_DRIFT: ${coordinate.artifactId}`
   );
 }
 assert(
-  derived.implementationPackage.summary.declaredArtifacts === 34 &&
-    derived.implementationPackage.summary.projectableArtifacts === 34 &&
+  derived.implementationPackage.summary.declaredArtifacts === 32 &&
+    derived.implementationPackage.summary.projectableArtifacts === 32 &&
     derived.implementationPackage.summary.unresolvedArtifacts === 0,
   "CONVEYOR_IMPLEMENTATION_PROJECTION_SUMMARY_MISMATCH"
 );
@@ -563,6 +502,16 @@ assert(
     authority.selfHostingAuthority.executionStages.length === 18 &&
     authority.selfHostingAuthority.targetPolicy
       .postProjectionEdits === "forbidden" &&
+    authority.selfHostingAuthority.targetPolicy.root ===
+      "governed-repository-workspace" &&
+    authority.selfHostingAuthority.targetPolicy.reviewSurface ===
+      "git-diff" &&
+    authority.implementationArtifactAuthority
+      .workspaceProjectionAuthority.projectionMode ===
+      "working-tree" &&
+    authority.implementationArtifactAuthority
+      .workspaceProjectionAuthority.alternateFileTopologies ===
+      "forbidden" &&
     implementationCoordinates.some(
       coordinate =>
         coordinate.artifactPath ===
@@ -1626,6 +1575,70 @@ recordsControl(
       "CONVEYOR_OBSERVATION_PORT_OPERATION_UNBOUND"
     ),
   "CONVEYOR_OBSERVATION_PORT_OPERATION_UNBOUND"
+);
+
+const pathEscapeProjection = structuredClone(authority);
+pathEscapeProjection.implementationArtifactAuthority
+  .projectionPackage.artifacts[0].artifactPath =
+  "../outside-capability.ts";
+recordsControl(
+  "implementation-artifact-path-escape",
+  () => {
+    if (!validate(pathEscapeProjection)) {
+      throw new Error(
+        "CONVEYOR_CAPABILITY_ROOT_CONFINEMENT_VIOLATED"
+      );
+    }
+  },
+  "CONVEYOR_CAPABILITY_ROOT_CONFINEMENT_VIOLATED"
+);
+
+const siblingCapabilityProjection = structuredClone(authority);
+siblingCapabilityProjection.implementationArtifactAuthority
+  .projectionPackage.artifacts[0].artifactPath =
+  "capabilities/another-capability/runtime/escaped.ts";
+recordsControl(
+  "implementation-artifact-sibling-capability-sprawl",
+  () => {
+    if (!validate(siblingCapabilityProjection)) {
+      throw new Error(
+        "CONVEYOR_CAPABILITY_ROOT_CONFINEMENT_VIOLATED"
+      );
+    }
+  },
+  "CONVEYOR_CAPABILITY_ROOT_CONFINEMENT_VIOLATED"
+);
+
+const shadowRootProjection = structuredClone(authority);
+shadowRootProjection.implementationArtifactAuthority
+  .projectionPackage.targetPolicy.root =
+  "caller-supplied-empty-root";
+recordsControl(
+  "shadow-projection-root",
+  () => {
+    if (!validate(shadowRootProjection)) {
+      throw new Error(
+        "CONVEYOR_WORKING_TREE_PROJECTION_REQUIRED"
+      );
+    }
+  },
+  "CONVEYOR_WORKING_TREE_PROJECTION_REQUIRED"
+);
+
+const humanOwnedOverwrite = structuredClone(authority);
+humanOwnedOverwrite.implementationArtifactAuthority
+  .projectionPackage.artifacts[0].ownership =
+  "human-authored";
+recordsControl(
+  "human-owned-artifact-overwrite",
+  () => {
+    if (!validate(humanOwnedOverwrite)) {
+      throw new Error(
+        "CONVEYOR_PROJECTOR_OWNERSHIP_REQUIRED"
+      );
+    }
+  },
+  "CONVEYOR_PROJECTOR_OWNERSHIP_REQUIRED"
 );
 
 const projectionMutation = structuredClone(authority);

@@ -1,0 +1,306 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+  },
+  "projectionId": "project-end-to-end-canonical-feature-conveyor-composition-types",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
+  },
+  "lineage": {
+    "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+    "scenarioId": "execute-complete-canonical-feature-conveyor",
+    "obligationId": "execute-one-mechanically-continuous-feature-flow",
+    "responsibilityId": "executes-end-to-end-canonical-feature-conveyor",
+    "signalId": "new-feature-terminal-disposition"
+  },
+  "declarations": [
+    {
+      "interface": {
+        "identity": "governed-artifact-ref",
+        "name": "GovernedArtifactRef",
+        "members": [
+          {
+            "name": "artifactId",
+            "typeReference": "string"
+          },
+          {
+            "name": "sha256",
+            "typeReference": "string"
+          },
+          {
+            "name": "mediaType",
+            "typeReference": "string"
+          }
+        ]
+      }
+    },
+    {
+      "interface": {
+        "identity": "new-feature-request-admission",
+        "name": "NewFeatureRequestAdmission",
+        "members": [
+          {
+            "name": "disposition",
+            "unionAlternatives": [
+              "ADMITTED",
+              "REJECTED"
+            ]
+          },
+          {
+            "name": "featureId",
+            "typeReference": "string"
+          },
+          {
+            "name": "requestRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "lineageId",
+            "typeReference": "string"
+          }
+        ],
+        "separatedBefore": true
+      }
+    },
+    {
+      "interface": {
+        "identity": "admitted-new-feature-request",
+        "name": "AdmittedNewFeatureRequest",
+        "members": [
+          {
+            "name": "disposition",
+            "typeReference": "ADMITTED",
+            "literal": true
+          },
+          {
+            "name": "featureId",
+            "typeReference": "string"
+          },
+          {
+            "name": "requestRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "lineageId",
+            "typeReference": "string"
+          }
+        ],
+        "separatedBefore": true
+      }
+    },
+    {
+      "interface": {
+        "identity": "complete-new-feature-authority",
+        "name": "CompleteNewFeatureAuthority",
+        "members": [
+          {
+            "name": "disposition",
+            "typeReference": "COMPLETE",
+            "literal": true
+          },
+          {
+            "name": "featureId",
+            "typeReference": "string"
+          },
+          {
+            "name": "requestRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "authorityRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "lineageId",
+            "typeReference": "string"
+          }
+        ],
+        "separatedBefore": true
+      }
+    },
+    {
+      "interface": {
+        "identity": "complete-new-feature-materialization",
+        "name": "CompleteNewFeatureMaterialization",
+        "members": [
+          {
+            "name": "disposition",
+            "typeReference": "MATERIALIZED",
+            "literal": true
+          },
+          {
+            "name": "featureId",
+            "typeReference": "string"
+          },
+          {
+            "name": "authorityRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "artifactManifestRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "lineageId",
+            "typeReference": "string"
+          }
+        ],
+        "separatedBefore": true
+      }
+    },
+    {
+      "interface": {
+        "identity": "observed-new-feature-execution",
+        "name": "ObservedNewFeatureExecution",
+        "members": [
+          {
+            "name": "disposition",
+            "unionAlternatives": [
+              "CONFORMS",
+              "DIVERGES"
+            ]
+          },
+          {
+            "name": "featureId",
+            "typeReference": "string"
+          },
+          {
+            "name": "artifactManifestRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "semanticObservationRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "projectedObservationRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "expectedSignalRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "astSourceCorrespondenceRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "lineageId",
+            "typeReference": "string"
+          }
+        ],
+        "separatedBefore": true
+      }
+    },
+    {
+      "interface": {
+        "identity": "new-feature-execution-comparison",
+        "name": "NewFeatureExecutionComparison",
+        "members": [
+          {
+            "name": "disposition",
+            "typeReference": "COMPLETE",
+            "literal": true
+          },
+          {
+            "name": "featureId",
+            "typeReference": "string"
+          },
+          {
+            "name": "semanticObservationRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "projectedObservationRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "expectedSignalRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "astSourceCorrespondenceRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "comparisonEvidenceRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "lineageId",
+            "typeReference": "string"
+          }
+        ],
+        "separatedBefore": true
+      }
+    },
+    {
+      "interface": {
+        "identity": "new-feature-terminal-disposition",
+        "name": "NewFeatureTerminalDisposition",
+        "members": [
+          {
+            "name": "disposition",
+            "unionAlternatives": [
+              "PROJECTION_CONFORMS",
+              "PROJECTION_DIVERGES"
+            ]
+          },
+          {
+            "name": "comparisonEvidenceRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "lineageId",
+            "typeReference": "string"
+          }
+        ],
+        "separatedBefore": true
+      }
+    },
+    {
+      "interface": {
+        "identity": "end-to-end-canonical-feature-conveyor-context",
+        "name": "EndToEndCanonicalFeatureConveyorContext",
+        "members": [
+          {
+            "name": "reviewDisposition",
+            "unionAlternatives": [
+              "REVIEWED",
+              "UNREVIEWED"
+            ]
+          },
+          {
+            "name": "existingFeatureIds",
+            "typeReference": "ReadonlyArray<string>"
+          },
+          {
+            "name": "featureId",
+            "typeReference": "string"
+          },
+          {
+            "name": "requestRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "lineageId",
+            "typeReference": "string"
+          },
+          {
+            "name": "edges",
+            "members": [
+              {
+                "name": "invokes",
+                "typeReference": "<K extends \"admit-reviewed-new-feature-request\" | \"adapt-new-feature-request-admission\" | \"project-complete-new-feature-authority\" | \"materialize-complete-new-feature\" | \"execute-newly-materialized-feature\" | \"compose-new-feature-execution-comparison\" | \"verify-complete-new-feature-lineage\">(edgeId: K, input: K extends \"admit-reviewed-new-feature-request\" ? EndToEndCanonicalFeatureConveyorContext : K extends \"adapt-new-feature-request-admission\" ? NewFeatureRequestAdmission : K extends \"project-complete-new-feature-authority\" ? AdmittedNewFeatureRequest : K extends \"materialize-complete-new-feature\" ? CompleteNewFeatureAuthority : K extends \"execute-newly-materialized-feature\" ? CompleteNewFeatureMaterialization : K extends \"compose-new-feature-execution-comparison\" ? ObservedNewFeatureExecution : NewFeatureExecutionComparison) => Promise<K extends \"admit-reviewed-new-feature-request\" ? NewFeatureRequestAdmission : K extends \"adapt-new-feature-request-admission\" ? AdmittedNewFeatureRequest : K extends \"project-complete-new-feature-authority\" ? CompleteNewFeatureAuthority : K extends \"materialize-complete-new-feature\" ? CompleteNewFeatureMaterialization : K extends \"execute-newly-materialized-feature\" ? ObservedNewFeatureExecution : K extends \"compose-new-feature-execution-comparison\" ? NewFeatureExecutionComparison : NewFeatureTerminalDisposition>"
+              }
+            ]
+          }
+        ],
+        "separatedBefore": true
+      }
+    }
+  ]
+}

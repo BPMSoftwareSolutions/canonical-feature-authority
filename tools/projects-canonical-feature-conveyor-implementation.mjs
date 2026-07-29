@@ -3,14 +3,10 @@ import { createHash } from "node:crypto";
 import {
   access,
   mkdir,
-  mkdtemp,
   readFile,
   readdir,
-  rm,
-  stat,
   writeFile
 } from "node:fs/promises";
-import { tmpdir } from "node:os";
 import { dirname, relative, resolve, sep } from "node:path";
 import { promisify } from "node:util";
 
@@ -18,16 +14,27 @@ import {
   projectsCanonicalFeatureImplementationPackage
 } from "./canonical-feature-conveyor-implementation-package.mjs";
 
-const repositoryRoot = resolve(import.meta.dirname, "..");
+const toolRepositoryRoot = resolve(import.meta.dirname, "..");
 const authorityPath = resolve(
-  repositoryRoot,
+  toolRepositoryRoot,
   "architecture/end-to-end-canonical-feature-conveyor.authority.json"
 );
 const authority = JSON.parse(await readFile(authorityPath, "utf8"));
 const projected =
   await projectsCanonicalFeatureImplementationPackage(authority);
 const executes = promisify(execFile);
-const governedRoots = ["composition", "evaluation", "runtime", "src"];
+const workspaceAuthority =
+  authority.implementationArtifactAuthority
+    .workspaceProjectionAuthority;
+const capabilityRoot = workspaceAuthority.capabilityRoot;
+const featureId =
+  authority.canonicalFeatureBody.feature.featureId;
+const governedSubdirectories = [
+  "composition",
+  "evaluation",
+  "runtime",
+  "src"
+];
 
 function sha256(bytes) {
   return `sha256:${createHash("sha256").update(bytes).digest("hex")}`;
@@ -38,12 +45,16 @@ function argument(name) {
   return index === -1 ? undefined : process.argv[index + 1];
 }
 
-function normalizesArtifactPath(path) {
+function normalizedArtifactPath(path) {
   return path.split("/").join(sep);
 }
 
-function displayPath(path) {
+function displayedPath(path) {
   return path.split(sep).join("/");
+}
+
+function asserts(condition, code) {
+  if (!condition) throw new Error(code);
 }
 
 async function exists(path) {
@@ -55,31 +66,164 @@ async function exists(path) {
   }
 }
 
-async function assertsEmptyRoot(root) {
-  if (!(await exists(root))) return;
-  const metadata = await stat(root);
-  if (!metadata.isDirectory()) {
-    throw new Error(`IMPLEMENTATION_TARGET_NOT_DIRECTORY: ${root}`);
-  }
-  if ((await readdir(root)).length !== 0) {
-    throw new Error(`IMPLEMENTATION_TARGET_OVERWRITE_FORBIDDEN: ${root}`);
+async function runs(command, args, cwd) {
+  try {
+    const result = await executes(command, args, {
+      cwd,
+      windowsHide: true,
+      maxBuffer: 8 * 1024 * 1024
+    });
+    return result.stdout.trim();
+  } catch (error) {
+    const output =
+      `${error.stdout ?? ""}${error.stderr ?? ""}`.trim();
+    throw new Error(
+      `WORKSPACE_COMMAND_FAILED: ${command} ${args.join(" ")}${
+        output === "" ? "" : `\n${output}`
+      }`
+    );
   }
 }
 
-async function materializes(root) {
-  await assertsEmptyRoot(root);
-  await mkdir(root, { recursive: true });
+async function runsGitDifference(args, cwd) {
+  try {
+    const result = await executes("git", args, {
+      cwd,
+      windowsHide: true,
+      maxBuffer: 32 * 1024 * 1024
+    });
+    return result.stdout;
+  } catch (error) {
+    if (error.code === 1) return error.stdout ?? "";
+    const output =
+      `${error.stdout ?? ""}${error.stderr ?? ""}`.trim();
+    throw new Error(
+      `WORKSPACE_GIT_DIFF_FAILED: git ${args.join(" ")}${
+        output === "" ? "" : `\n${output}`
+      }`
+    );
+  }
+}
+
+async function resolvesRepositoryRoot(rootArgument) {
+  asserts(
+    argument("--output-root") === undefined,
+    "ALTERNATE_IMPLEMENTATION_ROOT_FORBIDDEN"
+  );
+  const requestedRoot = resolve(rootArgument ?? ".");
+  const observedRoot = resolve(
+    await runs(
+      "git",
+      ["rev-parse", "--show-toplevel"],
+      requestedRoot
+    )
+  );
+  asserts(
+    requestedRoot === observedRoot,
+    `GOVERNED_REPOSITORY_ROOT_MISMATCH: ${requestedRoot}`
+  );
+  asserts(
+    observedRoot === toolRepositoryRoot,
+    `IMPLEMENTATION_AUTHORITY_REPOSITORY_MISMATCH: ${observedRoot}`
+  );
+  return observedRoot;
+}
+
+function assertsGovernedCoordinates(repositoryRoot) {
+  asserts(
+    workspaceAuthority.repositoryRoot === ".",
+    "WORKSPACE_REPOSITORY_ROOT_AUTHORITY_INVALID"
+  );
+  asserts(
+    workspaceAuthority.projectionMode === "working-tree" &&
+      workspaceAuthority.reviewSurface === "git-diff" &&
+      workspaceAuthority.alternateFileTopologies === "forbidden",
+    "WORKSPACE_PROJECTION_POLICY_INVALID"
+  );
+  const capabilityPath = resolve(repositoryRoot, capabilityRoot);
+  const seen = new Set();
+  for (const artifact of projected.artifacts) {
+    asserts(
+      artifact.ownership === "projector-owned",
+      `ARTIFACT_OWNERSHIP_INVALID: ${artifact.artifactPath}`
+    );
+    asserts(
+      artifact.existingFilePolicy ===
+        "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
+      `ARTIFACT_EXISTING_FILE_POLICY_INVALID: ${artifact.artifactPath}`
+    );
+    asserts(
+      artifact.artifactPath.startsWith(`${capabilityRoot}/`),
+      `ARTIFACT_OUTSIDE_CAPABILITY_ROOT: ${artifact.artifactPath}`
+    );
+    const outputPath = resolve(
+      repositoryRoot,
+      normalizedArtifactPath(artifact.artifactPath)
+    );
+    asserts(
+      outputPath.startsWith(`${capabilityPath}${sep}`),
+      `ARTIFACT_PATH_ESCAPES_CAPABILITY_ROOT: ${artifact.artifactPath}`
+    );
+    asserts(
+      !seen.has(artifact.artifactPath),
+      `DUPLICATE_ARTIFACT_COORDINATE: ${artifact.artifactPath}`
+    );
+    seen.add(artifact.artifactPath);
+  }
+  asserts(
+    projected.artifacts.length === 32,
+    "CAPABILITY_ARTIFACT_COUNT_MISMATCH"
+  );
+}
+
+function ownsExistingSource(source, artifact) {
+  if (!source.includes("// @generated")) return false;
+  return (
+    source.includes(`// feature-id: ${featureId}`) ||
+    source.includes(
+      `// authority-ref: ${artifact.sourceAuthorityRef}`
+    )
+  );
+}
+
+async function materializesInPlace(repositoryRoot) {
+  const observations = [];
   for (const artifact of projected.artifacts) {
     const outputPath = resolve(
-      root,
-      normalizesArtifactPath(artifact.artifactPath)
+      repositoryRoot,
+      normalizedArtifactPath(artifact.artifactPath)
     );
+    let priorSource = null;
+    if (await exists(outputPath)) {
+      priorSource = await readFile(outputPath, "utf8");
+      asserts(
+        priorSource === artifact.projectedSource ||
+          ownsExistingSource(priorSource, artifact),
+        `EXISTING_FILE_OWNERSHIP_REJECTED: ${artifact.artifactPath}`
+      );
+    }
     await mkdir(dirname(outputPath), { recursive: true });
     await writeFile(outputPath, artifact.projectedSource, "utf8");
+    const observedBytes = await readFile(outputPath);
+    asserts(
+      sha256(observedBytes) === artifact.projectedSourceSha256,
+      `PROJECTED_BYTES_DIVERGE: ${artifact.artifactPath}`
+    );
+    observations.push({
+      artifactPath: artifact.artifactPath,
+      disposition:
+        priorSource === null
+          ? "CREATED"
+          : priorSource === artifact.projectedSource
+            ? "UNCHANGED"
+            : "REPLACED",
+      projectedSourceSha256: artifact.projectedSourceSha256
+    });
   }
+  return observations;
 }
 
-async function listsGovernedFiles(root) {
+async function listsGovernedFiles(repositoryRoot) {
   const files = [];
   const visits = async directory => {
     if (!(await exists(directory))) return;
@@ -90,216 +234,325 @@ async function listsGovernedFiles(root) {
       if (entry.isDirectory()) {
         await visits(path);
       } else if (entry.isFile()) {
-        files.push(displayPath(relative(root, path)));
+        files.push(
+          displayedPath(relative(repositoryRoot, path))
+        );
       }
     }
   };
-  for (const governedRoot of governedRoots) {
-    await visits(resolve(root, governedRoot));
+  for (const subdirectory of governedSubdirectories) {
+    await visits(
+      resolve(repositoryRoot, capabilityRoot, subdirectory)
+    );
   }
   return files.sort();
 }
 
-async function compares(root, embedded) {
-  const governedArtifacts = projected.artifacts.filter(
-    artifact => !embedded || artifact.family !== "package-support"
+async function listsTargetSprawl(repositoryRoot) {
+  const authorityRefs = new Set(
+    projected.artifacts.map(
+      artifact => artifact.sourceAuthorityRef
+    )
   );
+  const candidates = (
+    await runs(
+      "git",
+      ["ls-files", "-co", "--exclude-standard"],
+      repositoryRoot
+    )
+  )
+    .split(/\r?\n/)
+    .filter(Boolean);
+  const sprawl = [];
+  for (const candidate of candidates) {
+    if (
+      candidate.startsWith(`${capabilityRoot}/`) ||
+      !/\.(?:json|mjs|ts)$/.test(candidate)
+    ) {
+      continue;
+    }
+    const absolutePath = resolve(
+      repositoryRoot,
+      normalizedArtifactPath(candidate)
+    );
+    if (!(await exists(absolutePath))) continue;
+    const source = await readFile(absolutePath, "utf8");
+    const generatedTargetSource =
+      /\.(?:mjs|ts)$/.test(candidate) &&
+      source.includes("// @generated") &&
+      (
+        source.includes(`// feature-id: ${featureId}`) ||
+        [...authorityRefs].some(authorityRef =>
+          source.includes(`// authority-ref: ${authorityRef}`)
+        )
+      );
+    let targetProjectionAuthority = false;
+    if (candidate.endsWith(".json")) {
+      try {
+        const document = JSON.parse(source);
+        targetProjectionAuthority =
+          document?.lineage?.featureId === featureId;
+      } catch {
+        targetProjectionAuthority = false;
+      }
+    }
+    if (generatedTargetSource || targetProjectionAuthority) {
+      sprawl.push(candidate);
+    }
+  }
+  return sprawl.sort();
+}
+
+async function compares(repositoryRoot) {
   const expectedPaths = new Set(
-    governedArtifacts.map(artifact => artifact.artifactPath)
+    projected.artifacts.map(artifact => artifact.artifactPath)
   );
   const results = [];
-  for (const artifact of governedArtifacts) {
+  for (const artifact of projected.artifacts) {
     const observedPath = resolve(
-      root,
-      normalizesArtifactPath(artifact.artifactPath)
+      repositoryRoot,
+      normalizedArtifactPath(artifact.artifactPath)
     );
     if (!(await exists(observedPath))) {
       results.push({
         artifactPath: artifact.artifactPath,
         family: artifact.family,
         sourceAuthorityRef: artifact.sourceAuthorityRef,
-        projectorCapability: artifact.projectorCapability,
-        posture: "PROJECTABLE",
         comparison: "MISSING",
         expectedSha256: artifact.projectedSourceSha256,
         observedSha256: null
       });
       continue;
     }
-    const observedSource = await readFile(observedPath, "utf8");
+    const observedBytes = await readFile(observedPath);
     results.push({
       artifactPath: artifact.artifactPath,
       family: artifact.family,
       sourceAuthorityRef: artifact.sourceAuthorityRef,
-      projectorCapability: artifact.projectorCapability,
-      posture: "PROJECTABLE",
       comparison:
-        observedSource === artifact.projectedSource
+        sha256(observedBytes) === artifact.projectedSourceSha256
           ? "BYTE_IDENTICAL"
           : "BYTE_DRIFT",
       expectedSha256: artifact.projectedSourceSha256,
-      observedSha256: sha256(Buffer.from(observedSource, "utf8"))
+      observedSha256: sha256(observedBytes)
     });
   }
-  const unexpected = (await listsGovernedFiles(root)).filter(
-    path => !expectedPaths.has(path)
-  );
+  const unexpected = (await listsGovernedFiles(repositoryRoot))
+    .filter(path => !expectedPaths.has(path));
+  const targetSprawl =
+    await listsTargetSprawl(repositoryRoot);
   const counts = Object.fromEntries(
-    ["BYTE_IDENTICAL", "BYTE_DRIFT", "MISSING"].map(comparison => [
-      comparison,
-      results.filter(result => result.comparison === comparison)
-        .length
-    ])
+    ["BYTE_IDENTICAL", "BYTE_DRIFT", "MISSING"].map(
+      comparison => [
+        comparison,
+        results.filter(
+          result => result.comparison === comparison
+        ).length
+      ]
+    )
   );
   return {
     comparisonType:
-      "canonical-feature-conveyor-implementation-comparison.v1",
+      "canonical-feature-conveyor-working-tree-comparison.v2",
     packageId: projected.packageId,
-    comparedRoot: root,
-    mode: embedded ? "embedded-manual-build" : "isolated-projection",
+    repositoryRoot,
+    capabilityRoot,
+    mode: "governed-repository-working-tree",
     topologySha256: projected.topologySha256,
     summary: {
-      expectedArtifacts: governedArtifacts.length,
+      expectedArtifacts: projected.artifacts.length,
       ...counts,
-      unexpectedGovernedFiles: unexpected.length
+      unexpectedGovernedFiles: unexpected.length,
+      targetArtifactsOutsideCapabilityRoot:
+        targetSprawl.length
     },
     artifacts: results,
-    unexpectedGovernedFiles: unexpected
+    unexpectedGovernedFiles: unexpected,
+    targetArtifactsOutsideCapabilityRoot: targetSprawl
   };
 }
 
-async function compiles(root) {
+async function compilesRepository(repositoryRoot) {
   const compilerPath = resolve(
     repositoryRoot,
     "node_modules/typescript/bin/tsc"
   );
-  try {
-    await executes(
-      process.execPath,
-      [compilerPath, "--project", resolve(root, "tsconfig.json")],
-      {
-        cwd: root,
-        windowsHide: true,
-        maxBuffer: 1024 * 1024 * 8
-      }
-    );
-  } catch (error) {
-    const output = `${error.stdout ?? ""}${error.stderr ?? ""}`.trim();
-    throw new Error(
-      `IMPLEMENTATION_TYPESCRIPT_COMPILE_FAILED${
-        output === "" ? "" : `\n${output}`
-      }`
-    );
-  }
+  await runs(
+    process.execPath,
+    [
+      compilerPath,
+      "--project",
+      resolve(repositoryRoot, "tsconfig.json")
+    ],
+    repositoryRoot
+  );
 }
 
-async function validatesExecutableJavaScript(root) {
+async function validatesExecutableJavaScript(repositoryRoot) {
   for (const artifact of projected.artifacts) {
     if (!artifact.artifactPath.endsWith(".mjs")) continue;
-    try {
-      await executes(
-        process.execPath,
-        [
-          "--check",
-          resolve(
-            root,
-            normalizesArtifactPath(artifact.artifactPath)
-          )
-        ],
-        {
-          cwd: root,
-          windowsHide: true,
-          maxBuffer: 1024 * 1024 * 8
-        }
-      );
-    } catch (error) {
-      const output =
-        `${error.stdout ?? ""}${error.stderr ?? ""}`.trim();
-      throw new Error(
-        `IMPLEMENTATION_JAVASCRIPT_CHECK_FAILED${
-          output === "" ? "" : `\n${output}`
-        }`
-      );
-    }
-  }
-}
-
-async function provesExecution(root) {
-  const proofPath = resolve(
-    root,
-    "dist/evaluation/proves-canonical-feature-conveyor.js"
-  );
-  try {
-    const { stdout } = await executes(
+    await runs(
       process.execPath,
-      [proofPath],
-      {
-        cwd: root,
-        windowsHide: true,
-        maxBuffer: 1024 * 1024 * 8
-      }
-    );
-    const proof = JSON.parse(stdout.trim());
-    if (
-      proof.disposition !==
-      authority.implementationArtifactAuthority.executionProof
-        .expectedDisposition
-    ) {
-      throw new Error("unexpected terminal disposition");
-    }
-    return proof;
-  } catch (error) {
-    throw new Error(
-      `IMPLEMENTATION_EXECUTION_PROOF_FAILED: ${error.message}`
+      [
+        "--check",
+        resolve(
+          repositoryRoot,
+          normalizedArtifactPath(artifact.artifactPath)
+        )
+      ],
+      repositoryRoot
     );
   }
 }
 
-async function writesProjectionVerificationReport(
-  root,
+async function provesExecution(repositoryRoot) {
+  const proofPath = resolve(
+    repositoryRoot,
+    "dist",
+    capabilityRoot,
+    "evaluation/proves-canonical-feature-conveyor.js"
+  );
+  const output = await runs(
+    process.execPath,
+    [proofPath],
+    repositoryRoot
+  );
+  const proof = JSON.parse(output);
+  asserts(
+    proof.disposition ===
+      authority.implementationArtifactAuthority.executionProof
+        .expectedDisposition,
+    "IMPLEMENTATION_EXECUTION_PROOF_RED"
+  );
+  return proof;
+}
+
+async function capturesGitState(repositoryRoot) {
+  const [baseCommit, status, nameStatus, diff] =
+    await Promise.all([
+      runs("git", ["rev-parse", "HEAD"], repositoryRoot),
+      runs(
+        "git",
+        [
+          "status",
+          "--short",
+          "--untracked-files=all",
+          "--",
+          capabilityRoot
+        ],
+        repositoryRoot
+      ),
+      runs(
+        "git",
+        ["diff", "--name-status", "--", capabilityRoot],
+        repositoryRoot
+      ),
+      runs(
+        "git",
+        ["diff", "--binary", "--", capabilityRoot],
+        repositoryRoot
+      )
+    ]);
+  const untrackedPaths = status
+    .split(/\r?\n/)
+    .filter(line => line.startsWith("?? "))
+    .map(line => line.slice(3));
+  const untrackedPatches = [];
+  for (const path of untrackedPaths) {
+    untrackedPatches.push(
+      await runsGitDifference(
+        ["diff", "--no-index", "--binary", "--", "NUL", path],
+        repositoryRoot
+      )
+    );
+  }
+  const reviewPatch = [diff, ...untrackedPatches]
+    .filter(Boolean)
+    .join("\n");
+  return {
+    baseCommit,
+    status,
+    nameStatus,
+    trackedGitDiffSha256:
+      sha256(Buffer.from(diff, "utf8")),
+    untrackedPaths,
+    gitDiffSha256:
+      sha256(Buffer.from(reviewPatch, "utf8"))
+  };
+}
+
+async function writesVerificationReport(
+  repositoryRoot,
+  evidenceRootArgument,
+  dirtyBefore,
+  gitState,
+  materialization,
   comparison,
   proof
 ) {
-  const reportPath = resolve(
-    root,
-    ".verification/projection-verification-report.json"
+  if (evidenceRootArgument === undefined) return null;
+  const evidenceRoot = resolve(evidenceRootArgument);
+  asserts(
+    evidenceRoot !== repositoryRoot &&
+      !evidenceRoot.startsWith(`${repositoryRoot}${sep}`),
+    "EVIDENCE_ROOT_INSIDE_REPOSITORY_FORBIDDEN"
   );
+  const reportPath = resolve(
+    evidenceRoot,
+    "working-tree-projection-report.json"
+  );
+  const report = {
+    verificationType:
+      "canonical-feature-conveyor-working-tree-projection.v2",
+    disposition: "PROJECTION_CONFORMS",
+    authorityPath:
+      "architecture/end-to-end-canonical-feature-conveyor.authority.json",
+    repositoryRoot,
+    capabilityRoot,
+    baseCommit: gitState.baseCommit,
+    workspaceDirtyBefore: dirtyBefore !== "",
+    workspaceDirtyBeforeStatus: dirtyBefore,
+    projectedPaths: materialization.map(
+      artifact => artifact.artifactPath
+    ),
+    createdPaths: materialization
+      .filter(artifact => artifact.disposition === "CREATED")
+      .map(artifact => artifact.artifactPath),
+    modifiedPaths: materialization
+      .filter(artifact => artifact.disposition === "REPLACED")
+      .map(artifact => artifact.artifactPath),
+    unchangedPaths: materialization
+      .filter(artifact => artifact.disposition === "UNCHANGED")
+      .map(artifact => artifact.artifactPath),
+    gitStatus: gitState.status,
+    gitNameStatus: gitState.nameStatus,
+    trackedGitDiffSha256: gitState.trackedGitDiffSha256,
+    untrackedPaths: gitState.untrackedPaths,
+    gitDiffSha256: gitState.gitDiffSha256,
+    topologySha256: projected.topologySha256,
+    compileDisposition: "GREEN",
+    executionDisposition: "GREEN",
+    comparison,
+    executionProof: proof
+  };
   await mkdir(dirname(reportPath), { recursive: true });
   await writeFile(
     reportPath,
-    `${JSON.stringify(
-      {
-        verificationType:
-          "canonical-feature-conveyor-projection-verification.v1",
-        packageId: projected.packageId,
-        authorityPath:
-          "architecture/end-to-end-canonical-feature-conveyor.authority.json",
-        targetRoot: root,
-        topologySha256: projected.topologySha256,
-        disposition: "PROJECTION_CONFORMS",
-        checks: {
-          declaredArtifacts: projected.artifacts.length,
-          byteIdenticalArtifacts:
-            comparison.summary.BYTE_IDENTICAL,
-          unexpectedGovernedFiles:
-            comparison.summary.unexpectedGovernedFiles,
-          strictTypeScriptCompilation: "GREEN",
-          semanticProjectedExecutionEquivalence: "GREEN"
-        },
-        artifacts: projected.artifacts.map(artifact => ({
-          artifactPath: artifact.artifactPath,
-          sourceAuthorityRef: artifact.sourceAuthorityRef,
-          projectorCapability: artifact.projectorCapability,
-          projector: artifact.projector,
-          projectedSourceSha256:
-            artifact.projectedSourceSha256
-        })),
-        executionProof: proof
-      },
-      null,
-      2
-    )}\n`,
+    `${JSON.stringify(report, null, 2)}\n`,
     "utf8"
+  );
+  return reportPath;
+}
+
+function assertsConforms(report) {
+  asserts(
+    report.summary.BYTE_IDENTICAL ===
+      report.summary.expectedArtifacts &&
+      report.summary.BYTE_DRIFT === 0 &&
+      report.summary.MISSING === 0 &&
+      report.summary.unexpectedGovernedFiles === 0 &&
+      report.summary.targetArtifactsOutsideCapabilityRoot === 0,
+    "IMPLEMENTATION_WORKING_TREE_CHECK_FAILED"
   );
 }
 
@@ -310,7 +563,8 @@ function printsSummary(report) {
       `${report.summary.expectedArtifacts} byte-identical, ` +
       `${report.summary.BYTE_DRIFT} drifted, ` +
       `${report.summary.MISSING} missing, ` +
-      `${report.summary.unexpectedGovernedFiles} unexpected`
+      `${report.summary.unexpectedGovernedFiles} unexpected, ` +
+      `${report.summary.targetArtifactsOutsideCapabilityRoot} sprawled`
   );
 }
 
@@ -321,101 +575,82 @@ const mode = [
   "--check",
   "--compare"
 ].find(option => process.argv.includes(option));
-if (mode === undefined) {
-  throw new Error(
-    "Specify --plan, --validate, --write, --check, or --compare"
-  );
-}
+asserts(
+  mode !== undefined,
+  "Specify --plan, --validate, --write, --check, or --compare"
+);
 
 if (mode === "--plan") {
   console.log(`${JSON.stringify(projected, null, 2)}\n`);
-} else if (mode === "--validate") {
-  const temporaryRoot = await mkdtemp(
-    resolve(tmpdir(), "canonical-feature-implementation-")
-  );
-  try {
-    await materializes(temporaryRoot);
-    const report = await compares(temporaryRoot, false);
-    if (
-      report.summary.BYTE_IDENTICAL !==
-        report.summary.expectedArtifacts ||
-      report.summary.unexpectedGovernedFiles !== 0
-    ) {
-      throw new Error("TEMPORARY_IMPLEMENTATION_PROJECTION_DRIFT");
-    }
-    await compiles(temporaryRoot);
-    await validatesExecutableJavaScript(temporaryRoot);
-    await provesExecution(temporaryRoot);
-    printsSummary(report);
-    console.log("Strict TypeScript compilation: GREEN");
-    console.log("Executable JavaScript syntax: GREEN");
-    console.log("Semantic/projected execution equivalence: GREEN");
-  } finally {
-    await rm(temporaryRoot, { recursive: true });
-  }
 } else {
-  const rootArgument =
-    argument("--output-root") ?? argument("--root");
-  if (rootArgument === undefined) {
-    throw new Error("Implementation root argument is required");
-  }
-  const root = resolve(rootArgument);
-  if (mode === "--write") {
-    await materializes(root);
-    const report = await compares(root, false);
-    if (
-      report.summary.BYTE_IDENTICAL !==
-        report.summary.expectedArtifacts ||
-      report.summary.unexpectedGovernedFiles !== 0
-    ) {
-      throw new Error("MATERIALIZED_IMPLEMENTATION_PROJECTION_DRIFT");
+  const repositoryRoot = await resolvesRepositoryRoot(
+    argument("--root")
+  );
+  assertsGovernedCoordinates(repositoryRoot);
+  if (mode === "--validate") {
+    console.log(
+      `Capability-root policy: GREEN (${projected.artifacts.length}/${projected.artifacts.length})`
+    );
+    console.log("Projection source hashes: GREEN");
+  } else if (mode === "--write") {
+    const dirtyBefore = await runs(
+      "git",
+      ["status", "--short", "--untracked-files=all"],
+      repositoryRoot
+    );
+    const materialization =
+      await materializesInPlace(repositoryRoot);
+    const comparison = await compares(repositoryRoot);
+    assertsConforms(comparison);
+    await compilesRepository(repositoryRoot);
+    await validatesExecutableJavaScript(repositoryRoot);
+    const proof = await provesExecution(repositoryRoot);
+    const gitState = await capturesGitState(repositoryRoot);
+    const reportPath = await writesVerificationReport(
+      repositoryRoot,
+      argument("--evidence-root"),
+      dirtyBefore,
+      gitState,
+      materialization,
+      comparison,
+      proof
+    );
+    printsSummary(comparison);
+    console.log("Repository TypeScript compilation: GREEN");
+    console.log("Repository execution equivalence: GREEN");
+    console.log(`Git review surface: ${capabilityRoot}`);
+    if (reportPath !== null) {
+      console.log(`Evidence: ${reportPath}`);
     }
-    await compiles(root);
-    await validatesExecutableJavaScript(root);
-    const proof = await provesExecution(root);
-    await writesProjectionVerificationReport(root, report, proof);
-    printsSummary(report);
-    console.log("Strict TypeScript compilation: GREEN");
-    console.log("Executable JavaScript syntax: GREEN");
-    console.log("Semantic/projected execution equivalence: GREEN");
   } else {
-    const embedded =
-      mode === "--compare" || process.argv.includes("--embedded");
-    const report = await compares(root, embedded);
+    const comparison = await compares(repositoryRoot);
+    printsSummary(comparison);
+    if (mode === "--check") {
+      assertsConforms(comparison);
+      await compilesRepository(repositoryRoot);
+      await validatesExecutableJavaScript(repositoryRoot);
+      await provesExecution(repositoryRoot);
+      console.log("Repository TypeScript compilation: GREEN");
+      console.log("Repository execution equivalence: GREEN");
+    }
     const reportPath = argument("--report");
     if (reportPath !== undefined) {
       const absoluteReportPath = resolve(reportPath);
-      await mkdir(dirname(absoluteReportPath), { recursive: true });
+      asserts(
+        absoluteReportPath !== repositoryRoot &&
+          !absoluteReportPath.startsWith(
+            `${repositoryRoot}${sep}`
+          ),
+        "COMPARISON_REPORT_INSIDE_REPOSITORY_FORBIDDEN"
+      );
+      await mkdir(dirname(absoluteReportPath), {
+        recursive: true
+      });
       await writeFile(
         absoluteReportPath,
-        `${JSON.stringify(report, null, 2)}\n`,
+        `${JSON.stringify(comparison, null, 2)}\n`,
         "utf8"
       );
-    }
-    printsSummary(report);
-    if (mode === "--check") {
-      if (
-        report.summary.BYTE_IDENTICAL !==
-          report.summary.expectedArtifacts ||
-        report.summary.unexpectedGovernedFiles !== 0
-      ) {
-        throw new Error("IMPLEMENTATION_PROJECTION_CHECK_FAILED");
-      }
-      if (!embedded) {
-        await compiles(root);
-        await validatesExecutableJavaScript(root);
-        const proof = await provesExecution(root);
-        if (process.argv.includes("--write-verification-report")) {
-          await writesProjectionVerificationReport(
-            root,
-            report,
-            proof
-          );
-        }
-        console.log("Strict TypeScript compilation: GREEN");
-        console.log("Executable JavaScript syntax: GREEN");
-        console.log("Semantic/projected execution equivalence: GREEN");
-      }
     }
   }
 }

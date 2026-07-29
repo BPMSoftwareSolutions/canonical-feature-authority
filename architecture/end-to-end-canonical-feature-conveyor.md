@@ -54,7 +54,7 @@ Current projection target: Node / TypeScript
 
 ### Projected feature execution body
 
-Artifact: `composition/executes-end-to-end-canonical-feature-conveyor.ts`
+Artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts`
 
 ```typescript
 // @generated
@@ -104,7 +104,7 @@ export async function executesEndToEndCanonicalFeatureConveyor(
 
 ### Projected heterogeneous composition types
 
-Artifact: `composition/executes-end-to-end-canonical-feature-conveyor.type.ts`
+Artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts`
 
 ```typescript
 // @generated
@@ -205,7 +205,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
 {
   "edgeRegistry": {
     "contractId": "canonical-feature-edge-registry.v1",
-    "artifactPath": "composition/canonical-feature-edge-registry.type.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts",
     "edgeContracts": [
       {
         "sequence": 1,
@@ -259,7 +259,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "projectionId": "project-canonical-feature-edge-registry-type",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "composition/canonical-feature-edge-registry.type.ts"
+        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts"
       },
       "lineage": {
         "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -298,7 +298,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
     "bindingStatus": "IMPLEMENTED"
   },
   "compositionTypes": {
-    "artifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
     "authorityRef": "implementation-artifact:composition-types",
     "bindingStatus": "PROJECTOR_OUTPUT_AVAILABLE",
     "projectorRequest": {
@@ -310,7 +310,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "projectionId": "project-end-to-end-canonical-feature-conveyor-composition-types",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
+        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
       },
       "lineage": {
         "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -612,61 +612,61 @@ export interface EndToEndCanonicalFeatureConveyorContext {
     {
       "responsibilityId": "admits-reviewed-new-feature-request",
       "edgeId": "admit-reviewed-new-feature-request",
-      "artifactPath": "runtime/registers-admit-reviewed-new-feature-request.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-admit-reviewed-new-feature-request.ts",
       "implementationRef": "semantic-execution:admit-reviewed-new-feature-request",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "adapts-new-feature-request-admission",
       "edgeId": "adapt-new-feature-request-admission",
-      "artifactPath": "runtime/registers-adapt-new-feature-request-admission.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-adapt-new-feature-request-admission.ts",
       "implementationRef": "semantic-execution:adapt-new-feature-request-admission",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "projects-complete-new-feature-authority",
       "edgeId": "project-complete-new-feature-authority",
-      "artifactPath": "runtime/registers-project-complete-new-feature-authority.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-project-complete-new-feature-authority.ts",
       "implementationRef": "semantic-execution:project-complete-new-feature-authority",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "materializes-complete-new-feature",
       "edgeId": "materialize-complete-new-feature",
-      "artifactPath": "runtime/registers-materialize-complete-new-feature.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-materialize-complete-new-feature.ts",
       "implementationRef": "semantic-execution:materialize-complete-new-feature",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "executes-newly-materialized-feature",
       "edgeId": "execute-newly-materialized-feature",
-      "artifactPath": "runtime/registers-execute-newly-materialized-feature.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-execute-newly-materialized-feature.ts",
       "implementationRef": "semantic-execution:execute-newly-materialized-feature",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "composes-new-feature-execution-comparison",
       "edgeId": "compose-new-feature-execution-comparison",
-      "artifactPath": "runtime/registers-compose-new-feature-execution-comparison.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-compose-new-feature-execution-comparison.ts",
       "implementationRef": "semantic-execution:compose-new-feature-execution-comparison",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "verifies-complete-new-feature-lineage",
       "edgeId": "verify-complete-new-feature-lineage",
-      "artifactPath": "runtime/registers-verify-complete-new-feature-lineage.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-verify-complete-new-feature-lineage.ts",
       "implementationRef": "semantic-execution:verify-complete-new-feature-lineage",
       "bindingStatus": "IMPLEMENTED"
     }
   ],
   "semanticInterpreter": {
     "authorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
-    "artifactPath": "runtime/interprets-canonical-feature-semantic-authority.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts",
     "bindingStatus": "IMPLEMENTED"
   },
   "runtimeAdapter": {
     "contractId": "canonical-feature-runtime-adapter.v1",
-    "artifactPath": "runtime/invokes-canonical-feature-conveyor.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts",
     "acceptsContractId": "reviewed-new-feature-request.v1",
     "constructsContextContractId": "end-to-end-canonical-feature-conveyor-context.v1",
     "producesContractId": "new-feature-terminal-disposition.v1",
@@ -678,7 +678,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   },
   "authorityProjectorBoundary": {
     "contractId": "complete-new-feature-authority-projector-port.v1",
-    "artifactPath": "runtime/complete-new-feature-authority-projector.port.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts",
     "operations": [
       "projects-and-writes-complete-authority"
     ],
@@ -691,7 +691,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "projectionId": "project-complete-new-feature-authority-projector-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "runtime/complete-new-feature-authority-projector.port.ts"
+        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts"
       },
       "lineage": {
         "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -734,7 +734,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   },
   "materializationBoundary": {
     "contractId": "complete-new-feature-materializer-port.v1",
-    "artifactPath": "runtime/complete-new-feature-materializer.port.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts",
     "operations": [
       "materializes-and-writes-artifact-manifest"
     ],
@@ -747,7 +747,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "projectionId": "project-complete-new-feature-materializer-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "runtime/complete-new-feature-materializer.port.ts"
+        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts"
       },
       "lineage": {
         "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -790,7 +790,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   },
   "fixtureBoundary": {
     "contractId": "canonical-feature-evaluation-fixture-port.v1",
-    "artifactPath": "evaluation/canonical-feature-evaluation-fixture.port.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts",
     "operations": [
       "loadsSemanticFixture",
       "loadsProjectedFixture",
@@ -805,7 +805,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "projectionId": "project-canonical-feature-evaluation-fixture-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "evaluation/canonical-feature-evaluation-fixture.port.ts"
+        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts"
       },
       "lineage": {
         "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -842,7 +842,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   },
   "evidenceBoundary": {
     "contractId": "governed-artifact-evidence-store.v1",
-    "artifactPath": "evaluation/governed-artifact-evidence-store.port.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts",
     "operations": [
       "writes",
       "resolves",
@@ -860,7 +860,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "projectionId": "project-governed-artifact-evidence-store-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "evaluation/governed-artifact-evidence-store.port.ts"
+        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts"
       },
       "lineage": {
         "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -907,7 +907,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   },
   "executionProof": {
     "contractId": "canonical-feature-conveyor-execution-proof.v1",
-    "artifactPath": "evaluation/proves-canonical-feature-conveyor.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/proves-canonical-feature-conveyor.ts",
     "semanticSurface": "direct-semantic-authority",
     "projectedSurface": "projected-composition-and-responsibility-bodies",
     "comparison": "RFC8785-JCS-equivalence",
@@ -927,10 +927,16 @@ export interface EndToEndCanonicalFeatureConveyorContext {
   "projectionPackage": {
     "packageId": "end-to-end-canonical-feature-conveyor-implementation.v1",
     "targetPolicy": {
-      "root": "caller-supplied-empty-root",
+      "root": "governed-repository-workspace",
+      "repositoryRoot": ".",
+      "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+      "projectionMode": "working-tree",
+      "reviewSurface": "git-diff",
       "authoritySource": "canonical-json-only",
       "markdownScraping": "forbidden",
-      "overwrite": "forbidden"
+      "overwrite": "replace-only-if-lineage-matches",
+      "pathPolicy": "all-artifacts-descend-from-capability-root",
+      "alternateFileTopologies": "forbidden"
     },
     "posturePolicy": [
       "PROJECTABLE",
@@ -949,278 +955,339 @@ export interface EndToEndCanonicalFeatureConveyorContext {
     },
     "artifacts": [
       {
-        "artifactId": "package-json",
-        "family": "package-support",
-        "artifactPath": "package.json",
-        "sourceAuthorityRef": "implementation-package:end-to-end-canonical-feature-conveyor-implementation.v1",
-        "projectorCapability": "projects-package-support",
-        "projectionPosture": "PROJECTABLE"
-      },
-      {
-        "artifactId": "typescript-configuration",
-        "family": "package-support",
-        "artifactPath": "tsconfig.json",
-        "sourceAuthorityRef": "implementation-package:end-to-end-canonical-feature-conveyor-implementation.v1",
-        "projectorCapability": "projects-package-support",
-        "projectionPosture": "PROJECTABLE"
-      },
-      {
         "artifactId": "canonical-feature-edge-registry-type",
         "family": "composition",
-        "artifactPath": "composition/canonical-feature-edge-registry.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts",
         "sourceAuthorityRef": "implementation-artifact:edge-registry",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "end-to-end-canonical-feature-conveyor-type",
         "family": "composition",
-        "artifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
         "sourceAuthorityRef": "implementation-artifact:composition-types",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "end-to-end-canonical-feature-conveyor-body",
         "family": "composition",
-        "artifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts",
         "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "new-feature-request-admission-type",
         "family": "responsibility-type",
-        "artifactPath": "src/new-feature-request-admission.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/new-feature-request-admission.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "new-feature-request-admission-body",
         "family": "responsibility-body",
-        "artifactPath": "src/new-feature-request-admission.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts",
         "sourceAuthorityRef": "feature-body:new-feature-request-admission",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "admitted-new-feature-request-type",
         "family": "responsibility-type",
-        "artifactPath": "src/admitted-new-feature-request.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/admitted-new-feature-request.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "admitted-new-feature-request-body",
         "family": "responsibility-body",
-        "artifactPath": "src/admitted-new-feature-request.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts",
         "sourceAuthorityRef": "feature-body:admitted-new-feature-request",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-authority-type",
         "family": "responsibility-type",
-        "artifactPath": "src/complete-new-feature-authority.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/complete-new-feature-authority.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-authority-body",
         "family": "responsibility-body",
-        "artifactPath": "src/complete-new-feature-authority.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts",
         "sourceAuthorityRef": "feature-body:complete-new-feature-authority",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-materialization-type",
         "family": "responsibility-type",
-        "artifactPath": "src/complete-new-feature-materialization.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/complete-new-feature-materialization.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-materialization-body",
         "family": "responsibility-body",
-        "artifactPath": "src/complete-new-feature-materialization.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts",
         "sourceAuthorityRef": "feature-body:complete-new-feature-materialization",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "observed-new-feature-execution-type",
         "family": "responsibility-type",
-        "artifactPath": "src/observed-new-feature-execution.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/observed-new-feature-execution.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "observed-new-feature-execution-body",
         "family": "responsibility-body",
-        "artifactPath": "src/observed-new-feature-execution.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts",
         "sourceAuthorityRef": "feature-body:observed-new-feature-execution",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "new-feature-execution-comparison-type",
         "family": "responsibility-type",
-        "artifactPath": "src/new-feature-execution-comparison.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/new-feature-execution-comparison.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "new-feature-execution-comparison-body",
         "family": "responsibility-body",
-        "artifactPath": "src/new-feature-execution-comparison.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts",
         "sourceAuthorityRef": "feature-body:new-feature-execution-comparison",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-lineage-type",
         "family": "responsibility-type",
-        "artifactPath": "src/complete-new-feature-lineage.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/complete-new-feature-lineage.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-lineage-body",
         "family": "responsibility-body",
-        "artifactPath": "src/complete-new-feature-lineage.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts",
         "sourceAuthorityRef": "feature-body:complete-new-feature-lineage",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-admit-reviewed-new-feature-request",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-admit-reviewed-new-feature-request.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-admit-reviewed-new-feature-request.ts",
         "sourceAuthorityRef": "runtime-registration:admits-reviewed-new-feature-request",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-adapt-new-feature-request-admission",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-adapt-new-feature-request-admission.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-adapt-new-feature-request-admission.ts",
         "sourceAuthorityRef": "runtime-registration:adapts-new-feature-request-admission",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-project-complete-new-feature-authority",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-project-complete-new-feature-authority.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-project-complete-new-feature-authority.ts",
         "sourceAuthorityRef": "runtime-registration:projects-complete-new-feature-authority",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-materialize-complete-new-feature",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-materialize-complete-new-feature.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-materialize-complete-new-feature.ts",
         "sourceAuthorityRef": "runtime-registration:materializes-complete-new-feature",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-execute-newly-materialized-feature",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-execute-newly-materialized-feature.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-execute-newly-materialized-feature.ts",
         "sourceAuthorityRef": "runtime-registration:executes-newly-materialized-feature",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-compose-new-feature-execution-comparison",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-compose-new-feature-execution-comparison.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-compose-new-feature-execution-comparison.ts",
         "sourceAuthorityRef": "runtime-registration:composes-new-feature-execution-comparison",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-verify-complete-new-feature-lineage",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-verify-complete-new-feature-lineage.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-verify-complete-new-feature-lineage.ts",
         "sourceAuthorityRef": "runtime-registration:verifies-complete-new-feature-lineage",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "canonical-feature-runtime-adapter",
         "family": "runtime-adapter",
-        "artifactPath": "runtime/invokes-canonical-feature-conveyor.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts",
         "sourceAuthorityRef": "implementation-artifact:runtime-adapter",
         "projectorCapability": "projects-runtime-adapter",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "canonical-feature-semantic-interpreter",
         "family": "semantic-interpreter",
-        "artifactPath": "runtime/interprets-canonical-feature-semantic-authority.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts",
         "sourceAuthorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
         "projectorCapability": "projects-semantic-interpreter",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-authority-projector-port",
         "family": "runtime-port",
-        "artifactPath": "runtime/complete-new-feature-authority-projector.port.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts",
         "sourceAuthorityRef": "implementation-artifact:authority-projector-boundary",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-materializer-port",
         "family": "runtime-port",
-        "artifactPath": "runtime/complete-new-feature-materializer.port.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts",
         "sourceAuthorityRef": "implementation-artifact:materialization-boundary",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "canonical-feature-evaluation-fixture-port",
         "family": "evaluation-port",
-        "artifactPath": "evaluation/canonical-feature-evaluation-fixture.port.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts",
         "sourceAuthorityRef": "implementation-artifact:evaluation-fixture",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "governed-artifact-evidence-store-port",
         "family": "evaluation-port",
-        "artifactPath": "evaluation/governed-artifact-evidence-store.port.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts",
         "sourceAuthorityRef": "implementation-artifact:evidence-store",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "canonical-feature-conveyor-execution-proof",
         "family": "evaluation-proof",
-        "artifactPath": "evaluation/proves-canonical-feature-conveyor.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/proves-canonical-feature-conveyor.ts",
         "sourceAuthorityRef": "implementation-artifact:execution-proof",
         "projectorCapability": "projects-evaluation-proof",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "canonical-feature-conveyor-self-hosting-runner",
         "family": "self-hosting-runner",
-        "artifactPath": "runtime/self-hosts-canonical-feature-conveyor.mjs",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/self-hosts-canonical-feature-conveyor.mjs",
         "sourceAuthorityRef": "self-hosting:canonical-feature-conveyor-self-hosting.v1",
         "projectorCapability": "projects-self-hosting-runner",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       }
     ]
+  },
+  "workspaceProjectionAuthority": {
+    "repositoryRoot": ".",
+    "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+    "projectionMode": "working-tree",
+    "reviewSurface": "git-diff",
+    "sourceMaterialization": "direct-to-governed-capability-paths",
+    "alternateFileTopologies": "forbidden",
+    "dirtyStatePolicy": "PRESERVE_UNRELATED_DIRTY_PATHS",
+    "failurePolicy": "LEAVE_AUTHORIZED_PARTIAL_DELTA",
+    "compileRoot": ".",
+    "executionRoot": ".",
+    "evidenceRoot": "machine-local-outside-repository"
   }
 }
 ```
@@ -1229,44 +1296,42 @@ export interface EndToEndCanonicalFeatureConveyorContext {
 
 Package: `end-to-end-canonical-feature-conveyor-implementation.v1`
 
-Topology SHA-256: `sha256:084e3d05bc2e2f550a51a9bec618237c133049b026855dc6fa4a9de52c019770`
+Topology SHA-256: `sha256:38352ba06167fb62c97c592ec4588adc24070613296d5093f20be76805b4cfbc`
 
 | Artifact | Family | Projector capability | Posture | Source SHA-256 |
 | --- | --- | --- | --- | --- |
-| `package.json` | package-support | `projects-package-support` | `PROJECTABLE` | `sha256:2687a8ff3a31f374fb24dfd9309dc30d3d4e5c1d8c93941fc4ba4b4a30f65644` |
-| `tsconfig.json` | package-support | `projects-package-support` | `PROJECTABLE` | `sha256:a59cd29ea1925da699c0263100bd60136f66917eb111eb82b21ca32d8d6058bc` |
-| `composition/canonical-feature-edge-registry.type.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:6cf495e0db0a7d7f202cf6afc979b8a03bc67a3238dd17b6e98d7d0b17d9ec02` |
-| `composition/executes-end-to-end-canonical-feature-conveyor.type.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:2cd7457ff0674a8142ac55b2472dbd71facf435ef6da094711bacb65ffeec94c` |
-| `composition/executes-end-to-end-canonical-feature-conveyor.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:c18760aaf872a9c33de3ceec729438708cb388a3f4763d5bed7ac6b53f5f1e54` |
-| `src/new-feature-request-admission.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:7df0787bf451f8e6734dd175d66fb7c20ded5550451f75504fbdffbef3554655` |
-| `src/new-feature-request-admission.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:5775279a03ee5133629cdcaffb2fc4288e24b7f7b695a8b13de873e1b68df04f` |
-| `src/admitted-new-feature-request.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:0a0bf656cc05c3a49bc139ca8e77223a204d5970c34e306a94f5bd8b739e488a` |
-| `src/admitted-new-feature-request.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:0713a762e035d6291ff59f426d709c799e343d440837f346999e3c67e9a43170` |
-| `src/complete-new-feature-authority.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:e19594453839bc33a4acf9bf67e397dacd5af5df313a69a5453460066bdb7ee1` |
-| `src/complete-new-feature-authority.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:dbd818e3e4897ef0bdf494bc7410dfcd065c1ecf0a7258050705d8ed36991ed4` |
-| `src/complete-new-feature-materialization.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:451cd3ab8bb8bed75d56c7676935d63a994ee93794b83af5cab8a86c061022e1` |
-| `src/complete-new-feature-materialization.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:6ba37ea7c6c97e735e421b3bf8359cdd0706e4971aa91991bf9b627adb061d35` |
-| `src/observed-new-feature-execution.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:7a8ae2350439ef0201b44424390058731161104c60346345ae9fc774a83cbdd2` |
-| `src/observed-new-feature-execution.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:d68e519ca89291776c130cf1c3de23cdb526427f2b22365d33dcbb0dde888ea1` |
-| `src/new-feature-execution-comparison.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:e0fc5ce2a71e9fa5d09e0b17086658b94d85d890e8bf292d07312b803786865f` |
-| `src/new-feature-execution-comparison.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:737ab9df69da37602e78332556d1c87606317ae4565ad8ebea12f5a87dfe8b1a` |
-| `src/complete-new-feature-lineage.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:f2cb6b94b1e3c9d26b74dd75d84a31da766507f969982f4408b0d64719825144` |
-| `src/complete-new-feature-lineage.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:a4b8c2f8b02c6760e7cd7918576eba2eaec3d17df6c284843cb5588dc889078a` |
-| `runtime/registers-admit-reviewed-new-feature-request.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:ff61bec3a18c265bf588ce4006f8f8bd1796774e8d6709c15de722a8092f26c4` |
-| `runtime/registers-adapt-new-feature-request-admission.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:0cb1719df73a7aacd506659b0cefc1b8cfa8ac37da64b0a0571baf5e65628fd8` |
-| `runtime/registers-project-complete-new-feature-authority.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:0023b6eeea606933b036ec584ef884f7ab647b44eb2852e62992cbc319a8812b` |
-| `runtime/registers-materialize-complete-new-feature.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:c597e884fa5e5bee0b97365ebdfa1393c97a4a7a70e95f2a8c9118fdde566ce9` |
-| `runtime/registers-execute-newly-materialized-feature.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:1ea966ca912793b65878730655eae93dac2cce40e303719b587bb4f47710f07c` |
-| `runtime/registers-compose-new-feature-execution-comparison.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:f11691a783de1e439e6bf25842b088a08075f10e6c0bb5917f2b7189dc7e05d2` |
-| `runtime/registers-verify-complete-new-feature-lineage.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:9749e2c925aa4e6e68ad462a6be1833f6436d7fd54b55338a6278de9f1680230` |
-| `runtime/invokes-canonical-feature-conveyor.ts` | runtime-adapter | `projects-runtime-adapter` | `PROJECTABLE` | `sha256:4a260b9fd942d8806f7871781d3a047475fb182c5390d54e68ab8fade2117150` |
-| `runtime/interprets-canonical-feature-semantic-authority.ts` | semantic-interpreter | `projects-semantic-interpreter` | `PROJECTABLE` | `sha256:bc8aa1dbe447578db75b88933b10ae89ea0f2526743dd18bdbb9a614032bb79c` |
-| `runtime/complete-new-feature-authority-projector.port.ts` | runtime-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:ebe3b3b175a4ae2a964f3104867f8d013844a4f77dac4a7a122b87e4eba2157b` |
-| `runtime/complete-new-feature-materializer.port.ts` | runtime-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:1e610f49228b3a678fbcd0c4530fbd1cbbda1b8860122cbb8cad64c75ae59410` |
-| `evaluation/canonical-feature-evaluation-fixture.port.ts` | evaluation-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:9df5364344166427a0ec0be7dfb2b926a2be1dde37fa1325b62ad4391817ad95` |
-| `evaluation/governed-artifact-evidence-store.port.ts` | evaluation-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:282deaaa89e7267abb5c7433a97acb804e80db3266f3602c5702585140208a0b` |
-| `evaluation/proves-canonical-feature-conveyor.ts` | evaluation-proof | `projects-evaluation-proof` | `PROJECTABLE` | `sha256:0291ab12dac1b1278adb5b4da99a5e13eff6751c044f1d28f7c8332824e9670e` |
-| `runtime/self-hosts-canonical-feature-conveyor.mjs` | self-hosting-runner | `projects-self-hosting-runner` | `PROJECTABLE` | `sha256:6d0f7275edbc2dcdb48e1fe25b29f81b63877e0f83185ba5d6656fe7f50e82b2` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:6cf495e0db0a7d7f202cf6afc979b8a03bc67a3238dd17b6e98d7d0b17d9ec02` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:2cd7457ff0674a8142ac55b2472dbd71facf435ef6da094711bacb65ffeec94c` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:c18760aaf872a9c33de3ceec729438708cb388a3f4763d5bed7ac6b53f5f1e54` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:7df0787bf451f8e6734dd175d66fb7c20ded5550451f75504fbdffbef3554655` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:5775279a03ee5133629cdcaffb2fc4288e24b7f7b695a8b13de873e1b68df04f` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:0a0bf656cc05c3a49bc139ca8e77223a204d5970c34e306a94f5bd8b739e488a` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:0713a762e035d6291ff59f426d709c799e343d440837f346999e3c67e9a43170` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:e19594453839bc33a4acf9bf67e397dacd5af5df313a69a5453460066bdb7ee1` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:dbd818e3e4897ef0bdf494bc7410dfcd065c1ecf0a7258050705d8ed36991ed4` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:451cd3ab8bb8bed75d56c7676935d63a994ee93794b83af5cab8a86c061022e1` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:6ba37ea7c6c97e735e421b3bf8359cdd0706e4971aa91991bf9b627adb061d35` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:7a8ae2350439ef0201b44424390058731161104c60346345ae9fc774a83cbdd2` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:d68e519ca89291776c130cf1c3de23cdb526427f2b22365d33dcbb0dde888ea1` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:e0fc5ce2a71e9fa5d09e0b17086658b94d85d890e8bf292d07312b803786865f` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:737ab9df69da37602e78332556d1c87606317ae4565ad8ebea12f5a87dfe8b1a` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts` | responsibility-type | `projects-production-typescript` | `PROJECTABLE` | `sha256:f2cb6b94b1e3c9d26b74dd75d84a31da766507f969982f4408b0d64719825144` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts` | responsibility-body | `projects-production-typescript` | `PROJECTABLE` | `sha256:a4b8c2f8b02c6760e7cd7918576eba2eaec3d17df6c284843cb5588dc889078a` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-admit-reviewed-new-feature-request.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:ff61bec3a18c265bf588ce4006f8f8bd1796774e8d6709c15de722a8092f26c4` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-adapt-new-feature-request-admission.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:0cb1719df73a7aacd506659b0cefc1b8cfa8ac37da64b0a0571baf5e65628fd8` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-project-complete-new-feature-authority.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:0023b6eeea606933b036ec584ef884f7ab647b44eb2852e62992cbc319a8812b` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-materialize-complete-new-feature.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:c597e884fa5e5bee0b97365ebdfa1393c97a4a7a70e95f2a8c9118fdde566ce9` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-execute-newly-materialized-feature.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:1ea966ca912793b65878730655eae93dac2cce40e303719b587bb4f47710f07c` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-compose-new-feature-execution-comparison.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:f11691a783de1e439e6bf25842b088a08075f10e6c0bb5917f2b7189dc7e05d2` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-verify-complete-new-feature-lineage.ts` | runtime-registration | `projects-runtime-edge-registration` | `PROJECTABLE` | `sha256:9749e2c925aa4e6e68ad462a6be1833f6436d7fd54b55338a6278de9f1680230` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts` | runtime-adapter | `projects-runtime-adapter` | `PROJECTABLE` | `sha256:4a260b9fd942d8806f7871781d3a047475fb182c5390d54e68ab8fade2117150` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts` | semantic-interpreter | `projects-semantic-interpreter` | `PROJECTABLE` | `sha256:bc8aa1dbe447578db75b88933b10ae89ea0f2526743dd18bdbb9a614032bb79c` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts` | runtime-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:ebe3b3b175a4ae2a964f3104867f8d013844a4f77dac4a7a122b87e4eba2157b` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts` | runtime-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:1e610f49228b3a678fbcd0c4530fbd1cbbda1b8860122cbb8cad64c75ae59410` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts` | evaluation-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:9df5364344166427a0ec0be7dfb2b926a2be1dde37fa1325b62ad4391817ad95` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts` | evaluation-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:282deaaa89e7267abb5c7433a97acb804e80db3266f3602c5702585140208a0b` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/proves-canonical-feature-conveyor.ts` | evaluation-proof | `projects-evaluation-proof` | `PROJECTABLE` | `sha256:0291ab12dac1b1278adb5b4da99a5e13eff6751c044f1d28f7c8332824e9670e` |
+| `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/self-hosts-canonical-feature-conveyor.mjs` | self-hosting-runner | `projects-self-hosting-runner` | `PROJECTABLE` | `sha256:216403f2b2e0237ad66467f428961aff8dc2fc2bb57ac08008f18412cd86a3f1` |
 
 Projection source policy: canonical JSON authority only; Markdown scraping is forbidden.
 
@@ -1279,7 +1344,7 @@ Execution proof: direct semantic authority and the projected composition plus re
   "contractId": "canonical-feature-conveyor-self-hosting.v1",
   "authorityInputPath": "architecture/end-to-end-canonical-feature-conveyor.authority.json",
   "derivedProjectionInputPath": "architecture/end-to-end-canonical-feature-conveyor.derived-projections.json",
-  "executorArtifactPath": "runtime/self-hosts-canonical-feature-conveyor.mjs",
+  "executorArtifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/self-hosts-canonical-feature-conveyor.mjs",
   "executionStages": [
     "capture-intent",
     "declare-outcome",
@@ -1301,37 +1366,41 @@ Execution proof: direct semantic authority and the projected composition plus re
     "review-feature"
   ],
   "targetPolicy": {
-    "root": "caller-supplied-empty-root",
-    "overwrite": "forbidden",
+    "root": "governed-repository-workspace",
+    "repositoryRoot": ".",
+    "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+    "overwrite": "replace-only-if-lineage-matches",
     "postProjectionEdits": "forbidden",
-    "authoritySource": "canonical-json-and-admitted-derived-projection"
+    "authoritySource": "canonical-json-and-admitted-derived-projection",
+    "reviewSurface": "git-diff",
+    "alternateFileTopologies": "forbidden"
   },
   "acceptance": {
     "stageReplay": "18-of-18-in-causal-order",
-    "governedArtifactComparison": "byte-for-byte",
+    "governedArtifactComparison": "byte-for-byte-in-place",
     "typescript": "strict-compile",
     "semanticExecution": "executed",
     "projectedExecution": "executed",
     "translation": "canonical-equivalence",
     "terminalDisposition": "PROJECTION_CONFORMS",
-    "liveProviderRun": "required-on-untouched-clone"
+    "liveProviderRun": "required-on-projected-working-tree"
   }
 }
 ```
 
-The projected self-hosting runner must replay all 18 construction stages, materialize a fresh empty-root clone, compile and execute it, compare every governed artifact byte-for-byte with its source projection, and leave the clone unedited before the required live-provider run.
+The projected self-hosting runner must replay all 18 construction stages, materialize directly into the governed capability folder, compile and execute the repository bytes under Git review, compare every governed artifact byte-for-byte with its source projection, and leave the projected files unedited before the required live-provider run.
 
 ### Projected responsibility bodies
 
 | Sequence | Responsibility | Input | Output | Projected artifact |
 | --- | --- | --- | --- | --- |
-| 1 | admits-reviewed-new-feature-request | end-to-end-canonical-feature-conveyor-context.v1 | new-feature-request-admission.v1 | src/new-feature-request-admission.ts |
-| 2 | adapts-new-feature-request-admission | new-feature-request-admission.v1 | admitted-new-feature-request.v1 | src/admitted-new-feature-request.ts |
-| 3 | projects-complete-new-feature-authority | admitted-new-feature-request.v1 | complete-new-feature-authority.v1 | src/complete-new-feature-authority.ts |
-| 4 | materializes-complete-new-feature | complete-new-feature-authority.v1 | complete-new-feature-materialization.v1 | src/complete-new-feature-materialization.ts |
-| 5 | executes-newly-materialized-feature | complete-new-feature-materialization.v1 | observed-new-feature-execution.v1 | src/observed-new-feature-execution.ts |
-| 6 | composes-new-feature-execution-comparison | observed-new-feature-execution.v1 | new-feature-execution-comparison.v1 | src/new-feature-execution-comparison.ts |
-| 7 | verifies-complete-new-feature-lineage | new-feature-execution-comparison.v1 | new-feature-terminal-disposition.v1 | src/complete-new-feature-lineage.ts |
+| 1 | admits-reviewed-new-feature-request | end-to-end-canonical-feature-conveyor-context.v1 | new-feature-request-admission.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts |
+| 2 | adapts-new-feature-request-admission | new-feature-request-admission.v1 | admitted-new-feature-request.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts |
+| 3 | projects-complete-new-feature-authority | admitted-new-feature-request.v1 | complete-new-feature-authority.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts |
+| 4 | materializes-complete-new-feature | complete-new-feature-authority.v1 | complete-new-feature-materialization.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts |
+| 5 | executes-newly-materialized-feature | complete-new-feature-materialization.v1 | observed-new-feature-execution.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts |
+| 6 | composes-new-feature-execution-comparison | observed-new-feature-execution.v1 | new-feature-execution-comparison.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts |
+| 7 | verifies-complete-new-feature-lineage | new-feature-execution-comparison.v1 | new-feature-terminal-disposition.v1 | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts |
 
 ### File-body system
 
@@ -1519,10 +1588,10 @@ Scenario
 
 Feature-level execution
 ├─► [FLOW] Feature Execution Body
-│      composition/executes-end-to-end-canonical-feature-conveyor.ts
+│      capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts
 │
 └─► [PORT] Runtime Adapter
-       runtime/invokes-canonical-feature-conveyor.ts
+       capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts
 ```
 
 ### How the document gets there
@@ -1824,7 +1893,7 @@ Observable state:
 
 Projection availability: PROJECTOR_OUTPUT
 
-Projected artifact: `src/complete-new-feature-lineage.type.ts`
+Projected artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts`
 
 ```typescript
 // @generated
@@ -1897,7 +1966,7 @@ Stop condition: one canonical feature identity, story, and governing obligation 
 
 Projection availability: PROJECTOR_OUTPUT
 
-Projected artifact: `composition/executes-end-to-end-canonical-feature-conveyor.ts`
+Projected artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts`
 
 ```typescript
 // @generated
@@ -2161,43 +2230,43 @@ Projection availability: PROJECTOR_OUTPUT
 ```text
 admit-one-reviewed-new-feature-request
   → admits-reviewed-new-feature-request
-  → src/new-feature-request-admission.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts
   → admitsReviewedNewFeatureRequest(...)
   → edge admit-reviewed-new-feature-request
 
 adapt-one-new-feature-request-admission
   → adapts-new-feature-request-admission
-  → src/admitted-new-feature-request.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts
   → adaptsNewFeatureRequestAdmission(...)
   → edge adapt-new-feature-request-admission
 
 project-one-complete-new-feature-authority
   → projects-complete-new-feature-authority
-  → src/complete-new-feature-authority.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts
   → projectsCompleteNewFeatureAuthority(...)
   → edge project-complete-new-feature-authority
 
 materialize-one-complete-new-feature
   → materializes-complete-new-feature
-  → src/complete-new-feature-materialization.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts
   → materializesCompleteNewFeature(...)
   → edge materialize-complete-new-feature
 
 execute-one-newly-materialized-feature
   → executes-newly-materialized-feature
-  → src/observed-new-feature-execution.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts
   → executesNewlyMaterializedFeature(...)
   → edge execute-newly-materialized-feature
 
 compose-one-new-feature-execution-comparison
   → composes-new-feature-execution-comparison
-  → src/new-feature-execution-comparison.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts
   → composesNewFeatureExecutionComparison(...)
   → edge compose-new-feature-execution-comparison
 
 verify-one-complete-new-feature-lineage
   → verifies-complete-new-feature-lineage
-  → src/complete-new-feature-lineage.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts
   → verifiesCompleteNewFeatureLineage(...)
   → edge verify-complete-new-feature-lineage
 ```
@@ -2625,43 +2694,43 @@ Projection availability: PROJECTOR_OUTPUT
 ```text
 admit-one-reviewed-new-feature-request
   → admits-reviewed-new-feature-request
-  → src/new-feature-request-admission.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts
   → admitsReviewedNewFeatureRequest(...)
   → edge admit-reviewed-new-feature-request
 
 adapt-one-new-feature-request-admission
   → adapts-new-feature-request-admission
-  → src/admitted-new-feature-request.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts
   → adaptsNewFeatureRequestAdmission(...)
   → edge adapt-new-feature-request-admission
 
 project-one-complete-new-feature-authority
   → projects-complete-new-feature-authority
-  → src/complete-new-feature-authority.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts
   → projectsCompleteNewFeatureAuthority(...)
   → edge project-complete-new-feature-authority
 
 materialize-one-complete-new-feature
   → materializes-complete-new-feature
-  → src/complete-new-feature-materialization.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts
   → materializesCompleteNewFeature(...)
   → edge materialize-complete-new-feature
 
 execute-one-newly-materialized-feature
   → executes-newly-materialized-feature
-  → src/observed-new-feature-execution.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts
   → executesNewlyMaterializedFeature(...)
   → edge execute-newly-materialized-feature
 
 compose-one-new-feature-execution-comparison
   → composes-new-feature-execution-comparison
-  → src/new-feature-execution-comparison.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts
   → composesNewFeatureExecutionComparison(...)
   → edge compose-new-feature-execution-comparison
 
 verify-one-complete-new-feature-lineage
   → verifies-complete-new-feature-lineage
-  → src/complete-new-feature-lineage.ts
+  → capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts
   → verifiesCompleteNewFeatureLineage(...)
   → edge verify-complete-new-feature-lineage
 ```
@@ -3000,7 +3069,7 @@ Stop condition: every responsibility produces one expectation-bound signal
 
 Projection availability: PROJECTOR_OUTPUT
 
-#### src/new-feature-request-admission.type.ts
+#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts
 
 ```typescript
 // @generated
@@ -3032,7 +3101,7 @@ export interface NewFeatureRequestAdmission {
 
 ```
 
-#### src/admitted-new-feature-request.type.ts
+#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts
 
 ```typescript
 // @generated
@@ -3062,7 +3131,7 @@ export interface AdmittedNewFeatureRequest {
 
 ```
 
-#### src/complete-new-feature-authority.type.ts
+#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts
 
 ```typescript
 // @generated
@@ -3093,7 +3162,7 @@ export interface CompleteNewFeatureAuthority {
 
 ```
 
-#### src/complete-new-feature-materialization.type.ts
+#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts
 
 ```typescript
 // @generated
@@ -3124,7 +3193,7 @@ export interface CompleteNewFeatureMaterialization {
 
 ```
 
-#### src/observed-new-feature-execution.type.ts
+#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts
 
 ```typescript
 // @generated
@@ -3160,7 +3229,7 @@ export interface ObservedNewFeatureExecution {
 
 ```
 
-#### src/new-feature-execution-comparison.type.ts
+#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts
 
 ```typescript
 // @generated
@@ -3194,7 +3263,7 @@ export interface NewFeatureExecutionComparison {
 
 ```
 
-#### src/complete-new-feature-lineage.type.ts
+#### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts
 
 ```typescript
 // @generated
@@ -3391,7 +3460,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -3427,7 +3496,7 @@ export async function admitsReviewedNewFeatureRequest(
 | observe-reviewed-request | resolve-observation | hidden behind semantic edge |
 | resolve-request-admission | resolve-decision | hidden behind semantic edge |
 | project-request-admission | project-result | hidden behind semantic edge |
-| new-feature-request-admission.v1 | result contract | src/new-feature-request-admission.ts return type |
+| new-feature-request-admission.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts return type |
 | admits-reviewed-new-feature-request | execution registration identity | admitsReviewedNewFeatureRequest lineage |
 | admit-reviewed-new-feature-request | semantic model identity | edge invocation string |
 
@@ -3517,7 +3586,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -3552,7 +3621,7 @@ export async function adaptsNewFeatureRequestAdmission(
 | --- | --- | --- |
 | observe-request-admission | resolve-observation | hidden behind semantic edge |
 | project-admitted-new-feature-request | project-result | hidden behind semantic edge |
-| admitted-new-feature-request.v1 | result contract | src/admitted-new-feature-request.ts return type |
+| admitted-new-feature-request.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts return type |
 | adapts-new-feature-request-admission | execution registration identity | adaptsNewFeatureRequestAdmission lineage |
 | adapt-new-feature-request-admission | semantic model identity | edge invocation string |
 
@@ -3646,7 +3715,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -3681,7 +3750,7 @@ export async function projectsCompleteNewFeatureAuthority(
 | --- | --- | --- |
 | observe-admitted-request | resolve-observation | hidden behind semantic edge |
 | project-complete-feature-authority | project-result | hidden behind semantic edge |
-| complete-new-feature-authority.v1 | result contract | src/complete-new-feature-authority.ts return type |
+| complete-new-feature-authority.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts return type |
 | projects-complete-new-feature-authority | execution registration identity | projectsCompleteNewFeatureAuthority lineage |
 | project-complete-new-feature-authority | semantic model identity | edge invocation string |
 
@@ -3775,7 +3844,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -3810,7 +3879,7 @@ export async function materializesCompleteNewFeature(
 | --- | --- | --- |
 | observe-complete-feature-authority | resolve-observation | hidden behind semantic edge |
 | project-complete-feature-materialization | project-result | hidden behind semantic edge |
-| complete-new-feature-materialization.v1 | result contract | src/complete-new-feature-materialization.ts return type |
+| complete-new-feature-materialization.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts return type |
 | materializes-complete-new-feature | execution registration identity | materializesCompleteNewFeature lineage |
 | materialize-complete-new-feature | semantic model identity | edge invocation string |
 
@@ -3920,7 +3989,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -3955,7 +4024,7 @@ export async function executesNewlyMaterializedFeature(
 | --- | --- | --- |
 | observe-materialized-feature | resolve-observation | hidden behind semantic edge |
 | project-execution-observation | project-result | hidden behind semantic edge |
-| observed-new-feature-execution.v1 | result contract | src/observed-new-feature-execution.ts return type |
+| observed-new-feature-execution.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts return type |
 | executes-newly-materialized-feature | execution registration identity | executesNewlyMaterializedFeature lineage |
 | execute-newly-materialized-feature | semantic model identity | edge invocation string |
 
@@ -4064,7 +4133,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -4099,7 +4168,7 @@ export async function composesNewFeatureExecutionComparison(
 | --- | --- | --- |
 | observe-comparison-inputs | resolve-observation | hidden behind semantic edge |
 | project-new-feature-execution-comparison | project-result | hidden behind semantic edge |
-| new-feature-execution-comparison.v1 | result contract | src/new-feature-execution-comparison.ts return type |
+| new-feature-execution-comparison.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts return type |
 | composes-new-feature-execution-comparison | execution registration identity | composesNewFeatureExecutionComparison lineage |
 | compose-new-feature-execution-comparison | semantic model identity | edge invocation string |
 
@@ -4254,7 +4323,7 @@ Declarative semantic model: AVAILABLE
 
 Semantic interpreter binding: IMPLEMENTED
 
-Required interpreter artifact: `runtime/interprets-canonical-feature-semantic-authority.ts`
+Required interpreter artifact: `capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts`
 
 Projected semantic source availability: NOT_IMPLEMENTED
 
@@ -4290,7 +4359,7 @@ export async function verifiesCompleteNewFeatureLineage(
 | observe-execution-comparison | resolve-observation | hidden behind semantic edge |
 | resolve-terminal-disposition | resolve-decision | hidden behind semantic edge |
 | project-terminal-disposition | project-result | hidden behind semantic edge |
-| new-feature-terminal-disposition.v1 | result contract | src/complete-new-feature-lineage.ts return type |
+| new-feature-terminal-disposition.v1 | result contract | capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts return type |
 | verifies-complete-new-feature-lineage | execution registration identity | verifiesCompleteNewFeatureLineage lineage |
 | verify-complete-new-feature-lineage | semantic model identity | edge invocation string |
 
@@ -4494,7 +4563,7 @@ Stop condition: every semantic authority has one deterministic execution model
 {
   "contractId": "canonical-feature-semantic-interpreter.v1",
   "bindingStatus": "IMPLEMENTED",
-  "requiredArtifact": "runtime/interprets-canonical-feature-semantic-authority.ts",
+  "requiredArtifact": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts",
   "pathDialect": {
     "dialectId": "rooted-member-path.v1",
     "rootToken": "$",
@@ -5540,10 +5609,10 @@ Scenario
 
 Feature-level execution
 ├─► [FLOW] Feature Execution Body
-│      composition/executes-end-to-end-canonical-feature-conveyor.ts
+│      capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts
 │
 └─► [PORT] Runtime Adapter
-       runtime/invokes-canonical-feature-conveyor.ts
+       capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts
 ```
 
 ### What this becomes
@@ -5814,7 +5883,7 @@ Production projector invocations:
         "projectionId": "project-new-feature-request-admission-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "src/new-feature-request-admission.ts"
+          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts"
         },
         "lineage": {
           "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -5847,7 +5916,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "src/new-feature-request-admission.ts",
+      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -5876,7 +5945,7 @@ Production projector invocations:
         "projectionId": "project-admitted-new-feature-request-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "src/admitted-new-feature-request.ts"
+          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts"
         },
         "lineage": {
           "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -5909,7 +5978,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "src/admitted-new-feature-request.ts",
+      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -5938,7 +6007,7 @@ Production projector invocations:
         "projectionId": "project-complete-new-feature-authority-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "src/complete-new-feature-authority.ts"
+          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts"
         },
         "lineage": {
           "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -5971,7 +6040,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "src/complete-new-feature-authority.ts",
+      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -6000,7 +6069,7 @@ Production projector invocations:
         "projectionId": "project-complete-new-feature-materialization-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "src/complete-new-feature-materialization.ts"
+          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts"
         },
         "lineage": {
           "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -6033,7 +6102,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "src/complete-new-feature-materialization.ts",
+      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -6062,7 +6131,7 @@ Production projector invocations:
         "projectionId": "project-observed-new-feature-execution-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "src/observed-new-feature-execution.ts"
+          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts"
         },
         "lineage": {
           "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -6095,7 +6164,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "src/observed-new-feature-execution.ts",
+      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -6124,7 +6193,7 @@ Production projector invocations:
         "projectionId": "project-new-feature-execution-comparison-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "src/new-feature-execution-comparison.ts"
+          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts"
         },
         "lineage": {
           "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -6157,7 +6226,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "src/new-feature-execution-comparison.ts",
+      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -6186,7 +6255,7 @@ Production projector invocations:
         "projectionId": "project-complete-new-feature-lineage-through-production-projector",
         "targetLanguage": "typescript",
         "artifact": {
-          "relativePath": "src/complete-new-feature-lineage.ts"
+          "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts"
         },
         "lineage": {
           "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -6219,7 +6288,7 @@ Production projector invocations:
       }
     },
     "expectedArtifact": {
-      "path": "src/complete-new-feature-lineage.ts",
+      "path": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts",
       "language": "typescript"
     },
     "typeResolution": {
@@ -6236,7 +6305,7 @@ Compilation and runtime artifact authority:
 {
   "edgeRegistry": {
     "contractId": "canonical-feature-edge-registry.v1",
-    "artifactPath": "composition/canonical-feature-edge-registry.type.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts",
     "edgeContracts": [
       {
         "sequence": 1,
@@ -6290,7 +6359,7 @@ Compilation and runtime artifact authority:
       "projectionId": "project-canonical-feature-edge-registry-type",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "composition/canonical-feature-edge-registry.type.ts"
+        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts"
       },
       "lineage": {
         "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -6329,7 +6398,7 @@ Compilation and runtime artifact authority:
     "bindingStatus": "IMPLEMENTED"
   },
   "compositionTypes": {
-    "artifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
     "authorityRef": "implementation-artifact:composition-types",
     "bindingStatus": "PROJECTOR_OUTPUT_AVAILABLE",
     "projectorRequest": {
@@ -6341,7 +6410,7 @@ Compilation and runtime artifact authority:
       "projectionId": "project-end-to-end-canonical-feature-conveyor-composition-types",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
+        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts"
       },
       "lineage": {
         "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -6643,61 +6712,61 @@ Compilation and runtime artifact authority:
     {
       "responsibilityId": "admits-reviewed-new-feature-request",
       "edgeId": "admit-reviewed-new-feature-request",
-      "artifactPath": "runtime/registers-admit-reviewed-new-feature-request.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-admit-reviewed-new-feature-request.ts",
       "implementationRef": "semantic-execution:admit-reviewed-new-feature-request",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "adapts-new-feature-request-admission",
       "edgeId": "adapt-new-feature-request-admission",
-      "artifactPath": "runtime/registers-adapt-new-feature-request-admission.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-adapt-new-feature-request-admission.ts",
       "implementationRef": "semantic-execution:adapt-new-feature-request-admission",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "projects-complete-new-feature-authority",
       "edgeId": "project-complete-new-feature-authority",
-      "artifactPath": "runtime/registers-project-complete-new-feature-authority.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-project-complete-new-feature-authority.ts",
       "implementationRef": "semantic-execution:project-complete-new-feature-authority",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "materializes-complete-new-feature",
       "edgeId": "materialize-complete-new-feature",
-      "artifactPath": "runtime/registers-materialize-complete-new-feature.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-materialize-complete-new-feature.ts",
       "implementationRef": "semantic-execution:materialize-complete-new-feature",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "executes-newly-materialized-feature",
       "edgeId": "execute-newly-materialized-feature",
-      "artifactPath": "runtime/registers-execute-newly-materialized-feature.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-execute-newly-materialized-feature.ts",
       "implementationRef": "semantic-execution:execute-newly-materialized-feature",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "composes-new-feature-execution-comparison",
       "edgeId": "compose-new-feature-execution-comparison",
-      "artifactPath": "runtime/registers-compose-new-feature-execution-comparison.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-compose-new-feature-execution-comparison.ts",
       "implementationRef": "semantic-execution:compose-new-feature-execution-comparison",
       "bindingStatus": "IMPLEMENTED"
     },
     {
       "responsibilityId": "verifies-complete-new-feature-lineage",
       "edgeId": "verify-complete-new-feature-lineage",
-      "artifactPath": "runtime/registers-verify-complete-new-feature-lineage.ts",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-verify-complete-new-feature-lineage.ts",
       "implementationRef": "semantic-execution:verify-complete-new-feature-lineage",
       "bindingStatus": "IMPLEMENTED"
     }
   ],
   "semanticInterpreter": {
     "authorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
-    "artifactPath": "runtime/interprets-canonical-feature-semantic-authority.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts",
     "bindingStatus": "IMPLEMENTED"
   },
   "runtimeAdapter": {
     "contractId": "canonical-feature-runtime-adapter.v1",
-    "artifactPath": "runtime/invokes-canonical-feature-conveyor.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts",
     "acceptsContractId": "reviewed-new-feature-request.v1",
     "constructsContextContractId": "end-to-end-canonical-feature-conveyor-context.v1",
     "producesContractId": "new-feature-terminal-disposition.v1",
@@ -6709,7 +6778,7 @@ Compilation and runtime artifact authority:
   },
   "authorityProjectorBoundary": {
     "contractId": "complete-new-feature-authority-projector-port.v1",
-    "artifactPath": "runtime/complete-new-feature-authority-projector.port.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts",
     "operations": [
       "projects-and-writes-complete-authority"
     ],
@@ -6722,7 +6791,7 @@ Compilation and runtime artifact authority:
       "projectionId": "project-complete-new-feature-authority-projector-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "runtime/complete-new-feature-authority-projector.port.ts"
+        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts"
       },
       "lineage": {
         "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -6765,7 +6834,7 @@ Compilation and runtime artifact authority:
   },
   "materializationBoundary": {
     "contractId": "complete-new-feature-materializer-port.v1",
-    "artifactPath": "runtime/complete-new-feature-materializer.port.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts",
     "operations": [
       "materializes-and-writes-artifact-manifest"
     ],
@@ -6778,7 +6847,7 @@ Compilation and runtime artifact authority:
       "projectionId": "project-complete-new-feature-materializer-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "runtime/complete-new-feature-materializer.port.ts"
+        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts"
       },
       "lineage": {
         "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -6821,7 +6890,7 @@ Compilation and runtime artifact authority:
   },
   "fixtureBoundary": {
     "contractId": "canonical-feature-evaluation-fixture-port.v1",
-    "artifactPath": "evaluation/canonical-feature-evaluation-fixture.port.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts",
     "operations": [
       "loadsSemanticFixture",
       "loadsProjectedFixture",
@@ -6836,7 +6905,7 @@ Compilation and runtime artifact authority:
       "projectionId": "project-canonical-feature-evaluation-fixture-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "evaluation/canonical-feature-evaluation-fixture.port.ts"
+        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts"
       },
       "lineage": {
         "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -6873,7 +6942,7 @@ Compilation and runtime artifact authority:
   },
   "evidenceBoundary": {
     "contractId": "governed-artifact-evidence-store.v1",
-    "artifactPath": "evaluation/governed-artifact-evidence-store.port.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts",
     "operations": [
       "writes",
       "resolves",
@@ -6891,7 +6960,7 @@ Compilation and runtime artifact authority:
       "projectionId": "project-governed-artifact-evidence-store-port",
       "targetLanguage": "typescript",
       "artifact": {
-        "relativePath": "evaluation/governed-artifact-evidence-store.port.ts"
+        "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts"
       },
       "lineage": {
         "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
@@ -6938,7 +7007,7 @@ Compilation and runtime artifact authority:
   },
   "executionProof": {
     "contractId": "canonical-feature-conveyor-execution-proof.v1",
-    "artifactPath": "evaluation/proves-canonical-feature-conveyor.ts",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/proves-canonical-feature-conveyor.ts",
     "semanticSurface": "direct-semantic-authority",
     "projectedSurface": "projected-composition-and-responsibility-bodies",
     "comparison": "RFC8785-JCS-equivalence",
@@ -6958,10 +7027,16 @@ Compilation and runtime artifact authority:
   "projectionPackage": {
     "packageId": "end-to-end-canonical-feature-conveyor-implementation.v1",
     "targetPolicy": {
-      "root": "caller-supplied-empty-root",
+      "root": "governed-repository-workspace",
+      "repositoryRoot": ".",
+      "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+      "projectionMode": "working-tree",
+      "reviewSurface": "git-diff",
       "authoritySource": "canonical-json-only",
       "markdownScraping": "forbidden",
-      "overwrite": "forbidden"
+      "overwrite": "replace-only-if-lineage-matches",
+      "pathPolicy": "all-artifacts-descend-from-capability-root",
+      "alternateFileTopologies": "forbidden"
     },
     "posturePolicy": [
       "PROJECTABLE",
@@ -6980,278 +7055,339 @@ Compilation and runtime artifact authority:
     },
     "artifacts": [
       {
-        "artifactId": "package-json",
-        "family": "package-support",
-        "artifactPath": "package.json",
-        "sourceAuthorityRef": "implementation-package:end-to-end-canonical-feature-conveyor-implementation.v1",
-        "projectorCapability": "projects-package-support",
-        "projectionPosture": "PROJECTABLE"
-      },
-      {
-        "artifactId": "typescript-configuration",
-        "family": "package-support",
-        "artifactPath": "tsconfig.json",
-        "sourceAuthorityRef": "implementation-package:end-to-end-canonical-feature-conveyor-implementation.v1",
-        "projectorCapability": "projects-package-support",
-        "projectionPosture": "PROJECTABLE"
-      },
-      {
         "artifactId": "canonical-feature-edge-registry-type",
         "family": "composition",
-        "artifactPath": "composition/canonical-feature-edge-registry.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts",
         "sourceAuthorityRef": "implementation-artifact:edge-registry",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "end-to-end-canonical-feature-conveyor-type",
         "family": "composition",
-        "artifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
         "sourceAuthorityRef": "implementation-artifact:composition-types",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "end-to-end-canonical-feature-conveyor-body",
         "family": "composition",
-        "artifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts",
         "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "new-feature-request-admission-type",
         "family": "responsibility-type",
-        "artifactPath": "src/new-feature-request-admission.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/new-feature-request-admission.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "new-feature-request-admission-body",
         "family": "responsibility-body",
-        "artifactPath": "src/new-feature-request-admission.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts",
         "sourceAuthorityRef": "feature-body:new-feature-request-admission",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "admitted-new-feature-request-type",
         "family": "responsibility-type",
-        "artifactPath": "src/admitted-new-feature-request.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/admitted-new-feature-request.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "admitted-new-feature-request-body",
         "family": "responsibility-body",
-        "artifactPath": "src/admitted-new-feature-request.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts",
         "sourceAuthorityRef": "feature-body:admitted-new-feature-request",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-authority-type",
         "family": "responsibility-type",
-        "artifactPath": "src/complete-new-feature-authority.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/complete-new-feature-authority.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-authority-body",
         "family": "responsibility-body",
-        "artifactPath": "src/complete-new-feature-authority.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts",
         "sourceAuthorityRef": "feature-body:complete-new-feature-authority",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-materialization-type",
         "family": "responsibility-type",
-        "artifactPath": "src/complete-new-feature-materialization.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/complete-new-feature-materialization.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-materialization-body",
         "family": "responsibility-body",
-        "artifactPath": "src/complete-new-feature-materialization.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts",
         "sourceAuthorityRef": "feature-body:complete-new-feature-materialization",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "observed-new-feature-execution-type",
         "family": "responsibility-type",
-        "artifactPath": "src/observed-new-feature-execution.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/observed-new-feature-execution.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "observed-new-feature-execution-body",
         "family": "responsibility-body",
-        "artifactPath": "src/observed-new-feature-execution.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts",
         "sourceAuthorityRef": "feature-body:observed-new-feature-execution",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "new-feature-execution-comparison-type",
         "family": "responsibility-type",
-        "artifactPath": "src/new-feature-execution-comparison.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/new-feature-execution-comparison.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "new-feature-execution-comparison-body",
         "family": "responsibility-body",
-        "artifactPath": "src/new-feature-execution-comparison.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts",
         "sourceAuthorityRef": "feature-body:new-feature-execution-comparison",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-lineage-type",
         "family": "responsibility-type",
-        "artifactPath": "src/complete-new-feature-lineage.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/complete-new-feature-lineage.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-lineage-body",
         "family": "responsibility-body",
-        "artifactPath": "src/complete-new-feature-lineage.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts",
         "sourceAuthorityRef": "feature-body:complete-new-feature-lineage",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-admit-reviewed-new-feature-request",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-admit-reviewed-new-feature-request.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-admit-reviewed-new-feature-request.ts",
         "sourceAuthorityRef": "runtime-registration:admits-reviewed-new-feature-request",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-adapt-new-feature-request-admission",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-adapt-new-feature-request-admission.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-adapt-new-feature-request-admission.ts",
         "sourceAuthorityRef": "runtime-registration:adapts-new-feature-request-admission",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-project-complete-new-feature-authority",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-project-complete-new-feature-authority.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-project-complete-new-feature-authority.ts",
         "sourceAuthorityRef": "runtime-registration:projects-complete-new-feature-authority",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-materialize-complete-new-feature",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-materialize-complete-new-feature.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-materialize-complete-new-feature.ts",
         "sourceAuthorityRef": "runtime-registration:materializes-complete-new-feature",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-execute-newly-materialized-feature",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-execute-newly-materialized-feature.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-execute-newly-materialized-feature.ts",
         "sourceAuthorityRef": "runtime-registration:executes-newly-materialized-feature",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-compose-new-feature-execution-comparison",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-compose-new-feature-execution-comparison.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-compose-new-feature-execution-comparison.ts",
         "sourceAuthorityRef": "runtime-registration:composes-new-feature-execution-comparison",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "register-verify-complete-new-feature-lineage",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-verify-complete-new-feature-lineage.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-verify-complete-new-feature-lineage.ts",
         "sourceAuthorityRef": "runtime-registration:verifies-complete-new-feature-lineage",
         "projectorCapability": "projects-runtime-edge-registration",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "canonical-feature-runtime-adapter",
         "family": "runtime-adapter",
-        "artifactPath": "runtime/invokes-canonical-feature-conveyor.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts",
         "sourceAuthorityRef": "implementation-artifact:runtime-adapter",
         "projectorCapability": "projects-runtime-adapter",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "canonical-feature-semantic-interpreter",
         "family": "semantic-interpreter",
-        "artifactPath": "runtime/interprets-canonical-feature-semantic-authority.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts",
         "sourceAuthorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
         "projectorCapability": "projects-semantic-interpreter",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-authority-projector-port",
         "family": "runtime-port",
-        "artifactPath": "runtime/complete-new-feature-authority-projector.port.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts",
         "sourceAuthorityRef": "implementation-artifact:authority-projector-boundary",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "complete-new-feature-materializer-port",
         "family": "runtime-port",
-        "artifactPath": "runtime/complete-new-feature-materializer.port.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts",
         "sourceAuthorityRef": "implementation-artifact:materialization-boundary",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "canonical-feature-evaluation-fixture-port",
         "family": "evaluation-port",
-        "artifactPath": "evaluation/canonical-feature-evaluation-fixture.port.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts",
         "sourceAuthorityRef": "implementation-artifact:evaluation-fixture",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "governed-artifact-evidence-store-port",
         "family": "evaluation-port",
-        "artifactPath": "evaluation/governed-artifact-evidence-store.port.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts",
         "sourceAuthorityRef": "implementation-artifact:evidence-store",
         "projectorCapability": "projects-production-typescript",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "canonical-feature-conveyor-execution-proof",
         "family": "evaluation-proof",
-        "artifactPath": "evaluation/proves-canonical-feature-conveyor.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/proves-canonical-feature-conveyor.ts",
         "sourceAuthorityRef": "implementation-artifact:execution-proof",
         "projectorCapability": "projects-evaluation-proof",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       },
       {
         "artifactId": "canonical-feature-conveyor-self-hosting-runner",
         "family": "self-hosting-runner",
-        "artifactPath": "runtime/self-hosts-canonical-feature-conveyor.mjs",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/self-hosts-canonical-feature-conveyor.mjs",
         "sourceAuthorityRef": "self-hosting:canonical-feature-conveyor-self-hosting.v1",
         "projectorCapability": "projects-self-hosting-runner",
-        "projectionPosture": "PROJECTABLE"
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
       }
     ]
+  },
+  "workspaceProjectionAuthority": {
+    "repositoryRoot": ".",
+    "capabilityRoot": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+    "projectionMode": "working-tree",
+    "reviewSurface": "git-diff",
+    "sourceMaterialization": "direct-to-governed-capability-paths",
+    "alternateFileTopologies": "forbidden",
+    "dirtyStatePolicy": "PRESERVE_UNRELATED_DIRTY_PATHS",
+    "failurePolicy": "LEAVE_AUTHORIZED_PARTIAL_DELTA",
+    "compileRoot": ".",
+    "executionRoot": ".",
+    "evidenceRoot": "machine-local-outside-repository"
   }
 }
 ```
@@ -7346,7 +7482,7 @@ typescript-collapsed-responsibility-body-v1
 new-feature-request-admission.projectedAst
   | production source printer
   v
-src/new-feature-request-admission.ts
+capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts
 
 admitted-new-feature-request
   | feature-body authority
@@ -7357,7 +7493,7 @@ typescript-collapsed-responsibility-body-v1
 admitted-new-feature-request.projectedAst
   | production source printer
   v
-src/admitted-new-feature-request.ts
+capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts
 
 complete-new-feature-authority
   | feature-body authority
@@ -7368,7 +7504,7 @@ typescript-collapsed-responsibility-body-v1
 complete-new-feature-authority.projectedAst
   | production source printer
   v
-src/complete-new-feature-authority.ts
+capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts
 
 complete-new-feature-materialization
   | feature-body authority
@@ -7379,7 +7515,7 @@ typescript-collapsed-responsibility-body-v1
 complete-new-feature-materialization.projectedAst
   | production source printer
   v
-src/complete-new-feature-materialization.ts
+capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts
 
 observed-new-feature-execution
   | feature-body authority
@@ -7390,7 +7526,7 @@ typescript-collapsed-responsibility-body-v1
 observed-new-feature-execution.projectedAst
   | production source printer
   v
-src/observed-new-feature-execution.ts
+capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts
 
 new-feature-execution-comparison
   | feature-body authority
@@ -7401,7 +7537,7 @@ typescript-collapsed-responsibility-body-v1
 new-feature-execution-comparison.projectedAst
   | production source printer
   v
-src/new-feature-execution-comparison.ts
+capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts
 
 complete-new-feature-lineage
   | feature-body authority
@@ -7412,7 +7548,7 @@ typescript-collapsed-responsibility-body-v1
 complete-new-feature-lineage.projectedAst
   | production source printer
   v
-src/complete-new-feature-lineage.ts
+capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts
 ```
 
 ### new-feature-request-admission
@@ -8459,7 +8595,7 @@ Stop condition: every expected AST renders one deterministic source body
 
 ### Canonical authority
 
-### src/new-feature-request-admission.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts
 
 ```typescript
 // @generated
@@ -8482,7 +8618,7 @@ export async function admitsReviewedNewFeatureRequest(
 
 ```
 
-### src/new-feature-request-admission.type.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts
 
 ```typescript
 // @generated
@@ -8524,7 +8660,7 @@ Translation provenance:
 | feature-body:new-feature-request-admission:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:new-feature-request-admission:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
-### src/admitted-new-feature-request.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts
 
 ```typescript
 // @generated
@@ -8547,7 +8683,7 @@ export async function adaptsNewFeatureRequestAdmission(
 
 ```
 
-### src/admitted-new-feature-request.type.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts
 
 ```typescript
 // @generated
@@ -8587,7 +8723,7 @@ Translation provenance:
 | feature-body:admitted-new-feature-request:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:admitted-new-feature-request:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
-### src/complete-new-feature-authority.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts
 
 ```typescript
 // @generated
@@ -8610,7 +8746,7 @@ export async function projectsCompleteNewFeatureAuthority(
 
 ```
 
-### src/complete-new-feature-authority.type.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts
 
 ```typescript
 // @generated
@@ -8651,7 +8787,7 @@ Translation provenance:
 | feature-body:complete-new-feature-authority:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:complete-new-feature-authority:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
-### src/complete-new-feature-materialization.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts
 
 ```typescript
 // @generated
@@ -8674,7 +8810,7 @@ export async function materializesCompleteNewFeature(
 
 ```
 
-### src/complete-new-feature-materialization.type.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts
 
 ```typescript
 // @generated
@@ -8715,7 +8851,7 @@ Translation provenance:
 | feature-body:complete-new-feature-materialization:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:complete-new-feature-materialization:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
-### src/observed-new-feature-execution.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts
 
 ```typescript
 // @generated
@@ -8738,7 +8874,7 @@ export async function executesNewlyMaterializedFeature(
 
 ```
 
-### src/observed-new-feature-execution.type.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts
 
 ```typescript
 // @generated
@@ -8784,7 +8920,7 @@ Translation provenance:
 | feature-body:observed-new-feature-execution:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:observed-new-feature-execution:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
-### src/new-feature-execution-comparison.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts
 
 ```typescript
 // @generated
@@ -8807,7 +8943,7 @@ export async function composesNewFeatureExecutionComparison(
 
 ```
 
-### src/new-feature-execution-comparison.type.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts
 
 ```typescript
 // @generated
@@ -8851,7 +8987,7 @@ Translation provenance:
 | feature-body:new-feature-execution-comparison:operations[0].edgeId | edge-id-to-string-literal | $.statements[0].body.statements[0].expression.expression.edgeId | 14-14 |
 | feature-body:new-feature-execution-comparison:operations[0].input | context-input-to-identifier | $.statements[0].body.statements[0].expression.expression.arguments[0] | 15-15 |
 
-### src/complete-new-feature-lineage.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts
 
 ```typescript
 // @generated
@@ -8874,7 +9010,7 @@ export async function verifiesCompleteNewFeatureLineage(
 
 ```
 
-### src/complete-new-feature-lineage.type.ts
+### capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts
 
 ```typescript
 // @generated

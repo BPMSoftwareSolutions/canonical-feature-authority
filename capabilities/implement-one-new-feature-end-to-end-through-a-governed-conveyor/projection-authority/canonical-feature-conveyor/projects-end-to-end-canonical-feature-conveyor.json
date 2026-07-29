@@ -1,0 +1,124 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+  },
+  "projectionId": "project-end-to-end-canonical-feature-conveyor-through-production-projector",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts"
+  },
+  "lineage": {
+    "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+    "scenarioId": "execute-complete-canonical-feature-conveyor",
+    "obligationId": "execute-one-mechanically-continuous-feature-flow",
+    "responsibilityId": "executes-end-to-end-canonical-feature-conveyor",
+    "signalId": "new-feature-terminal-disposition"
+  },
+  "imports": [
+    {
+      "kind": "type-only",
+      "moduleSpecifier": "./executes-end-to-end-canonical-feature-conveyor.type.js",
+      "namedBindings": [
+        "EndToEndCanonicalFeatureConveyorContext",
+        "NewFeatureTerminalDisposition"
+      ]
+    }
+  ],
+  "function": {
+    "identity": "execute-end-to-end-canonical-feature-conveyor",
+    "name": "executesEndToEndCanonicalFeatureConveyor",
+    "contextParameter": {
+      "name": "context",
+      "typeReference": "EndToEndCanonicalFeatureConveyorContext"
+    },
+    "resultTypeReference": "NewFeatureTerminalDisposition",
+    "statements": [
+      {
+        "kind": "const-edge",
+        "name": "admission",
+        "receiverPath": [
+          "context",
+          "edges"
+        ],
+        "operation": "invokes",
+        "edgeId": "admit-reviewed-new-feature-request",
+        "input": "context"
+      },
+      {
+        "kind": "const-edge",
+        "name": "admittedRequest",
+        "receiverPath": [
+          "context",
+          "edges"
+        ],
+        "operation": "invokes",
+        "edgeId": "adapt-new-feature-request-admission",
+        "input": "admission"
+      },
+      {
+        "kind": "const-edge",
+        "name": "authority",
+        "receiverPath": [
+          "context",
+          "edges"
+        ],
+        "operation": "invokes",
+        "edgeId": "project-complete-new-feature-authority",
+        "input": "admittedRequest"
+      },
+      {
+        "kind": "const-edge",
+        "name": "materialization",
+        "receiverPath": [
+          "context",
+          "edges"
+        ],
+        "operation": "invokes",
+        "edgeId": "materialize-complete-new-feature",
+        "input": "authority"
+      },
+      {
+        "kind": "const-edge",
+        "name": "execution",
+        "receiverPath": [
+          "context",
+          "edges"
+        ],
+        "operation": "invokes",
+        "edgeId": "execute-newly-materialized-feature",
+        "input": "materialization"
+      },
+      {
+        "kind": "const-edge",
+        "name": "comparison",
+        "receiverPath": [
+          "context",
+          "edges"
+        ],
+        "operation": "invokes",
+        "edgeId": "compose-new-feature-execution-comparison",
+        "input": "execution"
+      },
+      {
+        "kind": "const-edge",
+        "name": "disposition",
+        "receiverPath": [
+          "context",
+          "edges"
+        ],
+        "operation": "invokes",
+        "edgeId": "verify-complete-new-feature-lineage",
+        "input": "comparison"
+      },
+      {
+        "kind": "return-value",
+        "value": {
+          "kind": "identifier",
+          "name": "disposition"
+        }
+      }
+    ]
+  }
+}

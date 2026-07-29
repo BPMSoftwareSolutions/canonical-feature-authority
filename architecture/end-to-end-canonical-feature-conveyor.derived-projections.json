@@ -11,8 +11,8 @@
       "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
       "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
     },
-    "inputSha256": "sha256:cc3b1b6948ebfe1106eeb7bcc4e5c0945a7c1475f646c967e904a47294471e02",
-    "artifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.ts",
+    "inputSha256": "sha256:3020b86d4c03098f94b2db08d27ad40884af66491f2dfefe1cb63b3b94f2b658",
+    "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts",
     "projectedAst": {
       "kind": "source-file",
       "leadingComments": [
@@ -247,7 +247,7 @@
     },
     "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: execute-complete-canonical-feature-conveyor\n// obligation-id: execute-one-mechanically-continuous-feature-flow\n// responsibility-id: executes-end-to-end-canonical-feature-conveyor\n// signal-id: new-feature-terminal-disposition\n// DO NOT EDIT.\nimport type { EndToEndCanonicalFeatureConveyorContext, NewFeatureTerminalDisposition } from \"./executes-end-to-end-canonical-feature-conveyor.type.js\";\n\nexport async function executesEndToEndCanonicalFeatureConveyor(\n  context: EndToEndCanonicalFeatureConveyorContext\n): Promise<NewFeatureTerminalDisposition> {\n  const admission = await context.edges.invokes(\n    \"admit-reviewed-new-feature-request\",\n    context\n  );\n  const admittedRequest = await context.edges.invokes(\n    \"adapt-new-feature-request-admission\",\n    admission\n  );\n  const authority = await context.edges.invokes(\n    \"project-complete-new-feature-authority\",\n    admittedRequest\n  );\n  const materialization = await context.edges.invokes(\n    \"materialize-complete-new-feature\",\n    authority\n  );\n  const execution = await context.edges.invokes(\n    \"execute-newly-materialized-feature\",\n    materialization\n  );\n  const comparison = await context.edges.invokes(\n    \"compose-new-feature-execution-comparison\",\n    execution\n  );\n  const disposition = await context.edges.invokes(\n    \"verify-complete-new-feature-lineage\",\n    comparison\n  );\n  return disposition;\n}\n",
     "projectedSourceSha256": "sha256:c18760aaf872a9c33de3ceec729438708cb388a3f4763d5bed7ac6b53f5f1e54",
-    "supportingTypeArtifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
+    "supportingTypeArtifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
     "supportingTypeAst": {
       "kind": "source-file",
       "leadingComments": [
@@ -752,8 +752,8 @@
         "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
         "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
       },
-      "inputSha256": "sha256:e1626fe213ae26c472dca02f56a00bf915093efeb263743db4752df478ef923d",
-      "artifactPath": "src/new-feature-request-admission.ts",
+      "inputSha256": "sha256:4661d6bf79dcaf96d070abb693a21716b01c1a2142a4f9fa8f4a92ef13376a3d",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts",
       "projectedAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -848,7 +848,7 @@
       },
       "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: admit-one-reviewed-new-feature-request\n// obligation-id: establish-one-eligible-new-feature-request\n// responsibility-id: admits-reviewed-new-feature-request\n// signal-id: new-feature-request-admission\n// DO NOT EDIT.\nimport type { AdmitReviewedNewFeatureRequestContext, NewFeatureRequestAdmission } from \"./new-feature-request-admission.type.js\";\n\nexport async function admitsReviewedNewFeatureRequest(\n  context: AdmitReviewedNewFeatureRequestContext\n): Promise<NewFeatureRequestAdmission> {\n  return await context.edges.invokes(\n    \"admit-reviewed-new-feature-request\",\n    context\n  );\n}\n",
       "projectedSourceSha256": "sha256:5775279a03ee5133629cdcaffb2fc4288e24b7f7b695a8b13de873e1b68df04f",
-      "supportingTypeArtifactPath": "src/new-feature-request-admission.type.ts",
+      "supportingTypeArtifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts",
       "supportingTypeAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -1023,8 +1023,8 @@
         "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
         "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
       },
-      "inputSha256": "sha256:3cbabf00665505215c484aa80a278881ef8df75e562224b04e4d7d9b2c930748",
-      "artifactPath": "src/admitted-new-feature-request.ts",
+      "inputSha256": "sha256:0a0f8ae6aff8b850cbb1f3e214dc026ee753baf6c4fa57fe3ea05cb72ec25b47",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts",
       "projectedAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -1119,7 +1119,7 @@
       },
       "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: adapt-one-new-feature-request-admission\n// obligation-id: bridge-admission-to-admitted-request-contract\n// responsibility-id: adapts-new-feature-request-admission\n// signal-id: admitted-new-feature-request\n// DO NOT EDIT.\nimport type { AdaptNewFeatureRequestAdmissionContext, AdmittedNewFeatureRequest } from \"./admitted-new-feature-request.type.js\";\n\nexport async function adaptsNewFeatureRequestAdmission(\n  context: AdaptNewFeatureRequestAdmissionContext\n): Promise<AdmittedNewFeatureRequest> {\n  return await context.edges.invokes(\n    \"adapt-new-feature-request-admission\",\n    context\n  );\n}\n",
       "projectedSourceSha256": "sha256:0713a762e035d6291ff59f426d709c799e343d440837f346999e3c67e9a43170",
-      "supportingTypeArtifactPath": "src/admitted-new-feature-request.type.ts",
+      "supportingTypeArtifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts",
       "supportingTypeAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -1291,8 +1291,8 @@
         "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
         "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
       },
-      "inputSha256": "sha256:f4cc63c13597759334aaa02700e7b836ee378084d098e9d84601cac6fb0445f8",
-      "artifactPath": "src/complete-new-feature-authority.ts",
+      "inputSha256": "sha256:5b980cb0a7b2ae891ced128b41dbfd5b12618ebce543c7053ddf122c92aa9ffb",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts",
       "projectedAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -1387,7 +1387,7 @@
       },
       "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: project-one-complete-new-feature-authority\n// obligation-id: establish-one-complete-new-feature-authority\n// responsibility-id: projects-complete-new-feature-authority\n// signal-id: complete-new-feature-authority\n// DO NOT EDIT.\nimport type { ProjectCompleteNewFeatureAuthorityContext, CompleteNewFeatureAuthority } from \"./complete-new-feature-authority.type.js\";\n\nexport async function projectsCompleteNewFeatureAuthority(\n  context: ProjectCompleteNewFeatureAuthorityContext\n): Promise<CompleteNewFeatureAuthority> {\n  return await context.edges.invokes(\n    \"project-complete-new-feature-authority\",\n    context\n  );\n}\n",
       "projectedSourceSha256": "sha256:dbd818e3e4897ef0bdf494bc7410dfcd065c1ecf0a7258050705d8ed36991ed4",
-      "supportingTypeArtifactPath": "src/complete-new-feature-authority.type.ts",
+      "supportingTypeArtifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts",
       "supportingTypeAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -1565,8 +1565,8 @@
         "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
         "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
       },
-      "inputSha256": "sha256:59b3cbe9c54c0f5d0aa389d494fc580ec54c1d56bcc8ea7589f3b6e0ad9d7054",
-      "artifactPath": "src/complete-new-feature-materialization.ts",
+      "inputSha256": "sha256:3a63854e63bbd433f2ca649a0e94f7b0a906551dc27cefff86f9232b315e962d",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts",
       "projectedAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -1661,7 +1661,7 @@
       },
       "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: materialize-one-complete-new-feature\n// obligation-id: materialize-only-admitted-new-feature-authority\n// responsibility-id: materializes-complete-new-feature\n// signal-id: complete-new-feature-materialization\n// DO NOT EDIT.\nimport type { MaterializeCompleteNewFeatureContext, CompleteNewFeatureMaterialization } from \"./complete-new-feature-materialization.type.js\";\n\nexport async function materializesCompleteNewFeature(\n  context: MaterializeCompleteNewFeatureContext\n): Promise<CompleteNewFeatureMaterialization> {\n  return await context.edges.invokes(\n    \"materialize-complete-new-feature\",\n    context\n  );\n}\n",
       "projectedSourceSha256": "sha256:6ba37ea7c6c97e735e421b3bf8359cdd0706e4971aa91991bf9b627adb061d35",
-      "supportingTypeArtifactPath": "src/complete-new-feature-materialization.type.ts",
+      "supportingTypeArtifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts",
       "supportingTypeAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -1839,8 +1839,8 @@
         "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
         "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
       },
-      "inputSha256": "sha256:a5a327f02c34fe573f7a228e9c1e02b6ff34de3be4875438a360cde92232c237",
-      "artifactPath": "src/observed-new-feature-execution.ts",
+      "inputSha256": "sha256:f50d424d4c2d03e09ec2e5edeb2865b2f90b959e7d34734eef040cfd8709542b",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts",
       "projectedAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -1935,7 +1935,7 @@
       },
       "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: execute-one-newly-materialized-feature\n// obligation-id: execute-new-feature-through-admitted-semantics\n// responsibility-id: executes-newly-materialized-feature\n// signal-id: observed-new-feature-execution\n// DO NOT EDIT.\nimport type { ExecuteNewlyMaterializedFeatureContext, ObservedNewFeatureExecution } from \"./observed-new-feature-execution.type.js\";\n\nexport async function executesNewlyMaterializedFeature(\n  context: ExecuteNewlyMaterializedFeatureContext\n): Promise<ObservedNewFeatureExecution> {\n  return await context.edges.invokes(\n    \"execute-newly-materialized-feature\",\n    context\n  );\n}\n",
       "projectedSourceSha256": "sha256:d68e519ca89291776c130cf1c3de23cdb526427f2b22365d33dcbb0dde888ea1",
-      "supportingTypeArtifactPath": "src/observed-new-feature-execution.type.ts",
+      "supportingTypeArtifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts",
       "supportingTypeAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -2134,8 +2134,8 @@
         "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
         "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
       },
-      "inputSha256": "sha256:b3d36890dead51f50578a7ffff3639559e8c2fb0c91509cdc985697660cc0f48",
-      "artifactPath": "src/new-feature-execution-comparison.ts",
+      "inputSha256": "sha256:1b44538c9e24cd172208c9c2f33470c488a36ca63f0df0977b2c9a3fe8bf5b98",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts",
       "projectedAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -2230,7 +2230,7 @@
       },
       "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: compose-one-new-feature-execution-comparison\n// obligation-id: compose-complete-execution-comparison\n// responsibility-id: composes-new-feature-execution-comparison\n// signal-id: new-feature-execution-comparison\n// DO NOT EDIT.\nimport type { ComposeNewFeatureExecutionComparisonContext, NewFeatureExecutionComparison } from \"./new-feature-execution-comparison.type.js\";\n\nexport async function composesNewFeatureExecutionComparison(\n  context: ComposeNewFeatureExecutionComparisonContext\n): Promise<NewFeatureExecutionComparison> {\n  return await context.edges.invokes(\n    \"compose-new-feature-execution-comparison\",\n    context\n  );\n}\n",
       "projectedSourceSha256": "sha256:737ab9df69da37602e78332556d1c87606317ae4565ad8ebea12f5a87dfe8b1a",
-      "supportingTypeArtifactPath": "src/new-feature-execution-comparison.type.ts",
+      "supportingTypeArtifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts",
       "supportingTypeAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -2426,8 +2426,8 @@
         "executablePath": "../declarative-typescript-body-projector/dist/bootstrap/executes-semantic-ast-projection.js",
         "executableSha256": "sha256:b31e96525788a7d2bd1030208441de32b034526ef36313510e8c6449991e8382"
       },
-      "inputSha256": "sha256:c47b8ea08352c1cd489ebb3aaa4be255f32e182bda02012a5f4ab567ae6e349e",
-      "artifactPath": "src/complete-new-feature-lineage.ts",
+      "inputSha256": "sha256:379be3eb4a3ca2ce500a2b2114cf97b4bae1221ec3c225ce35d1b9cf55a2ec63",
+      "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts",
       "projectedAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -2522,7 +2522,7 @@
       },
       "projectedSource": "// @generated\n// feature-id: implement-one-new-feature-end-to-end-through-a-governed-conveyor\n// scenario-id: verify-one-complete-new-feature-lineage\n// obligation-id: prove-complete-new-feature-equivalence\n// responsibility-id: verifies-complete-new-feature-lineage\n// signal-id: complete-new-feature-equivalence\n// DO NOT EDIT.\nimport type { VerifyCompleteNewFeatureLineageContext, NewFeatureTerminalDisposition } from \"./complete-new-feature-lineage.type.js\";\n\nexport async function verifiesCompleteNewFeatureLineage(\n  context: VerifyCompleteNewFeatureLineageContext\n): Promise<NewFeatureTerminalDisposition> {\n  return await context.edges.invokes(\n    \"verify-complete-new-feature-lineage\",\n    context\n  );\n}\n",
       "projectedSourceSha256": "sha256:a4b8c2f8b02c6760e7cd7918576eba2eaec3d17df6c284843cb5588dc889078a",
-      "supportingTypeArtifactPath": "src/complete-new-feature-lineage.type.ts",
+      "supportingTypeArtifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts",
       "supportingTypeAst": {
         "kind": "source-file",
         "leadingComments": [
@@ -2684,42 +2684,14 @@
     "packageId": "end-to-end-canonical-feature-conveyor-implementation.v1",
     "artifacts": [
       {
-        "artifactId": "package-json",
-        "family": "package-support",
-        "artifactPath": "package.json",
-        "sourceAuthorityRef": "implementation-package:end-to-end-canonical-feature-conveyor-implementation.v1",
-        "projectorCapability": "projects-package-support",
-        "projectionPosture": "PROJECTABLE",
-        "projector": {
-          "projectorId": "projects-package-support",
-          "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
-        },
-        "projectedSourceSha256": "sha256:2687a8ff3a31f374fb24dfd9309dc30d3d4e5c1d8c93941fc4ba4b4a30f65644",
-        "projectedSource": "{\n  \"name\": \"projected-end-to-end-canonical-feature-conveyor\",\n  \"version\": \"1.0.0\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"scripts\": {\n    \"build\": \"tsc -p tsconfig.json\",\n    \"prove\": \"npm run build && node dist/evaluation/proves-canonical-feature-conveyor.js\",\n    \"self-host\": \"node runtime/self-hosts-canonical-feature-conveyor.mjs\"\n  },\n  \"devDependencies\": {\n    \"typescript\": \"7.0.2\"\n  }\n}\n"
-      },
-      {
-        "artifactId": "typescript-configuration",
-        "family": "package-support",
-        "artifactPath": "tsconfig.json",
-        "sourceAuthorityRef": "implementation-package:end-to-end-canonical-feature-conveyor-implementation.v1",
-        "projectorCapability": "projects-package-support",
-        "projectionPosture": "PROJECTABLE",
-        "projector": {
-          "projectorId": "projects-package-support",
-          "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
-        },
-        "projectedSourceSha256": "sha256:a59cd29ea1925da699c0263100bd60136f66917eb111eb82b21ca32d8d6058bc",
-        "projectedSource": "{\n  \"compilerOptions\": {\n    \"declaration\": true,\n    \"module\": \"NodeNext\",\n    \"moduleResolution\": \"NodeNext\",\n    \"noEmitOnError\": true,\n    \"outDir\": \"dist\",\n    \"rootDir\": \".\",\n    \"skipLibCheck\": true,\n    \"strict\": true,\n    \"target\": \"ES2022\"\n  },\n  \"include\": [\n    \"composition/**/*.ts\",\n    \"evaluation/**/*.ts\",\n    \"runtime/**/*.ts\",\n    \"src/**/*.ts\"\n  ]\n}\n"
-      },
-      {
         "artifactId": "canonical-feature-edge-registry-type",
         "family": "composition",
-        "artifactPath": "composition/canonical-feature-edge-registry.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/canonical-feature-edge-registry.type.ts",
         "sourceAuthorityRef": "implementation-artifact:edge-registry",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2731,10 +2703,12 @@
       {
         "artifactId": "end-to-end-canonical-feature-conveyor-type",
         "family": "composition",
-        "artifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.type.ts",
         "sourceAuthorityRef": "implementation-artifact:composition-types",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2746,10 +2720,12 @@
       {
         "artifactId": "end-to-end-canonical-feature-conveyor-body",
         "family": "composition",
-        "artifactPath": "composition/executes-end-to-end-canonical-feature-conveyor.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/composition/executes-end-to-end-canonical-feature-conveyor.ts",
         "sourceAuthorityRef": "feature-execution:execute-end-to-end-canonical-feature-conveyor",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2761,10 +2737,12 @@
       {
         "artifactId": "new-feature-request-admission-type",
         "family": "responsibility-type",
-        "artifactPath": "src/new-feature-request-admission.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/new-feature-request-admission.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.type.ts",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2776,10 +2754,12 @@
       {
         "artifactId": "new-feature-request-admission-body",
         "family": "responsibility-body",
-        "artifactPath": "src/new-feature-request-admission.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-request-admission.ts",
         "sourceAuthorityRef": "feature-body:new-feature-request-admission",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2791,10 +2771,12 @@
       {
         "artifactId": "admitted-new-feature-request-type",
         "family": "responsibility-type",
-        "artifactPath": "src/admitted-new-feature-request.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/admitted-new-feature-request.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.type.ts",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2806,10 +2788,12 @@
       {
         "artifactId": "admitted-new-feature-request-body",
         "family": "responsibility-body",
-        "artifactPath": "src/admitted-new-feature-request.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/admitted-new-feature-request.ts",
         "sourceAuthorityRef": "feature-body:admitted-new-feature-request",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2821,10 +2805,12 @@
       {
         "artifactId": "complete-new-feature-authority-type",
         "family": "responsibility-type",
-        "artifactPath": "src/complete-new-feature-authority.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/complete-new-feature-authority.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.type.ts",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2836,10 +2822,12 @@
       {
         "artifactId": "complete-new-feature-authority-body",
         "family": "responsibility-body",
-        "artifactPath": "src/complete-new-feature-authority.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-authority.ts",
         "sourceAuthorityRef": "feature-body:complete-new-feature-authority",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2851,10 +2839,12 @@
       {
         "artifactId": "complete-new-feature-materialization-type",
         "family": "responsibility-type",
-        "artifactPath": "src/complete-new-feature-materialization.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/complete-new-feature-materialization.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.type.ts",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2866,10 +2856,12 @@
       {
         "artifactId": "complete-new-feature-materialization-body",
         "family": "responsibility-body",
-        "artifactPath": "src/complete-new-feature-materialization.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-materialization.ts",
         "sourceAuthorityRef": "feature-body:complete-new-feature-materialization",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2881,10 +2873,12 @@
       {
         "artifactId": "observed-new-feature-execution-type",
         "family": "responsibility-type",
-        "artifactPath": "src/observed-new-feature-execution.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/observed-new-feature-execution.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2896,10 +2890,12 @@
       {
         "artifactId": "observed-new-feature-execution-body",
         "family": "responsibility-body",
-        "artifactPath": "src/observed-new-feature-execution.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.ts",
         "sourceAuthorityRef": "feature-body:observed-new-feature-execution",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2911,10 +2907,12 @@
       {
         "artifactId": "new-feature-execution-comparison-type",
         "family": "responsibility-type",
-        "artifactPath": "src/new-feature-execution-comparison.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/new-feature-execution-comparison.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.type.ts",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2926,10 +2924,12 @@
       {
         "artifactId": "new-feature-execution-comparison-body",
         "family": "responsibility-body",
-        "artifactPath": "src/new-feature-execution-comparison.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/new-feature-execution-comparison.ts",
         "sourceAuthorityRef": "feature-body:new-feature-execution-comparison",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2941,10 +2941,12 @@
       {
         "artifactId": "complete-new-feature-lineage-type",
         "family": "responsibility-type",
-        "artifactPath": "src/complete-new-feature-lineage.type.ts",
-        "sourceAuthorityRef": "supporting-type:src/complete-new-feature-lineage.type.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts",
+        "sourceAuthorityRef": "supporting-type:capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.type.ts",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2956,10 +2958,12 @@
       {
         "artifactId": "complete-new-feature-lineage-body",
         "family": "responsibility-body",
-        "artifactPath": "src/complete-new-feature-lineage.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/complete-new-feature-lineage.ts",
         "sourceAuthorityRef": "feature-body:complete-new-feature-lineage",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -2971,14 +2975,16 @@
       {
         "artifactId": "register-admit-reviewed-new-feature-request",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-admit-reviewed-new-feature-request.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-admit-reviewed-new-feature-request.ts",
         "sourceAuthorityRef": "runtime-registration:admits-reviewed-new-feature-request",
         "projectorCapability": "projects-runtime-edge-registration",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-runtime-edge-registration",
           "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
+          "executableSha256": "sha256:ac4016243f97b190f87d644cf73445f7871f127c215a28b4ab50329f0e81484d"
         },
         "projectedSourceSha256": "sha256:ff61bec3a18c265bf588ce4006f8f8bd1796774e8d6709c15de722a8092f26c4",
         "projectedSource": "// @generated\n// authority-ref: runtime-registration:admits-reviewed-new-feature-request\n// projector: canonical-feature-conveyor-implementation-projector.v1\n// DO NOT EDIT.\nimport { admitsReviewedNewFeatureRequest } from \"../src/new-feature-request-admission.js\";\nimport type { SemanticAuthorityInterpreter } from \"./interprets-canonical-feature-semantic-authority.js\";\n\nexport interface RuntimeEdgeRegistration {\n  readonly edgeId: string;\n  readonly invokes: (input: unknown) => Promise<unknown>;\n}\n\nexport function registersAdmitReviewedNewFeatureRequest(\n  interpreter: SemanticAuthorityInterpreter\n): RuntimeEdgeRegistration {\n  return {\n    edgeId: \"admit-reviewed-new-feature-request\",\n    invokes: input => {\n      const context = {\n        ...(input as Record<string, unknown>),\n        edges: {\n          invokes: (_edgeId: string, semanticInput: unknown) =>\n            interpreter.executes(\n              \"admits-reviewed-new-feature-request\",\n              semanticInput\n            )\n        }\n      };\n      return admitsReviewedNewFeatureRequest(context as never);\n    }\n  };\n}\n"
@@ -2986,14 +2992,16 @@
       {
         "artifactId": "register-adapt-new-feature-request-admission",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-adapt-new-feature-request-admission.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-adapt-new-feature-request-admission.ts",
         "sourceAuthorityRef": "runtime-registration:adapts-new-feature-request-admission",
         "projectorCapability": "projects-runtime-edge-registration",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-runtime-edge-registration",
           "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
+          "executableSha256": "sha256:ac4016243f97b190f87d644cf73445f7871f127c215a28b4ab50329f0e81484d"
         },
         "projectedSourceSha256": "sha256:0cb1719df73a7aacd506659b0cefc1b8cfa8ac37da64b0a0571baf5e65628fd8",
         "projectedSource": "// @generated\n// authority-ref: runtime-registration:adapts-new-feature-request-admission\n// projector: canonical-feature-conveyor-implementation-projector.v1\n// DO NOT EDIT.\nimport { adaptsNewFeatureRequestAdmission } from \"../src/admitted-new-feature-request.js\";\nimport type { SemanticAuthorityInterpreter } from \"./interprets-canonical-feature-semantic-authority.js\";\n\nexport interface RuntimeEdgeRegistration {\n  readonly edgeId: string;\n  readonly invokes: (input: unknown) => Promise<unknown>;\n}\n\nexport function registersAdaptNewFeatureRequestAdmission(\n  interpreter: SemanticAuthorityInterpreter\n): RuntimeEdgeRegistration {\n  return {\n    edgeId: \"adapt-new-feature-request-admission\",\n    invokes: input => {\n      const context = {\n        ...(input as Record<string, unknown>),\n        edges: {\n          invokes: (_edgeId: string, semanticInput: unknown) =>\n            interpreter.executes(\n              \"adapts-new-feature-request-admission\",\n              semanticInput\n            )\n        }\n      };\n      return adaptsNewFeatureRequestAdmission(context as never);\n    }\n  };\n}\n"
@@ -3001,14 +3009,16 @@
       {
         "artifactId": "register-project-complete-new-feature-authority",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-project-complete-new-feature-authority.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-project-complete-new-feature-authority.ts",
         "sourceAuthorityRef": "runtime-registration:projects-complete-new-feature-authority",
         "projectorCapability": "projects-runtime-edge-registration",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-runtime-edge-registration",
           "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
+          "executableSha256": "sha256:ac4016243f97b190f87d644cf73445f7871f127c215a28b4ab50329f0e81484d"
         },
         "projectedSourceSha256": "sha256:0023b6eeea606933b036ec584ef884f7ab647b44eb2852e62992cbc319a8812b",
         "projectedSource": "// @generated\n// authority-ref: runtime-registration:projects-complete-new-feature-authority\n// projector: canonical-feature-conveyor-implementation-projector.v1\n// DO NOT EDIT.\nimport { projectsCompleteNewFeatureAuthority } from \"../src/complete-new-feature-authority.js\";\nimport type { SemanticAuthorityInterpreter } from \"./interprets-canonical-feature-semantic-authority.js\";\n\nexport interface RuntimeEdgeRegistration {\n  readonly edgeId: string;\n  readonly invokes: (input: unknown) => Promise<unknown>;\n}\n\nexport function registersProjectCompleteNewFeatureAuthority(\n  interpreter: SemanticAuthorityInterpreter\n): RuntimeEdgeRegistration {\n  return {\n    edgeId: \"project-complete-new-feature-authority\",\n    invokes: input => {\n      const context = {\n        ...(input as Record<string, unknown>),\n        edges: {\n          invokes: (_edgeId: string, semanticInput: unknown) =>\n            interpreter.executes(\n              \"projects-complete-new-feature-authority\",\n              semanticInput\n            )\n        }\n      };\n      return projectsCompleteNewFeatureAuthority(context as never);\n    }\n  };\n}\n"
@@ -3016,14 +3026,16 @@
       {
         "artifactId": "register-materialize-complete-new-feature",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-materialize-complete-new-feature.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-materialize-complete-new-feature.ts",
         "sourceAuthorityRef": "runtime-registration:materializes-complete-new-feature",
         "projectorCapability": "projects-runtime-edge-registration",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-runtime-edge-registration",
           "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
+          "executableSha256": "sha256:ac4016243f97b190f87d644cf73445f7871f127c215a28b4ab50329f0e81484d"
         },
         "projectedSourceSha256": "sha256:c597e884fa5e5bee0b97365ebdfa1393c97a4a7a70e95f2a8c9118fdde566ce9",
         "projectedSource": "// @generated\n// authority-ref: runtime-registration:materializes-complete-new-feature\n// projector: canonical-feature-conveyor-implementation-projector.v1\n// DO NOT EDIT.\nimport { materializesCompleteNewFeature } from \"../src/complete-new-feature-materialization.js\";\nimport type { SemanticAuthorityInterpreter } from \"./interprets-canonical-feature-semantic-authority.js\";\n\nexport interface RuntimeEdgeRegistration {\n  readonly edgeId: string;\n  readonly invokes: (input: unknown) => Promise<unknown>;\n}\n\nexport function registersMaterializeCompleteNewFeature(\n  interpreter: SemanticAuthorityInterpreter\n): RuntimeEdgeRegistration {\n  return {\n    edgeId: \"materialize-complete-new-feature\",\n    invokes: input => {\n      const context = {\n        ...(input as Record<string, unknown>),\n        edges: {\n          invokes: (_edgeId: string, semanticInput: unknown) =>\n            interpreter.executes(\n              \"materializes-complete-new-feature\",\n              semanticInput\n            )\n        }\n      };\n      return materializesCompleteNewFeature(context as never);\n    }\n  };\n}\n"
@@ -3031,14 +3043,16 @@
       {
         "artifactId": "register-execute-newly-materialized-feature",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-execute-newly-materialized-feature.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-execute-newly-materialized-feature.ts",
         "sourceAuthorityRef": "runtime-registration:executes-newly-materialized-feature",
         "projectorCapability": "projects-runtime-edge-registration",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-runtime-edge-registration",
           "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
+          "executableSha256": "sha256:ac4016243f97b190f87d644cf73445f7871f127c215a28b4ab50329f0e81484d"
         },
         "projectedSourceSha256": "sha256:1ea966ca912793b65878730655eae93dac2cce40e303719b587bb4f47710f07c",
         "projectedSource": "// @generated\n// authority-ref: runtime-registration:executes-newly-materialized-feature\n// projector: canonical-feature-conveyor-implementation-projector.v1\n// DO NOT EDIT.\nimport { executesNewlyMaterializedFeature } from \"../src/observed-new-feature-execution.js\";\nimport type { SemanticAuthorityInterpreter } from \"./interprets-canonical-feature-semantic-authority.js\";\n\nexport interface RuntimeEdgeRegistration {\n  readonly edgeId: string;\n  readonly invokes: (input: unknown) => Promise<unknown>;\n}\n\nexport function registersExecuteNewlyMaterializedFeature(\n  interpreter: SemanticAuthorityInterpreter\n): RuntimeEdgeRegistration {\n  return {\n    edgeId: \"execute-newly-materialized-feature\",\n    invokes: input => {\n      const context = {\n        ...(input as Record<string, unknown>),\n        edges: {\n          invokes: (_edgeId: string, semanticInput: unknown) =>\n            interpreter.executes(\n              \"executes-newly-materialized-feature\",\n              semanticInput\n            )\n        }\n      };\n      return executesNewlyMaterializedFeature(context as never);\n    }\n  };\n}\n"
@@ -3046,14 +3060,16 @@
       {
         "artifactId": "register-compose-new-feature-execution-comparison",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-compose-new-feature-execution-comparison.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-compose-new-feature-execution-comparison.ts",
         "sourceAuthorityRef": "runtime-registration:composes-new-feature-execution-comparison",
         "projectorCapability": "projects-runtime-edge-registration",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-runtime-edge-registration",
           "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
+          "executableSha256": "sha256:ac4016243f97b190f87d644cf73445f7871f127c215a28b4ab50329f0e81484d"
         },
         "projectedSourceSha256": "sha256:f11691a783de1e439e6bf25842b088a08075f10e6c0bb5917f2b7189dc7e05d2",
         "projectedSource": "// @generated\n// authority-ref: runtime-registration:composes-new-feature-execution-comparison\n// projector: canonical-feature-conveyor-implementation-projector.v1\n// DO NOT EDIT.\nimport { composesNewFeatureExecutionComparison } from \"../src/new-feature-execution-comparison.js\";\nimport type { SemanticAuthorityInterpreter } from \"./interprets-canonical-feature-semantic-authority.js\";\n\nexport interface RuntimeEdgeRegistration {\n  readonly edgeId: string;\n  readonly invokes: (input: unknown) => Promise<unknown>;\n}\n\nexport function registersComposeNewFeatureExecutionComparison(\n  interpreter: SemanticAuthorityInterpreter\n): RuntimeEdgeRegistration {\n  return {\n    edgeId: \"compose-new-feature-execution-comparison\",\n    invokes: input => {\n      const context = {\n        ...(input as Record<string, unknown>),\n        edges: {\n          invokes: (_edgeId: string, semanticInput: unknown) =>\n            interpreter.executes(\n              \"composes-new-feature-execution-comparison\",\n              semanticInput\n            )\n        }\n      };\n      return composesNewFeatureExecutionComparison(context as never);\n    }\n  };\n}\n"
@@ -3061,14 +3077,16 @@
       {
         "artifactId": "register-verify-complete-new-feature-lineage",
         "family": "runtime-registration",
-        "artifactPath": "runtime/registers-verify-complete-new-feature-lineage.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/registers-verify-complete-new-feature-lineage.ts",
         "sourceAuthorityRef": "runtime-registration:verifies-complete-new-feature-lineage",
         "projectorCapability": "projects-runtime-edge-registration",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-runtime-edge-registration",
           "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
+          "executableSha256": "sha256:ac4016243f97b190f87d644cf73445f7871f127c215a28b4ab50329f0e81484d"
         },
         "projectedSourceSha256": "sha256:9749e2c925aa4e6e68ad462a6be1833f6436d7fd54b55338a6278de9f1680230",
         "projectedSource": "// @generated\n// authority-ref: runtime-registration:verifies-complete-new-feature-lineage\n// projector: canonical-feature-conveyor-implementation-projector.v1\n// DO NOT EDIT.\nimport { verifiesCompleteNewFeatureLineage } from \"../src/complete-new-feature-lineage.js\";\nimport type { SemanticAuthorityInterpreter } from \"./interprets-canonical-feature-semantic-authority.js\";\n\nexport interface RuntimeEdgeRegistration {\n  readonly edgeId: string;\n  readonly invokes: (input: unknown) => Promise<unknown>;\n}\n\nexport function registersVerifyCompleteNewFeatureLineage(\n  interpreter: SemanticAuthorityInterpreter\n): RuntimeEdgeRegistration {\n  return {\n    edgeId: \"verify-complete-new-feature-lineage\",\n    invokes: input => {\n      const context = {\n        ...(input as Record<string, unknown>),\n        edges: {\n          invokes: (_edgeId: string, semanticInput: unknown) =>\n            interpreter.executes(\n              \"verifies-complete-new-feature-lineage\",\n              semanticInput\n            )\n        }\n      };\n      return verifiesCompleteNewFeatureLineage(context as never);\n    }\n  };\n}\n"
@@ -3076,14 +3094,16 @@
       {
         "artifactId": "canonical-feature-runtime-adapter",
         "family": "runtime-adapter",
-        "artifactPath": "runtime/invokes-canonical-feature-conveyor.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/invokes-canonical-feature-conveyor.ts",
         "sourceAuthorityRef": "implementation-artifact:runtime-adapter",
         "projectorCapability": "projects-runtime-adapter",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-runtime-adapter",
           "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
+          "executableSha256": "sha256:ac4016243f97b190f87d644cf73445f7871f127c215a28b4ab50329f0e81484d"
         },
         "projectedSourceSha256": "sha256:4a260b9fd942d8806f7871781d3a047475fb182c5390d54e68ab8fade2117150",
         "projectedSource": "// @generated\n// authority-ref: implementation-artifact:runtime-adapter\n// projector: canonical-feature-conveyor-implementation-projector.v1\n// DO NOT EDIT.\nimport { executesEndToEndCanonicalFeatureConveyor } from \"../composition/executes-end-to-end-canonical-feature-conveyor.js\";\nimport type { EndToEndCanonicalFeatureConveyorContext, NewFeatureTerminalDisposition } from \"../composition/executes-end-to-end-canonical-feature-conveyor.type.js\";\nimport type { SemanticAuthorityInterpreter } from \"./interprets-canonical-feature-semantic-authority.js\";\nimport { registersAdmitReviewedNewFeatureRequest } from \"./registers-admit-reviewed-new-feature-request.js\";\nimport { registersAdaptNewFeatureRequestAdmission } from \"./registers-adapt-new-feature-request-admission.js\";\nimport { registersProjectCompleteNewFeatureAuthority } from \"./registers-project-complete-new-feature-authority.js\";\nimport { registersMaterializeCompleteNewFeature } from \"./registers-materialize-complete-new-feature.js\";\nimport { registersExecuteNewlyMaterializedFeature } from \"./registers-execute-newly-materialized-feature.js\";\nimport { registersComposeNewFeatureExecutionComparison } from \"./registers-compose-new-feature-execution-comparison.js\";\nimport { registersVerifyCompleteNewFeatureLineage } from \"./registers-verify-complete-new-feature-lineage.js\";\n\nexport interface InvokeCanonicalFeatureConveyorContext {\n  readonly request: Omit<EndToEndCanonicalFeatureConveyorContext, \"edges\">;\n  readonly interpreter: SemanticAuthorityInterpreter;\n}\n\nexport async function invokesCanonicalFeatureConveyor(\n  context: InvokeCanonicalFeatureConveyorContext\n): Promise<NewFeatureTerminalDisposition> {\n  const registrations = [\n    registersAdmitReviewedNewFeatureRequest(context.interpreter),\n    registersAdaptNewFeatureRequestAdmission(context.interpreter),\n    registersProjectCompleteNewFeatureAuthority(context.interpreter),\n    registersMaterializeCompleteNewFeature(context.interpreter),\n    registersExecuteNewlyMaterializedFeature(context.interpreter),\n    registersComposeNewFeatureExecutionComparison(context.interpreter),\n    registersVerifyCompleteNewFeatureLineage(context.interpreter)\n  ];\n  const handlers = new Map(\n    registrations.map(registration => [\n      registration.edgeId,\n      registration.invokes\n    ])\n  );\n  const invokes = async (\n    edgeId: string,\n    input: unknown\n  ): Promise<unknown> => {\n    const handler = handlers.get(edgeId);\n    if (handler === undefined) {\n      throw new Error(`UNREGISTERED_CANONICAL_FEATURE_EDGE: ${edgeId}`);\n    }\n    return handler(input);\n  };\n  const conveyorContext: EndToEndCanonicalFeatureConveyorContext = {\n    ...context.request,\n    edges: {\n      invokes: invokes as EndToEndCanonicalFeatureConveyorContext[\"edges\"][\"invokes\"]\n    }\n  };\n  return executesEndToEndCanonicalFeatureConveyor(\n    conveyorContext\n  );\n}\n"
@@ -3091,14 +3111,16 @@
       {
         "artifactId": "canonical-feature-semantic-interpreter",
         "family": "semantic-interpreter",
-        "artifactPath": "runtime/interprets-canonical-feature-semantic-authority.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/interprets-canonical-feature-semantic-authority.ts",
         "sourceAuthorityRef": "semantic-interpreter:canonical-feature-semantic-interpreter.v1",
         "projectorCapability": "projects-semantic-interpreter",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-semantic-interpreter",
           "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
+          "executableSha256": "sha256:ac4016243f97b190f87d644cf73445f7871f127c215a28b4ab50329f0e81484d"
         },
         "projectedSourceSha256": "sha256:bc8aa1dbe447578db75b88933b10ae89ea0f2526743dd18bdbb9a614032bb79c",
         "projectedSource": "// @generated\n// authority-ref: semantic-interpreter:canonical-feature-semantic-interpreter.v1\n// projector: canonical-feature-conveyor-implementation-projector.v1\n// DO NOT EDIT.\nexport interface SemanticObservationRequest {\n  readonly portRef: string;\n  readonly operationId: string;\n  readonly input: unknown;\n  readonly producesFields: readonly string[];\n}\n\nexport interface SemanticObservationResolver {\n  resolves(request: SemanticObservationRequest): Promise<Record<string, unknown>>;\n  resolvesEvidence(reference: unknown): Promise<unknown>;\n}\n\nexport interface SemanticAuthorityInterpreter {\n  executes(responsibilityId: string, input: unknown): Promise<unknown>;\n}\n\ninterface SemanticOperand {\n  readonly kind: \"path\" | \"literal\";\n  readonly path?: string;\n  readonly value?: unknown;\n}\n\ninterface SemanticAuthority {\n  readonly [key: string]: unknown;\n  readonly responsibilityId: string;\n  readonly observations: readonly Record<string, unknown>[];\n  readonly decisions: readonly Record<string, unknown>[];\n  readonly projections: readonly Record<string, unknown>[];\n  readonly execution: {\n    readonly executionModelId: string;\n    readonly steps: readonly Record<string, unknown>[];\n  };\n}\n\nconst semanticAuthorities: readonly SemanticAuthority[] = [\n  {\n    \"responsibilityId\": \"admits-reviewed-new-feature-request\",\n    \"accepts\": {\n      \"contractId\": \"end-to-end-canonical-feature-conveyor-context.v1\"\n    },\n    \"produces\": {\n      \"contractId\": \"new-feature-request-admission.v1\"\n    },\n    \"observations\": [\n      {\n        \"observationId\": \"observe-reviewed-request\",\n        \"sourceRef\": \"scenario:admit-one-reviewed-new-feature-request\",\n        \"resolution\": {\n          \"portRef\": \"implementation-artifact:runtime-adapter\",\n          \"operationId\": \"loads-reviewed-request-context\",\n          \"input\": \"$.input\",\n          \"producesFields\": [\n            \"reviewDisposition\",\n            \"existingFeatureIds\",\n            \"featureId\",\n            \"requestRef\",\n            \"lineageId\"\n          ]\n        }\n      }\n    ],\n    \"decisions\": [\n      {\n        \"decisionId\": \"resolve-request-admission\",\n        \"inputs\": [\n          \"$.input.reviewDisposition\",\n          \"$.input.existingFeatureIds\",\n          \"$.input.featureId\"\n        ],\n        \"rules\": [\n          {\n            \"ruleId\": \"admit-reviewed-absent-feature\",\n            \"when\": {\n              \"all\": [\n                {\n                  \"left\": {\n                    \"kind\": \"path\",\n                    \"path\": \"$.input.reviewDisposition\"\n                  },\n                  \"operator\": \"equals\",\n                  \"right\": {\n                    \"kind\": \"literal\",\n                    \"value\": \"REVIEWED\"\n                  }\n                },\n                {\n                  \"left\": {\n                    \"kind\": \"path\",\n                    \"path\": \"$.input.existingFeatureIds\"\n                  },\n                  \"operator\": \"not-contains\",\n                  \"right\": {\n                    \"kind\": \"path\",\n                    \"path\": \"$.input.featureId\"\n                  }\n                }\n              ]\n            },\n            \"then\": \"ADMITTED\"\n          },\n          {\n            \"ruleId\": \"reject-ineligible-feature\",\n            \"when\": {\n              \"otherwise\": true\n            },\n            \"then\": \"REJECTED\"\n          }\n        ]\n      }\n    ],\n    \"projections\": [\n      {\n        \"projectionId\": \"project-request-admission\",\n        \"from\": \"resolve-request-admission\",\n        \"to\": \"new-feature-request-admission.v1\",\n        \"fields\": {\n          \"disposition\": {\n            \"kind\": \"path\",\n            \"path\": \"$.decision.disposition\"\n          },\n          \"featureId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.input.featureId\"\n          },\n          \"requestRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.input.requestRef\"\n          },\n          \"lineageId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.input.lineageId\"\n          }\n        }\n      }\n    ],\n    \"execution\": {\n      \"executionModelId\": \"admit-reviewed-new-feature-request\",\n      \"steps\": [\n        {\n          \"sequence\": 1,\n          \"operation\": \"resolve-observation\",\n          \"authorityId\": \"observe-reviewed-request\",\n          \"input\": \"$.input\",\n          \"assign\": \"$.observed\"\n        },\n        {\n          \"sequence\": 2,\n          \"operation\": \"resolve-decision\",\n          \"authorityId\": \"resolve-request-admission\",\n          \"input\": \"$.observed\",\n          \"assign\": \"$.decision\"\n        },\n        {\n          \"sequence\": 3,\n          \"operation\": \"project-result\",\n          \"authorityId\": \"project-request-admission\",\n          \"input\": \"$.decision\",\n          \"assign\": \"$.result\"\n        }\n      ]\n    }\n  },\n  {\n    \"responsibilityId\": \"adapts-new-feature-request-admission\",\n    \"accepts\": {\n      \"contractId\": \"new-feature-request-admission.v1\"\n    },\n    \"produces\": {\n      \"contractId\": \"admitted-new-feature-request.v1\"\n    },\n    \"observations\": [\n      {\n        \"observationId\": \"observe-request-admission\",\n        \"sourceRef\": \"scenario:adapt-one-new-feature-request-admission\",\n        \"resolution\": {\n          \"portRef\": \"semantic-interpreter:input\",\n          \"operationId\": \"preserves-admission-envelope\",\n          \"input\": \"$.input\",\n          \"producesFields\": [\n            \"disposition\",\n            \"featureId\",\n            \"requestRef\",\n            \"lineageId\"\n          ]\n        }\n      }\n    ],\n    \"decisions\": [],\n    \"projections\": [\n      {\n        \"projectionId\": \"project-admitted-new-feature-request\",\n        \"from\": \"observe-request-admission\",\n        \"to\": \"admitted-new-feature-request.v1\",\n        \"fields\": {\n          \"disposition\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.disposition\"\n          },\n          \"featureId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.featureId\"\n          },\n          \"requestRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.requestRef\"\n          },\n          \"lineageId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.lineageId\"\n          }\n        }\n      }\n    ],\n    \"execution\": {\n      \"executionModelId\": \"adapt-new-feature-request-admission\",\n      \"steps\": [\n        {\n          \"sequence\": 1,\n          \"operation\": \"resolve-observation\",\n          \"authorityId\": \"observe-request-admission\",\n          \"input\": \"$.input\",\n          \"assign\": \"$.observed\"\n        },\n        {\n          \"sequence\": 2,\n          \"operation\": \"project-result\",\n          \"authorityId\": \"project-admitted-new-feature-request\",\n          \"input\": \"$.observed\",\n          \"assign\": \"$.result\"\n        }\n      ]\n    }\n  },\n  {\n    \"responsibilityId\": \"projects-complete-new-feature-authority\",\n    \"accepts\": {\n      \"contractId\": \"admitted-new-feature-request.v1\"\n    },\n    \"produces\": {\n      \"contractId\": \"complete-new-feature-authority.v1\"\n    },\n    \"observations\": [\n      {\n        \"observationId\": \"observe-admitted-request\",\n        \"sourceRef\": \"scenario:project-one-complete-new-feature-authority\",\n        \"resolution\": {\n          \"portRef\": \"implementation-artifact:authority-projector\",\n          \"operationId\": \"projects-and-writes-complete-authority\",\n          \"input\": \"$.input\",\n          \"producesFields\": [\n            \"featureId\",\n            \"requestRef\",\n            \"authorityRef\",\n            \"lineageId\"\n          ]\n        }\n      }\n    ],\n    \"decisions\": [],\n    \"projections\": [\n      {\n        \"projectionId\": \"project-complete-feature-authority\",\n        \"from\": \"observe-admitted-request\",\n        \"to\": \"complete-new-feature-authority.v1\",\n        \"fields\": {\n          \"disposition\": {\n            \"kind\": \"literal\",\n            \"value\": \"COMPLETE\"\n          },\n          \"featureId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.featureId\"\n          },\n          \"requestRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.requestRef\"\n          },\n          \"authorityRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.authorityRef\"\n          },\n          \"lineageId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.lineageId\"\n          }\n        }\n      }\n    ],\n    \"execution\": {\n      \"executionModelId\": \"project-complete-new-feature-authority\",\n      \"steps\": [\n        {\n          \"sequence\": 1,\n          \"operation\": \"resolve-observation\",\n          \"authorityId\": \"observe-admitted-request\",\n          \"input\": \"$.input\",\n          \"assign\": \"$.observed\"\n        },\n        {\n          \"sequence\": 2,\n          \"operation\": \"project-result\",\n          \"authorityId\": \"project-complete-feature-authority\",\n          \"input\": \"$.observed\",\n          \"assign\": \"$.result\"\n        }\n      ]\n    }\n  },\n  {\n    \"responsibilityId\": \"materializes-complete-new-feature\",\n    \"accepts\": {\n      \"contractId\": \"complete-new-feature-authority.v1\"\n    },\n    \"produces\": {\n      \"contractId\": \"complete-new-feature-materialization.v1\"\n    },\n    \"observations\": [\n      {\n        \"observationId\": \"observe-complete-feature-authority\",\n        \"sourceRef\": \"scenario:materialize-one-complete-new-feature\",\n        \"resolution\": {\n          \"portRef\": \"implementation-artifact:feature-materializer\",\n          \"operationId\": \"materializes-and-writes-artifact-manifest\",\n          \"input\": \"$.input\",\n          \"producesFields\": [\n            \"featureId\",\n            \"authorityRef\",\n            \"artifactManifestRef\",\n            \"lineageId\"\n          ]\n        }\n      }\n    ],\n    \"decisions\": [],\n    \"projections\": [\n      {\n        \"projectionId\": \"project-complete-feature-materialization\",\n        \"from\": \"observe-complete-feature-authority\",\n        \"to\": \"complete-new-feature-materialization.v1\",\n        \"fields\": {\n          \"disposition\": {\n            \"kind\": \"literal\",\n            \"value\": \"MATERIALIZED\"\n          },\n          \"featureId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.featureId\"\n          },\n          \"authorityRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.authorityRef\"\n          },\n          \"artifactManifestRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.artifactManifestRef\"\n          },\n          \"lineageId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.lineageId\"\n          }\n        }\n      }\n    ],\n    \"execution\": {\n      \"executionModelId\": \"materialize-complete-new-feature\",\n      \"steps\": [\n        {\n          \"sequence\": 1,\n          \"operation\": \"resolve-observation\",\n          \"authorityId\": \"observe-complete-feature-authority\",\n          \"input\": \"$.input\",\n          \"assign\": \"$.observed\"\n        },\n        {\n          \"sequence\": 2,\n          \"operation\": \"project-result\",\n          \"authorityId\": \"project-complete-feature-materialization\",\n          \"input\": \"$.observed\",\n          \"assign\": \"$.result\"\n        }\n      ]\n    }\n  },\n  {\n    \"responsibilityId\": \"executes-newly-materialized-feature\",\n    \"accepts\": {\n      \"contractId\": \"complete-new-feature-materialization.v1\"\n    },\n    \"produces\": {\n      \"contractId\": \"observed-new-feature-execution.v1\"\n    },\n    \"observations\": [\n      {\n        \"observationId\": \"observe-materialized-feature\",\n        \"sourceRef\": \"scenario:execute-one-newly-materialized-feature\",\n        \"resolution\": {\n          \"portRef\": \"implementation-artifact:evaluation-fixture\",\n          \"operationId\": \"executes-semantic-and-projected-surfaces\",\n          \"input\": \"$.input\",\n          \"producesFields\": [\n            \"disposition\",\n            \"featureId\",\n            \"artifactManifestRef\",\n            \"semanticObservationRef\",\n            \"projectedObservationRef\",\n            \"expectedSignalRef\",\n            \"astSourceCorrespondenceRef\",\n            \"lineageId\"\n          ]\n        }\n      }\n    ],\n    \"decisions\": [],\n    \"projections\": [\n      {\n        \"projectionId\": \"project-execution-observation\",\n        \"from\": \"observe-materialized-feature\",\n        \"to\": \"observed-new-feature-execution.v1\",\n        \"fields\": {\n          \"disposition\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.disposition\"\n          },\n          \"featureId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.featureId\"\n          },\n          \"artifactManifestRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.artifactManifestRef\"\n          },\n          \"semanticObservationRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.semanticObservationRef\"\n          },\n          \"projectedObservationRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.projectedObservationRef\"\n          },\n          \"expectedSignalRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.expectedSignalRef\"\n          },\n          \"astSourceCorrespondenceRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.astSourceCorrespondenceRef\"\n          },\n          \"lineageId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.lineageId\"\n          }\n        }\n      }\n    ],\n    \"execution\": {\n      \"executionModelId\": \"execute-newly-materialized-feature\",\n      \"steps\": [\n        {\n          \"sequence\": 1,\n          \"operation\": \"resolve-observation\",\n          \"authorityId\": \"observe-materialized-feature\",\n          \"input\": \"$.input\",\n          \"assign\": \"$.observed\"\n        },\n        {\n          \"sequence\": 2,\n          \"operation\": \"project-result\",\n          \"authorityId\": \"project-execution-observation\",\n          \"input\": \"$.observed\",\n          \"assign\": \"$.result\"\n        }\n      ]\n    }\n  },\n  {\n    \"responsibilityId\": \"composes-new-feature-execution-comparison\",\n    \"accepts\": {\n      \"contractId\": \"observed-new-feature-execution.v1\"\n    },\n    \"produces\": {\n      \"contractId\": \"new-feature-execution-comparison.v1\"\n    },\n    \"observations\": [\n      {\n        \"observationId\": \"observe-comparison-inputs\",\n        \"sourceRef\": \"scenario:compose-one-new-feature-execution-comparison\",\n        \"resolution\": {\n          \"portRef\": \"implementation-artifact:evidence-store\",\n          \"operationId\": \"writes-execution-comparison-evidence\",\n          \"input\": \"$.input\",\n          \"producesFields\": [\n            \"featureId\",\n            \"semanticObservationRef\",\n            \"projectedObservationRef\",\n            \"expectedSignalRef\",\n            \"astSourceCorrespondenceRef\",\n            \"comparisonEvidenceRef\",\n            \"lineageId\"\n          ]\n        }\n      }\n    ],\n    \"decisions\": [],\n    \"projections\": [\n      {\n        \"projectionId\": \"project-new-feature-execution-comparison\",\n        \"from\": \"observe-comparison-inputs\",\n        \"to\": \"new-feature-execution-comparison.v1\",\n        \"fields\": {\n          \"disposition\": {\n            \"kind\": \"literal\",\n            \"value\": \"COMPLETE\"\n          },\n          \"featureId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.featureId\"\n          },\n          \"semanticObservationRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.semanticObservationRef\"\n          },\n          \"projectedObservationRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.projectedObservationRef\"\n          },\n          \"expectedSignalRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.expectedSignalRef\"\n          },\n          \"astSourceCorrespondenceRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.astSourceCorrespondenceRef\"\n          },\n          \"comparisonEvidenceRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.comparisonEvidenceRef\"\n          },\n          \"lineageId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.observed.lineageId\"\n          }\n        }\n      }\n    ],\n    \"execution\": {\n      \"executionModelId\": \"compose-new-feature-execution-comparison\",\n      \"steps\": [\n        {\n          \"sequence\": 1,\n          \"operation\": \"resolve-observation\",\n          \"authorityId\": \"observe-comparison-inputs\",\n          \"input\": \"$.input\",\n          \"assign\": \"$.observed\"\n        },\n        {\n          \"sequence\": 2,\n          \"operation\": \"project-result\",\n          \"authorityId\": \"project-new-feature-execution-comparison\",\n          \"input\": \"$.observed\",\n          \"assign\": \"$.result\"\n        }\n      ]\n    }\n  },\n  {\n    \"responsibilityId\": \"verifies-complete-new-feature-lineage\",\n    \"accepts\": {\n      \"contractId\": \"new-feature-execution-comparison.v1\"\n    },\n    \"produces\": {\n      \"contractId\": \"new-feature-terminal-disposition.v1\"\n    },\n    \"observations\": [\n      {\n        \"observationId\": \"observe-execution-comparison\",\n        \"sourceRef\": \"scenario:verify-one-complete-new-feature-lineage\",\n        \"resolution\": {\n          \"portRef\": \"implementation-artifact:evidence-store\",\n          \"operationId\": \"resolves-and-verifies-comparison-evidence\",\n          \"input\": \"$.input\",\n          \"producesFields\": [\n            \"featureId\",\n            \"semanticObservationRef\",\n            \"projectedObservationRef\",\n            \"expectedSignalRef\",\n            \"astSourceCorrespondenceRef\",\n            \"comparisonEvidenceRef\",\n            \"lineageId\"\n          ]\n        }\n      }\n    ],\n    \"decisions\": [\n      {\n        \"decisionId\": \"resolve-terminal-disposition\",\n        \"inputs\": [\n          \"$.input.semanticObservationRef\",\n          \"$.input.projectedObservationRef\",\n          \"$.input.expectedSignalRef\",\n          \"$.input.astSourceCorrespondenceRef\"\n        ],\n        \"rules\": [\n          {\n            \"ruleId\": \"conform-equivalent-feature-lineage\",\n            \"when\": {\n              \"all\": [\n                {\n                  \"left\": {\n                    \"kind\": \"path\",\n                    \"path\": \"$.input.semanticObservationRef\"\n                  },\n                  \"operator\": \"evidence-equivalent\",\n                  \"right\": {\n                    \"kind\": \"path\",\n                    \"path\": \"$.input.expectedSignalRef\"\n                  }\n                },\n                {\n                  \"left\": {\n                    \"kind\": \"path\",\n                    \"path\": \"$.input.projectedObservationRef\"\n                  },\n                  \"operator\": \"evidence-equivalent\",\n                  \"right\": {\n                    \"kind\": \"path\",\n                    \"path\": \"$.input.expectedSignalRef\"\n                  }\n                },\n                {\n                  \"left\": {\n                    \"kind\": \"path\",\n                    \"path\": \"$.input.astSourceCorrespondenceRef\"\n                  },\n                  \"operator\": \"artifact-disposition-equals\",\n                  \"right\": {\n                    \"kind\": \"literal\",\n                    \"value\": \"CONFORMS\"\n                  }\n                }\n              ]\n            },\n            \"then\": \"PROJECTION_CONFORMS\"\n          },\n          {\n            \"ruleId\": \"reject-divergent-feature-lineage\",\n            \"when\": {\n              \"otherwise\": true\n            },\n            \"then\": \"PROJECTION_DIVERGES\"\n          }\n        ]\n      }\n    ],\n    \"projections\": [\n      {\n        \"projectionId\": \"project-terminal-disposition\",\n        \"from\": \"resolve-terminal-disposition\",\n        \"to\": \"new-feature-terminal-disposition.v1\",\n        \"fields\": {\n          \"disposition\": {\n            \"kind\": \"path\",\n            \"path\": \"$.decision.disposition\"\n          },\n          \"comparisonEvidenceRef\": {\n            \"kind\": \"path\",\n            \"path\": \"$.input.comparisonEvidenceRef\"\n          },\n          \"lineageId\": {\n            \"kind\": \"path\",\n            \"path\": \"$.input.lineageId\"\n          }\n        }\n      }\n    ],\n    \"execution\": {\n      \"executionModelId\": \"verify-complete-new-feature-lineage\",\n      \"steps\": [\n        {\n          \"sequence\": 1,\n          \"operation\": \"resolve-observation\",\n          \"authorityId\": \"observe-execution-comparison\",\n          \"input\": \"$.input\",\n          \"assign\": \"$.observed\"\n        },\n        {\n          \"sequence\": 2,\n          \"operation\": \"resolve-decision\",\n          \"authorityId\": \"resolve-terminal-disposition\",\n          \"input\": \"$.observed\",\n          \"assign\": \"$.decision\"\n        },\n        {\n          \"sequence\": 3,\n          \"operation\": \"project-result\",\n          \"authorityId\": \"project-terminal-disposition\",\n          \"input\": \"$.decision\",\n          \"assign\": \"$.result\"\n        }\n      ]\n    }\n  }\n];\n\nfunction isRecord(value: unknown): value is Record<string, unknown> {\n  return value !== null && typeof value === \"object\" && !Array.isArray(value);\n}\n\nfunction readsPath(document: unknown, path: string): unknown {\n  if (path === \"$\") return document;\n  if (!path.startsWith(\"$.\")) {\n    throw new Error(`SEMANTIC_PATH_DIALECT_REJECTED: ${path}`);\n  }\n  return path.slice(2).split(\".\").reduce<unknown>((value, member) => {\n    if (!isRecord(value) || !(member in value)) {\n      throw new Error(`SEMANTIC_PATH_MEMBER_MISSING: ${path}`);\n    }\n    return value[member];\n  }, document);\n}\n\nfunction assignsPath(\n  document: Record<string, unknown>,\n  path: string,\n  value: unknown\n): void {\n  const match = /^\\$\\.([A-Za-z][A-Za-z0-9]*)$/.exec(path);\n  if (match === null) {\n    throw new Error(`SEMANTIC_ASSIGN_PATH_REJECTED: ${path}`);\n  }\n  document[match[1]] = value;\n}\n\nfunction resolvesOperand(\n  document: Record<string, unknown>,\n  operand: SemanticOperand\n): unknown {\n  return operand.kind === \"path\"\n    ? readsPath(document, operand.path ?? \"\")\n    : operand.value;\n}\n\nfunction canonicalizes(value: unknown): string {\n  if (Array.isArray(value)) {\n    return `[${value.map(canonicalizes).join(\",\")}]`;\n  }\n  if (isRecord(value)) {\n    return `{${Object.keys(value)\n      .sort()\n      .map(key => `${JSON.stringify(key)}:${canonicalizes(value[key])}`)\n      .join(\",\")}}`;\n  }\n  const encoded = JSON.stringify(value);\n  if (encoded === undefined) {\n    throw new Error(\"SEMANTIC_VALUE_NOT_CANONICALIZABLE\");\n  }\n  return encoded;\n}\n\nasync function evaluatesPredicate(\n  predicate: Record<string, unknown>,\n  document: Record<string, unknown>,\n  resolver: SemanticObservationResolver\n): Promise<boolean> {\n  const left = resolvesOperand(document, predicate.left as SemanticOperand);\n  const right = resolvesOperand(document, predicate.right as SemanticOperand);\n  switch (predicate.operator) {\n    case \"equals\":\n      return canonicalizes(left) === canonicalizes(right);\n    case \"not-contains\":\n      return Array.isArray(left) &&\n        left.every(value => canonicalizes(value) !== canonicalizes(right));\n    case \"evidence-equivalent\":\n      return canonicalizes(await resolver.resolvesEvidence(left)) ===\n        canonicalizes(await resolver.resolvesEvidence(right));\n    case \"artifact-disposition-equals\": {\n      const evidence = await resolver.resolvesEvidence(left);\n      return isRecord(evidence) && evidence.disposition === right;\n    }\n    default:\n      throw new Error(`SEMANTIC_OPERATOR_UNSUPPORTED: ${String(predicate.operator)}`);\n  }\n}\n\nexport function interpretsCanonicalFeatureSemanticAuthority(\n  resolver: SemanticObservationResolver\n): SemanticAuthorityInterpreter {\n  return {\n    async executes(responsibilityId, input) {\n      const authority = semanticAuthorities.find(\n        candidate => candidate.responsibilityId === responsibilityId\n      );\n      if (authority === undefined) {\n        throw new Error(`SEMANTIC_AUTHORITY_NOT_FOUND: ${responsibilityId}`);\n      }\n      const document: Record<string, unknown> = { input };\n      for (const step of authority.execution.steps) {\n        const authorityId = String(step.authorityId);\n        if (step.operation === \"resolve-observation\") {\n          const observation = authority.observations.find(\n            item => item.observationId === authorityId\n          );\n          if (!isRecord(observation) || !isRecord(observation.resolution)) {\n            throw new Error(`SEMANTIC_OBSERVATION_NOT_FOUND: ${authorityId}`);\n          }\n          const resolution = observation.resolution;\n          const operationInput = readsPath(document, String(resolution.input));\n          const observed =\n            resolution.portRef === \"semantic-interpreter:input\" ||\n            resolution.portRef === \"implementation-artifact:runtime-adapter\"\n              ? operationInput\n              : await resolver.resolves({\n                  portRef: String(resolution.portRef),\n                  operationId: String(resolution.operationId),\n                  input: operationInput,\n                  producesFields: resolution.producesFields as readonly string[]\n                });\n          assignsPath(document, String(step.assign), observed);\n          continue;\n        }\n        if (step.operation === \"resolve-decision\") {\n          const decision = authority.decisions.find(\n            item => item.decisionId === authorityId\n          );\n          if (!isRecord(decision) || !Array.isArray(decision.rules)) {\n            throw new Error(`SEMANTIC_DECISION_NOT_FOUND: ${authorityId}`);\n          }\n          let disposition: string | undefined;\n          for (const candidate of decision.rules) {\n            if (!isRecord(candidate) || !isRecord(candidate.when)) continue;\n            const matches = candidate.when.otherwise === true ||\n              (Array.isArray(candidate.when.all) &&\n                (await Promise.all(\n                  candidate.when.all.map(predicate =>\n                    evaluatesPredicate(predicate as Record<string, unknown>, document, resolver)\n                  )\n                )).every(Boolean));\n            if (matches) {\n              disposition = String(candidate.then);\n              break;\n            }\n          }\n          if (disposition === undefined) {\n            throw new Error(`SEMANTIC_DECISION_HAS_NO_MATCH: ${authorityId}`);\n          }\n          assignsPath(document, String(step.assign), { disposition });\n          continue;\n        }\n        if (step.operation === \"project-result\") {\n          const projection = authority.projections.find(\n            item => item.projectionId === authorityId\n          );\n          if (!isRecord(projection) || !isRecord(projection.fields)) {\n            throw new Error(`SEMANTIC_PROJECTION_NOT_FOUND: ${authorityId}`);\n          }\n          const result = Object.fromEntries(\n            Object.entries(projection.fields).map(([name, operand]) => [\n              name,\n              resolvesOperand(document, operand as SemanticOperand)\n            ])\n          );\n          assignsPath(document, String(step.assign), result);\n          continue;\n        }\n        throw new Error(`SEMANTIC_OPERATION_UNSUPPORTED: ${String(step.operation)}`);\n      }\n      return document.result;\n    }\n  };\n}\n"
@@ -3106,10 +3128,12 @@
       {
         "artifactId": "complete-new-feature-authority-projector-port",
         "family": "runtime-port",
-        "artifactPath": "runtime/complete-new-feature-authority-projector.port.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-authority-projector.port.ts",
         "sourceAuthorityRef": "implementation-artifact:authority-projector-boundary",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -3121,10 +3145,12 @@
       {
         "artifactId": "complete-new-feature-materializer-port",
         "family": "runtime-port",
-        "artifactPath": "runtime/complete-new-feature-materializer.port.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/complete-new-feature-materializer.port.ts",
         "sourceAuthorityRef": "implementation-artifact:materialization-boundary",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -3136,10 +3162,12 @@
       {
         "artifactId": "canonical-feature-evaluation-fixture-port",
         "family": "evaluation-port",
-        "artifactPath": "evaluation/canonical-feature-evaluation-fixture.port.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/canonical-feature-evaluation-fixture.port.ts",
         "sourceAuthorityRef": "implementation-artifact:evaluation-fixture",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -3151,10 +3179,12 @@
       {
         "artifactId": "governed-artifact-evidence-store-port",
         "family": "evaluation-port",
-        "artifactPath": "evaluation/governed-artifact-evidence-store.port.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/governed-artifact-evidence-store.port.ts",
         "sourceAuthorityRef": "implementation-artifact:evidence-store",
         "projectorCapability": "projects-production-typescript",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-typescript-body",
           "projectorVersion": "1.0.0",
@@ -3166,14 +3196,16 @@
       {
         "artifactId": "canonical-feature-conveyor-execution-proof",
         "family": "evaluation-proof",
-        "artifactPath": "evaluation/proves-canonical-feature-conveyor.ts",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/evaluation/proves-canonical-feature-conveyor.ts",
         "sourceAuthorityRef": "implementation-artifact:execution-proof",
         "projectorCapability": "projects-evaluation-proof",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-evaluation-proof",
           "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
+          "executableSha256": "sha256:ac4016243f97b190f87d644cf73445f7871f127c215a28b4ab50329f0e81484d"
         },
         "projectedSourceSha256": "sha256:0291ab12dac1b1278adb5b4da99a5e13eff6751c044f1d28f7c8332824e9670e",
         "projectedSource": "// @generated\n// authority-ref: implementation-artifact:execution-proof\n// projector: canonical-feature-conveyor-implementation-projector.v1\n// DO NOT EDIT.\nimport { invokesCanonicalFeatureConveyor } from \"../runtime/invokes-canonical-feature-conveyor.js\";\nimport { interpretsCanonicalFeatureSemanticAuthority } from \"../runtime/interprets-canonical-feature-semantic-authority.js\";\nimport type { SemanticObservationResolver } from \"../runtime/interprets-canonical-feature-semantic-authority.js\";\n\nfunction artifactRef(artifactId: string) {\n  return {\n    artifactId,\n    sha256: `sha256:${\"0\".repeat(64)}`,\n    mediaType: \"application/json\"\n  };\n}\n\nfunction isRecord(value: unknown): value is Record<string, unknown> {\n  return value !== null && typeof value === \"object\" && !Array.isArray(value);\n}\n\nfunction canonicalizes(value: unknown): string {\n  if (Array.isArray(value)) {\n    return `[${value.map(canonicalizes).join(\",\")}]`;\n  }\n  if (isRecord(value)) {\n    return `{${Object.keys(value)\n      .sort()\n      .map(key => `${JSON.stringify(key)}:${canonicalizes(value[key])}`)\n      .join(\",\")}}`;\n  }\n  const encoded = JSON.stringify(value);\n  if (encoded === undefined) throw new Error(\"PROOF_VALUE_NOT_CANONICALIZABLE\");\n  return encoded;\n}\n\nfunction createsResolver(): SemanticObservationResolver {\n  const semanticObservationRef = artifactRef(\"semantic-observation\");\n  const projectedObservationRef = artifactRef(\"projected-observation\");\n  const expectedSignalRef = artifactRef(\"expected-signal\");\n  const astSourceCorrespondenceRef = artifactRef(\"ast-source-correspondence\");\n  const comparisonEvidenceRef = artifactRef(\"comparison-evidence\");\n  const expectedSignal = { outcome: \"canonical-feature-conforms\" };\n  const evidence = new Map<string, unknown>([\n    [semanticObservationRef.artifactId, expectedSignal],\n    [projectedObservationRef.artifactId, expectedSignal],\n    [expectedSignalRef.artifactId, expectedSignal],\n    [astSourceCorrespondenceRef.artifactId, { disposition: \"CONFORMS\" }]\n  ]);\n  return {\n    async resolves(request) {\n      if (!isRecord(request.input)) {\n        throw new Error(`PROOF_INPUT_NOT_RECORD: ${request.operationId}`);\n      }\n      if (request.operationId === \"projects-and-writes-complete-authority\") {\n        return { ...request.input, authorityRef: artifactRef(\"complete-authority\") };\n      }\n      if (request.operationId === \"materializes-and-writes-artifact-manifest\") {\n        return { ...request.input, artifactManifestRef: artifactRef(\"artifact-manifest\") };\n      }\n      if (request.operationId === \"executes-semantic-and-projected-surfaces\") {\n        return {\n          ...request.input,\n          disposition: \"CONFORMS\",\n          semanticObservationRef,\n          projectedObservationRef,\n          expectedSignalRef,\n          astSourceCorrespondenceRef\n        };\n      }\n      if (request.operationId === \"writes-execution-comparison-evidence\") {\n        return { ...request.input, comparisonEvidenceRef };\n      }\n      if (request.operationId === \"resolves-and-verifies-comparison-evidence\") {\n        return request.input;\n      }\n      throw new Error(`PROOF_OPERATION_UNSUPPORTED: ${request.operationId}`);\n    },\n    async resolvesEvidence(reference) {\n      if (!isRecord(reference) || typeof reference.artifactId !== \"string\") {\n        throw new Error(\"PROOF_EVIDENCE_REFERENCE_INVALID\");\n      }\n      const resolved = evidence.get(reference.artifactId);\n      if (resolved === undefined) {\n        throw new Error(`PROOF_EVIDENCE_NOT_FOUND: ${reference.artifactId}`);\n      }\n      return resolved;\n    }\n  };\n}\n\nconst request = {\n  reviewDisposition: \"REVIEWED\" as const,\n  existingFeatureIds: [] as readonly string[],\n  featureId: \"projected-conveyor-proof-feature\",\n  requestRef: artifactRef(\"reviewed-feature-request\"),\n  lineageId: \"projected-conveyor-proof-lineage\"\n};\nconst responsibilityIds = [\n  \"admits-reviewed-new-feature-request\",\n  \"adapts-new-feature-request-admission\",\n  \"projects-complete-new-feature-authority\",\n  \"materializes-complete-new-feature\",\n  \"executes-newly-materialized-feature\",\n  \"composes-new-feature-execution-comparison\",\n  \"verifies-complete-new-feature-lineage\"\n] as const;\nconst semanticInterpreter =\n  interpretsCanonicalFeatureSemanticAuthority(createsResolver());\nlet semanticResult: unknown = request;\nfor (const responsibilityId of responsibilityIds) {\n  semanticResult = await semanticInterpreter.executes(\n    responsibilityId,\n    semanticResult\n  );\n}\nconst projectedResult = await invokesCanonicalFeatureConveyor({\n  request,\n  interpreter:\n    interpretsCanonicalFeatureSemanticAuthority(createsResolver())\n});\nif (canonicalizes(semanticResult) !== canonicalizes(projectedResult)) {\n  throw new Error(\"SEMANTIC_PROJECTED_EXECUTION_DIVERGES\");\n}\nif (\n  !isRecord(projectedResult) ||\n  projectedResult.disposition !== \"PROJECTION_CONFORMS\"\n) {\n  throw new Error(\"PROJECTED_TERMINAL_DISPOSITION_REJECTED\");\n}\nconsole.log(JSON.stringify({\n  disposition: \"PROJECTION_CONFORMS\",\n  semanticResult,\n  projectedResult\n}));\n"
@@ -3181,24 +3213,26 @@
       {
         "artifactId": "canonical-feature-conveyor-self-hosting-runner",
         "family": "self-hosting-runner",
-        "artifactPath": "runtime/self-hosts-canonical-feature-conveyor.mjs",
+        "artifactPath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/runtime/self-hosts-canonical-feature-conveyor.mjs",
         "sourceAuthorityRef": "self-hosting:canonical-feature-conveyor-self-hosting.v1",
         "projectorCapability": "projects-self-hosting-runner",
         "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES",
         "projector": {
           "projectorId": "projects-self-hosting-runner",
           "projectorVersion": "1.0.0",
-          "executableSha256": "sha256:1375188e6f6f16d887004b3aae654adef623533dd20dde80b4a0dd28b8121d46"
+          "executableSha256": "sha256:ac4016243f97b190f87d644cf73445f7871f127c215a28b4ab50329f0e81484d"
         },
-        "projectedSourceSha256": "sha256:6d0f7275edbc2dcdb48e1fe25b29f81b63877e0f83185ba5d6656fe7f50e82b2",
-        "projectedSource": "// @generated\n// authority-ref: self-hosting:canonical-feature-conveyor-self-hosting.v1\n// projector: canonical-feature-conveyor-implementation-projector.v1\n// DO NOT EDIT.\nimport { createHash } from \"node:crypto\";\nimport { execFile } from \"node:child_process\";\nimport { access, mkdir, readFile, readdir, stat, writeFile } from \"node:fs/promises\";\nimport { dirname, resolve, sep } from \"node:path\";\nimport { promisify } from \"node:util\";\n\nconst EXPECTED_STAGE_IDS = [\n  \"capture-intent\",\n  \"declare-outcome\",\n  \"establish-feature\",\n  \"establish-scenarios\",\n  \"decompose-obligations\",\n  \"declare-expectations\",\n  \"assign-responsibilities\",\n  \"declare-signals\",\n  \"author-semantic-authority\",\n  \"author-semantic-execution\",\n  \"author-feature-body-authority\",\n  \"resolve-language-projection\",\n  \"project-expected-ast\",\n  \"project-expected-code\",\n  \"evaluate-semantic-execution\",\n  \"evaluate-projected-execution\",\n  \"evaluate-translation-conformance\",\n  \"review-feature\"\n];\nconst EXPECTED_PACKAGE_ID = \"end-to-end-canonical-feature-conveyor-implementation.v1\";\nconst EXPECTED_ARTIFACT_COUNT = 34;\nconst executes = promisify(execFile);\n\nfunction argument(name) {\n  const index = process.argv.indexOf(name);\n  return index === -1 ? undefined : process.argv[index + 1];\n}\n\nfunction sha256(bytes) {\n  return `sha256:${createHash(\"sha256\").update(bytes).digest(\"hex\")}`;\n}\n\nfunction isRecord(value) {\n  return value !== null && typeof value === \"object\" && !Array.isArray(value);\n}\n\nfunction canonicalizes(value) {\n  if (Array.isArray(value)) {\n    return `[${value.map(canonicalizes).join(\",\")}]`;\n  }\n  if (isRecord(value)) {\n    return `{${Object.keys(value)\n      .sort()\n      .map(key => `${JSON.stringify(key)}:${canonicalizes(value[key])}`)\n      .join(\",\")}}`;\n  }\n  const encoded = JSON.stringify(value);\n  if (encoded === undefined) throw new Error(\"SELF_HOST_VALUE_NOT_CANONICALIZABLE\");\n  return encoded;\n}\n\nfunction asserts(condition, code) {\n  if (!condition) throw new Error(code);\n}\n\nasync function exists(path) {\n  try {\n    await access(path);\n    return true;\n  } catch {\n    return false;\n  }\n}\n\nasync function assertsEmptyRoot(root) {\n  if (!(await exists(root))) return;\n  const metadata = await stat(root);\n  asserts(metadata.isDirectory(), \"SELF_HOST_TARGET_NOT_DIRECTORY\");\n  asserts(\n    (await readdir(root)).length === 0,\n    \"SELF_HOST_TARGET_OVERWRITE_FORBIDDEN\"\n  );\n}\n\nfunction readsSource(document, source) {\n  asserts(source.startsWith(\"$.\"), `SELF_HOST_SOURCE_DIALECT_REJECTED: ${source}`);\n  return source.slice(2).split(\".\").reduce((value, member) => {\n    asserts(\n      isRecord(value) && member in value,\n      `SELF_HOST_SOURCE_UNRESOLVED: ${source}`\n    );\n    return value[member];\n  }, document);\n}\n\nasync function materializes(root, artifacts) {\n  await assertsEmptyRoot(root);\n  await mkdir(root, { recursive: true });\n  for (const artifact of artifacts) {\n    const outputPath = resolve(root, artifact.artifactPath);\n    asserts(\n      outputPath.startsWith(`${root}${sep}`),\n      `SELF_HOST_ARTIFACT_ESCAPES_ROOT: ${artifact.artifactPath}`\n    );\n    await mkdir(dirname(outputPath), { recursive: true });\n    await writeFile(outputPath, artifact.projectedSource, \"utf8\");\n  }\n}\n\nasync function compiles(root, compilerPath) {\n  try {\n    await executes(\n      process.execPath,\n      [compilerPath, \"--project\", resolve(root, \"tsconfig.json\")],\n      { cwd: root, windowsHide: true, maxBuffer: 8 * 1024 * 1024 }\n    );\n  } catch (error) {\n    const output = `${error.stdout ?? \"\"}${error.stderr ?? \"\"}`.trim();\n    throw new Error(`SELF_HOST_TYPESCRIPT_COMPILE_FAILED${output === \"\" ? \"\" : `\\n${output}`}`);\n  }\n}\n\nasync function executesProjectionProof(root) {\n  const proofPath = resolve(\n    root,\n    \"dist/evaluation/proves-canonical-feature-conveyor.js\"\n  );\n  const result = await executes(process.execPath, [proofPath], {\n    cwd: root,\n    windowsHide: true,\n    maxBuffer: 8 * 1024 * 1024\n  });\n  return JSON.parse(result.stdout.trim());\n}\n\nasync function comparesClone(sourceRoot, targetRoot, artifacts) {\n  const comparisons = [];\n  for (const artifact of artifacts) {\n    const [sourceBytes, targetBytes] = await Promise.all([\n      readFile(resolve(sourceRoot, artifact.artifactPath)),\n      readFile(resolve(targetRoot, artifact.artifactPath))\n    ]);\n    comparisons.push({\n      artifactPath: artifact.artifactPath,\n      expectedSha256: artifact.projectedSourceSha256,\n      sourceSha256: sha256(sourceBytes),\n      cloneSha256: sha256(targetBytes),\n      byteIdentical: sourceBytes.equals(targetBytes)\n    });\n  }\n  return comparisons;\n}\n\nconst authorityArgument = argument(\"--authority\");\nconst derivedArgument = argument(\"--derived\");\nconst outputArgument = argument(\"--output-root\");\nconst compilerArgument = argument(\"--typescript-compiler\");\nasserts(authorityArgument !== undefined, \"SELF_HOST_AUTHORITY_REQUIRED\");\nasserts(derivedArgument !== undefined, \"SELF_HOST_DERIVED_PROJECTION_REQUIRED\");\nasserts(outputArgument !== undefined, \"SELF_HOST_OUTPUT_ROOT_REQUIRED\");\nasserts(compilerArgument !== undefined, \"SELF_HOST_TYPESCRIPT_COMPILER_REQUIRED\");\nconst authorityPath = resolve(authorityArgument);\nconst derivedPath = resolve(derivedArgument);\nconst outputRoot = resolve(outputArgument);\nconst compilerPath = resolve(compilerArgument);\nconst sourceRoot = resolve(import.meta.dirname, \"..\");\nconst [authorityBytes, derivedBytes] = await Promise.all([\n  readFile(authorityPath),\n  readFile(derivedPath)\n]);\nconst authority = JSON.parse(authorityBytes.toString(\"utf8\"));\nconst derived = JSON.parse(derivedBytes.toString(\"utf8\"));\nasserts(\n  sha256(derivedBytes) === authority.projection.derivedProjectionSha256,\n  \"SELF_HOST_DERIVED_PROJECTION_HASH_MISMATCH\"\n);\nasserts(\n  derived.implementationPackage.packageId === EXPECTED_PACKAGE_ID,\n  \"SELF_HOST_PACKAGE_ID_MISMATCH\"\n);\nconst artifacts = derived.implementationPackage.artifacts;\nasserts(\n  artifacts.length === EXPECTED_ARTIFACT_COUNT,\n  \"SELF_HOST_ARTIFACT_COUNT_MISMATCH\"\n);\nasserts(\n  JSON.stringify(authority.selfHostingAuthority.executionStages) ===\n    JSON.stringify(EXPECTED_STAGE_IDS),\n  \"SELF_HOST_STAGE_AUTHORITY_MISMATCH\"\n);\nasserts(\n  JSON.stringify(authority.conveyor.stages.map(stage => stage.stageId)) ===\n    JSON.stringify(EXPECTED_STAGE_IDS),\n  \"SELF_HOST_STAGE_ORDER_MISMATCH\"\n);\nconst sections = new Map(\n  authority.documentationProjection.sections.map(section => [\n    section.stageId,\n    section\n  ])\n);\nconst document = { ...authority, derivedProjections: derived };\nconst availableProducts = new Set();\nconst stageObservations = [];\nlet executionProof;\nlet cloneComparisons;\nfor (const [index, stage] of authority.conveyor.stages.entries()) {\n  const sequence = index + 1;\n  asserts(stage.stageId === EXPECTED_STAGE_IDS[index], \"SELF_HOST_STAGE_SEQUENCE_MISMATCH\");\n  for (const product of [...stage.requires, ...stage.consumes]) {\n    asserts(\n      availableProducts.has(product),\n      `SELF_HOST_PRODUCT_NOT_AVAILABLE: ${stage.stageId}:${product}`\n    );\n  }\n  const section = sections.get(stage.stageId);\n  asserts(section !== undefined, `SELF_HOST_STAGE_SECTION_MISSING: ${stage.stageId}`);\n  const sourceValue = readsSource(document, section.source);\n  const observation = {\n    sequence,\n    stageId: stage.stageId,\n    source: section.source,\n    sourceSha256: sha256(Buffer.from(canonicalizes(sourceValue), \"utf8\")),\n    requires: stage.requires,\n    consumes: stage.consumes,\n    produces: stage.produces\n  };\n  if (stage.stageId === \"project-expected-code\") {\n    await materializes(outputRoot, artifacts);\n    await compiles(outputRoot, compilerPath);\n    observation.materialization = {\n      artifactCount: artifacts.length,\n      strictTypeScriptCompilation: \"GREEN\"\n    };\n  }\n  if (stage.stageId === \"evaluate-semantic-execution\") {\n    executionProof = await executesProjectionProof(outputRoot);\n    asserts(executionProof.disposition === \"PROJECTION_CONFORMS\", \"SELF_HOST_SEMANTIC_EXECUTION_RED\");\n    observation.execution = executionProof.semanticResult;\n  }\n  if (stage.stageId === \"evaluate-projected-execution\") {\n    asserts(executionProof !== undefined, \"SELF_HOST_EXECUTION_PROOF_MISSING\");\n    observation.execution = executionProof.projectedResult;\n  }\n  if (stage.stageId === \"evaluate-translation-conformance\") {\n    asserts(\n      canonicalizes(executionProof.semanticResult) ===\n        canonicalizes(executionProof.projectedResult),\n      \"SELF_HOST_TRANSLATION_DIVERGES\"\n    );\n    observation.translation = \"PROJECTION_CONFORMS\";\n  }\n  if (stage.stageId === \"review-feature\") {\n    cloneComparisons = await comparesClone(\n      sourceRoot,\n      outputRoot,\n      artifacts\n    );\n    asserts(\n      cloneComparisons.every(comparison => comparison.byteIdentical),\n      \"SELF_HOST_CLONE_BYTE_DRIFT\"\n    );\n    asserts(\n      cloneComparisons.every(\n        comparison =>\n          comparison.expectedSha256 === comparison.cloneSha256\n      ),\n      \"SELF_HOST_CLONE_AUTHORITY_HASH_DRIFT\"\n    );\n    observation.reviewDisposition = \"PROJECTION_CONFORMS\";\n  }\n  for (const product of stage.produces) availableProducts.add(product);\n  stageObservations.push(observation);\n}\nasserts(stageObservations.length === 18, \"SELF_HOST_STAGE_COVERAGE_MISMATCH\");\nconst report = {\n  verificationType: \"canonical-feature-conveyor-self-hosting.v1\",\n  disposition: \"PROJECTION_CONFORMS\",\n  authorityPath,\n  authoritySha256: sha256(authorityBytes),\n  derivedProjectionPath: derivedPath,\n  derivedProjectionSha256: sha256(derivedBytes),\n  sourceRoot,\n  cloneRoot: outputRoot,\n  stageReplay: {\n    observed: stageObservations.length,\n    expected: EXPECTED_STAGE_IDS.length,\n    stages: stageObservations\n  },\n  clone: {\n    packageId: EXPECTED_PACKAGE_ID,\n    governedArtifactCount: artifacts.length,\n    byteIdenticalArtifactCount:\n      cloneComparisons.filter(comparison => comparison.byteIdentical).length,\n    postProjectionEdits: 0,\n    strictTypeScriptCompilation: \"GREEN\",\n    semanticExecution: \"EXECUTED\",\n    projectedExecution: \"EXECUTED\",\n    translation: \"PROJECTION_CONFORMS\"\n  },\n  artifacts: cloneComparisons\n};\nconst reportPath = resolve(\n  outputRoot,\n  \".verification/self-hosting-report.json\"\n);\nawait mkdir(dirname(reportPath), { recursive: true });\nawait writeFile(reportPath, `${JSON.stringify(report, null, 2)}\\n`, \"utf8\");\nconsole.log(JSON.stringify({\n  disposition: report.disposition,\n  cloneRoot: outputRoot,\n  stages: stageObservations.length,\n  artifacts: artifacts.length,\n  postProjectionEdits: 0\n}));\n"
+        "projectedSourceSha256": "sha256:216403f2b2e0237ad66467f428961aff8dc2fc2bb57ac08008f18412cd86a3f1",
+        "projectedSource": "// @generated\n// authority-ref: self-hosting:canonical-feature-conveyor-self-hosting.v1\n// projector: canonical-feature-conveyor-implementation-projector.v1\n// DO NOT EDIT.\nimport { execFile } from \"node:child_process\";\nimport { createHash } from \"node:crypto\";\nimport { access, mkdir, readFile, writeFile } from \"node:fs/promises\";\nimport { dirname, resolve, sep } from \"node:path\";\nimport { promisify } from \"node:util\";\n\nconst EXPECTED_STAGE_IDS = [\n  \"capture-intent\",\n  \"declare-outcome\",\n  \"establish-feature\",\n  \"establish-scenarios\",\n  \"decompose-obligations\",\n  \"declare-expectations\",\n  \"assign-responsibilities\",\n  \"declare-signals\",\n  \"author-semantic-authority\",\n  \"author-semantic-execution\",\n  \"author-feature-body-authority\",\n  \"resolve-language-projection\",\n  \"project-expected-ast\",\n  \"project-expected-code\",\n  \"evaluate-semantic-execution\",\n  \"evaluate-projected-execution\",\n  \"evaluate-translation-conformance\",\n  \"review-feature\"\n];\nconst EXPECTED_PACKAGE_ID = \"end-to-end-canonical-feature-conveyor-implementation.v1\";\nconst EXPECTED_ARTIFACT_COUNT = 32;\nconst CAPABILITY_ROOT = \"capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor\";\nconst FEATURE_ID = \"implement-one-new-feature-end-to-end-through-a-governed-conveyor\";\nconst executes = promisify(execFile);\n\nfunction argument(name) {\n  const index = process.argv.indexOf(name);\n  return index === -1 ? undefined : process.argv[index + 1];\n}\n\nfunction sha256(bytes) {\n  return `sha256:${createHash(\"sha256\").update(bytes).digest(\"hex\")}`;\n}\n\nfunction isRecord(value) {\n  return value !== null && typeof value === \"object\" && !Array.isArray(value);\n}\n\nfunction canonicalizes(value) {\n  if (Array.isArray(value)) return `[${value.map(canonicalizes).join(\",\")}]`;\n  if (isRecord(value)) {\n    return `{${Object.keys(value)\n      .sort()\n      .map(key => `${JSON.stringify(key)}:${canonicalizes(value[key])}`)\n      .join(\",\")}}`;\n  }\n  const encoded = JSON.stringify(value);\n  if (encoded === undefined) throw new Error(\"SELF_HOST_VALUE_NOT_CANONICALIZABLE\");\n  return encoded;\n}\n\nfunction asserts(condition, code) {\n  if (!condition) throw new Error(code);\n}\n\nasync function exists(path) {\n  try {\n    await access(path);\n    return true;\n  } catch {\n    return false;\n  }\n}\n\nasync function runs(command, args, cwd) {\n  const result = await executes(command, args, {\n    cwd,\n    windowsHide: true,\n    maxBuffer: 8 * 1024 * 1024\n  });\n  return result.stdout.trim();\n}\n\nfunction readsSource(document, source) {\n  asserts(source.startsWith(\"$.\"), `SELF_HOST_SOURCE_DIALECT_REJECTED: ${source}`);\n  return source.slice(2).split(\".\").reduce((value, member) => {\n    asserts(\n      isRecord(value) && member in value,\n      `SELF_HOST_SOURCE_UNRESOLVED: ${source}`\n    );\n    return value[member];\n  }, document);\n}\n\nfunction ownsExistingSource(source, artifact) {\n  if (!source.includes(\"// @generated\")) return false;\n  return (\n    source.includes(`// feature-id: ${FEATURE_ID}`) ||\n    source.includes(`// authority-ref: ${artifact.sourceAuthorityRef}`)\n  );\n}\n\nasync function materializesInPlace(repositoryRoot, artifacts) {\n  const capabilityPath = resolve(repositoryRoot, CAPABILITY_ROOT);\n  const observations = [];\n  for (const artifact of artifacts) {\n    asserts(\n      artifact.artifactPath.startsWith(`${CAPABILITY_ROOT}/`),\n      `SELF_HOST_ARTIFACT_OUTSIDE_CAPABILITY: ${artifact.artifactPath}`\n    );\n    const outputPath = resolve(repositoryRoot, artifact.artifactPath);\n    asserts(\n      outputPath.startsWith(`${capabilityPath}${sep}`),\n      `SELF_HOST_ARTIFACT_ESCAPES_CAPABILITY: ${artifact.artifactPath}`\n    );\n    let priorSource = null;\n    if (await exists(outputPath)) {\n      priorSource = await readFile(outputPath, \"utf8\");\n      asserts(\n        priorSource === artifact.projectedSource ||\n          ownsExistingSource(priorSource, artifact),\n        `SELF_HOST_EXISTING_FILE_OWNERSHIP_REJECTED: ${artifact.artifactPath}`\n      );\n    }\n    await mkdir(dirname(outputPath), { recursive: true });\n    await writeFile(outputPath, artifact.projectedSource, \"utf8\");\n    const projectedBytes = await readFile(outputPath);\n    asserts(\n      sha256(projectedBytes) === artifact.projectedSourceSha256,\n      `SELF_HOST_PROJECTED_BYTES_DIVERGE: ${artifact.artifactPath}`\n    );\n    observations.push({\n      artifactPath: artifact.artifactPath,\n      disposition:\n        priorSource === null ? \"CREATED\" :\n        priorSource === artifact.projectedSource ? \"UNCHANGED\" : \"REPLACED\",\n      projectedSourceSha256: artifact.projectedSourceSha256\n    });\n  }\n  return observations;\n}\n\nasync function compiles(repositoryRoot, compilerPath) {\n  await runs(process.execPath, [\n    compilerPath,\n    \"--project\",\n    resolve(repositoryRoot, \"tsconfig.json\")\n  ], repositoryRoot);\n}\n\nasync function executesProjectionProof(repositoryRoot) {\n  const proofPath = resolve(\n    repositoryRoot,\n    \"dist\",\n    CAPABILITY_ROOT,\n    \"evaluation/proves-canonical-feature-conveyor.js\"\n  );\n  const output = await runs(process.execPath, [proofPath], repositoryRoot);\n  return JSON.parse(output);\n}\n\nconst authorityArgument = argument(\"--authority\");\nconst derivedArgument = argument(\"--derived\");\nconst repositoryArgument = argument(\"--repository-root\") ?? \".\";\nconst compilerArgument = argument(\"--typescript-compiler\");\nconst evidenceArgument = argument(\"--evidence-root\");\nasserts(authorityArgument !== undefined, \"SELF_HOST_AUTHORITY_REQUIRED\");\nasserts(derivedArgument !== undefined, \"SELF_HOST_DERIVED_PROJECTION_REQUIRED\");\nasserts(compilerArgument !== undefined, \"SELF_HOST_TYPESCRIPT_COMPILER_REQUIRED\");\nconst repositoryRoot = resolve(repositoryArgument);\nconst gitRoot = resolve(await runs(\n  \"git\",\n  [\"rev-parse\", \"--show-toplevel\"],\n  repositoryRoot\n));\nasserts(gitRoot === repositoryRoot, \"SELF_HOST_REPOSITORY_ROOT_MISMATCH\");\nconst authorityPath = resolve(authorityArgument);\nconst derivedPath = resolve(derivedArgument);\nconst compilerPath = resolve(compilerArgument);\nconst [authorityBytes, derivedBytes] = await Promise.all([\n  readFile(authorityPath),\n  readFile(derivedPath)\n]);\nconst authority = JSON.parse(authorityBytes.toString(\"utf8\"));\nconst derived = JSON.parse(derivedBytes.toString(\"utf8\"));\nasserts(\n  sha256(derivedBytes) === authority.projection.derivedProjectionSha256,\n  \"SELF_HOST_DERIVED_PROJECTION_HASH_MISMATCH\"\n);\nasserts(\n  derived.implementationPackage.packageId === EXPECTED_PACKAGE_ID,\n  \"SELF_HOST_PACKAGE_ID_MISMATCH\"\n);\nconst artifacts = derived.implementationPackage.artifacts;\nasserts(\n  artifacts.length === EXPECTED_ARTIFACT_COUNT,\n  \"SELF_HOST_ARTIFACT_COUNT_MISMATCH\"\n);\nasserts(\n  artifacts.every(artifact =>\n    artifact.artifactPath.startsWith(`${CAPABILITY_ROOT}/`)\n  ),\n  \"SELF_HOST_CAPABILITY_ROOT_COVERAGE_MISMATCH\"\n);\nconst baseCommit = await runs(\n  \"git\",\n  [\"rev-parse\", \"HEAD\"],\n  repositoryRoot\n);\nconst workspaceDirtyBefore = await runs(\n  \"git\",\n  [\"status\", \"--short\"],\n  repositoryRoot\n);\nconst sections = new Map(\n  authority.documentationProjection.sections.map(section => [\n    section.stageId,\n    section\n  ])\n);\nconst document = { ...authority, derivedProjections: derived };\nconst availableProducts = new Set();\nconst stageObservations = [];\nlet materialization;\nlet executionProof;\nfor (const [index, stage] of authority.conveyor.stages.entries()) {\n  asserts(stage.stageId === EXPECTED_STAGE_IDS[index], \"SELF_HOST_STAGE_SEQUENCE_MISMATCH\");\n  for (const product of [...stage.requires, ...stage.consumes]) {\n    asserts(\n      availableProducts.has(product),\n      `SELF_HOST_PRODUCT_NOT_AVAILABLE: ${stage.stageId}:${product}`\n    );\n  }\n  const section = sections.get(stage.stageId);\n  asserts(section !== undefined, `SELF_HOST_STAGE_SECTION_MISSING: ${stage.stageId}`);\n  const sourceValue = readsSource(document, section.source);\n  const observation = {\n    sequence: index + 1,\n    stageId: stage.stageId,\n    source: section.source,\n    sourceSha256: sha256(Buffer.from(canonicalizes(sourceValue), \"utf8\"))\n  };\n  if (stage.stageId === \"project-expected-code\") {\n    materialization = await materializesInPlace(repositoryRoot, artifacts);\n    await compiles(repositoryRoot, compilerPath);\n    observation.materialization = {\n      artifactCount: materialization.length,\n      repositoryCompilation: \"GREEN\"\n    };\n  }\n  if (stage.stageId === \"evaluate-semantic-execution\") {\n    executionProof = await executesProjectionProof(repositoryRoot);\n    asserts(executionProof.disposition === \"PROJECTION_CONFORMS\", \"SELF_HOST_SEMANTIC_EXECUTION_RED\");\n    observation.execution = executionProof.semanticResult;\n  }\n  if (stage.stageId === \"evaluate-projected-execution\") {\n    asserts(executionProof !== undefined, \"SELF_HOST_EXECUTION_PROOF_MISSING\");\n    observation.execution = executionProof.projectedResult;\n  }\n  if (stage.stageId === \"evaluate-translation-conformance\") {\n    asserts(\n      canonicalizes(executionProof.semanticResult) ===\n        canonicalizes(executionProof.projectedResult),\n      \"SELF_HOST_TRANSLATION_DIVERGES\"\n    );\n    observation.translation = \"PROJECTION_CONFORMS\";\n  }\n  if (stage.stageId === \"review-feature\") {\n    observation.reviewDisposition = \"PROJECTION_CONFORMS\";\n  }\n  for (const product of stage.produces) availableProducts.add(product);\n  stageObservations.push(observation);\n}\nasserts(stageObservations.length === 18, \"SELF_HOST_STAGE_COVERAGE_MISMATCH\");\nconst gitStatus = await runs(\n  \"git\",\n  [\"status\", \"--short\", \"--\", CAPABILITY_ROOT],\n  repositoryRoot\n);\nconst gitDiff = await runs(\n  \"git\",\n  [\"diff\", \"--binary\", \"--\", CAPABILITY_ROOT],\n  repositoryRoot\n);\nconst report = {\n  verificationType: \"canonical-feature-conveyor-self-hosting.v2\",\n  disposition: \"PROJECTION_CONFORMS\",\n  authorityPath,\n  authoritySha256: sha256(authorityBytes),\n  derivedProjectionPath: derivedPath,\n  derivedProjectionSha256: sha256(derivedBytes),\n  repositoryRoot,\n  capabilityRoot: CAPABILITY_ROOT,\n  baseCommit,\n  workspaceDirtyBefore: workspaceDirtyBefore !== \"\",\n  gitStatus,\n  gitDiffSha256: sha256(Buffer.from(gitDiff, \"utf8\")),\n  stageReplay: {\n    observed: stageObservations.length,\n    expected: EXPECTED_STAGE_IDS.length,\n    stages: stageObservations\n  },\n  workspaceProjection: {\n    packageId: EXPECTED_PACKAGE_ID,\n    governedArtifactCount: artifacts.length,\n    byteIdenticalArtifactCount: materialization.length,\n    postProjectionEdits: 0,\n    repositoryCompilation: \"GREEN\",\n    semanticExecution: \"EXECUTED\",\n    projectedExecution: \"EXECUTED\",\n    translation: \"PROJECTION_CONFORMS\"\n  },\n  artifacts: materialization\n};\nif (evidenceArgument !== undefined) {\n  const evidenceRoot = resolve(evidenceArgument);\n  asserts(\n    evidenceRoot !== repositoryRoot &&\n      !evidenceRoot.startsWith(`${repositoryRoot}${sep}`),\n    \"SELF_HOST_EVIDENCE_ROOT_INSIDE_REPOSITORY\"\n  );\n  const reportPath = resolve(evidenceRoot, \"self-hosting-report.json\");\n  await mkdir(dirname(reportPath), { recursive: true });\n  await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\\n`, \"utf8\");\n}\nconsole.log(JSON.stringify({\n  disposition: report.disposition,\n  capabilityRoot: CAPABILITY_ROOT,\n  stages: stageObservations.length,\n  artifacts: artifacts.length,\n  repositoryCompilation: \"GREEN\"\n}));\n"
       }
     ],
     "summary": {
-      "declaredArtifacts": 34,
-      "projectableArtifacts": 34,
+      "declaredArtifacts": 32,
+      "projectableArtifacts": 32,
       "unresolvedArtifacts": 0
     },
-    "topologySha256": "sha256:084e3d05bc2e2f550a51a9bec618237c133049b026855dc6fa4a9de52c019770"
+    "topologySha256": "sha256:38352ba06167fb62c97c592ec4588adc24070613296d5093f20be76805b4cfbc"
   }
 }

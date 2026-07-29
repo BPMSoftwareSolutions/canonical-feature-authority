@@ -1,0 +1,102 @@
+{
+  "contract": {
+    "schemaId": "https://schemas.deterministic.solutions/projection/semantic-invocation-function-request/1.0.0/schema.json",
+    "schemaVersion": "1.0.0",
+    "schemaDigest": "sha256:923b757154a0b858f9cc418d4d270993aa7e3a68b4acce81aac0f5cfab6b31bd"
+  },
+  "projectionId": "project-observed-new-feature-execution-supporting-types",
+  "targetLanguage": "typescript",
+  "artifact": {
+    "relativePath": "capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/src/observed-new-feature-execution.type.ts"
+  },
+  "lineage": {
+    "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+    "scenarioId": "execute-one-newly-materialized-feature",
+    "obligationId": "execute-new-feature-through-admitted-semantics",
+    "responsibilityId": "executes-newly-materialized-feature",
+    "signalId": "observed-new-feature-execution"
+  },
+  "declarations": [
+    {
+      "interface": {
+        "identity": "governed-artifact-ref",
+        "name": "GovernedArtifactRef",
+        "members": [
+          {
+            "name": "artifactId",
+            "typeReference": "string"
+          },
+          {
+            "name": "sha256",
+            "typeReference": "string"
+          },
+          {
+            "name": "mediaType",
+            "typeReference": "string"
+          }
+        ]
+      }
+    },
+    {
+      "interface": {
+        "identity": "observed-new-feature-execution-context",
+        "name": "ExecuteNewlyMaterializedFeatureContext",
+        "members": [
+          {
+            "name": "edges",
+            "members": [
+              {
+                "name": "invokes",
+                "typeReference": "(edgeId: string, context: ExecuteNewlyMaterializedFeatureContext) => Promise<ObservedNewFeatureExecution>"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "interface": {
+        "identity": "observed-new-feature-execution-result",
+        "name": "ObservedNewFeatureExecution",
+        "members": [
+          {
+            "name": "disposition",
+            "unionAlternatives": [
+              "CONFORMS",
+              "DIVERGES"
+            ]
+          },
+          {
+            "name": "featureId",
+            "typeReference": "string"
+          },
+          {
+            "name": "artifactManifestRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "semanticObservationRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "projectedObservationRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "expectedSignalRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "astSourceCorrespondenceRef",
+            "typeReference": "GovernedArtifactRef"
+          },
+          {
+            "name": "lineageId",
+            "typeReference": "string"
+          }
+        ],
+        "separatedBefore": true
+      }
+    }
+  ]
+}

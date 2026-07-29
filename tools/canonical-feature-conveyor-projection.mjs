@@ -395,7 +395,7 @@ function rendersFeatureDestination(authority, derived) {
     "",
     ...fenced("json", authority.selfHostingAuthority),
     "",
-    "The projected self-hosting runner must replay all 18 construction stages, materialize a fresh empty-root clone, compile and execute it, compare every governed artifact byte-for-byte with its source projection, and leave the clone unedited before the required live-provider run.",
+    "The projected self-hosting runner must replay all 18 construction stages, materialize directly into the governed capability folder, compile and execute the repository bytes under Git review, compare every governed artifact byte-for-byte with its source projection, and leave the projected files unedited before the required live-provider run.",
     "",
     "### Projected responsibility bodies",
     "",
