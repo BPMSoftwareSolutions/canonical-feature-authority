@@ -555,7 +555,7 @@ function projectsEvaluationProof(authority) {
     "  return encoded;",
     "}",
     "",
-    "function createsResolver(): SemanticObservationResolver {",
+    "function createsEvaluationFixtureResolver(): SemanticObservationResolver {",
     '  const semanticObservationRef = artifactRef("semantic-observation");',
     '  const projectedObservationRef = artifactRef("projected-observation");',
     '  const expectedSignalRef = artifactRef("expected-signal");',
@@ -625,7 +625,7 @@ function projectsEvaluationProof(authority) {
     "const semanticInterpreter =",
     "  interpretsCanonicalFeatureSemanticAuthority(",
     "    semanticAuthorities,",
-    "    createsResolver()",
+    "    createsEvaluationFixtureResolver()",
     "  );",
     "let semanticResult: unknown = request;",
     "for (const responsibilityId of responsibilityIds) {",
@@ -639,7 +639,7 @@ function projectsEvaluationProof(authority) {
     "  interpreter:",
     "    interpretsCanonicalFeatureSemanticAuthority(",
     "      semanticAuthorities,",
-    "      createsResolver()",
+    "      createsEvaluationFixtureResolver()",
     "    )",
     "});",
     "if (canonicalizes(semanticResult) !== canonicalizes(projectedResult)) {",
@@ -1406,6 +1406,24 @@ export async function projectsCanonicalFeatureImplementationPackage(
       "projects-semantic-authority-loader"
     ) {
       source = projectsSemanticAuthorityLoader(authority);
+      projectorIdentity = implementationProjector;
+    } else if (
+      coordinate.projectorCapability ===
+      "projects-reviewed-capability-request-schema"
+    ) {
+      source = jsonArtifact(
+        authority.implementationArtifactAuthority
+          .newFeatureProjection.requestSchema
+      );
+      projectorIdentity = implementationProjector;
+    } else if (
+      coordinate.projectorCapability ===
+      "projects-model-produced-capability-authority-schema"
+    ) {
+      source = jsonArtifact(
+        authority.implementationArtifactAuthority
+          .newFeatureProjection.producedAuthoritySchema
+      );
       projectorIdentity = implementationProjector;
     } else if (
       coordinate.projectorCapability === "projects-evaluation-proof"

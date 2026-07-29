@@ -2,7 +2,8 @@
   "catalogType": "governed-document-schema-catalog.v1",
   "schemas": [
     "governed-inspection-document-authority.schema.json",
-    "canonical-feature-conveyor-contract.schema.json"
+    "canonical-feature-conveyor-contract.schema.json",
+    "end-to-end-canonical-feature-conveyor-authority.schema.json"
   ],
   "profiles": [
     {
@@ -50,7 +51,7 @@
       "projectionLibrary": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/canonical-feature-conveyor-projection.mjs",
       "codeBodyProjector": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs",
       "derivedProjectionIntegration": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-derived-bodies.mjs",
-      "contract": "schemas/canonical-feature-conveyor-contract.schema.json"
+      "contract": "schemas/end-to-end-canonical-feature-conveyor-authority.schema.json"
     }
   ]
 }

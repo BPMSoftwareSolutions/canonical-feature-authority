@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/model-produced-capability-authority.schema.json",
+  "title": "Model-produced capability implementation authority",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "authorityType",
+    "featureId",
+    "contractSha256",
+    "challengeNonce",
+    "runtime",
+    "semanticPlan",
+    "artifacts"
+  ],
+  "properties": {
+    "authorityType": {
+      "const": "model-produced-capability-authority.v1"
+    },
+    "featureId": {
+      "$ref": "#/$defs/id"
+    },
+    "contractSha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "challengeNonce": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{43}$"
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runtimeId",
+        "commandName",
+        "entrypoint"
+      ],
+      "properties": {
+        "runtimeId": {
+          "const": "node-esm.v1"
+        },
+        "commandName": {
+          "$ref": "#/$defs/id"
+        },
+        "entrypoint": {
+          "$ref": "#/$defs/relativePath"
+        }
+      }
+    },
+    "semanticPlan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sequence",
+          "scenarioId",
+          "responsibilityId",
+          "operation",
+          "input",
+          "output",
+          "failureCodes"
+        ],
+        "properties": {
+          "sequence": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "scenarioId": {
+            "$ref": "#/$defs/id"
+          },
+          "responsibilityId": {
+            "$ref": "#/$defs/id"
+          },
+          "operation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "input": {
+            "type": "string",
+            "minLength": 1
+          },
+          "output": {
+            "type": "string",
+            "minLength": 1
+          },
+          "failureCodes": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z][A-Z0-9_]*$"
+            }
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artifactId",
+          "path",
+          "mediaType",
+          "source"
+        ],
+        "properties": {
+          "artifactId": {
+            "$ref": "#/$defs/id"
+          },
+          "path": {
+            "$ref": "#/$defs/relativePath"
+          },
+          "mediaType": {
+            "enum": [
+              "text/javascript",
+              "application/json",
+              "text/markdown"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1048576
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "relativePath": {
+      "type": "string",
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$"
+    }
+  }
+}

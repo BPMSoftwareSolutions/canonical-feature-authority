@@ -688,6 +688,590 @@ export interface EndToEndCanonicalFeatureConveyorContext {
     "embeddedSemanticAuthority": "forbidden",
     "bindingStatus": "IMPLEMENTED"
   },
+  "newFeatureProjection": {
+    "contractId": "reviewed-capability-contract-projector.v1",
+    "bindingStatus": "IMPLEMENTED",
+    "projectorArtifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/projects-reviewed-capability-contract.mjs",
+    "requestSchemaArtifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/schema/canonical-feature-conveyor-contract.schema.json",
+    "producedAuthoritySchemaArtifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/schema/model-produced-capability-authority.schema.json",
+    "publicCommand": "project",
+    "providerModel": "gemini-flash-latest",
+    "providerCredentialEnvironmentVariable": "LOC_GEMINI_API_KEY",
+    "materializationRootTemplate": "capabilities/{featureId}",
+    "evidenceRootPolicy": "machine-local-outside-repository",
+    "evaluationFixtureExposure": "forbidden-on-production-command",
+    "inputRequirements": [
+      "reviewed capability request path",
+      "acceptance contract path",
+      "governed repository root",
+      "external evidence root",
+      "provider credential"
+    ],
+    "greenRequirements": [
+      "request schema is valid",
+      "request contract bytes are consumed and hashed",
+      "provider response is challenge-bound",
+      "model-produced authority schema is valid",
+      "semantic plan covers every scenario in order",
+      "at least one governed implementation artifact is materialized",
+      "every artifact remains inside capabilities/{featureId}",
+      "every scenario body is materialized at scenarios/{scenarioId}/{responsibilityId}/{responsibilityId}.mjs",
+      "composition is materialized at composition/executes-{featureId}.mjs",
+      "the only runtime entrypoint is runtime/invokes-{featureId}.mjs",
+      "alternate bin, lib, src, helper, and test implementation topologies are rejected",
+      "empty alternate-topology directories are removed",
+      "projected JavaScript syntax is valid",
+      "declared acceptance executes GREEN",
+      "materialized artifact hashes remain unchanged during acceptance",
+      "credential bytes are not persisted"
+    ],
+    "requestSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://canonical-feature-authority/schemas/canonical-feature-conveyor-contract.schema.json",
+      "title": "Reviewed capability request",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "$schema",
+        "contract",
+        "intent",
+        "outcome",
+        "canonicalFeatureBody"
+      ],
+      "properties": {
+        "$schema": {
+          "const": "https://canonical-feature-authority/schemas/canonical-feature-conveyor-contract.schema.json"
+        },
+        "contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractType",
+            "contractId",
+            "title",
+            "status",
+            "schemaVersion"
+          ],
+          "properties": {
+            "contractType": {
+              "const": "reviewed-capability-request.v1"
+            },
+            "contractId": {
+              "$ref": "#/$defs/id"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "const": "reviewed"
+            },
+            "schemaVersion": {
+              "const": "1.0.0"
+            }
+          }
+        },
+        "intent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "actor",
+            "trigger",
+            "need",
+            "purpose",
+            "constraints"
+          ],
+          "properties": {
+            "actor": {
+              "type": "string",
+              "minLength": 1
+            },
+            "trigger": {
+              "type": "string",
+              "minLength": 1
+            },
+            "need": {
+              "type": "string",
+              "minLength": 1
+            },
+            "purpose": {
+              "type": "string",
+              "minLength": 1
+            },
+            "constraints": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/statement"
+              }
+            }
+          }
+        },
+        "outcome": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "outcomeId",
+            "statement",
+            "observableState"
+          ],
+          "properties": {
+            "outcomeId": {
+              "$ref": "#/$defs/id"
+            },
+            "statement": {
+              "type": "string",
+              "minLength": 1
+            },
+            "observableState": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/statement"
+              }
+            }
+          }
+        },
+        "canonicalFeatureBody": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "feature",
+            "background",
+            "scenarios"
+          ],
+          "properties": {
+            "feature": {
+              "$ref": "#/$defs/feature"
+            },
+            "background": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/statement"
+              }
+            },
+            "scenarios": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/scenario"
+              }
+            }
+          }
+        }
+      },
+      "$defs": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "statement": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "statementId",
+            "text"
+          ],
+          "properties": {
+            "statementId": {
+              "$ref": "#/$defs/id"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "feature": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "featureId",
+            "title",
+            "userStory",
+            "governingObligation"
+          ],
+          "properties": {
+            "featureId": {
+              "$ref": "#/$defs/id"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "userStory": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "asA",
+                "iWant",
+                "soThat"
+              ],
+              "properties": {
+                "asA": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "iWant": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "soThat": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "governingObligation": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "scenario": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scenarioId",
+            "title",
+            "behavior",
+            "obligation",
+            "expectation",
+            "responsibility",
+            "signal"
+          ],
+          "properties": {
+            "scenarioId": {
+              "$ref": "#/$defs/id"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "behavior": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "given",
+                "when",
+                "then"
+              ],
+              "properties": {
+                "given": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/$defs/statement"
+                  }
+                },
+                "when": {
+                  "$ref": "#/$defs/statement"
+                },
+                "then": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/$defs/statement"
+                  }
+                }
+              }
+            },
+            "obligation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "obligationId",
+                "statement"
+              ],
+              "properties": {
+                "obligationId": {
+                  "$ref": "#/$defs/id"
+                },
+                "statement": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "expectation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "expectationId",
+                "signalId",
+                "expectedDisposition"
+              ],
+              "properties": {
+                "expectationId": {
+                  "$ref": "#/$defs/id"
+                },
+                "signalId": {
+                  "$ref": "#/$defs/id"
+                },
+                "expectedDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "responsibility": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "responsibilityId",
+                "kind",
+                "semanticOperationId"
+              ],
+              "properties": {
+                "responsibilityId": {
+                  "$ref": "#/$defs/id"
+                },
+                "kind": {
+                  "enum": [
+                    "execution",
+                    "conformance",
+                    "projection",
+                    "composition",
+                    "observation"
+                  ]
+                },
+                "semanticOperationId": {
+                  "$ref": "#/$defs/id"
+                }
+              }
+            },
+            "signal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "signalId",
+                "statement",
+                "resultShape"
+              ],
+              "properties": {
+                "signalId": {
+                  "$ref": "#/$defs/id"
+                },
+                "statement": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resultShape": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "contractId",
+                    "fields"
+                  ],
+                  "properties": {
+                    "contractId": {
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9-]*\\.v[1-9][0-9]*$"
+                    },
+                    "fields": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "$ref": "#/$defs/field"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "field": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "type"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9]*$"
+            },
+            "type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "allowedValues": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "integer",
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "required": {
+              "type": "boolean"
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "producedAuthoritySchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://canonical-feature-authority/schemas/model-produced-capability-authority.schema.json",
+      "title": "Model-produced capability implementation authority",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorityType",
+        "featureId",
+        "contractSha256",
+        "challengeNonce",
+        "runtime",
+        "semanticPlan",
+        "artifacts"
+      ],
+      "properties": {
+        "authorityType": {
+          "const": "model-produced-capability-authority.v1"
+        },
+        "featureId": {
+          "$ref": "#/$defs/id"
+        },
+        "contractSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "challengeNonce": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$"
+        },
+        "runtime": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "runtimeId",
+            "commandName",
+            "entrypoint"
+          ],
+          "properties": {
+            "runtimeId": {
+              "const": "node-esm.v1"
+            },
+            "commandName": {
+              "$ref": "#/$defs/id"
+            },
+            "entrypoint": {
+              "$ref": "#/$defs/relativePath"
+            }
+          }
+        },
+        "semanticPlan": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sequence",
+              "scenarioId",
+              "responsibilityId",
+              "operation",
+              "input",
+              "output",
+              "failureCodes"
+            ],
+            "properties": {
+              "sequence": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "scenarioId": {
+                "$ref": "#/$defs/id"
+              },
+              "responsibilityId": {
+                "$ref": "#/$defs/id"
+              },
+              "operation": {
+                "type": "string",
+                "minLength": 1
+              },
+              "input": {
+                "type": "string",
+                "minLength": 1
+              },
+              "output": {
+                "type": "string",
+                "minLength": 1
+              },
+              "failureCodes": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Z][A-Z0-9_]*$"
+                }
+              }
+            }
+          }
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "artifactId",
+              "path",
+              "mediaType",
+              "source"
+            ],
+            "properties": {
+              "artifactId": {
+                "$ref": "#/$defs/id"
+              },
+              "path": {
+                "$ref": "#/$defs/relativePath"
+              },
+              "mediaType": {
+                "enum": [
+                  "text/javascript",
+                  "application/json",
+                  "text/markdown"
+                ]
+              },
+              "source": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1048576
+              }
+            }
+          }
+        }
+      },
+      "$defs": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "relativePath": {
+          "type": "string",
+          "pattern": "^(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$"
+        }
+      }
+    }
+  },
   "runtimeAdapter": {
     "contractId": "canonical-feature-runtime-adapter.v1",
     "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/invokes-canonical-feature-conveyor.ts",
@@ -943,6 +1527,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
     "registrations": "IMPLEMENTED",
     "semanticInterpreter": "IMPLEMENTED",
     "semanticAuthorityLoader": "IMPLEMENTED",
+    "newFeatureProjection": "IMPLEMENTED",
     "runtimeAdapter": "IMPLEMENTED",
     "authorityProjectorBoundary": "IMPLEMENTED",
     "materializationBoundary": "IMPLEMENTED",
@@ -984,7 +1569,8 @@ export interface EndToEndCanonicalFeatureConveyorContext {
       "externalModuleImports": "forbidden",
       "conveyorSpecificToolsOutsideCapability": "forbidden",
       "runtimeAuthorityLoading": "scenario-owned-json-files-only",
-      "embeddedSemanticAuthority": "forbidden"
+      "embeddedSemanticAuthority": "forbidden",
+      "evaluationFixturesOnProductionCommand": "forbidden"
     },
     "supplementalArtifacts": [
       {
@@ -1023,6 +1609,26 @@ export interface EndToEndCanonicalFeatureConveyorContext {
         "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts",
         "sourceAuthorityRef": "implementation-artifact:semantic-authority-loader",
         "projectorCapability": "projects-semantic-authority-loader",
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
+      },
+      {
+        "artifactId": "canonical-feature-conveyor-contract-schema",
+        "family": "contract-schema",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/schema/canonical-feature-conveyor-contract.schema.json",
+        "sourceAuthorityRef": "implementation-artifact:new-feature-projection:request-schema",
+        "projectorCapability": "projects-reviewed-capability-request-schema",
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
+      },
+      {
+        "artifactId": "model-produced-capability-authority-schema",
+        "family": "contract-schema",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/schema/model-produced-capability-authority.schema.json",
+        "sourceAuthorityRef": "implementation-artifact:new-feature-projection:produced-authority-schema",
+        "projectorCapability": "projects-model-produced-capability-authority-schema",
         "projectionPosture": "PROJECTABLE",
         "ownership": "projector-owned",
         "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
@@ -1109,7 +1715,7 @@ export interface EndToEndCanonicalFeatureConveyorContext {
 
 Package: `end-to-end-canonical-feature-conveyor-implementation.v1`
 
-Topology SHA-256: `sha256:34618b4c16a7c101c601faf15b89c45d01de936ea8503577f80710868b501de6`
+Topology SHA-256: `sha256:eb83f5298eed85a3202a2f3ba49d3e6c10f4a6971a8ba26248003d2f8cbe374a`
 
 | Artifact | Family | Projector capability | Posture | Source SHA-256 |
 | --- | --- | --- | --- | --- |
@@ -1169,22 +1775,27 @@ Topology SHA-256: `sha256:34618b4c16a7c101c601faf15b89c45d01de936ea8503577f80710
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/composition/executes-end-to-end-canonical-feature-conveyor.type.ts` | composition | `projects-production-typescript` | `PROJECTABLE` | `sha256:dc2e0b8e457ba5a3769c8d653cb8c09c978790f941837a02f7ba01f27418c555` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/interprets-canonical-feature-semantic-authority.ts` | semantic-interpreter | `projects-semantic-interpreter` | `PROJECTABLE` | `sha256:666eae51636ea5ddd00818c658f9d471b5d9f9762cbf0d7670ca8a6806841577` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts` | semantic-authority-loader | `projects-semantic-authority-loader` | `PROJECTABLE` | `sha256:4198381e1cda43a117f422b4bf4bbb682387bb07d40913ae217eb3d6018ec10d` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/schema/canonical-feature-conveyor-contract.schema.json` | contract-schema | `projects-reviewed-capability-request-schema` | `PROJECTABLE` | `sha256:cffdc30b688145b3b21e3f777561a6279746328c1b62839f91eed883710b2e9a` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/schema/model-produced-capability-authority.schema.json` | contract-schema | `projects-model-produced-capability-authority-schema` | `PROJECTABLE` | `sha256:9c7d5570cc379e5597676bbfdf772ddf6d6b9995417a54aa6ad69e532a5189cd` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-authority-projector.port.ts` | runtime-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:ebfd0389d45c88064e89b6688962571005a51d1e20472d02adec027bf3fecafd` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/complete-new-feature-materializer.port.ts` | runtime-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:954684ef3161f48e4490f42c4f80d582a99cfb041ba9a8eea5114d7dbaf5e78f` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/canonical-feature-evaluation-fixture.port.ts` | evaluation-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:f213b82fff7896dc81423cb0dfb2cf0beda5b4145bfdffcb95f60e0bf24c013e` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/governed-artifact-evidence-store.port.ts` | evaluation-port | `projects-production-typescript` | `PROJECTABLE` | `sha256:7673741779ee83695898ed3e2eddab97458ff6c1f58b967e3e1fdc753bcce2ce` |
-| `capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/proves-canonical-feature-conveyor.ts` | evaluation-proof | `projects-evaluation-proof` | `PROJECTABLE` | `sha256:87ae6152051350918ee5a83d89c3cc4166a60e3b4b19a188c92c68ad816c0ed1` |
-| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/self-hosts-canonical-feature-conveyor.mjs` | self-hosting-runner | `projects-self-hosting-runner` | `PROJECTABLE` | `sha256:b302a4072871e6a2734e1fd2757d0c070392b5af72ffa6f64efbd638eee7b0c7` |
-| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/canonical-feature-conveyor-implementation-package.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:35b668a098de9c1ce427c1a5c84874f302dcb5a95c85827ce936d57bfe8287bd` |
-| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/canonical-feature-conveyor-projection.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:2b9aa585b3e3149c3c7007184921f36ea26c1609ad2389800e95fb14ce6aa48d` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/evaluation/proves-canonical-feature-conveyor.ts` | evaluation-proof | `projects-evaluation-proof` | `PROJECTABLE` | `sha256:9f9d65abdbd1e0f4ff2ac3ec3348fbcd1e82604ba986c54c3395503273375105` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/self-hosts-canonical-feature-conveyor.mjs` | self-hosting-runner | `projects-self-hosting-runner` | `PROJECTABLE` | `sha256:91dab95be62d0733fae932ef6c4298525e4bd2ff9439d83b0cbb3f5e6745847b` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/canonical-feature-conveyor-implementation-package.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:5bc25247980704a3594fcdd5dbcf90e34a872c60f8a5318f96dfef64852aa7c5` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/canonical-feature-conveyor-projection.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:178710e87e5c726a4c1671291fc48e171ad7a3c7b5aceed76cf6ffbd22ab6614` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-contract.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:0a937ea632eb33994ff13ade8ee812b36ee47fe549a49f2f4373ca53324f55e0` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-derived-bodies.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:29cbd2242e170e2f88eb8af43b6e8a16c5d77edc0bfce2a37abdb77976278ea5` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-implementation.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:e636ca4a3a762c77bcad4cc599cc366e43f941ef559ba06584b18a16b430dfd7` |
-| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/verifies-canonical-feature-conveyor-contract.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:0b5fdbd37d344e9c8308545190ca3919c1af846eed41f7f60c8d83d14fe94c5e` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/verifies-canonical-feature-conveyor-contract.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:0f2c547937a90fda654baec98d8bf901fcfe9fd5d461b9c9b5be1b9cf80d86b3` |
+| `capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/projects-reviewed-capability-contract.mjs` | fractal-projection-tool | `realizes-lossless-source-ast` | `PROJECTABLE` | `sha256:f59838c85bd1a717801b7c5cc5c9b6fa7274146738264983028ebfa61f73581d` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/ajv-2020.bundle.mjs` | embedded-runtime | `projects-capability-local-runtime-snapshot` | `PROJECTABLE` | `sha256:6c69a45405bb860cfd3a2b1835d6bb905cdddffec486fd4426dd8863057b6dfa` |
 | `capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs` | embedded-runtime | `projects-capability-local-runtime-snapshot` | `PROJECTABLE` | `sha256:0f1f8e7b25ca750fb8f051314c64ab37d0f0d185562203c16e39be4f456523ae` |
 
 Projection source policy: canonical JSON authority only; Markdown scraping is forbidden.
+
+Production new-feature admission requires one reviewed capability request, one acceptance contract, exact scenario/responsibility implementation paths under `capabilities/{featureId}`, one canonical composition body, one canonical runtime entrypoint, a nonempty governed artifact manifest, and GREEN execution of those exact materialized bytes. Alternate `bin`, `lib`, `src`, helper, and test implementation topologies and evaluation-fixture resolvers are forbidden on the production command.
 
 Execution proof: direct semantic authority and the projected composition plus responsibility bodies must be RFC8785-JCS equivalent and terminate with `PROJECTION_CONFORMS`.
 
@@ -6683,6 +7294,590 @@ Compilation and runtime artifact authority:
     "embeddedSemanticAuthority": "forbidden",
     "bindingStatus": "IMPLEMENTED"
   },
+  "newFeatureProjection": {
+    "contractId": "reviewed-capability-contract-projector.v1",
+    "bindingStatus": "IMPLEMENTED",
+    "projectorArtifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/projects-reviewed-capability-contract.mjs",
+    "requestSchemaArtifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/schema/canonical-feature-conveyor-contract.schema.json",
+    "producedAuthoritySchemaArtifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/schema/model-produced-capability-authority.schema.json",
+    "publicCommand": "project",
+    "providerModel": "gemini-flash-latest",
+    "providerCredentialEnvironmentVariable": "LOC_GEMINI_API_KEY",
+    "materializationRootTemplate": "capabilities/{featureId}",
+    "evidenceRootPolicy": "machine-local-outside-repository",
+    "evaluationFixtureExposure": "forbidden-on-production-command",
+    "inputRequirements": [
+      "reviewed capability request path",
+      "acceptance contract path",
+      "governed repository root",
+      "external evidence root",
+      "provider credential"
+    ],
+    "greenRequirements": [
+      "request schema is valid",
+      "request contract bytes are consumed and hashed",
+      "provider response is challenge-bound",
+      "model-produced authority schema is valid",
+      "semantic plan covers every scenario in order",
+      "at least one governed implementation artifact is materialized",
+      "every artifact remains inside capabilities/{featureId}",
+      "every scenario body is materialized at scenarios/{scenarioId}/{responsibilityId}/{responsibilityId}.mjs",
+      "composition is materialized at composition/executes-{featureId}.mjs",
+      "the only runtime entrypoint is runtime/invokes-{featureId}.mjs",
+      "alternate bin, lib, src, helper, and test implementation topologies are rejected",
+      "empty alternate-topology directories are removed",
+      "projected JavaScript syntax is valid",
+      "declared acceptance executes GREEN",
+      "materialized artifact hashes remain unchanged during acceptance",
+      "credential bytes are not persisted"
+    ],
+    "requestSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://canonical-feature-authority/schemas/canonical-feature-conveyor-contract.schema.json",
+      "title": "Reviewed capability request",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "$schema",
+        "contract",
+        "intent",
+        "outcome",
+        "canonicalFeatureBody"
+      ],
+      "properties": {
+        "$schema": {
+          "const": "https://canonical-feature-authority/schemas/canonical-feature-conveyor-contract.schema.json"
+        },
+        "contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractType",
+            "contractId",
+            "title",
+            "status",
+            "schemaVersion"
+          ],
+          "properties": {
+            "contractType": {
+              "const": "reviewed-capability-request.v1"
+            },
+            "contractId": {
+              "$ref": "#/$defs/id"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "const": "reviewed"
+            },
+            "schemaVersion": {
+              "const": "1.0.0"
+            }
+          }
+        },
+        "intent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "actor",
+            "trigger",
+            "need",
+            "purpose",
+            "constraints"
+          ],
+          "properties": {
+            "actor": {
+              "type": "string",
+              "minLength": 1
+            },
+            "trigger": {
+              "type": "string",
+              "minLength": 1
+            },
+            "need": {
+              "type": "string",
+              "minLength": 1
+            },
+            "purpose": {
+              "type": "string",
+              "minLength": 1
+            },
+            "constraints": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/statement"
+              }
+            }
+          }
+        },
+        "outcome": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "outcomeId",
+            "statement",
+            "observableState"
+          ],
+          "properties": {
+            "outcomeId": {
+              "$ref": "#/$defs/id"
+            },
+            "statement": {
+              "type": "string",
+              "minLength": 1
+            },
+            "observableState": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/statement"
+              }
+            }
+          }
+        },
+        "canonicalFeatureBody": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "feature",
+            "background",
+            "scenarios"
+          ],
+          "properties": {
+            "feature": {
+              "$ref": "#/$defs/feature"
+            },
+            "background": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/statement"
+              }
+            },
+            "scenarios": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/scenario"
+              }
+            }
+          }
+        }
+      },
+      "$defs": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "statement": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "statementId",
+            "text"
+          ],
+          "properties": {
+            "statementId": {
+              "$ref": "#/$defs/id"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "feature": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "featureId",
+            "title",
+            "userStory",
+            "governingObligation"
+          ],
+          "properties": {
+            "featureId": {
+              "$ref": "#/$defs/id"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "userStory": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "asA",
+                "iWant",
+                "soThat"
+              ],
+              "properties": {
+                "asA": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "iWant": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "soThat": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "governingObligation": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "scenario": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scenarioId",
+            "title",
+            "behavior",
+            "obligation",
+            "expectation",
+            "responsibility",
+            "signal"
+          ],
+          "properties": {
+            "scenarioId": {
+              "$ref": "#/$defs/id"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "behavior": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "given",
+                "when",
+                "then"
+              ],
+              "properties": {
+                "given": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/$defs/statement"
+                  }
+                },
+                "when": {
+                  "$ref": "#/$defs/statement"
+                },
+                "then": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/$defs/statement"
+                  }
+                }
+              }
+            },
+            "obligation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "obligationId",
+                "statement"
+              ],
+              "properties": {
+                "obligationId": {
+                  "$ref": "#/$defs/id"
+                },
+                "statement": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "expectation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "expectationId",
+                "signalId",
+                "expectedDisposition"
+              ],
+              "properties": {
+                "expectationId": {
+                  "$ref": "#/$defs/id"
+                },
+                "signalId": {
+                  "$ref": "#/$defs/id"
+                },
+                "expectedDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "responsibility": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "responsibilityId",
+                "kind",
+                "semanticOperationId"
+              ],
+              "properties": {
+                "responsibilityId": {
+                  "$ref": "#/$defs/id"
+                },
+                "kind": {
+                  "enum": [
+                    "execution",
+                    "conformance",
+                    "projection",
+                    "composition",
+                    "observation"
+                  ]
+                },
+                "semanticOperationId": {
+                  "$ref": "#/$defs/id"
+                }
+              }
+            },
+            "signal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "signalId",
+                "statement",
+                "resultShape"
+              ],
+              "properties": {
+                "signalId": {
+                  "$ref": "#/$defs/id"
+                },
+                "statement": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resultShape": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "contractId",
+                    "fields"
+                  ],
+                  "properties": {
+                    "contractId": {
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9-]*\\.v[1-9][0-9]*$"
+                    },
+                    "fields": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "$ref": "#/$defs/field"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "field": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "type"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9]*$"
+            },
+            "type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "allowedValues": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "integer",
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            "required": {
+              "type": "boolean"
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "producedAuthoritySchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://canonical-feature-authority/schemas/model-produced-capability-authority.schema.json",
+      "title": "Model-produced capability implementation authority",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorityType",
+        "featureId",
+        "contractSha256",
+        "challengeNonce",
+        "runtime",
+        "semanticPlan",
+        "artifacts"
+      ],
+      "properties": {
+        "authorityType": {
+          "const": "model-produced-capability-authority.v1"
+        },
+        "featureId": {
+          "$ref": "#/$defs/id"
+        },
+        "contractSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "challengeNonce": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$"
+        },
+        "runtime": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "runtimeId",
+            "commandName",
+            "entrypoint"
+          ],
+          "properties": {
+            "runtimeId": {
+              "const": "node-esm.v1"
+            },
+            "commandName": {
+              "$ref": "#/$defs/id"
+            },
+            "entrypoint": {
+              "$ref": "#/$defs/relativePath"
+            }
+          }
+        },
+        "semanticPlan": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sequence",
+              "scenarioId",
+              "responsibilityId",
+              "operation",
+              "input",
+              "output",
+              "failureCodes"
+            ],
+            "properties": {
+              "sequence": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "scenarioId": {
+                "$ref": "#/$defs/id"
+              },
+              "responsibilityId": {
+                "$ref": "#/$defs/id"
+              },
+              "operation": {
+                "type": "string",
+                "minLength": 1
+              },
+              "input": {
+                "type": "string",
+                "minLength": 1
+              },
+              "output": {
+                "type": "string",
+                "minLength": 1
+              },
+              "failureCodes": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Z][A-Z0-9_]*$"
+                }
+              }
+            }
+          }
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "artifactId",
+              "path",
+              "mediaType",
+              "source"
+            ],
+            "properties": {
+              "artifactId": {
+                "$ref": "#/$defs/id"
+              },
+              "path": {
+                "$ref": "#/$defs/relativePath"
+              },
+              "mediaType": {
+                "enum": [
+                  "text/javascript",
+                  "application/json",
+                  "text/markdown"
+                ]
+              },
+              "source": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1048576
+              }
+            }
+          }
+        }
+      },
+      "$defs": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "relativePath": {
+          "type": "string",
+          "pattern": "^(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$"
+        }
+      }
+    }
+  },
   "runtimeAdapter": {
     "contractId": "canonical-feature-runtime-adapter.v1",
     "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/invokes-canonical-feature-conveyor.ts",
@@ -6938,6 +8133,7 @@ Compilation and runtime artifact authority:
     "registrations": "IMPLEMENTED",
     "semanticInterpreter": "IMPLEMENTED",
     "semanticAuthorityLoader": "IMPLEMENTED",
+    "newFeatureProjection": "IMPLEMENTED",
     "runtimeAdapter": "IMPLEMENTED",
     "authorityProjectorBoundary": "IMPLEMENTED",
     "materializationBoundary": "IMPLEMENTED",
@@ -6979,7 +8175,8 @@ Compilation and runtime artifact authority:
       "externalModuleImports": "forbidden",
       "conveyorSpecificToolsOutsideCapability": "forbidden",
       "runtimeAuthorityLoading": "scenario-owned-json-files-only",
-      "embeddedSemanticAuthority": "forbidden"
+      "embeddedSemanticAuthority": "forbidden",
+      "evaluationFixturesOnProductionCommand": "forbidden"
     },
     "supplementalArtifacts": [
       {
@@ -7018,6 +8215,26 @@ Compilation and runtime artifact authority:
         "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/runtime/loads-canonical-feature-semantic-authority.ts",
         "sourceAuthorityRef": "implementation-artifact:semantic-authority-loader",
         "projectorCapability": "projects-semantic-authority-loader",
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
+      },
+      {
+        "artifactId": "canonical-feature-conveyor-contract-schema",
+        "family": "contract-schema",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/schema/canonical-feature-conveyor-contract.schema.json",
+        "sourceAuthorityRef": "implementation-artifact:new-feature-projection:request-schema",
+        "projectorCapability": "projects-reviewed-capability-request-schema",
+        "projectionPosture": "PROJECTABLE",
+        "ownership": "projector-owned",
+        "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"
+      },
+      {
+        "artifactId": "model-produced-capability-authority-schema",
+        "family": "contract-schema",
+        "artifactPath": "capabilities/end-to-end-canonical-feature-conveyor-fractal/schema/model-produced-capability-authority.schema.json",
+        "sourceAuthorityRef": "implementation-artifact:new-feature-projection:produced-authority-schema",
+        "projectorCapability": "projects-model-produced-capability-authority-schema",
         "projectionPosture": "PROJECTABLE",
         "ownership": "projector-owned",
         "existingFilePolicy": "REPLACE_IF_GENERATED_LINEAGE_MATCHES"

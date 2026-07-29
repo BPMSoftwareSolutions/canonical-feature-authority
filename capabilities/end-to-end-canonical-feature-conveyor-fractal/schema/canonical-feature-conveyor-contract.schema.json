@@ -1,0 +1,397 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/canonical-feature-conveyor-contract.schema.json",
+  "title": "Reviewed capability request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "contract",
+    "intent",
+    "outcome",
+    "canonicalFeatureBody"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://canonical-feature-authority/schemas/canonical-feature-conveyor-contract.schema.json"
+    },
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractType",
+        "contractId",
+        "title",
+        "status",
+        "schemaVersion"
+      ],
+      "properties": {
+        "contractType": {
+          "const": "reviewed-capability-request.v1"
+        },
+        "contractId": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "const": "reviewed"
+        },
+        "schemaVersion": {
+          "const": "1.0.0"
+        }
+      }
+    },
+    "intent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor",
+        "trigger",
+        "need",
+        "purpose",
+        "constraints"
+      ],
+      "properties": {
+        "actor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger": {
+          "type": "string",
+          "minLength": 1
+        },
+        "need": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "constraints": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "outcomeId",
+        "statement",
+        "observableState"
+      ],
+      "properties": {
+        "outcomeId": {
+          "$ref": "#/$defs/id"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observableState": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        }
+      }
+    },
+    "canonicalFeatureBody": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "feature",
+        "background",
+        "scenarios"
+      ],
+      "properties": {
+        "feature": {
+          "$ref": "#/$defs/feature"
+        },
+        "background": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        },
+        "scenarios": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/scenario"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "statement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statementId",
+        "text"
+      ],
+      "properties": {
+        "statementId": {
+          "$ref": "#/$defs/id"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "featureId",
+        "title",
+        "userStory",
+        "governingObligation"
+      ],
+      "properties": {
+        "featureId": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "userStory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "asA",
+            "iWant",
+            "soThat"
+          ],
+          "properties": {
+            "asA": {
+              "type": "string",
+              "minLength": 1
+            },
+            "iWant": {
+              "type": "string",
+              "minLength": 1
+            },
+            "soThat": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "governingObligation": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenarioId",
+        "title",
+        "behavior",
+        "obligation",
+        "expectation",
+        "responsibility",
+        "signal"
+      ],
+      "properties": {
+        "scenarioId": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "behavior": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "given",
+            "when",
+            "then"
+          ],
+          "properties": {
+            "given": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/statement"
+              }
+            },
+            "when": {
+              "$ref": "#/$defs/statement"
+            },
+            "then": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/statement"
+              }
+            }
+          }
+        },
+        "obligation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "obligationId",
+            "statement"
+          ],
+          "properties": {
+            "obligationId": {
+              "$ref": "#/$defs/id"
+            },
+            "statement": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "expectation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "expectationId",
+            "signalId",
+            "expectedDisposition"
+          ],
+          "properties": {
+            "expectationId": {
+              "$ref": "#/$defs/id"
+            },
+            "signalId": {
+              "$ref": "#/$defs/id"
+            },
+            "expectedDisposition": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "responsibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "responsibilityId",
+            "kind",
+            "semanticOperationId"
+          ],
+          "properties": {
+            "responsibilityId": {
+              "$ref": "#/$defs/id"
+            },
+            "kind": {
+              "enum": [
+                "execution",
+                "conformance",
+                "projection",
+                "composition",
+                "observation"
+              ]
+            },
+            "semanticOperationId": {
+              "$ref": "#/$defs/id"
+            }
+          }
+        },
+        "signal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "signalId",
+            "statement",
+            "resultShape"
+          ],
+          "properties": {
+            "signalId": {
+              "$ref": "#/$defs/id"
+            },
+            "statement": {
+              "type": "string",
+              "minLength": 1
+            },
+            "resultShape": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "contractId",
+                "fields"
+              ],
+              "properties": {
+                "contractId": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9-]*\\.v[1-9][0-9]*$"
+                },
+                "fields": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/$defs/field"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "type"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9]*$"
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "allowedValues": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": [
+              "string",
+              "number",
+              "integer",
+              "boolean",
+              "null"
+            ]
+          }
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

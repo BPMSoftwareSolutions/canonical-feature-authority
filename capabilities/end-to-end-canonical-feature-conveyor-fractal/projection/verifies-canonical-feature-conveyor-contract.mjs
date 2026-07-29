@@ -12,7 +12,7 @@ import {
 const repositoryRoot = resolve(import.meta.dirname, "../../..");
 const schemaPath = resolve(
   repositoryRoot,
-  "schemas/canonical-feature-conveyor-contract.schema.json"
+  "schemas/end-to-end-canonical-feature-conveyor-authority.schema.json"
 );
 const authorityPath = resolve(
   repositoryRoot,
@@ -211,6 +211,134 @@ if (!validate(authority)) {
     )}`
   );
 }
+const newFeatureProjection =
+  authority.implementationArtifactAuthority.newFeatureProjection;
+const genericAjv = new Ajv2020({
+  allErrors: true,
+  strict: false
+});
+assert(
+  genericAjv.validateSchema(newFeatureProjection.requestSchema) &&
+    genericAjv.validateSchema(
+      newFeatureProjection.producedAuthoritySchema
+    ),
+  "CONVEYOR_GENERIC_FEATURE_SCHEMA_NOT_META_VALID"
+);
+const validatesReviewedCapabilityRequest = genericAjv.compile(
+  newFeatureProjection.requestSchema
+);
+const validatesModelProducedCapabilityAuthority =
+  genericAjv.compile(
+    newFeatureProjection.producedAuthoritySchema
+  );
+const independentCapabilityRequest = {
+  $schema: newFeatureProjection.requestSchema.$id,
+  contract: {
+    contractType: "reviewed-capability-request.v1",
+    contractId: "independent-json-tool",
+    title: "Independent JSON tool",
+    status: "reviewed",
+    schemaVersion: "1.0.0"
+  },
+  intent: {
+    actor: "command-line user",
+    trigger: "one explicit input is supplied",
+    need: "transform independent JSON",
+    purpose: "produce an observable result",
+    constraints: [
+      {
+        statementId: "local-input",
+        text: "The input is local."
+      }
+    ]
+  },
+  outcome: {
+    outcomeId: "independent-result",
+    statement: "One independent result is emitted.",
+    observableState: [
+      {
+        statementId: "result-exists",
+        text: "The result is observable."
+      }
+    ]
+  },
+  canonicalFeatureBody: {
+    feature: {
+      featureId: "independent-json-tool",
+      title: "Transform independent JSON",
+      userStory: {
+        asA: "command-line user",
+        iWant: "to transform JSON",
+        soThat: "I can observe a result"
+      },
+      governingObligation:
+        "One invocation produces one result."
+    },
+    background: [
+      {
+        statementId: "input-is-explicit",
+        text: "The input is explicit."
+      }
+    ],
+    scenarios: [
+      {
+        scenarioId: "transform-json",
+        title: "Transform JSON",
+        behavior: {
+          given: [
+            {
+              statementId: "json-is-available",
+              text: "JSON is available."
+            }
+          ],
+          when: {
+            statementId: "transform-runs",
+            text: "The transform runs."
+          },
+          then: [
+            {
+              statementId: "result-is-emitted",
+              text: "The result is emitted."
+            }
+          ]
+        },
+        obligation: {
+          obligationId: "transform-deterministically",
+          statement: "The transform is deterministic."
+        },
+        expectation: {
+          expectationId: "expect-independent-result",
+          signalId: "independent-result",
+          expectedDisposition: "EMITTED"
+        },
+        responsibility: {
+          responsibilityId: "transforms-independent-json",
+          kind: "execution",
+          semanticOperationId: "transform-independent-json"
+        },
+        signal: {
+          signalId: "independent-result",
+          statement: "The independent result is available.",
+          resultShape: {
+            contractId: "independent-result.v1",
+            fields: [
+              {
+                name: "value",
+                type: "json-value"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+};
+assert(
+  validatesReviewedCapabilityRequest(independentCapabilityRequest),
+  `CONVEYOR_GENERIC_FEATURE_REQUEST_REJECTED: ${genericAjv.errorsText(
+    validatesReviewedCapabilityRequest.errors
+  )}`
+);
 
 const expectedStageIds = [
   "capture-intent",
@@ -563,6 +691,69 @@ for (const coordinate of supplementalCoordinates) {
 assertsSemanticAuthorityRuntimeBoundary(
   authority,
   implementationArtifacts
+);
+const genericProjectorArtifact = implementationArtifacts.find(
+  artifact =>
+    artifact.artifactPath ===
+    newFeatureProjection.projectorArtifactPath
+);
+const requestSchemaArtifact = implementationArtifacts.find(
+  artifact =>
+    artifact.artifactPath ===
+    newFeatureProjection.requestSchemaArtifactPath
+);
+const producedAuthoritySchemaArtifact =
+  implementationArtifacts.find(
+    artifact =>
+      artifact.artifactPath ===
+      newFeatureProjection.producedAuthoritySchemaArtifactPath
+  );
+assert(
+  newFeatureProjection.bindingStatus === "IMPLEMENTED" &&
+    newFeatureProjection.publicCommand === "project" &&
+    newFeatureProjection.evaluationFixtureExposure ===
+      "forbidden-on-production-command" &&
+    genericProjectorArtifact !== undefined &&
+    genericProjectorArtifact.projectedSource.includes(
+      "CAPABILITY_ZERO_ARTIFACT_PROJECTION_REJECTED"
+    ) &&
+    genericProjectorArtifact.projectedSource.includes(
+      "CAPABILITY_CANONICAL_FILE_BODY_LAYOUT_DIVERGES"
+    ) &&
+    genericProjectorArtifact.projectedSource.includes(
+      "scenarios/${scenario.scenarioId}/"
+    ) &&
+    genericProjectorArtifact.projectedSource.includes(
+      "runtime/invokes-${featureId}.mjs"
+    ) &&
+    genericProjectorArtifact.projectedSource.includes(
+      "removesEmptyDirectories"
+    ) &&
+    genericProjectorArtifact.projectedSource.includes(
+      "contractConsumed: true"
+    ) &&
+    genericProjectorArtifact.projectedSource.includes(
+      "executesAcceptance"
+    ) &&
+    !genericProjectorArtifact.projectedSource.includes(
+      "createInMemoryConformanceResolver"
+    ) &&
+    !genericProjectorArtifact.projectedSource.includes(
+      "createsEvaluationFixtureResolver"
+    ) &&
+    requestSchemaArtifact?.projectedSource ===
+      `${JSON.stringify(
+        newFeatureProjection.requestSchema,
+        null,
+        2
+      )}\n` &&
+    producedAuthoritySchemaArtifact?.projectedSource ===
+      `${JSON.stringify(
+        newFeatureProjection.producedAuthoritySchema,
+        null,
+        2
+      )}\n`,
+  "CONVEYOR_GENERIC_FEATURE_PROJECTION_BOUNDARY_MISMATCH"
 );
 assert(
   derived.implementationPackage.summary.declaredArtifacts ===
@@ -1399,6 +1590,12 @@ assert(
   "CONVEYOR_SEMANTIC_AUTHORITY_LOADING_DOCUMENTATION_MISSING"
 );
 assert(
+  projectedMarkdownText.includes(
+    "Production new-feature admission requires one reviewed capability request, one acceptance contract, exact scenario/responsibility implementation paths under `capabilities/{featureId}`, one canonical composition body, one canonical runtime entrypoint, a nonempty governed artifact manifest, and GREEN execution of those exact materialized bytes. Alternate `bin`, `lib`, `src`, helper, and test implementation topologies and evaluation-fixture resolvers are forbidden on the production command."
+  ),
+  "CONVEYOR_GENERIC_FEATURE_PROJECTION_DOCUMENTATION_MISSING"
+);
+assert(
   sha256(projectedMarkdown) === authority.projection.outputByteSha256,
   "CONVEYOR_PROJECTION_HASH_MISMATCH"
 );
@@ -1435,6 +1632,44 @@ recordsControl(
     }
   },
   "CONVEYOR_AUTHORITY_SCHEMA_INVALID"
+);
+const zeroArtifactCapabilityAuthority = {
+  authorityType: "model-produced-capability-authority.v1",
+  featureId: "independent-json-tool",
+  contractSha256: `sha256:${"0".repeat(64)}`,
+  challengeNonce: "A".repeat(43),
+  runtime: {
+    runtimeId: "node-esm.v1",
+    commandName: "independent-json",
+    entrypoint: "cli.mjs"
+  },
+  semanticPlan: [
+    {
+      sequence: 1,
+      scenarioId: "transform-json",
+      responsibilityId: "transforms-independent-json",
+      operation: "transform JSON",
+      input: "JSON value",
+      output: "transformed value",
+      failureCodes: ["TRANSFORM_RED"]
+    }
+  ],
+  artifacts: []
+};
+recordsControl(
+  "zero-artifact-new-feature-authority",
+  () => {
+    if (
+      !validatesModelProducedCapabilityAuthority(
+        zeroArtifactCapabilityAuthority
+      )
+    ) {
+      throw new Error(
+        "CONVEYOR_ZERO_ARTIFACT_NEW_FEATURE_REJECTED"
+      );
+    }
+  },
+  "CONVEYOR_ZERO_ARTIFACT_NEW_FEATURE_REJECTED"
 );
 
 const reorderedStages = structuredClone(stages);

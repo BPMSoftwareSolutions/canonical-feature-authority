@@ -34,7 +34,7 @@ function canonicalizes(value: unknown): string {
   return encoded;
 }
 
-function createsResolver(): SemanticObservationResolver {
+function createsEvaluationFixtureResolver(): SemanticObservationResolver {
   const semanticObservationRef = artifactRef("semantic-observation");
   const projectedObservationRef = artifactRef("projected-observation");
   const expectedSignalRef = artifactRef("expected-signal");
@@ -112,7 +112,7 @@ const semanticAuthorities =
 const semanticInterpreter =
   interpretsCanonicalFeatureSemanticAuthority(
     semanticAuthorities,
-    createsResolver()
+    createsEvaluationFixtureResolver()
   );
 let semanticResult: unknown = request;
 for (const responsibilityId of responsibilityIds) {
@@ -126,7 +126,7 @@ const projectedResult = await invokesCanonicalFeatureConveyor({
   interpreter:
     interpretsCanonicalFeatureSemanticAuthority(
       semanticAuthorities,
-      createsResolver()
+      createsEvaluationFixtureResolver()
     )
 });
 if (canonicalizes(semanticResult) !== canonicalizes(projectedResult)) {

@@ -10,7 +10,7 @@ export const repositoryRoot = resolve(
 );
 const schemaPath = resolve(
   repositoryRoot,
-  "schemas/canonical-feature-conveyor-contract.schema.json"
+  "schemas/end-to-end-canonical-feature-conveyor-authority.schema.json"
 );
 
 export function sha256(bytes) {
@@ -403,6 +403,8 @@ function rendersFeatureDestination(authority, derived) {
     ),
     "",
     "Projection source policy: canonical JSON authority only; Markdown scraping is forbidden.",
+    "",
+    "Production new-feature admission requires one reviewed capability request, one acceptance contract, exact scenario/responsibility implementation paths under `capabilities/{featureId}`, one canonical composition body, one canonical runtime entrypoint, a nonempty governed artifact manifest, and GREEN execution of those exact materialized bytes. Alternate `bin`, `lib`, `src`, helper, and test implementation topologies and evaluation-fixture resolvers are forbidden on the production command.",
     "",
     "Execution proof: direct semantic authority and the projected composition plus responsibility bodies must be RFC8785-JCS equivalent and terminate with `PROJECTION_CONFORMS`.",
     "",
