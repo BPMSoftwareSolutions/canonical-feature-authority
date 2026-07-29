@@ -1,0 +1,18 @@
+{
+  "catalogType": "governed-document-schema-catalog.v1",
+  "schemas": [
+    "governed-inspection-document-authority.schema.json"
+  ],
+  "templates": [
+    "templates/governed-inspection-document-authority.template.json"
+  ],
+  "projectors": [
+    {
+      "projectorId": "canonical-governed-markdown-projector",
+      "projectorVersion": "1.0.0",
+      "implementation": "tools/projects-governed-inspection-document.mjs",
+      "projectionLibrary": "tools/governed-inspection-document-projection.mjs",
+      "contract": "architecture/projects-governed-inspection-documentation.md"
+    }
+  ]
+}

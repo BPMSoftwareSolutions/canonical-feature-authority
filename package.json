@@ -12,9 +12,15 @@
     "verify:provenance-contract": "node tools/verifies-bounded-model-submission-provenance-contract.mjs",
     "regenerate:provenance-contract": "node tools/regenerates-bounded-model-submission-provenance-contract.mjs",
     "inspect:provenance-contract": "node tools/inspects-provenance-contract-path.mjs",
+    "adopt:governed-document": "node tools/adopts-governed-inspection-document.mjs",
+    "project:governed-document": "node tools/projects-governed-inspection-document.mjs --write",
+    "check:governed-document": "node tools/projects-governed-inspection-document.mjs --check",
+    "hash:governed-document": "node tools/projects-governed-inspection-document.mjs --hash",
+    "verify:governed-document": "node tools/verifies-governed-inspection-document.mjs",
+    "prove:governed-document": "npm run check:governed-document && npm run verify:governed-document",
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
-    "prove:projection": "npm run check:bodies && npm run build",
+    "prove:projection": "npm run prove:governed-document && npm run check:bodies && npm run build",
     "prove:lifecycle": "npm run check:bodies && npm run build && node dist/conformance/proves-projected-body-lifecycle.js"
   },
   "devDependencies": {

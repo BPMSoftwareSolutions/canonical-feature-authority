@@ -119,6 +119,29 @@ reads one repository-relative path:
 npm run inspect:provenance-contract -- --read capabilities/.../artifact.json
 ```
 
+## Governed inspection document workflow
+
+The independent provenance inspection contract is projected from validated
+JSON document authority:
+
+```text
+npm run hash:governed-document
+npm run project:governed-document
+npm run check:governed-document
+npm run verify:governed-document
+npm run prove:governed-document
+```
+
+The
+[document projection contract](architecture/projects-governed-inspection-documentation.md)
+defines the constrained Markdown grammar, canonical byte rules, adoption
+boundary, reusable ecosystem workflow, and RED dispositions. The JSON authority
+is the editable source. The projected Markdown is disposable and must reproduce
+byte-for-byte under the registered projector. Start another ecosystem contract
+from
+[the validated authority template](templates/governed-inspection-document-authority.template.json).
+The repository's `prove:projection` gate includes the governed-document proof.
+
 ## The governing rule
 
 Every lesson enforces the same constraint on the running example:

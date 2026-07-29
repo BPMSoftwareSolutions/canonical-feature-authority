@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canonical-feature-authority/schemas/governed-inspection-document-authority.schema.json",
+  "title": "Governed inspection document authority",
+  "description": "Canonical authority for deterministic projection of the ecosystem's constrained inspection-contract Markdown format.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "authorityType",
+    "documentId",
+    "title",
+    "projection",
+    "blocks"
+  ],
+  "properties": {
+    "authorityType": {
+      "const": "governed-inspection-document-authority.v1"
+    },
+    "documentId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "title": {
+      "$ref": "#/$defs/nonEmptyTrimmedLine"
+    },
+    "projection": {
+      "$ref": "#/$defs/projection"
+    },
+    "blocks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/block"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "line": {
+      "type": "string",
+      "pattern": "^[^\\r\\n]*$"
+    },
+    "nonEmptyLine": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[^\\r\\n]+$"
+    },
+    "nonEmptyTrimmedLine": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:.*\\S)?$"
+    },
+    "projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectorId",
+        "projectorVersion",
+        "outputPath",
+        "mediaType",
+        "encoding",
+        "lineEnding",
+        "blockSeparator",
+        "terminalNewline",
+        "outputByteSha256"
+      ],
+      "properties": {
+        "projectorId": {
+          "const": "canonical-governed-markdown-projector"
+        },
+        "projectorVersion": {
+          "const": "1.0.0"
+        },
+        "outputPath": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._/-]+\\.md$"
+        },
+        "mediaType": {
+          "const": "text/markdown"
+        },
+        "encoding": {
+          "const": "UTF-8"
+        },
+        "lineEnding": {
+          "enum": [
+            "LF",
+            "CRLF"
+          ]
+        },
+        "blockSeparator": {
+          "const": "blank-line"
+        },
+        "terminalNewline": {
+          "const": true
+        },
+        "outputByteSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "headingBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blockType",
+        "level",
+        "text"
+      ],
+      "properties": {
+        "blockType": {
+          "const": "heading"
+        },
+        "level": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "text": {
+          "$ref": "#/$defs/nonEmptyTrimmedLine"
+        }
+      }
+    },
+    "paragraphBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blockType",
+        "lines"
+      ],
+      "properties": {
+        "blockType": {
+          "const": "paragraph"
+        },
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/nonEmptyLine"
+          }
+        }
+      }
+    },
+    "fencedCodeBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blockType",
+        "language",
+        "lines"
+      ],
+      "properties": {
+        "blockType": {
+          "const": "fenced-code"
+        },
+        "language": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_+.-]*$"
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/line"
+              },
+              {
+                "not": {
+                  "const": "```"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "block": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/headingBlock"
+        },
+        {
+          "$ref": "#/$defs/paragraphBlock"
+        },
+        {
+          "$ref": "#/$defs/fencedCodeBlock"
+        }
+      ]
+    }
+  }
+}

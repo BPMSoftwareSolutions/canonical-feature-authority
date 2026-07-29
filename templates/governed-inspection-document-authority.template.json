@@ -1,0 +1,46 @@
+{
+  "authorityType": "governed-inspection-document-authority.v1",
+  "documentId": "replace-governed-inspection-contract",
+  "title": "Governed Inspection Contract",
+  "projection": {
+    "projectorId": "canonical-governed-markdown-projector",
+    "projectorVersion": "1.0.0",
+    "outputPath": "architecture/replaces-governed-inspection-contract.md",
+    "mediaType": "text/markdown",
+    "encoding": "UTF-8",
+    "lineEnding": "LF",
+    "blockSeparator": "blank-line",
+    "terminalNewline": true,
+    "outputByteSha256": "sha256:e0b2c440b11dcd09f84861e7da40b12a2978e95b54d570d45fab189247db9d52"
+  },
+  "blocks": [
+    {
+      "blockType": "heading",
+      "level": 1,
+      "text": "Governed Inspection Contract"
+    },
+    {
+      "blockType": "heading",
+      "level": 2,
+      "text": "Status"
+    },
+    {
+      "blockType": "fenced-code",
+      "language": "text",
+      "lines": [
+        "CURRENT DISPOSITION: RED - CONTRACT NOT YET ADMITTED"
+      ]
+    },
+    {
+      "blockType": "heading",
+      "level": 2,
+      "text": "Purpose"
+    },
+    {
+      "blockType": "paragraph",
+      "lines": [
+        "Replace this paragraph with the governed inspection purpose."
+      ]
+    }
+  ]
+}
