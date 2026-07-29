@@ -495,6 +495,54 @@ assert(
   ),
   "CONVEYOR_FILE_BODY_ROLE_COVERAGE_MISMATCH"
 );
+const topology =
+  authority.fileBodyAuthority.projectionTopology;
+const expectedTopologyRelationships = [
+  ["responsibility", "owns", "semantic-authority"],
+  [
+    "semantic-authority",
+    "projects",
+    "feature-body-authority"
+  ],
+  ["feature-body-authority", "projects", "ast-authority"],
+  ["ast-authority", "projects", "projected-code-body"],
+  [
+    "projected-code-body",
+    "requires",
+    "supporting-type-body"
+  ],
+  [
+    "projected-code-body",
+    "participates-in",
+    "semantic-registration-body"
+  ],
+  ["feature-execution", "projects", "composition-body"],
+  ["composition-body", "requires", "runtime-adapter-body"]
+];
+contiguous(
+  topology.relationships,
+  "CONVEYOR_PROJECTION_TOPOLOGY_SEQUENCE_INVALID"
+);
+assert(
+  JSON.stringify(
+    topology.relationships.map(relationship => [
+      relationship.from,
+      relationship.relationship,
+      relationship.to
+    ])
+  ) === JSON.stringify(expectedTopologyRelationships),
+  "CONVEYOR_PROJECTION_TOPOLOGY_RELATIONSHIP_MISMATCH"
+);
+assert(
+  topology.characterSet === "unicode-box-drawing" &&
+    topology.artifactClasses.every(artifactClass =>
+      authority.fileBodyAuthority.placementRules.some(
+        placement =>
+          placement.artifactRole === artifactClass.artifactRole
+      )
+    ),
+  "CONVEYOR_PROJECTION_TOPOLOGY_CLASS_MISMATCH"
+);
 const rendererSource = await readFile(
   resolve(
     repositoryRoot,
@@ -557,7 +605,7 @@ assert(
       },
       fileBodySystem: {
         source: "$.fileBodyAuthority",
-        renderer: "file-tree"
+        renderer: "projection-topology"
       },
       derivationOverview: {
         source: "$.conveyor.stages",
@@ -781,6 +829,23 @@ recordsControl(
       "CONVEYOR_FEATURE_CONTRACT_DISCONTINUITY"
     ),
   "CONVEYOR_FEATURE_CONTRACT_DISCONTINUITY"
+);
+const topologyMutation = structuredClone(topology);
+topologyMutation.relationships[2].relationship = "requires";
+recordsControl(
+  "projection-topology-relationship",
+  () =>
+    assert(
+      JSON.stringify(
+        topologyMutation.relationships.map(relationship => [
+          relationship.from,
+          relationship.relationship,
+          relationship.to
+        ])
+      ) === JSON.stringify(expectedTopologyRelationships),
+      "CONVEYOR_PROJECTION_TOPOLOGY_RELATIONSHIP_MISMATCH"
+    ),
+  "CONVEYOR_PROJECTION_TOPOLOGY_RELATIONSHIP_MISMATCH"
 );
 bodyMutation.operations[0].edgeId = "substituted-edge";
 recordsControl(

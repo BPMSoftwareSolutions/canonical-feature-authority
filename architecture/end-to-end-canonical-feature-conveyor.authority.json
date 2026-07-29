@@ -1726,7 +1726,7 @@
     "outputPath": "architecture/end-to-end-canonical-feature-conveyor.md",
     "encoding": "UTF-8",
     "lineEnding": "CRLF",
-    "outputByteSha256": "sha256:b02a504370ef69e6a068aec20eddb45b10554b132afad71a611ea2afa969293d",
+    "outputByteSha256": "sha256:fefa06065067f490aff4efd5255732b8177638fc9eee349d09187de86234a36e",
     "derivedProjectionOutputPath": "architecture/end-to-end-canonical-feature-conveyor.derived-projections.json",
     "derivedProjectionSha256": "sha256:d4ec16231bbe33321cf23ff2d42015329f3205fb9cfa4b1ff971b33a90a38381"
   },
@@ -1850,6 +1850,119 @@
         "pathTemplate": "{capabilityRoot}/runtime/invokes-canonical-feature-conveyor.ts"
       }
     ],
+    "projectionTopology": {
+      "topologyId": "responsibility-projection-topology",
+      "characterSet": "unicode-box-drawing",
+      "artifactClasses": [
+        {
+          "artifactRole": "semantic-authority",
+          "abbreviation": "SA",
+          "label": "Semantic Authority"
+        },
+        {
+          "artifactRole": "feature-body-authority",
+          "abbreviation": "FB",
+          "label": "Feature Body Authority"
+        },
+        {
+          "artifactRole": "ast-authority",
+          "abbreviation": "AST",
+          "label": "Projected AST"
+        },
+        {
+          "artifactRole": "supporting-type-body",
+          "abbreviation": "TYPE",
+          "label": "Projected Type Definitions"
+        },
+        {
+          "artifactRole": "projected-code-body",
+          "abbreviation": "TS",
+          "label": "Projected Runtime Body"
+        },
+        {
+          "artifactRole": "semantic-registration-body",
+          "abbreviation": "REG",
+          "label": "Runtime Registration"
+        },
+        {
+          "artifactRole": "composition-body",
+          "abbreviation": "FLOW",
+          "label": "Feature Execution Body"
+        },
+        {
+          "artifactRole": "runtime-adapter-body",
+          "abbreviation": "PORT",
+          "label": "Runtime Adapter"
+        }
+      ],
+      "relationships": [
+        {
+          "sequence": 1,
+          "from": "responsibility",
+          "relationship": "owns",
+          "to": "semantic-authority"
+        },
+        {
+          "sequence": 2,
+          "from": "semantic-authority",
+          "relationship": "projects",
+          "to": "feature-body-authority"
+        },
+        {
+          "sequence": 3,
+          "from": "feature-body-authority",
+          "relationship": "projects",
+          "to": "ast-authority"
+        },
+        {
+          "sequence": 4,
+          "from": "ast-authority",
+          "relationship": "projects",
+          "to": "projected-code-body"
+        },
+        {
+          "sequence": 5,
+          "from": "projected-code-body",
+          "relationship": "requires",
+          "to": "supporting-type-body"
+        },
+        {
+          "sequence": 6,
+          "from": "projected-code-body",
+          "relationship": "participates-in",
+          "to": "semantic-registration-body"
+        },
+        {
+          "sequence": 7,
+          "from": "feature-execution",
+          "relationship": "projects",
+          "to": "composition-body"
+        },
+        {
+          "sequence": 8,
+          "from": "composition-body",
+          "relationship": "requires",
+          "to": "runtime-adapter-body"
+        }
+      ],
+      "rendering": {
+        "renderingId": "projection-conveyor",
+        "artifactOrder": [
+          "semantic-authority",
+          "feature-body-authority",
+          "ast-authority",
+          "supporting-type-body",
+          "projected-code-body",
+          "semantic-registration-body"
+        ],
+        "featureArtifactOrder": [
+          "composition-body",
+          "runtime-adapter-body"
+        ],
+        "showSemanticLabels": true,
+        "showArtifactPaths": true
+      }
+    },
     "supportingTypes": [
       {
         "contractId": "admit-reviewed-new-feature-request-context.v1",
@@ -2198,7 +2311,7 @@
       },
       "fileBodySystem": {
         "source": "$.fileBodyAuthority",
-        "renderer": "file-tree"
+        "renderer": "projection-topology"
       },
       "derivationOverview": {
         "source": "$.conveyor.stages",
@@ -2332,7 +2445,7 @@
       },
       {
         "illustrationId": "file-body-system",
-        "kind": "file-tree",
+        "kind": "projection-topology",
         "sourceRefs": [
           "$.fileBodyAuthority"
         ]

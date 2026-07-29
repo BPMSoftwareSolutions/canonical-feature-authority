@@ -115,51 +115,145 @@ export async function executesEndToEndCanonicalFeatureConveyor(
 ### File-body system
 
 ```text
-capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor
-|-- scenarios/admit-one-reviewed-new-feature-request/
-|   `-- admits-reviewed-new-feature-request/
-|       |-- admit-reviewed-new-feature-request.semantic-authority.json
-|       |-- new-feature-request-admission.feature-body-authority.json
-|       |-- new-feature-request-admission.ts.ast.authority.json
-|       |-- new-feature-request-admission.type.ts
-|       |-- new-feature-request-admission.ts
-|       `-- registers-admit-reviewed-new-feature-request.ts
-|-- scenarios/project-one-complete-new-feature-authority/
-|   `-- projects-complete-new-feature-authority/
-|       |-- project-complete-new-feature-authority.semantic-authority.json
-|       |-- complete-new-feature-authority.feature-body-authority.json
-|       |-- complete-new-feature-authority.ts.ast.authority.json
-|       |-- complete-new-feature-authority.type.ts
-|       |-- complete-new-feature-authority.ts
-|       `-- registers-project-complete-new-feature-authority.ts
-|-- scenarios/materialize-one-complete-new-feature/
-|   `-- materializes-complete-new-feature/
-|       |-- materialize-complete-new-feature.semantic-authority.json
-|       |-- complete-new-feature-materialization.feature-body-authority.json
-|       |-- complete-new-feature-materialization.ts.ast.authority.json
-|       |-- complete-new-feature-materialization.type.ts
-|       |-- complete-new-feature-materialization.ts
-|       `-- registers-materialize-complete-new-feature.ts
-|-- scenarios/execute-one-newly-materialized-feature/
-|   `-- executes-newly-materialized-feature/
-|       |-- execute-newly-materialized-feature.semantic-authority.json
-|       |-- observed-new-feature-execution.feature-body-authority.json
-|       |-- observed-new-feature-execution.ts.ast.authority.json
-|       |-- observed-new-feature-execution.type.ts
-|       |-- observed-new-feature-execution.ts
-|       `-- registers-execute-newly-materialized-feature.ts
-|-- scenarios/verify-one-complete-new-feature-lineage/
-|   `-- verifies-complete-new-feature-lineage/
-|       |-- verify-complete-new-feature-lineage.semantic-authority.json
-|       |-- complete-new-feature-lineage.feature-body-authority.json
-|       |-- complete-new-feature-lineage.ts.ast.authority.json
-|       |-- complete-new-feature-lineage.type.ts
-|       |-- complete-new-feature-lineage.ts
-|       `-- registers-verify-complete-new-feature-lineage.ts
-|-- composition/
-|   `-- executes-end-to-end-canonical-feature-conveyor.ts
-`-- runtime/
-    `-- invokes-canonical-feature-conveyor.ts
+Canonical authority graph
+
+[RESP] Responsibility ──owns──► [SA] Semantic Authority
+[SA] Semantic Authority ──projects──► [FB] Feature Body Authority
+[FB] Feature Body Authority ──projects──► [AST] Projected AST
+[AST] Projected AST ──projects──► [TS] Projected Runtime Body
+[TS] Projected Runtime Body ──requires──► [TYPE] Projected Type Definitions
+[TS] Projected Runtime Body ──participates-in──► [REG] Runtime Registration
+[FEATURE] Feature Execution Authority ──projects──► [FLOW] Feature Execution Body
+[FLOW] Feature Execution Body ──requires──► [PORT] Runtime Adapter
+
+Responsibility projection conveyors
+
+Scenario
+└── admit-one-reviewed-new-feature-request
+    │
+    └── Responsibility
+        └── admits-reviewed-new-feature-request
+            │
+            ├─► [SA] Semantic Authority
+            │      admit-reviewed-new-feature-request.semantic-authority.json
+            │
+            ├─► [FB] Feature Body Authority
+            │      new-feature-request-admission.feature-body-authority.json
+            │
+            ├─► [AST] Projected AST
+            │      new-feature-request-admission.ts.ast.authority.json
+            │
+            ├─► [TYPE] Projected Type Definitions
+            │      new-feature-request-admission.type.ts
+            │
+            ├─► [TS] Projected Runtime Body
+            │      new-feature-request-admission.ts
+            │
+            └─► [REG] Runtime Registration
+                   registers-admit-reviewed-new-feature-request.ts
+
+Scenario
+└── project-one-complete-new-feature-authority
+    │
+    └── Responsibility
+        └── projects-complete-new-feature-authority
+            │
+            ├─► [SA] Semantic Authority
+            │      project-complete-new-feature-authority.semantic-authority.json
+            │
+            ├─► [FB] Feature Body Authority
+            │      complete-new-feature-authority.feature-body-authority.json
+            │
+            ├─► [AST] Projected AST
+            │      complete-new-feature-authority.ts.ast.authority.json
+            │
+            ├─► [TYPE] Projected Type Definitions
+            │      complete-new-feature-authority.type.ts
+            │
+            ├─► [TS] Projected Runtime Body
+            │      complete-new-feature-authority.ts
+            │
+            └─► [REG] Runtime Registration
+                   registers-project-complete-new-feature-authority.ts
+
+Scenario
+└── materialize-one-complete-new-feature
+    │
+    └── Responsibility
+        └── materializes-complete-new-feature
+            │
+            ├─► [SA] Semantic Authority
+            │      materialize-complete-new-feature.semantic-authority.json
+            │
+            ├─► [FB] Feature Body Authority
+            │      complete-new-feature-materialization.feature-body-authority.json
+            │
+            ├─► [AST] Projected AST
+            │      complete-new-feature-materialization.ts.ast.authority.json
+            │
+            ├─► [TYPE] Projected Type Definitions
+            │      complete-new-feature-materialization.type.ts
+            │
+            ├─► [TS] Projected Runtime Body
+            │      complete-new-feature-materialization.ts
+            │
+            └─► [REG] Runtime Registration
+                   registers-materialize-complete-new-feature.ts
+
+Scenario
+└── execute-one-newly-materialized-feature
+    │
+    └── Responsibility
+        └── executes-newly-materialized-feature
+            │
+            ├─► [SA] Semantic Authority
+            │      execute-newly-materialized-feature.semantic-authority.json
+            │
+            ├─► [FB] Feature Body Authority
+            │      observed-new-feature-execution.feature-body-authority.json
+            │
+            ├─► [AST] Projected AST
+            │      observed-new-feature-execution.ts.ast.authority.json
+            │
+            ├─► [TYPE] Projected Type Definitions
+            │      observed-new-feature-execution.type.ts
+            │
+            ├─► [TS] Projected Runtime Body
+            │      observed-new-feature-execution.ts
+            │
+            └─► [REG] Runtime Registration
+                   registers-execute-newly-materialized-feature.ts
+
+Scenario
+└── verify-one-complete-new-feature-lineage
+    │
+    └── Responsibility
+        └── verifies-complete-new-feature-lineage
+            │
+            ├─► [SA] Semantic Authority
+            │      verify-complete-new-feature-lineage.semantic-authority.json
+            │
+            ├─► [FB] Feature Body Authority
+            │      complete-new-feature-lineage.feature-body-authority.json
+            │
+            ├─► [AST] Projected AST
+            │      complete-new-feature-lineage.ts.ast.authority.json
+            │
+            ├─► [TYPE] Projected Type Definitions
+            │      complete-new-feature-lineage.type.ts
+            │
+            ├─► [TS] Projected Runtime Body
+            │      complete-new-feature-lineage.ts
+            │
+            └─► [REG] Runtime Registration
+                   registers-verify-complete-new-feature-lineage.ts
+
+Feature-level execution
+├─► [FLOW] Feature Execution Body
+│      composition/executes-end-to-end-canonical-feature-conveyor.ts
+│
+└─► [PORT] Runtime Adapter
+       runtime/invokes-canonical-feature-conveyor.ts
 ```
 
 ### How the document gets there
@@ -1422,51 +1516,145 @@ Review questions:
 Governed file-body system:
 
 ```text
-capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor
-|-- scenarios/admit-one-reviewed-new-feature-request/
-|   `-- admits-reviewed-new-feature-request/
-|       |-- admit-reviewed-new-feature-request.semantic-authority.json
-|       |-- new-feature-request-admission.feature-body-authority.json
-|       |-- new-feature-request-admission.ts.ast.authority.json
-|       |-- new-feature-request-admission.type.ts
-|       |-- new-feature-request-admission.ts
-|       `-- registers-admit-reviewed-new-feature-request.ts
-|-- scenarios/project-one-complete-new-feature-authority/
-|   `-- projects-complete-new-feature-authority/
-|       |-- project-complete-new-feature-authority.semantic-authority.json
-|       |-- complete-new-feature-authority.feature-body-authority.json
-|       |-- complete-new-feature-authority.ts.ast.authority.json
-|       |-- complete-new-feature-authority.type.ts
-|       |-- complete-new-feature-authority.ts
-|       `-- registers-project-complete-new-feature-authority.ts
-|-- scenarios/materialize-one-complete-new-feature/
-|   `-- materializes-complete-new-feature/
-|       |-- materialize-complete-new-feature.semantic-authority.json
-|       |-- complete-new-feature-materialization.feature-body-authority.json
-|       |-- complete-new-feature-materialization.ts.ast.authority.json
-|       |-- complete-new-feature-materialization.type.ts
-|       |-- complete-new-feature-materialization.ts
-|       `-- registers-materialize-complete-new-feature.ts
-|-- scenarios/execute-one-newly-materialized-feature/
-|   `-- executes-newly-materialized-feature/
-|       |-- execute-newly-materialized-feature.semantic-authority.json
-|       |-- observed-new-feature-execution.feature-body-authority.json
-|       |-- observed-new-feature-execution.ts.ast.authority.json
-|       |-- observed-new-feature-execution.type.ts
-|       |-- observed-new-feature-execution.ts
-|       `-- registers-execute-newly-materialized-feature.ts
-|-- scenarios/verify-one-complete-new-feature-lineage/
-|   `-- verifies-complete-new-feature-lineage/
-|       |-- verify-complete-new-feature-lineage.semantic-authority.json
-|       |-- complete-new-feature-lineage.feature-body-authority.json
-|       |-- complete-new-feature-lineage.ts.ast.authority.json
-|       |-- complete-new-feature-lineage.type.ts
-|       |-- complete-new-feature-lineage.ts
-|       `-- registers-verify-complete-new-feature-lineage.ts
-|-- composition/
-|   `-- executes-end-to-end-canonical-feature-conveyor.ts
-`-- runtime/
-    `-- invokes-canonical-feature-conveyor.ts
+Canonical authority graph
+
+[RESP] Responsibility ──owns──► [SA] Semantic Authority
+[SA] Semantic Authority ──projects──► [FB] Feature Body Authority
+[FB] Feature Body Authority ──projects──► [AST] Projected AST
+[AST] Projected AST ──projects──► [TS] Projected Runtime Body
+[TS] Projected Runtime Body ──requires──► [TYPE] Projected Type Definitions
+[TS] Projected Runtime Body ──participates-in──► [REG] Runtime Registration
+[FEATURE] Feature Execution Authority ──projects──► [FLOW] Feature Execution Body
+[FLOW] Feature Execution Body ──requires──► [PORT] Runtime Adapter
+
+Responsibility projection conveyors
+
+Scenario
+└── admit-one-reviewed-new-feature-request
+    │
+    └── Responsibility
+        └── admits-reviewed-new-feature-request
+            │
+            ├─► [SA] Semantic Authority
+            │      admit-reviewed-new-feature-request.semantic-authority.json
+            │
+            ├─► [FB] Feature Body Authority
+            │      new-feature-request-admission.feature-body-authority.json
+            │
+            ├─► [AST] Projected AST
+            │      new-feature-request-admission.ts.ast.authority.json
+            │
+            ├─► [TYPE] Projected Type Definitions
+            │      new-feature-request-admission.type.ts
+            │
+            ├─► [TS] Projected Runtime Body
+            │      new-feature-request-admission.ts
+            │
+            └─► [REG] Runtime Registration
+                   registers-admit-reviewed-new-feature-request.ts
+
+Scenario
+└── project-one-complete-new-feature-authority
+    │
+    └── Responsibility
+        └── projects-complete-new-feature-authority
+            │
+            ├─► [SA] Semantic Authority
+            │      project-complete-new-feature-authority.semantic-authority.json
+            │
+            ├─► [FB] Feature Body Authority
+            │      complete-new-feature-authority.feature-body-authority.json
+            │
+            ├─► [AST] Projected AST
+            │      complete-new-feature-authority.ts.ast.authority.json
+            │
+            ├─► [TYPE] Projected Type Definitions
+            │      complete-new-feature-authority.type.ts
+            │
+            ├─► [TS] Projected Runtime Body
+            │      complete-new-feature-authority.ts
+            │
+            └─► [REG] Runtime Registration
+                   registers-project-complete-new-feature-authority.ts
+
+Scenario
+└── materialize-one-complete-new-feature
+    │
+    └── Responsibility
+        └── materializes-complete-new-feature
+            │
+            ├─► [SA] Semantic Authority
+            │      materialize-complete-new-feature.semantic-authority.json
+            │
+            ├─► [FB] Feature Body Authority
+            │      complete-new-feature-materialization.feature-body-authority.json
+            │
+            ├─► [AST] Projected AST
+            │      complete-new-feature-materialization.ts.ast.authority.json
+            │
+            ├─► [TYPE] Projected Type Definitions
+            │      complete-new-feature-materialization.type.ts
+            │
+            ├─► [TS] Projected Runtime Body
+            │      complete-new-feature-materialization.ts
+            │
+            └─► [REG] Runtime Registration
+                   registers-materialize-complete-new-feature.ts
+
+Scenario
+└── execute-one-newly-materialized-feature
+    │
+    └── Responsibility
+        └── executes-newly-materialized-feature
+            │
+            ├─► [SA] Semantic Authority
+            │      execute-newly-materialized-feature.semantic-authority.json
+            │
+            ├─► [FB] Feature Body Authority
+            │      observed-new-feature-execution.feature-body-authority.json
+            │
+            ├─► [AST] Projected AST
+            │      observed-new-feature-execution.ts.ast.authority.json
+            │
+            ├─► [TYPE] Projected Type Definitions
+            │      observed-new-feature-execution.type.ts
+            │
+            ├─► [TS] Projected Runtime Body
+            │      observed-new-feature-execution.ts
+            │
+            └─► [REG] Runtime Registration
+                   registers-execute-newly-materialized-feature.ts
+
+Scenario
+└── verify-one-complete-new-feature-lineage
+    │
+    └── Responsibility
+        └── verifies-complete-new-feature-lineage
+            │
+            ├─► [SA] Semantic Authority
+            │      verify-complete-new-feature-lineage.semantic-authority.json
+            │
+            ├─► [FB] Feature Body Authority
+            │      complete-new-feature-lineage.feature-body-authority.json
+            │
+            ├─► [AST] Projected AST
+            │      complete-new-feature-lineage.ts.ast.authority.json
+            │
+            ├─► [TYPE] Projected Type Definitions
+            │      complete-new-feature-lineage.type.ts
+            │
+            ├─► [TS] Projected Runtime Body
+            │      complete-new-feature-lineage.ts
+            │
+            └─► [REG] Runtime Registration
+                   registers-verify-complete-new-feature-lineage.ts
+
+Feature-level execution
+├─► [FLOW] Feature Execution Body
+│      composition/executes-end-to-end-canonical-feature-conveyor.ts
+│
+└─► [PORT] Runtime Adapter
+       runtime/invokes-canonical-feature-conveyor.ts
 ```
 
 ## 12. Language projection authority

@@ -257,7 +257,7 @@
           "enum": [
             "intended-outcome",
             "linear-execution-sketch",
-            "file-tree",
+            "projection-topology",
             "ordered-conveyor"
           ]
         }
@@ -1889,6 +1889,7 @@
         "systemId",
         "roots",
         "placementRules",
+        "projectionTopology",
         "supportingTypes",
         "composition",
         "topologyPolicy"
@@ -1956,6 +1957,152 @@
               },
               "pathTemplate": {
                 "type": "string"
+              }
+            }
+          }
+        },
+        "projectionTopology": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "topologyId",
+            "characterSet",
+            "artifactClasses",
+            "relationships",
+            "rendering"
+          ],
+          "properties": {
+            "topologyId": {
+              "const": "responsibility-projection-topology"
+            },
+            "characterSet": {
+              "const": "unicode-box-drawing"
+            },
+            "artifactClasses": {
+              "type": "array",
+              "minItems": 8,
+              "maxItems": 8,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "artifactRole",
+                  "abbreviation",
+                  "label"
+                ],
+                "properties": {
+                  "artifactRole": {
+                    "enum": [
+                      "semantic-authority",
+                      "feature-body-authority",
+                      "ast-authority",
+                      "supporting-type-body",
+                      "projected-code-body",
+                      "semantic-registration-body",
+                      "composition-body",
+                      "runtime-adapter-body"
+                    ]
+                  },
+                  "abbreviation": {
+                    "enum": [
+                      "SA",
+                      "FB",
+                      "AST",
+                      "TYPE",
+                      "TS",
+                      "REG",
+                      "FLOW",
+                      "PORT"
+                    ]
+                  },
+                  "label": {
+                    "enum": [
+                      "Semantic Authority",
+                      "Feature Body Authority",
+                      "Projected AST",
+                      "Projected Type Definitions",
+                      "Projected Runtime Body",
+                      "Runtime Registration",
+                      "Feature Execution Body",
+                      "Runtime Adapter"
+                    ]
+                  }
+                }
+              }
+            },
+            "relationships": {
+              "type": "array",
+              "minItems": 8,
+              "maxItems": 8,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "sequence",
+                  "from",
+                  "relationship",
+                  "to"
+                ],
+                "properties": {
+                  "sequence": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 8
+                  },
+                  "from": {
+                    "type": "string"
+                  },
+                  "relationship": {
+                    "enum": [
+                      "owns",
+                      "projects",
+                      "requires",
+                      "participates-in"
+                    ]
+                  },
+                  "to": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "rendering": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "renderingId",
+                "artifactOrder",
+                "featureArtifactOrder",
+                "showSemanticLabels",
+                "showArtifactPaths"
+              ],
+              "properties": {
+                "renderingId": {
+                  "const": "projection-conveyor"
+                },
+                "artifactOrder": {
+                  "const": [
+                    "semantic-authority",
+                    "feature-body-authority",
+                    "ast-authority",
+                    "supporting-type-body",
+                    "projected-code-body",
+                    "semantic-registration-body"
+                  ]
+                },
+                "featureArtifactOrder": {
+                  "const": [
+                    "composition-body",
+                    "runtime-adapter-body"
+                  ]
+                },
+                "showSemanticLabels": {
+                  "const": true
+                },
+                "showArtifactPaths": {
+                  "const": true
+                }
               }
             }
           }
@@ -2145,7 +2292,7 @@
             "fileBodySystem": {
               "const": {
                 "source": "$.fileBodyAuthority",
-                "renderer": "file-tree"
+                "renderer": "projection-topology"
               }
             },
             "derivationOverview": {
@@ -2355,7 +2502,7 @@
             {
               "const": {
                 "illustrationId": "file-body-system",
-                "kind": "file-tree",
+                "kind": "projection-topology",
                 "sourceRefs": ["$.fileBodyAuthority"]
               }
             },
@@ -2394,7 +2541,7 @@
                 "enum": [
                   "ordered-conveyor",
                   "scenario-circuit",
-                  "file-tree",
+                  "projection-topology",
                   "projection-chain",
                   "dual-execution-comparison"
                 ]

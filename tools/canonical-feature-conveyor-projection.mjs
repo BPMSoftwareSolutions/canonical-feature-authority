@@ -150,33 +150,102 @@ function scenarioIllustrations(authority) {
   return lines.slice(0, -1);
 }
 
-function fileTreeIllustration(authority, derived) {
-  const root = authority.fileBodyAuthority.roots.capability;
-  const lines = [root];
-  for (const result of derived.results) {
-    const scenario = authority.canonicalFeatureBody.scenarios.find(
-      candidate => candidate.scenarioId === result.scenarioId
+function resolvesArtifactName(authority, artifactRole, result) {
+  const placement =
+    authority.fileBodyAuthority.placementRules.find(
+      candidate => candidate.artifactRole === artifactRole
     );
-    lines.push(
-      `|-- scenarios/${result.scenarioId}/`,
-      `|   \`-- ${result.responsibilityId}/`,
-      `|       |-- ${scenario.responsibility.semanticOperationId}.semantic-authority.json`,
-      `|       |-- ${result.bodyId}.feature-body-authority.json`,
-      `|       |-- ${result.bodyId}.ts.ast.authority.json`,
-      `|       |-- ${result.bodyId}.type.ts`,
-      `|       |-- ${result.bodyId}.ts`,
-      `|       \`-- registers-${result.semanticOperationId}.ts`
+  if (!placement) {
+    throw new Error(
+      `PROJECTION_TOPOLOGY_PLACEMENT_MISSING: ${artifactRole}`
     );
   }
+  const values = {
+    bodyId: result.bodyId,
+    semanticOperationId: result.semanticOperationId,
+    scenarioId: result.scenarioId,
+    responsibilityId: result.responsibilityId,
+    capabilityRoot: authority.fileBodyAuthority.roots.capability,
+    responsibilityRoot: result.responsibilityId
+  };
+  let resolved = placement.pathTemplate;
+  for (const [name, value] of Object.entries(values)) {
+    resolved = resolved.replaceAll(`{${name}}`, value);
+  }
+  if (resolved.includes("{")) {
+    throw new Error(
+      `PROJECTION_TOPOLOGY_PATH_UNRESOLVED: ${artifactRole}`
+    );
+  }
+  return resolved.split("/").at(-1);
+}
+
+function projectionTopologyIllustration(authority, derived) {
+  const topology = authority.fileBodyAuthority.projectionTopology;
+  const classes = new Map(
+    topology.artifactClasses.map(item => [
+      item.artifactRole,
+      item
+    ])
+  );
+  const label = role => {
+    const artifactClass = classes.get(role);
+    if (!artifactClass) {
+      throw new Error(
+        `PROJECTION_TOPOLOGY_CLASS_MISSING: ${role}`
+      );
+    }
+    return `[${artifactClass.abbreviation}] ${artifactClass.label}`;
+  };
+  const lines = ["Canonical authority graph", ""];
+  for (const relationship of topology.relationships) {
+    const from =
+      relationship.from === "responsibility"
+        ? "[RESP] Responsibility"
+        : relationship.from === "feature-execution"
+          ? "[FEATURE] Feature Execution Authority"
+          : label(relationship.from);
+    lines.push(
+      `${from} ──${relationship.relationship}──► ${label(
+        relationship.to
+      )}`
+    );
+  }
+  lines.push("", "Responsibility projection conveyors", "");
+  for (const result of derived.results) {
+    lines.push(
+      "Scenario",
+      `└── ${result.scenarioId}`,
+      "    │",
+      "    └── Responsibility",
+      `        └── ${result.responsibilityId}`,
+      "            │"
+    );
+    for (const [index, role] of
+      topology.rendering.artifactOrder.entries()) {
+      const terminal =
+        index === topology.rendering.artifactOrder.length - 1;
+      lines.push(
+        `            ${terminal ? "└" : "├"}─► ${label(role)}`,
+        `            ${terminal ? " " : "│"}      ${resolvesArtifactName(
+          authority,
+          role,
+          result
+        )}`,
+        ...(terminal ? [] : ["            │"])
+      );
+    }
+    lines.push("");
+  }
+  const [compositionRole, runtimeRole] =
+    topology.rendering.featureArtifactOrder;
   lines.push(
-    "|-- composition/",
-    `|   \`-- ${authority.fileBodyAuthority.composition.entrypoint
-      .split("/")
-      .at(-1)}`,
-    "\`-- runtime/",
-    `    \`-- ${authority.fileBodyAuthority.composition.runtimeAdapter
-      .split("/")
-      .at(-1)}`
+    "Feature-level execution",
+    `├─► ${label(compositionRole)}`,
+    `│      ${authority.fileBodyAuthority.composition.entrypoint}`,
+    "│",
+    `└─► ${label(runtimeRole)}`,
+    `       ${authority.fileBodyAuthority.composition.runtimeAdapter}`
   );
   return fenced("text", lines.join("\n"));
 }
@@ -298,7 +367,7 @@ function rendersFeatureDestination(authority, derived) {
     "",
     "### File-body system",
     "",
-    ...fileTreeIllustration(authority, derived),
+    ...projectionTopologyIllustration(authority, derived),
     "",
     "### How the document gets there",
     "",
@@ -328,8 +397,8 @@ function rendersIllustration(authority, derived, kind) {
   if (kind === "scenario-circuit") {
     return scenarioIllustrations(authority);
   }
-  if (kind === "file-tree") {
-    return fileTreeIllustration(authority, derived);
+  if (kind === "projection-topology") {
+    return projectionTopologyIllustration(authority, derived);
   }
   if (kind === "projection-chain") {
     return projectionIllustrations(derived);
@@ -437,7 +506,11 @@ const renderers = {
     "",
     "Governed file-body system:",
     "",
-    ...rendersIllustration(authority, derived, "file-tree")
+    ...rendersIllustration(
+      authority,
+      derived,
+      "projection-topology"
+    )
   ],
   "language-profile-section": authority => [
     ...fenced("json", authority.languageProfiles),
