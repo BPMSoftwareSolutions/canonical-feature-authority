@@ -1,7 +1,8 @@
 {
   "catalogType": "governed-document-schema-catalog.v1",
   "schemas": [
-    "governed-inspection-document-authority.schema.json"
+    "governed-inspection-document-authority.schema.json",
+    "canonical-feature-conveyor-contract.schema.json"
   ],
   "profiles": [
     {
@@ -11,6 +12,10 @@
     {
       "profileId": "authority-projection-implementation-contract.v1",
       "validation": "schema-byte-and-authority-projection-spine"
+    },
+    {
+      "profileId": "canonical-feature-construction.v1",
+      "validation": "schema-causality-reference-ast-and-execution-equivalence"
     }
   ],
   "templates": [

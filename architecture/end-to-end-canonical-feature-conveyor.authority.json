@@ -1,0 +1,1295 @@
+{
+  "$schema": "https://canonical-feature-authority/schemas/canonical-feature-conveyor-contract.schema.json",
+  "contract": {
+    "contractType": "canonical-feature-conveyor.v1",
+    "contractId": "end-to-end-canonical-feature-conveyor",
+    "title": "End-to-End Canonical Feature Conveyor",
+    "status": "draft",
+    "schemaVersion": "1.0.0"
+  },
+  "conveyor": {
+    "profileId": "canonical-feature-construction.v1",
+    "stages": [
+      {
+        "stageId": "capture-intent",
+        "purpose": "Capture the human need without introducing implementation technology.",
+        "requires": [],
+        "consumes": [],
+        "produces": ["intent"],
+        "reviewQuestions": [
+          "Is the need expressed without language, framework, file, or provider decisions?"
+        ],
+        "completionCondition": "one implementation-neutral intent is complete"
+      },
+      {
+        "stageId": "declare-outcome",
+        "purpose": "State the observable condition that satisfies the admitted intent.",
+        "requires": ["intent"],
+        "consumes": ["intent"],
+        "produces": ["desired-outcome"],
+        "reviewQuestions": [
+          "Is the outcome observable without prescribing its implementation?"
+        ],
+        "completionCondition": "one desired outcome and its observable state are complete"
+      },
+      {
+        "stageId": "establish-feature",
+        "purpose": "Establish one canonical feature identity and user story from the admitted outcome.",
+        "requires": ["desired-outcome"],
+        "consumes": ["intent", "desired-outcome"],
+        "produces": ["canonical-feature"],
+        "reviewQuestions": [
+          "Does the feature preserve the intent and desired outcome without adding implementation meaning?"
+        ],
+        "completionCondition": "one canonical feature identity, story, and governing obligation are complete"
+      },
+      {
+        "stageId": "establish-scenarios",
+        "purpose": "Decompose the feature into focused observable behavior transitions.",
+        "requires": ["canonical-feature"],
+        "consumes": ["canonical-feature"],
+        "produces": ["canonical-scenarios"],
+        "reviewQuestions": [
+          "Does every scenario contain focused preconditions, one responsibility transition, and observable outcomes?"
+        ],
+        "completionCondition": "every required feature behavior is represented by one focused scenario"
+      },
+      {
+        "stageId": "decompose-obligations",
+        "purpose": "Extract exactly one governing obligation from every scenario.",
+        "requires": ["canonical-scenarios"],
+        "consumes": ["canonical-scenarios"],
+        "produces": ["scenario-obligations"],
+        "reviewQuestions": [
+          "Does each obligation express exactly the meaning that its scenario requires?"
+        ],
+        "completionCondition": "every scenario has one complete obligation"
+      },
+      {
+        "stageId": "declare-expectations",
+        "purpose": "Declare the disposition expected when each scenario obligation is satisfied.",
+        "requires": ["scenario-obligations"],
+        "consumes": ["canonical-scenarios", "scenario-obligations"],
+        "produces": ["scenario-expectations"],
+        "reviewQuestions": [
+          "Is each expected disposition independently comparable with observed execution?"
+        ],
+        "completionCondition": "every scenario has one expectation bound to one signal"
+      },
+      {
+        "stageId": "assign-responsibilities",
+        "purpose": "Assign one accountable responsibility to satisfy each admitted obligation.",
+        "requires": ["scenario-expectations"],
+        "consumes": ["scenario-obligations", "scenario-expectations"],
+        "produces": ["scenario-responsibilities"],
+        "reviewQuestions": [
+          "Does each responsibility own one semantic transition and no unrelated policy?"
+        ],
+        "completionCondition": "every obligation has one responsible semantic operation"
+      },
+      {
+        "stageId": "declare-signals",
+        "purpose": "Declare the observable signal produced by every responsibility.",
+        "requires": ["scenario-responsibilities"],
+        "consumes": ["scenario-expectations", "scenario-responsibilities"],
+        "produces": ["scenario-signals"],
+        "reviewQuestions": [
+          "Can every declared signal be observed without reading the expectation during execution?"
+        ],
+        "completionCondition": "every responsibility produces one expectation-bound signal"
+      },
+      {
+        "stageId": "author-semantic-authority",
+        "purpose": "Define the language-neutral observations, decisions, and projections owned by every responsibility.",
+        "requires": ["scenario-signals"],
+        "consumes": ["scenario-responsibilities", "scenario-signals"],
+        "produces": ["semantic-authority"],
+        "reviewQuestions": [
+          "Does semantic authority own every decision and result shape required by the responsibility?"
+        ],
+        "completionCondition": "every responsibility has complete language-neutral semantic authority"
+      },
+      {
+        "stageId": "author-semantic-execution",
+        "purpose": "Order the admitted semantic operations into directly executable models.",
+        "requires": ["semantic-authority"],
+        "consumes": ["semantic-authority"],
+        "produces": ["semantic-execution"],
+        "reviewQuestions": [
+          "Can the semantic model execute directly without projected source code?"
+        ],
+        "completionCondition": "every semantic authority has one deterministic execution model"
+      },
+      {
+        "stageId": "author-feature-body-authority",
+        "purpose": "Collapse each semantic execution edge into one language-neutral executable body.",
+        "requires": ["semantic-execution"],
+        "consumes": ["scenario-responsibilities", "semantic-execution"],
+        "produces": ["feature-body-authority"],
+        "reviewQuestions": [
+          "Does each body invoke only its admitted semantic edge and introduce no domain meaning?"
+        ],
+        "completionCondition": "every responsibility has one complete constrained feature body"
+      },
+      {
+        "stageId": "resolve-language-projection",
+        "purpose": "Bind each feature body to one admitted language and module profile.",
+        "requires": ["feature-body-authority"],
+        "consumes": ["feature-body-authority"],
+        "produces": ["language-projection-authority"],
+        "reviewQuestions": [
+          "Does the selected language profile translate the body without changing its meaning?"
+        ],
+        "completionCondition": "every feature body has one admitted language projection"
+      },
+      {
+        "stageId": "project-expected-ast",
+        "purpose": "Project each feature body into the complete expected language AST.",
+        "requires": ["language-projection-authority"],
+        "consumes": ["feature-body-authority", "language-projection-authority"],
+        "produces": ["expected-ast"],
+        "reviewQuestions": [
+          "Can every AST node be traced to feature-body authority?"
+        ],
+        "completionCondition": "every projected body has one complete expected AST"
+      },
+      {
+        "stageId": "project-expected-code",
+        "purpose": "Render expected source code exclusively from the admitted AST.",
+        "requires": ["expected-ast"],
+        "consumes": ["expected-ast"],
+        "produces": ["expected-code"],
+        "reviewQuestions": [
+          "Does every source construct come from the expected AST with no hand-authored additions?"
+        ],
+        "completionCondition": "every expected AST renders one deterministic source body"
+      },
+      {
+        "stageId": "evaluate-semantic-execution",
+        "purpose": "Execute semantic authority directly and observe its signals.",
+        "requires": ["semantic-execution"],
+        "consumes": ["semantic-execution", "scenario-signals"],
+        "produces": ["semantic-evaluation"],
+        "reviewQuestions": [
+          "Was the semantic result observed without using the expected result as execution input?"
+        ],
+        "completionCondition": "every semantic execution produces one observed signal"
+      },
+      {
+        "stageId": "evaluate-projected-execution",
+        "purpose": "Execute the projected embodiment and observe its signals independently.",
+        "requires": ["expected-code"],
+        "consumes": ["expected-code", "scenario-signals"],
+        "produces": ["projected-evaluation"],
+        "reviewQuestions": [
+          "Was the projected result observed through the same fixture boundary as semantic execution?"
+        ],
+        "completionCondition": "every projected body produces one independently observed signal"
+      },
+      {
+        "stageId": "evaluate-translation-conformance",
+        "purpose": "Compare declared expectations, semantic observations, and projected observations.",
+        "requires": ["semantic-evaluation", "projected-evaluation"],
+        "consumes": ["scenario-expectations", "semantic-evaluation", "projected-evaluation"],
+        "produces": ["translation-conformance"],
+        "reviewQuestions": [
+          "Are the declared, semantic, and projected outcomes canonically equivalent?"
+        ],
+        "completionCondition": "every responsibility has one terminal translation determination"
+      },
+      {
+        "stageId": "review-feature",
+        "purpose": "Present the complete construction lineage for human implementation admission.",
+        "requires": ["translation-conformance"],
+        "consumes": ["canonical-feature", "translation-conformance"],
+        "produces": ["review-disposition"],
+        "reviewQuestions": [
+          "Is every implementation construct traceable through AST, body, semantic authority, and feature intent?"
+        ],
+        "completionCondition": "one review disposition covers the complete canonical feature"
+      }
+    ],
+    "constructionState": {
+      "currentStage": "review-feature",
+      "completedStages": [
+        "capture-intent",
+        "declare-outcome",
+        "establish-feature",
+        "establish-scenarios",
+        "decompose-obligations",
+        "declare-expectations",
+        "assign-responsibilities",
+        "declare-signals",
+        "author-semantic-authority",
+        "author-semantic-execution",
+        "author-feature-body-authority",
+        "resolve-language-projection",
+        "project-expected-ast",
+        "project-expected-code",
+        "evaluate-semantic-execution",
+        "evaluate-projected-execution",
+        "evaluate-translation-conformance"
+      ],
+      "eligibleNextStages": [
+        "review-feature"
+      ]
+    }
+  },
+  "intent": {
+    "actor": "reviewer of authority-projected software",
+    "trigger": "one previously nonexistent reviewed feature is submitted to the governed conveyor",
+    "need": "construct the complete canonical feature and its executable embodiment in admitted causal order",
+    "purpose": "prove that the conveyor can build new behavior without bypassing authority or inventing meaning during projection",
+    "constraints": [
+      {
+        "statementId": "intent-remains-language-neutral",
+        "text": "intent and canonical behavior remain language-neutral"
+      },
+      {
+        "statementId": "stages-cannot-be-skipped",
+        "text": "no construction stage may consume an output that has not been admitted"
+      },
+      {
+        "statementId": "projection-adds-no-meaning",
+        "text": "language projection introduces no meaning absent from canonical authority"
+      },
+      {
+        "statementId": "expectation-is-comparison-only",
+        "text": "execution cannot read the expected result to manufacture its observed result"
+      }
+    ]
+  },
+  "outcome": {
+    "outcomeId": "complete-new-feature-is-canonically-constructed",
+    "statement": "One previously nonexistent reviewed feature is constructed, projected, executed, and reviewed entirely from admitted canonical authority.",
+    "observableState": [
+      {
+        "statementId": "complete-feature-authority-exists",
+        "text": "the canonical feature and every focused scenario are visible"
+      },
+      {
+        "statementId": "complete-semantic-authority-exists",
+        "text": "every obligation, expectation, responsibility, signal, and semantic execution is visible"
+      },
+      {
+        "statementId": "complete-projection-authority-exists",
+        "text": "every language-neutral body, expected AST, and expected source projection is visible"
+      },
+      {
+        "statementId": "execution-equivalence-is-visible",
+        "text": "semantic execution, projected execution, and declared expectations are canonically equivalent"
+      }
+    ]
+  },
+  "canonicalFeatureBody": {
+    "feature": {
+      "featureId": "implement-one-new-feature-end-to-end-through-a-governed-conveyor",
+      "title": "Implement one new feature end to end through a governed conveyor",
+      "userStory": {
+        "asA": "reviewer of authority-projected software",
+        "iWant": "one previously nonexistent reviewed feature implemented through the governed conveyor",
+        "soThat": "its executable behavior and complete origin can be independently reproduced and reviewed"
+      },
+      "governingObligation": "Every accepted construction begins with reviewed intent, advances only through eligible stages, and conserves canonical meaning through semantic and projected execution."
+    },
+    "background": [
+      {
+        "statementId": "external-review-authority-is-available",
+        "text": "review authority is supplied independently of the feature implementation"
+      },
+      {
+        "statementId": "construction-profiles-are-pinned",
+        "text": "construction, semantic, language, and runtime profiles are pinned"
+      }
+    ],
+    "scenarios": [
+      {
+        "scenarioId": "admit-one-reviewed-new-feature-request",
+        "title": "Admit one reviewed new-feature request",
+        "behavior": {
+          "given": [
+            {
+              "statementId": "reviewed-new-feature-request-is-present",
+              "text": "one instructor-reviewed new-feature request"
+            },
+            {
+              "statementId": "requested-feature-is-absent",
+              "text": "its feature identity is absent from the implementation root"
+            }
+          ],
+          "when": {
+            "statementId": "request-eligibility-is-evaluated",
+            "text": "the request is evaluated against construction eligibility"
+          },
+          "then": [
+            {
+              "statementId": "request-admission-is-observed",
+              "text": "one new-feature request admission is observed"
+            }
+          ]
+        },
+        "obligation": {
+          "obligationId": "establish-one-eligible-new-feature-request",
+          "statement": "Only one complete, reviewed, previously nonexistent feature request may enter construction."
+        },
+        "expectation": {
+          "expectationId": "expect-one-new-feature-request-admission",
+          "signalId": "new-feature-request-admission",
+          "expectedDisposition": "ADMITTED"
+        },
+        "responsibility": {
+          "responsibilityId": "admits-reviewed-new-feature-request",
+          "kind": "admission",
+          "semanticOperationId": "admit-reviewed-new-feature-request"
+        },
+        "signal": {
+          "signalId": "new-feature-request-admission",
+          "statement": "The reviewed request is admitted or rejected with one deterministic disposition."
+        }
+      },
+      {
+        "scenarioId": "project-one-complete-new-feature-authority",
+        "title": "Project one complete new-feature authority",
+        "behavior": {
+          "given": [
+            {
+              "statementId": "request-admission-is-green",
+              "text": "one admitted reviewed new-feature request"
+            }
+          ],
+          "when": {
+            "statementId": "complete-authority-is-projected",
+            "text": "the admitted request is projected through every canonical construction stage"
+          },
+          "then": [
+            {
+              "statementId": "complete-feature-authority-is-observed",
+              "text": "one complete canonical new-feature authority is observed"
+            }
+          ]
+        },
+        "obligation": {
+          "obligationId": "establish-one-complete-new-feature-authority",
+          "statement": "The admitted request must produce complete feature, scenario, obligation, expectation, responsibility, signal, and semantic authority."
+        },
+        "expectation": {
+          "expectationId": "expect-one-complete-new-feature-authority",
+          "signalId": "complete-new-feature-authority",
+          "expectedDisposition": "COMPLETE"
+        },
+        "responsibility": {
+          "responsibilityId": "projects-complete-new-feature-authority",
+          "kind": "projection",
+          "semanticOperationId": "project-complete-new-feature-authority"
+        },
+        "signal": {
+          "signalId": "complete-new-feature-authority",
+          "statement": "Every required canonical construction product exists and is causally linked."
+        }
+      },
+      {
+        "scenarioId": "materialize-one-complete-new-feature",
+        "title": "Materialize one complete new feature",
+        "behavior": {
+          "given": [
+            {
+              "statementId": "complete-feature-authority-is-admitted",
+              "text": "one admitted complete new-feature authority"
+            },
+            {
+              "statementId": "materialization-root-is-empty",
+              "text": "one empty controlled materialization root"
+            }
+          ],
+          "when": {
+            "statementId": "feature-authority-is-materialized",
+            "text": "every admitted body and language projection is materialized"
+          },
+          "then": [
+            {
+              "statementId": "complete-materialization-is-observed",
+              "text": "one complete projected new-feature materialization is observed"
+            }
+          ]
+        },
+        "obligation": {
+          "obligationId": "materialize-only-admitted-new-feature-authority",
+          "statement": "Materialization must derive every executable body from admitted feature-body and AST authority."
+        },
+        "expectation": {
+          "expectationId": "expect-one-complete-new-feature-materialization",
+          "signalId": "complete-new-feature-materialization",
+          "expectedDisposition": "MATERIALIZED"
+        },
+        "responsibility": {
+          "responsibilityId": "materializes-complete-new-feature",
+          "kind": "projection",
+          "semanticOperationId": "materialize-complete-new-feature"
+        },
+        "signal": {
+          "signalId": "complete-new-feature-materialization",
+          "statement": "Every expected artifact exists and reproduces its admitted AST."
+        }
+      },
+      {
+        "scenarioId": "execute-one-newly-materialized-feature",
+        "title": "Execute one newly materialized feature",
+        "behavior": {
+          "given": [
+            {
+              "statementId": "complete-materialization-is-available",
+              "text": "one complete new-feature materialization"
+            },
+            {
+              "statementId": "runtime-composition-is-admitted",
+              "text": "one admitted runtime composition"
+            }
+          ],
+          "when": {
+            "statementId": "materialized-feature-is-executed",
+            "text": "the materialized feature executes through its admitted semantic edges"
+          },
+          "then": [
+            {
+              "statementId": "feature-execution-is-observed",
+              "text": "one new-feature execution observation is produced"
+            }
+          ]
+        },
+        "obligation": {
+          "obligationId": "execute-new-feature-through-admitted-semantics",
+          "statement": "Projected execution must use the same admitted semantic responsibility exercised by direct semantic evaluation."
+        },
+        "expectation": {
+          "expectationId": "expect-one-observed-new-feature-execution",
+          "signalId": "observed-new-feature-execution",
+          "expectedDisposition": "CONFORMS"
+        },
+        "responsibility": {
+          "responsibilityId": "executes-newly-materialized-feature",
+          "kind": "execution",
+          "semanticOperationId": "execute-newly-materialized-feature"
+        },
+        "signal": {
+          "signalId": "observed-new-feature-execution",
+          "statement": "The projected feature produces the same observable signal as direct semantic execution."
+        }
+      },
+      {
+        "scenarioId": "verify-one-complete-new-feature-lineage",
+        "title": "Verify one complete new-feature lineage",
+        "behavior": {
+          "given": [
+            {
+              "statementId": "semantic-evaluation-is-available",
+              "text": "one direct semantic evaluation"
+            },
+            {
+              "statementId": "projected-evaluation-is-available",
+              "text": "one independently observed projected evaluation"
+            }
+          ],
+          "when": {
+            "statementId": "translation-equivalence-is-evaluated",
+            "text": "their expectation, execution, AST, and code relationships are reviewed"
+          },
+          "then": [
+            {
+              "statementId": "terminal-disposition-is-observed",
+              "text": "one terminal canonical-feature construction disposition is produced"
+            }
+          ]
+        },
+        "obligation": {
+          "obligationId": "prove-complete-new-feature-equivalence",
+          "statement": "Declared expectation, direct semantic execution, and projected execution must be canonically equivalent."
+        },
+        "expectation": {
+          "expectationId": "expect-complete-new-feature-equivalence",
+          "signalId": "complete-new-feature-equivalence",
+          "expectedDisposition": "PROJECTION_CONFORMS"
+        },
+        "responsibility": {
+          "responsibilityId": "verifies-complete-new-feature-lineage",
+          "kind": "conformance",
+          "semanticOperationId": "verify-complete-new-feature-lineage"
+        },
+        "signal": {
+          "signalId": "complete-new-feature-equivalence",
+          "statement": "Canonical meaning is conserved across authority, AST, source, and both execution surfaces."
+        }
+      }
+    ]
+  },
+  "semanticAuthority": [
+    {
+      "responsibilityId": "admits-reviewed-new-feature-request",
+      "accepts": {
+        "contractId": "reviewed-new-feature-request.v1"
+      },
+      "produces": {
+        "contractId": "new-feature-request-admission.v1"
+      },
+      "observations": [
+        {
+          "observationId": "observe-reviewed-request",
+          "source": "$.canonicalFeatureBody.scenarios[0]"
+        }
+      ],
+      "decisions": [
+        {
+          "decisionId": "resolve-request-admission",
+          "outcomes": ["ADMITTED", "REJECTED"]
+        }
+      ],
+      "projections": [
+        {
+          "projectionId": "project-request-admission",
+          "from": "resolve-request-admission",
+          "to": "new-feature-request-admission.v1"
+        }
+      ],
+      "execution": {
+        "executionModelId": "admit-reviewed-new-feature-request",
+        "steps": [
+          {
+            "sequence": 1,
+            "operation": "observe-reviewed-request"
+          },
+          {
+            "sequence": 2,
+            "operation": "resolve-request-admission"
+          },
+          {
+            "sequence": 3,
+            "operation": "project-request-admission"
+          }
+        ]
+      }
+    },
+    {
+      "responsibilityId": "projects-complete-new-feature-authority",
+      "accepts": {
+        "contractId": "admitted-new-feature-request.v1"
+      },
+      "produces": {
+        "contractId": "complete-new-feature-authority.v1"
+      },
+      "observations": [
+        {
+          "observationId": "observe-admitted-request",
+          "source": "$.canonicalFeatureBody.feature"
+        }
+      ],
+      "decisions": [],
+      "projections": [
+        {
+          "projectionId": "project-complete-feature-authority",
+          "from": "observe-admitted-request",
+          "to": "complete-new-feature-authority.v1"
+        }
+      ],
+      "execution": {
+        "executionModelId": "project-complete-new-feature-authority",
+        "steps": [
+          {
+            "sequence": 1,
+            "operation": "observe-admitted-request"
+          },
+          {
+            "sequence": 2,
+            "operation": "project-complete-feature-authority"
+          }
+        ]
+      }
+    },
+    {
+      "responsibilityId": "materializes-complete-new-feature",
+      "accepts": {
+        "contractId": "complete-new-feature-authority.v1"
+      },
+      "produces": {
+        "contractId": "complete-new-feature-materialization.v1"
+      },
+      "observations": [
+        {
+          "observationId": "observe-complete-feature-authority",
+          "source": "$.featureBodyAuthority"
+        }
+      ],
+      "decisions": [],
+      "projections": [
+        {
+          "projectionId": "project-complete-feature-materialization",
+          "from": "observe-complete-feature-authority",
+          "to": "complete-new-feature-materialization.v1"
+        }
+      ],
+      "execution": {
+        "executionModelId": "materialize-complete-new-feature",
+        "steps": [
+          {
+            "sequence": 1,
+            "operation": "observe-complete-feature-authority"
+          },
+          {
+            "sequence": 2,
+            "operation": "project-complete-feature-materialization"
+          }
+        ]
+      }
+    },
+    {
+      "responsibilityId": "executes-newly-materialized-feature",
+      "accepts": {
+        "contractId": "complete-new-feature-materialization.v1"
+      },
+      "produces": {
+        "contractId": "observed-new-feature-execution.v1"
+      },
+      "observations": [
+        {
+          "observationId": "observe-materialized-feature",
+          "source": "$.projectionAuthority"
+        }
+      ],
+      "decisions": [],
+      "projections": [
+        {
+          "projectionId": "project-execution-observation",
+          "from": "observe-materialized-feature",
+          "to": "observed-new-feature-execution.v1"
+        }
+      ],
+      "execution": {
+        "executionModelId": "execute-newly-materialized-feature",
+        "steps": [
+          {
+            "sequence": 1,
+            "operation": "observe-materialized-feature"
+          },
+          {
+            "sequence": 2,
+            "operation": "project-execution-observation"
+          }
+        ]
+      }
+    },
+    {
+      "responsibilityId": "verifies-complete-new-feature-lineage",
+      "accepts": {
+        "contractId": "new-feature-execution-comparison.v1"
+      },
+      "produces": {
+        "contractId": "new-feature-terminal-disposition.v1"
+      },
+      "observations": [
+        {
+          "observationId": "observe-execution-comparison",
+          "source": "$.evaluationAuthority"
+        }
+      ],
+      "decisions": [
+        {
+          "decisionId": "resolve-terminal-disposition",
+          "outcomes": ["PROJECTION_CONFORMS", "PROJECTION_DIVERGES"]
+        }
+      ],
+      "projections": [
+        {
+          "projectionId": "project-terminal-disposition",
+          "from": "resolve-terminal-disposition",
+          "to": "new-feature-terminal-disposition.v1"
+        }
+      ],
+      "execution": {
+        "executionModelId": "verify-complete-new-feature-lineage",
+        "steps": [
+          {
+            "sequence": 1,
+            "operation": "observe-execution-comparison"
+          },
+          {
+            "sequence": 2,
+            "operation": "resolve-terminal-disposition"
+          },
+          {
+            "sequence": 3,
+            "operation": "project-terminal-disposition"
+          }
+        ]
+      }
+    }
+  ],
+  "featureBodyAuthority": [
+    {
+      "bodyId": "new-feature-request-admission",
+      "responsibilityId": "admits-reviewed-new-feature-request",
+      "bodyKind": "scenario-responsibility",
+      "context": {
+        "parameterName": "context",
+        "contractId": "admit-reviewed-new-feature-request-context.v1",
+        "immutable": true
+      },
+      "operations": [
+        {
+          "sequence": 1,
+          "operation": "invoke-semantic-edge",
+          "edgeId": "admit-reviewed-new-feature-request",
+          "input": "$.context",
+          "assign": "admission"
+        },
+        {
+          "sequence": 2,
+          "operation": "return",
+          "value": "$.admission"
+        }
+      ],
+      "constraints": {
+        "domainBranching": "forbidden",
+        "domainIteration": "forbidden",
+        "dtoConstruction": "forbidden",
+        "directEffects": "forbidden"
+      }
+    },
+    {
+      "bodyId": "complete-new-feature-authority",
+      "responsibilityId": "projects-complete-new-feature-authority",
+      "bodyKind": "scenario-responsibility",
+      "context": {
+        "parameterName": "context",
+        "contractId": "project-complete-new-feature-authority-context.v1",
+        "immutable": true
+      },
+      "operations": [
+        {
+          "sequence": 1,
+          "operation": "invoke-semantic-edge",
+          "edgeId": "project-complete-new-feature-authority",
+          "input": "$.context",
+          "assign": "authority"
+        },
+        {
+          "sequence": 2,
+          "operation": "return",
+          "value": "$.authority"
+        }
+      ],
+      "constraints": {
+        "domainBranching": "forbidden",
+        "domainIteration": "forbidden",
+        "dtoConstruction": "forbidden",
+        "directEffects": "forbidden"
+      }
+    },
+    {
+      "bodyId": "complete-new-feature-materialization",
+      "responsibilityId": "materializes-complete-new-feature",
+      "bodyKind": "scenario-responsibility",
+      "context": {
+        "parameterName": "context",
+        "contractId": "materialize-complete-new-feature-context.v1",
+        "immutable": true
+      },
+      "operations": [
+        {
+          "sequence": 1,
+          "operation": "invoke-semantic-edge",
+          "edgeId": "materialize-complete-new-feature",
+          "input": "$.context",
+          "assign": "materialization"
+        },
+        {
+          "sequence": 2,
+          "operation": "return",
+          "value": "$.materialization"
+        }
+      ],
+      "constraints": {
+        "domainBranching": "forbidden",
+        "domainIteration": "forbidden",
+        "dtoConstruction": "forbidden",
+        "directEffects": "forbidden"
+      }
+    },
+    {
+      "bodyId": "observed-new-feature-execution",
+      "responsibilityId": "executes-newly-materialized-feature",
+      "bodyKind": "scenario-responsibility",
+      "context": {
+        "parameterName": "context",
+        "contractId": "execute-newly-materialized-feature-context.v1",
+        "immutable": true
+      },
+      "operations": [
+        {
+          "sequence": 1,
+          "operation": "invoke-semantic-edge",
+          "edgeId": "execute-newly-materialized-feature",
+          "input": "$.context",
+          "assign": "observation"
+        },
+        {
+          "sequence": 2,
+          "operation": "return",
+          "value": "$.observation"
+        }
+      ],
+      "constraints": {
+        "domainBranching": "forbidden",
+        "domainIteration": "forbidden",
+        "dtoConstruction": "forbidden",
+        "directEffects": "forbidden"
+      }
+    },
+    {
+      "bodyId": "complete-new-feature-lineage",
+      "responsibilityId": "verifies-complete-new-feature-lineage",
+      "bodyKind": "scenario-responsibility",
+      "context": {
+        "parameterName": "context",
+        "contractId": "verify-complete-new-feature-lineage-context.v1",
+        "immutable": true
+      },
+      "operations": [
+        {
+          "sequence": 1,
+          "operation": "invoke-semantic-edge",
+          "edgeId": "verify-complete-new-feature-lineage",
+          "input": "$.context",
+          "assign": "disposition"
+        },
+        {
+          "sequence": 2,
+          "operation": "return",
+          "value": "$.disposition"
+        }
+      ],
+      "constraints": {
+        "domainBranching": "forbidden",
+        "domainIteration": "forbidden",
+        "dtoConstruction": "forbidden",
+        "directEffects": "forbidden"
+      }
+    }
+  ],
+  "projectionAuthority": [
+    {
+      "bodyId": "new-feature-request-admission",
+      "target": {
+        "language": "typescript",
+        "moduleProfile": "typescript-esm",
+        "languageProfileId": "typescript-collapsed-responsibility-body.v1"
+      },
+      "translation": {
+        "sourceBodyId": "new-feature-request-admission",
+        "projectionId": "project-new-feature-request-admission",
+        "artifactPath": "src/new-feature-request-admission.ts"
+      },
+      "expectedProjection": {
+        "imports": [],
+        "declarations": [],
+        "ast": {
+          "kind": "SourceFile",
+          "statements": [
+            {
+              "kind": "FunctionDeclaration",
+              "name": "admitsReviewedNewFeatureRequest",
+              "modifiers": ["export", "async"],
+              "parameters": [
+                {
+                  "name": "context",
+                  "typeReference": "AdmitReviewedNewFeatureRequestContext",
+                  "immutable": true
+                }
+              ],
+              "returnType": {
+                "kind": "Promise",
+                "typeReference": "NewFeatureRequestAdmission"
+              },
+              "body": {
+                "kind": "Block",
+                "statements": [
+                  {
+                    "kind": "ReturnStatement",
+                    "expression": {
+                      "kind": "AwaitExpression",
+                      "expression": {
+                        "kind": "CallExpression",
+                        "callee": {
+                          "kind": "PropertyAccessExpression",
+                          "receiver": {
+                            "kind": "Identifier",
+                            "name": "context"
+                          },
+                          "member": "invoke"
+                        },
+                        "arguments": [
+                          {
+                            "kind": "StringLiteral",
+                            "value": "admit-reviewed-new-feature-request"
+                          },
+                          {
+                            "kind": "Identifier",
+                            "name": "context"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "bodyId": "complete-new-feature-authority",
+      "target": {
+        "language": "typescript",
+        "moduleProfile": "typescript-esm",
+        "languageProfileId": "typescript-collapsed-responsibility-body.v1"
+      },
+      "translation": {
+        "sourceBodyId": "complete-new-feature-authority",
+        "projectionId": "project-complete-new-feature-authority-body",
+        "artifactPath": "src/complete-new-feature-authority.ts"
+      },
+      "expectedProjection": {
+        "imports": [],
+        "declarations": [],
+        "ast": {
+          "kind": "SourceFile",
+          "statements": [
+            {
+              "kind": "FunctionDeclaration",
+              "name": "projectsCompleteNewFeatureAuthority",
+              "modifiers": ["export", "async"],
+              "parameters": [
+                {
+                  "name": "context",
+                  "typeReference": "ProjectCompleteNewFeatureAuthorityContext",
+                  "immutable": true
+                }
+              ],
+              "returnType": {
+                "kind": "Promise",
+                "typeReference": "CompleteNewFeatureAuthority"
+              },
+              "body": {
+                "kind": "Block",
+                "statements": [
+                  {
+                    "kind": "ReturnStatement",
+                    "expression": {
+                      "kind": "AwaitExpression",
+                      "expression": {
+                        "kind": "CallExpression",
+                        "callee": {
+                          "kind": "PropertyAccessExpression",
+                          "receiver": {
+                            "kind": "Identifier",
+                            "name": "context"
+                          },
+                          "member": "invoke"
+                        },
+                        "arguments": [
+                          {
+                            "kind": "StringLiteral",
+                            "value": "project-complete-new-feature-authority"
+                          },
+                          {
+                            "kind": "Identifier",
+                            "name": "context"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "bodyId": "complete-new-feature-materialization",
+      "target": {
+        "language": "typescript",
+        "moduleProfile": "typescript-esm",
+        "languageProfileId": "typescript-collapsed-responsibility-body.v1"
+      },
+      "translation": {
+        "sourceBodyId": "complete-new-feature-materialization",
+        "projectionId": "project-complete-new-feature-materialization",
+        "artifactPath": "src/complete-new-feature-materialization.ts"
+      },
+      "expectedProjection": {
+        "imports": [],
+        "declarations": [],
+        "ast": {
+          "kind": "SourceFile",
+          "statements": [
+            {
+              "kind": "FunctionDeclaration",
+              "name": "materializesCompleteNewFeature",
+              "modifiers": ["export", "async"],
+              "parameters": [
+                {
+                  "name": "context",
+                  "typeReference": "MaterializeCompleteNewFeatureContext",
+                  "immutable": true
+                }
+              ],
+              "returnType": {
+                "kind": "Promise",
+                "typeReference": "CompleteNewFeatureMaterialization"
+              },
+              "body": {
+                "kind": "Block",
+                "statements": [
+                  {
+                    "kind": "ReturnStatement",
+                    "expression": {
+                      "kind": "AwaitExpression",
+                      "expression": {
+                        "kind": "CallExpression",
+                        "callee": {
+                          "kind": "PropertyAccessExpression",
+                          "receiver": {
+                            "kind": "Identifier",
+                            "name": "context"
+                          },
+                          "member": "invoke"
+                        },
+                        "arguments": [
+                          {
+                            "kind": "StringLiteral",
+                            "value": "materialize-complete-new-feature"
+                          },
+                          {
+                            "kind": "Identifier",
+                            "name": "context"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "bodyId": "observed-new-feature-execution",
+      "target": {
+        "language": "typescript",
+        "moduleProfile": "typescript-esm",
+        "languageProfileId": "typescript-collapsed-responsibility-body.v1"
+      },
+      "translation": {
+        "sourceBodyId": "observed-new-feature-execution",
+        "projectionId": "project-observed-new-feature-execution",
+        "artifactPath": "src/observed-new-feature-execution.ts"
+      },
+      "expectedProjection": {
+        "imports": [],
+        "declarations": [],
+        "ast": {
+          "kind": "SourceFile",
+          "statements": [
+            {
+              "kind": "FunctionDeclaration",
+              "name": "executesNewlyMaterializedFeature",
+              "modifiers": ["export", "async"],
+              "parameters": [
+                {
+                  "name": "context",
+                  "typeReference": "ExecuteNewlyMaterializedFeatureContext",
+                  "immutable": true
+                }
+              ],
+              "returnType": {
+                "kind": "Promise",
+                "typeReference": "ObservedNewFeatureExecution"
+              },
+              "body": {
+                "kind": "Block",
+                "statements": [
+                  {
+                    "kind": "ReturnStatement",
+                    "expression": {
+                      "kind": "AwaitExpression",
+                      "expression": {
+                        "kind": "CallExpression",
+                        "callee": {
+                          "kind": "PropertyAccessExpression",
+                          "receiver": {
+                            "kind": "Identifier",
+                            "name": "context"
+                          },
+                          "member": "invoke"
+                        },
+                        "arguments": [
+                          {
+                            "kind": "StringLiteral",
+                            "value": "execute-newly-materialized-feature"
+                          },
+                          {
+                            "kind": "Identifier",
+                            "name": "context"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "bodyId": "complete-new-feature-lineage",
+      "target": {
+        "language": "typescript",
+        "moduleProfile": "typescript-esm",
+        "languageProfileId": "typescript-collapsed-responsibility-body.v1"
+      },
+      "translation": {
+        "sourceBodyId": "complete-new-feature-lineage",
+        "projectionId": "project-complete-new-feature-lineage",
+        "artifactPath": "src/complete-new-feature-lineage.ts"
+      },
+      "expectedProjection": {
+        "imports": [],
+        "declarations": [],
+        "ast": {
+          "kind": "SourceFile",
+          "statements": [
+            {
+              "kind": "FunctionDeclaration",
+              "name": "verifiesCompleteNewFeatureLineage",
+              "modifiers": ["export", "async"],
+              "parameters": [
+                {
+                  "name": "context",
+                  "typeReference": "VerifyCompleteNewFeatureLineageContext",
+                  "immutable": true
+                }
+              ],
+              "returnType": {
+                "kind": "Promise",
+                "typeReference": "NewFeatureTerminalDisposition"
+              },
+              "body": {
+                "kind": "Block",
+                "statements": [
+                  {
+                    "kind": "ReturnStatement",
+                    "expression": {
+                      "kind": "AwaitExpression",
+                      "expression": {
+                        "kind": "CallExpression",
+                        "callee": {
+                          "kind": "PropertyAccessExpression",
+                          "receiver": {
+                            "kind": "Identifier",
+                            "name": "context"
+                          },
+                          "member": "invoke"
+                        },
+                        "arguments": [
+                          {
+                            "kind": "StringLiteral",
+                            "value": "verify-complete-new-feature-lineage"
+                          },
+                          {
+                            "kind": "Identifier",
+                            "name": "context"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "evaluationAuthority": {
+    "semanticEvaluation": {
+      "executionSource": "$.semanticAuthority[*].execution",
+      "fixtureSource": "$.canonicalFeatureBody.scenarios[*].behavior.given",
+      "expectedSignalSource": "$.canonicalFeatureBody.scenarios[*].signal"
+    },
+    "projectedEvaluation": {
+      "executionSource": "$.projectionAuthority[*].expectedProjection.ast",
+      "fixtureSource": "$.canonicalFeatureBody.scenarios[*].behavior.given",
+      "expectedSignalSource": "$.canonicalFeatureBody.scenarios[*].signal"
+    },
+    "translationEvaluation": {
+      "compare": [
+        "$.semanticEvaluation.observedSignal",
+        "$.projectedEvaluation.observedSignal",
+        "$.canonicalFeatureBody.scenarios[*].expectation"
+      ],
+      "requiredRelationship": "canonical-equivalence"
+    },
+    "terminalDetermination": {
+      "semanticExecution": "CONFORMS",
+      "projectedExecution": "CONFORMS",
+      "translation": "EQUIVALENT",
+      "disposition": "PROJECTION_CONFORMS"
+    }
+  },
+  "reviewAuthority": {
+    "questions": [
+      "Does each stage consume only admitted products of earlier stages?",
+      "Does every scenario carry one obligation, expectation, responsibility, signal, and semantic operation?",
+      "Can every feature-body operation be traced to semantic execution?",
+      "Can every AST node be traced to feature-body authority?",
+      "Can every projected source construct be traced to the expected AST?",
+      "Are direct semantic and projected observations canonically equivalent to the declared expectation?"
+    ],
+    "translationTieOut": [
+      {
+        "authority": "Each feature body accepts one immutable context.",
+        "ast": "Each function declaration has one immutable context parameter.",
+        "code": "Each projected function accepts one typed context parameter."
+      },
+      {
+        "authority": "Each feature body invokes exactly one admitted semantic edge.",
+        "ast": "Each function body contains one awaited call expression.",
+        "code": "Each projected function returns one awaited context invocation."
+      },
+      {
+        "authority": "Each semantic edge ID equals its scenario semantic operation ID.",
+        "ast": "Each call contains the edge ID as one string literal.",
+        "code": "Each context invocation names the admitted semantic edge."
+      },
+      {
+        "authority": "Domain branching and DTO construction are forbidden.",
+        "ast": "No branch or object-construction nodes are admitted.",
+        "code": "No if, switch, loop, or object construction is projected."
+      }
+    ],
+    "admissionRule": "Admit implementation only when construction order is complete and expectation, semantic execution, AST, projected execution, and review are canonically equivalent."
+  },
+  "projection": {
+    "projectorId": "canonical-feature-conveyor-markdown-projector",
+    "projectorVersion": "1.0.0",
+    "outputPath": "architecture/end-to-end-canonical-feature-conveyor.md",
+    "encoding": "UTF-8",
+    "lineEnding": "CRLF",
+    "outputByteSha256": null
+  }
+}

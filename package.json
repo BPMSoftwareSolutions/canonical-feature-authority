@@ -22,6 +22,7 @@
     "verify:end-to-end-feature-contract": "node tools/verifies-governed-inspection-document.mjs --authority architecture/inspects-end-to-end-feature-conveyor.authority.json",
     "prove:end-to-end-feature-contract": "npm run check:end-to-end-feature-contract && npm run verify:end-to-end-feature-contract",
     "prove:governed-documents": "npm run prove:governed-document && npm run prove:end-to-end-feature-contract",
+    "verify:canonical-feature-conveyor-contract": "node tools/verifies-canonical-feature-conveyor-contract.mjs",
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
     "prove:projection": "npm run prove:governed-documents && npm run check:bodies && npm run build",
