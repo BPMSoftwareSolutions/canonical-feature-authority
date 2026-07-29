@@ -60,6 +60,54 @@
         "properties": {
           "subject": {
             "$ref": "#/$defs/subject"
+          },
+          "blocks": {
+            "type": "array",
+            "minItems": 14,
+            "allOf": [
+              {
+                "$ref": "#/$defs/containsStatusHeading"
+              },
+              {
+                "$ref": "#/$defs/containsUserStoryHeading"
+              },
+              {
+                "$ref": "#/$defs/containsAcceptanceGherkinHeading"
+              },
+              {
+                "$ref": "#/$defs/containsPhysicalFeatureAuthorityHeading"
+              },
+              {
+                "$ref": "#/$defs/containsRepositorySpineHeading"
+              },
+              {
+                "$ref": "#/$defs/containsCompleteArtifactSetHeading"
+              },
+              {
+                "$ref": "#/$defs/containsProjectionLedgerHeading"
+              },
+              {
+                "$ref": "#/$defs/containsNormativeEvidenceSchemasHeading"
+              },
+              {
+                "$ref": "#/$defs/containsCompleteSejHeading"
+              },
+              {
+                "$ref": "#/$defs/containsProjectedBodiesHeading"
+              },
+              {
+                "$ref": "#/$defs/containsAcceptanceAlgorithmHeading"
+              },
+              {
+                "$ref": "#/$defs/containsRedDispositionsHeading"
+              },
+              {
+                "$ref": "#/$defs/containsManualInspectionHeading"
+              },
+              {
+                "$ref": "#/$defs/containsExitConditionHeading"
+              }
+            ]
           }
         }
       }
@@ -137,12 +185,41 @@
       "additionalProperties": false,
       "required": [
         "featureId",
+        "title",
+        "userStory",
+        "governingObligation",
         "scenarioIds"
       ],
       "properties": {
         "featureId": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyTrimmedLine"
+        },
+        "userStory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "asA",
+            "iWant",
+            "soThat"
+          ],
+          "properties": {
+            "asA": {
+              "$ref": "#/$defs/nonEmptyTrimmedLine"
+            },
+            "iWant": {
+              "$ref": "#/$defs/nonEmptyTrimmedLine"
+            },
+            "soThat": {
+              "$ref": "#/$defs/nonEmptyTrimmedLine"
+            }
+          }
+        },
+        "governingObligation": {
+          "$ref": "#/$defs/nonEmptyTrimmedLine"
         },
         "scenarioIds": {
           "type": "array",
@@ -152,6 +229,263 @@
             "type": "string",
             "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
           }
+        }
+      }
+    },
+    "containsStatusHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/statusHeading"
+      }
+    },
+    "containsUserStoryHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/userStoryHeading"
+      }
+    },
+    "containsAcceptanceGherkinHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/acceptanceGherkinHeading"
+      }
+    },
+    "containsPhysicalFeatureAuthorityHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/physicalFeatureAuthorityHeading"
+      }
+    },
+    "containsRepositorySpineHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/repositorySpineHeading"
+      }
+    },
+    "containsCompleteArtifactSetHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/completeArtifactSetHeading"
+      }
+    },
+    "containsProjectionLedgerHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/projectionLedgerHeading"
+      }
+    },
+    "containsNormativeEvidenceSchemasHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/normativeEvidenceSchemasHeading"
+      }
+    },
+    "containsCompleteSejHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/completeSejHeading"
+      }
+    },
+    "containsProjectedBodiesHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/projectedBodiesHeading"
+      }
+    },
+    "containsAcceptanceAlgorithmHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/acceptanceAlgorithmHeading"
+      }
+    },
+    "containsRedDispositionsHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/redDispositionsHeading"
+      }
+    },
+    "containsManualInspectionHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/manualInspectionHeading"
+      }
+    },
+    "containsExitConditionHeading": {
+      "type": "array",
+      "minContains": 1,
+      "maxContains": 1,
+      "contains": {
+        "$ref": "#/$defs/exitConditionHeading"
+      }
+    },
+    "statusHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "Status"
+        }
+      }
+    },
+    "userStoryHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "User story"
+        }
+      }
+    },
+    "acceptanceGherkinHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "Acceptance Gherkin"
+        }
+      }
+    },
+    "physicalFeatureAuthorityHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "Physical canonical feature authority"
+        }
+      }
+    },
+    "repositorySpineHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "Repository spine"
+        }
+      }
+    },
+    "completeArtifactSetHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "Complete artifact set for the normative scenario"
+        }
+      }
+    },
+    "projectionLedgerHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "Authority identity and projection ledger"
+        }
+      }
+    },
+    "normativeEvidenceSchemasHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "Normative evidence schemas"
+        }
+      }
+    },
+    "completeSejHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "Complete SEJ inputs"
+        }
+      }
+    },
+    "projectedBodiesHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "Projected TypeScript bodies"
+        }
+      }
+    },
+    "acceptanceAlgorithmHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "Ordered terminal acceptance algorithm"
+        }
+      }
+    },
+    "redDispositionsHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "RED dispositions"
+        }
+      }
+    },
+    "manualInspectionHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "Manual inspection sequence"
+        }
+      }
+    },
+    "exitConditionHeading": {
+      "type": "object",
+      "$ref": "#/$defs/exactLevelTwoHeading",
+      "properties": {
+        "text": {
+          "const": "Implementation exit condition"
+        }
+      }
+    },
+    "exactLevelTwoHeading": {
+      "type": "object",
+      "required": [
+        "blockType",
+        "level",
+        "text"
+      ],
+      "properties": {
+        "blockType": {
+          "const": "heading"
+        },
+        "level": {
+          "const": 2
+        },
+        "text": {
+          "$ref": "#/$defs/nonEmptyTrimmedLine"
         }
       }
     },

@@ -122,20 +122,39 @@ Validation cross-checks:
 the user story contains As a, I want, and So that
 the Gherkin contains Feature, As a, I want, So that, and ordered scenario tags
 the Gherkin scenario tags equal subject.scenarioIds
+the Gherkin Background contains only shared immutable Given and And facts
+each Gherkin scenario contains an ordered Given, one When, and one Then
 the parsed canonical feature authority equals the declared subject
 the repository spine contains the subject feature root and canonical authority
 the normative artifact set contains lineage, SEJ, AST, and TypeScript roles
 the projection ledger covers every declared scenario in order
 every ledger scenario contains primary, type, expectation, and conformance
+ledger identities and projected filenames are unique and mechanically derived
 the normative scenario contains four complete parseable SEJ inputs
-the document contains four projected TypeScript body examples
-the normative evidence schema section contains parseable schema JSON
-the acceptance algorithm is a TypeScript projection
+every SEJ has the admitted closed shape, lineage, constraints, and artifact path
+the document contains four syntactically valid projected TypeScript bodies
+the primary, expectation, and conformance bodies reproduce their SEJs exactly
+the type body declares exactly the names admitted by its SEJ
+the evidence artifact set, schemas, types, parents, and signer roles form one
+  schema-closed catalog
+the root evidence artifact has a null parent and every later parent is exact
+the acceptance algorithm has one ordered check-to-RED map
+every RED disposition is assigned to exactly one ordered acceptance check
 the RED disposition block is a non-empty JSON array
 ```
 
 Failure of any strict-profile invariant is a document-conformance failure even
 when the Markdown bytes otherwise reproduce.
+
+JSON Schema and executable validation have distinct normative jobs. Draft
+2020-12 validates the closed authority envelope, block grammar, profile,
+subject shape, and exactly-once presence of every required strict-profile
+heading before any content is interpreted. The JavaScript invariant
+validator then parses governed code blocks and enforces relationships JSON
+Schema cannot express across Markdown blocks: exact story identity, Gherkin
+causality, filename derivation, SEJ-to-body reproduction, evidence-chain
+closure, and algorithm-to-RED coverage. Both layers are mandatory; passing
+only one is not conformance.
 
 ## Canonical byte projection
 
@@ -225,9 +244,19 @@ Strict implementation contracts add:
 ```text
 required-section removal
 Gherkin scenario-identity substitution
+mutable stage state inserted into the Gherkin Background
 canonical feature-authority identity substitution
 missing four-body SEJ role
 missing projected TypeScript role
+subject story mutation
+duplicated required heading
+ledger filename substitution
+syntactically invalid projected TypeScript
+evidence-set/catalog mismatch
+root provenance parent substitution
+artifact-type enum omission
+missing algorithm-to-RED coverage
+malformed SEJ projection shape
 ```
 
 ## Reusable ecosystem workflow

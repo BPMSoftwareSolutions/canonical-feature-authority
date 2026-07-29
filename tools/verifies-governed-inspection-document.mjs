@@ -203,6 +203,17 @@ if (
       )
   );
   recordsControl(
+    "schema-required-contract-section",
+    () => {
+      assert(
+        !validate(missingSection),
+        "schema accepted a missing strict-profile section"
+      );
+      throw new Error("DOCUMENT_AUTHORITY_SCHEMA_INVALID");
+    },
+    error => error.message === "DOCUMENT_AUTHORITY_SCHEMA_INVALID"
+  );
+  recordsControl(
     "required-contract-section",
     () => assertsSemanticDocumentInvariants(missingSection),
     error =>
@@ -227,6 +238,28 @@ if (
     error =>
       error.message ===
       "DOCUMENT_GHERKIN_SCENARIO_IDENTITY_MISMATCH"
+  );
+
+  const mutableBackground = structuredClone(authority);
+  const mutableBackgroundBlock = mutableBackground.blocks.find(
+    block =>
+      block.blockType === "fenced-code" &&
+      block.language === "gherkin"
+  );
+  const backgroundIndex =
+    mutableBackgroundBlock.lines.indexOf("  Background:");
+  mutableBackgroundBlock.lines.splice(
+    backgroundIndex + 2,
+    0,
+    "    And one empty instructor-controlled output root"
+  );
+  recordsControl(
+    "mutable-background-state",
+    () => assertsSemanticDocumentInvariants(mutableBackground),
+    error =>
+      error.message.startsWith(
+        "DOCUMENT_GHERKIN_BACKGROUND_STATE_NOT_IMMUTABLE"
+      )
   );
 
   const featureAuthorityIdentity = structuredClone(authority);
@@ -298,6 +331,205 @@ if (
     error =>
       error.message ===
       "DOCUMENT_PROJECTED_TYPESCRIPT_ROLE_COVERAGE_MISMATCH"
+  );
+
+  const storyMutation = structuredClone(authority);
+  storyMutation.subject.userStory.iWant += " with an unreviewed extension";
+  recordsControl(
+    "subject-story-authority-mismatch",
+    () => assertsSemanticDocumentInvariants(storyMutation),
+    error =>
+      error.message.startsWith("DOCUMENT_USER_STORY_INCOMPLETE")
+  );
+
+  const duplicatedHeading = structuredClone(authority);
+  const userStoryHeadingIndex = duplicatedHeading.blocks.findIndex(
+    block =>
+      block.blockType === "heading" &&
+      block.level === 2 &&
+      block.text === "User story"
+  );
+  duplicatedHeading.blocks.splice(userStoryHeadingIndex + 1, 0, {
+    blockType: "heading",
+    level: 2,
+    text: "User story"
+  });
+  recordsControl(
+    "duplicated-required-heading",
+    () => assertsSemanticDocumentInvariants(duplicatedHeading),
+    error =>
+      error.message ===
+      "DOCUMENT_CONTRACT_SECTION_DUPLICATED: User story"
+  );
+
+  const duplicatedLedgerFilename = structuredClone(authority);
+  const ledgerBlock = duplicatedLedgerFilename.blocks.find(
+    block =>
+      block.blockType === "fenced-code" &&
+      block.language === "json" &&
+      block.lines.some(line =>
+        line.includes("four-body-sej-substitution-matrix.v1")
+      )
+  );
+  const ledgerValue = JSON.parse(ledgerBlock.lines.join("\n"));
+  ledgerValue.entries[1].bodies[0].file =
+    ledgerValue.entries[0].bodies[0].file;
+  ledgerBlock.lines = JSON.stringify(ledgerValue, null, 2).split("\n");
+  recordsControl(
+    "projection-ledger-filename-substitution",
+    () => assertsSemanticDocumentInvariants(duplicatedLedgerFilename),
+    error =>
+      error.message.startsWith(
+        "DOCUMENT_PROJECTION_LEDGER_FILENAME_DERIVATION_MISMATCH"
+      )
+  );
+
+  const invalidTypescript = structuredClone(authority);
+  const projectedBodiesHeadingIndex = invalidTypescript.blocks.findIndex(
+    block =>
+      block.blockType === "heading" &&
+      block.text === "Projected TypeScript bodies"
+  );
+  const typeBody = invalidTypescript.blocks
+    .slice(projectedBodiesHeadingIndex + 1)
+    .filter(
+      block =>
+        block.blockType === "fenced-code" &&
+        block.language === "typescript"
+    )[1];
+  typeBody.lines[typeBody.lines.length - 1] += "}";
+  recordsControl(
+    "invalid-projected-typescript",
+    () => assertsSemanticDocumentInvariants(invalidTypescript),
+    error =>
+      error.message ===
+      "DOCUMENT_PROJECTED_TYPESCRIPT_SEJ_MISMATCH: type"
+  );
+
+  const evidenceCatalogMismatch = structuredClone(authority);
+  const evidenceCatalogBlock = evidenceCatalogMismatch.blocks.find(
+    block =>
+      block.blockType === "fenced-code" &&
+      block.language === "json" &&
+      block.lines.some(line =>
+        line.includes("new-feature-evidence-artifact-catalog.v1")
+      )
+  );
+  const evidenceCatalogValue = JSON.parse(
+    evidenceCatalogBlock.lines.join("\n")
+  );
+  evidenceCatalogValue.entries[1].file =
+    "02-substituted-new-feature-request-admission.json";
+  evidenceCatalogBlock.lines = JSON.stringify(
+    evidenceCatalogValue,
+    null,
+    2
+  ).split("\n");
+  recordsControl(
+    "evidence-set-catalog-mismatch",
+    () => assertsSemanticDocumentInvariants(evidenceCatalogMismatch),
+    error => error.message === "DOCUMENT_EVIDENCE_SET_CATALOG_MISMATCH"
+  );
+
+  const rootParentMutation = structuredClone(authority);
+  const rootEnvelopeBlock = rootParentMutation.blocks.find(
+    block =>
+      block.blockType === "fenced-code" &&
+      block.language === "json" &&
+      block.lines.some(line => line.trim() === "\"parent\": null,")
+  );
+  const rootEnvelopeValue = JSON.parse(rootEnvelopeBlock.lines.join("\n"));
+  rootEnvelopeValue.provenance.parent = {
+    artifactType: "forbidden-sentinel-parent",
+    artifactSha256: "sha256:<forbidden>"
+  };
+  rootEnvelopeBlock.lines = JSON.stringify(
+    rootEnvelopeValue,
+    null,
+    2
+  ).split("\n");
+  recordsControl(
+    "root-provenance-parent-substitution",
+    () => assertsSemanticDocumentInvariants(rootParentMutation),
+    error => error.message === "DOCUMENT_ROOT_PROVENANCE_VARIANT_INVALID"
+  );
+
+  const artifactTypeEnumMutation = structuredClone(authority);
+  const artifactTypeEnumBlock = artifactTypeEnumMutation.blocks.find(
+    block =>
+      block.blockType === "fenced-code" &&
+      block.language === "json" &&
+      block.lines.some(line =>
+        line.includes("\"portable-new-feature-verification-report\"")
+      ) &&
+      !block.lines.some(line =>
+        line.includes("\"artifactType\":")
+      )
+  );
+  const artifactTypeEnumValue = JSON.parse(
+    artifactTypeEnumBlock.lines.join("\n")
+  );
+  artifactTypeEnumValue.pop();
+  artifactTypeEnumBlock.lines = JSON.stringify(
+    artifactTypeEnumValue,
+    null,
+    2
+  ).split("\n");
+  recordsControl(
+    "artifact-type-enum-coverage",
+    () => assertsSemanticDocumentInvariants(artifactTypeEnumMutation),
+    error =>
+      error.message ===
+      "DOCUMENT_EVIDENCE_ARTIFACT_TYPE_ENUM_MISMATCH"
+  );
+
+  const acceptanceRedCoverage = structuredClone(authority);
+  const acceptanceMapBlock = acceptanceRedCoverage.blocks.find(
+    block =>
+      block.blockType === "fenced-code" &&
+      block.language === "json" &&
+      block.lines.some(line =>
+        line.includes("acceptance-check-red-code-map.v1")
+      )
+  );
+  const acceptanceMapValue = JSON.parse(
+    acceptanceMapBlock.lines.join("\n")
+  );
+  acceptanceMapValue.entries[0].redCodes.pop();
+  acceptanceMapBlock.lines = JSON.stringify(
+    acceptanceMapValue,
+    null,
+    2
+  ).split("\n");
+  recordsControl(
+    "acceptance-red-code-coverage",
+    () => assertsSemanticDocumentInvariants(acceptanceRedCoverage),
+    error =>
+      error.message ===
+      "DOCUMENT_ACCEPTANCE_RED_MAP_COVERAGE_MISMATCH"
+  );
+
+  const malformedSej = structuredClone(authority);
+  const primarySejBlock = malformedSej.blocks.find(
+    block =>
+      block.blockType === "fenced-code" &&
+      block.language === "json" &&
+      block.lines.some(line =>
+        line.includes("\"bodyRole\": \"primary\"")
+      ) &&
+      block.lines.some(line =>
+        line.includes("\"semanticExecutableType\":")
+      )
+  );
+  const primarySejValue = JSON.parse(primarySejBlock.lines.join("\n"));
+  primarySejValue.projection.invocation.awaited = false;
+  primarySejBlock.lines = JSON.stringify(primarySejValue, null, 2).split(
+    "\n"
+  );
+  recordsControl(
+    "sej-schema-shape",
+    () => assertsSemanticDocumentInvariants(malformedSej),
+    error => error.message === "DOCUMENT_SEJ_SCHEMA_INVALID: primary"
   );
 }
 

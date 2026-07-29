@@ -44,26 +44,27 @@ Feature: Implement one new feature end to end through a governed conveyor
     reproduced and verified
 
   Background:
-    Given one instructor-signed reviewed new-feature request
-    And one instructor-admitted conveyor plan
-    And pinned schema, semantic-profile, runtime-port, and trust catalogs
-    And one empty instructor-controlled output root
+    Given instructor trust authority is supplied outside the submitted repositories
+    And schema, semantic-profile, and runtime-port catalogs are pinned
 
   @scenario-id:admit-one-reviewed-new-feature-request
   Scenario: Admit one reviewed new-feature request
-    Given the requested feature is absent from every submitted capability root
+    Given one instructor-signed reviewed new-feature request
+    And its feature ID is absent from every submitted capability root
     When its reviewed request eligibility is independently evaluated
     Then one signed new-feature-request admission disposition is emitted
 
   @scenario-id:project-one-complete-new-feature-authority
   Scenario: Project one complete new-feature authority
-    Given one admitted reviewed request and one fixed governed conveyor plan
+    Given one signed GREEN new-feature-request admission disposition
+    And one instructor-admitted fixed thirteen-stage conveyor plan
     When one bounded model submission is evaluated against the admitted catalogs
     Then one complete admitted new-feature authority bundle is emitted
 
   @scenario-id:materialize-one-complete-new-feature
   Scenario: Materialize one complete new feature
-    Given one admitted new-feature authority bundle and one empty output root
+    Given one admitted complete new-feature authority bundle
+    And one empty instructor-controlled output root
     When every declared authority and projection stage is executed
     Then one complete projector-signed new-feature materialization is emitted
 
@@ -285,7 +286,7 @@ The acceptance capability root is exactly:
 
 ```text
 capabilities/implement-one-new-feature-end-to-end-through-a-governed-conveyor/
-  implements-one-new-feature-end-to-end.feature
+  implement-one-new-feature-end-to-end-through-a-governed-conveyor.feature
   projects-capability-authority.json
   scenarios/
     admit-one-reviewed-new-feature-request/
@@ -475,7 +476,7 @@ name that the generic contract materializer must consume.
       "baseName": "complete-new-feature-lineage",
       "bodies": [
         { "bodyRole": "primary", "file": "complete-new-feature-lineage.ts" },
-        { "bodyRole": "type", "file": "new-feature-terminal-disposition.type.ts" },
+        { "bodyRole": "type", "file": "complete-new-feature-lineage.type.ts" },
         { "bodyRole": "expectation", "file": "complete-new-feature-lineage.expectation.ts" },
         { "bodyRole": "conformance", "file": "runs-complete-new-feature-lineage-conformance.ts" }
       ]
@@ -561,6 +562,22 @@ fixture value, template value, or source literal
 ```
 
 ## Admitted conveyor plan
+
+A generic instructor-owned plan policy exists before request admission. It
+defines the fixed stage order, limits, dependency rules, and terminal
+requirements, but it contains no request ID or reviewed-request hash.
+
+```text
+preexisting policy:
+C:/lab/trusted-tools/
+  canonical-feature-authority-instructor-harness/
+  policies/new-feature-conveyor-plan-policy.json
+
+request-specific plan:
+instantiated only after a GREEN request-admission disposition
+binds reviewedRequestSha256 and lineageRootSha256
+is signed by authority-admission-evaluator
+```
 
 ```text
 schema file:
@@ -810,25 +827,60 @@ capabilities/<feature-id>/
   scenarios/
     <scenario-id>/
       declares-scenario-authority.json
-      declares-obligation.json
-      declares-scenario-expectation.json
+      <obligation-id>.obligation.json
+      <expectation-id>.expectation.json
       <responsibility-id>/
         declares-responsibility.json
         declares-signal.json
         binds-responsibility-to-semantic-edge.json
+        executes-<primary-base>.sej.json
         projection-lineage.index.json
-        <primary>.semantic-executable.json
-        <primary>.ts.ast.authority.json
-        <primary>.ts
-        <type>.semantic-executable.json
-        <type>.ts.ast.authority.json
-        <type>.ts
-        <expectation>.semantic-executable.json
-        <expectation>.ts.ast.authority.json
-        <expectation>.ts
-        <conformance>.semantic-executable.json
-        <conformance>.ts.ast.authority.json
-        <conformance>.ts
+
+        expects-<type-authority-base>-body.json
+        declares-<type-authority-base>-body.json
+        projects-<type-authority-base>.semantic-executable.json
+        projects-<type-authority-base>-body.json
+        <type-projected-base>.ts.ast.authority.json
+        <type-projected-base>.ts
+
+        expects-<primary-base>-body.json
+        declares-<primary-base>-body.json
+        projects-<primary-base>.semantic-executable.json
+        projects-<primary-base>-body.json
+        <primary-base>.ts.ast.authority.json
+        <primary-base>.ts
+
+        expects-<expectation-authority-base>-body.json
+        declares-<expectation-authority-base>-body.json
+        projects-<expectation-authority-base>.semantic-executable.json
+        projects-<expectation-authority-base>-body.json
+        <expectation-projected-base>.ts.ast.authority.json
+        <expectation-projected-base>.ts
+
+        expects-<conformance-base>-body.json
+        declares-<conformance-base>-body.json
+        projects-<conformance-base>.semantic-executable.json
+        projects-<conformance-base>-body.json
+        <conformance-base>.ts.ast.authority.json
+        <conformance-base>.ts
+```
+
+Filename derivation is identical for the acceptance capability and every
+generated feature. No alternate `declares-obligation.json`,
+`declares-scenario-expectation.json`, or feature-title-derived Gherkin filename
+is permitted.
+
+```text
+feature file = <feature-id>.feature
+obligation file = <obligation-id>.obligation.json
+expectation file = <expectation-id>.expectation.json
+responsibility directory = <responsibility-id>/
+primary base = projection-ledger entry baseName
+type authority base = <primary-base>-type
+type projected base = <primary-base>.type
+expectation authority base = <primary-base>-expectation
+expectation projected base = <primary-base>.expectation
+conformance base = runs-<primary-base>-conformance
 ```
 
 The materializer creates JSON authorities and navigational Gherkin only. The
@@ -962,12 +1014,14 @@ from reviewed authority, not copied from model output.
 07-candidate-new-feature-authority-bundle.json
 08-new-feature-authority-admission-disposition.json
 09-new-feature-materialization-manifest.json
-10-transformer-dependency-graph.json
-11-new-feature-runtime-composition-authority.json
-12-new-feature-execution-observation.json
-13-new-feature-regeneration-report.json
-14-complete-new-feature-lineage.json
-15-new-feature-terminal-disposition.json
+10-new-feature-build-manifest.json
+11-new-feature-transformer-dependency-graph.json
+12-new-feature-runtime-composition-authority.json
+13-new-feature-execution-observation.json
+14-new-feature-regeneration-report.json
+15-complete-new-feature-lineage.json
+16-new-feature-terminal-disposition.json
+17-portable-new-feature-verification-report.json
 ```
 
 Provider nonce-consumption evidence is linked from the provider exchange using
@@ -981,14 +1035,20 @@ schemas/reviewed-new-feature-request.schema.json
 schemas/new-feature-request-admission.schema.json
 schemas/new-feature-conveyor-plan.schema.json
 schemas/new-feature-runtime-port-catalog.schema.json
+schemas/model-request-authority.schema.json
+schemas/independent-provider-exchange-attestation.schema.json
+schemas/model-produced-semantic-authority.schema.json
 schemas/candidate-new-feature-authority-bundle.schema.json
 schemas/new-feature-authority-admission-disposition.schema.json
 schemas/new-feature-materialization-manifest.schema.json
+schemas/new-feature-build-manifest.schema.json
+schemas/new-feature-transformer-dependency-graph.schema.json
 schemas/new-feature-runtime-composition-authority.schema.json
 schemas/new-feature-execution-observation.schema.json
 schemas/new-feature-regeneration-report.schema.json
 schemas/complete-new-feature-lineage.schema.json
 schemas/new-feature-terminal-disposition.schema.json
+schemas/portable-new-feature-verification-report.schema.json
 ```
 
 All schemas use Draft 2020-12, have stable `$id` values, set
@@ -996,8 +1056,188 @@ All schemas use Draft 2020-12, have stable `$id` values, set
 a new `new-feature-conveyor-schema-catalog.v1` catalog. Each schema has valid
 and invalid fixtures executed by the contract verifier.
 
-Every signed evidence schema uses this exact wrapper, replacing the three
-placeholders with the artifact-specific constants and complete payload schema:
+The evidence set is schema-closed by this catalog. Every persisted normative
+artifact has one schema, registered artifact type, fixed parent type, and fixed
+signer role.
+
+```json
+{
+  "catalogType": "new-feature-evidence-artifact-catalog.v1",
+  "entries": [
+    {
+      "file": "01-reviewed-new-feature-request.json",
+      "artifactType": "reviewed-new-feature-request",
+      "schema": "reviewed-new-feature-request.schema.json",
+      "parentArtifactType": null,
+      "signerRole": "review-authority"
+    },
+    {
+      "file": "02-new-feature-request-admission.json",
+      "artifactType": "new-feature-request-admission",
+      "schema": "new-feature-request-admission.schema.json",
+      "parentArtifactType": "reviewed-new-feature-request",
+      "signerRole": "authority-admission-evaluator"
+    },
+    {
+      "file": "03-new-feature-conveyor-plan.json",
+      "artifactType": "new-feature-conveyor-plan",
+      "schema": "new-feature-conveyor-plan.schema.json",
+      "parentArtifactType": "new-feature-request-admission",
+      "signerRole": "authority-admission-evaluator"
+    },
+    {
+      "file": "04-model-request-authority.json",
+      "artifactType": "model-request-authority",
+      "schema": "model-request-authority.schema.json",
+      "parentArtifactType": "new-feature-conveyor-plan",
+      "signerRole": "acceptance-evaluator"
+    },
+    {
+      "file": "05-provider-exchange-attestation.json",
+      "artifactType": "independent-provider-exchange-attestation",
+      "schema": "independent-provider-exchange-attestation.schema.json",
+      "parentArtifactType": "model-request-authority",
+      "signerRole": "provider-observer"
+    },
+    {
+      "file": "06-model-submission.json",
+      "artifactType": "model-produced-semantic-authority",
+      "schema": "model-produced-semantic-authority.schema.json",
+      "parentArtifactType": "independent-provider-exchange-attestation",
+      "signerRole": "provider-observer"
+    },
+    {
+      "file": "07-candidate-new-feature-authority-bundle.json",
+      "artifactType": "candidate-new-feature-authority-bundle",
+      "schema": "candidate-new-feature-authority-bundle.schema.json",
+      "parentArtifactType": "model-produced-semantic-authority",
+      "signerRole": "authority-admission-evaluator"
+    },
+    {
+      "file": "08-new-feature-authority-admission-disposition.json",
+      "artifactType": "new-feature-authority-admission-disposition",
+      "schema": "new-feature-authority-admission-disposition.schema.json",
+      "parentArtifactType": "candidate-new-feature-authority-bundle",
+      "signerRole": "authority-admission-evaluator"
+    },
+    {
+      "file": "09-new-feature-materialization-manifest.json",
+      "artifactType": "new-feature-materialization-manifest",
+      "schema": "new-feature-materialization-manifest.schema.json",
+      "parentArtifactType": "new-feature-authority-admission-disposition",
+      "signerRole": "acceptance-evaluator"
+    },
+    {
+      "file": "10-new-feature-build-manifest.json",
+      "artifactType": "new-feature-build-manifest",
+      "schema": "new-feature-build-manifest.schema.json",
+      "parentArtifactType": "new-feature-materialization-manifest",
+      "signerRole": "runtime-observer"
+    },
+    {
+      "file": "11-new-feature-transformer-dependency-graph.json",
+      "artifactType": "new-feature-transformer-dependency-graph",
+      "schema": "new-feature-transformer-dependency-graph.schema.json",
+      "parentArtifactType": "new-feature-build-manifest",
+      "signerRole": "acceptance-evaluator"
+    },
+    {
+      "file": "12-new-feature-runtime-composition-authority.json",
+      "artifactType": "new-feature-runtime-composition-authority",
+      "schema": "new-feature-runtime-composition-authority.schema.json",
+      "parentArtifactType": "new-feature-transformer-dependency-graph",
+      "signerRole": "acceptance-evaluator"
+    },
+    {
+      "file": "13-new-feature-execution-observation.json",
+      "artifactType": "new-feature-execution-observation",
+      "schema": "new-feature-execution-observation.schema.json",
+      "parentArtifactType": "new-feature-runtime-composition-authority",
+      "signerRole": "runtime-observer"
+    },
+    {
+      "file": "14-new-feature-regeneration-report.json",
+      "artifactType": "new-feature-regeneration-report",
+      "schema": "new-feature-regeneration-report.schema.json",
+      "parentArtifactType": "new-feature-execution-observation",
+      "signerRole": "acceptance-evaluator"
+    },
+    {
+      "file": "15-complete-new-feature-lineage.json",
+      "artifactType": "complete-new-feature-lineage",
+      "schema": "complete-new-feature-lineage.schema.json",
+      "parentArtifactType": "new-feature-regeneration-report",
+      "signerRole": "acceptance-evaluator"
+    },
+    {
+      "file": "16-new-feature-terminal-disposition.json",
+      "artifactType": "new-feature-terminal-disposition",
+      "schema": "new-feature-terminal-disposition.schema.json",
+      "parentArtifactType": "complete-new-feature-lineage",
+      "signerRole": "acceptance-evaluator"
+    },
+    {
+      "file": "17-portable-new-feature-verification-report.json",
+      "artifactType": "portable-new-feature-verification-report",
+      "schema": "portable-new-feature-verification-report.schema.json",
+      "parentArtifactType": "new-feature-terminal-disposition",
+      "signerRole": "portable-verifier"
+    }
+  ]
+}
+```
+
+The implementation must add every catalog artifact type not already present to
+`schemas/embedded-provenance.schema.json#/$defs/artifactType`. No artifact may
+be persisted under an unregistered type.
+
+```json
+[
+  "reviewed-new-feature-request",
+  "new-feature-request-admission",
+  "new-feature-conveyor-plan",
+  "candidate-new-feature-authority-bundle",
+  "new-feature-authority-admission-disposition",
+  "new-feature-materialization-manifest",
+  "new-feature-build-manifest",
+  "new-feature-transformer-dependency-graph",
+  "new-feature-runtime-composition-authority",
+  "new-feature-execution-observation",
+  "new-feature-regeneration-report",
+  "complete-new-feature-lineage",
+  "new-feature-terminal-disposition",
+  "portable-new-feature-verification-report"
+]
+```
+
+The reviewed request is the one root-envelope exception. Its schema constrains
+`provenance.parent` to `null`.
+
+```json
+{
+  "provenance": {
+    "schema": "embedded-provenance.v1",
+    "canonicalizationAlgorithm": "RFC8785-JCS",
+    "artifactType": "reviewed-new-feature-request",
+    "artifactSha256": "sha256:<payload-jcs-hash>",
+    "parent": null,
+    "lineageRootSha256": "sha256:<payload-jcs-hash>",
+    "transformer": {
+      "id": "instructor-review-authority",
+      "version": "<version>",
+      "repositoryCommit": "<40-lowercase-hex>",
+      "executableSha256": "sha256:<review-transformer-bytes>"
+    },
+    "signingKeyId": "sha256:<review-authority-public-key-id>",
+    "signature": "ed25519:<base64-signature>"
+  },
+  "payload": "<reviewed-new-feature-request-payload>"
+}
+```
+
+Every non-root signed evidence schema uses this exact wrapper, replacing the
+three placeholders with the artifact-specific constants and complete payload
+schema:
 
 ```json
 {
@@ -1252,11 +1492,28 @@ export async function admitsReviewedNewFeatureRequest(
 ### Type body projection
 
 ```typescript
+export type ReviewedNewFeatureRequest = unknown;
+export type NewFeatureRequestAdmission = unknown;
+export type ExpectationSignal = unknown;
+export type ProjectionConformanceSignal = unknown;
+
 export interface AdmitsReviewedNewFeatureRequestContext {
   readonly request: ReviewedNewFeatureRequest;
   readonly admit: (
     request: ReviewedNewFeatureRequest
   ) => Promise<NewFeatureRequestAdmission>;
+}
+
+export interface ProvesNewFeatureRequestAdmissionExpectationContext {
+  readonly expectation: unknown;
+  readonly prove: (expectation: unknown) => Promise<ExpectationSignal>;
+}
+
+export interface RunsNewFeatureRequestAdmissionConformanceContext {
+  readonly subject: unknown;
+  readonly evaluate: (
+    subject: unknown
+  ) => Promise<ProjectionConformanceSignal>;
 }
 ```
 
@@ -1286,27 +1543,34 @@ Signed evidence uses `embedded-provenance.v1`, RFC 8785 JCS payload hashing,
 SHA-256 byte hashing, and Ed25519 signatures. The complete parsed reviewed
 request is the lineage root.
 
-```text
-lineageRootSha256 =
-sha256(RFC8785-JCS(complete parsed reviewed-new-feature-request.json))
+```typescript
+const artifactSha256 =
+  sha256(utf8(rfc8785Jcs(payload)));
 
-artifactSha256 =
-sha256(RFC8785-JCS(payload))
+const lineageRootSha256 =
+  sha256(utf8(rfc8785Jcs(reviewedRequestPayload)));
 
-signature preimage =
-utf8(
-  "embedded-provenance.v1\n" +
-  artifactType + "\n" +
-  artifactSha256 + "\n" +
-  parentArtifactType + "\n" +
-  parentArtifactSha256 + "\n" +
-  lineageRootSha256 + "\n" +
-  transformerId + "\n" +
-  transformerVersion + "\n" +
-  transformerRepositoryCommit + "\n" +
-  transformerExecutableSha256
-)
+const unsignedProvenance = {
+  schema: "embedded-provenance.v1",
+  canonicalizationAlgorithm: "RFC8785-JCS",
+  artifactType,
+  artifactSha256,
+  parent,
+  lineageRootSha256,
+  transformer,
+  signingKeyId
+};
+
+const signature = ed25519Sign(
+  privateKey,
+  utf8(rfc8785Jcs(unsignedProvenance))
+);
 ```
+
+For the reviewed-request root, `parent` is the literal JSON value `null` in
+`unsignedProvenance` and therefore in the JCS signature preimage. For every
+non-root artifact, `parent` is the exact `{artifactType, artifactSha256}`
+object. No empty-string or sentinel parent representation is permitted.
 
 ## Trust roles
 
@@ -1327,10 +1591,14 @@ typescript-projector
   signs AST-to-TypeScript transitions
 
 runtime-observer
-  signs build and execution observations
+  signs build manifest and execution observations
 
 acceptance-evaluator
-  signs regeneration, complete lineage, and terminal disposition
+  signs materialization, dependency graph, runtime composition, regeneration,
+  complete lineage, and terminal disposition
+
+portable-verifier
+  signs the schema-valid public verification report
 ```
 
 The trust authority is supplied outside the run root and submitted
@@ -1340,6 +1608,8 @@ ID, and role together. A run-local trust file is an audit copy only.
 ## Artifact parent relationships
 
 ```text
+reviewed request
+  parent -> null
 request admission
   parent -> reviewed request
 conveyor plan
@@ -1356,8 +1626,10 @@ candidate admission disposition
   parent -> candidate authority bundle
 materialization manifest
   parent -> candidate admission disposition
-transformer dependency graph
+build manifest
   parent -> materialization manifest
+transformer dependency graph
+  parent -> build manifest
 runtime composition authority
   parent -> transformer dependency graph
 execution observation
@@ -1368,6 +1640,8 @@ complete lineage
   parent -> regeneration report
 terminal disposition
   parent -> complete lineage
+portable verification report
+  parent -> terminal disposition
 ```
 
 ## Regeneration proof
@@ -1430,6 +1704,47 @@ function evaluatesNewFeatureRun(input): Disposition {
 The evaluator executes checks in this exact order and stops at the first RED.
 A later successful check cannot overwrite an earlier failure. Missing required
 evidence during acceptance is RED, not unresolved.
+
+The following map is normative. It binds every ordered check to its complete
+set of possible first RED dispositions and assigns every RED disposition to
+exactly one check.
+
+```json
+{
+  "mapType": "acceptance-check-red-code-map.v1",
+  "entries": [
+    { "check": "requireInstructorOwnedFixtureAndTrust", "redCodes": ["FIXTURE_NOT_INSTRUCTOR_CONTROLLED", "TRUST_AUTHORITY_NOT_INSTRUCTOR_CONTROLLED"] },
+    { "check": "requireFeatureAbsentBeforeRun", "redCodes": ["FEATURE_ALREADY_PRESENT"] },
+    { "check": "requireEmptyOutputRoot", "redCodes": ["OUTPUT_ROOT_NOT_EMPTY"] },
+    { "check": "verifyReviewedRequestSchemaAndSignature", "redCodes": ["REVIEWED_REQUEST_SCHEMA_INVALID", "REVIEWED_REQUEST_SIGNATURE_INVALID"] },
+    { "check": "verifyRequestCompletenessAndAtomicity", "redCodes": ["REVIEWED_REQUEST_INCOMPLETE", "SCENARIO_NOT_ATOMIC", "REVIEWED_EXAMPLE_COVERAGE_INCOMPLETE"] },
+    { "check": "verifyConveyorPlanSchemaSignatureAndStageOrder", "redCodes": ["CONVEYOR_PLAN_SCHEMA_INVALID", "CONVEYOR_PLAN_SIGNATURE_INVALID", "CONVEYOR_STAGE_ORDER_MISMATCH"] },
+    { "check": "verifyPinnedSchemaProfilePortAndTrustCatalogs", "redCodes": ["SCHEMA_CATALOG_MISMATCH", "SEMANTIC_PROFILE_CATALOG_MISMATCH", "RUNTIME_PORT_CATALOG_MISMATCH", "PROJECTOR_TRUST_AUTHORITY_MISMATCH"] },
+    { "check": "verifyProviderRequestAuthority", "redCodes": ["MODEL_REQUEST_AUTHORITY_INVALID"] },
+    { "check": "verifyIndependentProviderExchangeAndNonce", "redCodes": ["PROVIDER_EXCHANGE_NOT_INDEPENDENTLY_OBSERVED", "PROVIDER_EXCHANGE_BYTE_HASH_MISMATCH", "CHALLENGE_NONCE_INVALID"] },
+    { "check": "verifyCandidateBundleSchemaAndForbiddenContent", "redCodes": ["CANDIDATE_BUNDLE_SCHEMA_INVALID", "MODEL_SOURCE_EMISSION_FORBIDDEN"] },
+    { "check": "verifyIdentityScenarioExampleProfileAndPortCoverage", "redCodes": ["CANDIDATE_IDENTITY_MISMATCH", "CANDIDATE_SCENARIO_COVERAGE_INCOMPLETE", "CANDIDATE_EXAMPLE_COVERAGE_INCOMPLETE", "SEMANTIC_PROFILE_UNAVAILABLE", "RUNTIME_PORT_UNAVAILABLE"] },
+    { "check": "verifyCandidateAdmissionBeforeMaterialization", "redCodes": ["CANDIDATE_AUTHORITY_NOT_ADMITTED"] },
+    { "check": "verifyGenericMaterializerIdentityAndExecutableHash", "redCodes": ["MATERIALIZER_NOT_GENERIC"] },
+    { "check": "verifyNoFeatureSpecificSourceTemplateOrAllowlist", "redCodes": ["FEATURE_SPECIFIC_GENERATOR_DETECTED"] },
+    { "check": "verifyCompleteCapabilitySpineAndTwentyBodyLineages", "redCodes": ["CAPABILITY_SPINE_INCOMPLETE", "BODY_LINEAGE_INCOMPLETE"] },
+    { "check": "verifyEverySemanticAuthorityAgainstPinnedProfile", "redCodes": ["SEMANTIC_AUTHORITY_SCHEMA_INVALID"] },
+    { "check": "replayEverySemanticAuthorityToSignedAst", "redCodes": ["SEMANTIC_TO_AST_REPLAY_MISMATCH"] },
+    { "check": "replayEverySignedAstToSignedTypescript", "redCodes": ["AST_TO_TYPESCRIPT_REPLAY_MISMATCH", "PROJECTOR_SIGNATURE_INVALID"] },
+    { "check": "verifyRuntimeCompositionAndAdapterBytes", "redCodes": ["RUNTIME_COMPOSITION_MISMATCH", "RUNTIME_ADAPTER_BYTE_MISMATCH"] },
+    { "check": "verifyFirstBuildHasZeroDiagnostics", "redCodes": ["TYPESCRIPT_BUILD_FAILED"] },
+    { "check": "verifyEveryReviewedExampleExecutionAndEffect", "redCodes": ["REVIEWED_EXAMPLE_RESULT_MISMATCH", "REVIEWED_EXAMPLE_EFFECT_MISMATCH", "INVOCATION_COUNT_MISMATCH"] },
+    { "check": "verifyExpectationAndConformanceSignals", "redCodes": ["EXPECTATION_SIGNAL_MISMATCH", "CONFORMANCE_SIGNAL_MISMATCH"] },
+    { "check": "verifyNoDownstreamInvocationAfterRed", "redCodes": ["DOWNSTREAM_EXECUTION_AFTER_RED"] },
+    { "check": "verifyCleanRegenerationIsByteIdentical", "redCodes": ["REGENERATION_BYTE_DRIFT"] },
+    { "check": "verifySecondBuildAndExecutionEqualFirst", "redCodes": ["SECOND_EXECUTION_MISMATCH"] },
+    { "check": "verifyCompleteArtifactParentChainAndLineageRoot", "redCodes": ["ARTIFACT_PARENT_MISMATCH", "LINEAGE_ROOT_MISMATCH"] },
+    { "check": "verifyAllFixedSignerRolesAndTransformerBytes", "redCodes": ["SIGNING_KEY_NOT_TRUSTED", "SIGNING_KEY_ROLE_NOT_PERMITTED", "TRANSFORMER_EXECUTABLE_MISMATCH"] },
+    { "check": "verifyAllNegativeControlsReturnExpectedFirstRed", "redCodes": ["NEGATIVE_CONTROL_MISMATCH"] },
+    { "check": "verifyPortablePublicReportWithoutPrivateState", "redCodes": ["PORTABLE_VERIFICATION_FAILED"] }
+  ]
+}
+```
 
 ## RED dispositions
 
