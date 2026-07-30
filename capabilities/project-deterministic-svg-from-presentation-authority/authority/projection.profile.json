@@ -1,0 +1,27 @@
+{
+  "profileId": "deterministic-editorial-svg",
+  "profileType": "deterministic-editorial-svg.v1",
+  "renderers": {
+    "horizontal-banner": {
+      "rendererType": "rectangle-with-centered-text.v1"
+    }
+  },
+  "serializationPolicy": {
+    "attributeOrder": "alphabetical",
+    "elementOrder": "projection-sequence",
+    "encoding": "UTF-8",
+    "lineEnding": "LF",
+    "numericPrecision": 2,
+    "randomIdentifiers": "forbidden",
+    "terminalNewline": true,
+    "timestamps": "forbidden"
+  },
+  "styleTokens": {
+    "review-banner": {
+      "fill": "#F7F9FC",
+      "fontFamily": "Arial",
+      "fontSize": 20,
+      "textFill": "#111827"
+    }
+  }
+}

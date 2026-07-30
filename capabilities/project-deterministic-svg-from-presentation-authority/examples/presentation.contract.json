@@ -1,0 +1,24 @@
+{
+  "artifactId": "governed-svg-review",
+  "authorityType": "deterministic-infographic-presentation.v1",
+  "canvas": {
+    "height": 120,
+    "viewBox": "0 0 200 120",
+    "width": 200
+  },
+  "proofRequirementId": "deterministic-infographic-svg-proof.v1",
+  "sections": [
+    {
+      "bounds": {
+        "height": 80,
+        "width": 180,
+        "x": 10,
+        "y": 20
+      },
+      "rendererId": "horizontal-banner",
+      "sectionId": "review-banner",
+      "styleToken": "review-banner",
+      "text": "Governed SVG"
+    }
+  ]
+}

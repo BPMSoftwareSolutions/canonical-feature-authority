@@ -1,0 +1,107 @@
+{
+  "$id": "https://canonical-feature-authority/schemas/deterministic-infographic-presentation.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifactId": {
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "type": "string"
+    },
+    "authorityType": {
+      "const": "deterministic-infographic-presentation.v1"
+    },
+    "canvas": {
+      "additionalProperties": false,
+      "properties": {
+        "height": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "viewBox": {
+          "type": "string"
+        },
+        "width": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "width",
+        "height",
+        "viewBox"
+      ],
+      "type": "object"
+    },
+    "proofRequirementId": {
+      "pattern": "^[a-z][a-z0-9-]*\\.v[1-9][0-9]*$",
+      "type": "string"
+    },
+    "sections": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "bounds": {
+            "additionalProperties": false,
+            "properties": {
+              "height": {
+                "exclusiveMinimum": 0,
+                "type": "number"
+              },
+              "width": {
+                "exclusiveMinimum": 0,
+                "type": "number"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "type": "object"
+          },
+          "rendererId": {
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "type": "string"
+          },
+          "sectionId": {
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "type": "string"
+          },
+          "styleToken": {
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "type": "string"
+          },
+          "text": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "sectionId",
+          "rendererId",
+          "bounds",
+          "text",
+          "styleToken"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "authorityType",
+    "artifactId",
+    "canvas",
+    "sections",
+    "proofRequirementId"
+  ],
+  "type": "object"
+}

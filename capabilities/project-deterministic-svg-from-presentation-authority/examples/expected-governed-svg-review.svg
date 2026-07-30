@@ -1,0 +1,6 @@
+<svg height="120" viewBox="0 0 200 120" width="200" xmlns="http://www.w3.org/2000/svg">
+  <g id="review-banner">
+    <rect fill="#F7F9FC" height="80" width="180" x="10" y="20"/>
+    <text fill="#111827" font-family="Arial" font-size="20" text-anchor="middle" x="100" y="66">Governed SVG</text>
+  </g>
+</svg>

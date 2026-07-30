@@ -1,0 +1,14 @@
+{
+  "contract": {
+    "contractPath": "presentation.contract.json"
+  },
+  "projection": {
+    "outputPath": "../generated/governed-svg-review.svg",
+    "profileId": "deterministic-editorial-svg",
+    "profilePath": "../authority/projection.profile.json"
+  },
+  "schema": {
+    "schemaId": "deterministic-infographic-authority.v1",
+    "schemaPath": "../authority/presentation.schema.json"
+  }
+}

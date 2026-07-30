@@ -1,0 +1,12 @@
+{
+  "bin": {
+    "project-svg": "./runtime/projects-svg-from-presentation-authority.mjs"
+  },
+  "name": "project-deterministic-svg-from-presentation-authority",
+  "scripts": {
+    "start": "node runtime/projects-svg-from-presentation-authority.mjs",
+    "verify": "node verification/verifies-standalone-projection.mjs"
+  },
+  "type": "module",
+  "version": "1.0.0"
+}

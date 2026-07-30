@@ -9,7 +9,9 @@
     "contract",
     "intent",
     "outcome",
-    "canonicalFeatureBody"
+    "canonicalFeatureBody",
+    "documentationProjection",
+    "implementationProjection"
   ],
   "properties": {
     "$schema": {
@@ -132,6 +134,12 @@
           }
         }
       }
+    },
+    "documentationProjection": {
+      "$ref": "#/$defs/documentationProjection"
+    },
+    "implementationProjection": {
+      "$ref": "#/$defs/implementationProjection"
     }
   },
   "$defs": {
@@ -390,6 +398,687 @@
         "description": {
           "type": "string",
           "minLength": 1
+        }
+      }
+    },
+    "documentationProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profileId",
+        "sectionOrder",
+        "futureStateGraph",
+        "implementationBoundary",
+        "implementationExitConditions"
+      ],
+      "properties": {
+        "profileId": {
+          "const": "reviewed-capability-markdown.v1"
+        },
+        "sectionOrder": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "status"},
+            {"const": "future-state-preview"},
+            {"const": "reviewed-intent"},
+            {"const": "governed-constraints"},
+            {"const": "required-outcome"},
+            {"const": "user-story"},
+            {"const": "acceptance-gherkin"},
+            {"const": "canonical-authority-graph"},
+            {"const": "scenario-authority"},
+            {"const": "implementation-projection"},
+            {"const": "file-body-system"},
+            {"const": "implementation-boundary"},
+            {"const": "implementation-exit-condition"}
+          ],
+          "minItems": 13,
+          "maxItems": 13
+        },
+        "futureStateGraph": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["direction", "nodes", "edges"],
+          "properties": {
+            "direction": {
+              "enum": ["top-down", "left-right"]
+            },
+            "nodes": {
+              "type": "array",
+              "minItems": 2,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["nodeId", "label"],
+                "properties": {
+                  "nodeId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "edges": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["fromNodeId", "toNodeId"],
+                "properties": {
+                  "fromNodeId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+                  },
+                  "toNodeId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "implementationBoundary": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        },
+        "implementationExitConditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        }
+      }
+    },
+    "implementationProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profileId",
+        "capabilityRoot",
+        "dependencyPolicy",
+        "entrypoints",
+        "runtimeOutputs",
+        "artifacts"
+      ],
+      "properties": {
+        "profileId": {
+          "const": "canonical-capability-artifact-projection.v1"
+        },
+        "capabilityRoot": {
+          "type": "string",
+          "pattern": "^capabilities/[a-z][a-z0-9-]*$"
+        },
+        "dependencyPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "policyId",
+            "importsOutsideCapabilityRoot",
+            "allowedRuntimeImports"
+          ],
+          "properties": {
+            "policyId": {
+              "const": "self-contained-capability.v1"
+            },
+            "importsOutsideCapabilityRoot": {
+              "const": false
+            },
+            "allowedRuntimeImports": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^node:[a-z][a-z0-9_/-]*$"
+              }
+            }
+          }
+        },
+        "entrypoints": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["entrypointId", "artifactId"],
+            "properties": {
+              "entrypointId": {
+                "$ref": "#/$defs/id"
+              },
+              "artifactId": {
+                "$ref": "#/$defs/id"
+              }
+            }
+          }
+        },
+        "runtimeOutputs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "outputId",
+              "path",
+              "mediaType",
+              "producedByScenarioId",
+              "expectedByteSha256"
+            ],
+            "properties": {
+              "outputId": {
+                "$ref": "#/$defs/id"
+              },
+              "path": {
+                "type": "string",
+                "pattern": "^(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$"
+              },
+              "mediaType": {
+                "enum": [
+                  "application/json",
+                  "text/plain",
+                  "image/svg+xml"
+                ]
+              },
+              "producedByScenarioId": {
+                "$ref": "#/$defs/id"
+              },
+              "expectedByteSha256": {
+                "type": "string",
+                "pattern": "^sha256:[a-f0-9]{64}$"
+              }
+            }
+          }
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/implementationArtifact"
+          },
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "role": {"const": "package-manifest"}
+                },
+                "required": ["role"]
+              },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "role": {"const": "authority"}
+                },
+                "required": ["role"]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "role": {"const": "composition"}
+                },
+                "required": ["role"]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "role": {"const": "runtime"}
+                },
+                "required": ["role"]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "role": {"const": "scenario-responsibility"}
+                },
+                "required": ["role"]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "role": {"const": "verification"}
+                },
+                "required": ["role"]
+              },
+              "minContains": 1
+            }
+          ]
+        }
+      }
+    },
+    "implementationArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifactId",
+        "path",
+        "role",
+        "mediaType",
+        "projection",
+        "byteSha256"
+      ],
+      "properties": {
+        "artifactId": {
+          "$ref": "#/$defs/id"
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$"
+        },
+        "role": {
+          "enum": [
+            "package-manifest",
+            "authority",
+            "composition",
+            "runtime",
+            "scenario-responsibility",
+            "verification",
+            "fixture",
+            "expected-output"
+          ]
+        },
+        "scenarioBinding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["scenarioId", "responsibilityId"],
+          "properties": {
+            "scenarioId": {
+              "$ref": "#/$defs/id"
+            },
+            "responsibilityId": {
+              "$ref": "#/$defs/id"
+            }
+          }
+        },
+        "mediaType": {
+          "enum": [
+            "application/json",
+            "text/javascript",
+            "text/typescript",
+            "text/plain",
+            "text/markdown",
+            "image/svg+xml"
+          ]
+        },
+        "projection": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/jsonValueProjection"
+            },
+            {
+              "$ref": "#/$defs/utf8TextProjection"
+            },
+            {
+              "$ref": "#/$defs/losslessSourceProjection"
+            }
+          ]
+        },
+        "byteSha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "role": {"const": "package-manifest"}
+            },
+            "required": ["role"]
+          },
+          "then": {
+            "properties": {
+              "path": {"const": "package.json"},
+              "mediaType": {"const": "application/json"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "role": {"const": "authority"}
+            },
+            "required": ["role"]
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^authority/"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "role": {"const": "composition"}
+            },
+            "required": ["role"]
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^composition/"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "role": {"const": "runtime"}
+            },
+            "required": ["role"]
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^runtime/"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "role": {"const": "scenario-responsibility"}
+            },
+            "required": ["role"]
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^scenarios/"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "role": {"const": "verification"}
+            },
+            "required": ["role"]
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^verification/"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "role": {
+                "enum": ["fixture", "expected-output"]
+              }
+            },
+            "required": ["role"]
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^(?:examples|fixtures)/"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "role": {"const": "scenario-responsibility"}
+            },
+            "required": ["role"]
+          },
+          "then": {
+            "properties": {
+              "scenarioBinding": true
+            },
+            "required": ["scenarioBinding"]
+          },
+          "else": {
+            "properties": {
+              "scenarioBinding": true
+            },
+            "not": {
+              "required": ["scenarioBinding"]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mediaType": {"const": "application/json"}
+            },
+            "required": ["mediaType"]
+          },
+          "then": {
+            "properties": {
+              "path": {"type": "string", "pattern": "\\.json$"},
+              "projection": {
+                "$ref": "#/$defs/jsonValueProjection"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mediaType": {"const": "text/javascript"}
+            },
+            "required": ["mediaType"]
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "\\.(?:cjs|js|mjs)$"
+              },
+              "projection": {
+                "allOf": [
+                  {"$ref": "#/$defs/losslessSourceProjection"},
+                  {
+                    "type": "object",
+                    "properties": {
+                      "language": {"const": "javascript"}
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mediaType": {"const": "text/typescript"}
+            },
+            "required": ["mediaType"]
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "\\.(?:cts|mts|ts)$"
+              },
+              "projection": {
+                "allOf": [
+                  {"$ref": "#/$defs/losslessSourceProjection"},
+                  {
+                    "type": "object",
+                    "properties": {
+                      "language": {"const": "typescript"}
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mediaType": {"const": "image/svg+xml"}
+            },
+            "required": ["mediaType"]
+          },
+          "then": {
+            "properties": {
+              "path": {"type": "string", "pattern": "\\.svg$"},
+              "projection": {
+                "$ref": "#/$defs/utf8TextProjection"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "jsonValueProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projectionType", "value", "serialization"],
+      "properties": {
+        "projectionType": {
+          "const": "canonical-json-value.v1"
+        },
+        "value": {},
+        "serialization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "encoding",
+            "keyOrder",
+            "indentSpaces",
+            "lineEnding",
+            "terminalNewline"
+          ],
+          "properties": {
+            "encoding": {"const": "UTF-8"},
+            "keyOrder": {"const": "lexicographic"},
+            "indentSpaces": {"const": 2},
+            "lineEnding": {"const": "LF"},
+            "terminalNewline": {"const": true}
+          }
+        }
+      }
+    },
+    "utf8TextProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projectionType", "text", "serialization"],
+      "properties": {
+        "projectionType": {
+          "const": "utf8-text.v1"
+        },
+        "text": {
+          "type": "string"
+        },
+        "serialization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "encoding",
+            "lineEnding",
+            "terminalNewline"
+          ],
+          "properties": {
+            "encoding": {"const": "UTF-8"},
+            "lineEnding": {"const": "LF"},
+            "terminalNewline": {"type": "boolean"}
+          }
+        }
+      }
+    },
+    "losslessSourceProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectionType",
+        "language",
+        "serialization",
+        "tokens"
+      ],
+      "properties": {
+        "projectionType": {
+          "const": "lossless-source-tokens.v1"
+        },
+        "language": {
+          "enum": ["javascript", "typescript"]
+        },
+        "serialization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "encoding",
+            "assembly",
+            "lineEnding"
+          ],
+          "properties": {
+            "encoding": {"const": "UTF-8"},
+            "assembly": {"const": "token-sequence"},
+            "lineEnding": {"const": "LF"}
+          }
+        },
+        "tokens": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "text"],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
         }
       }
     }

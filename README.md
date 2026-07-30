@@ -142,6 +142,37 @@ from
 [the validated authority template](templates/governed-inspection-document-authority.template.json).
 The repository's `prove:projection` gate includes the governed-document proof.
 
+## Pure contract-to-capability projection
+
+The generic capability projector validates one reviewed capability contract
+against
+`schemas/canonical-feature-conveyor-contract.schema.json` and materializes only
+the implementation artifacts declared by that contract. It does not invoke the
+canonical feature conveyor, a model, a feature-specific template, or any
+conveyor runtime:
+
+```text
+npm run project:canonical-capability -- --contract <contract.json> --root <output-root> --write
+npm run project:canonical-capability -- --contract <contract.json> --root <output-root> --check
+npm run verify:canonical-capability-projector -- --contract <contract.json>
+```
+
+The deterministic SVG example can be projected and checked directly:
+
+```text
+npm run project:deterministic-svg-capability
+npm run check:deterministic-svg-capability
+npm --prefix capabilities/project-deterministic-svg-from-presentation-authority run verify
+```
+
+Its
+[architecture contract](architecture/projects-deterministic-svg-from-presentation-authority.contract.json)
+declares the documentation graph, dependency policy, entrypoints, runtime
+outputs, artifact paths, scenario bindings, canonical JSON values, lossless
+source tokens, and expected byte hashes. The
+[projected review document](architecture/projects-deterministic-svg-from-presentation-authority.md)
+and the capability folder are disposable projections of that authority.
+
 The proposed end-to-end new-feature capability is governed separately:
 
 ```text

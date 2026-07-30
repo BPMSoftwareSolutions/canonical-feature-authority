@@ -1,0 +1,30 @@
+{
+  "projectionPlanType": "resolved-svg-presentation.v1",
+  "artifactId": "governed-svg-review",
+  "canvas": {
+    "height": 120,
+    "viewBox": "0 0 200 120",
+    "width": 200
+  },
+  "operations": [
+    {
+      "sequence": 1,
+      "operation": "render-rectangle-with-centered-text",
+      "sectionId": "review-banner",
+      "bounds": {
+        "height": 80,
+        "width": 180,
+        "x": 10,
+        "y": 20
+      },
+      "text": "Governed SVG",
+      "style": {
+        "fill": "#F7F9FC",
+        "fontFamily": "Arial",
+        "fontSize": 20,
+        "textFill": "#111827"
+      }
+    }
+  ],
+  "proofRequirementId": "deterministic-infographic-svg-proof.v1"
+}
