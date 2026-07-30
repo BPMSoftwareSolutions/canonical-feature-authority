@@ -17,6 +17,10 @@
     {
       "profileId": "canonical-feature-construction.v1",
       "validation": "schema-causality-reference-ast-and-execution-equivalence"
+    },
+    {
+      "profileId": "reviewed-capability-request.v1",
+      "validation": "canonical-feature-conveyor-contract-schema-and-semantic-invariants"
     }
   ],
   "templates": [
@@ -34,6 +38,10 @@
     {
       "authority": "architecture/end-to-end-canonical-feature-conveyor.authority.json",
       "projection": "architecture/end-to-end-canonical-feature-conveyor.md"
+    },
+    {
+      "authority": "architecture/projects-deterministic-svg-from-presentation-authority.contract.json",
+      "projection": "architecture/projects-deterministic-svg-from-presentation-authority.md"
     }
   ],
   "projectors": [
@@ -52,6 +60,12 @@
       "codeBodyProjector": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/semantic-typescript-projector.bundle.mjs",
       "derivedProjectionIntegration": "capabilities/end-to-end-canonical-feature-conveyor-fractal/projection/projects-canonical-feature-conveyor-derived-bodies.mjs",
       "contract": "schemas/end-to-end-canonical-feature-conveyor-authority.schema.json"
+    },
+    {
+      "projectorId": "reviewed-capability-contract-markdown-projector",
+      "projectorVersion": "1.0.0",
+      "implementation": "tools/projects-reviewed-capability-contract-markdown.mjs",
+      "contract": "schemas/canonical-feature-conveyor-contract.schema.json"
     }
   ]
 }
